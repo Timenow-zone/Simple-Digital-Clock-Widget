@@ -1,3 +1,11 @@
+/*
+ * Simple Digital Clock Widget
+ * This is a simple digital clock widget that displays the current time and date in a specified time zone.
+ * It is based on the Timenow.zone website.
+ * https://timenow.zone/
+ * Version: 0.0.1
+ */
+
 import { Component, Fragment, h } from "preact";
 import register from "preact-custom-element";
 import clsx from "clsx";
@@ -5,6 +13,8 @@ import cssText from "bundle-text:./styles.css";
 import contrastColor from "./contrastColor";
 import darkenColor from "./darkenColor";
 import data from "./data.yaml";
+
+const v = "0.0.1";
 
 const r = ["/", "t", "h", ".", "e", "i", "s", "w", "o", "m", "p", "z", ":", "n"];
 
@@ -178,6 +188,7 @@ class SimpleDigitalClockWidget extends Component<
       <Fragment>
         <style>{cssText}</style>
         <div
+          data-version={v}
           className={clsx(mainDivClasses)}
           ref={(el) => (this.containerRef = el)}
           style={{

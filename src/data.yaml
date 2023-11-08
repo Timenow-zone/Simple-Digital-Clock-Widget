@@ -1,27 +1,27 @@
 allowFonts:
-  - 'Sono'
-  - 'Roboto Mono'
-  - 'Sometype Mono'
-  - 'Inconsolata'
-  - 'Source Code Pro'
-  - 'IBM Plex Mono'
-  - 'Space Mono'
-  - 'Ubuntu Mono'
-  - 'Nanum Gothic Coding'
-  - 'Courier Prime'
-  - 'JetBrains Mono'
-  - 'Fira Mono'
-  - 'Cousine'
-  - 'Anonymous Pro'
-  - 'Noto Sans Mono'
-  - 'Fira Code'
-  - 'Overpass Mono'
-  - 'B612 Mono'
-  - 'Victor Mono'
-  - 'Chivo Mono'
-  - 'Azeret Mono'
-  - 'Martian Mono'
-  - 'Red Hat Mono'
-  - 'M PLUS Code Latin'
-  - 'M PLUS 1 Code'
-  - 'Spline Sans Mono'
+  - "Sono"
+  - "Roboto Mono"
+  - "Sometype Mono"
+  - "Inconsolata"
+  - "Source Code Pro"
+  - "IBM Plex Mono"
+  - "Space Mono"
+  - "Ubuntu Mono"
+  - "Nanum Gothic Coding"
+  - "Courier Prime"
+  - "JetBrains Mono"
+  - "Fira Mono"
+  - "Cousine"
+  - "Anonymous Pro"
+  - "Noto Sans Mono"
+  - "Fira Code"
+  - "Overpass Mono"
+  - "B612 Mono"
+  - "Victor Mono"
+  - "Chivo Mono"
+  - "Azeret Mono"
+  - "Martian Mono"
+  - "Red Hat Mono"
+  - "M PLUS Code Latin"
+  - "M PLUS 1 Code"
+  - "Spline Sans Mono"
