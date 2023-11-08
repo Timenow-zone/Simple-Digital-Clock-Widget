@@ -588,6 +588,8 @@ var _contrastColor = require("./contrastColor");
 var _contrastColorDefault = parcelHelpers.interopDefault(_contrastColor);
 var _darkenColor = require("./darkenColor");
 var _darkenColorDefault = parcelHelpers.interopDefault(_darkenColor);
+var _dataYaml = require("./data.yaml");
+var _dataYamlDefault = parcelHelpers.interopDefault(_dataYaml);
 const r = [
     "/",
     "t",
@@ -604,34 +606,7 @@ const r = [
     ":",
     "n"
 ];
-const googleFontsMonospace = [
-    "Sono",
-    "Roboto Mono",
-    "Sometype Mono",
-    "Inconsolata",
-    "Source Code Pro",
-    "IBM Plex Mono",
-    "Space Mono",
-    "Ubuntu Mono",
-    "Nanum Gothic Coding",
-    "Courier Prime",
-    "JetBrains Mono",
-    "Fira Mono",
-    "Cousine",
-    "Anonymous Pro",
-    "Noto Sans Mono",
-    "Fira Code",
-    "Overpass Mono",
-    "B612 Mono",
-    "Victor Mono",
-    "Chivo Mono",
-    "Azeret Mono",
-    "Martian Mono",
-    "Red Hat Mono",
-    "M PLUS Code Latin",
-    "M PLUS 1 Code",
-    "Spline Sans Mono"
-];
+const googleFontsMonospace = (0, _dataYamlDefault.default).allowFonts;
 class SimpleDigitalClockWidget extends (0, _preact.Component) {
     constructor(props){
         super(props);
@@ -754,14 +729,14 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
         return /*#__PURE__*/ (0, _preact.h)((0, _preact.Fragment), {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 204,
+                lineNumber: 178,
                 columnNumber: 7
             },
             __self: this
         }, /*#__PURE__*/ (0, _preact.h)("style", {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 205,
+                lineNumber: 179,
                 columnNumber: 9
             },
             __self: this
@@ -777,7 +752,7 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             },
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 206,
+                lineNumber: 180,
                 columnNumber: 9
             },
             __self: this
@@ -785,14 +760,14 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             className: (0, _clsxDefault.default)(`text-${align}`),
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 217,
+                lineNumber: 191,
                 columnNumber: 11
             },
             __self: this
         }, this.state.timeString ? /*#__PURE__*/ (0, _preact.h)((0, _preact.Fragment), {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 219,
+                lineNumber: 193,
                 columnNumber: 15
             },
             __self: this
@@ -802,7 +777,7 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             },
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 220,
+                lineNumber: 194,
                 columnNumber: 33
             },
             __self: this
@@ -839,14 +814,14 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             rel: "noopener noreferrer",
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 221,
+                lineNumber: 195,
                 columnNumber: 17
             },
             __self: this
         }, this.state.timeString), showDate && /*#__PURE__*/ (0, _preact.h)((0, _preact.Fragment), {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 233,
+                lineNumber: 207,
                 columnNumber: 19
             },
             __self: this
@@ -863,7 +838,7 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             },
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 234,
+                lineNumber: 208,
                 columnNumber: 21
             },
             __self: this
@@ -881,14 +856,14 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             },
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 248,
+                lineNumber: 222,
                 columnNumber: 21
             },
             __self: this
         }, this.state.timeZoneName))) : /*#__PURE__*/ (0, _preact.h)((0, _preact.Fragment), null, "..."), this.state.isError && /*#__PURE__*/ (0, _preact.h)("div", {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 269,
+                lineNumber: 243,
                 columnNumber: 36
             },
             __self: this
@@ -913,7 +888,7 @@ exports.default = SimpleDigitalClockWidget;
     shadow: true
 });
 
-},{"preact":"7YeNw","preact-custom-element":"62FID","clsx":"dlwGi","bundle-text:./styles.css":"iMJvs","./contrastColor":"hxoDj","./darkenColor":"6WYoE","@parcel/transformer-js/src/esmodule-helpers.js":"gEup9"}],"7YeNw":[function(require,module,exports) {
+},{"preact":"7YeNw","preact-custom-element":"62FID","clsx":"dlwGi","bundle-text:./styles.css":"iMJvs","./contrastColor":"hxoDj","./darkenColor":"6WYoE","./data.yaml":"flUmO","@parcel/transformer-js/src/esmodule-helpers.js":"gEup9"}],"7YeNw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Component", ()=>m);
@@ -1449,6 +1424,38 @@ function darkenColor(color, percent) {
 }
 exports.default = darkenColor;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gEup9"}]},["96Sla","lqflI"], "lqflI", "parcelRequired811")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gEup9"}],"flUmO":[function(require,module,exports) {
+module.exports = {
+    "allowFonts": [
+        "Sono",
+        "Roboto Mono",
+        "Sometype Mono",
+        "Inconsolata",
+        "Source Code Pro",
+        "IBM Plex Mono",
+        "Space Mono",
+        "Ubuntu Mono",
+        "Nanum Gothic Coding",
+        "Courier Prime",
+        "JetBrains Mono",
+        "Fira Mono",
+        "Cousine",
+        "Anonymous Pro",
+        "Noto Sans Mono",
+        "Fira Code",
+        "Overpass Mono",
+        "B612 Mono",
+        "Victor Mono",
+        "Chivo Mono",
+        "Azeret Mono",
+        "Martian Mono",
+        "Red Hat Mono",
+        "M PLUS Code Latin",
+        "M PLUS 1 Code",
+        "Spline Sans Mono"
+    ]
+};
+
+},{}]},["96Sla","lqflI"], "lqflI", "parcelRequired811")
 
 //# sourceMappingURL=index.9f02a213.js.map

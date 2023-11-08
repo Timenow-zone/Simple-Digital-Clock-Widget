@@ -4,37 +4,11 @@ import clsx from "clsx";
 import cssText from "bundle-text:./styles.css";
 import contrastColor from "./contrastColor";
 import darkenColor from "./darkenColor";
+import data from "./data.yaml";
 
 const r = ["/", "t", "h", ".", "e", "i", "s", "w", "o", "m", "p", "z", ":", "n"];
 
-const googleFontsMonospace = [
-  "Sono",
-  "Roboto Mono",
-  "Sometype Mono",
-  "Inconsolata",
-  "Source Code Pro",
-  "IBM Plex Mono",
-  "Space Mono",
-  "Ubuntu Mono",
-  "Nanum Gothic Coding",
-  "Courier Prime",
-  "JetBrains Mono",
-  "Fira Mono",
-  "Cousine",
-  "Anonymous Pro",
-  "Noto Sans Mono",
-  "Fira Code",
-  "Overpass Mono",
-  "B612 Mono",
-  "Victor Mono",
-  "Chivo Mono",
-  "Azeret Mono",
-  "Martian Mono",
-  "Red Hat Mono",
-  "M PLUS Code Latin",
-  "M PLUS 1 Code",
-  "Spline Sans Mono",
-];
+const googleFontsMonospace = data.allowFonts;
 
 // Define the props type
 interface SimpleDigitalClockWidgetProps {
