@@ -1,0 +1,19 @@
+{
+  "compress": {
+    "drop_console": true,
+    "drop_debugger": true,
+    "keep_fnames": false
+  },
+  "mangle": {
+    "properties": {
+      "regex": "^_"
+    },
+    "keep_fnames": false
+  },
+  "output": {
+    "comments": false,
+    "beautify": false
+  },
+  "ecma": 5,
+  "keep_classnames": false
+}
