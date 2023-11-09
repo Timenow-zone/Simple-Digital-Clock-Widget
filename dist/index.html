@@ -1,19 +1,16 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Digital Clock Widget</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Digital Clock Widget</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-
-<body style="justify-content: center; align-items: center; padding: 25px">
-  <h1 style="padding-bottom: 25px">
-    SimpleDigitalClockWidget
-  </h1>
-  <div id="app"></div>
-  <script>const locales = Intl.DateTimeFormat.supportedLocalesOf([
+  <body style="justify-content: center; align-items: center; padding: 25px">
+    <h1 style="padding-bottom: 25px">SimpleDigitalClockWidget</h1>
+    <div id="app"></div>
+    <script>const locales = Intl.DateTimeFormat.supportedLocalesOf([
     "af",
     "am",
     "ar",
@@ -143,24 +140,24 @@
 ]);
 locales.forEach((item, index)=>{
     const div = document.createElement("div");
-    div.style.width = "220px";
     div.style.marginBottom = "10px";
     div.innerHTML = `<timenow-zone-sdcw
                 border
-                date
-                caption="London"
-                zone="longGeneric"
+                background="linear-gradient(120deg,#00416A,#E4E5E6)"
+                background-color="#00416A"
+                time-zone-name="longGeneric"
                 locale="${item}"
                 align="center"
-                tz="Europe/London"
-                rounded="rounded"
+                time-zone="Europe/London"
+                rounded=".25"
+                seconds
+                width="300"
                 shadow="shadow"
                 ></timenow-zone-sdcw>`;
     document.getElementById("app").appendChild(div); // Append the <div> to the body or another target element
 });
 
 </script>
-  <script src="/index.9f02a213.js" defer=""></script>
-</body>
-
+    <script src="/index.9f02a213.js" defer=""></script>
+  </body>
 </html>

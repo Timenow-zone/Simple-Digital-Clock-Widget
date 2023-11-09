@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the Timenow.zone website.
  * https://timenow.zone/
- * Version: 0.0.1
+ * Version: 0.1.0
  */
 
 import { Component, Fragment, h } from "preact";
@@ -15,26 +15,27 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 
 const v = "0.0.1";
-
-const r = ["/", "t", "h", ".", "e", "i", "s", "w", "o", "m", "p", "z", ":", "n"];
+const r = String.fromCodePoint(104, 116, 116, 112, 115, 58, 47, 47, 116, 105, 109, 101, 110, 111, 119, 46, 122, 111, 110, 101, 47);
 
 const googleFontsMonospace = data.allowFonts;
 
 // Define the props type
 interface SimpleDigitalClockWidgetProps {
   caption?: string;
-  tz?: string;
+  timeZone?: string;
   locale?: string;
   date?: boolean;
   font?: string;
-  bg?: string;
+  backgroundColor?: string;
+  background?: string;
   align?: "left" | "center" | "right";
   border?: boolean;
   period?: boolean;
-  zone?: "short" | "long" | "shortOffset" | "longOffset" | "shortGeneric" | "longGeneric" | "";
+  timeZoneName?: "short" | "long" | "shortOffset" | "longOffset" | "shortGeneric" | "longGeneric" | "";
   seconds?: "2-digit" | "numeric" | "";
   shadow?: "shadow" | "shadow-lg" | "shadow-md" | "shadow-sm" | "shadow-2xl" | "shadow-xl";
-  rounded?: "rounded" | "rounded-lg" | "rounded-md" | "rounded-sm" | "rounded-xl" | "rounded-full";
+  rounded?: number;
+  width?: number;
 }
 
 // Define the state type
@@ -96,8 +97,7 @@ class SimpleDigitalClockWidget extends Component<
   };
 
   updateTimeAndDateString = () => {
-    const { locale, tz, seconds, period, zone } = this.props;
-    const timeZone = tz;
+    const { locale, timeZone, seconds, period } = this.props;
     const date = new Date();
     let timeString = "";
     let dateString = "";
@@ -123,7 +123,7 @@ class SimpleDigitalClockWidget extends Component<
       });
       timeZoneName = date.toLocaleDateString(locale, {
         timeZone,
-        timeZoneName: zone === "" ? undefined : zone,
+        timeZoneName: this.props.timeZoneName === "" ? undefined : this.props.timeZoneName,
       });
     } catch (e) {
       isError = true;
@@ -160,7 +160,7 @@ class SimpleDigitalClockWidget extends Component<
   }
 
   render() {
-    const { shadow, rounded, caption, date, font, border } = this.props;
+    const { shadow, rounded, width, caption, date, font, border } = this.props;
 
     const showDate = date !== undefined;
     const showCaption = caption || false;
@@ -169,13 +169,11 @@ class SimpleDigitalClockWidget extends Component<
     if (shadow) {
       mainDivClasses.push(shadow);
     }
-    if (rounded) {
-      mainDivClasses.push(rounded);
-    }
 
     const mainStyle = {
-      backgroundColor: this.props.bg?.toLowerCase() || "#ffffff",
-      color: contrastColor(this.props.bg?.toLowerCase() || "#ffffff"),
+      backgroundColor: this.props.backgroundColor?.toLowerCase() || "#ffffff",
+      color: contrastColor(this.props.backgroundColor?.toLowerCase() || "#ffffff"),
+      ...(this.props.background && {background: this.props.background?.toLowerCase() || "#ffffff"}),
     };
     const fontStyles = {
       fontFamily: googleFontsMonospace.some((element) => element === font)
@@ -183,7 +181,7 @@ class SimpleDigitalClockWidget extends Component<
         : "monospace",
     };
     const align = this.props.align || "center";
-
+    console.log(width);
     return (
       <Fragment>
         <style>{cssText}</style>
@@ -193,10 +191,13 @@ class SimpleDigitalClockWidget extends Component<
           ref={(el) => (this.containerRef = el)}
           style={{
             ...mainStyle,
+            ...(rounded !== undefined && { borderRadius: `${rounded}rem` }),
             ...(border !== undefined && {
-              borderColor: darkenColor(this.props.bg?.toLowerCase() || "#ffffff", -0.25),
+              borderColor: darkenColor(this.props.backgroundColor?.toLowerCase() || "#ffffff", -0.25),
               borderWidth: "1px",
             }),
+            minWidth: 80,
+            ...(width !== undefined && { width: parseInt(width?.toString() || "0", 10) || undefined })
           }}
         >
           <div className={clsx(`text-${align}`)}>
@@ -206,9 +207,7 @@ class SimpleDigitalClockWidget extends Component<
                 <a
                   title={this.state.timeZoneName}
                   style={{ fontSize: this.state.fontSize, ...fontStyles }}
-                  href={[2, 1, 1, 10, 6, 12, 0, 0, 1, 5, 9, 4, 13, 8, 7, 3, 11, 8, 13, 4, 0]
-                    .map((index) => r[index])
-                    .join("")}
+                  href={r}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -272,11 +271,12 @@ register(
     "shadow",
     "border",
     "period",
-    "zone",
     "font",
     "date",
-    "bg",
-    "tz",
+    "backgroundColor",
+    "background",
+    "timeZoneName",
+    "timeZone",
   ],
   { shadow: true }
 );

@@ -146,17 +146,19 @@
       ]);
       locales.forEach((item, index) => {
         const div = document.createElement("div");
-        div.style.width = "220px";
+
         div.style.marginBottom = "10px";
         div.innerHTML = `<timenow-zone-sdcw
                 border
-                date
-                caption="London"
-                zone="longGeneric"
+                background="linear-gradient(120deg,#00416A,#E4E5E6)"
+                background-color="#00416A"
+                time-zone-name="longGeneric"
                 locale="${item}"
                 align="center"
-                tz="Europe/London"
-                rounded="rounded"
+                time-zone="Europe/London"
+                rounded=".25"
+                seconds
+                width="300"
                 shadow="shadow"
                 ></timenow-zone-sdcw>`;
 
