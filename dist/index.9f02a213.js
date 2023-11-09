@@ -689,18 +689,18 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
         window.addEventListener("resize", this.handleResize); // Add resize event listener
         this.handleResize(); // Set initial font size
         // Load the Google Font
-        this.loadGoogleFont(this.props.font);
+        this.loadGoogleFont(this.props.fontFamily);
     }
     componentDidUpdate(prevProps) {
         // If fontFamily has changed, load the new one
-        if (prevProps.font !== this.props.font) this.loadGoogleFont(this.props.font);
+        if (prevProps.fontFamily !== this.props.fontFamily) this.loadGoogleFont(this.props.fontFamily);
     }
     componentWillUnmount() {
         console.log("componentWillUnmount");
         clearInterval(this.interval);
     }
     render() {
-        const { shadow, rounded, width, caption, date, font, border } = this.props;
+        const { backgroundColor, background, fontFamily, caption, rounded, shadow, border, width, align, date } = this.props;
         const showDate = date !== undefined;
         const showCaption = caption || false;
         const mainDivClasses = [
@@ -708,29 +708,30 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             "font-family"
         ];
         if (shadow) mainDivClasses.push(shadow);
+        console.log(backgroundColor);
         const mainStyle = {
-            backgroundColor: this.props.backgroundColor?.toLowerCase() || "#ffffff",
-            color: (0, _contrastColorDefault.default)(this.props.backgroundColor?.toLowerCase() || "#ffffff"),
-            ...this.props.background && {
-                background: this.props.background?.toLowerCase() || "#ffffff"
+            color: (0, _contrastColorDefault.default)(backgroundColor?.toLowerCase() || "#ffffff"),
+            ...background && {
+                background: background?.toLowerCase() || "#ffffff"
+            },
+            ...backgroundColor && {
+                backgroundColor: backgroundColor?.toLowerCase() || "#ffffff"
             }
         };
         const fontStyles = {
-            fontFamily: googleFontsMonospace.some((element)=>element === font) ? this.props.font : "monospace"
+            fontFamily: googleFontsMonospace.some((element)=>element === fontFamily) ? this.props.fontFamily : "monospace"
         };
-        const align = this.props.align || "center";
-        console.log(width);
         return /*#__PURE__*/ (0, _preact.h)((0, _preact.Fragment), {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 186,
+                lineNumber: 227,
                 columnNumber: 7
             },
             __self: this
         }, /*#__PURE__*/ (0, _preact.h)("style", {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 187,
+                lineNumber: 228,
                 columnNumber: 9
             },
             __self: this
@@ -744,7 +745,7 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
                     borderRadius: `${rounded}rem`
                 },
                 ...border !== undefined && {
-                    borderColor: (0, _darkenColorDefault.default)(this.props.backgroundColor?.toLowerCase() || "#ffffff", -0.25),
+                    borderColor: (0, _darkenColorDefault.default)(backgroundColor?.toLowerCase() || "#ffffff", -0.25),
                     borderWidth: "1px"
                 },
                 minWidth: 80,
@@ -754,22 +755,22 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             },
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 188,
+                lineNumber: 229,
                 columnNumber: 9
             },
             __self: this
         }, /*#__PURE__*/ (0, _preact.h)("div", {
-            className: (0, _clsxDefault.default)(`text-${align}`),
+            className: (0, _clsxDefault.default)(`text-${align || "center"}`),
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 203,
+                lineNumber: 246,
                 columnNumber: 11
             },
             __self: this
         }, this.state.timeString ? /*#__PURE__*/ (0, _preact.h)((0, _preact.Fragment), {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 205,
+                lineNumber: 248,
                 columnNumber: 15
             },
             __self: this
@@ -779,7 +780,7 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             },
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 206,
+                lineNumber: 249,
                 columnNumber: 33
             },
             __self: this
@@ -794,14 +795,14 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             rel: "noopener noreferrer",
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 207,
+                lineNumber: 250,
                 columnNumber: 17
             },
             __self: this
         }, this.state.timeString), showDate && /*#__PURE__*/ (0, _preact.h)((0, _preact.Fragment), {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 217,
+                lineNumber: 260,
                 columnNumber: 19
             },
             __self: this
@@ -818,7 +819,7 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             },
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 218,
+                lineNumber: 261,
                 columnNumber: 21
             },
             __self: this
@@ -836,14 +837,14 @@ class SimpleDigitalClockWidget extends (0, _preact.Component) {
             },
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 232,
+                lineNumber: 275,
                 columnNumber: 21
             },
             __self: this
         }, this.state.timeZoneName))) : /*#__PURE__*/ (0, _preact.h)((0, _preact.Fragment), null, "..."), this.state.isError && /*#__PURE__*/ (0, _preact.h)("div", {
             __source: {
                 fileName: "src/SimpleDigitalClockWidget.tsx",
-                lineNumber: 253,
+                lineNumber: 296,
                 columnNumber: 36
             },
             __self: this
@@ -859,12 +860,12 @@ exports.default = SimpleDigitalClockWidget;
     "shadow",
     "border",
     "period",
-    "font",
+    "font-family",
     "date",
-    "backgroundColor",
+    "background-color",
     "background",
-    "timeZoneName",
-    "timeZone"
+    "time-zone-name",
+    "time-zone"
 ], {
     shadow: true
 });

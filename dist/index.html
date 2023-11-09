@@ -9,6 +9,16 @@
 
   <body style="justify-content: center; align-items: center; padding: 25px">
     <h1 style="padding-bottom: 25px">SimpleDigitalClockWidget</h1>
+    <hr>
+    <button onclick="handleClick()">Click</button>
+    <script>function handleClick() {
+    document.getElementById("test").setAttribute("background-color", "#ee0077");
+    document.getElementById("test").setAttribute("width", 1000);
+}
+
+</script>
+    <timenow-zone-sdcw id="test" border="border" background-color="#eee" time-zone-name="longGeneric" locale="ru" align="center" time-zone="Europe/London" rounded=".25" seconds="" width="300" shadow="shadow"></timenow-zone-sdcw>
+    <hr>
     <div id="app"></div>
     <script>const locales = Intl.DateTimeFormat.supportedLocalesOf([
     "af",
@@ -143,7 +153,6 @@ locales.forEach((item, index)=>{
     div.style.marginBottom = "10px";
     div.innerHTML = `<timenow-zone-sdcw
                 border
-                background="linear-gradient(120deg,#00416A,#E4E5E6)"
                 background-color="#00416A"
                 time-zone-name="longGeneric"
                 locale="${item}"
