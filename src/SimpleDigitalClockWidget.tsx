@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the Timenow.zone website.
  * https://timenow.zone/
- * Version: 0.1.1
+ * Version: 0.2.0
  */
 
 import { Component, Fragment, h } from "preact";
@@ -14,7 +14,7 @@ import contrastColor from "./contrastColor";
 import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 
-const v = "0.1.1";
+const v = "0.2.0";
 const r = String.fromCodePoint(
   104,
   116,
@@ -169,8 +169,8 @@ class SimpleDigitalClockWidget extends Component<
     this.updateTimeAndDateString(); // Call it once immediately
     this.interval = setInterval(this.updateTimeAndDateString, 1000) as unknown as number; // Call it every second
 
-    window.addEventListener("resize", this.handleResize); // Add resize event listener
-    this.handleResize(); // Set initial font size
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
 
     // Load the Google Font
     this.loadGoogleFont(this.props.fontFamily as string);
@@ -180,6 +180,9 @@ class SimpleDigitalClockWidget extends Component<
     // If fontFamily has changed, load the new one
     if (prevProps.fontFamily !== this.props.fontFamily) {
       this.loadGoogleFont(this.props.fontFamily as string);
+    }
+    if (prevProps.width !== this.props.width) {
+      this.handleResize();
     }
   }
 
@@ -210,8 +213,6 @@ class SimpleDigitalClockWidget extends Component<
       mainDivClasses.push(shadow);
     }
 
-    console.log(backgroundColor);
-
     const mainStyle = {
       color: contrastColor(backgroundColor?.toLowerCase() || "#ffffff"),
       ...(background && { background: background?.toLowerCase() || "#ffffff" }),
@@ -239,7 +240,7 @@ class SimpleDigitalClockWidget extends Component<
             }),
             minWidth: 80,
             ...(width !== undefined && {
-              width: parseInt(width?.toString() || "0", 10) || undefined,
+              width: parseInt(width?.toString() || "80", 10) || undefined,
             }),
           }}
         >
@@ -316,6 +317,7 @@ register(
     "period",
     "font-family",
     "date",
+    "width",
     "background-color",
     "background",
     "time-zone-name",

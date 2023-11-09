@@ -14,28 +14,27 @@
 
   <body style="padding: 25px; justify-content: center; align-items: center">
     <h1 style="padding-bottom: 25px">SimpleDigitalClockWidget</h1>
-    <hr>
+    <hr />
     <button onclick="handleClick()">Click</button>
     <script>
       function handleClick() {
         document.getElementById("test").setAttribute("background-color", "#ee0077");
-        document.getElementById("test").setAttribute("width", 1000);
+        document.getElementById("test").setAttribute("width", 500);
       }
     </script>
     <timenow-zone-sdcw
-    id="test"
-                border="border"
-                background-color="#eee"
-                time-zone-name="longGeneric"
-                locale="ru"
-                align="center"
-                time-zone="Europe/London"
-                rounded=".25"
-                seconds
-                width="300"
-                shadow="shadow"
-                ></timenow-zone-sdcw>
-    <hr>
+      id="test"
+      border="border"
+      background-color="#eee"
+      time-zone-name="longGeneric"
+      locale="ru"
+      align="center"
+      time-zone="Europe/London"
+      rounded=".25"
+      seconds
+      shadow="shadow"
+    ></timenow-zone-sdcw>
+    <hr />
     <div id="app"></div>
     <script>
       const locales = Intl.DateTimeFormat.supportedLocalesOf([
@@ -166,6 +165,7 @@
         "zh",
         "zu",
       ]);
+      /*
       locales.forEach((item, index) => {
         const div = document.createElement("div");
 
@@ -185,6 +185,7 @@
 
         document.getElementById("app").appendChild(div); // Append the <div> to the body or another target element
       });
+      */
     </script>
     <script src="./SimpleDigitalClockWidget.tsx" type="module"></script>
   </body>
