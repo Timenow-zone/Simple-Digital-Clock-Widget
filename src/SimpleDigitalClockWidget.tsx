@@ -14,7 +14,7 @@ import contrastColor from "./contrastColor";
 import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 
-const v = "0.0.1";
+const v = "0.1.0";
 const r = String.fromCodePoint(104, 116, 116, 112, 115, 58, 47, 47, 116, 105, 109, 101, 110, 111, 119, 46, 122, 111, 110, 101, 47);
 
 const googleFontsMonospace = data.allowFonts;
