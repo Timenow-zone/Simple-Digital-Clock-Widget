@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the Timenow.zone website.
  * https://timenow.zone/
- * Version: 0.2.4
+ * Version: 0.3.0
  */
 
 import { Component, Fragment, h } from "preact";
@@ -15,7 +15,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.2.4";
+const v = "0.3.0";
 const r = String.fromCodePoint(
   104,
   116,
@@ -41,9 +41,11 @@ const r = String.fromCodePoint(
 );
 
 const googleFontsMonospace = data.allowFonts;
-const defaultBackgroundColor = isDark() ? "#000000" : "#ffffff";
 
 // Define the props type
+/**
+ * Props for the SimpleDigitalClockWidget component.
+ */
 interface SimpleDigitalClockWidgetProps {
   date?: boolean;
   border?: boolean;
@@ -56,15 +58,16 @@ interface SimpleDigitalClockWidgetProps {
   background?: string;
   rounded?: number;
   width?: number;
+  prefers: "" | "auto" | "system" | "light" | "dark";
   align?: "left" | "center" | "right";
   timeZoneName?:
+    | ""
     | "short"
     | "long"
     | "shortOffset"
     | "longOffset"
     | "shortGeneric"
-    | "longGeneric"
-    | "";
+    | "longGeneric";
   seconds?: "2-digit" | "numeric" | "";
   shadow?: "shadow" | "shadow-lg" | "shadow-md" | "shadow-sm" | "shadow-2xl" | "shadow-xl";
 }
@@ -127,6 +130,10 @@ class SimpleDigitalClockWidget extends Component<
     }
   };
 
+  /**
+   * Updates the time and date strings based on the current locale, timeZone, seconds, and period props.
+   * Sets the state with the updated timeString, dateString, timeZoneName, and isError values.
+   */
   updateTimeAndDateString = () => {
     const { locale, timeZone, seconds, period } = this.props;
     const date = new Date();
@@ -199,6 +206,7 @@ class SimpleDigitalClockWidget extends Component<
       background,
       fontFamily,
       caption,
+      prefers,
       rounded,
       shadow,
       border,
@@ -209,6 +217,19 @@ class SimpleDigitalClockWidget extends Component<
 
     const showDate = date !== undefined;
     const showCaption = caption || false;
+
+    const defaultBackgroundColor =
+      prefers === undefined ||
+      prefers === null ||
+      prefers === "" ||
+      prefers === "system" ||
+      prefers === "auto"
+        ? isDark()
+          ? "#000000"
+          : "#ffffff"
+        : prefers === "dark"
+          ? "#000000"
+          : "#ffffff";
 
     const mainDivClasses = ["widget", "font-family"];
     if (shadow) {
@@ -315,6 +336,11 @@ register(
   SimpleDigitalClockWidget,
   "timenow-zone-sdcw",
   [
+    "background-color",
+    "time-zone-name",
+    "font-family",
+    "background",
+    "time-zone",
     "rounded",
     "seconds",
     "caption",
@@ -322,13 +348,8 @@ register(
     "shadow",
     "border",
     "period",
-    "font-family",
     "date",
     "width",
-    "background-color",
-    "background",
-    "time-zone-name",
-    "time-zone",
   ],
   { shadow: true }
 );
