@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the Timenow.zone website.
  * https://timenow.zone/
- * Version: 0.2.3
+ * Version: 0.2.4
  */
 
 import { Component, Fragment, h } from "preact";
@@ -13,8 +13,9 @@ import cssText from "bundle-text:./styles.css";
 import contrastColor from "./contrastColor";
 import darkenColor from "./darkenColor";
 import data from "./data.yaml";
+import isDark from "./isDark";
 
-const v = "0.2.3";
+const v = "0.2.4";
 const r = String.fromCodePoint(
   104,
   116,
@@ -40,6 +41,7 @@ const r = String.fromCodePoint(
 );
 
 const googleFontsMonospace = data.allowFonts;
+const defaultBackgroundColor = isDark() ? "#000000" : "#ffffff";
 
 // Define the props type
 interface SimpleDigitalClockWidgetProps {
@@ -163,7 +165,7 @@ class SimpleDigitalClockWidget extends Component<
 
   // componentDidMount replaces useEffect for post-mount actions
   componentDidMount() {
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
     // Your CSS injection logic here
 
     this.updateTimeAndDateString(); // Call it once immediately
@@ -187,7 +189,7 @@ class SimpleDigitalClockWidget extends Component<
   }
 
   componentWillUnmount() {
-    console.log("componentWillUnmount");
+    // console.log("componentWillUnmount");
     clearInterval(this.interval);
   }
 
@@ -214,15 +216,18 @@ class SimpleDigitalClockWidget extends Component<
     }
 
     const mainStyle = {
-      color: contrastColor(backgroundColor?.toLowerCase() || "#ffffff"),
-      ...(background && { background: background?.toLowerCase() || "#ffffff" }),
-      ...(backgroundColor && { backgroundColor: backgroundColor?.toLowerCase() || "#ffffff" }),
+      color: contrastColor(backgroundColor?.toLowerCase() || defaultBackgroundColor),
+      ...(background
+        ? { background: background?.toLowerCase() || defaultBackgroundColor }
+        : { backgroundColor: backgroundColor?.toLowerCase() }),
+      // ...(background && { background: background?.toLowerCase() || defaultBackgroundColor }),
     };
     const fontStyles = {
       fontFamily: googleFontsMonospace.some((element) => element === fontFamily)
         ? this.props.fontFamily
         : "monospace",
     };
+
     return (
       <Fragment>
         <style>{cssText}</style>
@@ -234,7 +239,10 @@ class SimpleDigitalClockWidget extends Component<
             ...mainStyle,
             ...(rounded !== undefined && { borderRadius: `${rounded}rem` }),
             ...(border !== undefined && {
-              borderColor: darkenColor(backgroundColor?.toLowerCase() || "#ffffff", -0.25),
+              borderColor: darkenColor(
+                backgroundColor?.toLowerCase() || defaultBackgroundColor,
+                -0.25
+              ),
               borderWidth: "1px",
             }),
             minWidth: 80,
