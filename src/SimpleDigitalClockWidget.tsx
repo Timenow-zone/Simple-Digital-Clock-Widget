@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the Timenow.zone website.
  * https://timenow.zone/
- * Version: 0.3.0
+ * Version: 0.3.1
  */
 
 import { Component, Fragment, h } from "preact";
@@ -15,7 +15,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.3.0";
+const v = "0.3.1";
 const r = String.fromCodePoint(
   104,
   116,
@@ -42,6 +42,19 @@ const r = String.fromCodePoint(
 
 const googleFontsMonospace = data.allowFonts;
 
+type Seconds = "2-digit" | "numeric" | "";
+type Align = "left" | "center" | "right";
+type Prefers = "" | "auto" | "system" | "light" | "dark";
+type Shadow = "shadow" | "shadow-lg" | "shadow-md" | "shadow-sm" | "shadow-2xl" | "shadow-xl";
+type TimeZoneName =
+  | ""
+  | "short"
+  | "long"
+  | "shortOffset"
+  | "longOffset"
+  | "shortGeneric"
+  | "longGeneric";
+
 // Define the props type
 /**
  * Props for the SimpleDigitalClockWidget component.
@@ -58,27 +71,20 @@ interface SimpleDigitalClockWidgetProps {
   background?: string;
   rounded?: number;
   width?: number;
-  prefers: "" | "auto" | "system" | "light" | "dark";
-  align?: "left" | "center" | "right";
-  timeZoneName?:
-    | ""
-    | "short"
-    | "long"
-    | "shortOffset"
-    | "longOffset"
-    | "shortGeneric"
-    | "longGeneric";
-  seconds?: "2-digit" | "numeric" | "";
-  shadow?: "shadow" | "shadow-lg" | "shadow-md" | "shadow-sm" | "shadow-2xl" | "shadow-xl";
+  prefers: Prefers;
+  align?: Align;
+  timeZoneName?: TimeZoneName;
+  seconds?: Seconds;
+  shadow?: Shadow;
 }
 
 // Define the state type
 interface SimpleDigitalClockWidgetState {
-  isDark: boolean;
   isError: boolean;
   timeString: string;
   dateString: string;
   timeZoneName: string;
+  backgroundColor: string;
   fontSize: number;
   fontSizeTitle: number;
 }
@@ -95,13 +101,13 @@ class SimpleDigitalClockWidget extends Component<
     super(props);
     this.interval;
     this.state = {
-      isDark: false,
       isError: false,
       timeString: "",
       dateString: "",
       timeZoneName: "",
       fontSize: 16,
       fontSizeTitle: 16,
+      backgroundColor: "#ffffff",
     };
   }
 
@@ -115,6 +121,23 @@ class SimpleDigitalClockWidget extends Component<
       link.rel = "stylesheet";
       document.head.appendChild(link);
     }
+  };
+
+  handlePrefers = () => {
+    const backgroundColor =
+      this.props.prefers === undefined ||
+      this.props.prefers === null ||
+      this.props.prefers === "" ||
+      this.props.prefers === "system" ||
+      this.props.prefers === "auto"
+        ? isDark()
+          ? "#000000"
+          : "#ffffff"
+        : this.props.prefers === "dark"
+          ? "#000000"
+          : "#ffffff";
+    this.setState({ backgroundColor });
+    console.log(this.props.prefers, "prefers");
   };
 
   handleResize = () => {
@@ -175,6 +198,8 @@ class SimpleDigitalClockWidget extends Component<
     // console.log("componentDidMount");
     // Your CSS injection logic here
 
+    this.handlePrefers();
+
     this.updateTimeAndDateString(); // Call it once immediately
     this.interval = setInterval(this.updateTimeAndDateString, 1000) as unknown as number; // Call it every second
 
@@ -193,6 +218,9 @@ class SimpleDigitalClockWidget extends Component<
     if (prevProps.width !== this.props.width) {
       this.handleResize();
     }
+    if (prevProps.prefers !== this.props.prefers) {
+      this.handlePrefers();
+    }
   }
 
   componentWillUnmount() {
@@ -206,7 +234,6 @@ class SimpleDigitalClockWidget extends Component<
       background,
       fontFamily,
       caption,
-      prefers,
       rounded,
       shadow,
       border,
@@ -218,30 +245,17 @@ class SimpleDigitalClockWidget extends Component<
     const showDate = date !== undefined;
     const showCaption = caption || false;
 
-    const defaultBackgroundColor =
-      prefers === undefined ||
-      prefers === null ||
-      prefers === "" ||
-      prefers === "system" ||
-      prefers === "auto"
-        ? isDark()
-          ? "#000000"
-          : "#ffffff"
-        : prefers === "dark"
-          ? "#000000"
-          : "#ffffff";
-
     const mainDivClasses = ["widget", "font-family"];
     if (shadow) {
       mainDivClasses.push(shadow);
     }
 
     const mainStyle = {
-      color: contrastColor(backgroundColor?.toLowerCase() || defaultBackgroundColor),
+      color: contrastColor(backgroundColor?.toLowerCase() || this.state.backgroundColor),
       ...(background
-        ? { background: background?.toLowerCase() || defaultBackgroundColor }
+        ? { background: background?.toLowerCase() || this.state.backgroundColor }
         : { backgroundColor: backgroundColor?.toLowerCase() }),
-      // ...(background && { background: background?.toLowerCase() || defaultBackgroundColor }),
+      // ...(background && { background: background?.toLowerCase() || this.state.backgroundColor }),
     };
     const fontStyles = {
       fontFamily: googleFontsMonospace.some((element) => element === fontFamily)
@@ -261,7 +275,7 @@ class SimpleDigitalClockWidget extends Component<
             ...(rounded !== undefined && { borderRadius: `${rounded}rem` }),
             ...(border !== undefined && {
               borderColor: darkenColor(
-                backgroundColor?.toLowerCase() || defaultBackgroundColor,
+                backgroundColor?.toLowerCase() || this.state.backgroundColor,
                 -0.25
               ),
               borderWidth: "1px",
@@ -344,6 +358,7 @@ register(
     "rounded",
     "seconds",
     "caption",
+    "prefers",
     "locale",
     "shadow",
     "border",

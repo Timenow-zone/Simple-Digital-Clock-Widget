@@ -24,6 +24,10 @@
     <hr />
     <button onclick="handleClick()">Click</button>
     <button onclick="handleClick2()">Click2</button>
+    <br />
+    <button onclick="handleClick3()">light</button>
+    <button onclick="handleClick4()">dark</button>
+    <button onclick="handleClick5()">system</button>
     <script>
       function handleClick() {
         document.getElementById("test").removeAttribute("background");
@@ -32,6 +36,17 @@
         document
           .getElementById("test")
           .setAttribute("background", "linear-gradient(149deg, rgb(255, 0, 0), rgb(255, 255, 0))");
+
+        document.getElementById("test").setAttribute("background-color", "rgb(255, 0, 0)");
+      }
+      function handleClick3() {
+        document.getElementById("test").setAttribute("prefers", "light");
+      }
+      function handleClick4() {
+        document.getElementById("test").setAttribute("prefers", "dark");
+      }
+      function handleClick5() {
+        document.getElementById("test").setAttribute("prefers", "system");
       }
     </script>
     <timenow-zone-sdcw

@@ -7,10 +7,10 @@ function darkenColor(color: string, percent: number): string {
       color.length === 9
         ? color.slice(1)
         : color
-            .slice(1)
-            .split("")
-            .map((c) => c + c)
-            .join("");
+          .slice(1)
+          .split("")
+          .map((c) => c + c)
+          .join("");
     const f = parseInt(hex, 16);
     R = (f >> 24) & 0xff;
     G = (f >> 16) & 0xff;
@@ -23,10 +23,10 @@ function darkenColor(color: string, percent: number): string {
       color.length === 7
         ? color.slice(1)
         : color
-            .slice(1)
-            .split("")
-            .map((c) => c + c)
-            .join("");
+          .slice(1)
+          .split("")
+          .map((c) => c + c)
+          .join("");
     const f = parseInt(hex, 16);
     R = f >> 16;
     G = (f >> 8) & 0xff;
