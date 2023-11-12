@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the Timenow.zone website.
  * https://timenow.zone/
- * Version: 0.3.1
+ * Version: 0.4.0
  */
 
 import { Component, Fragment, h } from "preact";
@@ -14,8 +14,10 @@ import contrastColor from "./contrastColor";
 import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
+import IconSun from "./iconSun";
+import IconMoon from "./iconMoon";
 
-const v = "0.3.1";
+const v = "0.4.0";
 const r = String.fromCodePoint(
   104,
   116,
@@ -71,6 +73,7 @@ interface SimpleDigitalClockWidgetProps {
   background?: string;
   rounded?: number;
   width?: number;
+  indicator?: string;
   prefers: Prefers;
   align?: Align;
   timeZoneName?: TimeZoneName;
@@ -80,6 +83,7 @@ interface SimpleDigitalClockWidgetProps {
 
 // Define the state type
 interface SimpleDigitalClockWidgetState {
+  isDay: boolean;
   isError: boolean;
   timeString: string;
   dateString: string;
@@ -101,6 +105,7 @@ class SimpleDigitalClockWidget extends Component<
     super(props);
     this.interval;
     this.state = {
+      isDay: true,
       isError: false,
       timeString: "",
       dateString: "",
@@ -160,12 +165,15 @@ class SimpleDigitalClockWidget extends Component<
   updateTimeAndDateString = () => {
     const { locale, timeZone, seconds, period } = this.props;
     const date = new Date();
+    let isDay = true;
     let timeString = "";
     let dateString = "";
     let timeZoneName = "";
     let isError = false;
 
     const second = seconds === "" ? "numeric" : seconds;
+    const currentHour = date.getHours();
+    isDay = currentHour >= 6 && currentHour < 18;
 
     try {
       timeString = date.toLocaleTimeString(locale, {
@@ -190,7 +198,7 @@ class SimpleDigitalClockWidget extends Component<
       isError = true;
       console.error("Error: ", e);
     }
-    this.setState({ timeString, dateString, timeZoneName, isError });
+    this.setState({ timeString, dateString, timeZoneName, isDay, isError });
   };
 
   // componentDidMount replaces useEffect for post-mount actions
@@ -233,6 +241,7 @@ class SimpleDigitalClockWidget extends Component<
       backgroundColor,
       background,
       fontFamily,
+      indicator,
       caption,
       rounded,
       shadow,
@@ -280,12 +289,16 @@ class SimpleDigitalClockWidget extends Component<
               ),
               borderWidth: "1px",
             }),
+            position: "relative",
             minWidth: 80,
             ...(width !== undefined && {
               width: parseInt(width?.toString() || "80", 10) || undefined,
             }),
           }}
         >
+          {indicator !== undefined && <div style={{ position: "absolute", top: 2.5, right: 2.5 }}>
+            {this.state.isDay ? <IconSun height={12} width={12} /> : <IconMoon height={12} width={12} />}
+          </div>}
           <div className={clsx(`text-${align || "center"}`)}>
             {this.state.timeString ? (
               <Fragment>
@@ -355,6 +368,7 @@ register(
     "font-family",
     "background",
     "time-zone",
+    "indicator",
     "rounded",
     "seconds",
     "caption",
