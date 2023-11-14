@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the Timenow.zone website.
  * https://timenow.zone/
- * Version: 0.4.1
+ * Version: 0.4.2
  */
 
 import { Component, Fragment, h } from "preact";
@@ -15,7 +15,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.4.1";
+const v = "0.4.2";
 const r = String.fromCodePoint(
   104,
   116,
@@ -177,8 +177,8 @@ class SimpleDigitalClockWidget extends Component<
         timeZone,
         hour: "numeric",
         minute: "numeric",
-        second: period !== undefined ? undefined : second,
-        hour12: period !== undefined,
+        ...(period === undefined && { second }),
+        ...(period !== undefined && { hour12: true }),
       });
       dateString = date.toLocaleDateString(locale, {
         timeZone,
@@ -342,7 +342,7 @@ class SimpleDigitalClockWidget extends Component<
             ) : (
               <>...</>
             )}
-            {this.state.isError && <div>Error</div>}
+            {this.state.isError && <div>Error, please check attributes of tag.</div>}
           </div>
         </div>
       </Fragment>
