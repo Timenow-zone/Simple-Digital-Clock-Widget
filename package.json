@@ -1,9 +1,9 @@
 {
   "name": "simple-digital-clock-widget",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Simple Digital Clock Widget html",
   "scripts": {
-    "build": "NODE_ENV=production parcel build src/SimpleDigitalClockWidget.tsx --log-level verbose && cp dist/SimpleDigitalClockWidget.js dist/latest.min.js",
+    "build": "NODE_ENV=production parcel build src/SimpleDigitalClockWidget.tsx --log-level verbose && cp dist/SimpleDigitalClockWidget.js dist/latest.min.js && cp dist/SimpleDigitalClockWidget.js dist/$npm_package_version.min.js",
     "start": "parcel src/index.html --open",
     "prettier": "prettier --write ./src",
     "lint": "eslint 'src/*.{ts,tsx}'",
