@@ -177,7 +177,7 @@ class SimpleDigitalClockWidget extends Component<
         timeZone,
         hour: "numeric",
         minute: "numeric",
-        ...(period === undefined && { second }),
+        ...((period === undefined && second !== undefined) && { second }),
         ...(period !== undefined && { hour12: true }),
       });
       dateString = date.toLocaleDateString(locale, {
