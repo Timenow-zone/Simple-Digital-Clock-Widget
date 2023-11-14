@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the Timenow.zone website.
  * https://timenow.zone/
- * Version: 0.4.3
+ * Version: 0.5.0
  */
 
 import { Component, Fragment, h } from "preact";
@@ -15,7 +15,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.4.3";
+const v = "0.5.0";
 const r = String.fromCodePoint(
   104,
   116,
@@ -42,7 +42,6 @@ const r = String.fromCodePoint(
 
 const googleFontsMonospace = data.allowFonts;
 
-type Seconds = "2-digit" | "numeric" | "";
 type Align = "left" | "center" | "right";
 type Prefers = "" | "auto" | "system" | "light" | "dark";
 type Shadow = "shadow" | "shadow-lg" | "shadow-md" | "shadow-sm" | "shadow-2xl" | "shadow-xl";
@@ -63,6 +62,7 @@ interface SimpleDigitalClockWidgetProps {
   date?: boolean;
   border?: boolean;
   period?: boolean;
+  second?: boolean;
   caption?: string;
   timeZone?: string;
   locale?: string;
@@ -74,7 +74,6 @@ interface SimpleDigitalClockWidgetProps {
   prefers: Prefers;
   align?: Align;
   timeZoneName?: TimeZoneName;
-  seconds?: Seconds;
   shadow?: Shadow;
 }
 
@@ -160,7 +159,7 @@ class SimpleDigitalClockWidget extends Component<
    * Sets the state with the updated timeString, dateString, timeZoneName, and isError values.
    */
   updateTimeAndDateString = () => {
-    const { locale, timeZone, seconds, period } = this.props;
+    const { locale, timeZone, second, period } = this.props;
     const date = new Date();
     let isDay = true;
     let timeString = "";
@@ -168,7 +167,7 @@ class SimpleDigitalClockWidget extends Component<
     let timeZoneName = "";
     let isError = false;
 
-    const second = seconds === "" ? "numeric" : seconds;
+    console.log((period !== undefined && { hour12: true }));
     const currentHour = date.getHours();
     isDay = currentHour >= 6 && currentHour < 18;
 
@@ -177,8 +176,8 @@ class SimpleDigitalClockWidget extends Component<
         timeZone,
         hour: "numeric",
         minute: "numeric",
-        ...((period === undefined && second !== undefined) && { second }),
-        ...(period !== undefined && { hour12: true }),
+        ...(second !== undefined ? { second: "numeric" } : {}),  // Add 'second' only if it's defined
+        ...(period !== undefined ? { hour12: true } : {})        // Add 'hour12' only if 'period' is defined
       });
       dateString = date.toLocaleDateString(locale, {
         timeZone,
@@ -362,7 +361,7 @@ register(
     "background",
     "time-zone",
     "rounded",
-    "seconds",
+    "second",
     "caption",
     "prefers",
     "locale",
