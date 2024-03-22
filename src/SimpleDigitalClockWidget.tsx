@@ -9,36 +9,13 @@
 import { Component, Fragment, h } from "preact";
 import register from "preact-custom-element";
 import clsx from "clsx";
-import * as cssText from "bundle-text:./styles.css";
+import cssText from "bundle-text:./styles.css";
 import contrastColor from "./contrastColor";
 import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
 const v = "0.5.5";
-const r = String.fromCodePoint(
-  104,
-  116,
-  116,
-  112,
-  115,
-  58,
-  47,
-  47,
-  116,
-  105,
-  109,
-  101,
-  110,
-  111,
-  119,
-  46,
-  122,
-  111,
-  110,
-  101,
-  47
-);
 
 const googleFontsMonospace = data.allowFonts;
 
@@ -299,7 +276,7 @@ class SimpleDigitalClockWidget extends Component<
                 <a
                   title={this.state.timeZoneName}
                   style={{ fontSize: this.state.fontSize, ...fontStyles }}
-                  href={r}
+                  href="https://utctime.info/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
