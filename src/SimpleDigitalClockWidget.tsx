@@ -1,21 +1,21 @@
 /*
  * Simple Digital Clock Widget
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
- * It is based on the Timenow.zone website.
- * https://timenow.zone/
- * Version: 0.5.3
+ * It is based on the utctime.info website.
+ * http://utctime.info/
+ * Version: 0.5.5
  */
 
 import { Component, Fragment, h } from "preact";
 import register from "preact-custom-element";
 import clsx from "clsx";
-import cssText from "bundle-text:./styles.css";
+import * as cssText from "bundle-text:./styles.css";
 import contrastColor from "./contrastColor";
 import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.5.3";
+const v = "0.5.5";
 const r = String.fromCodePoint(
   104,
   116,
