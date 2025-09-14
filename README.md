@@ -3,7 +3,7 @@
 Lightweight, framework-agnostic web component (built with Preact) to display a digital clock with timezone and locale support.
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
-* **Tiny:** \~9 kB gzipped (core logic)
+* **Tiny:** \~11 kB gzipped (core logic)
 * **Embeddable:** 1 custom element tag
 * **Theme-aware:** auto light/dark, or force it
 * **Timezone & locale aware:** uses `Intl.*` under the hood
@@ -13,7 +13,7 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 
 ## Demo & Plugin
 
-* **Live demo:** [https://utctime.info/](https://utctime.info/)
+* **Live demo:** [https://codepen.io/dejurin/pen/KKJZWjV](https://codepen.io/dejurin/pen/KKJZWjV)
 * **WordPress plugin:** [https://wordpress.org/plugins/simple-digital-clock/](https://wordpress.org/plugins/simple-digital-clock/)
 
 ---
