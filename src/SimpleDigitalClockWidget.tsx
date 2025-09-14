@@ -1,9 +1,15 @@
-/*
+/*!
  * Simple Digital Clock Widget
- * This is a simple digital clock widget that displays the current time and date in a specified time zone.
- * It is based on the utctime.info website.
- * http://utctime.info/
+ * Lightweight web component (Preact) to display time & date with timezone support.
+ *
+ * Repo:    https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
+ * Demo:    https://utctime.info/
+ * Related: https://todaysdatenow.com/
+ * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
+ *
  * Version: 0.6.0
+ * License: MIT
+ * Author: dejurin (https://github.com/Timenow-zone)
  */
 
 import { Component, Fragment, h } from "preact";
@@ -111,6 +117,20 @@ class SimpleDigitalClockWidget extends Component<
     "align",
   ];
 
+  /** Normalize boolean-like props coming from attributes. */
+  private normalizeBool(value: unknown): boolean | undefined {
+    // undefined/null => not provided
+    if (value == null) return undefined;
+    if (typeof value === "boolean") return value;
+    if (typeof value === "string") {
+      const v = value.trim().toLowerCase();
+      // HTML boolean attr present without value -> ""
+      if (v === "" || v === "true" || v === "1" || v === "yes") return true;
+      if (v === "false" || v === "0" || v === "no") return false;
+    }
+    return undefined; // unknown -> treat as "not provided"
+  }
+
   loadGoogleFont = (fontFamily: string) => {
     if (fontFamily) {
       const link = document.createElement("link");
@@ -158,26 +178,33 @@ class SimpleDigitalClockWidget extends Component<
    * Sets the state with the updated timeString, dateString, timeZoneName, and isError values.
    */
   updateTimeAndDateString = () => {
-    const { locale, timeZone, second, period } = this.props;
+    const { locale, timeZone } = this.props;
+
+    // Normalize boolean-like attributes
+    const periodPref = this.normalizeBool(this.props.period);
+    const showSeconds = this.normalizeBool(this.props.second);
+
     const date = new Date();
-    let isDay = true;
+    let isDay = date.getHours() >= 6 && date.getHours() < 18;
+
     let timeString = "";
     let dateString = "";
     let timeZoneName = "";
     let isError = false;
-
-    // console.log(period !== undefined && { hour12: true });
-    const currentHour = date.getHours();
-    isDay = currentHour >= 6 && currentHour < 18;
 
     try {
       timeString = date.toLocaleTimeString(locale, {
         timeZone,
         hour: "numeric",
         minute: "numeric",
-        ...(second !== undefined ? { second: "numeric" } : {}), // Add 'second' only if it's defined
-        ...(period !== undefined ? { hour12: true } : {}), // Add 'hour12' only if 'period' is defined
+        // show seconds only when explicitly true
+        ...(showSeconds === true ? { second: "numeric" } : {}),
+        // period overrides locale when explicitly provided
+        ...(periodPref !== undefined
+          ? { hour12: periodPref, hourCycle: periodPref ? "h12" : "h23" }
+          : {}),
       });
+
       dateString = date.toLocaleDateString(locale, {
         timeZone,
         weekday: "short",
@@ -185,6 +212,7 @@ class SimpleDigitalClockWidget extends Component<
         month: "short",
         day: "numeric",
       });
+
       timeZoneName = date.toLocaleDateString(locale, {
         timeZone,
         timeZoneName: this.props.timeZoneName === "" ? undefined : this.props.timeZoneName,
@@ -193,6 +221,7 @@ class SimpleDigitalClockWidget extends Component<
       isError = true;
       console.error("Error: ", e);
     }
+
     this.setState({ timeString, dateString, timeZoneName, isDay, isError });
   };
 
@@ -214,7 +243,6 @@ class SimpleDigitalClockWidget extends Component<
   }
 
   componentDidUpdate(prevProps: SimpleDigitalClockWidgetProps) {
-    // If fontFamily has changed, load the new one
     if (prevProps.fontFamily !== this.props.fontFamily) {
       this.loadGoogleFont(this.props.fontFamily as string);
     }
@@ -223,6 +251,16 @@ class SimpleDigitalClockWidget extends Component<
     }
     if (prevProps.prefers !== this.props.prefers) {
       this.handlePrefers();
+    }
+    // Recalc time immediately when formatting-related props change
+    if (
+      prevProps.locale !== this.props.locale ||
+      prevProps.timeZone !== this.props.timeZone ||
+      prevProps.second !== this.props.second ||
+      prevProps.period !== this.props.period ||
+      prevProps.timeZoneName !== this.props.timeZoneName
+    ) {
+      this.updateTimeAndDateString();
     }
   }
 

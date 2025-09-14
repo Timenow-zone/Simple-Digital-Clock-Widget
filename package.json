@@ -35,7 +35,8 @@
     "time-zone"
   ],
   "scripts": {
-    "build": "NODE_ENV=production parcel build src/SimpleDigitalClockWidget.tsx --log-level verbose && cp dist/SimpleDigitalClockWidget.js dist/latest.min.js && cp dist/SimpleDigitalClockWidget.js dist/$npm_package_version.min.js",
+    "build": "parcel build src/SimpleDigitalClockWidget.tsx --no-optimize && terser dist/SimpleDigitalClockWidget.js -c -m -o dist/latest.min.js && cp dist/latest.min.js dist/$npm_package_version.min.js",
+    "build:prod": "parcel build src/SimpleDigitalClockWidget.tsx",
     "start": "parcel src/index.html --open",
     "fmt": "prettier --write **/*.{ts,tsx,js,json,css,html}",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
@@ -95,7 +96,7 @@
         "browsers": "> 0.25%, not dead",
         "node": ">= 12"
       },
-      "optimize": true
+      "optimize": false
     }
   },
   "browserslist": [
