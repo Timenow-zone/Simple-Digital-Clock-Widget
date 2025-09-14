@@ -1,7 +1,7 @@
 {
   "name": "simple-digital-clock-widget",
   "version": "0.6.0",
-  "description": "Simple Digital Clock Widget – is a 🪶 light (9kb gzip) HTML/JS based, easy-to-use digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.",
+  "description": "Simple Digital Clock Widget – is a 🪶 light (11 kB gzip) HTML/JS based, easy-to-use digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.",
   "author": {
     "name": "dejurin",
     "url": "https://github.com/Timenow-zone"
