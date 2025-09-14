@@ -3,7 +3,7 @@
  * This is a simple digital clock widget that displays the current time and date in a specified time zone.
  * It is based on the utctime.info website.
  * http://utctime.info/
- * Version: 0.5.5
+ * Version: 0.6.0
  */
 
 import { Component, Fragment, h } from "preact";
@@ -17,7 +17,7 @@ import isDark from "./isDark";
 
 const v = "0.5.5";
 
-const googleFontsMonospace = data.allowFonts;
+const googleFontsMonospace: string[] = (data?.allowFonts ?? []) as string[];
 
 type Align = "left" | "center" | "right";
 type Prefers = "" | "auto" | "system" | "light" | "dark";
@@ -89,6 +89,28 @@ class SimpleDigitalClockWidget extends Component<
     };
   }
 
+  static tagName = "timenow-zone-sdcw";
+
+  // Observe attributes in kebab-case (HTML side)
+  static observedAttributes = [
+    "background-color",
+    "time-zone-name",
+    "font-family",
+    "background",
+    "time-zone",
+    "rounded",
+    "second",
+    "caption",
+    "prefers",
+    "locale",
+    "shadow",
+    "border",
+    "period",
+    "date",
+    "width",
+    "align",
+  ];
+
   loadGoogleFont = (fontFamily: string) => {
     if (fontFamily) {
       const link = document.createElement("link");
@@ -115,7 +137,7 @@ class SimpleDigitalClockWidget extends Component<
           ? "#000000"
           : "#ffffff";
     this.setState({ backgroundColor });
-    console.log(this.props.prefers, "prefers");
+    // console.log(this.props.prefers, "prefers");
   };
 
   handleResize = () => {
@@ -144,7 +166,7 @@ class SimpleDigitalClockWidget extends Component<
     let timeZoneName = "";
     let isError = false;
 
-    console.log((period !== undefined && { hour12: true }));
+    // console.log(period !== undefined && { hour12: true });
     const currentHour = date.getHours();
     isDay = currentHour >= 6 && currentHour < 18;
 
@@ -153,8 +175,8 @@ class SimpleDigitalClockWidget extends Component<
         timeZone,
         hour: "numeric",
         minute: "numeric",
-        ...(second !== undefined ? { second: "numeric" } : {}),  // Add 'second' only if it's defined
-        ...(period !== undefined ? { hour12: true } : {})        // Add 'hour12' only if 'period' is defined
+        ...(second !== undefined ? { second: "numeric" } : {}), // Add 'second' only if it's defined
+        ...(period !== undefined ? { hour12: true } : {}), // Add 'hour12' only if 'period' is defined
       });
       dateString = date.toLocaleDateString(locale, {
         timeZone,
@@ -239,7 +261,7 @@ class SimpleDigitalClockWidget extends Component<
       // ...(background && { background: background?.toLowerCase() || this.state.backgroundColor }),
     };
     const fontStyles = {
-      fontFamily: googleFontsMonospace.some((element) => element === fontFamily)
+      fontFamily: googleFontsMonospace.some((element: string) => element === fontFamily)
         ? this.props.fontFamily
         : "monospace",
     };
@@ -250,7 +272,9 @@ class SimpleDigitalClockWidget extends Component<
         <div
           data-version={v}
           className={clsx(mainDivClasses)}
-          ref={(el) => (this.containerRef = el)}
+          ref={(el) => {
+            this.containerRef = el;
+          }}
           style={{
             ...mainStyle,
             ...(rounded !== undefined && { borderRadius: `${rounded}rem` }),
@@ -286,7 +310,9 @@ class SimpleDigitalClockWidget extends Component<
                   <Fragment>
                     <div
                       title={this.state.timeZoneName}
-                      ref={(el) => (this.dateContainerRef = el)}
+                      ref={(el) => {
+                        this.dateContainerRef = el;
+                      }}
                       onClick={() => {
                         this.zoneContainerRef?.style.setProperty("display", "block");
                         this.dateContainerRef?.style.setProperty("display", "none");
@@ -304,7 +330,9 @@ class SimpleDigitalClockWidget extends Component<
                         this.zoneContainerRef?.style.setProperty("display", "none");
                         this.dateContainerRef?.style.setProperty("display", "block");
                       }}
-                      ref={(el) => (this.zoneContainerRef = el)}
+                      ref={(el) => {
+                        this.zoneContainerRef = el;
+                      }}
                       style={{
                         fontSize: this.state.fontSizeTitle,
                         display: "none",
@@ -329,25 +357,4 @@ class SimpleDigitalClockWidget extends Component<
 
 export default SimpleDigitalClockWidget;
 
-register(
-  SimpleDigitalClockWidget,
-  "timenow-zone-sdcw",
-  [
-    "background-color",
-    "time-zone-name",
-    "font-family",
-    "background",
-    "time-zone",
-    "rounded",
-    "second",
-    "caption",
-    "prefers",
-    "locale",
-    "shadow",
-    "border",
-    "period",
-    "date",
-    "width",
-  ],
-  { shadow: true }
-);
+register(SimpleDigitalClockWidget, undefined, undefined, { shadow: true });

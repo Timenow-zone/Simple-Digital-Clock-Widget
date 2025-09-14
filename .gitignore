@@ -128,3 +128,7 @@ out
 .yarn/install-state.gz
 .pnp.*
 .DS_Store
+
+.tmp-tests/
+.tmp-web/
+coverage/

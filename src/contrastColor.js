@@ -1,38 +1,39 @@
-function contrastColor(inputColor: string): string {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function contrastColor(inputColor) {
   // --- Helpers --------------------------------------------------------------
-
+  var _a, _b;
   // Clamp number into [min, max]
-  const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
-
+  var clamp = function (v, min, max) {
+    return Math.min(Math.max(v, min), max);
+  };
   // Convert sRGB channel [0..255] to linear light
-  const srgbToLinear = (c255: number): number => {
-    const c = c255 / 255;
+  var srgbToLinear = function (c255) {
+    var c = c255 / 255;
     return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
   };
-
   // Relative luminance per WCAG (0..1)
-  const relativeLuminance = (r: number, g: number, b: number): number => {
-    const R = srgbToLinear(r);
-    const G = srgbToLinear(g);
-    const B = srgbToLinear(b);
+  var relativeLuminance = function (r, g, b) {
+    var R = srgbToLinear(r);
+    var G = srgbToLinear(g);
+    var B = srgbToLinear(b);
     return 0.2126 * R + 0.7152 * G + 0.0722 * B;
   };
-
   // Contrast ratio between two luminances (L1 lighter, L2 darker)
-  const contrastRatio = (L1: number, L2: number): number => (L1 + 0.05) / (L2 + 0.05);
-
+  var contrastRatio = function (L1, L2) {
+    return (L1 + 0.05) / (L2 + 0.05);
+  };
   // Parse #RGB, #RGBA, #RRGGBB, #RRGGBBAA
-  const parseHex = (hexInput: string): { r: number; g: number; b: number } => {
-    const hex = hexInput.slice(1).trim();
-    const len = hex.length;
-
+  var parseHex = function (hexInput) {
+    var hex = hexInput.slice(1).trim();
+    var len = hex.length;
     if (len !== 3 && len !== 4 && len !== 6 && len !== 8) {
       throw new Error("Invalid HEX length. Use #RGB, #RGBA, #RRGGBB, or #RRGGBBAA.");
     }
-
-    const toByte = (h: string): number => parseInt(h, 16);
-
-    let r: number, g: number, b: number;
+    var toByte = function (h) {
+      return parseInt(h, 16);
+    };
+    var r, g, b;
     if (len === 3 || len === 4) {
       // Expand short form (#abc[#d] -> #aabbcc[dd])
       r = toByte(hex[0] + hex[0]);
@@ -45,77 +46,68 @@ function contrastColor(inputColor: string): string {
       b = toByte(hex.slice(4, 6));
       // alpha (hex[6..8]) is ignored
     }
-
-    if ([r, g, b].some((v) => Number.isNaN(v))) {
+    if (
+      [r, g, b].some(function (v) {
+        return Number.isNaN(v);
+      })
+    ) {
       throw new Error("Invalid HEX digits.");
     }
-    return { r, g, b };
+    return { r: r, g: g, b: b };
   };
-
   // Parse rgb()/rgba(); supports integers 0..255 or percentages 0%..100%
-  const parseRgbFunc = (rgbInput: string): { r: number; g: number; b: number } => {
+  var parseRgbFunc = function (rgbInput) {
     // Normalize and extract content inside parentheses
-    const open = rgbInput.indexOf("(");
-    const close = rgbInput.lastIndexOf(")");
+    var open = rgbInput.indexOf("(");
+    var close = rgbInput.lastIndexOf(")");
     if (open === -1 || close === -1 || close <= open) {
       throw new Error("Malformed rgb()/rgba() string.");
     }
-    const inner = rgbInput.slice(open + 1, close).trim();
-
+    var inner = rgbInput.slice(open + 1, close).trim();
     // Split by commas, tolerate extra spaces
-    const parts = inner.split(/\s*,\s*/);
+    var parts = inner.split(/\s*,\s*/);
     if (parts.length < 3) {
       throw new Error("rgb()/rgba() must have at least 3 components.");
     }
-
-    const parseChannel = (s: string): number => {
+    var parseChannel = function (s) {
       // Percentage form e.g., "80%"
-      const percentMatch = s.match(/^(-?\d+(?:\.\d+)?)%$/);
+      var percentMatch = s.match(/^(-?\d+(?:\.\d+)?)%$/);
       if (percentMatch) {
-        const p = parseFloat(percentMatch[1]);
+        var p = parseFloat(percentMatch[1]);
         return clamp(Math.round((p / 100) * 255), 0, 255);
       }
       // Integer 0..255 (also accepts floats and rounds)
-      const n = Number(s);
+      var n = Number(s);
       if (Number.isNaN(n)) throw new Error("Invalid RGB channel value.");
       return clamp(Math.round(n), 0, 255);
     };
-
-    const r = parseChannel(parts[0]);
-    const g = parseChannel(parts[1]);
-    const b = parseChannel(parts[2]);
-
+    var r = parseChannel(parts[0]);
+    var g = parseChannel(parts[1]);
+    var b = parseChannel(parts[2]);
     // Alpha (parts[3]) is intentionally ignored for background color
-    return { r, g, b };
+    return { r: r, g: g, b: b };
   };
-
   // --- Main -----------------------------------------------------------------
-
-  let r: number, g: number, b: number;
-  const color = inputColor.trim();
-
+  var r, g, b;
+  var color = inputColor.trim();
   if (color.startsWith("#")) {
-    ({ r, g, b } = parseHex(color));
+    ((_a = parseHex(color)), (r = _a.r), (g = _a.g), (b = _a.b));
   } else if (color.toLowerCase().startsWith("rgb")) {
-    ({ r, g, b } = parseRgbFunc(color));
+    ((_b = parseRgbFunc(color)), (r = _b.r), (g = _b.g), (b = _b.b));
   } else {
     // Keep API behavior: only HEX or rgb()/rgba() are accepted
     throw new Error(
       "Color format not recognized. Use HEX (#RRGGBB, #RGB, with optional alpha) or rgb()/rgba()."
     );
   }
-
   // Compute relative luminance
-  const Lbg = relativeLuminance(r, g, b);
-
+  var Lbg = relativeLuminance(r, g, b);
   // Compare contrast vs black (#000) and white (#fff); pick better
-  const Lwhite = 1.0; // luminance of #fff
-  const Lblack = 0.0; // luminance of #000
-  const contrastWithWhite = contrastRatio(Math.max(Lwhite, Lbg), Math.min(Lwhite, Lbg));
-  const contrastWithBlack = contrastRatio(Math.max(Lbg, Lblack), Math.min(Lbg, Lblack));
-
+  var Lwhite = 1.0; // luminance of #fff
+  var Lblack = 0.0; // luminance of #000
+  var contrastWithWhite = contrastRatio(Math.max(Lwhite, Lbg), Math.min(Lwhite, Lbg));
+  var contrastWithBlack = contrastRatio(Math.max(Lbg, Lblack), Math.min(Lbg, Lblack));
   // Return "black" or "white" to keep original API
   return contrastWithBlack >= contrastWithWhite ? "black" : "white";
 }
-
-export default contrastColor;
+exports.default = contrastColor;

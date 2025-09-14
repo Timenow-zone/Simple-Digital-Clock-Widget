@@ -19,8 +19,23 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
-    },
+    }
   },
-  "include": ["src/*", "./parcel.d.ts", "./declarations.d.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts", ".vscode", ".parcel-cache", "./dist/*"]
+  "include": [
+    "src/**/*",
+    "./parcel.d.ts",
+    "./declarations.d.ts",
+    "tests/darkenColor.spec.ts",
+    "tests/contrastColor.spec.ts",
+    "tests/isDark.spec.ts",
+    "tests/widget-ref.spec.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    ".vscode",
+    ".parcel-cache",
+    "./dist/*"
+  ]
 }

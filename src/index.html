@@ -28,6 +28,7 @@
     <button onclick="handleClick3()">light</button>
     <button onclick="handleClick4()">dark</button>
     <button onclick="handleClick5()">system</button>
+    <button onclick="handleClick6()">rgb(255, 0, 0)</button>
     <script>
       function handleClick() {
         document.getElementById("test").removeAttribute("background");
@@ -47,6 +48,9 @@
       }
       function handleClick5() {
         document.getElementById("test").setAttribute("prefers", "system");
+      }
+      function handleClick6() {
+        document.getElementById("test").setAttribute("background-color", "rgb(255, 0, 0)");
       }
     </script>
     <timenow-zone-sdcw
@@ -194,7 +198,7 @@
         "zh",
         "zu",
       ]);
-      /*
+
       locales.forEach((item, index) => {
         const div = document.createElement("div");
 
@@ -214,7 +218,6 @@
 
         document.getElementById("app").appendChild(div); // Append the <div> to the body or another target element
       });
-      */
     </script>
     <script src="./SimpleDigitalClockWidget.tsx" type="module"></script>
   </body>

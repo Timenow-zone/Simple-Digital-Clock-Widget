@@ -1,47 +1,28 @@
 {
-    "env": {
-        "browser": true
+  "env": {
+    "browser": true
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "preact"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "tsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "preact"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": ["./tsconfig.json"],
-        "ecmaVersion": "latest",
-        "ecmaFeatures": {
-            "tsx": true
-          },
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "react"
-    ],
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react"],
 
   "settings": {
     "react": {
       "pragma": "h"
     }
   },
-    "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
-    }
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"]
+  }
 }

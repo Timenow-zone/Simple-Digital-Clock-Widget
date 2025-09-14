@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2020",
+    "noEmit": false,
+    "outDir": ".tmp-tests",
+    "sourceMap": false,
+    "declaration": false,
+    "types": ["node"]
+  },
+  "include": [
+    "tests/contrastColor.spec.ts",
+    "tests/darkenColor.spec.ts",
+    "tests/isDark.spec.ts",
+
+    "src/contrastColor.ts",
+    "src/darkenColor.ts",
+    "src/isDark.ts"
+  ],
+  "exclude": [
+    "tests/**/*.browser.spec.ts",
+    "tests/**/*.browser.test.ts",
+    "tests/widget-ref.spec.ts",
+    "src/SimpleDigitalClockWidget.tsx"
+  ]
+}

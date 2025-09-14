@@ -1,71 +1,112 @@
+// darkenColor.ts
 function darkenColor(color: string, percent: number): string {
-  let R: number, G: number, B: number, A: number;
+  // --- Helpers --------------------------------------------------------------
+  const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
+  const toByte = (n: number) => clamp(Math.floor(n), 0, 255); // <= floor for stable expectations
 
-  // Check for HEX format with alpha channel and parse it
-  if (color[0] === "#" && (color.length === 9 || color.length === 5)) {
-    const hex =
-      color.length === 9
-        ? color.slice(1)
-        : color
-          .slice(1)
-          .split("")
-          .map((c) => c + c)
-          .join("");
-    const f = parseInt(hex, 16);
-    R = (f >> 24) & 0xff;
-    G = (f >> 16) & 0xff;
-    B = (f >> 8) & 0xff;
-    A = (f & 0xff) / 255;
-  }
-  // Check for HEX format without alpha channel and parse it
-  else if (color[0] === "#" && (color.length === 7 || color.length === 4)) {
-    const hex =
-      color.length === 7
-        ? color.slice(1)
-        : color
-          .slice(1)
-          .split("")
-          .map((c) => c + c)
-          .join("");
-    const f = parseInt(hex, 16);
-    R = f >> 16;
-    G = (f >> 8) & 0xff;
-    B = f & 0xff;
-    A = 1; // Default alpha value is 1 for fully opaque
-  }
-  // Check for RGB or RGBA format and parse it
-  else if (color.startsWith("rgb")) {
-    const components = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.?\d*))?\)/i);
-    if (components) {
-      R = parseInt(components[1], 10);
-      G = parseInt(components[2], 10);
-      B = parseInt(components[3], 10);
-      A = components[4] !== undefined ? parseFloat(components[4]) : 1;
-    } else {
-      throw new Error("Invalid color format");
+  // Clamp percent to [-1, 1]; negative => darken, positive => lighten
+  const p = Math.max(-1, Math.min(1, percent));
+
+  type RGB = { r: number; g: number; b: number; a: number | null };
+
+  // Parse #RGB/#RGBA/#RRGGBB/#RRGGBBAA
+  const parseHex = (hexInput: string): RGB => {
+    const hex = hexInput.slice(1).trim();
+    const len = hex.length;
+    if (![3, 4, 6, 8].includes(len)) {
+      throw new Error("Invalid HEX length. Use #RGB, #RGBA, #RRGGBB, or #RRGGBBAA.");
     }
+    const expand = (c: string) => c + c;
+
+    let r: number,
+      g: number,
+      b: number,
+      a: number | null = null;
+
+    if (len === 3 || len === 4) {
+      r = parseInt(expand(hex[0]), 16);
+      g = parseInt(expand(hex[1]), 16);
+      b = parseInt(expand(hex[2]), 16);
+      if (len === 4) a = parseInt(expand(hex[3]), 16) / 255;
+    } else {
+      r = parseInt(hex.slice(0, 2), 16);
+      g = parseInt(hex.slice(2, 4), 16);
+      b = parseInt(hex.slice(4, 6), 16);
+      if (len === 8) a = parseInt(hex.slice(6, 8), 16) / 255;
+    }
+
+    if ([r, g, b].some(Number.isNaN)) throw new Error("Invalid HEX digits.");
+    return { r, g, b, a };
+  };
+
+  // Parse rgb()/rgba(); supports integers and percentages
+  const parseRgb = (rgbInput: string): RGB => {
+    const open = rgbInput.indexOf("(");
+    const close = rgbInput.lastIndexOf(")");
+    if (open === -1 || close === -1 || close <= open) throw new Error("Malformed rgb()/rgba().");
+    const inner = rgbInput.slice(open + 1, close).trim();
+
+    const parts = inner.split(/\s*,\s*/);
+    if (parts.length < 3) throw new Error("rgb()/rgba() must have at least 3 components.");
+
+    const parseChan = (s: string) => {
+      const m = s.match(/^(-?\d+(?:\.\d+)?)%$/);
+      if (m) return toByte((parseFloat(m[1]) / 100) * 255);
+      const n = Number(s);
+      if (Number.isNaN(n)) throw new Error("Invalid RGB channel value.");
+      return toByte(n);
+    };
+
+    const r = parseChan(parts[0]);
+    const g = parseChan(parts[1]);
+    const b = parseChan(parts[2]);
+
+    let a: number | null = null;
+    if (parts[3] !== undefined) {
+      const an = Number(parts[3]);
+      if (Number.isNaN(an)) throw new Error("Invalid alpha channel.");
+      a = clamp(an, 0, 1);
+    }
+    return { r, g, b, a };
+  };
+
+  // --- Parse input ----------------------------------------------------------
+  const src = color.trim();
+  const hasHex = src.startsWith("#");
+  const isRGBA = src.toLowerCase().startsWith("rgba");
+  const isRGB = src.toLowerCase().startsWith("rgb");
+
+  let r: number, g: number, b: number, a: number | null;
+
+  if (hasHex) {
+    ({ r, g, b, a } = parseHex(src));
+  } else if (isRGB) {
+    ({ r, g, b, a } = parseRgb(src));
+    if (a === null) a = isRGBA ? 1 : null; // keep family: rgba stays rgba, rgb stays rgb
   } else {
-    throw new Error("Invalid color format");
+    throw new Error("Invalid color format. Use HEX (#...[,AA]) or rgb()/rgba().");
   }
 
-  // Apply darkening
-  const t = percent < 0 ? 0 : 255;
-  const p = percent < 0 ? -percent : percent;
-  R = Math.round((t - R) * p) + R;
-  G = Math.round((t - G) * p) + G;
-  B = Math.round((t - B) * p) + B;
+  // --- Apply lighten/darken -------------------------------------------------
+  const target = p < 0 ? 0 : 255;
+  const pp = Math.abs(p);
 
-  // Return color in original format
-  if (color[0] === "#" && (color.length === 9 || color.length === 5)) {
-    return `#${((1 << 24) + (R << 16) + (G << 8) + B).toString(16).slice(1)}${(A * 255)
-      .toString(16)
-      .padStart(2, "0")}`;
-  } else if (color[0] === "#") {
-    return `#${((1 << 24) + (R << 16) + (G << 8) + B).toString(16).slice(1)}`;
-  } else if (color.startsWith("rgba")) {
-    return `rgba(${R}, ${G}, ${B}, ${A})`;
+  r = toByte(r + (target - r) * pp);
+  g = toByte(g + (target - g) * pp);
+  b = toByte(b + (target - b) * pp);
+
+  // --- Serialize back in the original family --------------------------------
+  if (hasHex) {
+    const hex = (v: number) => v.toString(16).padStart(2, "0");
+    const base = `#${hex(r)}${hex(g)}${hex(b)}`;
+    return a !== null ? `${base}${hex(Math.floor((a ?? 1) * 255))}` : base; // keep alpha byte; floor for stability
   }
-  return `rgb(${R}, ${G}, ${B})`;
+
+  if (isRGBA) {
+    const outA = a ?? 1;
+    return `rgba(${r}, ${g}, ${b}, ${outA})`;
+  }
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 export default darkenColor;

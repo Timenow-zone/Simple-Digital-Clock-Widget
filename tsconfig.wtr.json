@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2020",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "noEmit": false,
+    "outDir": ".tmp-web",
+    "sourceMap": false,
+    "declaration": false
+  },
+  "include": [
+    "tests/**/*.browser.spec.ts",
+    "tests/**/*.browser.spec.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts"
+  ],
+  "exclude": []
+}
