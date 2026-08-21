@@ -1,6 +1,6 @@
 /*!
  * Simple Digital Clock Widget
- * Simple Digital Clock Widget – is a 🪶 light (11 kB gzip) HTML/JS based, easy-to-use digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.
+ * Simple Digital Clock Widget – a lightweight HTML/JS digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.
  *
  * Repo:    https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
  * Demo:    https://utctime.info/

@@ -3,7 +3,10 @@
 Lightweight, framework-agnostic web component (built with Preact) to display a digital clock with timezone and locale support.
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
-* **Tiny:** \~11 kB gzipped (core logic)
+<!-- SDCW_RELEASE_METADATA_START -->
+* **Current version:** `0.6.0`
+* **Tiny:** 10.6 KiB gzipped (`dist/0.6.0.min.js`; 29,819 bytes minified, 10,859 bytes gzip)
+<!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
 * **Theme-aware:** auto light/dark, or force it
 * **Timezone & locale aware:** uses `Intl.*` under the hood
@@ -77,6 +80,7 @@ Pass options as **kebab-case attributes**. Internally they map to the following 
 | `locale`           | `string`                                                                                      | browser locale   | BCP-47 locale, e.g. `en-US`, `fr`, `ru`, …                                                                                                  |
 | `time-zone-name`   | `"" \| "short" \| "long" \| "shortOffset" \| "longOffset" \| "shortGeneric" \| "longGeneric"` | `""` (hidden)    | Controls the name shown when toggled (click the date/zone line).                                                                            |
 | `second`           | `boolean`                                                                                     | `false`          | Show seconds. Attribute present ⇒ `true`. Use `second="false"` to force off.                                                                |
+| `hundredths`       | `boolean`                                                                                     | `false`          | Show hundredths of a second. Implies seconds while enabled. Attribute present ⇒ `true`; use `hundredths="false"` to force off.             |
 | `period`           | `boolean`                                                                                     | follow locale    | **12/24-hour override**. If set, forces 12h (`period`) or 24h (`period="false"`), ignoring locale. If not set, uses locale default.         |
 | `date`             | `boolean`                                                                                     | `false`          | Show the date line below the time. Clicking it toggles **date** ↔ **timezone name**.                                                        |
 | `caption`          | `string`                                                                                      | —                | Optional label displayed above the time.                                                                                                    |
@@ -89,13 +93,27 @@ Pass options as **kebab-case attributes**. Internally they map to the following 
 | `background-color` | `string` (color)                                                                              | auto (theme)     | Solid background color (e.g. `#00416A`, `rgb(255,0,0)`). If `background` is set, this is ignored for painting but used for contrast/border. |
 | `font-family`      | `string`                                                                                      | monospace        | Family name. If the value is on the internal allow-list, Google Fonts is auto-loaded.                                                       |
 | `prefers`          | `"" \| "auto" \| "system" \| "light" \| "dark"`                                               | `system`         | Theme source for background when `background-color` is not provided.                                                                        |
-| `border`           | `boolean`                                                                                     | `false`          | Enables border using a darkened version of background color.                                                                                |
 
 **Boolean attributes:**
 
 * Present without value (`<tag second>`) ⇒ `true`.
 * Explicit `"false"`, `"0"`, `"no"` ⇒ `false`.
 * Omitted ⇒ “not provided”.
+
+---
+
+## Hundredths of a Second
+
+Hundredths are opt-in:
+
+```html
+<timenow-zone-sdcw hundredths></timenow-zone-sdcw>
+```
+
+* `hundredths` automatically includes seconds; `second` is not required.
+* Without `hundredths`, the widget keeps the normal approximately once-per-second update path.
+* With `hundredths`, the time display is refreshed with `requestAnimationFrame` and a cached `Intl.DateTimeFormat`.
+* This is display precision, not a certified stopwatch. The browser may not render every 10 ms increment.
 
 ---
 
@@ -165,6 +183,22 @@ npm run test:browsers
 
 # Coverage (node tests, c8)
 npm run coverage
+
+# Manual release comparator (serve repository on port 4173)
+npm run test:manual
+
+# Repeatable Chromium performance benchmark
+npm run benchmark:performance
+
+# Inspect candidate artifacts
+npm run release:artifacts
+
+# Release flow
+npm run release:version -- <version>
+npm run build
+npm run release:sync
+npm run release:check
+npm run release:verify
 ```
 
 Build output:
@@ -172,24 +206,37 @@ Build output:
 ```
 dist/
   SimpleDigitalClockWidget.js      # main bundle
-  latest.min.js                    # copy of the main bundle
-  0.6.0.min.js                     # versioned copy
+  latest.min.js                    # minified current bundle
+  <version>.min.js                  # versioned copy from package.json
 ```
 
 > The bundle is emitted in the “global” target context for browsers and self-registers the custom element.
 
 ---
 
-## Manual Test Page
+## Manual Testing
 
-`src/index.html` contains a playground with buttons and a list of locales.
-You can tweak attributes at runtime:
+For the ordinary development playground, use:
 
-```js
-document.getElementById("test").setAttribute("prefers", "dark");
-document.getElementById("test").setAttribute("background-color", "rgb(255,0,0)");
-document.getElementById("test").removeAttribute("background");
+```bash
+npm run start
 ```
+
+For release comparison against immutable `dist/0.6.0.min.js`, run:
+
+```bash
+npm run test:manual
+```
+
+Then open:
+
+```text
+http://127.0.0.1:4173/manual-release-harness.html
+```
+
+The release harness loads the legacy and candidate bundles independently, compares legacy-mode geometry, exercises runtime toggles, and includes intentional invalid-attribute error checks.
+
+The regular `src/index.html` playground is still available for interactive development.
 
 ---
 
