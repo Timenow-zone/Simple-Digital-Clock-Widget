@@ -16,7 +16,8 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 
 ## Demo & Plugin
 
-* **Live demo:** [https://codepen.io/dejurin/pen/KKJZWjV](https://codepen.io/dejurin/pen/KKJZWjV)
+* **Live demo:** [https://simple-digital-clock-widget.yuri.ws/](https://simple-digital-clock-widget.yuri.ws/)
+* **CodePen playground:** [https://codepen.io/dejurin/pen/KKJZWjV](https://codepen.io/dejurin/pen/KKJZWjV)
 * **WordPress plugin:** [https://wordpress.org/plugins/simple-digital-clock/](https://wordpress.org/plugins/simple-digital-clock/)
 
 ---
