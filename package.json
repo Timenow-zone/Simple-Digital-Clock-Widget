@@ -41,6 +41,8 @@
     "fmt": "prettier --write **/*.{ts,tsx,js,json,css,html}",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "test:manual": "python3 -m http.server 4173",
+    "benchmark:performance": "node scripts/benchmark-performance.mjs",
     "pretest:node": "rm -rf .tmp-tests && tsc -p tsconfig.test.json",
     "test:node": "npm run pretest:node && node --test './.tmp-tests/**/*.spec.js' './.tmp-tests/**/*.test.js'",
     "pretest:browsers": "rm -rf .tmp-web && tsc -p tsconfig.wtr.json",

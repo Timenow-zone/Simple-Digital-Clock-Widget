@@ -132,3 +132,5 @@ out
 .tmp-tests/
 .tmp-web/
 coverage/
+performance-results.json
+performance-results.md

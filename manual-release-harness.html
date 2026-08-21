@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Digital Clock Widget — Manual Release Harness</title>
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #111827;
+      background: #f3f4f6;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; }
+    h1,h2,h3,p { margin-top: 0; }
+    .page { max-width: 1600px; margin: 0 auto; }
+    .section {
+      margin-bottom: 20px; padding: 18px; background: #fff;
+      border: 1px solid #d1d5db; border-radius: 10px;
+    }
+    .note, .warning {
+      padding: 10px 12px; margin-bottom: 14px; border-radius: 8px;
+      font-size: 13px;
+    }
+    .note { color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; }
+    .warning { color: #78350f; background: #fffbeb; border: 1px solid #fde68a; }
+    .controls {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    label { display: grid; gap: 5px; font-size: 13px; font-weight: 600; }
+    .checkbox { display: flex; align-items: center; gap: 8px; }
+    .checkbox input { width: auto; }
+    input, select, button, textarea { font: inherit; }
+    input, select, textarea {
+      width: 100%; padding: 7px 9px; border: 1px solid #cbd5e1;
+      border-radius: 6px; background: #fff;
+    }
+    button {
+      padding: 8px 12px; border: 1px solid #9ca3af; border-radius: 6px;
+      background: #fff; cursor: pointer;
+    }
+    button:hover { background: #f3f4f6; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pane {
+      min-width: 0; border: 1px solid #cbd5e1; border-radius: 10px;
+      overflow: hidden; background: #fff;
+    }
+    .pane-header { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; background: #f8fafc; }
+    .pane-header h3 { margin-bottom: 3px; font-size: 15px; }
+    .pane-header code { font-size: 12px; }
+    iframe {
+      display: block; width: 100%; height: 260px; border: 0; background: antiquewhite;
+    }
+    .metrics, .status {
+      padding: 10px 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px; line-height: 1.55; white-space: pre-wrap;
+      border-top: 1px solid #e5e7eb; background: #fafafa;
+    }
+    .result {
+      margin-top: 14px; padding: 12px; border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px; line-height: 1.6; white-space: pre-wrap;
+    }
+    .pass { color: #065f46; background: #ecfdf5; border: 1px solid #a7f3d0; }
+    .fail { color: #991b1b; background: #fef2f2; border: 1px solid #fecaca; }
+    .info { color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; }
+    .delta-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
+    .delta-table th, .delta-table td {
+      padding: 8px 10px; border: 1px solid #e5e7eb; text-align: right;
+    }
+    .delta-table th:first-child, .delta-table td:first-child { text-align: left; }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;
+    }
+    .case {
+      padding: 14px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fafafa;
+    }
+    .case h3 { margin-bottom: 6px; font-size: 14px; }
+    .case p { margin-bottom: 12px; color: #4b5563; font-size: 13px; }
+    .preview {
+      margin-top: 16px; padding: 20px; min-height: 140px; display: flex;
+      justify-content: center; align-items: center; overflow: auto;
+      border: 1px dashed #9ca3af; border-radius: 10px; background: antiquewhite;
+    }
+    .small { font-size: 12px; color: #6b7280; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    @media (max-width: 900px) { .compare { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main class="page">
+  <h1>Simple Digital Clock Widget — Manual Release Harness</h1>
+
+  <div class="warning">
+    Run this page through a plain static HTTP server from the repository root.
+    Do not open it as <code>file://...</code>. The harness fetches the immutable legacy bundle
+    and the candidate bundle as raw JavaScript.
+  </div>
+
+  <section class="section">
+    <h2>0. Bundle diagnostics</h2>
+    <div class="controls">
+      <label>
+        Legacy bundle URL
+        <input id="legacyBundle" value="./dist/0.6.0.min.js" />
+      </label>
+      <label>
+        Candidate bundle URL
+        <input id="candidateBundle" value="./dist/latest.min.js" />
+      </label>
+    </div>
+    <div class="buttons">
+      <button id="reloadBundles">Reload bundles</button>
+    </div>
+    <div id="bundleStatus" class="result info">Not loaded yet.</div>
+  </section>
+
+  <section class="section">
+    <h2>1. Legacy vs candidate — shared settings</h2>
+    <p class="small">
+      Every setting below is applied identically to the old 0.6.0 bundle and the candidate.
+      Only <b>candidate hundredths</b> is candidate-only.
+    </p>
+
+    <div class="controls">
+      <label>
+        Width
+        <select id="width">
+          <option value="80">80</option>
+          <option value="120">120</option>
+          <option value="200">200</option>
+          <option value="300" selected>300</option>
+          <option value="500">500</option>
+        </select>
+      </label>
+
+      <label>
+        Locale
+        <select id="locale">
+          <option value="en-US">en-US</option>
+          <option value="en-GB" selected>en-GB</option>
+          <option value="de-DE">de-DE</option>
+          <option value="uk-UA">uk-UA</option>
+          <option value="ru-RU">ru-RU</option>
+          <option value="bg-BG">bg-BG</option>
+          <option value="ko-KR">ko-KR</option>
+          <option value="ja-JP">ja-JP</option>
+          <option value="ar-EG">ar-EG</option>
+        </select>
+      </label>
+
+      <label>
+        Time zone
+        <select id="timeZone">
+          <option value="UTC" selected>UTC</option>
+          <option value="Europe/London">Europe/London</option>
+          <option value="Europe/Kyiv">Europe/Kyiv</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="Asia/Tokyo">Asia/Tokyo</option>
+          <option value="Australia/Sydney">Australia/Sydney</option>
+        </select>
+      </label>
+
+      <label>
+        Align
+        <select id="align">
+          <option value="left">left</option>
+          <option value="center" selected>center</option>
+          <option value="right">right</option>
+        </select>
+      </label>
+
+      <label>
+        Period
+        <select id="period">
+          <option value="unset" selected>unset / locale default</option>
+          <option value="">true / 12h</option>
+          <option value="false">false / 24h</option>
+        </select>
+      </label>
+
+      <label>
+        Time zone name
+        <select id="timeZoneName">
+          <option value="unset" selected>unset</option>
+          <option value="">empty</option>
+          <option value="short">short</option>
+          <option value="long">long</option>
+          <option value="shortOffset">shortOffset</option>
+          <option value="longOffset">longOffset</option>
+          <option value="shortGeneric">shortGeneric</option>
+          <option value="longGeneric">longGeneric</option>
+        </select>
+      </label>
+
+      <label>
+        Rounded
+        <input id="rounded" type="number" step="0.05" value="0.25" />
+      </label>
+
+      <label>
+        Caption
+        <input id="caption" type="text" value="" placeholder="optional" />
+      </label>
+
+      <label>
+        Font family
+        <select id="fontFamily">
+          <option value="unset" selected>unset</option>
+          <option value="Sono">Sono</option>
+          <option value="Roboto Mono">Roboto Mono</option>
+          <option value="JetBrains Mono">JetBrains Mono</option>
+          <option value="Fira Code">Fira Code</option>
+          <option value="Noto Sans Mono">Noto Sans Mono</option>
+        </select>
+      </label>
+
+      <label>
+        Background color
+        <input id="backgroundColor" type="text" value="#00416A" />
+      </label>
+
+      <label>
+        Background
+        <input id="background" type="text" value="" placeholder="linear-gradient(...)" />
+      </label>
+
+      <label>
+        Shadow
+        <select id="shadow">
+          <option value="unset" selected>unset</option>
+          <option value="shadow">shadow</option>
+          <option value="shadow-sm">shadow-sm</option>
+          <option value="shadow-md">shadow-md</option>
+          <option value="shadow-lg">shadow-lg</option>
+          <option value="shadow-xl">shadow-xl</option>
+          <option value="shadow-2xl">shadow-2xl</option>
+        </select>
+      </label>
+
+      <label>
+        Prefers
+        <select id="prefers">
+          <option value="unset" selected>unset</option>
+          <option value="">empty / auto</option>
+          <option value="auto">auto</option>
+          <option value="system">system</option>
+          <option value="light">light</option>
+          <option value="dark">dark</option>
+        </select>
+      </label>
+
+      <label class="checkbox"><input id="border" type="checkbox" checked /> border</label>
+      <label class="checkbox"><input id="second" type="checkbox" checked /> second</label>
+      <label class="checkbox"><input id="date" type="checkbox" /> date</label>
+      <label class="checkbox">
+        <input id="candidateHundredths" type="checkbox" />
+        candidate hundredths
+      </label>
+    </div>
+
+    <div class="buttons">
+      <button id="apply">Apply and compare</button>
+      <button id="legacyPreset">Legacy proof preset</button>
+      <button id="hundredthsPreset">Hundredths preset</button>
+      <button id="runMatrix">Run automatic legacy-geometry matrix</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>2. Side-by-side proof</h2>
+    <div class="compare">
+      <div class="pane">
+        <div class="pane-header">
+          <h3>Legacy baseline</h3>
+          <code>dist/0.6.0.min.js</code>
+        </div>
+        <iframe id="legacyFrame" title="Legacy widget"></iframe>
+        <div id="legacyMetrics" class="metrics">Waiting...</div>
+      </div>
+
+      <div class="pane">
+        <div class="pane-header">
+          <h3>Candidate</h3>
+          <code>dist/latest.min.js</code>
+        </div>
+        <iframe id="candidateFrame" title="Candidate widget"></iframe>
+        <div id="candidateMetrics" class="metrics">Waiting...</div>
+      </div>
+    </div>
+
+    <table class="delta-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Legacy</th>
+          <th>Candidate</th>
+          <th>Δ candidate − legacy</th>
+        </tr>
+      </thead>
+      <tbody id="deltaBody"></tbody>
+    </table>
+
+    <div id="compareResult" class="result info">Waiting for bundles.</div>
+  </section>
+
+  <section class="section">
+    <h2>3. Automatic geometry matrix</h2>
+    <p class="small">
+      Hundredths is forcibly OFF. Candidate must match the immutable old widget within ±0.5 px.
+      Matrix: 4 widths × 6 locales × 3 period modes × 2 second modes = 144 cases.
+    </p>
+    <div id="matrixResult" class="result info">Not run yet.</div>
+  </section>
+
+  <section class="section">
+    <h2>4. Candidate runtime manual tests</h2>
+    <div class="note">
+      These controls operate on the right/candidate widget only, after the shared settings above
+      have been applied.
+    </div>
+    <div class="buttons">
+      <button id="toggleHundredths">Toggle hundredths</button>
+      <button id="toggleSecond">Toggle second</button>
+      <button id="toggleDate">Toggle date</button>
+      <button id="togglePeriod">Toggle 12h / 24h</button>
+      <button id="removeReinsert">Remove + reinsert</button>
+      <button id="toggle100">100 hundredths toggles</button>
+      <button id="mount100">100 mount/unmount cycles</button>
+    </div>
+    <div id="runtimeStatus" class="result info">Idle.</div>
+  </section>
+
+  <section class="section">
+    <h2>5. Candidate error checks</h2>
+    <div class="buttons">
+      <button id="invalidTimezone">Invalid time-zone</button>
+      <button id="invalidTimezoneName">Invalid time-zone-name</button>
+      <button id="restoreCandidate">Restore shared settings</button>
+    </div>
+    <div id="errorStatus" class="result info">Idle.</div>
+  </section>
+</main>
+
+<script>
+  const TAG = "timenow-zone-sdcw";
+  const TOLERANCE = 0.5;
+  let legacyCode = "";
+  let candidateCode = "";
+
+  const legacyFrame = document.getElementById("legacyFrame");
+  const candidateFrame = document.getElementById("candidateFrame");
+
+  function wait(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  function withTimeout(promise, ms, message) {
+    return Promise.race([
+      promise,
+      new Promise((_, reject) => setTimeout(() => reject(new Error(message)), ms)),
+    ]);
+  }
+
+  async function fetchBundle(inputId) {
+    const raw = document.getElementById(inputId).value.trim();
+    const url = new URL(raw, window.location.href);
+
+    const response = await fetch(url.href, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`${raw} -> HTTP ${response.status} ${response.statusText}`);
+    }
+
+    const code = await response.text();
+    if (!code.includes("timenow-zone-sdcw")) {
+      throw new Error(`${raw} loaded, but it does not look like the clock widget bundle.`);
+    }
+
+    return { raw, url: url.href, code, bytes: new Blob([code]).size };
+  }
+
+  function emptyFrameDocument() {
+    return `<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html, body { margin: 0; min-height: 100%; background: antiquewhite; }
+body { padding: 24px; display: flex; justify-content: center; align-items: flex-start; }
+</style>
+</head>
+<body></body>
+</html>`;
+  }
+
+  function resetFrame(frame) {
+    return new Promise((resolve) => {
+      frame.onload = () => resolve();
+      frame.srcdoc = emptyFrameDocument();
+    });
+  }
+
+  async function injectBundle(frame, code, label) {
+    await resetFrame(frame);
+
+    const win = frame.contentWindow;
+    const doc = frame.contentDocument;
+
+    let runtimeError = null;
+    const onError = (event) => {
+      runtimeError = event.error || new Error(event.message || `${label} runtime error`);
+    };
+    win.addEventListener("error", onError);
+
+    const script = doc.createElement("script");
+    script.textContent = code;
+    doc.head.appendChild(script);
+
+    await wait(0);
+
+    if (runtimeError) {
+      win.removeEventListener("error", onError);
+      throw runtimeError;
+    }
+
+    await withTimeout(
+      win.customElements.whenDefined(TAG),
+      2000,
+      `${label}: custom element "${TAG}" was not registered`
+    );
+
+    win.removeEventListener("error", onError);
+
+    if (!win.customElements.get(TAG)) {
+      throw new Error(`${label}: bundle executed but "${TAG}" is still undefined`);
+    }
+  }
+
+  async function loadBundles() {
+    const status = document.getElementById("bundleStatus");
+    status.className = "result info";
+    status.textContent = "Loading raw bundles...";
+
+    if (location.protocol === "file:") {
+      status.className = "result fail";
+      status.textContent =
+        "FAIL: page is opened via file://. Run a static HTTP server from the repo root.";
+      throw new Error("file:// is not supported by this harness");
+    }
+
+    try {
+      const [legacy, candidate] = await Promise.all([
+        fetchBundle("legacyBundle"),
+        fetchBundle("candidateBundle"),
+      ]);
+
+      legacyCode = legacy.code;
+      candidateCode = candidate.code;
+
+      await Promise.all([
+        injectBundle(legacyFrame, legacyCode, "legacy"),
+        injectBundle(candidateFrame, candidateCode, "candidate"),
+      ]);
+
+      status.className = "result pass";
+      status.textContent = [
+        "PASS: both bundles loaded and registered the custom element.",
+        `legacy:    ${legacy.raw} (${legacy.bytes} bytes)`,
+        `candidate: ${candidate.raw} (${candidate.bytes} bytes)`,
+      ].join("\n");
+
+      await applyAndCompare();
+    } catch (error) {
+      status.className = "result fail";
+      status.textContent = `FAIL: ${error.message}`;
+      throw error;
+    }
+  }
+
+  function setOptionalAttribute(el, name, value) {
+    if (value === "unset" || value === null || value === undefined) {
+      el.removeAttribute(name);
+      return;
+    }
+    el.setAttribute(name, value);
+  }
+
+  function sharedSettings() {
+    return {
+      width: document.getElementById("width").value,
+      locale: document.getElementById("locale").value,
+      timeZone: document.getElementById("timeZone").value,
+      align: document.getElementById("align").value,
+      period: document.getElementById("period").value,
+      timeZoneName: document.getElementById("timeZoneName").value,
+      rounded: document.getElementById("rounded").value.trim(),
+      caption: document.getElementById("caption").value.trim(),
+      fontFamily: document.getElementById("fontFamily").value,
+      backgroundColor: document.getElementById("backgroundColor").value.trim(),
+      background: document.getElementById("background").value.trim(),
+      shadow: document.getElementById("shadow").value,
+      prefers: document.getElementById("prefers").value,
+      border: document.getElementById("border").checked,
+      second: document.getElementById("second").checked,
+      date: document.getElementById("date").checked,
+    };
+  }
+
+  function createWidget(doc, settings, useHundredths) {
+    const el = doc.createElement(TAG);
+
+    setOptionalAttribute(el, "width", settings.width);
+    setOptionalAttribute(el, "locale", settings.locale);
+    setOptionalAttribute(el, "time-zone", settings.timeZone);
+    setOptionalAttribute(el, "align", settings.align);
+    setOptionalAttribute(el, "period", settings.period);
+    setOptionalAttribute(el, "time-zone-name", settings.timeZoneName);
+    setOptionalAttribute(el, "shadow", settings.shadow);
+    setOptionalAttribute(el, "prefers", settings.prefers);
+    setOptionalAttribute(el, "font-family", settings.fontFamily);
+
+    if (settings.rounded) el.setAttribute("rounded", settings.rounded);
+    if (settings.caption) el.setAttribute("caption", settings.caption);
+    if (settings.backgroundColor) el.setAttribute("background-color", settings.backgroundColor);
+    if (settings.background) el.setAttribute("background", settings.background);
+    if (settings.border) el.setAttribute("border", "");
+    if (settings.second) el.setAttribute("second", "");
+    if (settings.date) el.setAttribute("date", "");
+    if (useHundredths) el.setAttribute("hundredths", "");
+
+    return el;
+  }
+
+  function mountWidget(frame, settings, useHundredths) {
+    const doc = frame.contentDocument;
+    doc.querySelector(TAG)?.remove();
+
+    const el = createWidget(doc, settings, useHundredths);
+    doc.body.appendChild(el);
+    return el;
+  }
+
+  async function waitForWidget(frame, timeout = 2000) {
+    const started = performance.now();
+
+    while (performance.now() - started < timeout) {
+      const el = frame.contentDocument.querySelector(TAG);
+      const widget = el?.shadowRoot?.querySelector("div[data-version]");
+      const time = el?.shadowRoot?.querySelector("a");
+
+      if (el && widget && time) return el;
+      await wait(20);
+    }
+
+    throw new Error("Widget or shadow root is not ready after timeout.");
+  }
+
+  function measure(frame) {
+    const doc = frame.contentDocument;
+    const el = doc.querySelector(TAG);
+    const widget = el?.shadowRoot?.querySelector("div[data-version]");
+    const time = el?.shadowRoot?.querySelector("a");
+
+    if (!el || !widget || !time) {
+      throw new Error("Widget internals are not ready.");
+    }
+
+    const hostRect = el.getBoundingClientRect();
+    const widgetRect = widget.getBoundingClientRect();
+    const timeRect = time.getBoundingClientRect();
+    const style = frame.contentWindow.getComputedStyle(time);
+
+    return {
+      hostWidth: hostRect.width,
+      hostHeight: hostRect.height,
+      widgetWidth: widgetRect.width,
+      widgetHeight: widgetRect.height,
+      timeWidth: timeRect.width,
+      timeHeight: timeRect.height,
+      fontSize: parseFloat(style.fontSize) || 0,
+      scrollWidth: widget.scrollWidth,
+      scrollHeight: widget.scrollHeight,
+      timeText: time.textContent || "",
+      version: widget.getAttribute("data-version") || "",
+    };
+  }
+
+  function formatMetrics(m) {
+    return [
+      `data-version: ${m.version}`,
+      `time: ${m.timeText}`,
+      `host: ${m.hostWidth.toFixed(3)} × ${m.hostHeight.toFixed(3)} px`,
+      `widget: ${m.widgetWidth.toFixed(3)} × ${m.widgetHeight.toFixed(3)} px`,
+      `time: ${m.timeWidth.toFixed(3)} × ${m.timeHeight.toFixed(3)} px`,
+      `font-size: ${m.fontSize.toFixed(3)} px`,
+      `scroll: ${m.scrollWidth} × ${m.scrollHeight} px`,
+    ].join("\n");
+  }
+
+  function renderDeltaTable(legacy, candidate) {
+    const rows = [
+      ["Host width", legacy.hostWidth, candidate.hostWidth],
+      ["Host height", legacy.hostHeight, candidate.hostHeight],
+      ["Widget width", legacy.widgetWidth, candidate.widgetWidth],
+      ["Widget height", legacy.widgetHeight, candidate.widgetHeight],
+      ["Time width", legacy.timeWidth, candidate.timeWidth],
+      ["Time height", legacy.timeHeight, candidate.timeHeight],
+      ["Font size", legacy.fontSize, candidate.fontSize],
+    ];
+
+    document.getElementById("deltaBody").innerHTML = rows.map(([name, a, b]) => `
+      <tr>
+        <td>${name}</td>
+        <td>${a.toFixed(3)}</td>
+        <td>${b.toFixed(3)}</td>
+        <td>${(b - a).toFixed(3)}</td>
+      </tr>
+    `).join("");
+  }
+
+  function evaluateGeometry(legacy, candidate) {
+    const checks = [
+      ["host width", legacy.hostWidth, candidate.hostWidth],
+      ["host height", legacy.hostHeight, candidate.hostHeight],
+      ["widget width", legacy.widgetWidth, candidate.widgetWidth],
+      ["widget height", legacy.widgetHeight, candidate.widgetHeight],
+      ["time width", legacy.timeWidth, candidate.timeWidth],
+      ["time height", legacy.timeHeight, candidate.timeHeight],
+      ["font size", legacy.fontSize, candidate.fontSize],
+    ];
+
+    const failed = checks.filter(([, a, b]) => Math.abs(a - b) > TOLERANCE);
+    return { pass: failed.length === 0, failed };
+  }
+
+  async function applyAndCompare() {
+    if (!legacyCode || !candidateCode) return;
+
+    const settings = sharedSettings();
+    const hundredths = document.getElementById("candidateHundredths").checked;
+
+    mountWidget(legacyFrame, settings, false);
+    mountWidget(candidateFrame, settings, hundredths);
+
+    await Promise.all([waitForWidget(legacyFrame), waitForWidget(candidateFrame)]);
+    await wait(hundredths ? 100 : 50);
+
+    const legacy = measure(legacyFrame);
+    const candidate = measure(candidateFrame);
+
+    document.getElementById("legacyMetrics").textContent = formatMetrics(legacy);
+    document.getElementById("candidateMetrics").textContent = formatMetrics(candidate);
+    renderDeltaTable(legacy, candidate);
+
+    const result = document.getElementById("compareResult");
+
+    if (hundredths) {
+      result.className = "result info";
+      result.textContent = [
+        "HUNDREDTHS ON: candidate geometry is allowed to differ.",
+        "This table shows exactly what changes only after the new option is enabled.",
+        `legacy text:    ${legacy.timeText}`,
+        `candidate text: ${candidate.timeText}`,
+      ].join("\n");
+      return;
+    }
+
+    const evaluation = evaluateGeometry(legacy, candidate);
+
+    if (evaluation.pass) {
+      result.className = "result pass";
+      result.textContent =
+        `PASS: candidate geometry matches the immutable legacy widget within ±${TOLERANCE}px with hundredths OFF.`;
+    } else {
+      result.className = "result fail";
+      result.textContent = [
+        "FAIL: candidate geometry changed while hundredths is OFF.",
+        ...evaluation.failed.map(([name, a, b]) =>
+          `${name}: legacy=${a.toFixed(3)} candidate=${b.toFixed(3)} Δ=${(b-a).toFixed(3)}`
+        ),
+      ].join("\n");
+    }
+  }
+
+  async function runMatrix() {
+    if (!legacyCode || !candidateCode) return;
+
+    const out = document.getElementById("matrixResult");
+    out.className = "result info";
+    out.textContent = "Running 144 comparisons...";
+
+    const widths = ["80", "120", "200", "300"];
+    const locales = ["en-US", "en-GB", "de-DE", "uk-UA", "bg-BG", "ko-KR"];
+    const periods = ["unset", "", "false"];
+    const seconds = [false, true];
+
+    const base = sharedSettings();
+    const failures = [];
+    let total = 0;
+
+    for (const width of widths) {
+      for (const locale of locales) {
+        for (const period of periods) {
+          for (const second of seconds) {
+            total += 1;
+
+            const settings = {
+              ...base,
+              width,
+              locale,
+              period,
+              second,
+              date: false,
+              caption: "",
+              timeZoneName: "unset",
+              fontFamily: "unset",
+            };
+
+            mountWidget(legacyFrame, settings, false);
+            mountWidget(candidateFrame, settings, false);
+
+            await Promise.all([waitForWidget(legacyFrame), waitForWidget(candidateFrame)]);
+            await wait(20);
+
+            const legacy = measure(legacyFrame);
+            const candidate = measure(candidateFrame);
+            const evaluation = evaluateGeometry(legacy, candidate);
+
+            if (!evaluation.pass) {
+              failures.push({
+                width,
+                locale,
+                period: period === "unset" ? "default" : period === "" ? "12h" : "24h",
+                second,
+                failed: evaluation.failed,
+              });
+            }
+          }
+        }
+      }
+    }
+
+    if (failures.length === 0) {
+      out.className = "result pass";
+      out.textContent =
+        `PASS: ${total}/${total} candidate-vs-legacy geometry cases matched within ±${TOLERANCE}px with hundredths OFF.`;
+    } else {
+      out.className = "result fail";
+      out.textContent = [
+        `FAIL: ${failures.length}/${total} cases changed geometry.`,
+        "",
+        ...failures.slice(0, 20).map((f) =>
+          `${f.width}px ${f.locale} period=${f.period} second=${f.second}: ` +
+          f.failed.map(([name, a, b]) => `${name} Δ=${(b-a).toFixed(3)}px`).join(", ")
+        ),
+        failures.length > 20 ? `... ${failures.length - 20} more failures` : "",
+      ].filter(Boolean).join("\n");
+    }
+
+    document.getElementById("candidateHundredths").checked = false;
+    await applyAndCompare();
+  }
+
+  async function candidateEl() {
+    await waitForWidget(candidateFrame);
+    return candidateFrame.contentDocument.querySelector(TAG);
+  }
+
+  document.getElementById("reloadBundles").addEventListener("click", () => {
+    loadBundles().catch(() => {});
+  });
+
+  document.getElementById("apply").addEventListener("click", () => {
+    applyAndCompare().catch((error) => {
+      const result = document.getElementById("compareResult");
+      result.className = "result fail";
+      result.textContent = `FAIL: ${error.message}`;
+    });
+  });
+
+  document.getElementById("legacyPreset").addEventListener("click", async () => {
+    document.getElementById("width").value = "300";
+    document.getElementById("locale").value = "en-GB";
+    document.getElementById("timeZone").value = "UTC";
+    document.getElementById("align").value = "center";
+    document.getElementById("period").value = "unset";
+    document.getElementById("second").checked = true;
+    document.getElementById("date").checked = false;
+    document.getElementById("candidateHundredths").checked = false;
+    await applyAndCompare();
+  });
+
+  document.getElementById("hundredthsPreset").addEventListener("click", async () => {
+    document.getElementById("width").value = "300";
+    document.getElementById("locale").value = "en-GB";
+    document.getElementById("timeZone").value = "UTC";
+    document.getElementById("align").value = "center";
+    document.getElementById("period").value = "false";
+    document.getElementById("second").checked = true;
+    document.getElementById("date").checked = false;
+    document.getElementById("candidateHundredths").checked = true;
+    await applyAndCompare();
+  });
+
+  document.getElementById("runMatrix").addEventListener("click", () => {
+    runMatrix().catch((error) => {
+      const out = document.getElementById("matrixResult");
+      out.className = "result fail";
+      out.textContent = `FAIL: ${error.message}`;
+    });
+  });
+
+  document.getElementById("toggleHundredths").addEventListener("click", async () => {
+    const el = await candidateEl();
+    if (el.hasAttribute("hundredths")) el.removeAttribute("hundredths");
+    else el.setAttribute("hundredths", "");
+    document.getElementById("candidateHundredths").checked = el.hasAttribute("hundredths");
+    await wait(100);
+    await applyAndCompare();
+  });
+
+  document.getElementById("toggleSecond").addEventListener("click", async () => {
+    const el = await candidateEl();
+    if (el.hasAttribute("second")) el.removeAttribute("second");
+    else el.setAttribute("second", "");
+    await wait(100);
+    const status = document.getElementById("runtimeStatus");
+    status.className = "result info";
+    status.textContent = `candidate second=${el.hasAttribute("second")}`;
+  });
+
+  document.getElementById("toggleDate").addEventListener("click", async () => {
+    const el = await candidateEl();
+    if (el.hasAttribute("date")) el.removeAttribute("date");
+    else el.setAttribute("date", "");
+    await wait(100);
+    const status = document.getElementById("runtimeStatus");
+    status.className = "result info";
+    status.textContent = `candidate date=${el.hasAttribute("date")}`;
+  });
+
+  document.getElementById("togglePeriod").addEventListener("click", async () => {
+    const el = await candidateEl();
+    const p = el.getAttribute("period");
+    el.setAttribute("period", p === "false" ? "" : "false");
+    await wait(100);
+    const status = document.getElementById("runtimeStatus");
+    status.className = "result info";
+    status.textContent = `candidate period=${el.getAttribute("period") === "false" ? "24h" : "12h"}`;
+  });
+
+  document.getElementById("removeReinsert").addEventListener("click", async () => {
+    const el = await candidateEl();
+    const parent = el.parentNode;
+    el.remove();
+    await wait(100);
+    parent.appendChild(el);
+    await waitForWidget(candidateFrame);
+    const status = document.getElementById("runtimeStatus");
+    status.className = "result pass";
+    status.textContent = "PASS: candidate removed and reinserted without harness error.";
+  });
+
+  document.getElementById("toggle100").addEventListener("click", async () => {
+    const el = await candidateEl();
+    const status = document.getElementById("runtimeStatus");
+    status.className = "result info";
+    status.textContent = "Running 100 toggles...";
+
+    for (let i = 0; i < 100; i += 1) {
+      if (i % 2 === 0) el.setAttribute("hundredths", "");
+      else el.removeAttribute("hundredths");
+      await wait(10);
+    }
+
+    status.className = "result pass";
+    status.textContent = "Completed 100 hundredths toggles. Check browser console for runtime errors.";
+  });
+
+  document.getElementById("mount100").addEventListener("click", async () => {
+    const status = document.getElementById("runtimeStatus");
+    status.className = "result info";
+    status.textContent = "Running 100 mount/unmount cycles...";
+
+    const doc = candidateFrame.contentDocument;
+    doc.querySelector(TAG)?.remove();
+
+    for (let i = 0; i < 100; i += 1) {
+      const el = createWidget(doc, { ...sharedSettings(), width: "120" }, true);
+      doc.body.appendChild(el);
+      await wait(5);
+      el.remove();
+    }
+
+    status.className = "result pass";
+    status.textContent = "Completed 100 mount/unmount cycles. Check browser console for runtime errors.";
+    await applyAndCompare();
+  });
+
+  function formatCapturedConsoleArgs(args) {
+    return args
+      .map((value) => {
+        if (value && typeof value === "object" && "name" in value && "message" in value) {
+          return `${value.name}: ${value.message}`;
+        }
+        return String(value);
+      })
+      .join(" ");
+  }
+
+  async function runExpectedCandidateErrorTest({
+    mutateSettings,
+    passMessage,
+    failMessage,
+  }) {
+    const out = document.getElementById("errorStatus");
+    const frameConsole = candidateFrame.contentWindow.console;
+    const originalConsoleError = frameConsole.error;
+    const capturedErrors = [];
+
+    frameConsole.error = (...args) => {
+      capturedErrors.push(formatCapturedConsoleArgs(args));
+    };
+
+    let passed = false;
+    let failureDetail = "";
+
+    try {
+      const settings = sharedSettings();
+      mutateSettings(settings);
+
+      // Error-path checks intentionally run with hundredths enabled.
+      mountWidget(candidateFrame, settings, true);
+      await wait(150);
+
+      const text =
+        candidateFrame.contentDocument.querySelector(TAG)?.shadowRoot?.textContent || "";
+
+      passed = text.includes("Error, please check attributes of tag.");
+
+      if (!passed) {
+        failureDetail = `Rendered text: ${JSON.stringify(text)}`;
+      }
+    } catch (error) {
+      failureDetail = error?.stack || error?.message || String(error);
+    } finally {
+      // These RangeErrors are expected by this test. Do not leave the console
+      // polluted and, more importantly, do not leave the intentionally broken
+      // candidate mounted in the side-by-side comparison.
+      frameConsole.error = originalConsoleError;
+      await applyAndCompare();
+    }
+
+    if (passed) {
+      out.className = "result pass";
+      out.textContent = [
+        passMessage,
+        "Candidate automatically restored to the current shared settings.",
+        capturedErrors.length
+          ? `Expected console error captured and suppressed: ${capturedErrors[0]}`
+          : "Expected widget error state was visible.",
+      ].join("\n");
+    } else {
+      out.className = "result fail";
+      out.textContent = [
+        failMessage,
+        "Candidate was still automatically restored to the current shared settings.",
+        failureDetail,
+        capturedErrors.length
+          ? `Captured console error: ${capturedErrors[0]}`
+          : "No console.error was captured.",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    }
+  }
+
+  document.getElementById("invalidTimezone").addEventListener("click", async () => {
+    await runExpectedCandidateErrorTest({
+      mutateSettings(settings) {
+        settings.timeZone = "Invalid/TimeZone";
+      },
+      passMessage: "PASS: invalid time-zone shows the error message.",
+      failMessage: "FAIL: expected invalid time-zone error message was not visible.",
+    });
+  });
+
+  document.getElementById("invalidTimezoneName").addEventListener("click", async () => {
+    await runExpectedCandidateErrorTest({
+      mutateSettings(settings) {
+        settings.timeZoneName = "invalid-time-zone-name";
+      },
+      passMessage: "PASS: invalid time-zone-name remains visible in hundredths mode.",
+      failMessage: "FAIL: expected invalid time-zone-name error message was not visible.",
+    });
+  });
+
+  document.getElementById("restoreCandidate").addEventListener("click", async () => {
+    await applyAndCompare();
+    const out = document.getElementById("errorStatus");
+    out.className = "result info";
+    out.textContent = "Candidate restored to shared settings.";
+  });
+
+  loadBundles().catch(() => {});
+</script>
+</body>
+</html>
