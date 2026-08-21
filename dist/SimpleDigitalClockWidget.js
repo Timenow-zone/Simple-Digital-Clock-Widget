@@ -341,15 +341,16 @@ function $6f0b21dd6dcd5f7b$var$s(t, e) {
 var $6f0b21dd6dcd5f7b$var$a = [
     "context",
     "children"
-], $6f0b21dd6dcd5f7b$var$c = [
+], $6f0b21dd6dcd5f7b$var$l = [
     "useFragment"
 ];
 function $6f0b21dd6dcd5f7b$export$2e2bcd8739ae039(t, e, n, o) {
     function r() {
-        var e = Reflect.construct(HTMLElement, [], r);
-        return e._vdomComponent = t, e._root = o && o.shadow ? e.attachShadow({
-            mode: o.mode || "open"
-        }) : e, o && o.adoptedStyleSheets && (e._root.adoptedStyleSheets = o.adoptedStyleSheets), e;
+        var e, n = Reflect.construct(HTMLElement, [], r);
+        return n._vdomComponent = t, o && o.shadow ? (n._root = n.attachShadow({
+            mode: o.mode || "open",
+            serializable: null != (e = o.serializable) && e
+        }), o.adoptedStyleSheets && (n._root.adoptedStyleSheets = o.adoptedStyleSheets)) : n._root = n, n;
     }
     return (r.prototype = Object.create(HTMLElement.prototype)).constructor = r, r.prototype.connectedCallback = function() {
         $6f0b21dd6dcd5f7b$var$d.call(this, o);
@@ -398,8 +399,8 @@ function $6f0b21dd6dcd5f7b$var$f() {
     (0, $6bd3564550fc0340$export$b3890eb0ae9dca99)(this._vdom = null, this._root);
 }
 function $6f0b21dd6dcd5f7b$var$m(e, n) {
-    var o = this, a = e.useFragment, l = $6f0b21dd6dcd5f7b$var$s(e, $6f0b21dd6dcd5f7b$var$c);
-    return (0, $6bd3564550fc0340$export$c8a8987d4410bf2d)(a ? (0, $6bd3564550fc0340$export$ffb0004e005737fa) : "slot", $6f0b21dd6dcd5f7b$var$i({}, l, {
+    var o = this, a = e.useFragment, c = $6f0b21dd6dcd5f7b$var$s(e, $6f0b21dd6dcd5f7b$var$l);
+    return (0, $6bd3564550fc0340$export$c8a8987d4410bf2d)(a ? (0, $6bd3564550fc0340$export$ffb0004e005737fa) : "slot", $6f0b21dd6dcd5f7b$var$i({}, c, {
         ref: function(t) {
             t ? (o.ref = t, o._listener || (o._listener = function(t) {
                 t.stopPropagation(), t.detail.context = n;
@@ -410,13 +411,13 @@ function $6f0b21dd6dcd5f7b$var$m(e, n) {
 function $6f0b21dd6dcd5f7b$var$v(e, n, o) {
     if (3 === e.nodeType) return e.data;
     if (1 !== e.nodeType) return null;
-    var r = [], i = {}, s = 0, a = e.attributes, c = e.childNodes;
+    var r = [], i = {}, s = 0, a = e.attributes, l = e.childNodes;
     for(s = a.length; s--;)"slot" !== a[s].name && (i[a[s].name] = a[s].value, i[$6f0b21dd6dcd5f7b$var$p(a[s].name)] = a[s].value);
-    for(s = c.length; s--;){
-        var l = $6f0b21dd6dcd5f7b$var$v(c[s], null, o), u = c[s].slot;
+    for(s = l.length; s--;){
+        var c = $6f0b21dd6dcd5f7b$var$v(l[s], null, o), u = l[s].slot;
         u ? i[u] = (0, $6bd3564550fc0340$export$c8a8987d4410bf2d)($6f0b21dd6dcd5f7b$var$m, {
             name: u
-        }, l) : r[s] = l;
+        }, c) : r[s] = c;
     }
     var d = !(!o || !o.shadow), h = n ? (0, $6bd3564550fc0340$export$c8a8987d4410bf2d)($6f0b21dd6dcd5f7b$var$m, {
         useFragment: !d

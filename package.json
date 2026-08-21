@@ -50,7 +50,7 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "preact": "^10.29.8",
-    "preact-custom-element": "^4.5.1"
+    "preact-custom-element": "^4.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
