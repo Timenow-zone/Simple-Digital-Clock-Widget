@@ -46,6 +46,7 @@ interface SimpleDigitalClockWidgetProps {
   border?: boolean;
   period?: boolean;
   second?: boolean;
+  hundredths?: boolean;
   caption?: string;
   timeZone?: string;
   locale?: string;
@@ -77,6 +78,8 @@ class SimpleDigitalClockWidget extends Component<
   SimpleDigitalClockWidgetState
 > {
   interval?: number;
+  animationFrame?: number;
+  hundredthsMetadataAt = 0;
   containerRef: HTMLDivElement | null = null;
   zoneContainerRef: HTMLDivElement | null = null;
   dateContainerRef: HTMLDivElement | null = null;
@@ -106,6 +109,7 @@ class SimpleDigitalClockWidget extends Component<
     "time-zone",
     "rounded",
     "second",
+    "hundredths",
     "caption",
     "prefers",
     "locale",
@@ -130,6 +134,111 @@ class SimpleDigitalClockWidget extends Component<
     }
     return undefined; // unknown -> treat as "not provided"
   }
+
+  private isHundredthsEnabled = (): boolean =>
+    this.normalizeBool(this.props.hundredths) === true;
+
+  private stopClock = () => {
+    if (this.interval !== undefined) {
+      clearInterval(this.interval);
+      this.interval = undefined;
+    }
+
+    if (this.animationFrame !== undefined) {
+      cancelAnimationFrame(this.animationFrame);
+      this.animationFrame = undefined;
+    }
+  };
+
+  private startClock = () => {
+    this.stopClock();
+
+    if (this.isHundredthsEnabled()) {
+      this.hundredthsMetadataAt = Date.now();
+      this.animationFrame = requestAnimationFrame(this.updateHundredthsFrame);
+      return;
+    }
+
+    this.interval = setInterval(this.updateTimeAndDateString, 1000) as unknown as number;
+  };
+
+  private updateHundredthsTimeString = (date: Date) => {
+    const { locale, timeZone } = this.props;
+    const periodPref = this.normalizeBool(this.props.period);
+
+    try {
+      const timeString = date.toLocaleTimeString(locale, {
+        timeZone,
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        fractionalSecondDigits: 2,
+        ...(periodPref !== undefined
+          ? { hour12: periodPref, hourCycle: periodPref ? "h12" : "h23" }
+          : {}),
+      });
+
+      if (timeString !== this.state.timeString) {
+        this.setState({ timeString });
+      }
+    } catch (e) {
+      if (!this.state.isError) {
+        console.error("Error: ", e);
+        this.setState({ isError: true });
+      }
+    }
+  };
+
+  private updateHundredthsMetadata = (date: Date) => {
+    const { locale, timeZone } = this.props;
+    const isDay = date.getHours() >= 6 && date.getHours() < 18;
+
+    try {
+      const dateString = date.toLocaleDateString(locale, {
+        timeZone,
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+
+      const timeZoneName = date.toLocaleDateString(locale, {
+        timeZone,
+        timeZoneName: this.props.timeZoneName === "" ? undefined : this.props.timeZoneName,
+      });
+
+      if (
+        dateString !== this.state.dateString ||
+        timeZoneName !== this.state.timeZoneName ||
+        isDay !== this.state.isDay
+      ) {
+        this.setState({ dateString, timeZoneName, isDay });
+      }
+    } catch (e) {
+      if (!this.state.isError) {
+        console.error("Error: ", e);
+        this.setState({ isError: true });
+      }
+    }
+  };
+
+  private updateHundredthsFrame = () => {
+    if (!this.isHundredthsEnabled()) {
+      this.animationFrame = undefined;
+      return;
+    }
+
+    const date = new Date();
+    this.updateHundredthsTimeString(date);
+
+    const now = date.getTime();
+    if (now < this.hundredthsMetadataAt || now - this.hundredthsMetadataAt >= 1000) {
+      this.updateHundredthsMetadata(date);
+      this.hundredthsMetadataAt = now;
+    }
+
+    this.animationFrame = requestAnimationFrame(this.updateHundredthsFrame);
+  };
 
   loadGoogleFont = (fontFamily: string) => {
     if (fontFamily) {
@@ -165,7 +274,13 @@ class SimpleDigitalClockWidget extends Component<
       const localeList = ["bg", "ko"];
       const currentLocale = this.props.locale || "en"; // Replace this with your actual locale string
       const isLocaleMatch = localeList.some((prefix) => currentLocale.startsWith(prefix));
-      const fontSizeByLocale = isLocaleMatch ? 8 : 7;
+      const fontSizeByLocale = this.isHundredthsEnabled()
+        ? isLocaleMatch
+          ? 12
+          : 11
+        : isLocaleMatch
+          ? 8
+          : 7;
       const width = this.containerRef.offsetWidth;
       const fontSize = (width || 1) / fontSizeByLocale;
       const fontSizeTitle = (width || 1) / 15;
@@ -233,7 +348,7 @@ class SimpleDigitalClockWidget extends Component<
     this.handlePrefers();
 
     this.updateTimeAndDateString(); // Call it once immediately
-    this.interval = setInterval(this.updateTimeAndDateString, 1000) as unknown as number; // Call it every second
+    this.startClock();
 
     window.addEventListener("resize", this.handleResize);
     this.handleResize();
@@ -243,10 +358,12 @@ class SimpleDigitalClockWidget extends Component<
   }
 
   componentDidUpdate(prevProps: SimpleDigitalClockWidgetProps) {
+    const hundredthsChanged = prevProps.hundredths !== this.props.hundredths;
+
     if (prevProps.fontFamily !== this.props.fontFamily) {
       this.loadGoogleFont(this.props.fontFamily as string);
     }
-    if (prevProps.width !== this.props.width) {
+    if (prevProps.width !== this.props.width || hundredthsChanged) {
       this.handleResize();
     }
     if (prevProps.prefers !== this.props.prefers) {
@@ -257,16 +374,21 @@ class SimpleDigitalClockWidget extends Component<
       prevProps.locale !== this.props.locale ||
       prevProps.timeZone !== this.props.timeZone ||
       prevProps.second !== this.props.second ||
+      prevProps.hundredths !== this.props.hundredths ||
       prevProps.period !== this.props.period ||
       prevProps.timeZoneName !== this.props.timeZoneName
     ) {
       this.updateTimeAndDateString();
     }
+
+    if (hundredthsChanged) {
+      this.startClock();
+    }
   }
 
   componentWillUnmount() {
     // console.log("componentWillUnmount");
-    clearInterval(this.interval);
+    this.stopClock();
   }
 
   render() {

@@ -699,7 +699,91 @@ const $aa43cbaf8926a599$var$v = "0.6.0";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc0340$export$16fa2f45be04daa8) {
     constructor(props){
-        super(props), this.containerRef = null, this.zoneContainerRef = null, this.dateContainerRef = null, this.loadGoogleFont = (fontFamily)=>{
+        super(props), this.hundredthsMetadataAt = 0, this.containerRef = null, this.zoneContainerRef = null, this.dateContainerRef = null, this.isHundredthsEnabled = ()=>this.normalizeBool(this.props.hundredths) === true, this.stopClock = ()=>{
+            if (this.interval !== undefined) {
+                clearInterval(this.interval);
+                this.interval = undefined;
+            }
+            if (this.animationFrame !== undefined) {
+                cancelAnimationFrame(this.animationFrame);
+                this.animationFrame = undefined;
+            }
+        }, this.startClock = ()=>{
+            this.stopClock();
+            if (this.isHundredthsEnabled()) {
+                this.hundredthsMetadataAt = Date.now();
+                this.animationFrame = requestAnimationFrame(this.updateHundredthsFrame);
+                return;
+            }
+            this.interval = setInterval(this.updateTimeAndDateString, 1000);
+        }, this.updateHundredthsTimeString = (date)=>{
+            const { locale: locale, timeZone: timeZone } = this.props;
+            const periodPref = this.normalizeBool(this.props.period);
+            try {
+                const timeString = date.toLocaleTimeString(locale, {
+                    timeZone: timeZone,
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                    fractionalSecondDigits: 2,
+                    ...periodPref !== undefined ? {
+                        hour12: periodPref,
+                        hourCycle: periodPref ? "h12" : "h23"
+                    } : {}
+                });
+                if (timeString !== this.state.timeString) this.setState({
+                    timeString: timeString
+                });
+            } catch (e) {
+                if (!this.state.isError) {
+                    console.error("Error: ", e);
+                    this.setState({
+                        isError: true
+                    });
+                }
+            }
+        }, this.updateHundredthsMetadata = (date)=>{
+            const { locale: locale, timeZone: timeZone } = this.props;
+            const isDay = date.getHours() >= 6 && date.getHours() < 18;
+            try {
+                const dateString = date.toLocaleDateString(locale, {
+                    timeZone: timeZone,
+                    weekday: "short",
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric"
+                });
+                const timeZoneName = date.toLocaleDateString(locale, {
+                    timeZone: timeZone,
+                    timeZoneName: this.props.timeZoneName === "" ? undefined : this.props.timeZoneName
+                });
+                if (dateString !== this.state.dateString || timeZoneName !== this.state.timeZoneName || isDay !== this.state.isDay) this.setState({
+                    dateString: dateString,
+                    timeZoneName: timeZoneName,
+                    isDay: isDay
+                });
+            } catch (e) {
+                if (!this.state.isError) {
+                    console.error("Error: ", e);
+                    this.setState({
+                        isError: true
+                    });
+                }
+            }
+        }, this.updateHundredthsFrame = ()=>{
+            if (!this.isHundredthsEnabled()) {
+                this.animationFrame = undefined;
+                return;
+            }
+            const date = new Date();
+            this.updateHundredthsTimeString(date);
+            const now = date.getTime();
+            if (now < this.hundredthsMetadataAt || now - this.hundredthsMetadataAt >= 1000) {
+                this.updateHundredthsMetadata(date);
+                this.hundredthsMetadataAt = now;
+            }
+            this.animationFrame = requestAnimationFrame(this.updateHundredthsFrame);
+        }, this.loadGoogleFont = (fontFamily)=>{
             if (fontFamily) {
                 const link = document.createElement("link");
                 link.href = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/\s/g, "+")}:wght@700&display=swap`;
@@ -720,7 +804,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc03
                 ];
                 const currentLocale = this.props.locale || "en"; // Replace this with your actual locale string
                 const isLocaleMatch = localeList.some((prefix)=>currentLocale.startsWith(prefix));
-                const fontSizeByLocale = isLocaleMatch ? 8 : 7;
+                const fontSizeByLocale = this.isHundredthsEnabled() ? isLocaleMatch ? 12 : 11 : isLocaleMatch ? 8 : 7;
                 const width = this.containerRef.offsetWidth;
                 const fontSize = (width || 1) / fontSizeByLocale;
                 const fontSizeTitle = (width || 1) / 15;
@@ -806,6 +890,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc03
             "time-zone",
             "rounded",
             "second",
+            "hundredths",
             "caption",
             "prefers",
             "locale",
@@ -835,22 +920,24 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc03
         // Your CSS injection logic here
         this.handlePrefers();
         this.updateTimeAndDateString(); // Call it once immediately
-        this.interval = setInterval(this.updateTimeAndDateString, 1000); // Call it every second
+        this.startClock();
         window.addEventListener("resize", this.handleResize);
         this.handleResize();
         // Load the Google Font
         this.loadGoogleFont(this.props.fontFamily);
     }
     componentDidUpdate(prevProps) {
+        const hundredthsChanged = prevProps.hundredths !== this.props.hundredths;
         if (prevProps.fontFamily !== this.props.fontFamily) this.loadGoogleFont(this.props.fontFamily);
-        if (prevProps.width !== this.props.width) this.handleResize();
+        if (prevProps.width !== this.props.width || hundredthsChanged) this.handleResize();
         if (prevProps.prefers !== this.props.prefers) this.handlePrefers();
         // Recalc time immediately when formatting-related props change
-        if (prevProps.locale !== this.props.locale || prevProps.timeZone !== this.props.timeZone || prevProps.second !== this.props.second || prevProps.period !== this.props.period || prevProps.timeZoneName !== this.props.timeZoneName) this.updateTimeAndDateString();
+        if (prevProps.locale !== this.props.locale || prevProps.timeZone !== this.props.timeZone || prevProps.second !== this.props.second || prevProps.hundredths !== this.props.hundredths || prevProps.period !== this.props.period || prevProps.timeZoneName !== this.props.timeZoneName) this.updateTimeAndDateString();
+        if (hundredthsChanged) this.startClock();
     }
     componentWillUnmount() {
         // console.log("componentWillUnmount");
-        clearInterval(this.interval);
+        this.stopClock();
     }
     render() {
         const { backgroundColor: backgroundColor, background: background, fontFamily: fontFamily, caption: caption, rounded: rounded, shadow: shadow, border: border, width: width, align: align, date: date } = this.props;
