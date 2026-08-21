@@ -1,0 +1,1709 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simple Digital Clock Widget — Live Customizer</title>
+<meta name="description" content="Build a lightweight live digital clock for any website. Choose a timezone, locale, style, date, seconds or hundredths — or install the WordPress block.">
+<meta name="theme-color" content="#4f46e5">
+<meta property="og:title" content="Simple Digital Clock Widget">
+<meta property="og:description" content="Live product demo and customizer for a lightweight timezone-aware digital clock widget.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23111827%22/><circle cx=%2232%22 cy=%2232%22 r=%2219%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/><path d=%22M32 20v13l9 6%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22 stroke-linecap=%22round%22/></svg>">
+<style>
+:root {
+  --bg: #f6f7fb;
+  --surface: rgba(255,255,255,.86);
+  --surface-solid: #fff;
+  --text: #121826;
+  --muted: #657085;
+  --line: #e4e8f0;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --soft: #eef0ff;
+  --radius: 22px;
+  --shadow: 0 18px 60px rgba(27, 35, 58, .09);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(79,70,229,.09), transparent 28rem),
+    radial-gradient(circle at 95% 18%, rgba(14,165,233,.08), transparent 24rem),
+    var(--bg);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+
+button, input, select { font: inherit; }
+
+a { color: inherit; }
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.topbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: -.02em;
+}
+
+.brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 10px;
+  color: #fff;
+  background: #111827;
+  font-size: 22px;
+}
+
+.topnav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.topnav a {
+  color: #596276;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.topnav a:hover { color: var(--text); }
+
+.section {
+  padding: 76px 0;
+}
+
+.compact-section { padding: 18px 0 54px; }
+
+.hero {
+  min-height: 620px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr);
+  align-items: center;
+  gap: 64px;
+  padding-top: 54px;
+}
+
+.eyebrow {
+  margin-bottom: 14px;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1 {
+  margin-bottom: 24px;
+  font-size: clamp(52px, 7vw, 82px);
+  line-height: .98;
+  letter-spacing: -.065em;
+}
+
+h1 span {
+  color: var(--primary);
+}
+
+.hero-lead {
+  max-width: 650px;
+  margin-bottom: 30px;
+  color: var(--muted);
+  font-size: 19px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 19px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  font-weight: 780;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  color: white;
+  background: var(--primary);
+  box-shadow: 0 10px 24px rgba(79,70,229,.22);
+}
+
+.btn-primary:hover { background: var(--primary-dark); }
+
+.btn-secondary {
+  color: var(--text);
+  border-color: var(--line);
+  background: rgba(255,255,255,.72);
+}
+
+.btn-small {
+  min-height: 38px;
+  padding: 0 14px;
+  color: white;
+  background: #111827;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.proof-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 26px;
+}
+
+.proof-row span {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #5f687a;
+  background: rgba(255,255,255,.68);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.demo-window {
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 28px;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 30px 90px rgba(31,41,55,.17);
+  backdrop-filter: blur(18px);
+}
+
+.demo-window-bar {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.window-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d6dbe5;
+}
+
+.window-label { margin-left: 7px; }
+
+.hero-clock-stage {
+  min-height: 350px;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background:
+    linear-gradient(rgba(255,255,255,.52), rgba(255,255,255,.52)),
+    repeating-linear-gradient(45deg,#eef0f6 0 10px,#f7f8fb 10px 20px);
+}
+
+.hero-demo-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 18px;
+  color: var(--muted);
+  background: #fff;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 5px rgba(34,197,94,.12);
+}
+
+.value-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.value-strip article {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.68);
+}
+
+.value-strip strong,
+.value-strip small {
+  display: block;
+}
+
+.value-strip strong {
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+
+.value-strip small {
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.value-icon { font-size: 22px; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  max-width: 720px;
+  margin-bottom: 0;
+  font-size: clamp(34px, 4.4vw, 54px);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+}
+
+.section-heading > p {
+  max-width: 410px;
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.preset-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface-solid);
+  box-shadow: 0 7px 30px rgba(17,24,39,.04);
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.preset-card:hover {
+  transform: translateY(-3px);
+  border-color: #c9cfee;
+  box-shadow: 0 18px 45px rgba(17,24,39,.09);
+}
+
+.preset-preview {
+  min-height: 218px;
+  display: grid;
+  place-items: center;
+  padding: 24px 18px;
+  background:
+    linear-gradient(rgba(250,250,252,.76), rgba(250,250,252,.76)),
+    repeating-linear-gradient(45deg,#ebedf3 0 8px,#f7f8fb 8px 16px);
+}
+
+.preset-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 18px;
+}
+
+.preset-meta strong { display: block; }
+
+.preset-meta small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+}
+
+.preset-use {
+  flex: 0 0 auto;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.builder-section { scroll-margin-top: 18px; }
+
+.builder-layout {
+  display: grid;
+  grid-template-columns: 390px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.controls-card,
+.preview-card,
+.code-card {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255,255,255,.84);
+  box-shadow: var(--shadow);
+}
+
+.controls-card {
+  overflow: hidden;
+}
+
+.control-group {
+  padding: 22px;
+}
+
+.control-group + .control-group {
+  border-top: 1px solid var(--line);
+}
+
+.control-group h3 {
+  margin-bottom: 18px;
+  font-size: 18px;
+  letter-spacing: -.02em;
+}
+
+.control-group > label {
+  display: block;
+  margin-bottom: 17px;
+}
+
+.control-group > label > span:first-child {
+  display: block;
+  margin-bottom: 7px;
+  color: #424b5d;
+  font-size: 12px;
+  font-weight: 780;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid #dbe0e9;
+  border-radius: 10px;
+  outline: none;
+  color: var(--text);
+  background: #fff;
+}
+
+select:focus,
+input[type="text"]:focus {
+  border-color: #a5b4fc;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.11);
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 4px;
+  border: 1px solid #dbe0e9;
+  border-radius: 11px;
+  background: #f6f7fa;
+}
+
+.segmented button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 8px;
+  color: #6b7280;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.segmented button.active {
+  color: var(--text);
+  background: #fff;
+  box-shadow: 0 2px 9px rgba(17,24,39,.08);
+}
+
+.toggle-list {
+  display: grid;
+  gap: 10px;
+}
+
+.toggle-row {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 !important;
+  padding: 11px 0;
+}
+
+.toggle-row strong,
+.toggle-row small {
+  display: block;
+}
+
+.toggle-row strong { font-size: 13px; }
+
+.toggle-row small {
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.toggle-row input {
+  width: 42px;
+  height: 23px;
+  appearance: none;
+  border-radius: 999px;
+  background: #d7dce5;
+  cursor: pointer;
+  position: relative;
+  transition: background .16s ease;
+}
+
+.toggle-row input::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,.18);
+  transition: transform .16s ease;
+}
+
+.toggle-row input:checked { background: var(--primary); }
+.toggle-row input:checked::after { transform: translateX(19px); }
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--primary);
+}
+
+.range-hint {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  color: #8a93a3;
+  font-size: 10px;
+}
+
+.range-hint strong {
+  color: #4b5563;
+  font-size: 11px;
+}
+
+.preview-column {
+  display: grid;
+  gap: 16px;
+}
+
+.preview-card { overflow: hidden; }
+
+.preview-toolbar {
+  min-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+  color: #596276;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.link-button {
+  border: 0;
+  color: var(--primary);
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.preview-stage {
+  min-height: 470px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 34px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99,102,241,.12), transparent 20rem),
+    linear-gradient(rgba(250,250,252,.77), rgba(250,250,252,.77)),
+    repeating-linear-gradient(45deg,#e9ebf1 0 8px,#f8f9fb 8px 16px);
+}
+
+.code-card {
+  overflow: hidden;
+}
+
+.code-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  padding: 15px 16px;
+}
+
+.code-card-head strong,
+.code-card-head small {
+  display: block;
+}
+
+.code-card-head small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+pre {
+  margin: 0;
+  overflow-x: auto;
+  padding: 18px;
+  border-top: 1px solid #252a36;
+  color: #dce4f4;
+  background: #111827;
+  font: 12px/1.6 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.copy-status {
+  min-height: 0;
+  padding: 0 16px;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.copy-status:not(:empty) { padding: 9px 16px; }
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.comparison-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.comparison-stage {
+  min-height: 270px;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.light-stage { background: #edf1f6; }
+.dark-stage { background: #111827; }
+.precision-stage { background: #fff1e9; }
+
+.comparison-copy { padding: 18px; }
+
+.comparison-copy strong {
+  font-size: 15px;
+}
+
+.comparison-copy p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.install-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.install-card {
+  min-height: 255px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  text-decoration: none;
+  background: #fff;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.install-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 42px rgba(17,24,39,.08);
+}
+
+.featured-install {
+  color: white;
+  border-color: transparent;
+  background: linear-gradient(145deg,#4338ca,#111827);
+}
+
+.install-badge {
+  width: fit-content;
+  margin-bottom: 34px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--primary);
+  background: var(--soft);
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.featured-install .install-badge {
+  color: white;
+  background: rgba(255,255,255,.14);
+}
+
+.install-card h3 {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.install-card p {
+  margin-bottom: 26px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.featured-install p { color: #d7dcf4; }
+
+.install-link {
+  margin-top: auto;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.featured-install .install-link { color: white; }
+
+.final-cta {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: center;
+  margin: 56px 0;
+  padding: 44px;
+  border-radius: 28px;
+  color: white;
+  background: #111827;
+}
+
+.final-cta h2 {
+  max-width: 680px;
+  margin: 0;
+  font-size: clamp(32px,4vw,48px);
+  line-height: 1.04;
+  letter-spacing: -.04em;
+}
+
+.final-cta .eyebrow { color: #a5b4fc; }
+.final-cta .btn-secondary {
+  color: white;
+  border-color: #394154;
+  background: #202838;
+}
+
+footer {
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+footer div {
+  display: flex;
+  gap: 18px;
+}
+
+footer a { text-decoration: none; }
+footer a:hover { color: var(--text); }
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 36px;
+  }
+
+  .hero-copy { max-width: 760px; }
+
+  .value-strip { grid-template-columns: repeat(2,1fr); }
+
+  .preset-grid,
+  .comparison-grid,
+  .install-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .builder-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .controls-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .control-group + .control-group {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+  }
+
+  .final-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 680px) {
+  .page-shell {
+    width: min(100% - 20px, 1180px);
+  }
+
+  .topbar {
+    height: 66px;
+  }
+
+  .topnav a:nth-child(1),
+  .topnav a:nth-child(2),
+  .topnav a:nth-child(4) {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 38px;
+  }
+
+  h1 {
+    font-size: clamp(45px,16vw,64px);
+  }
+
+  .hero-lead { font-size: 17px; }
+
+  .hero-demo {
+    margin: 0 -2px;
+  }
+
+  .hero-clock-stage {
+    min-height: 300px;
+    padding: 18px 8px;
+  }
+
+  .value-strip,
+  .preset-grid,
+  .comparison-grid,
+  .install-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 54px 0;
+  }
+
+  .compact-section {
+    padding-top: 0;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .controls-card {
+    grid-template-columns: 1fr;
+  }
+
+  .control-group + .control-group {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .preview-stage {
+    min-height: 390px;
+    padding: 24px 4px;
+  }
+
+  .final-cta {
+    margin: 28px 0;
+    padding: 28px 22px;
+  }
+
+  footer {
+    padding: 22px 0;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+<script src="__SDCW_WIDGET_ASSET__"></script>
+
+<div class="page-shell">
+  <header class="topbar">
+    <a class="brand" href="https://github.com/Timenow-zone/Simple-Digital-Clock-Widget" target="_blank" rel="noreferrer">
+      <span class="brand-mark">◷</span>
+      <span>Simple Digital Clock</span>
+    </a>
+
+    <nav class="topnav" aria-label="Primary">
+      <a href="#presets">Examples</a>
+      <a href="#builder">Customize</a>
+      <a href="https://wordpress.org/plugins/simple-digital-clock/" target="_blank" rel="noreferrer">WordPress</a>
+      <a href="https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/v__SDCW_VERSION__" target="_blank" rel="noreferrer">v__SDCW_VERSION__</a>
+      <a href="https://github.com/Timenow-zone/Simple-Digital-Clock-Widget" target="_blank" rel="noreferrer">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="hero-copy">
+        <div class="eyebrow">Free • open source • no account required</div>
+        <h1>One clock.<br><span>Any timezone. Any style.</span></h1>
+        <p class="hero-lead">
+          Add a lightweight live digital clock to any website in minutes.
+          Choose a timezone, language and look — or install it as a WordPress block.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#builder">Customize a clock</a>
+          <a class="btn btn-secondary" href="https://wordpress.org/plugins/simple-digital-clock/" target="_blank" rel="noreferrer">
+            Get WordPress plugin ↗
+          </a>
+        </div>
+
+        <div class="proof-row" aria-label="Product highlights">
+          <span>__SDCW_GZIP_KIB__ KiB gzip</span>
+          <span>Responsive</span>
+          <span>Locales + timezones</span>
+          <span>Seconds + hundredths</span>
+        </div>
+      </div>
+
+      <div class="hero-demo">
+        <div class="demo-window">
+          <div class="demo-window-bar">
+            <span class="window-dot"></span>
+            <span class="window-dot"></span>
+            <span class="window-dot"></span>
+            <span class="window-label">Live preview</span>
+          </div>
+
+          <div class="hero-clock-stage">
+            <timenow-zone-sdcw
+              width="330"
+              time-zone="Europe/London"
+              locale="en-GB"
+              background="linear-gradient(145deg,#111827,#312e81)"
+              background-color="#111827"
+              rounded="1"
+              shadow="shadow-xl"
+              date
+              second
+              caption="London"
+              font-family="Martian Mono"
+              align="center"
+            ></timenow-zone-sdcw>
+          </div>
+
+          <div class="hero-demo-note">
+            <span class="live-dot"></span>
+            This is the real widget — not a screenshot.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact-section value-strip" aria-label="Key benefits">
+      <article>
+        <span class="value-icon">⚡</span>
+        <div><strong>Drop it in</strong><small>One script + one HTML tag.</small></div>
+      </article>
+      <article>
+        <span class="value-icon">🌍</span>
+        <div><strong>Show any place</strong><small>World timezones and locale-aware formatting.</small></div>
+      </article>
+      <article>
+        <span class="value-icon">🎨</span>
+        <div><strong>Make it fit</strong><small>Colors, gradients, fonts, radius and shadows.</small></div>
+      </article>
+      <article>
+        <span class="value-icon">◷</span>
+        <div><strong>Choose precision</strong><small>Date, seconds, AM/PM, 24-hour or hundredths.</small></div>
+      </article>
+    </section>
+
+    <section class="section" id="presets">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Start with a look</div>
+          <h2>Pick a preset. Make it yours.</h2>
+        </div>
+        <p>Every example below is live. Click one to open it in the customizer.</p>
+      </div>
+
+      <div class="preset-grid" id="presetGrid"></div>
+    </section>
+
+    <section class="section builder-section" id="builder">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Interactive builder</div>
+          <h2>Build your clock in under a minute.</h2>
+        </div>
+        <p>Use plain-language controls. The embed code updates automatically.</p>
+      </div>
+
+      <div class="builder-layout">
+        <div class="controls-card">
+          <div class="control-group">
+            <h3>Time</h3>
+
+            <label>
+              <span>Location</span>
+              <select id="timezoneControl">
+                <option value="">Visitor's local time</option>
+                <option value="Europe/London">London</option>
+                <option value="Europe/Paris">Paris</option>
+                <option value="Europe/Kyiv">Kyiv</option>
+                <option value="America/New_York">New York</option>
+                <option value="America/Los_Angeles">Los Angeles</option>
+                <option value="Asia/Tokyo">Tokyo</option>
+                <option value="Asia/Singapore">Singapore</option>
+                <option value="Asia/Dubai">Dubai</option>
+                <option value="Australia/Sydney">Sydney</option>
+                <option value="UTC">UTC</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Language & regional format</span>
+              <select id="localeControl">
+                <option value="en-US">English — US</option>
+                <option value="en-GB">English — UK</option>
+                <option value="de-DE">Deutsch</option>
+                <option value="fr-FR">Français</option>
+                <option value="es-ES">Español</option>
+                <option value="it-IT">Italiano</option>
+                <option value="pl-PL">Polski</option>
+                <option value="uk-UA">Українська</option>
+                <option value="ja-JP">日本語</option>
+                <option value="ko-KR">한국어</option>
+                <option value="zh-CN">简体中文</option>
+                <option value="ar-EG">العربية</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Time format</span>
+              <div class="segmented" id="formatControl">
+                <button type="button" data-format="auto" class="active">Auto</button>
+                <button type="button" data-format="24">24 hour</button>
+                <button type="button" data-format="12">AM / PM</button>
+              </div>
+            </label>
+
+            <div class="toggle-list">
+              <label class="toggle-row">
+                <span><strong>Seconds</strong><small>Show seconds in the clock.</small></span>
+                <input type="checkbox" id="secondsControl" checked>
+              </label>
+
+              <label class="toggle-row">
+                <span><strong>Hundredths</strong><small>Extra display precision.</small></span>
+                <input type="checkbox" id="hundredthsControl">
+              </label>
+
+              <label class="toggle-row">
+                <span><strong>Date</strong><small>Add a second line with the date.</small></span>
+                <input type="checkbox" id="dateControl" checked>
+              </label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <h3>Look</h3>
+
+            <label>
+              <span>Style</span>
+              <select id="styleControl"></select>
+            </label>
+
+            <label>
+              <span>Label</span>
+              <input id="captionControl" type="text" value="London" maxlength="40" placeholder="Optional, e.g. London">
+            </label>
+
+            <label>
+              <span>Size</span>
+              <input id="widthControl" type="range" min="180" max="420" step="10" value="320">
+              <div class="range-hint"><span>Compact</span><strong id="widthValue">320 px</strong><span>Large</span></div>
+            </label>
+
+            <div class="toggle-list">
+              <label class="toggle-row">
+                <span><strong>Border</strong><small>Add a subtle outline.</small></span>
+                <input type="checkbox" id="borderControl">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-column">
+          <div class="preview-card">
+            <div class="preview-toolbar">
+              <span>Live preview</span>
+              <button class="link-button" type="button" id="resetBuilder">Reset</button>
+            </div>
+            <div class="preview-stage" id="previewStage">
+              <timenow-zone-sdcw id="builderClock"></timenow-zone-sdcw>
+            </div>
+          </div>
+
+          <div class="code-card">
+            <div class="code-card-head">
+              <div>
+                <strong>Ready to use</strong>
+                <small>Paste this into your page.</small>
+              </div>
+              <button class="btn btn-small" id="copyCode" type="button">Copy code</button>
+            </div>
+            <pre><code id="embedCode"></code></pre>
+            <div class="copy-status" id="copyStatus" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section comparison-section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Same widget, different jobs</div>
+          <h2>From a clean local clock to a world-time panel.</h2>
+        </div>
+      </div>
+
+      <div class="comparison-grid">
+        <article class="comparison-card">
+          <div class="comparison-stage light-stage">
+            <timenow-zone-sdcw
+              width="250"
+              locale="en-GB"
+              background-color="#ffffff"
+              rounded=".6"
+              border
+              second
+              caption="Local time"
+              font-family="Sono"
+            ></timenow-zone-sdcw>
+          </div>
+          <div class="comparison-copy">
+            <strong>Simple website clock</strong>
+            <p>Clean, compact and ready for a header, footer or dashboard.</p>
+          </div>
+        </article>
+
+        <article class="comparison-card">
+          <div class="comparison-stage dark-stage">
+            <timenow-zone-sdcw
+              width="250"
+              time-zone="America/New_York"
+              locale="en-US"
+              background="linear-gradient(145deg,#020617,#0f766e)"
+              background-color="#020617"
+              rounded=".8"
+              shadow="shadow-lg"
+              date
+              second
+              caption="New York"
+              font-family="JetBrains Mono"
+            ></timenow-zone-sdcw>
+          </div>
+          <div class="comparison-copy">
+            <strong>World timezone</strong>
+            <p>Show the time your customers, team or audience actually cares about.</p>
+          </div>
+        </article>
+
+        <article class="comparison-card">
+          <div class="comparison-stage precision-stage">
+            <timenow-zone-sdcw
+              width="250"
+              time-zone="UTC"
+              locale="en-GB"
+              background="linear-gradient(145deg,#18181b,#7c2d12)"
+              background-color="#18181b"
+              rounded=".8"
+              shadow="shadow-lg"
+              hundredths
+              caption="UTC"
+              font-family="Fira Code"
+            ></timenow-zone-sdcw>
+          </div>
+          <div class="comparison-copy">
+            <strong>Higher display precision</strong>
+            <p>Turn on hundredths when a more precise visual readout matters.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section install-section">
+      <div class="section-heading install-heading">
+        <div>
+          <div class="eyebrow">Use it your way</div>
+          <h2>Website, WordPress or source code.</h2>
+        </div>
+      </div>
+
+      <div class="install-grid">
+        <a class="install-card featured-install" href="#builder">
+          <span class="install-badge">Any website</span>
+          <h3>Copy & paste</h3>
+          <p>Build your clock above, copy the generated snippet and add it to your HTML.</p>
+          <span class="install-link">Open the builder ↑</span>
+        </a>
+
+        <a class="install-card" href="https://wordpress.org/plugins/simple-digital-clock/" target="_blank" rel="noreferrer">
+          <span class="install-badge">WordPress</span>
+          <h3>Install the block</h3>
+          <p>Add Simple Digital Clock from WordPress.org and customize it from the Gutenberg sidebar.</p>
+          <span class="install-link">WordPress.org ↗</span>
+        </a>
+
+        <a class="install-card" href="https://github.com/Timenow-zone/Simple-Digital-Clock-Widget" target="_blank" rel="noreferrer">
+          <span class="install-badge">Developers</span>
+          <h3>View the source</h3>
+          <p>See the source, release history, attributes and implementation on GitHub.</p>
+          <span class="install-link">GitHub repository ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div>
+        <div class="eyebrow">Simple by default. Flexible when you need it.</div>
+        <h2>Make a clock that looks like it belongs on your site.</h2>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#builder">Customize a clock</a>
+        <a class="btn btn-secondary" href="https://wordpress.org/plugins/simple-digital-clock/" target="_blank" rel="noreferrer">Use with WordPress ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Simple Digital Clock Widget • v__SDCW_VERSION__</span>
+    <div>
+      <a href="https://github.com/Timenow-zone/Simple-Digital-Clock-Widget" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://wordpress.org/plugins/simple-digital-clock/" target="_blank" rel="noreferrer">WordPress</a>
+      <a href="https://utctime.info/" target="_blank" rel="noreferrer">UTC Time</a>
+    </div>
+  </footer>
+</div>
+<script>
+const WIDGET_CDN =
+  window.location.origin + "__SDCW_WIDGET_ASSET__";
+
+const styles = {
+  midnight: {
+    name: "Midnight",
+    description: "Dark and polished",
+    background: "linear-gradient(145deg,#111827,#312e81)",
+    bgColor: "#111827",
+    font: "Martian Mono",
+    rounded: "1",
+    shadow: "shadow-xl"
+  },
+  minimal: {
+    name: "Minimal",
+    description: "Quiet and clean",
+    bgColor: "#ffffff",
+    font: "Sono",
+    rounded: ".6",
+    shadow: ""
+  },
+  ocean: {
+    name: "Ocean",
+    description: "Cool gradient",
+    background: "linear-gradient(145deg,#082f49,#0891b2)",
+    bgColor: "#082f49",
+    font: "JetBrains Mono",
+    rounded: ".9",
+    shadow: "shadow-lg"
+  },
+  sunset: {
+    name: "Sunset",
+    description: "Warm gradient",
+    background: "linear-gradient(145deg,#7c2d12,#f97316)",
+    bgColor: "#7c2d12",
+    font: "Fira Code",
+    rounded: ".9",
+    shadow: "shadow-lg"
+  },
+  violet: {
+    name: "Violet",
+    description: "Bold and modern",
+    background: "linear-gradient(145deg,#4c1d95,#7c3aed)",
+    bgColor: "#4c1d95",
+    font: "Space Mono",
+    rounded: "1.1",
+    shadow: "shadow-xl"
+  },
+  graphite: {
+    name: "Graphite",
+    description: "Neutral dark",
+    background: "linear-gradient(145deg,#18181b,#3f3f46)",
+    bgColor: "#18181b",
+    font: "Azeret Mono",
+    rounded: ".35",
+    shadow: "shadow-md"
+  }
+};
+
+const presets = [
+  {
+    id: "local",
+    title: "Local & minimal",
+    subtitle: "Visitor's own timezone",
+    style: "minimal",
+    locale: "en-GB",
+    timezone: "",
+    caption: "Local time",
+    seconds: true,
+    hundredths: false,
+    date: false,
+    format: "auto",
+    width: 250,
+    border: true
+  },
+  {
+    id: "london",
+    title: "London",
+    subtitle: "Date + seconds",
+    style: "midnight",
+    locale: "en-GB",
+    timezone: "Europe/London",
+    caption: "London",
+    seconds: true,
+    hundredths: false,
+    date: true,
+    format: "24",
+    width: 250,
+    border: false
+  },
+  {
+    id: "new-york",
+    title: "New York",
+    subtitle: "AM / PM",
+    style: "ocean",
+    locale: "en-US",
+    timezone: "America/New_York",
+    caption: "New York",
+    seconds: true,
+    hundredths: false,
+    date: true,
+    format: "12",
+    width: 250,
+    border: false
+  },
+  {
+    id: "tokyo",
+    title: "Tokyo",
+    subtitle: "Japanese locale",
+    style: "violet",
+    locale: "ja-JP",
+    timezone: "Asia/Tokyo",
+    caption: "東京",
+    seconds: true,
+    hundredths: false,
+    date: true,
+    format: "24",
+    width: 250,
+    border: false
+  },
+  {
+    id: "kyiv",
+    title: "Kyiv",
+    subtitle: "Ukrainian locale",
+    style: "sunset",
+    locale: "uk-UA",
+    timezone: "Europe/Kyiv",
+    caption: "Київ",
+    seconds: true,
+    hundredths: false,
+    date: true,
+    format: "24",
+    width: 250,
+    border: false
+  },
+  {
+    id: "precision",
+    title: "Hundredths",
+    subtitle: "Higher display precision",
+    style: "graphite",
+    locale: "en-GB",
+    timezone: "UTC",
+    caption: "UTC",
+    seconds: true,
+    hundredths: true,
+    date: false,
+    format: "24",
+    width: 250,
+    border: false
+  }
+];
+
+const defaultState = {
+  style: "midnight",
+  locale: "en-GB",
+  timezone: "Europe/London",
+  caption: "London",
+  seconds: true,
+  hundredths: false,
+  date: true,
+  format: "24",
+  width: 320,
+  border: false
+};
+
+let state = { ...defaultState };
+
+function setBooleanAttr(el, name, enabled) {
+  if (enabled) el.setAttribute(name, "");
+  else el.removeAttribute(name);
+}
+
+function applyStateToWidget(el, inputState, fixedWidth) {
+  const style = styles[inputState.style] || styles.midnight;
+
+  el.setAttribute("locale", inputState.locale || "en-GB");
+  el.setAttribute("width", String(fixedWidth ?? inputState.width ?? 300));
+  el.setAttribute("align", "center");
+
+  if (inputState.timezone) el.setAttribute("time-zone", inputState.timezone);
+  else el.removeAttribute("time-zone");
+
+  if (inputState.caption.trim()) el.setAttribute("caption", inputState.caption.trim());
+  else el.removeAttribute("caption");
+
+  if (style.background) el.setAttribute("background", style.background);
+  else el.removeAttribute("background");
+
+  el.setAttribute("background-color", style.bgColor);
+  el.setAttribute("rounded", style.rounded);
+  el.setAttribute("font-family", style.font);
+
+  if (style.shadow) el.setAttribute("shadow", style.shadow);
+  else el.removeAttribute("shadow");
+
+  setBooleanAttr(el, "second", inputState.seconds || inputState.hundredths);
+  setBooleanAttr(el, "hundredths", inputState.hundredths);
+  setBooleanAttr(el, "date", inputState.date);
+  setBooleanAttr(el, "border", inputState.border);
+
+  if (inputState.format === "12") {
+    el.setAttribute("period", "");
+  } else if (inputState.format === "24") {
+    el.setAttribute("period", "false");
+  } else {
+    el.removeAttribute("period");
+  }
+}
+
+function escapeAttr(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function buildEmbedCode(inputState) {
+  const style = styles[inputState.style] || styles.midnight;
+  const attrs = [];
+
+  if (inputState.timezone) attrs.push(`time-zone="${escapeAttr(inputState.timezone)}"`);
+  attrs.push(`locale="${escapeAttr(inputState.locale)}"`);
+
+  if (inputState.caption.trim()) {
+    attrs.push(`caption="${escapeAttr(inputState.caption.trim())}"`);
+  }
+
+  attrs.push(`width="${inputState.width}"`);
+  attrs.push(`align="center"`);
+
+  if (style.background) attrs.push(`background="${escapeAttr(style.background)}"`);
+  attrs.push(`background-color="${escapeAttr(style.bgColor)}"`);
+  attrs.push(`rounded="${escapeAttr(style.rounded)}"`);
+
+  if (style.shadow) attrs.push(`shadow="${escapeAttr(style.shadow)}"`);
+  attrs.push(`font-family="${escapeAttr(style.font)}"`);
+
+  if (inputState.seconds || inputState.hundredths) attrs.push("second");
+  if (inputState.hundredths) attrs.push("hundredths");
+  if (inputState.date) attrs.push("date");
+  if (inputState.border) attrs.push("border");
+
+  if (inputState.format === "12") attrs.push("period");
+  if (inputState.format === "24") attrs.push(`period="false"`);
+
+  const attrLines = attrs.map(attr => `  ${attr}`).join("\n");
+
+  return `<script src="${WIDGET_CDN}"><\/script>\n\n<timenow-zone-sdcw\n${attrLines}\n></timenow-zone-sdcw>`;
+}
+
+function renderPresets() {
+  const grid = document.getElementById("presetGrid");
+  grid.innerHTML = "";
+
+  presets.forEach(preset => {
+    const card = document.createElement("article");
+    card.className = "preset-card";
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", `Use ${preset.title} preset`);
+
+    const preview = document.createElement("div");
+    preview.className = "preset-preview";
+
+    const widget = document.createElement("timenow-zone-sdcw");
+    applyStateToWidget(widget, preset, preset.width);
+    preview.appendChild(widget);
+
+    const meta = document.createElement("div");
+    meta.className = "preset-meta";
+    meta.innerHTML = `
+      <div>
+        <strong>${preset.title}</strong>
+        <small>${preset.subtitle}</small>
+      </div>
+      <span class="preset-use">Use preset →</span>
+    `;
+
+    card.append(preview, meta);
+
+    const usePreset = () => {
+      state = { ...state, ...preset, width: 320 };
+      syncControlsFromState();
+      renderBuilder();
+      document.getElementById("builder").scrollIntoView({ behavior: "smooth" });
+    };
+
+    card.addEventListener("click", usePreset);
+    card.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        usePreset();
+      }
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+function populateStyleControl() {
+  const select = document.getElementById("styleControl");
+  select.innerHTML = "";
+
+  Object.entries(styles).forEach(([id, style]) => {
+    const option = document.createElement("option");
+    option.value = id;
+    option.textContent = `${style.name} — ${style.description}`;
+    select.appendChild(option);
+  });
+}
+
+function syncControlsFromState() {
+  document.getElementById("timezoneControl").value = state.timezone;
+  document.getElementById("localeControl").value = state.locale;
+  document.getElementById("secondsControl").checked = state.seconds;
+  document.getElementById("hundredthsControl").checked = state.hundredths;
+  document.getElementById("dateControl").checked = state.date;
+  document.getElementById("styleControl").value = state.style;
+  document.getElementById("captionControl").value = state.caption;
+  document.getElementById("widthControl").value = state.width;
+  document.getElementById("borderControl").checked = state.border;
+  document.getElementById("widthValue").textContent = `${state.width} px`;
+
+  document.querySelectorAll("#formatControl button").forEach(button => {
+    button.classList.toggle("active", button.dataset.format === state.format);
+  });
+}
+
+function renderBuilder() {
+  const clock = document.getElementById("builderClock");
+  applyStateToWidget(clock, state);
+  document.getElementById("embedCode").textContent = buildEmbedCode(state);
+  document.getElementById("widthValue").textContent = `${state.width} px`;
+}
+
+function wireBuilder() {
+  const rerender = () => renderBuilder();
+
+  document.getElementById("timezoneControl").addEventListener("change", event => {
+    state.timezone = event.target.value;
+    rerender();
+  });
+
+  document.getElementById("localeControl").addEventListener("change", event => {
+    state.locale = event.target.value;
+    rerender();
+  });
+
+  document.getElementById("secondsControl").addEventListener("change", event => {
+    state.seconds = event.target.checked;
+    if (!state.seconds && state.hundredths) {
+      state.hundredths = false;
+      document.getElementById("hundredthsControl").checked = false;
+    }
+    rerender();
+  });
+
+  document.getElementById("hundredthsControl").addEventListener("change", event => {
+    state.hundredths = event.target.checked;
+    if (state.hundredths) {
+      state.seconds = true;
+      document.getElementById("secondsControl").checked = true;
+    }
+    rerender();
+  });
+
+  document.getElementById("dateControl").addEventListener("change", event => {
+    state.date = event.target.checked;
+    rerender();
+  });
+
+  document.getElementById("styleControl").addEventListener("change", event => {
+    state.style = event.target.value;
+    rerender();
+  });
+
+  document.getElementById("captionControl").addEventListener("input", event => {
+    state.caption = event.target.value;
+    rerender();
+  });
+
+  document.getElementById("widthControl").addEventListener("input", event => {
+    state.width = Number(event.target.value);
+    rerender();
+  });
+
+  document.getElementById("borderControl").addEventListener("change", event => {
+    state.border = event.target.checked;
+    rerender();
+  });
+
+  document.querySelectorAll("#formatControl button").forEach(button => {
+    button.addEventListener("click", () => {
+      state.format = button.dataset.format;
+      syncControlsFromState();
+      rerender();
+    });
+  });
+
+  document.getElementById("resetBuilder").addEventListener("click", () => {
+    state = { ...defaultState };
+    syncControlsFromState();
+    rerender();
+  });
+
+  document.getElementById("copyCode").addEventListener("click", async () => {
+    const code = buildEmbedCode(state);
+    const status = document.getElementById("copyStatus");
+
+    try {
+      await navigator.clipboard.writeText(code);
+      status.textContent = "Copied — paste it into your page.";
+    } catch {
+      status.textContent = "Copy failed in this browser. Select the code manually.";
+    }
+
+    window.setTimeout(() => {
+      status.textContent = "";
+    }, 2600);
+  });
+}
+
+async function init() {
+  populateStyleControl();
+  syncControlsFromState();
+
+  if (window.customElements?.whenDefined) {
+    try {
+      await customElements.whenDefined("timenow-zone-sdcw");
+    } catch {}
+  }
+
+  renderPresets();
+  renderBuilder();
+  wireBuilder();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init, { once: true });
+} else {
+  init();
+}
+</script>
+</body>
+</html>
