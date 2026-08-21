@@ -5,14 +5,14 @@ function $parcel$interopDefault(a) {
 }
 /*!
  * Simple Digital Clock Widget
- * Simple Digital Clock Widget – is a 🪶 light (11 kB gzip) HTML/JS based, easy-to-use digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.
+ * Simple Digital Clock Widget – a lightweight HTML/JS digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.
  *
  * Repo:    https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
  * Demo:    https://utctime.info/
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.6.0
+ * Version: 0.7.0
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */ var $6bd3564550fc0340$var$n, $6bd3564550fc0340$export$41c562ebe57d11e2, $6bd3564550fc0340$var$u, $6bd3564550fc0340$export$a8257692ac88316c, $6bd3564550fc0340$var$i, $6bd3564550fc0340$var$r, $6bd3564550fc0340$var$o, $6bd3564550fc0340$var$e, $6bd3564550fc0340$var$f, $6bd3564550fc0340$var$c, $6bd3564550fc0340$var$a, $6bd3564550fc0340$var$s, $6bd3564550fc0340$var$h, $6bd3564550fc0340$var$p, $6bd3564550fc0340$var$v, $6bd3564550fc0340$var$y, $6bd3564550fc0340$var$d = {}, $6bd3564550fc0340$var$w = [], $6bd3564550fc0340$var$_ = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i, $6bd3564550fc0340$var$g = Array.isArray;
@@ -695,7 +695,7 @@ $b2927e49b2707936$exports = {
 var $02a8a47a7fc1ea47$export$2e2bcd8739ae039 = $02a8a47a7fc1ea47$var$isDark;
 
 
-const $aa43cbaf8926a599$var$v = "0.6.0";
+const $aa43cbaf8926a599$var$v = "0.7.0";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc0340$export$16fa2f45be04daa8) {
     constructor(props){

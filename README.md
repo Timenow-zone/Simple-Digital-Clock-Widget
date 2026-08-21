@@ -4,8 +4,8 @@ Lightweight, framework-agnostic web component (built with Preact) to display a d
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.6.0`
-* **Tiny:** 10.6 KiB gzipped (`dist/0.6.0.min.js`; 29,819 bytes minified, 10,859 bytes gzip)
+* **Current version:** `0.7.0`
+* **Tiny:** 11.2 KiB gzipped (`dist/0.7.0.min.js`; 32,649 bytes minified, 11,422 bytes gzip)
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
 * **Theme-aware:** auto light/dark, or force it
