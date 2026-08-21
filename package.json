@@ -54,7 +54,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
-    "@babel/preset-typescript": "^7.27.1",
     "@esm-bundle/chai": "^4.3.4-fix.0",
     "@parcel/compressor-brotli": "^2.16.4",
     "@parcel/compressor-gzip": "^2.16.4",
@@ -67,7 +66,6 @@
     "@types/preact-custom-element": "^4.0.4",
     "@typescript-eslint/eslint-plugin": "^8.67.0",
     "@typescript-eslint/parser": "^8.67.0",
-    "@web/dev-server-esbuild": "^1.0.4",
     "@web/test-runner": "^0.20.2",
     "@web/test-runner-playwright": "^0.11.1",
     "autoprefixer": "^10.5.4",
