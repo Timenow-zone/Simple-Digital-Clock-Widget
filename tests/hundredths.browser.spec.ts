@@ -216,3 +216,73 @@ it("hundredths fits responsive widths without wrapping", async () => {
     for (const el of widgets) el.remove();
   }
 });
+
+it("hundredths refreshes its cached formatter when period changes", async () => {
+  const el = createWidget();
+  el.setAttribute("locale", "en-US");
+  el.setAttribute("period", "false");
+  el.setAttribute("hundredths", "");
+  document.body.appendChild(el);
+
+  try {
+    await wait();
+    assert.notMatch(el.shadowRoot!.querySelector("a")!.textContent || "", /\bAM|PM\b/i);
+
+    el.setAttribute("period", "");
+    await wait();
+
+    const text = el.shadowRoot!.querySelector("a")!.textContent || "";
+    assert.match(text, /\.\d{2}\b/);
+    assert.match(text.toUpperCase(), /\bAM|PM\b/);
+  } finally {
+    el.remove();
+  }
+});
+
+it("hundredths recovers its cached formatter after an invalid time zone is replaced", async () => {
+  const el = createWidget();
+  const originalConsoleError = console.error;
+
+  console.error = () => {};
+
+  el.setAttribute("locale", "en-US");
+  el.setAttribute("time-zone", "Invalid/TimeZone");
+  el.setAttribute("hundredths", "");
+  document.body.appendChild(el);
+
+  try {
+    await wait();
+
+    assert.include(
+      el.shadowRoot?.textContent || "",
+      "Error, please check attributes of tag.",
+    );
+
+    el.setAttribute("time-zone", "UTC");
+
+    let recovered = false;
+
+    for (let i = 0; i < 30; i += 1) {
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      const shadowText = el.shadowRoot?.textContent || "";
+      const timeText = el.shadowRoot?.querySelector("a")?.textContent || "";
+
+      if (
+        !shadowText.includes("Error, please check attributes of tag.") &&
+        /\.\d{2}\b/.test(timeText)
+      ) {
+        recovered = true;
+        break;
+      }
+    }
+
+    assert.isTrue(
+      recovered,
+      "widget should recover after replacing the invalid time zone",
+    );
+  } finally {
+    console.error = originalConsoleError;
+    el.remove();
+  }
+});

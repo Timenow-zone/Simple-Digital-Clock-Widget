@@ -699,7 +699,38 @@ const $aa43cbaf8926a599$var$v = "0.6.0";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc0340$export$16fa2f45be04daa8) {
     constructor(props){
-        super(props), this.hundredthsMetadataAt = 0, this.containerRef = null, this.zoneContainerRef = null, this.dateContainerRef = null, this.isHundredthsEnabled = ()=>this.normalizeBool(this.props.hundredths) === true, this.stopClock = ()=>{
+        super(props), this.hundredthsMetadataAt = 0, this.hundredthsFormatterFailed = false, this.containerRef = null, this.zoneContainerRef = null, this.dateContainerRef = null, this.isHundredthsEnabled = ()=>this.normalizeBool(this.props.hundredths) === true, this.resetHundredthsFormatter = ()=>{
+            this.hundredthsFormatter = undefined;
+            this.hundredthsFormatterFailed = false;
+        }, this.getHundredthsFormatter = ()=>{
+            if (this.hundredthsFormatter) return this.hundredthsFormatter;
+            if (this.hundredthsFormatterFailed) return undefined;
+            const { locale: locale, timeZone: timeZone } = this.props;
+            const periodPref = this.normalizeBool(this.props.period);
+            try {
+                this.hundredthsFormatter = new Intl.DateTimeFormat(locale, {
+                    timeZone: timeZone,
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                    fractionalSecondDigits: 2,
+                    ...periodPref !== undefined ? {
+                        hour12: periodPref,
+                        hourCycle: periodPref ? "h12" : "h23"
+                    } : {}
+                });
+                return this.hundredthsFormatter;
+            } catch (e) {
+                this.hundredthsFormatterFailed = true;
+                if (!this.state.isError) {
+                    console.error("Error: ", e);
+                    this.setState({
+                        isError: true
+                    });
+                }
+                return undefined;
+            }
+        }, this.stopClock = ()=>{
             if (this.interval !== undefined) {
                 clearInterval(this.interval);
                 this.interval = undefined;
@@ -717,20 +748,10 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc03
             }
             this.interval = setInterval(this.updateTimeAndDateString, 1000);
         }, this.updateHundredthsTimeString = (date)=>{
-            const { locale: locale, timeZone: timeZone } = this.props;
-            const periodPref = this.normalizeBool(this.props.period);
+            const formatter = this.getHundredthsFormatter();
+            if (!formatter) return;
             try {
-                const timeString = date.toLocaleTimeString(locale, {
-                    timeZone: timeZone,
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                    fractionalSecondDigits: 2,
-                    ...periodPref !== undefined ? {
-                        hour12: periodPref,
-                        hourCycle: periodPref ? "h12" : "h23"
-                    } : {}
-                });
+                const timeString = formatter.format(date);
                 if (timeString !== this.state.timeString) this.setState({
                     timeString: timeString
                 });
@@ -928,6 +949,8 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc03
     }
     componentDidUpdate(prevProps) {
         const hundredthsChanged = prevProps.hundredths !== this.props.hundredths;
+        const hundredthsFormatChanged = prevProps.locale !== this.props.locale || prevProps.timeZone !== this.props.timeZone || prevProps.period !== this.props.period;
+        if (hundredthsFormatChanged) this.resetHundredthsFormatter();
         if (prevProps.fontFamily !== this.props.fontFamily) this.loadGoogleFont(this.props.fontFamily);
         if (prevProps.width !== this.props.width || hundredthsChanged) this.handleResize();
         if (prevProps.prefers !== this.props.prefers) this.handlePrefers();

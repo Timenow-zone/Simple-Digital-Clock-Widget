@@ -80,6 +80,8 @@ class SimpleDigitalClockWidget extends Component<
   interval?: number;
   animationFrame?: number;
   hundredthsMetadataAt = 0;
+  hundredthsFormatter?: Intl.DateTimeFormat;
+  hundredthsFormatterFailed = false;
   containerRef: HTMLDivElement | null = null;
   zoneContainerRef: HTMLDivElement | null = null;
   dateContainerRef: HTMLDivElement | null = null;
@@ -138,6 +140,43 @@ class SimpleDigitalClockWidget extends Component<
   private isHundredthsEnabled = (): boolean =>
     this.normalizeBool(this.props.hundredths) === true;
 
+  private resetHundredthsFormatter = () => {
+    this.hundredthsFormatter = undefined;
+    this.hundredthsFormatterFailed = false;
+  };
+
+  private getHundredthsFormatter = (): Intl.DateTimeFormat | undefined => {
+    if (this.hundredthsFormatter) return this.hundredthsFormatter;
+    if (this.hundredthsFormatterFailed) return undefined;
+
+    const { locale, timeZone } = this.props;
+    const periodPref = this.normalizeBool(this.props.period);
+
+    try {
+      this.hundredthsFormatter = new Intl.DateTimeFormat(locale, {
+        timeZone,
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        fractionalSecondDigits: 2,
+        ...(periodPref !== undefined
+          ? { hour12: periodPref, hourCycle: periodPref ? "h12" : "h23" }
+          : {}),
+      });
+
+      return this.hundredthsFormatter;
+    } catch (e) {
+      this.hundredthsFormatterFailed = true;
+
+      if (!this.state.isError) {
+        console.error("Error: ", e);
+        this.setState({ isError: true });
+      }
+
+      return undefined;
+    }
+  };
+
   private stopClock = () => {
     if (this.interval !== undefined) {
       clearInterval(this.interval);
@@ -163,20 +202,11 @@ class SimpleDigitalClockWidget extends Component<
   };
 
   private updateHundredthsTimeString = (date: Date) => {
-    const { locale, timeZone } = this.props;
-    const periodPref = this.normalizeBool(this.props.period);
+    const formatter = this.getHundredthsFormatter();
+    if (!formatter) return;
 
     try {
-      const timeString = date.toLocaleTimeString(locale, {
-        timeZone,
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-        fractionalSecondDigits: 2,
-        ...(periodPref !== undefined
-          ? { hour12: periodPref, hourCycle: periodPref ? "h12" : "h23" }
-          : {}),
-      });
+      const timeString = formatter.format(date);
 
       if (timeString !== this.state.timeString) {
         this.setState({ timeString });
@@ -359,6 +389,14 @@ class SimpleDigitalClockWidget extends Component<
 
   componentDidUpdate(prevProps: SimpleDigitalClockWidgetProps) {
     const hundredthsChanged = prevProps.hundredths !== this.props.hundredths;
+    const hundredthsFormatChanged =
+      prevProps.locale !== this.props.locale ||
+      prevProps.timeZone !== this.props.timeZone ||
+      prevProps.period !== this.props.period;
+
+    if (hundredthsFormatChanged) {
+      this.resetHundredthsFormatter();
+    }
 
     if (prevProps.fontFamily !== this.props.fontFamily) {
       this.loadGoogleFont(this.props.fontFamily as string);
