@@ -1,41 +1,41 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2020",
     "module": "ESNext",
-    "lib": ["dom", "es6", "dom.iterable", "esnext.intl", "esnext", "scripthost", "es2020.intl"],
+    "lib": ["DOM", "DOM.Iterable", "ES2021"],
+
     "jsx": "react",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
+
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+
     "noEmit": true,
-    "baseUrl": "./",
+
     "paths": {
       "@/*": ["./src/*"]
     }
   },
+
   "include": [
     "src/**/*",
-    "./parcel.d.ts",
-    "./declarations.d.ts",
-    "tests/darkenColor.spec.ts",
-    "tests/contrastColor.spec.ts",
-    "tests/isDark.spec.ts",
-    "tests/widget-ref.spec.ts"
+    "parcel.d.ts",
+    "declarations.d.ts"
   ],
+
   "exclude": [
     "node_modules",
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    ".vscode",
     ".parcel-cache",
-    "./dist/*"
+    ".tmp-tests",
+    ".tmp-web",
+    "dist"
   ]
 }
