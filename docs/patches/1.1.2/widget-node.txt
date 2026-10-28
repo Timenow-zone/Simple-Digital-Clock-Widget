@@ -1,0 +1,42 @@
+
+> simple-digital-clock-widget@0.7.0 pretest:node
+> rm -rf .tmp-tests && tsc -p tsconfig.test.json
+
+
+> simple-digital-clock-widget@0.7.0 test:node
+> npm run pretest:node && node --test './.tmp-tests/**/*.spec.js' './.tmp-tests/**/*.test.js'
+
+
+> simple-digital-clock-widget@0.7.0 pretest:node
+> rm -rf .tmp-tests && tsc -p tsconfig.test.json
+
+✔ HEX #000 / #fff (0.510417ms)
+✔ rgb ints (0.195584ms)
+✔ rgb percentages (0.069542ms)
+✔ invalid throws (0.096833ms)
+✔ RGB uppercase + extra spaces (0.48425ms)
+✔ short HEX with alpha (#RGBA) (0.07375ms)
+✔ boundary luminance 0.5 (0.059667ms)
+✔ invalid formats (0.083625ms)
+✔ HEX without alpha — darken 20% (0.528542ms)
+✔ HEX with alpha — preserve alpha (0.075417ms)
+✔ short HEX (#RGB/#RGBA) (0.066875ms)
+✔ rgb()/rgba() — format preserved (0.6355ms)
+✔ rgb percentage channels (0.131708ms)
+✔ percent 0 returns original; clamp to [-1,1] (0.070416ms)
+✔ rgba alpha preserved (0.075583ms)
+✔ rgb percentage channels (0.055625ms)
+✔ invalid inputs throw (format only) (0.199458ms)
+✔ returns false if window is undefined (0.473625ms)
+✔ returns false if matchMedia is missing (0.097291ms)
+✔ detects dark scheme (0.089375ms)
+✔ detects light scheme (0.478958ms)
+✔ matchMedia called with correct query (0.143375ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 56.193125

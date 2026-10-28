@@ -1,0 +1,2037 @@
+{
+  "created_at": "2026-10-28T14:02:52.301867+00:00",
+  "verdict": "PASS in the documented matrix; limitations retained",
+  "published": false,
+  "candidate": {
+    "candidate_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+    "baseline_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+    "diff_sha256": "ba3623a4aac2dfd60799c6fde1e7cd707a6816589bf404d8e47e67b5a73e101c",
+    "files": {
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+      "assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+      "block.js": "6c13cd91d7e3f3ae4957bbe757a2de415ce74ed0de1258e8014896c69618f514",
+      "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "includes/simple-digital-clock-kses.php": "0664e49e5126290d3f9c8be45dec28096714326ffe6307ae58734d359bcf9271",
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "languages/simple-digital-clock.pot": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb",
+      "readme.txt": "9f24cfeccafa81aad8466bd9c2bb3a309fe750431f45197e93384edadf482f76",
+      "widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+    },
+    "crc": true,
+    "source_match": true,
+    "patch_strip": 1,
+    "patch_working_directory": "parent of simple-digital-clock",
+    "patch_dry_run": true,
+    "patch_application_matches": true,
+    "standalone_source_unchanged": true
+  },
+  "contexts": [
+    {
+      "key": "wp70",
+      "url": "http://127.0.0.1:19528",
+      "post_id": 6,
+      "multisite": false,
+      "runtime": "extended/wp70",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "theme": "twentytwentythree",
+      "block_theme": true
+    },
+    {
+      "key": "wp74",
+      "url": "http://127.0.0.1:19529",
+      "post_id": 6,
+      "multisite": false,
+      "runtime": "extended/wp74",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "7.4.33",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "wp85",
+      "url": "http://127.0.0.1:19530",
+      "post_id": 6,
+      "multisite": false,
+      "runtime": "extended/wp85",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "ms85",
+      "url": "http://127.0.0.1:19531",
+      "post_id": 4,
+      "multisite": true,
+      "runtime": "extended/ms85",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        },
+        "siteadmin": {
+          "id": 7,
+          "unfiltered_html": false,
+          "widgets": true
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "ms85-child",
+      "url": "http://127.0.0.1:19531/clock-child",
+      "post_id": 3,
+      "multisite": true,
+      "runtime": "extended/ms85",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 8,
+          "unfiltered_html": false,
+          "widgets": false
+        },
+        "author": {
+          "id": 9,
+          "unfiltered_html": false,
+          "widgets": false
+        },
+        "siteadmin": {
+          "id": 10,
+          "unfiltered_html": false,
+          "widgets": true
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyone",
+      "block_theme": false
+    },
+    {
+      "key": "wp71",
+      "url": "http://127.0.0.1:19427",
+      "post_id": 4,
+      "multisite": false,
+      "runtime": "old/wp71",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 4,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "wp84",
+      "url": "http://127.0.0.1:19428",
+      "post_id": 4,
+      "multisite": false,
+      "runtime": "old/wp84",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 4,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.4.27",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "wp63",
+      "url": "http://127.0.0.1:19429",
+      "post_id": 4,
+      "multisite": false,
+      "runtime": "old/wp63",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 4,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "theme": "twentytwentythree",
+      "block_theme": true
+    },
+    {
+      "key": "wp68",
+      "url": "http://127.0.0.1:19430",
+      "post_id": 4,
+      "multisite": false,
+      "runtime": "old/wp68",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 4,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "6.8.3",
+      "php": "8.3.28",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "localwp",
+      "url": "http://localhost:10003",
+      "post_id": 4,
+      "multisite": false,
+      "runtime": "localwp",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.2.29",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    }
+  ],
+  "php_assertions": 13520,
+  "entity_dom_comparisons": 1091040,
+  "node_tests": 22,
+  "standalone_browser_tests": 84,
+  "groups": {
+    "upgraded": {
+      "passed": 1527,
+      "runs": [
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-link-fixed-wp70-chromium.json",
+          "checks": 50,
+          "sha256": "3901b5dc4227060e879fff5667809d142ab4d587df98e86c62a0960f29031967"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp74-chromium.json",
+          "checks": 50,
+          "sha256": "a902f45428b6e034868696d609595dac9ac3a05071ccfa67e5b34c9442d6b4bb"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp85-chromium.json",
+          "checks": 50,
+          "sha256": "2c8dab82d2c812c2ad07e99e5248c4115cceeb0676e2c80dfabd1354be04f998"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-chromium.json",
+          "checks": 56,
+          "sha256": "1cbc8ab0c4d77631c49f0712f94a3d8b4d15e024d8a72caccdb769f4ebc89223"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-child-chromium.json",
+          "checks": 53,
+          "sha256": "a9eb28db92b81cca503c6eb6aae6a3e5cd61224ce9dcd934f9db9caaa0175c87"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp71-chromium.json",
+          "checks": 50,
+          "sha256": "13567e1a5ce612c8a9052108d5644435add092ceba832dae2feeccde01e49fba"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp84-chromium.json",
+          "checks": 50,
+          "sha256": "144331a550aec1631a2edf5583840641c27b02ce9bd20742f1af42ca2da7e2ca"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-link-fixed-wp63-chromium.json",
+          "checks": 50,
+          "sha256": "0e37c131b0ca8867593bf8e20541734654e76ddaa684ae3a32c0131ec1e4211d"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp68-chromium.json",
+          "checks": 50,
+          "sha256": "fe9b96e056d159da0703f68d2cb40278d2c10114b6376608801dcfd36de7d440"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-localwp-chromium.json",
+          "checks": 50,
+          "sha256": "e56f413aa79a80fca2defd1d1b78061c587d8ee1113c4d620c039681ab3f579c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp70-webkit.json",
+          "checks": 50,
+          "sha256": "a438b71210e3e38843385d899047dec9eeb744c80f89700d66f3c01eb003ad7d"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp74-webkit.json",
+          "checks": 50,
+          "sha256": "8ef2bbf70fc727333e7cf706faebc6eb676daf8014a7f27f6b6753d69730d9b2"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp85-webkit.json",
+          "checks": 50,
+          "sha256": "080cf7fbda3b82216292970c12f438a06b974ccba616122bc84006cda66ea65e"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-webkit.json",
+          "checks": 56,
+          "sha256": "3c261dfe09bd71db34227c4e09bb06b688d5a565eb60588a2ebd79352729df46"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-child-webkit.json",
+          "checks": 53,
+          "sha256": "53c41f90dc4bd70fc94211df133ff0bb0a078de0a9a40671b76cd27918fe7960"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp71-webkit.json",
+          "checks": 50,
+          "sha256": "eef543c3562f71a305e2795bd261968c1df5c9a0199313b1b9d231f332751b78"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp84-webkit.json",
+          "checks": 50,
+          "sha256": "677cbe693556af4a1c23017bbf8c5f060e4dcadc111145d65cb74896eb16e66f"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp63-webkit.json",
+          "checks": 50,
+          "sha256": "50c3e11a17bdd2f3d2a585eb75abedf9c4b35eb5971e1b405e58090a474a0525"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp68-webkit.json",
+          "checks": 50,
+          "sha256": "ef641a7d4bb97351c53d6c0e4097bb6b26b917dbc30027d2d3f5b13dc78afd02"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-localwp-webkit.json",
+          "checks": 50,
+          "sha256": "4473734ac5bb2c91ee6b8d44af803d11ace82fec30a2c3310416a7d92c66857c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp70-firefox.json",
+          "checks": 50,
+          "sha256": "f6575326e35f6f9209ee1a051d14edbf22907ee6ae7bcb6f30ac98a2362efe60"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp74-firefox.json",
+          "checks": 50,
+          "sha256": "874d9def367078d07215cd53b401ffe355482a4acda4a57377c3a929d1c8832c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp85-firefox.json",
+          "checks": 50,
+          "sha256": "c7445df838cac5bfee98f0d1aab3cb7af3602b76fe9f254fbdb35e9beefe1141"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-firefox.json",
+          "checks": 56,
+          "sha256": "3d2bfad5cb6d7a285e9b88374f4b2f603e8ce70bc4512f6e79fc6149c1274c7b"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-child-firefox.json",
+          "checks": 53,
+          "sha256": "f1a24cd9ae169f45373df851465f4006c53013ff24f16f2091cbe2513423bbee"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp71-firefox.json",
+          "checks": 50,
+          "sha256": "7516d615e935af50ed11e866b26be92abe5a4983d16ebe355e04b21833e27eda"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp84-firefox.json",
+          "checks": 50,
+          "sha256": "281a59c7934b59d0955494f70e38233f1f5e5f0b5be75637d15c924c02a08f8d"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp63-firefox.json",
+          "checks": 50,
+          "sha256": "10b9b6900a62af2ac553bb689817fdea451134d8d1aa38636f868bcbafe46df8"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp68-firefox.json",
+          "checks": 50,
+          "sha256": "a5864a012f6649add7d7b2cfa60a37cae1627cdaf99b783945e1fb403d428ac1"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/upgraded-localwp-firefox.json",
+          "checks": 50,
+          "sha256": "0f4ba720c697ffdd88d42516883e1baa28775fc9695eb2d9467b90e39c3b73fa"
+        }
+      ]
+    },
+    "rollback": {
+      "passed": 1740,
+      "runs": [
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp70-chromium.json",
+          "checks": 57,
+          "sha256": "0752879aa0010345447b78758f3864040595a5965f227b2a641e8bd8a3608d7c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp74-chromium.json",
+          "checks": 57,
+          "sha256": "34b54bac40e9a440871c2b0bdc6b4887ee043490ad1786b6fc8e33d66265dfcb"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp85-chromium.json",
+          "checks": 57,
+          "sha256": "ffd8a27db35bd6b563d76c964311b308aafc6e69480bfb7c36c7e89f241dffb8"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-ms85-chromium.json",
+          "checks": 64,
+          "sha256": "051ab1fb75503c3b15a8641412033b8caac4f01d353902488710f413355f7084"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-ms85-child-chromium.json",
+          "checks": 60,
+          "sha256": "625f2b13af797b96f6479460a66845508845ede05c172b33b7519423b028d129"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp71-chromium.json",
+          "checks": 57,
+          "sha256": "60a067df3f8e01ddc6bbd153ad2bee7b451c3de46bf280378674dfe657942006"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp84-chromium.json",
+          "checks": 57,
+          "sha256": "6173e54e140a4e68fd9a79f75d8150d0c373af939e63ca05107752b6a88926ca"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp63-chromium.json",
+          "checks": 57,
+          "sha256": "5cf196ee0734f310ae0f0c87e7a1a52936778e99fadc3cf46c57f09c761f1ffa"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp68-chromium.json",
+          "checks": 57,
+          "sha256": "7ee3ad0f4a20367ad2eee770e7365eb4f640c2110095069b749f15923693cbbb"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-localwp-chromium.json",
+          "checks": 57,
+          "sha256": "0fab10872edeea3223f2b74c390c482cc5de8584ad2bae5d13e9038b268ebb95"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp70-webkit.json",
+          "checks": 57,
+          "sha256": "1686c715e8393e31db4855c7a7f2a0bc1bb748912194d678be309cf09a98758a"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp74-webkit.json",
+          "checks": 57,
+          "sha256": "b71961d0e1d0fd87d157b6509db79dacafc4645d5700a653d52a7ea618bdeea5"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp85-webkit.json",
+          "checks": 57,
+          "sha256": "31074415af78c4f8bf4bd0b17076edc5b00c0624217f25a9d7eff79a61c135fc"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-ms85-webkit.json",
+          "checks": 64,
+          "sha256": "6fc6cc65f0ba7ef84c3e22a9d919c52fd97ab4b23e9abcad3624d84cb16f0f78"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-ms85-child-webkit.json",
+          "checks": 60,
+          "sha256": "6318c8e1506e83dc90f496844acd504a62a0f4b20c3af54244632807ada1472b"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp71-webkit.json",
+          "checks": 57,
+          "sha256": "4a88d994f080b9da88eed806936428f215f74aeabff1a31a7d34d18bac76fd25"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp84-webkit.json",
+          "checks": 57,
+          "sha256": "41648d5c75423b62a8f6abbc745b2c2a8c91dac78ade5a0d2adf58dd4fc8d970"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp63-webkit.json",
+          "checks": 57,
+          "sha256": "89336a474c4fae967f904821387bbf405516142d3accdb1dbee393a0d3dc26a6"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp68-webkit.json",
+          "checks": 57,
+          "sha256": "f65a374a2a3c59e5625f448fb64e6cad50921bb71c14592909b8b1cd9fccc3eb"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-localwp-webkit.json",
+          "checks": 57,
+          "sha256": "0ada58409491e9f27db0c27097b25b539e08c3bb4dd7ac19915447c23390413f"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp70-firefox.json",
+          "checks": 57,
+          "sha256": "b58daadeb2a8c794c4d5f6f1afc340067939527096955caa3a1da5fb7ed0f31b"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp74-firefox.json",
+          "checks": 57,
+          "sha256": "54efa71f2cbee19c3b3067527039b6dad42b3c80bac961f89efd27e91ab7f50c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp85-firefox.json",
+          "checks": 57,
+          "sha256": "94f8ce7fa414baf3186f334e1033095b2bb5023292790d5338a4dc52cfe3eb3c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-ms85-firefox.json",
+          "checks": 64,
+          "sha256": "dd924db60ace46ff404a37c646d912781057d5e25d8d094f1a2baebf2ae6c78b"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-ms85-child-firefox.json",
+          "checks": 60,
+          "sha256": "9427cb78f72218bd851637a6bb9f5a780a0ceb9f60bb7064935ce86d01237fe1"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp71-firefox.json",
+          "checks": 57,
+          "sha256": "1ede35a06aecafdaa813debcd5546534a1a94e6a9f016da7da3403694822fc2b"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp84-firefox.json",
+          "checks": 57,
+          "sha256": "e03fd61145ff957f539b8da286aa48e6c9a929836b3feaabcdf942888701d48d"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp63-firefox.json",
+          "checks": 57,
+          "sha256": "e1f260f6fc4cdefab72ef0eb0eaa26fe569cea35019dc4d396e829e824506418"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-wp68-firefox.json",
+          "checks": 57,
+          "sha256": "4349a7aef99b915a67c8a7a0b65ddc675a6690f023ee25afa8d9973d14614b0e"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/rollback-localwp-firefox.json",
+          "checks": 57,
+          "sha256": "f4976a6f7a8fa7ff18c8bb10d655e526f981601012b3457303aa5d3202d76758"
+        }
+      ]
+    },
+    "reupgraded": {
+      "passed": 580,
+      "runs": [
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-wp70-chromium.json",
+          "checks": 57,
+          "sha256": "af8f2af80b2ef2938cd4ad8d736da825257c64c39d6668e3639d165ac46cb03a"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-wp74-chromium.json",
+          "checks": 57,
+          "sha256": "70bb46657b599acbc02eb7b6e4eadf9fbec5fccee490dcc6656ba41a2fe951d4"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-wp85-chromium.json",
+          "checks": 57,
+          "sha256": "048f2f2f7155890e83858f68339c85fca7a73dd73c0a6f0c74d7cf9c5a399390"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-ms85-chromium.json",
+          "checks": 64,
+          "sha256": "c60bdf65044f7f50c63b4d60c9009bf4c37342f6e7952bddc406f8a8c9545a14"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-ms85-child-chromium.json",
+          "checks": 60,
+          "sha256": "17645c36e4f7a929c99bad3271a7fc3d1395aad1add93c4d7a534226f220363c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-wp71-chromium.json",
+          "checks": 57,
+          "sha256": "1846604b73c0e9a4c246b99356ebef46eef48d1f9ecb6c90525c4028335e6c6d"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-wp84-chromium.json",
+          "checks": 57,
+          "sha256": "42701aa0e6c213d6218177cf481c83fb219e953a11838c35a2aca7df8e901059"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-wp63-chromium.json",
+          "checks": 57,
+          "sha256": "6eb6b9b4c8c92589ccd6d158bc27cbe6119f15ca81634bbeb668a42d30ea381e"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-wp68-chromium.json",
+          "checks": 57,
+          "sha256": "d2cb39fc36c08f3b45c6b5071e9330d2dec5118b99a8537c599a7f45567a3cd2"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/reupgraded-localwp-chromium.json",
+          "checks": 57,
+          "sha256": "141a3a81137214db7a28a830b592b81cb0c581663c1ca31db6a995b1184f093e"
+        }
+      ]
+    },
+    "save": {
+      "passed": 1335,
+      "runs": [
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp70-chromium.json",
+          "checks": 43,
+          "sha256": "1167f6e52e4ce623ff094d0250ce93a7abc731ab10f2ae88e8aafb3336c2fe10"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp74-chromium.json",
+          "checks": 43,
+          "sha256": "1fefb68fc2ff8c2baf507057285262f8ebb4f4061bca594dd6bb4bcb8bfb4550"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp85-chromium.json",
+          "checks": 43,
+          "sha256": "fe528666d7cfbbc2ae581a4e3fd983ed7549ea478728705aa140951d2ab804b0"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-chromium.json",
+          "checks": 48,
+          "sha256": "480418803ceaaa0dec96158edb0097cca26c6fd12b41921607544f6e52702ac7"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-child-chromium.json",
+          "checks": 46,
+          "sha256": "cdec14c7a6e99accf5e161dab374405001e3e525d6a950d930bd9d4c4cb3e03c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp71-chromium.json",
+          "checks": 43,
+          "sha256": "d041c23068fcc335f44f7bb3f88f411d52d8b15b7b68e3cfb46f7aeefef28133"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp84-chromium.json",
+          "checks": 43,
+          "sha256": "c71301e4615e24d886cb3828fc2d38f59653049fab051c6d6ccec36d3bab2cea"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp63-chromium.json",
+          "checks": 43,
+          "sha256": "b384076d327de5ff6a9112864417c354fed4e581664c85de3c685d829fd2ab3d"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp68-chromium.json",
+          "checks": 43,
+          "sha256": "1e4059987d876fe50ee73490a1f1bb3d06d480be0646b4eabb0d12e6baf1af5d"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-localwp-chromium.json",
+          "checks": 43,
+          "sha256": "ea41723f6432aeb7c9ff6030c0175c8869908156833f9458b0c32d315116b459"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp70-webkit.json",
+          "checks": 43,
+          "sha256": "43706db80d4fd6077d610242ba6e2be1e89bebf9f45fa4fa506dd9e99f66ac4f"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp74-webkit.json",
+          "checks": 43,
+          "sha256": "0f5280dead758638eeb3de3c1806033296a0efe7bca753c0fe1ef1cf479e723c"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp85-webkit.json",
+          "checks": 43,
+          "sha256": "07ee778a40e6301919d3ace54f7e2bc67dcd4d50aa65253caf7795373355a0cc"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-webkit.json",
+          "checks": 48,
+          "sha256": "78913235c494ddb4565fac7dfa898c3ecc0bc746474d23f0f21f0d4a4c83b6c2"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-child-webkit.json",
+          "checks": 46,
+          "sha256": "37c8d4862898619f75dc8107db0a10d8283227b7a73677ce36221d5655fdc9d2"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp71-webkit.json",
+          "checks": 43,
+          "sha256": "afef32be8e94fd30e4f2037a12fc20fda3effaf4b22106309430735c5cff2789"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp84-webkit.json",
+          "checks": 43,
+          "sha256": "895d27f32fcc3879d2ac44c3083a8f5765d75472dfcf57758c0899f3028abe96"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp63-webkit.json",
+          "checks": 43,
+          "sha256": "2659939e97a92c3d26ea1800e5917095e1941ab1888f15886d948bbd6bc5bc64"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp68-webkit.json",
+          "checks": 43,
+          "sha256": "23dce0d841363090585bc9b01d5f305a53c7c2b709e7ad8e4e8ec7ac483921c0"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-localwp-webkit.json",
+          "checks": 43,
+          "sha256": "14f544447fd22ec1fc265b724290098ae1a69ba20972150ec99e2abfa8fa5809"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-geometry-wp70-firefox.json",
+          "checks": 50,
+          "sha256": "c8dc872431ddf832be22ce4ce34a7dab26d05a88eb80e9c991eb8fef4e7ad1ca"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp74-firefox.json",
+          "checks": 43,
+          "sha256": "7f70fedb560e582b2b3fe4e16f9749842be87f57243304cdd49dece5f913fc84"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp85-firefox.json",
+          "checks": 43,
+          "sha256": "6475c23b4eff6221243d1acec0d83e17bcd79fad8a523af7404164846c3e7601"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-firefox.json",
+          "checks": 48,
+          "sha256": "efc08fa26bd349f28cfa34fdc76ae43ed221ecbe60b4de1e8452d409175f3fc1"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-geometry-ms85-child-firefox.json",
+          "checks": 53,
+          "sha256": "656bd1f57b9b5afba6754289394f605e8e5265922e06691516a9089ffea027de"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp71-firefox.json",
+          "checks": 43,
+          "sha256": "e5a353d870bdff239150a48f095483aa911af174ae37da66c245b97139476857"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp84-firefox.json",
+          "checks": 43,
+          "sha256": "ccf305d9c74d8faac526ad9ce8a213901b38b083ca7c7062ce3f4a91e1f82e16"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-geometry-wp63-firefox.json",
+          "checks": 50,
+          "sha256": "4b7a1a813b6f1f6c030e65171b0cf6916abe739d97e38df0ee69fa52a5091e2b"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp68-firefox.json",
+          "checks": 43,
+          "sha256": "1e33560a51f6c2915f3164616f09b4555c68d9c219524af382d72318e97c096e"
+        },
+        {
+          "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-localwp-firefox.json",
+          "checks": 43,
+          "sha256": "6179fb9b557e91c479085882aa91168ec2f9446940e9e50a31dac8582aab4a2a"
+        }
+      ]
+    },
+    "locale": {
+      "passed": 378,
+      "runs": [
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-localwp-chromium.json",
+          "checks": 42,
+          "sha256": "f1ea75e9de529c30188eddcf02f674702e7c282f07832a890c11cd4a7fd89d1a"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-wp70-chromium.json",
+          "checks": 42,
+          "sha256": "2ec43937741259f3de6ca05892370fc0a2210435e3c5fd93d5bf52df030d90a8"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-ms85-child-chromium.json",
+          "checks": 42,
+          "sha256": "30165be0417d0966ff5274f8ea10d24b85949275a209221d942449d4bdcceeaf"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-localwp-webkit.json",
+          "checks": 42,
+          "sha256": "4d9dcd90703773b6e0945ab352286f77b0cb93aede1e99385262550c39714ff2"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-wp70-webkit.json",
+          "checks": 42,
+          "sha256": "45f95160e245eab4c9244794b58a070f31a8b480de4416156a4277d51b8fcf5f"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-ms85-child-webkit.json",
+          "checks": 42,
+          "sha256": "c115daa51312fee7f06d8627deb788ee250f0ebbaa0c0c70cd09ac3991d5d8f3"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-localwp-firefox.json",
+          "checks": 42,
+          "sha256": "d212e90e4608ce3f7a3aebd974ce3f446be999f64843b3770766e92cc7a4b966"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-retry-921-wp70-firefox.json",
+          "checks": 42,
+          "sha256": "3c625ab885e52e6feafe275d365cb15e6380d9c1549230bc7a2688bd637acc37"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-ms85-child-firefox.json",
+          "checks": 42,
+          "sha256": "1de0f8d8b33f177a16a43418fb2ce2636530c8973bcc17856a327cb42e17e0b3"
+        }
+      ]
+    },
+    "locale_rollback": {
+      "passed": 63,
+      "runs": [
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-localwp-chromium.json",
+          "checks": 7,
+          "sha256": "133cd239b23797f0f9559b92ea516569eee86433742b94dc8a6361ab6071246c"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-wp70-chromium.json",
+          "checks": 7,
+          "sha256": "efd415b8ee1a0a1a5b7fd18783f75ede21abfb33b8abaaa68ed4e2ed84b69b41"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-ms85-child-chromium.json",
+          "checks": 7,
+          "sha256": "a06e929301accd4f29de16038423aa1c393617882e738a6920c92b4cb90f4a27"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-localwp-webkit.json",
+          "checks": 7,
+          "sha256": "c6a5962734b44c8a24d633ffde1485002fc01520a3f9190b6c8bc1f5d8cc6a74"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-wp70-webkit.json",
+          "checks": 7,
+          "sha256": "a02995e55e75135732e6c6ab5d4ea5cdf19cafc83949bbc9bdd5c8fbb9a6a0e1"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-ms85-child-webkit.json",
+          "checks": 7,
+          "sha256": "5538b273e0a80d1422cce380bcebfa07084d4188a17e4eebd1affb2f8a65eb81"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-localwp-firefox.json",
+          "checks": 7,
+          "sha256": "3a904e0f62275d014a169cc989cb18ccc4ba7bb0e4a800358d2ac7db3fb85d71"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-wp70-firefox.json",
+          "checks": 7,
+          "sha256": "3b97d76356abef76ab2488b9c9233c9cee8919a28d0b443f45034142dc7a306b"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-rollback-921-ms85-child-firefox.json",
+          "checks": 7,
+          "sha256": "535cd3067fa85252859adcfe024447c2fe21c10ddf04133599ee25293811aab1"
+        }
+      ]
+    },
+    "locale_reupgraded": {
+      "passed": 21,
+      "runs": [
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-reupgraded-921-localwp-chromium.json",
+          "checks": 7,
+          "sha256": "03b83c3615ba4d36c7c9b2d6676aad04daeeebc4e60df6f64c541f69753315b1"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-reupgraded-921-wp70-chromium.json",
+          "checks": 7,
+          "sha256": "24a36130cf0a8e2c23e61ae28d40815d9d29aad0f7c05108bd09734f2b2de104"
+        },
+        {
+          "path": ".local/wordpress-lab/locale-fix/final-reupgraded-921-ms85-child-chromium.json",
+          "checks": 7,
+          "sha256": "07e7d5e6f8f9874535d5d0f9e0f96b3fd5736a66ac5588d2a1809b12db742995"
+        }
+      ]
+    },
+    "viewport_baseline": {
+      "runs": 60,
+      "passed": 180,
+      "clocks": 6180,
+      "max_geometry_delta": 0
+    },
+    "viewport_upgraded": {
+      "runs": 60,
+      "passed": 300,
+      "clocks": 6180,
+      "max_geometry_delta": 0
+    },
+    "viewport_rollback": {
+      "runs": 60,
+      "passed": 300,
+      "clocks": 6180,
+      "max_geometry_delta": 1.52587890625e-05
+    },
+    "viewport_reupgraded": {
+      "runs": 20,
+      "passed": 100,
+      "clocks": 2060,
+      "max_geometry_delta": 0
+    }
+  },
+  "cycles": {
+    "core-upgrade-ajax": {
+      "zip_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+      "files": 15,
+      "runtimes": [
+        {
+          "runtime": "extended/wp70",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "6.3.2",
+            "php": "7.0.33",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "extended/wp74",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "7.4.33",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "extended/wp85",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.5.12",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "extended/ms85",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.5.12",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "old/wp71",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.3.35",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "old/wp84",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.4.27",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "old/wp63",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "6.3.2",
+            "php": "8.2.12",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "old/wp68",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "6.8.3",
+            "php": "8.3.28",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "localwp",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.2.29",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        }
+      ],
+      "all_data_unchanged": true,
+      "post_rows": 19399
+    },
+    "physical-rollback": {
+      "zip_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+      "files": 14,
+      "runtimes": [
+        {
+          "runtime": "extended/wp70"
+        },
+        {
+          "runtime": "extended/wp74"
+        },
+        {
+          "runtime": "extended/wp85"
+        },
+        {
+          "runtime": "extended/ms85"
+        },
+        {
+          "runtime": "old/wp71"
+        },
+        {
+          "runtime": "old/wp84"
+        },
+        {
+          "runtime": "old/wp63"
+        },
+        {
+          "runtime": "old/wp68"
+        },
+        {
+          "runtime": "localwp"
+        }
+      ],
+      "all_data_unchanged": true,
+      "post_rows": 21656
+    },
+    "final-reupgrade": {
+      "zip_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+      "files": 15,
+      "runtimes": [
+        {
+          "runtime": "extended/wp70",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "6.3.2",
+            "php": "7.0.33",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "extended/wp74",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "7.4.33",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "extended/wp85",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.5.12",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "extended/ms85",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.5.12",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "old/wp71",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.3.35",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "old/wp84",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.4.27",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "old/wp63",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "6.3.2",
+            "php": "8.2.12",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "old/wp68",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "6.8.3",
+            "php": "8.3.28",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "runtime": "localwp",
+          "core": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.1.3",
+            "php": "8.2.29",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+            "messages": [
+              "Enabling Maintenance mode&#8230;",
+              "Unpacking the update&#8230;",
+              "Installing the latest version&#8230;",
+              "Removing the old version of the plugin&#8230;",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode&#8230;"
+            ],
+            "output": "",
+            "error": null
+          }
+        }
+      ],
+      "all_data_unchanged": true,
+      "post_rows": 21656
+    }
+  },
+  "original_post_rows_unchanged": 19314,
+  "no_database_restore": true,
+  "geometry_tolerance_css_px": 0.001,
+  "log_review": {
+    "path": ".local/wordpress-lab/final-acceptance-921/log-review.json",
+    "counts": {
+      "Core blocked update-network warning": 63,
+      "WP-CLI Colors PHP 8.5 deprecation": 2
+    }
+  },
+  "cleanup": {
+    "compose_projects": [
+      {
+        "project": "sdcw-local-review-20261027",
+        "remaining_containers": []
+      },
+      {
+        "project": "sdcw-extended-review-20261028",
+        "remaining_containers": []
+      }
+    ],
+    "native_status": "halted",
+    "firefox_stopped": true,
+    "data_retained": true,
+    "candidate_left_installed": true
+  },
+  "failed_attempts_retained": [
+    {
+      "path": ".local/wordpress-lab/final-acceptance-921/baseline-wp74-chromium.json",
+      "failed": 1,
+      "retained": true
+    },
+    {
+      "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp70-chromium.json",
+      "failed": 1,
+      "retained": true
+    },
+    {
+      "path": ".local/wordpress-lab/final-acceptance-921/upgraded-wp63-chromium.json",
+      "failed": 1,
+      "retained": true
+    },
+    {
+      "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp70-firefox.json",
+      "failed": 2,
+      "retained": true
+    },
+    {
+      "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp63-firefox.json",
+      "failed": 2,
+      "retained": true
+    },
+    {
+      "path": ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-child-firefox.json",
+      "failed": 1,
+      "retained": true
+    },
+    {
+      "path": ".local/wordpress-lab/final-acceptance-921/baseline-fixed-ms85-child-chromium.json",
+      "failed": 1,
+      "retained": true
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/final-acceptance-921-wp70-firefox.json",
+      "reason": "Author inserter timeout; unchanged-product retry passes 42/42",
+      "retained": true
+    }
+  ],
+  "artifact_hashes": {
+    ".local/packages/simple-digital-clock-1.1.2-candidate.zip": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+    ".local/wordpress-lab/final-acceptance-921/__pycache__/matrix.cpython-314.pyc": "6e941bc4174f831aa0365ff213dfb41ee2a7b362aafaa2c2b767f3c92990a6ac",
+    ".local/wordpress-lab/final-acceptance-921/accept.py": "4948378f53b4d6c13d239c5eb2a272a70f1bb7ab3642acb60b210dd14c059e4f",
+    ".local/wordpress-lab/final-acceptance-921/accepted-locale-runs.json": "a560dfdb822ea830d980ee60093f2d9c4a171b16f167d5224729de2487bd0056",
+    ".local/wordpress-lab/final-acceptance-921/accepted-save-runs.json": "859a525c21fc2c9bfcdf8d8de5e160cdc18ff9c6e66b1b9c16427a8d5f125ede",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-named-post-chromium.json": "28d0e9410f4a56b89a79c5b29a5ce0c44915e013781927ad9de6c082ff9caaa2",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-named-post-firefox.json": "b440e3a9ee783f930ef0dc85e9344b3c4f1b09790236c05df17b20651136d988",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-named-post-webkit.json": "0567518f993bbca67ec9c6657e697be207a88c7ba51f37a1fee9201138b7221f",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-named-widget-chromium.json": "28d0e9410f4a56b89a79c5b29a5ce0c44915e013781927ad9de6c082ff9caaa2",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-named-widget-firefox.json": "b440e3a9ee783f930ef0dc85e9344b3c4f1b09790236c05df17b20651136d988",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-named-widget-webkit.json": "0567518f993bbca67ec9c6657e697be207a88c7ba51f37a1fee9201138b7221f",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-numeric-post-chromium.json": "6183e61d71ad8852308dad42dc16598ce182ee0c0092e54cc8496bd96b47aa58",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-numeric-post-firefox.json": "428b0a66a4ee83e4e31d3f9d9d11e615a7942f8b378e7580f4e09b994dfecbd3",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-numeric-post-webkit.json": "e8931a1797bcfbc69759fbc6a402545c59422130d33ef4a8da341e740421005c",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-numeric-widget-chromium.json": "6183e61d71ad8852308dad42dc16598ce182ee0c0092e54cc8496bd96b47aa58",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-numeric-widget-firefox.json": "428b0a66a4ee83e4e31d3f9d9d11e615a7942f8b378e7580f4e09b994dfecbd3",
+    ".local/wordpress-lab/final-acceptance-921/all-entities-numeric-widget-webkit.json": "e8931a1797bcfbc69759fbc6a402545c59422130d33ef4a8da341e740421005c",
+    ".local/wordpress-lab/final-acceptance-921/baseline-fixed-ms85-child-chromium.json": "8a1abc0f11a0041946fb5319333e2b9d534ba1f915c40df90d6ea70d43e0fe83",
+    ".local/wordpress-lab/final-acceptance-921/baseline-fixed-ms85-chromium.json": "23a18e67a476821832b794d5b8df9ccde7fa2c38499b424f2306668e61681a89",
+    ".local/wordpress-lab/final-acceptance-921/baseline-fixed-wp74-chromium.json": "5bf0c7ac98dad919c13f1c57ee6cfbadb6355ec8a91487f42eed9041219cca23",
+    ".local/wordpress-lab/final-acceptance-921/baseline-fixed-wp85-chromium.json": "8518ccc0e2578f27c004c86be9628a15779f84882d3fbe138475fce1ec5e9539",
+    ".local/wordpress-lab/final-acceptance-921/baseline-install-after.json": "ccf4603253eca493b34dbe4ae9425792bcf68f4475988f05bff932a9f0b6035f",
+    ".local/wordpress-lab/final-acceptance-921/baseline-install-before.json": "ccf4603253eca493b34dbe4ae9425792bcf68f4475988f05bff932a9f0b6035f",
+    ".local/wordpress-lab/final-acceptance-921/baseline-install.json": "f35e513b7b9367d1f7d62a6d181ae9b60cf6eaa7afe7b9f803ae3a6d7d1099ae",
+    ".local/wordpress-lab/final-acceptance-921/baseline-localwp-firefox.json": "b81947779e75696ea41c36e8f77d973a9e3e4945cafea07aa3411c1b7a43d426",
+    ".local/wordpress-lab/final-acceptance-921/baseline-localwp-webkit.json": "8d65b470aeb115a3253eae6835eae680f48c61f43ada3e2abc3915f97416c8d2",
+    ".local/wordpress-lab/final-acceptance-921/baseline-ms85-child-firefox.json": "6803d2eccbaa180844e1f4e1e43f98c65c7f2870325f19f0323b10ee09ca3505",
+    ".local/wordpress-lab/final-acceptance-921/baseline-ms85-child-webkit.json": "147c757aed2a19978d629cc886da42b277ae588ae0d916e00ec183e5a3b9ab4e",
+    ".local/wordpress-lab/final-acceptance-921/baseline-ms85-firefox.json": "b683c1a3171459a2b4d400f08cf62098c52a34de395bf9bd38ae6f32181bdfe2",
+    ".local/wordpress-lab/final-acceptance-921/baseline-ms85-webkit.json": "76e7e039da3910503ea915e531ea05e47f29a95592b100580ecd20fc79257a3c",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-localwp-chromium.json": "aa660575b8a94d5fcd0352669c48c24ed4759107b53285b7f710340645b13304",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-ms85-child-chromium.json": "06533b56ec22aefdf70267c0300d08e85065bcf4956ecdd3442cf62289171b0c",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-ms85.json": "3a3a142a200e8b2602d72f4dffe29e99df535e54ff7b941ace00958f071697bb",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-wp63-chromium.json": "ac877d633dae80c13c09fd1c5d146c46a0d5bf274b8b1a800db612bcfc9d330a",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-wp68-chromium.json": "803fd81587a8397dfdf29129c9a9ccb8586b093c3f21b51c9d9f024990655cfd",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-wp70.json": "c36ef379e6d430b458845cbaafba437e8282caa348eb226dd69766be4f3dda9f",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-wp71-chromium.json": "90e3ec4ce5ed8d101118e209379ec6b0ea9d39627cd3f6abf70ed71d956f8946",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-wp74.json": "e7a99166755c8d145cc724fc5ac199574b41d37c9cccc9b3bab989eb050266c7",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-wp84-chromium.json": "9264a16714ae8351ec4111b52c8b8183d597b0ded15deb693b16f4e2c2eb8d4d",
+    ".local/wordpress-lab/final-acceptance-921/baseline-placement-wp85.json": "c36ef379e6d430b458845cbaafba437e8282caa348eb226dd69766be4f3dda9f",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp63-firefox.json": "fa3b3127f12791afaf4d449f9414d7ef626547179642b45c4f263b006c5481fd",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp63-webkit.json": "04c1642be37e3fae0dbd1f9c421943340b8671dd489c3f6c9ba061435a90e017",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp68-firefox.json": "af6a08bfc348fe36ae2e129c6ffd09ed5f7549653620322cdcf1a18b9d74cd65",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp68-webkit.json": "47011ea305fdf10d4469ea39f2703803717e19424a110e4da9907c4bdbd8547c",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp70-chromium.json": "5c410035e25a2284a8040cca7cd9a0abee4438f5ba66ad12069d245c3d2d7c27",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp70-firefox.json": "3416e4ff2503f67884af37086bc0fa06b9732ecc9af89288ab42e8970b37e096",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp70-webkit.json": "ad633136b7df7ee7d8d50e5df195c3783ff99b8d22e89491aaa5ca9f51c2b178",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp71-firefox.json": "06228a9dcdc072a28283d1199ce3be0cdd6d60cd9e19a1b9660333df74d41914",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp71-webkit.json": "841212985622a79d59c03b1b51b464ffaaea1130bbaee64d4d01a2102953c1d3",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp74-chromium.json": "e299a6f0135e6e22c053435bf711a3ffa404aa0c1255b5452623dd5ac5965b9d",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp74-firefox.json": "9fb0f817d4c3c827775998f7c61c098525baff50af584582f79e677198c6203f",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp74-webkit.json": "f77b406f8e0114615ac44c4b6ed75a9b02485bfe1a39393a2dafad0d0bb59d73",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp84-firefox.json": "6d49003f02ca3b66940d8701c3b6c79f5aedb44699664c7de0245acf75599782",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp84-webkit.json": "1ffee202581775200b6980a5a28cf480a35bf26a902b9398d73fdba81d8f2eb4",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp85-firefox.json": "dcf50c65cce75db6cf4ff512bd35861f8ead2073cf8d72b7143b43535cfdcfb4",
+    ".local/wordpress-lab/final-acceptance-921/baseline-wp85-webkit.json": "34157166288be970ec7b627d41930a8408fbda2c406d7cd5857fe5430fbd01e6",
+    ".local/wordpress-lab/final-acceptance-921/browser-compile.log": "0f18ea2399f3f7ecda35a1c54d1f72ff67ea2aaa3e6ec141bbb0f5f04b7d075d",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-geometry-ms85-child-firefox.json": "656bd1f57b9b5afba6754289394f605e8e5265922e06691516a9089ffea027de",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-geometry-wp63-firefox.json": "4b7a1a813b6f1f6c030e65171b0cf6916abe739d97e38df0ee69fa52a5091e2b",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-geometry-wp70-firefox.json": "c8dc872431ddf832be22ce4ce34a7dab26d05a88eb80e9c991eb8fef4e7ad1ca",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-localwp-chromium.json": "ea41723f6432aeb7c9ff6030c0175c8869908156833f9458b0c32d315116b459",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-localwp-firefox.json": "6179fb9b557e91c479085882aa91168ec2f9446940e9e50a31dac8582aab4a2a",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-localwp-webkit.json": "14f544447fd22ec1fc265b724290098ae1a69ba20972150ec99e2abfa8fa5809",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-child-chromium.json": "cdec14c7a6e99accf5e161dab374405001e3e525d6a950d930bd9d4c4cb3e03c",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-child-firefox.json": "af56e8dcf7ac3916b7b210fb0daf4492847f63286c4b03364ab0958cbd8bc969",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-child-webkit.json": "37c8d4862898619f75dc8107db0a10d8283227b7a73677ce36221d5655fdc9d2",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-chromium.json": "480418803ceaaa0dec96158edb0097cca26c6fd12b41921607544f6e52702ac7",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-firefox.json": "efc08fa26bd349f28cfa34fdc76ae43ed221ecbe60b4de1e8452d409175f3fc1",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-ms85-webkit.json": "78913235c494ddb4565fac7dfa898c3ecc0bc746474d23f0f21f0d4a4c83b6c2",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp63-chromium.json": "b384076d327de5ff6a9112864417c354fed4e581664c85de3c685d829fd2ab3d",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp63-firefox.json": "07d3fb5f1a8f7f52e95fd208cbd4106a9a6201b44ec0f040b07dc77cb1097367",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp63-webkit.json": "2659939e97a92c3d26ea1800e5917095e1941ab1888f15886d948bbd6bc5bc64",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp68-chromium.json": "1e4059987d876fe50ee73490a1f1bb3d06d480be0646b4eabb0d12e6baf1af5d",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp68-firefox.json": "1e33560a51f6c2915f3164616f09b4555c68d9c219524af382d72318e97c096e",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp68-webkit.json": "23dce0d841363090585bc9b01d5f305a53c7c2b709e7ad8e4e8ec7ac483921c0",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp70-chromium.json": "1167f6e52e4ce623ff094d0250ce93a7abc731ab10f2ae88e8aafb3336c2fe10",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp70-firefox.json": "25f512541fca581f483110f7bf88944f95f4ba38b8cf1d88ee0304c972d4b14d",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp70-webkit.json": "43706db80d4fd6077d610242ba6e2be1e89bebf9f45fa4fa506dd9e99f66ac4f",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp71-chromium.json": "d041c23068fcc335f44f7bb3f88f411d52d8b15b7b68e3cfb46f7aeefef28133",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp71-firefox.json": "e5a353d870bdff239150a48f095483aa911af174ae37da66c245b97139476857",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp71-webkit.json": "afef32be8e94fd30e4f2037a12fc20fda3effaf4b22106309430735c5cff2789",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp74-chromium.json": "1fefb68fc2ff8c2baf507057285262f8ebb4f4061bca594dd6bb4bcb8bfb4550",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp74-firefox.json": "7f70fedb560e582b2b3fe4e16f9749842be87f57243304cdd49dece5f913fc84",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp74-webkit.json": "0f5280dead758638eeb3de3c1806033296a0efe7bca753c0fe1ef1cf479e723c",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp84-chromium.json": "c71301e4615e24d886cb3828fc2d38f59653049fab051c6d6ccec36d3bab2cea",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp84-firefox.json": "ccf305d9c74d8faac526ad9ce8a213901b38b083ca7c7062ce3f4a91e1f82e16",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp84-webkit.json": "895d27f32fcc3879d2ac44c3083a8f5765d75472dfcf57758c0899f3028abe96",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp85-chromium.json": "fe528666d7cfbbc2ae581a4e3fd983ed7549ea478728705aa140951d2ab804b0",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp85-firefox.json": "6475c23b4eff6221243d1acec0d83e17bcd79fad8a523af7404164846c3e7601",
+    ".local/wordpress-lab/final-acceptance-921/candidate-saved-wp85-webkit.json": "07ee778a40e6301919d3ace54f7e2bc67dcd4d50aa65253caf7795373355a0cc",
+    ".local/wordpress-lab/final-acceptance-921/cleanup.json": "6923da60f13bf5e97d65973ee8a03fdc09296ff392e5f7835d0b798c91974454",
+    ".local/wordpress-lab/final-acceptance-921/commands.log": "9ab7e3ee69e4da4b52091d1183c55c4a60cac77bbdd0f9b869cc2a9e6eed879f",
+    ".local/wordpress-lab/final-acceptance-921/compare_reads.py": "9d1c139da2aae43759ae8c5ed0444b7ef83c54281ae8fe87f04739faa2afb329",
+    ".local/wordpress-lab/final-acceptance-921/core-upgrade-ajax-after.json": "3151777abf336b186c735a0acb967bf47f2373168c7dd1e60ee7bb0a13c5354c",
+    ".local/wordpress-lab/final-acceptance-921/core-upgrade-ajax-before.json": "3151777abf336b186c735a0acb967bf47f2373168c7dd1e60ee7bb0a13c5354c",
+    ".local/wordpress-lab/final-acceptance-921/core-upgrade-ajax.json": "8e1ac05b0b3fb507c85754c4f2ba99ee495f3385f17e4087e8572c13be941a15",
+    ".local/wordpress-lab/final-acceptance-921/core-upgrade-before.json": "3151777abf336b186c735a0acb967bf47f2373168c7dd1e60ee7bb0a13c5354c",
+    ".local/wordpress-lab/final-acceptance-921/entity-dom.log": "5fb4c18a210ea30827922821310023bf6da1834b9753ed28b831a0000932b633",
+    ".local/wordpress-lab/final-acceptance-921/final-read-comparison.json": "f80cfafd115b3be48c20d2b6cd46d2c88410008365ef0fd9e27289faadf7cec5",
+    ".local/wordpress-lab/final-acceptance-921/final-read.json": "e7f4b4a11b695a22c22d2607c661e248c16943b8a4453f512020694965289464",
+    ".local/wordpress-lab/final-acceptance-921/final-reupgrade-after.json": "e7f4b4a11b695a22c22d2607c661e248c16943b8a4453f512020694965289464",
+    ".local/wordpress-lab/final-acceptance-921/final-reupgrade-before.json": "e7f4b4a11b695a22c22d2607c661e248c16943b8a4453f512020694965289464",
+    ".local/wordpress-lab/final-acceptance-921/final-reupgrade.json": "3fb86a998325de79eb51047a4a8a869d7de03bea9671bc3d4edb0715040de5ce",
+    ".local/wordpress-lab/final-acceptance-921/firefox-geometry-control.json": "dd33b284fde2acc27f7f5888661ebcf25120cd305fb5df8fa868080cd7034cf6",
+    ".local/wordpress-lab/final-acceptance-921/firefox-stopped.json": "9b8618db019dcc22fb2285b5accc40332b1d4478060f073bf64af88da6d2ed68",
+    ".local/wordpress-lab/final-acceptance-921/firefox-widget-geometry-control.json": "970087d098b8856ebee8eca8c35570fc48f8c0197dbcdc3d1838f7cc86a0d065",
+    ".local/wordpress-lab/final-acceptance-921/firefox-wp63-geometry-control.json": "dd33b284fde2acc27f7f5888661ebcf25120cd305fb5df8fa868080cd7034cf6",
+    ".local/wordpress-lab/final-acceptance-921/initial-data.json": "ccf4603253eca493b34dbe4ae9425792bcf68f4475988f05bff932a9f0b6035f",
+    ".local/wordpress-lab/final-acceptance-921/installed-final.json": "7e0dd368621aa11464c0dd2093179840117ac7ae545e284dd1fbfe1d2ff8d14c",
+    ".local/wordpress-lab/final-acceptance-921/lint.log": "8c138fd15b1be77c8e5fed81080f2cfb1a4a3bee6bf018ac69c8cd7f724fc087",
+    ".local/wordpress-lab/final-acceptance-921/log-review.json": "322e42450270aed79b863410d09d94d28a91ca295d802c7339a32bc0ac5c2b4b",
+    ".local/wordpress-lab/final-acceptance-921/log-start.json": "dc45138a941e948d133b57d5577ac94672c322e38aa507ba89cfb4a412c4e1af",
+    ".local/wordpress-lab/final-acceptance-921/matrix.py": "efd079349fb90d2719b7ed94e7648e36fc3889c485ea6bd0c6761b64208f78f1",
+    ".local/wordpress-lab/final-acceptance-921/mouse-control.mjs": "677c984ab1df190a22c14572ed80fac2f8f0596917b44e3b1cc2bb90d550424c",
+    ".local/wordpress-lab/final-acceptance-921/mouse-firefox-candidate.json": "846749f9dfd16d27eb589720ad049c7b56b2aaa54bfa3a735093f3f46457410b",
+    ".local/wordpress-lab/final-acceptance-921/mouse-firefox-public.json": "81e94d431b9283a3ee492f29347cebb0a1a5e73307ce49561d88c836d2b3ea55",
+    ".local/wordpress-lab/final-acceptance-921/mouse-webkit-candidate.json": "1f1072b650452eb6d7fd1fcfeab047c9b3d0be363167ef630845dc5e07a49a6b",
+    ".local/wordpress-lab/final-acceptance-921/mouse-webkit-public.json": "b17e6515397fc3937e8f0e21e346fb6bf4701805edd6bd6651c12bd75ef1cf77",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/final-review.php": "895d7446b307e566d0d534540f0de009d178db77da6b80469328fc61ef3a6b5d",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/html5-caption-save.php": "5ab762b360a94608f2a4278a269b53797c103f9cfee51a151ee5cf093568c869",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/html5-charset.php": "5e024549f96a50f843401d36d092e811c3afdf0f32dd7366808379ba86a94a60",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/html5-entity-pipeline.php": "6a0b87d5f4bdb064b2572f63726f167e815c6f9041353b93eb796c930f312db5",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/numeric-caption-save.php": "33edc8b8fe85f9d70503fe26e055c915904a47c3716ce1d0cafe72b7ae9715c8",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/numeric-entity-pipeline.php": "4e9cf0e3bab8d03c745c58f55863acfe3f58bdf4bd18b6f395cf590a11c2aa6c",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/p2-caption.php": "97ef27d9177f374fcfa9837b1fdeb4e3e77bf4886a3307c80f073cbc10e74341",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/regression.php": "e29a242e2d350f136d478298955e974148ceefbc6fd66af81d85f69bd4684954",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/widget-entity-pipeline.php": "26aae8fa8efaa4af1e81183e6cf3b09054fad2a5513e9052e06b55625036b82d",
+    ".local/wordpress-lab/final-acceptance-921/native-probes/widget-fallback.php": "91217b725ae9148807c66f4f0b8300fb98aaf32436054e1679b0856c0dc4a96c",
+    ".local/wordpress-lab/final-acceptance-921/native-stopped.json": "124efd984a00b279887ba8ea471d1ab1f00ad333acae4169003e9554875d022f",
+    ".local/wordpress-lab/final-acceptance-921/node-tests.log": "79f7a369a502046c84a4731092a5f4af93a40888dae17db7106c5068a9131e94",
+    ".local/wordpress-lab/final-acceptance-921/original-posts-retained.json": "443cb1b131686f43c7ca9d9d9c1b2e56a306f96a3c6abc5e8cbd4efd479dc827",
+    ".local/wordpress-lab/final-acceptance-921/package-verification.json": "9e809003de46ac9099dfc28dabcd8845fc9a4d9604b76d4b1e6b6e66d381291b",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/block.js": "6c13cd91d7e3f3ae4957bbe757a2de415ce74ed0de1258e8014896c69618f514",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/includes/simple-digital-clock-kses.php": "0664e49e5126290d3f9c8be45dec28096714326ffe6307ae58734d359bcf9271",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/languages/simple-digital-clock.pot": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/readme.txt": "9f24cfeccafa81aad8466bd9c2bb3a309fe750431f45197e93384edadf482f76",
+    ".local/wordpress-lab/final-acceptance-921/patch-application/simple-digital-clock/widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-final-review.php.json": "2cab365601c8d809c999193188b5cb8976cc2b8538283010ea7342524791fbb7",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-html5-caption-save.php.json": "ef37966fe2aa5715caf2a4aab73975d47a46f0ac5135b418932c338cebd7bcc2",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-html5-charset.php.json": "c5611293651e53652764c0588a3016d87dec9f267bf481ffea23e7f72d77358e",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-html5-entity-pipeline.php.json": "7d4ad741bfaca86208aaa62e4652c921a8d93285cc6b967264875f6813fcca37",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-numeric-caption-save.php.json": "44fca03536edc153b979c9cd54da0bf2817a3b2ff93d4cc4adccdde6258fab01",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-numeric-entity-pipeline.php.json": "adb4ac8e99fb7d26452d4a855cdf3bde6c5b2b9b081cdccca72536a2d2eb34a3",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-p2-caption.php.json": "74e1dde71db7108a2dcea23c67eb73babe2694c55598f06f5061785ed3aef5d4",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-regression.php.json": "10484fa9f7af6432437604d7b6d34d001ce8eb33ddb0418f81ec967f30d73927",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-widget-entity-pipeline.php-named.json": "1d4c565aff0d2b075a598233e7ff09d52507820ca844c40b7ecf46c6e8ec9ba2",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-widget-entity-pipeline.php-numeric.json": "fd940aa4a97fc58adbc9a9a0d303220abeafa76068687964db08a70ac75901dd",
+    ".local/wordpress-lab/final-acceptance-921/php-localwp-widget-fallback.php.json": "b5323c17841396143b1cb2a33075fdf1f8ed1cc0b6c83823385f239896ba4e21",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-final-review.php.json": "7cf67591f8688f9304b443c2cd5a88b7065fa307b3ebc746478096d3a01d3266",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-html5-caption-save.php.json": "66143777c97567b912c03c59d20a90f87bf3e8f9798b2909529758ce6e9e4adf",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-html5-charset.php.json": "477ead4689002aa24e7c5aee40c01382a20153220dacb89712f7afe07640fdca",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-html5-entity-pipeline.php.json": "6d26d29b17912b8ebf0d9178bd6329e9f2cdd51dc6527274ff945763103c4430",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-numeric-caption-save.php.json": "c738b3474656c43b6f908498062ba5b716f6199147b5f8379f6d24bbb37bcc9e",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-numeric-entity-pipeline.php.json": "c10f8fbe2539b491ad9a0271ad049dba76669fee0c6f2b5dcd024110d7d53602",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-p2-caption.php.json": "b638c86e73fc29eaea772ed061a20013885b38e1b87ddc3f6f87ee72d28263ed",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-regression.php.json": "6d6babd5161cb5b2ed34013d91f865c487b770e0ac9ad37cd2f620cd843a2be4",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-widget-entity-pipeline.php-named.json": "36356db3bb3c687f20dbec9f8d9ac4085e1dcae45ab89e931228d7d27db753f7",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-widget-entity-pipeline.php-numeric.json": "1b75141ac67e9aabb6e2bee603c5226e95a3ed122eb62e7f4a46af492b1fc520",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-child-widget-fallback.php.json": "9b7e88441333510337e4c8138b6d9dc41c3c8ee15db3b25ef966b752ce1cd800",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-final-review.php.json": "7cf67591f8688f9304b443c2cd5a88b7065fa307b3ebc746478096d3a01d3266",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-html5-caption-save.php.json": "66143777c97567b912c03c59d20a90f87bf3e8f9798b2909529758ce6e9e4adf",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-html5-charset.php.json": "477ead4689002aa24e7c5aee40c01382a20153220dacb89712f7afe07640fdca",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-html5-entity-pipeline.php.json": "6d26d29b17912b8ebf0d9178bd6329e9f2cdd51dc6527274ff945763103c4430",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-numeric-caption-save.php.json": "c738b3474656c43b6f908498062ba5b716f6199147b5f8379f6d24bbb37bcc9e",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-numeric-entity-pipeline.php.json": "c10f8fbe2539b491ad9a0271ad049dba76669fee0c6f2b5dcd024110d7d53602",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-p2-caption.php.json": "b638c86e73fc29eaea772ed061a20013885b38e1b87ddc3f6f87ee72d28263ed",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-regression.php.json": "6d6babd5161cb5b2ed34013d91f865c487b770e0ac9ad37cd2f620cd843a2be4",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-widget-entity-pipeline.php-named.json": "36356db3bb3c687f20dbec9f8d9ac4085e1dcae45ab89e931228d7d27db753f7",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-widget-entity-pipeline.php-numeric.json": "1b75141ac67e9aabb6e2bee603c5226e95a3ed122eb62e7f4a46af492b1fc520",
+    ".local/wordpress-lab/final-acceptance-921/php-ms85-widget-fallback.php.json": "9b7e88441333510337e4c8138b6d9dc41c3c8ee15db3b25ef966b752ce1cd800",
+    ".local/wordpress-lab/final-acceptance-921/php-summary.json": "de772c13548767b3c3227b4c20bf99a5098312230dcf89c00cab93d1afb8a589",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-final-review.php.json": "5f99fceec545d9b6ecca0b4074e69b262a5a1d328671e6967de16786934c366e",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-html5-caption-save.php.json": "bb12878a670efbe12ac7f70e1e9bd01ac96a74073348b61798795a5bbc7e783c",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-html5-charset.php.json": "a62fffc9ea26bb90cdf8ec8105bed10171dbe552430f1e894754b95ba14ad58f",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-html5-entity-pipeline.php.json": "0b45f4f5145e295b29362ff965eafae7b46bb7653863b6a1a84914080bf93caf",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-numeric-caption-save.php.json": "b22e3e082db2a538b9a2c79c769ca8514be3770da8374b4d1c91f8d1cf6621ea",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-numeric-entity-pipeline.php.json": "add0457e63332a23abca1b7af4150a3236154c7377e788119d33a0522c51a241",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-p2-caption.php.json": "6ca49e6ce7a6cde5dd7e9aeced5021e04805819563fadca9a7ef00d5730203b4",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-regression.php.json": "8245103d8e19c14ef469442eedfb1820febc05bfddc100561e2c9728b02921a1",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-widget-entity-pipeline.php-named.json": "498d3833282578d0196926cccd33594b3fbbf66d09cb50f6304f28f8e7f804fa",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-widget-entity-pipeline.php-numeric.json": "3ccab69eb363986841436bf32399f6879c2ffef7b64416f70fbbe5431847d45c",
+    ".local/wordpress-lab/final-acceptance-921/php-wp63-widget-fallback.php.json": "809015d553d73b674dbe73efed9057987696daa0fdc30b77e827e6b4bc8c0501",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-final-review.php.json": "25e44d7711a97348b25eca5ea04ccd80bf39a70f9ab787895a0196afcc169421",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-html5-caption-save.php.json": "e8666ceac455d12108dd1dd12ac1c4ed42ca90cd95211cb02e8337ef92261629",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-html5-charset.php.json": "9c027c98eb8ed8a981b06a6dcccdbec67370b2fde26ead4ab9a96a4d25a9ac05",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-html5-entity-pipeline.php.json": "647779aaf712e12df12cf852a2ef53e8dca6fbf45fde931cec272b3d5e670ef5",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-numeric-caption-save.php.json": "05d3d4a55d271ae2d6cdaffa3d0681a0dd88720bd060ed9fde2c9689de370f7b",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-numeric-entity-pipeline.php.json": "1585bc8475f93ab5e79ebec1222df6ed97ad845ae53da4b2b36e194880c7c78f",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-p2-caption.php.json": "97b1cf84f6b7b34309b20ff3f9f37f4e21957f467e830f9847f1f3344e6afdfa",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-regression.php.json": "397f55b10d220dc0f9d821ed1100c426c355206f438f4dd523adae1561a63348",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-widget-entity-pipeline.php-named.json": "76e06fd3461c0badd1ff1e304cb8eb5f807f7b41613aabb4ae85b353e680bd32",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-widget-entity-pipeline.php-numeric.json": "101688e0e5df2198044e83c11bf8f32685085681861bd11044e6f37bff73833b",
+    ".local/wordpress-lab/final-acceptance-921/php-wp68-widget-fallback.php.json": "00d281ba2e6ba64109668b808eaa864dbe3d15288b5dd89bc77718ae6b2b57b8",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-final-review.php.json": "69a37de32e547cead73137a5fd687cd0a44b01c9e17391f63a748fa3dfdf4e2b",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-html5-caption-save.php.json": "d1ac90ce7dc5dfc0287894544097db260d55185978e422624f572d32402e1659",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-html5-charset.php.json": "e007a020b37b73302b829780508a06504bb835cef5979c62bd75897006d784ab",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-html5-entity-pipeline.php.json": "2776e4c740464150f09a005a4e5ad78778fe73508980096163a482f4fd1f9a4c",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-numeric-caption-save.php.json": "e69f617fafb0cabb77f8b3293bd1b0a514f80e5804fbf5712487169b91583595",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-numeric-entity-pipeline.php.json": "b2445a3e2efa9f8069c6d644d3f3507aaf746bebfb2d633ccff12dd27dbf0d85",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-p2-caption.php.json": "552c6c3b0f55290343897f1670a32268401ab831eceacfd665625046d2f93938",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-regression.php.json": "ac09a4913338e12593ae9bd4b34c2323ff79a19c4f0139bbb54268af25a7d242",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-widget-entity-pipeline.php-named.json": "78ef640f2e48b94b3dd3e707d502e95bf4505500268aa24c343a5326c915be73",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-widget-entity-pipeline.php-numeric.json": "989d9ca1ed9b30f35466f2747bcb729d36495ec9b8c362a136663b9b3d075d11",
+    ".local/wordpress-lab/final-acceptance-921/php-wp70-widget-fallback.php.json": "5e5926807e881086a8bdb8a9a2e6c5a8a1c15513c01c1413e03a4a64350fea08",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-final-review.php.json": "f8cda09ed49a8ddffbee5497a23b1470a3e6fbbb55e970c210415be94c50f535",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-html5-caption-save.php.json": "9cc8553909115e84d2f6926ad790c9d5deb06576d896101480c9552f3ddc517b",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-html5-charset.php.json": "a3307997991b8bcc92e16938321a53c397bf2e9b14c95c2c5a6c8897661c7997",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-html5-entity-pipeline.php.json": "6c0f84766e9215e6e75b02a8e1eceab9299ef96f71060ef6173f8ea235b313b2",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-numeric-caption-save.php.json": "3bab82c9260cf8066672815fb687ec89d7c932ef01d130ddc638da978c6872c6",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-numeric-entity-pipeline.php.json": "6b6d6cbd8e47ce330b1f8eedd77d6b9af618def437e0c487c6b53baee900a241",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-p2-caption.php.json": "68bfd5fc68d7f7bd559712ccb8efe2cf6e641bef0cd11898d22ee6ebc5beb454",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-regression.php.json": "c4716600920839719c36667976b011cc9054324e03a0d54e4630e849763f13f9",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-widget-entity-pipeline.php-named.json": "1089c4719b5c4739d1d5174288c49ffaee30af1e6674b82b2debc25a849b798b",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-widget-entity-pipeline.php-numeric.json": "04cbc865065fcc4fe3b7d9af98269e7b0f295452a66e2f7891086a623c9b3c6f",
+    ".local/wordpress-lab/final-acceptance-921/php-wp71-widget-fallback.php.json": "cd2d038f0d2f20addf7fff88d08896d449ca8741625fa6dbf37d8377da887318",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-final-review.php.json": "dc9beb1c8a48129a5155bb1fe78ef7c7921c8bc83a2c38267521293dc451ff5a",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-html5-caption-save.php.json": "41a735958e8770a1624c0217cbb618e4d16af524c135f15b1198c2ae64bd65e3",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-html5-charset.php.json": "6ffa803364ee51bd1dd4421b2990858de5b70e3809a4a3ce2516c36ccd622223",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-html5-entity-pipeline.php.json": "21d1a4f6560ab8b8996b14490f554c7e5b84adae2c17c00ef03b7ee41bf14bd6",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-numeric-caption-save.php.json": "63b5cccd98b7585d3fe3d11130d91f79bd7869ad096dc0e12e5241bd846a08ee",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-numeric-entity-pipeline.php.json": "d17aa6fc2e77eeba805cdb7be4af8ce9b9e6dc271bf13c5787010e60ae7cd1d3",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-p2-caption.php.json": "953046953e93ce7b24066de2c31201bca348bbaf6ccb1f67396a78ab1b775a99",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-regression.php.json": "090221ca2769c615c3b7dab396b6cec17890085a9ac7b8bf7d02028a1c9a3a4a",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-widget-entity-pipeline.php-named.json": "159af26c0472019cc609c56f3ddea6e4e6444f5673cd1401265cd3479d346195",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-widget-entity-pipeline.php-numeric.json": "ae1c85dd7124523f632d9a9fbb7f355011d696e114dc2a3a9ebdf68b4d270fc7",
+    ".local/wordpress-lab/final-acceptance-921/php-wp74-widget-fallback.php.json": "b58e734003ac189c5b09dd2b5e27d55739bba42780813ee5ec40768f0b9dbedc",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-final-review.php.json": "a5862e3fbd6188b2fa50cb39205257f3235e25db055866dcb55f1382b4625773",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-html5-caption-save.php.json": "ca46b4ac14f13ba9576b5e97bf1f61b50e1c23fbc094d548e2134bb7f26854f9",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-html5-charset.php.json": "996c155a7df46b50b921340cea281bece3711575f5217f502c59c7700b86acc2",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-html5-entity-pipeline.php.json": "5c1ebc41eab8e5fc312bf12671f4cde515b54314d016c501a98ff15c6a66f74c",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-numeric-caption-save.php.json": "be7f13c5ee139bdd4f55866d192940dcad46cbcbd744ff8163e3fbe73def0be1",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-numeric-entity-pipeline.php.json": "4dceb2995c700182f79c9f0628b18dabad38659f5ce2be088bc9fb5304b6bbae",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-p2-caption.php.json": "680d8ce6d82e88e05fb1d1f8adb4005681d3f5ca9ec18e30bfbb62b069e0567f",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-regression.php.json": "baf1957775cef30da1af5ac44c1541ea0726adb7b93131ef99fb5397e647ae74",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-widget-entity-pipeline.php-named.json": "5b95c7eb3ccc24a4d9f21dc8ea8af13b78a92fc4998d357c5035f0c7672000d2",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-widget-entity-pipeline.php-numeric.json": "e902474ad4cbd6e52ac3265f9a797b868367cd18e97b9cbf2a9513e4c1fb3835",
+    ".local/wordpress-lab/final-acceptance-921/php-wp84-widget-fallback.php.json": "2d07045d49e677e1c21f7efa44b0c8cbe3b76adcff680cb36202191911f0bb8c",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-final-review.php.json": "7cf67591f8688f9304b443c2cd5a88b7065fa307b3ebc746478096d3a01d3266",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-html5-caption-save.php.json": "66143777c97567b912c03c59d20a90f87bf3e8f9798b2909529758ce6e9e4adf",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-html5-charset.php.json": "477ead4689002aa24e7c5aee40c01382a20153220dacb89712f7afe07640fdca",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-html5-entity-pipeline.php.json": "6d26d29b17912b8ebf0d9178bd6329e9f2cdd51dc6527274ff945763103c4430",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-numeric-caption-save.php.json": "c738b3474656c43b6f908498062ba5b716f6199147b5f8379f6d24bbb37bcc9e",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-numeric-entity-pipeline.php.json": "c10f8fbe2539b491ad9a0271ad049dba76669fee0c6f2b5dcd024110d7d53602",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-p2-caption.php.json": "b638c86e73fc29eaea772ed061a20013885b38e1b87ddc3f6f87ee72d28263ed",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-regression.php.json": "6d6babd5161cb5b2ed34013d91f865c487b770e0ac9ad37cd2f620cd843a2be4",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-widget-entity-pipeline.php-named.json": "36356db3bb3c687f20dbec9f8d9ac4085e1dcae45ab89e931228d7d27db753f7",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-widget-entity-pipeline.php-numeric.json": "1b75141ac67e9aabb6e2bee603c5226e95a3ed122eb62e7f4a46af492b1fc520",
+    ".local/wordpress-lab/final-acceptance-921/php-wp85-widget-fallback.php.json": "9b7e88441333510337e4c8138b6d9dc41c3c8ee15db3b25ef966b752ce1cd800",
+    ".local/wordpress-lab/final-acceptance-921/physical-rollback-after.json": "e7f4b4a11b695a22c22d2607c661e248c16943b8a4453f512020694965289464",
+    ".local/wordpress-lab/final-acceptance-921/physical-rollback-before.json": "e7f4b4a11b695a22c22d2607c661e248c16943b8a4453f512020694965289464",
+    ".local/wordpress-lab/final-acceptance-921/physical-rollback.json": "7b6918afdb8da977ab5cc71b46c3ea8fb381a6f1c57e2d7f9727b5d45d1d7930",
+    ".local/wordpress-lab/final-acceptance-921/pipeline-named-post.json": "11a6293c095dfb3df418bc22e6041739c9afac9c70560c8d78e4421fcb770406",
+    ".local/wordpress-lab/final-acceptance-921/pipeline-named-widget.json": "95d67f03fb243899defc4f69a0658048d94741f21e8e34d7e3832e0bd4393e17",
+    ".local/wordpress-lab/final-acceptance-921/pipeline-numeric-post.json": "29ed104dfff2cee435e0345c4b8a2b7a027b8732ab8e3e8168cd850503c4e7f9",
+    ".local/wordpress-lab/final-acceptance-921/pipeline-numeric-widget.json": "05d8ad8f298c411c534af71eb34721423bb184213084288a0d977f2a13c81214",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-localwp-chromium.json": "141a3a81137214db7a28a830b592b81cb0c581663c1ca31db6a995b1184f093e",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-ms85-child-chromium.json": "17645c36e4f7a929c99bad3271a7fc3d1395aad1add93c4d7a534226f220363c",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-ms85-chromium.json": "c60bdf65044f7f50c63b4d60c9009bf4c37342f6e7952bddc406f8a8c9545a14",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-wp63-chromium.json": "6eb6b9b4c8c92589ccd6d158bc27cbe6119f15ca81634bbeb668a42d30ea381e",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-wp68-chromium.json": "d2cb39fc36c08f3b45c6b5071e9330d2dec5118b99a8537c599a7f45567a3cd2",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-wp70-chromium.json": "af8f2af80b2ef2938cd4ad8d736da825257c64c39d6668e3639d165ac46cb03a",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-wp71-chromium.json": "1846604b73c0e9a4c246b99356ebef46eef48d1f9ecb6c90525c4028335e6c6d",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-wp74-chromium.json": "70bb46657b599acbc02eb7b6e4eadf9fbec5fccee490dcc6656ba41a2fe951d4",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-wp84-chromium.json": "42701aa0e6c213d6218177cf481c83fb219e953a11838c35a2aca7df8e901059",
+    ".local/wordpress-lab/final-acceptance-921/reupgraded-wp85-chromium.json": "048f2f2f7155890e83858f68339c85fca7a73dd73c0a6f0c74d7cf9c5a399390",
+    ".local/wordpress-lab/final-acceptance-921/rollback-localwp-chromium.json": "0fab10872edeea3223f2b74c390c482cc5de8584ad2bae5d13e9038b268ebb95",
+    ".local/wordpress-lab/final-acceptance-921/rollback-localwp-firefox.json": "f4976a6f7a8fa7ff18c8bb10d655e526f981601012b3457303aa5d3202d76758",
+    ".local/wordpress-lab/final-acceptance-921/rollback-localwp-webkit.json": "0ada58409491e9f27db0c27097b25b539e08c3bb4dd7ac19915447c23390413f",
+    ".local/wordpress-lab/final-acceptance-921/rollback-ms85-child-chromium.json": "625f2b13af797b96f6479460a66845508845ede05c172b33b7519423b028d129",
+    ".local/wordpress-lab/final-acceptance-921/rollback-ms85-child-firefox.json": "9427cb78f72218bd851637a6bb9f5a780a0ceb9f60bb7064935ce86d01237fe1",
+    ".local/wordpress-lab/final-acceptance-921/rollback-ms85-child-webkit.json": "6318c8e1506e83dc90f496844acd504a62a0f4b20c3af54244632807ada1472b",
+    ".local/wordpress-lab/final-acceptance-921/rollback-ms85-chromium.json": "051ab1fb75503c3b15a8641412033b8caac4f01d353902488710f413355f7084",
+    ".local/wordpress-lab/final-acceptance-921/rollback-ms85-firefox.json": "dd924db60ace46ff404a37c646d912781057d5e25d8d094f1a2baebf2ae6c78b",
+    ".local/wordpress-lab/final-acceptance-921/rollback-ms85-webkit.json": "6fc6cc65f0ba7ef84c3e22a9d919c52fd97ab4b23e9abcad3624d84cb16f0f78",
+    ".local/wordpress-lab/final-acceptance-921/rollback-read-comparison.json": "f80cfafd115b3be48c20d2b6cd46d2c88410008365ef0fd9e27289faadf7cec5",
+    ".local/wordpress-lab/final-acceptance-921/rollback-read.json": "e7f4b4a11b695a22c22d2607c661e248c16943b8a4453f512020694965289464",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp63-chromium.json": "5cf196ee0734f310ae0f0c87e7a1a52936778e99fadc3cf46c57f09c761f1ffa",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp63-firefox.json": "e1f260f6fc4cdefab72ef0eb0eaa26fe569cea35019dc4d396e829e824506418",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp63-webkit.json": "89336a474c4fae967f904821387bbf405516142d3accdb1dbee393a0d3dc26a6",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp68-chromium.json": "7ee3ad0f4a20367ad2eee770e7365eb4f640c2110095069b749f15923693cbbb",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp68-firefox.json": "4349a7aef99b915a67c8a7a0b65ddc675a6690f023ee25afa8d9973d14614b0e",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp68-webkit.json": "f65a374a2a3c59e5625f448fb64e6cad50921bb71c14592909b8b1cd9fccc3eb",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp70-chromium.json": "0752879aa0010345447b78758f3864040595a5965f227b2a641e8bd8a3608d7c",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp70-firefox.json": "b58daadeb2a8c794c4d5f6f1afc340067939527096955caa3a1da5fb7ed0f31b",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp70-webkit.json": "1686c715e8393e31db4855c7a7f2a0bc1bb748912194d678be309cf09a98758a",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp71-chromium.json": "60a067df3f8e01ddc6bbd153ad2bee7b451c3de46bf280378674dfe657942006",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp71-firefox.json": "1ede35a06aecafdaa813debcd5546534a1a94e6a9f016da7da3403694822fc2b",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp71-webkit.json": "4a88d994f080b9da88eed806936428f215f74aeabff1a31a7d34d18bac76fd25",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp74-chromium.json": "34b54bac40e9a440871c2b0bdc6b4887ee043490ad1786b6fc8e33d66265dfcb",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp74-firefox.json": "54efa71f2cbee19c3b3067527039b6dad42b3c80bac961f89efd27e91ab7f50c",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp74-webkit.json": "b71961d0e1d0fd87d157b6509db79dacafc4645d5700a653d52a7ea618bdeea5",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp84-chromium.json": "6173e54e140a4e68fd9a79f75d8150d0c373af939e63ca05107752b6a88926ca",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp84-firefox.json": "e03fd61145ff957f539b8da286aa48e6c9a929836b3feaabcdf942888701d48d",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp84-webkit.json": "41648d5c75423b62a8f6abbc745b2c2a8c91dac78ade5a0d2adf58dd4fc8d970",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp85-chromium.json": "ffd8a27db35bd6b563d76c964311b308aafc6e69480bfb7c36c7e89f241dffb8",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp85-firefox.json": "94f8ce7fa414baf3186f334e1033095b2bb5023292790d5338a4dc52cfe3eb3c",
+    ".local/wordpress-lab/final-acceptance-921/rollback-wp85-webkit.json": "31074415af78c4f8bf4bd0b17076edc5b00c0624217f25a9d7eff79a61c135fc",
+    ".local/wordpress-lab/final-acceptance-921/seed-localwp.json": "9d4b151614a40e7a857ff9ef55f270543afa38f63b05260f1e5ca21ae968fbf4",
+    ".local/wordpress-lab/final-acceptance-921/seed-ms85-child.json": "6b961fa6e46c7a18ebf294c8ca544188636ed254aaf83169970d7f9343393f78",
+    ".local/wordpress-lab/final-acceptance-921/seed-ms85.json": "1a41102a9e71890e45815d68a0fed2905061c741f01f732f42cb8782c6547b02",
+    ".local/wordpress-lab/final-acceptance-921/seed-wp63.json": "42b4adcc1b566c891e0c6d27235c9847052765a50fa6fefcb3a418a51e5dadf0",
+    ".local/wordpress-lab/final-acceptance-921/seed-wp68.json": "e2f1553f425bfef9d4f71fb40df010c4efbfae922fc71c4bdf29d9183fbdaadc",
+    ".local/wordpress-lab/final-acceptance-921/seed-wp70.json": "fa3544358d03c12ab654d479aa7693eeb614a47c661f7bd1b3044b6a7d8dddd0",
+    ".local/wordpress-lab/final-acceptance-921/seed-wp71.json": "26e9d3527f159962591146e16604bb0a04b3d979f230775acec62d6dd4562395",
+    ".local/wordpress-lab/final-acceptance-921/seed-wp74.json": "ddb9a56e8b8c5de3357c7e2e0034577c1879946103d729af0c1568efaa1c6507",
+    ".local/wordpress-lab/final-acceptance-921/seed-wp84.json": "8180ba68c32a3fdf424bccb65b415c7c53883f7345f019c55703a54a4463c530",
+    ".local/wordpress-lab/final-acceptance-921/seed-wp85.json": "0a4d5d18cb5321f0d711cc4cbbe36dd520cc2983a796812db0fef2d746a49e5a",
+    ".local/wordpress-lab/final-acceptance-921/sites.json": "a094a0672fec9c94e9e44b9cb20aba1f3a7932df7f5a336f1f6cdf07fa9e7456",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-link-fixed-wp63-chromium.json": "0e37c131b0ca8867593bf8e20541734654e76ddaa684ae3a32c0131ec1e4211d",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-link-fixed-wp70-chromium.json": "3901b5dc4227060e879fff5667809d142ab4d587df98e86c62a0960f29031967",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-localwp-chromium.json": "e56f413aa79a80fca2defd1d1b78061c587d8ee1113c4d620c039681ab3f579c",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-localwp-firefox.json": "0f4ba720c697ffdd88d42516883e1baa28775fc9695eb2d9467b90e39c3b73fa",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-localwp-webkit.json": "4473734ac5bb2c91ee6b8d44af803d11ace82fec30a2c3310416a7d92c66857c",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-child-chromium.json": "a9eb28db92b81cca503c6eb6aae6a3e5cd61224ce9dcd934f9db9caaa0175c87",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-child-firefox.json": "f1a24cd9ae169f45373df851465f4006c53013ff24f16f2091cbe2513423bbee",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-child-webkit.json": "53c41f90dc4bd70fc94211df133ff0bb0a078de0a9a40671b76cd27918fe7960",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-chromium.json": "1cbc8ab0c4d77631c49f0712f94a3d8b4d15e024d8a72caccdb769f4ebc89223",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-firefox.json": "3d2bfad5cb6d7a285e9b88374f4b2f603e8ce70bc4512f6e79fc6149c1274c7b",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-ms85-webkit.json": "3c261dfe09bd71db34227c4e09bb06b688d5a565eb60588a2ebd79352729df46",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-read-comparison.json": "9f6073f7a00b6ce4fa34ec171fa93edb89328cc9b630e65bd54ab9c5615807d7",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-read.json": "1be111c0fdfa543246111c87d7cba35f53aedb8fd28a267d6936b1592e9784f0",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp63-chromium.json": "9e814a02735d991d5b7ddd8b533edcc9da4d870583ac07154608a06c6f01d2a8",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp63-firefox.json": "10b9b6900a62af2ac553bb689817fdea451134d8d1aa38636f868bcbafe46df8",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp63-webkit.json": "50c3e11a17bdd2f3d2a585eb75abedf9c4b35eb5971e1b405e58090a474a0525",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp68-chromium.json": "fe9b96e056d159da0703f68d2cb40278d2c10114b6376608801dcfd36de7d440",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp68-firefox.json": "a5864a012f6649add7d7b2cfa60a37cae1627cdaf99b783945e1fb403d428ac1",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp68-webkit.json": "ef641a7d4bb97351c53d6c0e4097bb6b26b917dbc30027d2d3f5b13dc78afd02",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp70-chromium.json": "6502c2f2103e04fbc6232e243507b38bb256890bc11233b95b3675835cd57e84",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp70-firefox.json": "f6575326e35f6f9209ee1a051d14edbf22907ee6ae7bcb6f30ac98a2362efe60",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp70-webkit.json": "a438b71210e3e38843385d899047dec9eeb744c80f89700d66f3c01eb003ad7d",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp71-chromium.json": "13567e1a5ce612c8a9052108d5644435add092ceba832dae2feeccde01e49fba",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp71-firefox.json": "7516d615e935af50ed11e866b26be92abe5a4983d16ebe355e04b21833e27eda",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp71-webkit.json": "eef543c3562f71a305e2795bd261968c1df5c9a0199313b1b9d231f332751b78",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp74-chromium.json": "a902f45428b6e034868696d609595dac9ac3a05071ccfa67e5b34c9442d6b4bb",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp74-firefox.json": "874d9def367078d07215cd53b401ffe355482a4acda4a57377c3a929d1c8832c",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp74-webkit.json": "8ef2bbf70fc727333e7cf706faebc6eb676daf8014a7f27f6b6753d69730d9b2",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp84-chromium.json": "144331a550aec1631a2edf5583840641c27b02ce9bd20742f1af42ca2da7e2ca",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp84-firefox.json": "281a59c7934b59d0955494f70e38233f1f5e5f0b5be75637d15c924c02a08f8d",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp84-webkit.json": "677cbe693556af4a1c23017bbf8c5f060e4dcadc111145d65cb74896eb16e66f",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp85-chromium.json": "2c8dab82d2c812c2ad07e99e5248c4115cceeb0676e2c80dfabd1354be04f998",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp85-firefox.json": "c7445df838cac5bfee98f0d1aab3cb7af3602b76fe9f254fbdb35e9beefe1141",
+    ".local/wordpress-lab/final-acceptance-921/upgraded-wp85-webkit.json": "080cf7fbda3b82216292970c12f438a06b974ccba616122bc84006cda66ea65e",
+    ".local/wordpress-lab/final-acceptance-921/viewport-baseline-chromium.json": "fccce2090c1c8e50e3113d468511ed2bdb92655aa6efaef2b0a6388d725f1f9f",
+    ".local/wordpress-lab/final-acceptance-921/viewport-baseline-firefox.json": "fc3865839bd169f0425ae6542f2a0c8aa585166a9e47b99eff33162f9fe60520",
+    ".local/wordpress-lab/final-acceptance-921/viewport-baseline-webkit.json": "cbde31402959b184fed78f8ac69e448b5a0b70a12e0f9c7799a910f13d5158b7",
+    ".local/wordpress-lab/final-acceptance-921/viewport-reupgraded-chromium.json": "ce530d8af5e53032aaad335cd6cebc8de598e7504d230fde485e974d1625f60a",
+    ".local/wordpress-lab/final-acceptance-921/viewport-rollback-chromium.json": "ce530d8af5e53032aaad335cd6cebc8de598e7504d230fde485e974d1625f60a",
+    ".local/wordpress-lab/final-acceptance-921/viewport-rollback-firefox.json": "e172b7af093abb5334297dd3dfe38fbc0c2f04b539bf797d55e1f3c51bfa4d7b",
+    ".local/wordpress-lab/final-acceptance-921/viewport-rollback-webkit.json": "a2d94d67c79ce021c1e0e50b6550a3e59f8b9de02ac5eb55313d01f76df96c09",
+    ".local/wordpress-lab/final-acceptance-921/viewport-upgraded-chromium.json": "f6cc0d0c14f512f9b8173e1e2bfbf07dd816e4051179373234c5a93265a3cdfe",
+    ".local/wordpress-lab/final-acceptance-921/viewport-upgraded-firefox.json": "dc7635404e10bd2ef67d76b2b670dc716e2ccd3f0fa2fdc494007fb549837127",
+    ".local/wordpress-lab/final-acceptance-921/viewport-upgraded-webkit.json": "173370f31e16a8256827312459b72bfcf6b24491f138e1777d33e1f6be8eaea4",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-localwp-chromium.json": "9cede86d17ad7dccab64a4a0f36a3772021f4504161dd7a9531bf67e4f3b3ae7",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-localwp-firefox.json": "22ab4803f9ff84de1abed63f2a8d02038e3f3788927deb1d498b79dfeaae8a8c",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-localwp-webkit.json": "1239405844bdebfc369144c41ccdc1b9617d62ad51e17bb9ed0fafe4ef3faf57",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-ms85-child-chromium.json": "8ba42015035b1497ca6a34e76fb5ea9f3b3f3dfd1cc88db7f47703d7f49b476f",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-ms85-child-firefox.json": "b76b5705d657c7962629c33f4808a86f3722ebcca1878d030596f719e3386405",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-ms85-child-webkit.json": "cd86829f0ded4237c50f77dbff0350f53acc6ecf07e8e4dfb1b08bde8e4b4d77",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-ms85-chromium.json": "9cede86d17ad7dccab64a4a0f36a3772021f4504161dd7a9531bf67e4f3b3ae7",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-ms85-firefox.json": "22ab4803f9ff84de1abed63f2a8d02038e3f3788927deb1d498b79dfeaae8a8c",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-ms85-webkit.json": "1239405844bdebfc369144c41ccdc1b9617d62ad51e17bb9ed0fafe4ef3faf57",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp63-chromium.json": "20b55130b1c4f51ee51aadaf0d2c8e27a8463c711158cd9a19d69b1fc36c538e",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp63-firefox.json": "2870e2a3f9d3b9202c1162612e195099f6a0cdd98f26559824fc912ddbb7bb15",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp63-webkit.json": "01aca878b5191623f5e30ab4f729e7b43b14314740d55cb3df5b718308e99f89",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp68-chromium.json": "9cede86d17ad7dccab64a4a0f36a3772021f4504161dd7a9531bf67e4f3b3ae7",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp68-firefox.json": "22ab4803f9ff84de1abed63f2a8d02038e3f3788927deb1d498b79dfeaae8a8c",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp68-webkit.json": "1239405844bdebfc369144c41ccdc1b9617d62ad51e17bb9ed0fafe4ef3faf57",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp70-chromium.json": "20b55130b1c4f51ee51aadaf0d2c8e27a8463c711158cd9a19d69b1fc36c538e",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp70-firefox.json": "2870e2a3f9d3b9202c1162612e195099f6a0cdd98f26559824fc912ddbb7bb15",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp70-webkit.json": "01aca878b5191623f5e30ab4f729e7b43b14314740d55cb3df5b718308e99f89",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp71-chromium.json": "9cede86d17ad7dccab64a4a0f36a3772021f4504161dd7a9531bf67e4f3b3ae7",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp71-firefox.json": "22ab4803f9ff84de1abed63f2a8d02038e3f3788927deb1d498b79dfeaae8a8c",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp71-webkit.json": "1239405844bdebfc369144c41ccdc1b9617d62ad51e17bb9ed0fafe4ef3faf57",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp74-chromium.json": "9cede86d17ad7dccab64a4a0f36a3772021f4504161dd7a9531bf67e4f3b3ae7",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp74-firefox.json": "22ab4803f9ff84de1abed63f2a8d02038e3f3788927deb1d498b79dfeaae8a8c",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp74-webkit.json": "1239405844bdebfc369144c41ccdc1b9617d62ad51e17bb9ed0fafe4ef3faf57",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp84-chromium.json": "9cede86d17ad7dccab64a4a0f36a3772021f4504161dd7a9531bf67e4f3b3ae7",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp84-firefox.json": "22ab4803f9ff84de1abed63f2a8d02038e3f3788927deb1d498b79dfeaae8a8c",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp84-webkit.json": "1239405844bdebfc369144c41ccdc1b9617d62ad51e17bb9ed0fafe4ef3faf57",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp85-chromium.json": "9cede86d17ad7dccab64a4a0f36a3772021f4504161dd7a9531bf67e4f3b3ae7",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp85-firefox.json": "22ab4803f9ff84de1abed63f2a8d02038e3f3788927deb1d498b79dfeaae8a8c",
+    ".local/wordpress-lab/final-acceptance-921/visual-baseline-wp85-webkit.json": "1239405844bdebfc369144c41ccdc1b9617d62ad51e17bb9ed0fafe4ef3faf57",
+    ".local/wordpress-lab/final-acceptance-921/widget-browsers.log": "659584679fe736487e94fac2e0f4ed0426c5055856dae964491b3c917c9aa8ab",
+    ".local/wordpress-lab/final-acceptance-921/widget-firefox.log": "0aabb38a417e278b114c68dd74a9ff82a42c84190e8298d60a04c489bb67a4c8",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-localwp-chromium.json": "f1ea75e9de529c30188eddcf02f674702e7c282f07832a890c11cd4a7fd89d1a",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-localwp-firefox.json": "d212e90e4608ce3f7a3aebd974ce3f446be999f64843b3770766e92cc7a4b966",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-localwp-webkit.json": "4d9dcd90703773b6e0945ab352286f77b0cb93aede1e99385262550c39714ff2",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-ms85-child-chromium.json": "30165be0417d0966ff5274f8ea10d24b85949275a209221d942449d4bdcceeaf",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-ms85-child-firefox.json": "1de0f8d8b33f177a16a43418fb2ce2636530c8973bcc17856a327cb42e17e0b3",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-ms85-child-webkit.json": "c115daa51312fee7f06d8627deb788ee250f0ebbaa0c0c70cd09ac3991d5d8f3",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-wp70-chromium.json": "2ec43937741259f3de6ca05892370fc0a2210435e3c5fd93d5bf52df030d90a8",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-wp70-firefox.json": "3f56e592689e5c7b2f7c88015cf67f03b2fe7463cd919d2726520bb4eb7b2466",
+    ".local/wordpress-lab/locale-fix/final-acceptance-921-wp70-webkit.json": "45f95160e245eab4c9244794b58a070f31a8b480de4416156a4277d51b8fcf5f",
+    ".local/wordpress-lab/locale-fix/final-acceptance-retry-921-wp70-firefox.json": "3c625ab885e52e6feafe275d365cb15e6380d9c1549230bc7a2688bd637acc37",
+    ".local/wordpress-lab/locale-fix/final-reupgraded-921-localwp-chromium.json": "03b83c3615ba4d36c7c9b2d6676aad04daeeebc4e60df6f64c541f69753315b1",
+    ".local/wordpress-lab/locale-fix/final-reupgraded-921-ms85-child-chromium.json": "07e7d5e6f8f9874535d5d0f9e0f96b3fd5736a66ac5588d2a1809b12db742995",
+    ".local/wordpress-lab/locale-fix/final-reupgraded-921-wp70-chromium.json": "24a36130cf0a8e2c23e61ae28d40815d9d29aad0f7c05108bd09734f2b2de104",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-localwp-chromium.json": "133cd239b23797f0f9559b92ea516569eee86433742b94dc8a6361ab6071246c",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-localwp-firefox.json": "3a904e0f62275d014a169cc989cb18ccc4ba7bb0e4a800358d2ac7db3fb85d71",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-localwp-webkit.json": "c6a5962734b44c8a24d633ffde1485002fc01520a3f9190b6c8bc1f5d8cc6a74",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-ms85-child-chromium.json": "a06e929301accd4f29de16038423aa1c393617882e738a6920c92b4cb90f4a27",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-ms85-child-firefox.json": "535cd3067fa85252859adcfe024447c2fe21c10ddf04133599ee25293811aab1",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-ms85-child-webkit.json": "5538b273e0a80d1422cce380bcebfa07084d4188a17e4eebd1affb2f8a65eb81",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-wp70-chromium.json": "efd415b8ee1a0a1a5b7fd18783f75ede21abfb33b8abaaa68ed4e2ed84b69b41",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-wp70-firefox.json": "3b97d76356abef76ab2488b9c9233c9cee8919a28d0b443f45034142dc7a306b",
+    ".local/wordpress-lab/locale-fix/final-rollback-921-wp70-webkit.json": "a02995e55e75135732e6c6ab5d4ea5cdf19cafc83949bbc9bdd5c8fbb9a6a0e1",
+    "docs/patches/1.1.2/FINAL-ACCEPTANCE.md": "f32650580271e2e631842b3cd17035bfd453aaf2f8dd4ca80b195f7bdb842274",
+    "docs/patches/1.1.2/README.md": "c4fdfe83f8dc8c46a9e05bc0f4bf90594e8123102030e39bbe7c0e36f75c198e",
+    "docs/patches/1.1.2/simple-digital-clock-1.1.1-to-1.1.2.patch": "ba3623a4aac2dfd60799c6fde1e7cd707a6816589bf404d8e47e67b5a73e101c",
+    "tools/wordpress-lab/Dockerfile.php-compat": "719c9f5c97d1dda91a2be2f477b1762923eaa6043c6b7191a065fa43cbb646d3",
+    "tools/wordpress-lab/README.md": "b933fb540665e8d7d7731179b2f85ac4069346ab7125115157776b34cee33c34",
+    "tools/wordpress-lab/browser-helpers.mjs": "24e687bbce7b98697c1ac9d45b43c06c8772f095c315c2af3e41558b2dce6e22",
+    "tools/wordpress-lab/compose.yaml": "2b9b68c72ade6de7113ceb8d0bc6e211893331f8b41ccbcf3709191d84773b65",
+    "tools/wordpress-lab/core-local-upgrade.php": "736c95890090c14235b203ed69168052283d190942d3e353820f7a81cfe7216d",
+    "tools/wordpress-lab/extended-browser.mjs": "ee44666c1a3eed46102cd3ab6fd1a2d632d32da3f7496e0c7fa62843ea3d2db1",
+    "tools/wordpress-lab/extended-fallback-seed.php": "efc6401fe3190d8b0304b37e6363581a6e3edd7ba3f2d4853f7b2609197a2bb0",
+    "tools/wordpress-lab/extended-fallback.mjs": "33cf3b4094804ce6be860d4fb24e06035cdf013859148f5312b50d3fb0020eb3",
+    "tools/wordpress-lab/extended-widget-http.mjs": "ce825615004d983a6a1e4e7a4f7483eade3c5a05e77ff949587865e58a3bbada",
+    "tools/wordpress-lab/extended-widgets.mjs": "8edb822b52198c8f781f78150a5c380a6c207665743976e54244a2b359968e83",
+    "tools/wordpress-lab/extended-widgets.php": "bd764320e4c62f39361c3a724dc8d0cac87e0f613e559c0ec0a928ab13b0de2f",
+    "tools/wordpress-lab/final-acceptance.mjs": "39ac4f422f0dd715047d99d79431895291e016a62b231f8597e488acc73074b2",
+    "tools/wordpress-lab/final-review-php.py": "209cf3006f929b1f3f42f7a244442875a022e44d1c8e194a9bb3016394fff6a8",
+    "tools/wordpress-lab/final-review.mjs": "8ce9a0a964a0dbd0e37dd02158981972b0412a73a09b8ba2e176ffcd09fe2eef",
+    "tools/wordpress-lab/final-review.php": "18b71990779fec877b7bfcb3e82f23262060cd085a5862a9949047c4e6f3f533",
+    "tools/wordpress-lab/fixtures/1.1.1.json": "3155bd05076b07b4ad126bbabccea2bfaa0d495c9cdf5d0e64457d25c296d53a",
+    "tools/wordpress-lab/fixtures/numeric-captions.json": "2ed5aa29f03fb6ca3dde724e3889ed73d76827af2efdd904dab56cf3dd7ebc5d",
+    "tools/wordpress-lab/fixtures/review2-entities.json": "e937362f29febe622ebb3ff56da93047e666789636a04c69968c03dbec377b6f",
+    "tools/wordpress-lab/fixtures.php": "e3f504a4e8f82acf78bfc174fc966ed5b0d0eb5491efa85515f067e00ff6a283",
+    "tools/wordpress-lab/generate-html5-entities.py": "b2879fbcc1487f8cd1a36240e481a161b35ce06ac4e57a6b1d87ff32dabff3b1",
+    "tools/wordpress-lab/generate-numeric-entities.py": "40e2136436bd8c85ab15574fec0194376017985b1145b7f9ce19103aae6bec0d",
+    "tools/wordpress-lab/html5-caption-save.php": "5ab762b360a94608f2a4278a269b53797c103f9cfee51a151ee5cf093568c869",
+    "tools/wordpress-lab/html5-charset.php": "477a65160dedbc0898b642d90b942b6631d70c0d4ed158d78de856b5ce0060d6",
+    "tools/wordpress-lab/html5-entity-dom.mjs": "d1dbbb77b5e7ada8403288a4f4e56e4dbdccd6bde84d5888085cbfb2a06c14f5",
+    "tools/wordpress-lab/html5-entity-pipeline.php": "565e732ff856ac6aa764f3ef1e70aad7a958a480700c287669feac111369531a",
+    "tools/wordpress-lab/init.sql": "48297c2df964c077f8a132e148c4674aecf2dfb08a720b7c84230f82db6bbf01",
+    "tools/wordpress-lab/locale-tests.mjs": "ed17b3d0727e06a1f301c1e70ff8e06e309d2187884311d1098df5100a1e6130",
+    "tools/wordpress-lab/localwp-published-recheck.mjs": "1823fb44c641e0a164bc0a8c610f63707bf17c951c5a8d57c42ab14f11c7a065",
+    "tools/wordpress-lab/metadata-cycle.php": "47bcf25ce5debf7988c59c88423565124a5fc6be44db5349f25a1b30756154f3",
+    "tools/wordpress-lab/metadata-cycle.py": "7e368cedd39be9f57b79289f3f5a91fa7b911b528ccbd25aa7c8fe60231dd6e3",
+    "tools/wordpress-lab/numeric-caption-save.php": "33edc8b8fe85f9d70503fe26e055c915904a47c3716ce1d0cafe72b7ae9715c8",
+    "tools/wordpress-lab/numeric-entity-pipeline.php": "7c85b4d5df09dbbeaba3494698de76aaea5523123d77cbb264bfb3767e3fcee5",
+    "tools/wordpress-lab/p2-caption.php": "97ef27d9177f374fcfa9837b1fdeb4e3e77bf4886a3307c80f073cbc10e74341",
+    "tools/wordpress-lab/package.py": "5d14ebefab5eb86f23a91616d545bd0a7184af0a851b76bce2383a1c05ac834c",
+    "tools/wordpress-lab/patch-lab.py": "bef4fe8164019f2600ee4d23ab013b1103cb485e0e4761255368b797cd34ccd2",
+    "tools/wordpress-lab/patch-tests.mjs": "1dafc093e44b692ea5de141ef5b56593980964362274bac1fa4cb3fd9f5e43e3",
+    "tools/wordpress-lab/regression.php": "c09cdcc061bc5235108846e631cac6a24d96151d066d90ada08464ea2bc4edb6",
+    "tools/wordpress-lab/review2-entities.mjs": "9602129ba0f7298d42ea9781c5a1782c7065fcc53a61238535b8cc725a36b4ff",
+    "tools/wordpress-lab/review3-captions.mjs": "e0465741962d201d1a68e41a12135d6f99b10aed4027a0b56443e0e0582b42be",
+    "tools/wordpress-lab/review4-boundaries.mjs": "589f4b63bfb521c0ad45bc3afe54a44dc0a7b4509f02c54f8e3608cf54790659",
+    "tools/wordpress-lab/review4-boundaries.php": "b24b696a39be8671131038fac502f81515f5f96da53b0e25fac64754c2a1cc2f",
+    "tools/wordpress-lab/review4-core.php": "a74f1d6caabf0f2c4742deea318895082d65adf52498bb646f96b6a65bf72404",
+    "tools/wordpress-lab/review4-native.mjs": "3fcad5f98375e0134d64691117499da2b52a452069020a76911ab0390f24f364",
+    "tools/wordpress-lab/role-probe.php": "6842a4334e449074410dfcdfa2efc2bdfc9e0682b75dd4cd0d420274e08f6c61",
+    "tools/wordpress-lab/rollback-tests.mjs": "5ee3a0ae25dbea21bae7f3f3185d943765c25bf37a5ef0299e57344b25220467",
+    "tools/wordpress-lab/setup.py": "faad587d3f83bb9b6737f781a78e4d00fd999526b4f171b5957466e7aab02a1e",
+    "tools/wordpress-lab/smoke.mjs": "88ec9ddff89154f230640eb4f6842a7f1f39129c1c7d350b256d00f5a2358488",
+    "tools/wordpress-lab/upgrade-probe.php": "d66775497a7b1461797d9c3a9bd23ba5d292b9c110609000d74b2dffb3136fbd",
+    "tools/wordpress-lab/viewport-acceptance.mjs": "a7594fd4b5c66e8a49e40628742f60fe7d28048c8aaa92f6b622142e7677214f",
+    "tools/wordpress-lab/visual-helpers.mjs": "dfbcd71373a86b68ee7931cac63f4286eca0beaad79591c0da030c231b7bd807",
+    "tools/wordpress-lab/widget-entity-pipeline.php": "79adc2a1e8512bd00b08f562003ad6bc8e95a0915fbb488a8f3e13281b7a7afb",
+    "tools/wordpress-lab/widget-fallback.php": "91217b725ae9148807c66f4f0b8300fb98aaf32436054e1679b0856c0dc4a96c",
+    "wordpress/simple-digital-clock/LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "wordpress/simple-digital-clock/assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+    "wordpress/simple-digital-clock/assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+    "wordpress/simple-digital-clock/assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+    "wordpress/simple-digital-clock/assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    "wordpress/simple-digital-clock/assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+    "wordpress/simple-digital-clock/assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+    "wordpress/simple-digital-clock/block.js": "6c13cd91d7e3f3ae4957bbe757a2de415ce74ed0de1258e8014896c69618f514",
+    "wordpress/simple-digital-clock/includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+    "wordpress/simple-digital-clock/includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+    "wordpress/simple-digital-clock/includes/simple-digital-clock-kses.php": "0664e49e5126290d3f9c8be45dec28096714326ffe6307ae58734d359bcf9271",
+    "wordpress/simple-digital-clock/index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+    "wordpress/simple-digital-clock/languages/simple-digital-clock.pot": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb",
+    "wordpress/simple-digital-clock/readme.txt": "9f24cfeccafa81aad8466bd9c2bb3a309fe750431f45197e93384edadf482f76",
+    "wordpress/simple-digital-clock/widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+  }
+}

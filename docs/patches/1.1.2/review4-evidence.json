@@ -1,0 +1,3203 @@
+{
+  "generated_at_utc": "2026-10-27T21:52:02.347245+00:00",
+  "status": "requires_changes",
+  "findings": [
+    {
+      "priority": 2,
+      "title": "Literal numeric references collapse one escape layer",
+      "platforms": [
+        "WordPress 6.3.2",
+        "WordPress 6.8.3"
+      ],
+      "introduced_by_latest_fix": false,
+      "location": "includes/simple-digital-clock-kses.php:199-205"
+    },
+    {
+      "priority": 2,
+      "title": "Numeric CR serialized as raw CR becomes LF",
+      "platforms": [
+        "WordPress 7.1.3"
+      ],
+      "introduced_by_latest_fix": false,
+      "locations": [
+        "includes/simple-digital-clock-kses.php:146",
+        "includes/simple-digital-clock-kses.php:298-303"
+      ]
+    }
+  ],
+  "product_unchanged": true,
+  "product_files": {
+    "index.php": {
+      "bytes": 133,
+      "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69"
+    },
+    "LICENSE": {
+      "bytes": 18092,
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    "widget_init.php": {
+      "bytes": 8609,
+      "sha256": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+    },
+    "block.js": {
+      "bytes": 115244,
+      "sha256": "2dd37dc1973176e42861391f3b177b08878f7cad42661967c61820235d587615"
+    },
+    "readme.txt": {
+      "bytes": 6713,
+      "sha256": "c640023699e0e39b9fac30059cdeca95f06fd80403d6167700601fba38fa2395"
+    },
+    "includes/simple-digital-clock-admin-notices.php": {
+      "bytes": 3714,
+      "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87"
+    },
+    "includes/simple-digital-clock-kses.php": {
+      "bytes": 12657,
+      "sha256": "10737ba66261a885ca1214741c69934829515351bd111a29a8dddb85c444c0d1"
+    },
+    "includes/simple-digital-clock-admin-settings.php": {
+      "bytes": 906,
+      "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1"
+    },
+    "languages/simple-digital-clock.pot": {
+      "bytes": 4351,
+      "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb"
+    },
+    "assets/public/css/simple-digital-clock.css": {
+      "bytes": 328,
+      "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a"
+    },
+    "assets/public/js/simple-digital-clock.min.js": {
+      "bytes": 32649,
+      "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+    },
+    "assets/admin/js/simple-digital-clock-notify.js": {
+      "bytes": 648,
+      "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa"
+    },
+    "assets/admin/img/icon.png": {
+      "bytes": 551,
+      "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2"
+    },
+    "assets/admin/img/icon.svg": {
+      "bytes": 747,
+      "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1"
+    },
+    "assets/admin/img/stars.png": {
+      "bytes": 2043,
+      "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    }
+  },
+  "zip_sha256": "4c62efe3ae3a935a88686e354e405169cd3495e4dab45dd8b27634c08f21e880",
+  "patch_sha256": "25c6242ecabfc3fdcb00ba34f5f48663d06793827f8766d140782adfdade378b",
+  "previous_control_zip_sha256": "4f5b285c30fde609edb2252f7e8be782fe59d9967be37ecbc34b6c06795a0da2",
+  "accepted_contracts": {
+    "original-accepted": {
+      "path": ".local/wordpress-lab/review4/original-accepted.json",
+      "checks": 1856,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 464
+        },
+        {
+          "service": "wp84",
+          "checks": 464
+        },
+        {
+          "service": "wp63",
+          "checks": 464
+        },
+        {
+          "service": "wp68",
+          "checks": 464
+        }
+      ]
+    },
+    "review-accepted": {
+      "path": ".local/wordpress-lab/review4/review-accepted.json",
+      "checks": 592,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 148
+        },
+        {
+          "service": "wp84",
+          "checks": 148
+        },
+        {
+          "service": "wp63",
+          "checks": 148
+        },
+        {
+          "service": "wp68",
+          "checks": 148
+        }
+      ]
+    },
+    "raw-accepted": {
+      "path": ".local/wordpress-lab/review4/raw-accepted.json",
+      "checks": 72,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 18
+        },
+        {
+          "service": "wp84",
+          "checks": 18
+        },
+        {
+          "service": "wp63",
+          "checks": 18
+        },
+        {
+          "service": "wp68",
+          "checks": 18
+        }
+      ]
+    },
+    "post-save-accepted": {
+      "path": ".local/wordpress-lab/review4/post-save-accepted.json",
+      "checks": 772,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 193
+        },
+        {
+          "service": "wp84",
+          "checks": 193
+        },
+        {
+          "service": "wp63",
+          "checks": 193
+        },
+        {
+          "service": "wp68",
+          "checks": 193
+        }
+      ]
+    },
+    "pipeline-accepted": {
+      "path": ".local/wordpress-lab/review4/pipeline-accepted.json",
+      "checks": 12,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 3
+        },
+        {
+          "service": "wp84",
+          "checks": 3
+        },
+        {
+          "service": "wp63",
+          "checks": 3
+        },
+        {
+          "service": "wp68",
+          "checks": 3
+        }
+      ]
+    },
+    "charset-accepted": {
+      "path": ".local/wordpress-lab/review4/charset-accepted.json",
+      "checks": 16,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 4
+        },
+        {
+          "service": "wp84",
+          "checks": 4
+        },
+        {
+          "service": "wp63",
+          "checks": 4
+        },
+        {
+          "service": "wp68",
+          "checks": 4
+        }
+      ]
+    },
+    "original-browser-chromium": {
+      "path": ".local/wordpress-lab/patch/review4-chromium-browser.json",
+      "checks": 132,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 33
+        },
+        {
+          "service": "wp84",
+          "checks": 33
+        },
+        {
+          "service": "wp63",
+          "checks": 33
+        },
+        {
+          "service": "wp68",
+          "checks": 33
+        }
+      ]
+    },
+    "old-reader-main-chromium": {
+      "path": ".local/wordpress-lab/entities-final/captions-review4-official111-chromium.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542
+        },
+        {
+          "service": "wp84",
+          "checks": 542
+        },
+        {
+          "service": "wp63",
+          "checks": 542
+        },
+        {
+          "service": "wp68",
+          "checks": 542
+        }
+      ]
+    },
+    "all-names-chromium": {
+      "path": ".local/wordpress-lab/entities-fix/all-entities-review4-chromium.json",
+      "comparisons": 34000,
+      "failed": 0
+    },
+    "original-browser-firefox": {
+      "path": ".local/wordpress-lab/patch/review4-firefox-browser.json",
+      "checks": 132,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 33
+        },
+        {
+          "service": "wp84",
+          "checks": 33
+        },
+        {
+          "service": "wp63",
+          "checks": 33
+        },
+        {
+          "service": "wp68",
+          "checks": 33
+        }
+      ]
+    },
+    "old-reader-main-firefox": {
+      "path": ".local/wordpress-lab/entities-final/captions-review4-official111-firefox.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542
+        },
+        {
+          "service": "wp84",
+          "checks": 542
+        },
+        {
+          "service": "wp63",
+          "checks": 542
+        },
+        {
+          "service": "wp68",
+          "checks": 542
+        }
+      ]
+    },
+    "all-names-firefox": {
+      "path": ".local/wordpress-lab/entities-fix/all-entities-review4-firefox.json",
+      "comparisons": 34000,
+      "failed": 0
+    },
+    "original-browser-webkit": {
+      "path": ".local/wordpress-lab/patch/review4-webkit-browser.json",
+      "checks": 132,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 33
+        },
+        {
+          "service": "wp84",
+          "checks": 33
+        },
+        {
+          "service": "wp63",
+          "checks": 33
+        },
+        {
+          "service": "wp68",
+          "checks": 33
+        }
+      ]
+    },
+    "old-reader-main-webkit": {
+      "path": ".local/wordpress-lab/entities-final/captions-review4-official111-webkit.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542
+        },
+        {
+          "service": "wp84",
+          "checks": 542
+        },
+        {
+          "service": "wp63",
+          "checks": 542
+        },
+        {
+          "service": "wp68",
+          "checks": 542
+        }
+      ]
+    },
+    "all-names-webkit": {
+      "path": ".local/wordpress-lab/entities-fix/all-entities-review4-webkit.json",
+      "comparisons": 34000,
+      "failed": 0
+    },
+    "reupgrade-main": {
+      "path": ".local/wordpress-lab/entities-final/captions-review4-reupgrade-chromium.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542
+        },
+        {
+          "service": "wp84",
+          "checks": 542
+        },
+        {
+          "service": "wp63",
+          "checks": 542
+        },
+        {
+          "service": "wp68",
+          "checks": 542
+        }
+      ]
+    }
+  },
+  "native_numeric_findings": {
+    "initial_candidate": [
+      {
+        "service": "wp71",
+        "blocks": 24,
+        "passed": 22,
+        "failed": 2,
+        "post_ids": [
+          2098,
+          2099
+        ],
+        "failures": [
+          {
+            "caption": "&#13; <clock>",
+            "expected": {
+              "caption": "&#13; <clock>",
+              "valid": true,
+              "dom": "\r <clock>"
+            },
+            "actual": {
+              "caption": "&#13; <clock>",
+              "valid": false,
+              "dom": "\n <clock>"
+            }
+          },
+          {
+            "caption": "&#xD; <clock>",
+            "expected": {
+              "caption": "&#xD; <clock>",
+              "valid": true,
+              "dom": "\r <clock>"
+            },
+            "actual": {
+              "caption": "&#xD; <clock>",
+              "valid": false,
+              "dom": "\n <clock>"
+            }
+          }
+        ],
+        "administrator_editor": {
+          "valid": true,
+          "dirty": false
+        },
+        "author_editor": {
+          "valid": false,
+          "dirty": false
+        }
+      },
+      {
+        "service": "wp84",
+        "blocks": 24,
+        "passed": 22,
+        "failed": 2,
+        "post_ids": [
+          2053,
+          2054
+        ],
+        "failures": [
+          {
+            "caption": "&#13; <clock>",
+            "expected": {
+              "caption": "&#13; <clock>",
+              "valid": true,
+              "dom": "\r <clock>"
+            },
+            "actual": {
+              "caption": "&#13; <clock>",
+              "valid": false,
+              "dom": "\n <clock>"
+            }
+          },
+          {
+            "caption": "&#xD; <clock>",
+            "expected": {
+              "caption": "&#xD; <clock>",
+              "valid": true,
+              "dom": "\r <clock>"
+            },
+            "actual": {
+              "caption": "&#xD; <clock>",
+              "valid": false,
+              "dom": "\n <clock>"
+            }
+          }
+        ],
+        "administrator_editor": {
+          "valid": true,
+          "dirty": false
+        },
+        "author_editor": {
+          "valid": false,
+          "dirty": false
+        }
+      },
+      {
+        "service": "wp63",
+        "blocks": 24,
+        "passed": 21,
+        "failed": 3,
+        "post_ids": [
+          2140,
+          2141
+        ],
+        "failures": [
+          {
+            "caption": "&amp;#13; <clock>",
+            "expected": {
+              "caption": "&amp;#13; <clock>",
+              "valid": true,
+              "dom": "&#13; <clock>"
+            },
+            "actual": {
+              "caption": "&amp;#13; <clock>",
+              "valid": false,
+              "dom": "\r <clock>"
+            }
+          },
+          {
+            "caption": "&amp;#34; <clock>",
+            "expected": {
+              "caption": "&amp;#34; <clock>",
+              "valid": true,
+              "dom": "&#34; <clock>"
+            },
+            "actual": {
+              "caption": "&amp;#34; <clock>",
+              "valid": false,
+              "dom": "\" <clock>"
+            }
+          },
+          {
+            "caption": "&amp;#x1F552; <clock>",
+            "expected": {
+              "caption": "&amp;#x1F552; <clock>",
+              "valid": true,
+              "dom": "&#x1F552; <clock>"
+            },
+            "actual": {
+              "caption": "&amp;#x1F552; <clock>",
+              "valid": false,
+              "dom": "🕒 <clock>"
+            }
+          }
+        ],
+        "administrator_editor": {
+          "valid": true,
+          "dirty": false
+        },
+        "author_editor": {
+          "valid": false,
+          "dirty": false
+        }
+      },
+      {
+        "service": "wp68",
+        "blocks": 24,
+        "passed": 21,
+        "failed": 3,
+        "post_ids": [
+          2014,
+          2015
+        ],
+        "failures": [
+          {
+            "caption": "&amp;#13; <clock>",
+            "expected": {
+              "caption": "&amp;#13; <clock>",
+              "valid": true,
+              "dom": "&#13; <clock>"
+            },
+            "actual": {
+              "caption": "&amp;#13; <clock>",
+              "valid": false,
+              "dom": "\r <clock>"
+            }
+          },
+          {
+            "caption": "&amp;#34; <clock>",
+            "expected": {
+              "caption": "&amp;#34; <clock>",
+              "valid": true,
+              "dom": "&#34; <clock>"
+            },
+            "actual": {
+              "caption": "&amp;#34; <clock>",
+              "valid": false,
+              "dom": "\" <clock>"
+            }
+          },
+          {
+            "caption": "&amp;#x1F552; <clock>",
+            "expected": {
+              "caption": "&amp;#x1F552; <clock>",
+              "valid": true,
+              "dom": "&#x1F552; <clock>"
+            },
+            "actual": {
+              "caption": "&amp;#x1F552; <clock>",
+              "valid": false,
+              "dom": "🕒 <clock>"
+            }
+          }
+        ],
+        "administrator_editor": {
+          "valid": true,
+          "dirty": false
+        },
+        "author_editor": {
+          "valid": false,
+          "dirty": false
+        }
+      }
+    ],
+    "candidate-expanded-read-chromium": {
+      "path": ".local/wordpress-lab/review4/native-candidate-expanded-read-chromium.json",
+      "sites": [
+        {
+          "service": "wp71",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2098,
+            2099
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp84",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2053,
+            2054
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp63",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2140,
+            2141
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp68",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2014,
+            2015
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        }
+      ]
+    },
+    "official111-chromium": {
+      "path": ".local/wordpress-lab/review4/native-official111-chromium.json",
+      "sites": [
+        {
+          "service": "wp71",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2098,
+            2099
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp84",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2053,
+            2054
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp63",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2140,
+            2141
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp68",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2014,
+            2015
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        }
+      ]
+    },
+    "candidate-expanded-read-firefox": {
+      "path": ".local/wordpress-lab/review4/native-candidate-expanded-read-firefox.json",
+      "sites": [
+        {
+          "service": "wp71",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2098,
+            2099
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp84",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2053,
+            2054
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp63",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2140,
+            2141
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp68",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2014,
+            2015
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        }
+      ]
+    },
+    "official111-firefox": {
+      "path": ".local/wordpress-lab/review4/native-official111-firefox.json",
+      "sites": [
+        {
+          "service": "wp71",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2098,
+            2099
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp84",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2053,
+            2054
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp63",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2140,
+            2141
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp68",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2014,
+            2015
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        }
+      ]
+    },
+    "candidate-expanded-read-webkit": {
+      "path": ".local/wordpress-lab/review4/native-candidate-expanded-read-webkit.json",
+      "sites": [
+        {
+          "service": "wp71",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2098,
+            2099
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp84",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2053,
+            2054
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp63",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2140,
+            2141
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp68",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2014,
+            2015
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        }
+      ]
+    },
+    "official111-webkit": {
+      "path": ".local/wordpress-lab/review4/native-official111-webkit.json",
+      "sites": [
+        {
+          "service": "wp71",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2098,
+            2099
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp84",
+          "blocks": 24,
+          "passed": 22,
+          "failed": 2,
+          "post_ids": [
+            2053,
+            2054
+          ],
+          "failures": [
+            {
+              "caption": "&#13; <clock>",
+              "expected": {
+                "caption": "&#13; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#13; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            },
+            {
+              "caption": "&#xD; <clock>",
+              "expected": {
+                "caption": "&#xD; <clock>",
+                "valid": true,
+                "dom": "\r <clock>"
+              },
+              "actual": {
+                "caption": "&#xD; <clock>",
+                "valid": false,
+                "dom": "\n <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp63",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2140,
+            2141
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        },
+        {
+          "service": "wp68",
+          "blocks": 24,
+          "passed": 21,
+          "failed": 3,
+          "post_ids": [
+            2014,
+            2015
+          ],
+          "failures": [
+            {
+              "caption": "&amp;#13; <clock>",
+              "expected": {
+                "caption": "&amp;#13; <clock>",
+                "valid": true,
+                "dom": "&#13; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#13; <clock>",
+                "valid": false,
+                "dom": "\r <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#34; <clock>",
+              "expected": {
+                "caption": "&amp;#34; <clock>",
+                "valid": true,
+                "dom": "&#34; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#34; <clock>",
+                "valid": false,
+                "dom": "\" <clock>"
+              }
+            },
+            {
+              "caption": "&amp;#x1F552; <clock>",
+              "expected": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": true,
+                "dom": "&#x1F552; <clock>"
+              },
+              "actual": {
+                "caption": "&amp;#x1F552; <clock>",
+                "valid": false,
+                "dom": "🕒 <clock>"
+              }
+            }
+          ],
+          "administrator_editor": {
+            "valid": true,
+            "dirty": false
+          },
+          "author_editor": {
+            "valid": false,
+            "dirty": false
+          }
+        }
+      ]
+    }
+  },
+  "previous_comparison": [
+    {
+      "service": "wp71",
+      "same_numeric_failures": true,
+      "candidate_failures": [
+        "&#13; <clock>",
+        "&#xD; <clock>"
+      ],
+      "previous_all_failures": [
+        "&#13; <clock>",
+        "&#xD; <clock>",
+        "&NewLine; <clock>",
+        "&AMP;amp; <clock>",
+        "&NotEqualTilde;amp; <clock>"
+      ]
+    },
+    {
+      "service": "wp84",
+      "same_numeric_failures": true,
+      "candidate_failures": [
+        "&#13; <clock>",
+        "&#xD; <clock>"
+      ],
+      "previous_all_failures": [
+        "&#13; <clock>",
+        "&#xD; <clock>",
+        "&NewLine; <clock>",
+        "&AMP;amp; <clock>",
+        "&NotEqualTilde;amp; <clock>"
+      ]
+    },
+    {
+      "service": "wp63",
+      "same_numeric_failures": true,
+      "candidate_failures": [
+        "&amp;#13; <clock>",
+        "&amp;#34; <clock>",
+        "&amp;#x1F552; <clock>"
+      ],
+      "previous_all_failures": [
+        "&amp;#13; <clock>",
+        "&NewLine; <clock>",
+        "&AMP;amp; <clock>",
+        "&NotEqualTilde;amp; <clock>",
+        "&amp;#34; <clock>",
+        "&amp;#x1F552; <clock>"
+      ]
+    },
+    {
+      "service": "wp68",
+      "same_numeric_failures": true,
+      "candidate_failures": [
+        "&amp;#13; <clock>",
+        "&amp;#34; <clock>",
+        "&amp;#x1F552; <clock>"
+      ],
+      "previous_all_failures": [
+        "&amp;#13; <clock>",
+        "&NewLine; <clock>",
+        "&AMP;amp; <clock>",
+        "&NotEqualTilde;amp; <clock>",
+        "&amp;#34; <clock>",
+        "&amp;#x1F552; <clock>"
+      ]
+    }
+  ],
+  "core_controls": [
+    {
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "kses_file": "/var/www/html/wp-includes/kses.php",
+      "controls": [
+        {
+          "value": "&#13;",
+          "normalized": "&#013;",
+          "input": "<p title=\"&#13;\">Core control</p>",
+          "output": "<p title=\"\r\">Core control</p>"
+        },
+        {
+          "value": "&#xD;",
+          "normalized": "&#xD;",
+          "input": "<p title=\"&#xD;\">Core control</p>",
+          "output": "<p title=\"\r\">Core control</p>"
+        },
+        {
+          "value": "&amp;#13;",
+          "normalized": "&amp;#13;",
+          "input": "<p title=\"&amp;#13;\">Core control</p>",
+          "output": "<p title=\"&amp;#13;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#34;",
+          "normalized": "&amp;#34;",
+          "input": "<p title=\"&amp;#34;\">Core control</p>",
+          "output": "<p title=\"&amp;#34;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#x1F552;",
+          "normalized": "&amp;#x1F552;",
+          "input": "<p title=\"&amp;#x1F552;\">Core control</p>",
+          "output": "<p title=\"&amp;#x1F552;\">Core control</p>"
+        }
+      ],
+      "service": "wp71"
+    },
+    {
+      "wordpress": "7.1.3",
+      "php": "8.4.27",
+      "kses_file": "/var/www/html/wp-includes/kses.php",
+      "controls": [
+        {
+          "value": "&#13;",
+          "normalized": "&#013;",
+          "input": "<p title=\"&#13;\">Core control</p>",
+          "output": "<p title=\"\r\">Core control</p>"
+        },
+        {
+          "value": "&#xD;",
+          "normalized": "&#xD;",
+          "input": "<p title=\"&#xD;\">Core control</p>",
+          "output": "<p title=\"\r\">Core control</p>"
+        },
+        {
+          "value": "&amp;#13;",
+          "normalized": "&amp;#13;",
+          "input": "<p title=\"&amp;#13;\">Core control</p>",
+          "output": "<p title=\"&amp;#13;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#34;",
+          "normalized": "&amp;#34;",
+          "input": "<p title=\"&amp;#34;\">Core control</p>",
+          "output": "<p title=\"&amp;#34;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#x1F552;",
+          "normalized": "&amp;#x1F552;",
+          "input": "<p title=\"&amp;#x1F552;\">Core control</p>",
+          "output": "<p title=\"&amp;#x1F552;\">Core control</p>"
+        }
+      ],
+      "service": "wp84"
+    },
+    {
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "kses_file": "/var/www/html/wp-includes/kses.php",
+      "controls": [
+        {
+          "value": "&#13;",
+          "normalized": "&#013;",
+          "input": "<p title=\"&#13;\">Core control</p>",
+          "output": "<p title=\"&#013;\">Core control</p>"
+        },
+        {
+          "value": "&#xD;",
+          "normalized": "&#xD;",
+          "input": "<p title=\"&#xD;\">Core control</p>",
+          "output": "<p title=\"&#xD;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#13;",
+          "normalized": "&#013;",
+          "input": "<p title=\"&amp;#13;\">Core control</p>",
+          "output": "<p title=\"&#013;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#34;",
+          "normalized": "&#034;",
+          "input": "<p title=\"&amp;#34;\">Core control</p>",
+          "output": "<p title=\"&#034;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#x1F552;",
+          "normalized": "&#x1F552;",
+          "input": "<p title=\"&amp;#x1F552;\">Core control</p>",
+          "output": "<p title=\"&#x1F552;\">Core control</p>"
+        }
+      ],
+      "service": "wp63"
+    },
+    {
+      "wordpress": "6.8.3",
+      "php": "8.3.28",
+      "kses_file": "/var/www/html/wp-includes/kses.php",
+      "controls": [
+        {
+          "value": "&#13;",
+          "normalized": "&#013;",
+          "input": "<p title=\"&#13;\">Core control</p>",
+          "output": "<p title=\"&#013;\">Core control</p>"
+        },
+        {
+          "value": "&#xD;",
+          "normalized": "&#xD;",
+          "input": "<p title=\"&#xD;\">Core control</p>",
+          "output": "<p title=\"&#xD;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#13;",
+          "normalized": "&#013;",
+          "input": "<p title=\"&amp;#13;\">Core control</p>",
+          "output": "<p title=\"&#013;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#34;",
+          "normalized": "&#034;",
+          "input": "<p title=\"&amp;#34;\">Core control</p>",
+          "output": "<p title=\"&#034;\">Core control</p>"
+        },
+        {
+          "value": "&amp;#x1F552;",
+          "normalized": "&#x1F552;",
+          "input": "<p title=\"&amp;#x1F552;\">Core control</p>",
+          "output": "<p title=\"&#x1F552;\">Core control</p>"
+        }
+      ],
+      "service": "wp68"
+    }
+  ],
+  "boundaries": {
+    "chromium": {
+      "path": ".local/wordpress-lab/review4/boundaries-chromium.json",
+      "cases": 6516,
+      "new_regressions": 0,
+      "new_repeat_regressions": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp84",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp63",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp68",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        }
+      ]
+    },
+    "firefox": {
+      "path": ".local/wordpress-lab/review4/boundaries-firefox.json",
+      "cases": 6516,
+      "new_regressions": 0,
+      "new_repeat_regressions": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp84",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp63",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp68",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        }
+      ]
+    },
+    "webkit": {
+      "path": ".local/wordpress-lab/review4/boundaries-webkit.json",
+      "cases": 6516,
+      "new_regressions": 0,
+      "new_repeat_regressions": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp84",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp63",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        },
+        {
+          "service": "wp68",
+          "cases": 1629,
+          "preexisting_dom_differences": 206,
+          "repairs": 674
+        }
+      ]
+    }
+  },
+  "cycle": {
+    "original_previous_cycle_posts": 136,
+    "additional_native_review_posts": 16,
+    "total": 152,
+    "versions": [
+      "current 1.1.2",
+      "previous 1.1.2 4f5b285c",
+      "official 1.1.1",
+      "current 1.1.2"
+    ],
+    "database_restore": false,
+    "data_checks": {
+      "previous": {
+        "posts": 152,
+        "unchanged": 152
+      },
+      "previous-after-control": {
+        "posts": 152,
+        "unchanged": 152
+      },
+      "baseline": {
+        "posts": 152,
+        "unchanged": 152
+      },
+      "baseline-after-read": {
+        "posts": 152,
+        "unchanged": 152
+      },
+      "candidate": {
+        "posts": 152,
+        "unchanged": 152
+      },
+      "candidate-after-read": {
+        "posts": 152,
+        "unchanged": 152
+      },
+      "final": {
+        "posts": 152,
+        "unchanged": 152
+      }
+    },
+    "identities": {
+      "previous": [
+        {
+          "service": "wp71",
+          "files": 15,
+          "exact": true
+        },
+        {
+          "service": "wp84",
+          "files": 15,
+          "exact": true
+        },
+        {
+          "service": "wp63",
+          "files": 15,
+          "exact": true
+        },
+        {
+          "service": "wp68",
+          "files": 15,
+          "exact": true
+        }
+      ],
+      "baseline": [
+        {
+          "service": "wp71",
+          "files": 14,
+          "exact": true
+        },
+        {
+          "service": "wp84",
+          "files": 14,
+          "exact": true
+        },
+        {
+          "service": "wp63",
+          "files": 14,
+          "exact": true
+        },
+        {
+          "service": "wp68",
+          "files": 14,
+          "exact": true
+        }
+      ],
+      "candidate": [
+        {
+          "service": "wp71",
+          "files": 15,
+          "exact": true
+        },
+        {
+          "service": "wp84",
+          "files": 15,
+          "exact": true
+        },
+        {
+          "service": "wp63",
+          "files": 15,
+          "exact": true
+        },
+        {
+          "service": "wp68",
+          "files": 15,
+          "exact": true
+        }
+      ]
+    },
+    "post_hashes": [
+      {
+        "service": "wp71",
+        "posts": [
+          {
+            "id": 1942,
+            "raw_sha256": "b528c12f06b936f1136ae6ce81697d7823c87f9c832e4200cdca6dfa7cb4227c"
+          },
+          {
+            "id": 1943,
+            "raw_sha256": "9e267f13f409a6aba2f58c5f8490f9e6e805f82d5b3bd148b33236ab0ecaccb5"
+          },
+          {
+            "id": 1944,
+            "raw_sha256": "2652263032f649bc92b46c7fe9649b3475181bbe22b9b2c0bda86e4197abe715"
+          },
+          {
+            "id": 1945,
+            "raw_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1946,
+            "raw_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1947,
+            "raw_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1948,
+            "raw_sha256": "069b29356a6ade12a32a6826da16bee4fb465dbc9dd1367510357aae70936803"
+          },
+          {
+            "id": 1949,
+            "raw_sha256": "dda8067b6ff38fe147433213ed05b85abb2281319f783cd1651696b2c32a7eee"
+          },
+          {
+            "id": 1950,
+            "raw_sha256": "f4c5c1bb947ee375f8c1ad389bc8ec7780a01273c56996d38344b468e594082b"
+          },
+          {
+            "id": 1951,
+            "raw_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1952,
+            "raw_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1953,
+            "raw_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1954,
+            "raw_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1955,
+            "raw_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1956,
+            "raw_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1957,
+            "raw_sha256": "6e0e1d3359500bbc71c96057ef8e944734f3ee61f73a32c56c500d6aaf37abee"
+          },
+          {
+            "id": 1958,
+            "raw_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1959,
+            "raw_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1960,
+            "raw_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1961,
+            "raw_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1962,
+            "raw_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1963,
+            "raw_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1964,
+            "raw_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1965,
+            "raw_sha256": "aceecadb0cc870c95b28eeaa7089f0c8adb3402c3ccc0eecd248dcccce0bc519"
+          },
+          {
+            "id": 1966,
+            "raw_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1967,
+            "raw_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1968,
+            "raw_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1969,
+            "raw_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1970,
+            "raw_sha256": "382895d021e952d482900c93bfad22c2aa529698c3f291548eba55f7386e3ca9"
+          },
+          {
+            "id": 1971,
+            "raw_sha256": "e3562b1102c1cbd482f583cb40a532868f27eac3ad79b3a9a6ada4c114d26b8d"
+          },
+          {
+            "id": 1972,
+            "raw_sha256": "d5588c07f099da9b00be01cb4c2ada6fcc0f84f00647062978660f6a8a8d5957"
+          },
+          {
+            "id": 1973,
+            "raw_sha256": "c9db26f656591cc2f26d1f66d8c40d991b442bde31380512f15a6e1d307ea4b7"
+          },
+          {
+            "id": 1974,
+            "raw_sha256": "67e6230898b9c352358f96ee54ef05ca0f0d71a84bf1df9b67ba8d1c5d98d031"
+          },
+          {
+            "id": 1975,
+            "raw_sha256": "744a043f65b68f8810abbb4b707e4808945cb8eb44a9abee80ed7d3fc99a67d9"
+          },
+          {
+            "id": 2095,
+            "raw_sha256": "0fc33d14794d072262e66b69c803a68c89832c0b81450b761e666a7e9f0df7c2"
+          },
+          {
+            "id": 2096,
+            "raw_sha256": "e70045139ee628f24bf55e9605d0695aa99e89dd8c8918739eaf4362d27a6c3b"
+          },
+          {
+            "id": 2098,
+            "raw_sha256": "9fbfdab16946e7e4c778050fbd407c03666094fbc758b0680175dc11cf99ab20"
+          },
+          {
+            "id": 2099,
+            "raw_sha256": "2ea24a5427fc3a8ce67e7d079592aad71bb19e54ee388b5060543b7de9702758"
+          }
+        ]
+      },
+      {
+        "service": "wp84",
+        "posts": [
+          {
+            "id": 1897,
+            "raw_sha256": "b528c12f06b936f1136ae6ce81697d7823c87f9c832e4200cdca6dfa7cb4227c"
+          },
+          {
+            "id": 1898,
+            "raw_sha256": "9e267f13f409a6aba2f58c5f8490f9e6e805f82d5b3bd148b33236ab0ecaccb5"
+          },
+          {
+            "id": 1899,
+            "raw_sha256": "2652263032f649bc92b46c7fe9649b3475181bbe22b9b2c0bda86e4197abe715"
+          },
+          {
+            "id": 1900,
+            "raw_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1901,
+            "raw_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1902,
+            "raw_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1903,
+            "raw_sha256": "069b29356a6ade12a32a6826da16bee4fb465dbc9dd1367510357aae70936803"
+          },
+          {
+            "id": 1904,
+            "raw_sha256": "dda8067b6ff38fe147433213ed05b85abb2281319f783cd1651696b2c32a7eee"
+          },
+          {
+            "id": 1905,
+            "raw_sha256": "f4c5c1bb947ee375f8c1ad389bc8ec7780a01273c56996d38344b468e594082b"
+          },
+          {
+            "id": 1906,
+            "raw_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1907,
+            "raw_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1908,
+            "raw_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1909,
+            "raw_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1910,
+            "raw_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1911,
+            "raw_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1912,
+            "raw_sha256": "6e0e1d3359500bbc71c96057ef8e944734f3ee61f73a32c56c500d6aaf37abee"
+          },
+          {
+            "id": 1913,
+            "raw_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1914,
+            "raw_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1915,
+            "raw_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1916,
+            "raw_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1917,
+            "raw_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1918,
+            "raw_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1919,
+            "raw_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1920,
+            "raw_sha256": "aceecadb0cc870c95b28eeaa7089f0c8adb3402c3ccc0eecd248dcccce0bc519"
+          },
+          {
+            "id": 1921,
+            "raw_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1922,
+            "raw_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1923,
+            "raw_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1924,
+            "raw_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1925,
+            "raw_sha256": "382895d021e952d482900c93bfad22c2aa529698c3f291548eba55f7386e3ca9"
+          },
+          {
+            "id": 1926,
+            "raw_sha256": "e3562b1102c1cbd482f583cb40a532868f27eac3ad79b3a9a6ada4c114d26b8d"
+          },
+          {
+            "id": 1927,
+            "raw_sha256": "d5588c07f099da9b00be01cb4c2ada6fcc0f84f00647062978660f6a8a8d5957"
+          },
+          {
+            "id": 1928,
+            "raw_sha256": "c9db26f656591cc2f26d1f66d8c40d991b442bde31380512f15a6e1d307ea4b7"
+          },
+          {
+            "id": 1929,
+            "raw_sha256": "67e6230898b9c352358f96ee54ef05ca0f0d71a84bf1df9b67ba8d1c5d98d031"
+          },
+          {
+            "id": 1930,
+            "raw_sha256": "744a043f65b68f8810abbb4b707e4808945cb8eb44a9abee80ed7d3fc99a67d9"
+          },
+          {
+            "id": 2050,
+            "raw_sha256": "0fc33d14794d072262e66b69c803a68c89832c0b81450b761e666a7e9f0df7c2"
+          },
+          {
+            "id": 2051,
+            "raw_sha256": "e70045139ee628f24bf55e9605d0695aa99e89dd8c8918739eaf4362d27a6c3b"
+          },
+          {
+            "id": 2053,
+            "raw_sha256": "9fbfdab16946e7e4c778050fbd407c03666094fbc758b0680175dc11cf99ab20"
+          },
+          {
+            "id": 2054,
+            "raw_sha256": "2ea24a5427fc3a8ce67e7d079592aad71bb19e54ee388b5060543b7de9702758"
+          }
+        ]
+      },
+      {
+        "service": "wp63",
+        "posts": [
+          {
+            "id": 1984,
+            "raw_sha256": "b0eb4a8150970d6f1186cc4bd4f98675873608c1e5ce30614d621253bdcd1968"
+          },
+          {
+            "id": 1985,
+            "raw_sha256": "9e267f13f409a6aba2f58c5f8490f9e6e805f82d5b3bd148b33236ab0ecaccb5"
+          },
+          {
+            "id": 1986,
+            "raw_sha256": "11a756e4d4f37306d484b803ebe7b43836d8cf9a1b7229789d3b5e5c2ab8179a"
+          },
+          {
+            "id": 1987,
+            "raw_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1988,
+            "raw_sha256": "05061b27283ce72048cde41eda6678ced0dc52cab9adefcdfd257ce88104dfce"
+          },
+          {
+            "id": 1989,
+            "raw_sha256": "b8f520ac64f6c5be1e6ffb1c31fd246db512fed393c74677b0d71d657deebc73"
+          },
+          {
+            "id": 1990,
+            "raw_sha256": "069b29356a6ade12a32a6826da16bee4fb465dbc9dd1367510357aae70936803"
+          },
+          {
+            "id": 1991,
+            "raw_sha256": "27ae47b41d5c326736a84f39d09314ca47a2e5c829b6cf02a8d201bfcc52942b"
+          },
+          {
+            "id": 1992,
+            "raw_sha256": "fdf598f85ea12847a1c440f176212ea08cb8c167c2f47ebde2bb07bc1e5ccd88"
+          },
+          {
+            "id": 1993,
+            "raw_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1994,
+            "raw_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1995,
+            "raw_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1996,
+            "raw_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1997,
+            "raw_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1998,
+            "raw_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1999,
+            "raw_sha256": "4e4a93081ada116dec4cc982b47857dcbd9503346c706baf03b60e627123eb11"
+          },
+          {
+            "id": 2000,
+            "raw_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 2001,
+            "raw_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 2002,
+            "raw_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 2003,
+            "raw_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 2004,
+            "raw_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 2005,
+            "raw_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 2006,
+            "raw_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 2007,
+            "raw_sha256": "aceecadb0cc870c95b28eeaa7089f0c8adb3402c3ccc0eecd248dcccce0bc519"
+          },
+          {
+            "id": 2008,
+            "raw_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 2009,
+            "raw_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 2010,
+            "raw_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 2011,
+            "raw_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 2012,
+            "raw_sha256": "382895d021e952d482900c93bfad22c2aa529698c3f291548eba55f7386e3ca9"
+          },
+          {
+            "id": 2013,
+            "raw_sha256": "e3562b1102c1cbd482f583cb40a532868f27eac3ad79b3a9a6ada4c114d26b8d"
+          },
+          {
+            "id": 2014,
+            "raw_sha256": "d5588c07f099da9b00be01cb4c2ada6fcc0f84f00647062978660f6a8a8d5957"
+          },
+          {
+            "id": 2015,
+            "raw_sha256": "c9db26f656591cc2f26d1f66d8c40d991b442bde31380512f15a6e1d307ea4b7"
+          },
+          {
+            "id": 2016,
+            "raw_sha256": "99ffcbe3c311b0df5b14185ea6d5c360176d4be3f3fc75575ce2b45bac8dada5"
+          },
+          {
+            "id": 2017,
+            "raw_sha256": "925545436e2ed31215c1a42809f5c4c7cc85c627d88b0cdea98bd11e9145ea66"
+          },
+          {
+            "id": 2137,
+            "raw_sha256": "839e626515941f80663e84bc1e656503f533a1a5c1b38cee738a6664a14113a0"
+          },
+          {
+            "id": 2138,
+            "raw_sha256": "500c5aacb0e37eaa0c613324e7ac8befce6807c84be39009f6a39dfb5f1e5521"
+          },
+          {
+            "id": 2140,
+            "raw_sha256": "571d1cf83238ce369c75e5d8eeaafd3f66796c46121529d55929002fa5c117a2"
+          },
+          {
+            "id": 2141,
+            "raw_sha256": "11f718ea2210b973f7106454db182c25bca2841d9990340e25b151036b7a1834"
+          }
+        ]
+      },
+      {
+        "service": "wp68",
+        "posts": [
+          {
+            "id": 1858,
+            "raw_sha256": "b0eb4a8150970d6f1186cc4bd4f98675873608c1e5ce30614d621253bdcd1968"
+          },
+          {
+            "id": 1859,
+            "raw_sha256": "9e267f13f409a6aba2f58c5f8490f9e6e805f82d5b3bd148b33236ab0ecaccb5"
+          },
+          {
+            "id": 1860,
+            "raw_sha256": "11a756e4d4f37306d484b803ebe7b43836d8cf9a1b7229789d3b5e5c2ab8179a"
+          },
+          {
+            "id": 1861,
+            "raw_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1862,
+            "raw_sha256": "05061b27283ce72048cde41eda6678ced0dc52cab9adefcdfd257ce88104dfce"
+          },
+          {
+            "id": 1863,
+            "raw_sha256": "b8f520ac64f6c5be1e6ffb1c31fd246db512fed393c74677b0d71d657deebc73"
+          },
+          {
+            "id": 1864,
+            "raw_sha256": "069b29356a6ade12a32a6826da16bee4fb465dbc9dd1367510357aae70936803"
+          },
+          {
+            "id": 1865,
+            "raw_sha256": "27ae47b41d5c326736a84f39d09314ca47a2e5c829b6cf02a8d201bfcc52942b"
+          },
+          {
+            "id": 1866,
+            "raw_sha256": "fdf598f85ea12847a1c440f176212ea08cb8c167c2f47ebde2bb07bc1e5ccd88"
+          },
+          {
+            "id": 1867,
+            "raw_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1868,
+            "raw_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1869,
+            "raw_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1870,
+            "raw_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1871,
+            "raw_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1872,
+            "raw_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1873,
+            "raw_sha256": "4e4a93081ada116dec4cc982b47857dcbd9503346c706baf03b60e627123eb11"
+          },
+          {
+            "id": 1874,
+            "raw_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1875,
+            "raw_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1876,
+            "raw_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1877,
+            "raw_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1878,
+            "raw_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1879,
+            "raw_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1880,
+            "raw_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1881,
+            "raw_sha256": "aceecadb0cc870c95b28eeaa7089f0c8adb3402c3ccc0eecd248dcccce0bc519"
+          },
+          {
+            "id": 1882,
+            "raw_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1883,
+            "raw_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1884,
+            "raw_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1885,
+            "raw_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1886,
+            "raw_sha256": "382895d021e952d482900c93bfad22c2aa529698c3f291548eba55f7386e3ca9"
+          },
+          {
+            "id": 1887,
+            "raw_sha256": "e3562b1102c1cbd482f583cb40a532868f27eac3ad79b3a9a6ada4c114d26b8d"
+          },
+          {
+            "id": 1888,
+            "raw_sha256": "d5588c07f099da9b00be01cb4c2ada6fcc0f84f00647062978660f6a8a8d5957"
+          },
+          {
+            "id": 1889,
+            "raw_sha256": "c9db26f656591cc2f26d1f66d8c40d991b442bde31380512f15a6e1d307ea4b7"
+          },
+          {
+            "id": 1890,
+            "raw_sha256": "99ffcbe3c311b0df5b14185ea6d5c360176d4be3f3fc75575ce2b45bac8dada5"
+          },
+          {
+            "id": 1891,
+            "raw_sha256": "925545436e2ed31215c1a42809f5c4c7cc85c627d88b0cdea98bd11e9145ea66"
+          },
+          {
+            "id": 2011,
+            "raw_sha256": "839e626515941f80663e84bc1e656503f533a1a5c1b38cee738a6664a14113a0"
+          },
+          {
+            "id": 2012,
+            "raw_sha256": "500c5aacb0e37eaa0c613324e7ac8befce6807c84be39009f6a39dfb5f1e5521"
+          },
+          {
+            "id": 2014,
+            "raw_sha256": "571d1cf83238ce369c75e5d8eeaafd3f66796c46121529d55929002fa5c117a2"
+          },
+          {
+            "id": 2015,
+            "raw_sha256": "11f718ea2210b973f7106454db182c25bca2841d9990340e25b151036b7a1834"
+          }
+        ]
+      }
+    ]
+  },
+  "cleanup": {
+    "lab_containers_remaining": 0,
+    "firefox_container_remaining": 0,
+    "data_preserved": true,
+    "volumes_deleted": false,
+    "prune": false,
+    "task_label_verified": true
+  },
+  "publication": false,
+  "git_commit_push": false,
+  "svn_writes": false,
+  "user_sites_changed": false,
+  "fixture_counts": {
+    "native_captions": 12,
+    "native_roles": 2,
+    "sites": 4,
+    "failed_blocks_per_reader_run": 10,
+    "total_blocks_per_reader_run": 96,
+    "boundary_cases_per_site_engine": 1629
+  },
+  "files": {
+    ".local/wordpress-lab/review4/original-accepted.json": {
+      "bytes": 216731,
+      "sha256": "25dc7da062f2266b7bf36f1aa10f1089c39c5c8fda2d0436267b275ca0081992"
+    },
+    ".local/wordpress-lab/review4/review-accepted.json": {
+      "bytes": 86743,
+      "sha256": "100da98e2f78dfd24768b2f64d62962b4a7955bfabd5c0bdcfba74fab6fadace"
+    },
+    ".local/wordpress-lab/review4/raw-accepted.json": {
+      "bytes": 7851,
+      "sha256": "6b18d3b1e5ce4384d4f070a58719c8ae1e81847815bb2ee6f075306a53481945"
+    },
+    ".local/wordpress-lab/review4/post-save-accepted.json": {
+      "bytes": 88063,
+      "sha256": "2ac1d2e42b1a1a9e9627dad9213d7e89c1ae084c0d6bb3478a3590c272ccae88"
+    },
+    ".local/wordpress-lab/review4/pipeline-accepted.json": {
+      "bytes": 5745779,
+      "sha256": "142008e908dd6a8b4ee620365220daa579afc112663dc54349f5af03c4af32d2"
+    },
+    ".local/wordpress-lab/review4/charset-accepted.json": {
+      "bytes": 2923,
+      "sha256": "b21f38ebbc3d80c4ca93e9cbb3e6717718db47ce7d78565fbcdadabb126d6926"
+    },
+    ".local/wordpress-lab/review4/native-candidate-expanded-chromium.json": {
+      "bytes": 133567,
+      "sha256": "a5a4a6432c311b15adf217c80b56beb7435e2eb111fd0d3bbd00b36801d78543"
+    },
+    ".local/wordpress-lab/review4/native-previous-chromium.json": {
+      "bytes": 138425,
+      "sha256": "6594d0ee3cbcc70d458b3e3477330ba2f283c92183f3176a85f91e07919f531a"
+    },
+    ".local/wordpress-lab/review4/previous-comparison.json": {
+      "bytes": 1439,
+      "sha256": "9b147229eb6c0eb24bec4665485944ef5196e2d99fbad8978ce15d0fd1564fa1"
+    },
+    ".local/wordpress-lab/review4/native-candidate-expanded-read-chromium.json": {
+      "bytes": 133567,
+      "sha256": "b833a31cc0af45e9d379a92fb4db2e95e27263f50437e931a6ccd06a5f988846"
+    },
+    ".local/wordpress-lab/review4/native-official111-chromium.json": {
+      "bytes": 133567,
+      "sha256": "b833a31cc0af45e9d379a92fb4db2e95e27263f50437e931a6ccd06a5f988846"
+    },
+    ".local/wordpress-lab/review4/boundaries-chromium.json": {
+      "bytes": 394687,
+      "sha256": "5eec3d881d22f0ab51f84dcbb825c8b5b925a2261a30e4ced2daa158abbe5caf"
+    },
+    ".local/wordpress-lab/patch/review4-chromium-browser.json": {
+      "bytes": 35135,
+      "sha256": "b95efcfafa0cbdf0ef0216e2d6dfbc41474ba829681c3660d55613d9d90fd0cc"
+    },
+    ".local/wordpress-lab/entities-final/captions-review4-official111-chromium.json": {
+      "bytes": 1020611,
+      "sha256": "1097f865afbe28caa7d06f32d5cea03ca5ed870fde19e8f4b9b1d1ed1cde5645"
+    },
+    ".local/wordpress-lab/entities-fix/all-entities-review4-chromium.json": {
+      "bytes": 755,
+      "sha256": "ee5187be14533c2908c769fd56f83ea8ccbc4799e89f0b0f570538da469f27b2"
+    },
+    ".local/wordpress-lab/review4/native-candidate-expanded-read-firefox.json": {
+      "bytes": 133563,
+      "sha256": "4b3478d0dade33902132511766f3569a742ea2c43a453ba93d9e50e616f33fca"
+    },
+    ".local/wordpress-lab/review4/native-official111-firefox.json": {
+      "bytes": 133563,
+      "sha256": "4b3478d0dade33902132511766f3569a742ea2c43a453ba93d9e50e616f33fca"
+    },
+    ".local/wordpress-lab/review4/boundaries-firefox.json": {
+      "bytes": 394683,
+      "sha256": "803a89f96adf85b08efd92f9e570fafc8451c4b04a84fd3c8a4ad6bd4f71a157"
+    },
+    ".local/wordpress-lab/patch/review4-firefox-browser.json": {
+      "bytes": 35135,
+      "sha256": "b95efcfafa0cbdf0ef0216e2d6dfbc41474ba829681c3660d55613d9d90fd0cc"
+    },
+    ".local/wordpress-lab/entities-final/captions-review4-official111-firefox.json": {
+      "bytes": 1020607,
+      "sha256": "722981ab3ecc593406cb582ae3db604a45f35a6d40b66940356e82795a5cf81b"
+    },
+    ".local/wordpress-lab/entities-fix/all-entities-review4-firefox.json": {
+      "bytes": 751,
+      "sha256": "c2e78f86d5df59d00110909e69ba7adbb30cb6d60e9b91615aaea7c560aa410c"
+    },
+    ".local/wordpress-lab/review4/native-candidate-expanded-read-webkit.json": {
+      "bytes": 133559,
+      "sha256": "0c0f24ac11f1a48116a69dfcf4efb28b9b04ffc2891a1bc8dcfffa2e007f9e3d"
+    },
+    ".local/wordpress-lab/review4/native-official111-webkit.json": {
+      "bytes": 133559,
+      "sha256": "0c0f24ac11f1a48116a69dfcf4efb28b9b04ffc2891a1bc8dcfffa2e007f9e3d"
+    },
+    ".local/wordpress-lab/review4/boundaries-webkit.json": {
+      "bytes": 394679,
+      "sha256": "347dde84a30fc3722e2b2ddc551b9a191841d08ad182da6687d5dadc82a9b2e3"
+    },
+    ".local/wordpress-lab/patch/review4-webkit-browser.json": {
+      "bytes": 35135,
+      "sha256": "b95efcfafa0cbdf0ef0216e2d6dfbc41474ba829681c3660d55613d9d90fd0cc"
+    },
+    ".local/wordpress-lab/entities-final/captions-review4-official111-webkit.json": {
+      "bytes": 1020603,
+      "sha256": "1ee9a46b7253c4a4e8140ca2a8b3f4672216362c5d8943958b48e680a3646a7e"
+    },
+    ".local/wordpress-lab/entities-fix/all-entities-review4-webkit.json": {
+      "bytes": 747,
+      "sha256": "e73c90817aef327fdcacce8703516ad3cf75435e78018d1fb815b34910d4cb20"
+    },
+    ".local/wordpress-lab/entities-final/captions-review4-reupgrade-chromium.json": {
+      "bytes": 1020603,
+      "sha256": "9a2fc72f53a4ffd7c9b6ebfafd6000d0439bddf8cc35b6093920e247daa893da"
+    },
+    ".local/wordpress-lab/review4/identity-previous.json": {
+      "bytes": 271,
+      "sha256": "342c41e6316c26c68adf4f344cdb66055eb219e8962b2e0853af0413a79c3a75"
+    },
+    ".local/wordpress-lab/review4/identity-baseline.json": {
+      "bytes": 271,
+      "sha256": "350873bfd274b6afe5854ebf76e106ee35018ae1aaa1b722c7663a05e29751d0"
+    },
+    ".local/wordpress-lab/review4/identity-candidate.json": {
+      "bytes": 271,
+      "sha256": "342c41e6316c26c68adf4f344cdb66055eb219e8962b2e0853af0413a79c3a75"
+    },
+    ".local/wordpress-lab/review4/previous-unchanged.json": {
+      "bytes": 9027,
+      "sha256": "31e96f8c812f207c4b6bdef7ca1447f6867f32edb13ef9aed40662e5bbd40b5b"
+    },
+    ".local/wordpress-lab/review4/previous-after-control-unchanged.json": {
+      "bytes": 9027,
+      "sha256": "31e96f8c812f207c4b6bdef7ca1447f6867f32edb13ef9aed40662e5bbd40b5b"
+    },
+    ".local/wordpress-lab/review4/baseline-unchanged.json": {
+      "bytes": 9027,
+      "sha256": "31e96f8c812f207c4b6bdef7ca1447f6867f32edb13ef9aed40662e5bbd40b5b"
+    },
+    ".local/wordpress-lab/review4/baseline-after-read-unchanged.json": {
+      "bytes": 9027,
+      "sha256": "31e96f8c812f207c4b6bdef7ca1447f6867f32edb13ef9aed40662e5bbd40b5b"
+    },
+    ".local/wordpress-lab/review4/candidate-unchanged.json": {
+      "bytes": 9027,
+      "sha256": "31e96f8c812f207c4b6bdef7ca1447f6867f32edb13ef9aed40662e5bbd40b5b"
+    },
+    ".local/wordpress-lab/review4/candidate-after-read-unchanged.json": {
+      "bytes": 9027,
+      "sha256": "31e96f8c812f207c4b6bdef7ca1447f6867f32edb13ef9aed40662e5bbd40b5b"
+    },
+    ".local/wordpress-lab/review4/final-unchanged.json": {
+      "bytes": 9027,
+      "sha256": "31e96f8c812f207c4b6bdef7ca1447f6867f32edb13ef9aed40662e5bbd40b5b"
+    },
+    ".local/wordpress-lab/packages/review4-snapshot.json": {
+      "bytes": 446171,
+      "sha256": "48e7f7ba421e585d7c62c2a56c591d42d5d66735e86f05e8eabb17b2bf0af075"
+    },
+    ".local/wordpress-lab/entities-final/product-files.json": {
+      "bytes": 2121,
+      "sha256": "cb24dc6010060ca18a8704bdd7d6ff94a38aa55ce4fa0c3e00a4fcc66bc188be"
+    },
+    ".local/wordpress-lab/entities-final/patch-apply.json": {
+      "bytes": 459,
+      "sha256": "a024958d6d8773fc6b310b940d5925a723a8bac0aa8b55b7fde914271347a92b"
+    },
+    "wordpress/upstream-1.1.1.json": {
+      "bytes": 2598,
+      "sha256": "c7ea176a21bcafaf1e04c82b191c92c8891f6e092a2e29e8d32ae42f435ddaa7"
+    },
+    ".local/wordpress-lab/review4/core-controls.json": {
+      "bytes": 4561,
+      "sha256": "2d03ca7bf6b0330f6c8f988723448852966b8dd1e9122c67c09521dc08a2601b"
+    },
+    ".local/wordpress-lab/review4/cleanup.json": {
+      "bytes": 175,
+      "sha256": "2a76c1cada134bd10cd4766d7cf6fb2f945969639816dace803743635bee2b59"
+    },
+    ".local/wordpress-lab/packages/review4-boundaries.json": {
+      "bytes": 187840,
+      "sha256": "91625b2076bda6fdd2224a39bca24250677d6f56ced1e51b2beb5de85d60c935"
+    },
+    "tools/wordpress-lab/review4-native.mjs": {
+      "bytes": 5618,
+      "sha256": "3fcad5f98375e0134d64691117499da2b52a452069020a76911ab0390f24f364"
+    },
+    "tools/wordpress-lab/review4-boundaries.mjs": {
+      "bytes": 2798,
+      "sha256": "19799047061f8107ddd9dc402239522b9dc8c1844b4c923782e1fd01d9de9a8a"
+    },
+    "tools/wordpress-lab/review4-boundaries.php": {
+      "bytes": 1647,
+      "sha256": "b24b696a39be8671131038fac502f81515f5f96da53b0e25fac64754c2a1cc2f"
+    },
+    "tools/wordpress-lab/review4-core.php": {
+      "bytes": 890,
+      "sha256": "a74f1d6caabf0f2c4742deea318895082d65adf52498bb646f96b6a65bf72404"
+    }
+  },
+  "commands": [
+    "python3 .local/wordpress-lab/review4/cycle.py previous",
+    "python3 .local/wordpress-lab/review4/cycle.py rollback",
+    "python3 .local/wordpress-lab/review4/cycle.py restore",
+    "node tools/wordpress-lab/review4-native.mjs save fresh-numeric-review chromium"
+  ],
+  "limits": [
+    "Native LocalWP untested",
+    "Multisite untested",
+    "PHP 7.x and 8.5 functional runtime untested",
+    "Specific third-party plugins/themes untested",
+    "Standalone widget checks reused from unchanged-source acceptance, not rerun in this review"
+  ]
+}

@@ -1,0 +1,483 @@
+{
+  "generated_at": "2026-10-28T18:33:15.271218+00:00",
+  "candidate_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+  "candidate_files": {
+    "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+    "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+    "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+    "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    "assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+    "assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+    "block.js": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
+    "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+    "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+    "includes/simple-digital-clock-kses.php": "0664e49e5126290d3f9c8be45dec28096714326ffe6307ae58734d359bcf9271",
+    "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+    "languages/simple-digital-clock.pot": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb",
+    "readme.txt": "63702b119d232e67ea9c8d8ec89287a28acfe36a106c86d38c7dbb4cacf758fc",
+    "widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+  },
+  "product_changed": false,
+  "server_checks": 28,
+  "accepted_browser_checks": 271,
+  "accepted_browser_runs": [
+    {
+      "file": "baseline2-chromium.json",
+      "checks": 31
+    },
+    {
+      "file": "baseline2-webkit.json",
+      "checks": 31
+    },
+    {
+      "file": "saved2-chromium.json",
+      "checks": 49
+    },
+    {
+      "file": "saved2-webkit.json",
+      "checks": 49
+    },
+    {
+      "file": "rollback-chromium.json",
+      "checks": 37
+    },
+    {
+      "file": "rollback-webkit.json",
+      "checks": 37
+    },
+    {
+      "file": "reupgrade-chromium.json",
+      "checks": 37
+    }
+  ],
+  "all_original_posts_retained": {
+    "all_original_posts_unchanged": true,
+    "original_post_rows": 1598,
+    "new_test_rows": 23,
+    "database_restored": false
+  },
+  "tls": {
+    "hostname_and_chain_validation": true,
+    "certificate_fingerprint_sha256": "cf3e5a3969fe5e4a4905048138f58d57c2a24df76c3414ab1bd42d1f21628e65",
+    "bypass": false,
+    "trust": "User-approved certificate in current-user login keychain, SSL only"
+  },
+  "native_safari": {
+    "method": "Native CUA; ordinary Safari",
+    "certificate_warning_bypassed": false,
+    "window_is_secure": true,
+    "https_frontend_on_111": true,
+    "https_frontend_on_112": true,
+    "live_clock_and_unicode_captions": true,
+    "post_clocks": 7,
+    "sidebar_clocks": 7,
+    "only_created_tab_closed": true
+  },
+  "teardown": {
+    "site": "SDCW-112-Isolated-20261028",
+    "id": "ujo3kaSGV",
+    "status": "halted",
+    "url": "http://localhost:10003",
+    "router_mode_restored": "localhost",
+    "ports_80_443_closed": true,
+    "original_router_configs_restored": true,
+    "data_preserved": true,
+    "database_restored": false,
+    "approved_user_ssl_trust_retained": true,
+    "safari_test_tab_closed": true
+  },
+  "failures_retained": "Trust/setup/locator attempts retained separately; see NATIVE-HTTPS.md",
+  "files": [
+    {
+      "path": ".local/wordpress-lab/native-https/accepted-browser-runs.json",
+      "bytes": 444,
+      "sha256": "7781c3dca6226ec0fd880ca068b5be9161aef8670a2703ed1a8d8b582458e0e5"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/access-probes.json",
+      "bytes": 223,
+      "sha256": "d76cc1ddc9eca41a4d202487e9da96887f0b0fdf413c87c71feaaf2a1fe3f72c"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/baseline-chromium.json",
+      "bytes": 1381,
+      "sha256": "86c244328f46be2b82c02ac7140e81446969cecad5d9b2ea84899e88d0399e80"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/baseline-webkit.json",
+      "bytes": 224843,
+      "sha256": "ef2d8d9ce506e8d895d5854d7d4378db19a7d9c062daa6f03441d77a2cdb0f7b"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/baseline2-chromium.json",
+      "bytes": 242593,
+      "sha256": "c7f59100a7a59e06be3f6a0e913247ab573e5b088e2ae173a97cd64269a85029"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/baseline2-webkit.json",
+      "bytes": 224539,
+      "sha256": "b6fbd3404a1cb6b58670321630ce702329e243f3b2433175d950001d0a58f72e"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/before-router.json",
+      "bytes": 3588616,
+      "sha256": "ddceb9cb05dc6199cdfb316c6d0177eb6c26fca15c3191e7e2eb32eaad8e72a2"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-baseline-install-after.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-baseline-install-before.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-baseline-install.json",
+      "bytes": 1601,
+      "sha256": "71479bdd5d4b38f3404246d78fb0ed8ce0ce6831dba694802299fbe563d0874a"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-final.json",
+      "bytes": 3702372,
+      "sha256": "96262ede9e5bda4dfe4a389d443ff4c4bbf268ca84a0c06dde31924380fe5dc9"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-original-retention.json",
+      "bytes": 126,
+      "sha256": "95800e814c140f745eece7166d1b0bb5e1250408a9b2589f729391b28ddaa4e7"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-reupgrade-after.json",
+      "bytes": 3702372,
+      "sha256": "96262ede9e5bda4dfe4a389d443ff4c4bbf268ca84a0c06dde31924380fe5dc9"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-reupgrade-before.json",
+      "bytes": 3702372,
+      "sha256": "96262ede9e5bda4dfe4a389d443ff4c4bbf268ca84a0c06dde31924380fe5dc9"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-reupgrade-core.json",
+      "bytes": 610,
+      "sha256": "018a233df7b5153d7a20aeac13578fa84a58178079353a289e6bffa9e89b1629"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-reupgrade.json",
+      "bytes": 1715,
+      "sha256": "58815dbe3bb677699f605c12e3797785fb8a24bfde5fd54792ffda61d0431af4"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-rollback-after.json",
+      "bytes": 3702372,
+      "sha256": "96262ede9e5bda4dfe4a389d443ff4c4bbf268ca84a0c06dde31924380fe5dc9"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-rollback-before.json",
+      "bytes": 3702372,
+      "sha256": "96262ede9e5bda4dfe4a389d443ff4c4bbf268ca84a0c06dde31924380fe5dc9"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-rollback.json",
+      "bytes": 1601,
+      "sha256": "5ca92090d91ddbae24d3131cf064c7c4d200bcd5095acb763ecd229f3780a250"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-tests.mjs",
+      "bytes": 9419,
+      "sha256": "41ebdbe0d05c8402fdbc60d44c69e9dec67e6709aec794c16fae48196eecfaed"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-trust-control.json",
+      "bytes": 295,
+      "sha256": "940f833c62a4bb47eda89f7f7ea60e84bcd2ce150a1f6c94a10d2be3ae11eec5"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-upgrade-after.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-upgrade-before.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-upgrade-core.json",
+      "bytes": 610,
+      "sha256": "018a233df7b5153d7a20aeac13578fa84a58178079353a289e6bffa9e89b1629"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/browser-upgrade.json",
+      "bytes": 1715,
+      "sha256": "aba0c44458cdab3cb22b2ea512ee400352b43fb2be7ecace219ef88e19f0ca6a"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/cookie-metadata-control.json",
+      "bytes": 392,
+      "sha256": "b3e3f1ee0ab1732e7bf06a964fd38ff4f6faf926b5c4b9683dcd8390c513e294"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/cycle.py",
+      "bytes": 4468,
+      "sha256": "5472635d180be6349b64ab8ff009f8fd85a4c257d3e9c541aeb6ef3dc6785e4d"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/editor-save-control.json",
+      "bytes": 3045,
+      "sha256": "9770a1b88a3a69c83764ec4d0870ce4d6cbf4cc9171927fdd1919513d1b48566"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/http-ajax-response.json",
+      "bytes": 559,
+      "sha256": "c527d0880ba586ffa104eafec509286e398e8136166c60433e61ee26be727cb2"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/http-ajax-upgrade-after.json",
+      "bytes": 3606767,
+      "sha256": "df33824286f6d824e665f0a18ec8658ede192ee7cee36f9b2a0179e844f8494d"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/http-ajax-upgrade-before.json",
+      "bytes": 3606767,
+      "sha256": "df33824286f6d824e665f0a18ec8658ede192ee7cee36f9b2a0179e844f8494d"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/https-baseline-install-after.json",
+      "bytes": 3588652,
+      "sha256": "beb3f38882fe2c063d63c76c63a2b3d805140de6117c313c73ee9f26112bf9d6"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/https-baseline-install-before.json",
+      "bytes": 3588652,
+      "sha256": "beb3f38882fe2c063d63c76c63a2b3d805140de6117c313c73ee9f26112bf9d6"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/https-baseline-install.json",
+      "bytes": 1601,
+      "sha256": "a6853bfac516be326d76a607bb792768e33385fabe1dae9d229cab758b1341e8"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/https-options.json",
+      "bytes": 109,
+      "sha256": "3438166952edfb248428f9cdd98e94fd312b93d513e4c03a632945d0c8831fd1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/initial-https.headers",
+      "bytes": 225,
+      "sha256": "91601a05910f38b8c07774ee38c4fc179acf206f4ac441830c8ab7b50cfab9c2"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/native-safari.json",
+      "bytes": 302,
+      "sha256": "80acdad77296aed8bd4f3d59f8a7be363f0886ae2570a694e59815e431900109"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/mysql/my.cnf.hbs",
+      "bytes": 611,
+      "sha256": "50f4fee7d799b67ae12ad41db364fe1eac2042d85482eaedc94d81b441cfa597"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/nginx/includes/gzip.conf.hbs",
+      "bytes": 609,
+      "sha256": "bf288ed44080cb5e12a586979b7cfb6fabd92a787705c7cc9292409b0103926c"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/nginx/includes/mime-types.conf.hbs",
+      "bytes": 5374,
+      "sha256": "e9059bc5bca500d54ba84b1255b9d27bce4a978af17c26ffe54eaf84bf83a93d"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/nginx/includes/restrictions.conf.hbs",
+      "bytes": 746,
+      "sha256": "4924cd3e0f9251c42a6d9116c460033ddaec2cc006e8aeb6dbc6554239a3f007"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/nginx/includes/wordpress-multi.conf.hbs",
+      "bytes": 765,
+      "sha256": "7031db7b7e9b4d01f913ec4be8710391fc66a109bfbc61db7d44058d92b9547b"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/nginx/includes/wordpress-single.conf.hbs",
+      "bytes": 356,
+      "sha256": "e5042672f555529380deb2b41340a91c3401a29172deb04c39d197edbdbe9cce"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/nginx/nginx.conf.hbs",
+      "bytes": 582,
+      "sha256": "fca04d2cdb1eb3a807b2db928d833607a99082c1e3bb085411967204915f43cf"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/nginx/site.conf.hbs",
+      "bytes": 3066,
+      "sha256": "3d9f1e02fdf11b0f41a2ea78d4be386268d8dca6de700a5b3319bcfa988eba7d"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/php/php-fpm.conf.hbs",
+      "bytes": 180,
+      "sha256": "1c64052a248abc74f3d4d1d7444777428f024e39b3d76cb91a32d23586dc76e5"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/php/php-fpm.d/www.conf.hbs",
+      "bytes": 451,
+      "sha256": "f71cd4018275d1cab190c4f3ba0f85800a69c9ad29b268ab51fa6d6b7a2446f8"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-conf/php/php.ini.hbs",
+      "bytes": 4949,
+      "sha256": "e89a2e9ebbfcce9c4f2ad709b3ec769559689b75f593218d13ea98f9bcf236d6"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-retention.json",
+      "bytes": 215,
+      "sha256": "9650d3e05274a62d6ad44db0ee9967708e132052b40106e4c34abcb5c747e1d3"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-router-conf/nginx.conf",
+      "bytes": 881,
+      "sha256": "226bc6f14223ee80d6a6271729e7ce11a9d887429dc131f60718d8ce483c7f0c"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-router-conf/server-block-ssl.conf",
+      "bytes": 189,
+      "sha256": "ea233666ffdcbe891307d663734a5efe01bd8a54eb9f5f927727032e503c9bb4"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/original-router-conf/server-block.conf",
+      "bytes": 86,
+      "sha256": "facaa648c88cb0734ad9e5e947e151fa561750e9d45fffaee10f418e9d2a410a"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/ready-https.headers",
+      "bytes": 271,
+      "sha256": "0e11b184a5292550ea57c1f67c1caea8df78628f2ec5f20cbdd0725a36719f9a"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/reupgrade-chromium.json",
+      "bytes": 243171,
+      "sha256": "13a20d87320f0766e42ca83ca5c8bda10627db8ef134d6b4a676e08f07d300ed"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/rollback-chromium.json",
+      "bytes": 243170,
+      "sha256": "f56b555b7a20a982bc34e74ad5596f9e96ef8dadaba15269f9cfb9acfc4df264"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/rollback-webkit.json",
+      "bytes": 225418,
+      "sha256": "c57d9b68cffdbf9ced81d2b8c2b6402d724082969a998c19423df0dc78f1adbc"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/router-access.json",
+      "bytes": 248,
+      "sha256": "11d1c60d59667220286ee18cdf2ac7360063dad87dc608b2ffbc8855f02c3d81"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/saved-chromium.json",
+      "bytes": 123958,
+      "sha256": "065e723106525ffc6051dcf889a11facfecc182bf9512e937f802dc7cd2d6d07"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/saved2-chromium.json",
+      "bytes": 249067,
+      "sha256": "a8f5b97dd9890b2c95dce1b3d778caf9534be9ea57b6e628d5a49742713b3989"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/saved2-webkit.json",
+      "bytes": 230571,
+      "sha256": "ec0200cdb72072884032da609bd5ce4a7bd15229371b803949a9b795d418472c"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/seeds.json",
+      "bytes": 16017,
+      "sha256": "040f2f25f034c77c5791807daeb7570f690f4f6001a3678a40078f2b14de2a5f"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-cycle.json",
+      "bytes": 3057,
+      "sha256": "2b9b0411e8d1a60a026c3f035504d85d7bccb9ad81cc081a3e7160db001d8319"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-cycle.py",
+      "bytes": 6764,
+      "sha256": "7966b05f6e0ecea34414a72976b69f2587f333f9b7cab4dc85b987cfb2b344f7"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-final.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-reupgrade-after.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-reupgrade-before.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-reupgrade-core.json",
+      "bytes": 610,
+      "sha256": "018a233df7b5153d7a20aeac13578fa84a58178079353a289e6bffa9e89b1629"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-reupgrade.json",
+      "bytes": 1715,
+      "sha256": "aba0c44458cdab3cb22b2ea512ee400352b43fb2be7ecace219ef88e19f0ca6a"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-rollback-after.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-rollback-before.json",
+      "bytes": 3621302,
+      "sha256": "70da53b242a0f1de45574ff27e29b909dfadc45bb1e91c93bc91a5fabf6aefa1"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/server-rollback.json",
+      "bytes": 1601,
+      "sha256": "71479bdd5d4b38f3404246d78fb0ed8ce0ce6831dba694802299fbe563d0874a"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/site.crt",
+      "bytes": 1706,
+      "sha256": "045ff8b5a1f562e705b2d4d273895f8cd8145fa4480ebae277f2174df80570e4"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/start.json",
+      "bytes": 181,
+      "sha256": "89823cb78a1344c8f5bf0cd7ffb1a9993ebe6369f19b45184be30aa47852086d"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/teardown.json",
+      "bytes": 369,
+      "sha256": "c5d1c90d1bf68562e09af73d446b5ace4a1170feedabcc9e50fb21d19fe97126"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/tls-auth-probe.json",
+      "bytes": 757,
+      "sha256": "4efe2c6c2d3e757d54e72ef3c0a8a7372afd3eb6ef3d529b13f9ce01f9d8fbc5"
+    },
+    {
+      "path": ".local/wordpress-lab/native-https/tls-probe.py",
+      "bytes": 2752,
+      "sha256": "9620c13be2ad89c13293370a5b9e4fc1bfc6e9af6f9eea6d6a31b28f9c03d8e5"
+    },
+    {
+      "path": "docs/patches/1.1.2/NATIVE-HTTPS.md",
+      "bytes": 12219,
+      "sha256": "bc595bedf91559a9b62b6a4192c4a27e42835e3411822a0a7d6c59ed2c44ebf3"
+    },
+    {
+      "path": "docs/patches/1.1.2/README.md",
+      "bytes": 4771,
+      "sha256": "1c410cf6ebaa0e50ccee8647d20e6cb6dff2a173481da9c3892a8dc097496d8e"
+    }
+  ]
+}

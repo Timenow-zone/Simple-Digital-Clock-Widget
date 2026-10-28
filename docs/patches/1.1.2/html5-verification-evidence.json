@@ -1,0 +1,2566 @@
+{
+  "generated_at_utc": "2026-10-27T21:31:40.210113+00:00",
+  "status": "passed-local-only",
+  "publication": false,
+  "git_commit_push": false,
+  "svn_writes": false,
+  "user_sites_changed": false,
+  "product": {
+    "version": "1.1.2",
+    "patch": {
+      "changed_vs_111": [
+        "block.js",
+        "includes/simple-digital-clock-kses.php",
+        "readme.txt",
+        "widget_init.php"
+      ],
+      "changed_vs_4f5": [
+        "includes/simple-digital-clock-kses.php"
+      ],
+      "dry_run": true,
+      "applied_files_match_source_and_zip": true,
+      "file_count": 15,
+      "zip_sha256": "4c62efe3ae3a935a88686e354e405169cd3495e4dab45dd8b27634c08f21e880",
+      "patch_sha256": "25c6242ecabfc3fdcb00ba34f5f48663d06793827f8766d140782adfdade378b"
+    },
+    "files": {
+      "LICENSE": {
+        "bytes": 18092,
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "assets/admin/img/icon.png": {
+        "bytes": 551,
+        "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2"
+      },
+      "assets/admin/img/icon.svg": {
+        "bytes": 747,
+        "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1"
+      },
+      "assets/admin/img/stars.png": {
+        "bytes": 2043,
+        "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+      },
+      "assets/admin/js/simple-digital-clock-notify.js": {
+        "bytes": 648,
+        "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa"
+      },
+      "assets/public/css/simple-digital-clock.css": {
+        "bytes": 328,
+        "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a"
+      },
+      "assets/public/js/simple-digital-clock.min.js": {
+        "bytes": 32649,
+        "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+      },
+      "block.js": {
+        "bytes": 115244,
+        "sha256": "2dd37dc1973176e42861391f3b177b08878f7cad42661967c61820235d587615"
+      },
+      "includes/simple-digital-clock-admin-notices.php": {
+        "bytes": 3714,
+        "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87"
+      },
+      "includes/simple-digital-clock-admin-settings.php": {
+        "bytes": 906,
+        "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1"
+      },
+      "includes/simple-digital-clock-kses.php": {
+        "bytes": 12657,
+        "sha256": "10737ba66261a885ca1214741c69934829515351bd111a29a8dddb85c444c0d1"
+      },
+      "index.php": {
+        "bytes": 133,
+        "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69"
+      },
+      "languages/simple-digital-clock.pot": {
+        "bytes": 4351,
+        "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb"
+      },
+      "readme.txt": {
+        "bytes": 6713,
+        "sha256": "c640023699e0e39b9fac30059cdeca95f06fd80403d6167700601fba38fa2395"
+      },
+      "widget_init.php": {
+        "bytes": 8609,
+        "sha256": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+      }
+    },
+    "widget_bundle_unchanged_sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+  },
+  "red": {
+    "native46": {
+      "path": ".local/wordpress-lab/review3/captions-entities-red-chromium.json",
+      "failed": 116,
+      "sites": [
+        {
+          "service": "wp71",
+          "failed": 29
+        },
+        {
+          "service": "wp84",
+          "failed": 29
+        },
+        {
+          "service": "wp63",
+          "failed": 29
+        },
+        {
+          "service": "wp68",
+          "failed": 29
+        }
+      ]
+    },
+    "all_names": {
+      "path": ".local/wordpress-lab/entities-fix/all-entities-red-chromium.json",
+      "failed": 14976,
+      "sites": [
+        {
+          "service": "wp71",
+          "failed": 3744
+        },
+        {
+          "service": "wp84",
+          "failed": 3744
+        },
+        {
+          "service": "wp63",
+          "failed": 3744
+        },
+        {
+          "service": "wp68",
+          "failed": 3744
+        }
+      ]
+    },
+    "intermediate_charset": [
+      {
+        "wordpress": "7.1.3",
+        "php": "8.3.35",
+        "source": "<timenow-zone-sdcw caption=\"&Afr; <clock>\"></timenow-zone-sdcw>",
+        "saved": "<timenow-zone-sdcw caption=\"𝔄 &lt;clock&gt;\"></timenow-zone-sdcw>",
+        "original_inserted": true,
+        "candidate_inserted": false,
+        "error": "WordPress database error: Processing the value for the following field failed: value. The supplied value may be too long or contains invalid data.",
+        "service": "wp71"
+      },
+      {
+        "wordpress": "7.1.3",
+        "php": "8.4.27",
+        "source": "<timenow-zone-sdcw caption=\"&Afr; <clock>\"></timenow-zone-sdcw>",
+        "saved": "<timenow-zone-sdcw caption=\"𝔄 &lt;clock&gt;\"></timenow-zone-sdcw>",
+        "original_inserted": true,
+        "candidate_inserted": false,
+        "error": "WordPress database error: Processing the value for the following field failed: value. The supplied value may be too long or contains invalid data.",
+        "service": "wp84"
+      },
+      {
+        "wordpress": "6.3.2",
+        "php": "8.2.12",
+        "source": "<timenow-zone-sdcw caption=\"&Afr; <clock>\"></timenow-zone-sdcw>",
+        "saved": "<timenow-zone-sdcw caption=\"𝔄 &lt;clock&gt;\"></timenow-zone-sdcw>",
+        "original_inserted": true,
+        "candidate_inserted": false,
+        "error": "WordPress database error: Processing the value for the following field failed: value. The supplied value may be too long or contains invalid data.",
+        "service": "wp63"
+      },
+      {
+        "wordpress": "6.8.3",
+        "php": "8.3.28",
+        "source": "<timenow-zone-sdcw caption=\"&Afr; <clock>\"></timenow-zone-sdcw>",
+        "saved": "<timenow-zone-sdcw caption=\"𝔄 &lt;clock&gt;\"></timenow-zone-sdcw>",
+        "original_inserted": true,
+        "candidate_inserted": false,
+        "error": "WordPress database error: Processing the value for the following field failed: value. The supplied value may be too long or contains invalid data.",
+        "service": "wp68"
+      }
+    ]
+  },
+  "accepted_results": {
+    "original_php": {
+      "path": ".local/wordpress-lab/patch/entities-accepted-php.json",
+      "checks": 1856,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "wordpress": "7.1.3",
+          "php": "8.3.35",
+          "checks": 464,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "wordpress": "7.1.3",
+          "php": "8.4.27",
+          "checks": 464,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "wordpress": "6.3.2",
+          "php": "8.2.12",
+          "checks": 464,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "wordpress": "6.8.3",
+          "php": "8.3.28",
+          "checks": 464,
+          "failed": 0
+        }
+      ]
+    },
+    "review_php": {
+      "path": ".local/wordpress-lab/entities-final/php.json",
+      "checks": 592,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "wordpress": "7.1.3",
+          "php": "8.3.35",
+          "checks": 148,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "wordpress": "7.1.3",
+          "php": "8.4.27",
+          "checks": 148,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "wordpress": "6.3.2",
+          "php": "8.2.12",
+          "checks": 148,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "wordpress": "6.8.3",
+          "php": "8.3.28",
+          "checks": 148,
+          "failed": 0
+        }
+      ]
+    },
+    "previous_raw_php": {
+      "path": ".local/wordpress-lab/entities-fix/php-raw-accepted.json",
+      "checks": 72,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "wordpress": "7.1.3",
+          "php": "8.3.35",
+          "checks": 18,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "wordpress": "7.1.3",
+          "php": "8.4.27",
+          "checks": 18,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "wordpress": "6.3.2",
+          "php": "8.2.12",
+          "checks": 18,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "wordpress": "6.8.3",
+          "php": "8.3.28",
+          "checks": 18,
+          "failed": 0
+        }
+      ]
+    },
+    "new_post_save_php": {
+      "path": ".local/wordpress-lab/entities-fix/php-accepted.json",
+      "checks": 772,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "wordpress": "7.1.3",
+          "php": "8.3.35",
+          "checks": 193,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "wordpress": "7.1.3",
+          "php": "8.4.27",
+          "checks": 193,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "wordpress": "6.3.2",
+          "php": "8.2.12",
+          "checks": 193,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "wordpress": "6.8.3",
+          "php": "8.3.28",
+          "checks": 193,
+          "failed": 0
+        }
+      ]
+    },
+    "new_pipeline_php": {
+      "path": ".local/wordpress-lab/entities-fix/pipeline-accepted.json",
+      "checks": 12,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "wordpress": "7.1.3",
+          "php": "8.3.35",
+          "checks": 3,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "wordpress": "7.1.3",
+          "php": "8.4.27",
+          "checks": 3,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "wordpress": "6.3.2",
+          "php": "8.2.12",
+          "checks": 3,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "wordpress": "6.8.3",
+          "php": "8.3.28",
+          "checks": 3,
+          "failed": 0
+        }
+      ]
+    },
+    "new_charset_php": {
+      "path": ".local/wordpress-lab/entities-fix/charset-green.json",
+      "checks": 16,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "wordpress": "7.1.3",
+          "php": "8.3.35",
+          "checks": 4,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "wordpress": "7.1.3",
+          "php": "8.4.27",
+          "checks": 4,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "wordpress": "6.3.2",
+          "php": "8.2.12",
+          "checks": 4,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "wordpress": "6.8.3",
+          "php": "8.3.28",
+          "checks": 4,
+          "failed": 0
+        }
+      ]
+    },
+    "metadata_save": {
+      "path": ".local/wordpress-lab/entities-final/metadata-save.json",
+      "checks": 68,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 17,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 17,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 17,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 17,
+          "failed": 0
+        }
+      ]
+    },
+    "metadata_rollback": {
+      "path": ".local/wordpress-lab/entities-final/metadata-read.json",
+      "checks": 32,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 8,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 8,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 8,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 8,
+          "failed": 0
+        }
+      ]
+    },
+    "reupgrade_focused": {
+      "path": ".local/wordpress-lab/entities-final/browser-reupgrade.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "reupgrade_expanded": {
+      "path": ".local/wordpress-lab/entities-final/captions-reupgrade-chromium.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 542,
+          "failed": 0
+        }
+      ]
+    },
+    "original_browser_chromium": {
+      "path": ".local/wordpress-lab/patch/entities-final-ascii-chromium-browser.json",
+      "checks": 132,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 33,
+          "failed": 0
+        }
+      ]
+    },
+    "apos_save_chromium": {
+      "path": ".local/wordpress-lab/review2/entities-final-chromium-fixed-chromium-all.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "apos_rollback_chromium": {
+      "path": ".local/wordpress-lab/review2/entities-final-chromium-official111-chromium-all.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "focused_save_chromium": {
+      "path": ".local/wordpress-lab/entities-final/browser-save.json",
+      "checks": 160,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 40,
+          "failed": 0
+        }
+      ]
+    },
+    "focused_rollback_chromium": {
+      "path": ".local/wordpress-lab/entities-final/browser-rollback.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "expanded_save_chromium": {
+      "path": ".local/wordpress-lab/entities-final/captions-candidate-chromium.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 542,
+          "failed": 0
+        }
+      ]
+    },
+    "expanded_rollback_chromium": {
+      "path": ".local/wordpress-lab/entities-final/captions-official111-chromium.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 542,
+          "failed": 0
+        }
+      ]
+    },
+    "legacy_rollback_chromium": {
+      "path": ".local/wordpress-lab/rollback/entities-final-cycle-chromium-read.json",
+      "checks": 528,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 132,
+          "failed": 0
+        }
+      ]
+    },
+    "all_names_chromium": {
+      "path": ".local/wordpress-lab/entities-fix/all-entities-accepted-chromium.json",
+      "comparisons": 34000,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "engine": "chromium",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp84",
+          "engine": "chromium",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp63",
+          "engine": "chromium",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp68",
+          "engine": "chromium",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        }
+      ]
+    },
+    "original_browser_firefox": {
+      "path": ".local/wordpress-lab/patch/entities-final-ascii-firefox-browser.json",
+      "checks": 132,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 33,
+          "failed": 0
+        }
+      ]
+    },
+    "apos_save_firefox": {
+      "path": ".local/wordpress-lab/review2/entities-final-firefox-fixed-firefox-all.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "apos_rollback_firefox": {
+      "path": ".local/wordpress-lab/review2/entities-final-firefox-official111-firefox-all.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "focused_save_firefox": {
+      "path": ".local/wordpress-lab/entities-final/browser-save-firefox.json",
+      "checks": 160,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 40,
+          "failed": 0
+        }
+      ]
+    },
+    "focused_rollback_firefox": {
+      "path": ".local/wordpress-lab/entities-final/browser-rollback-firefox.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "expanded_save_firefox": {
+      "path": ".local/wordpress-lab/entities-final/captions-candidate-firefox.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 542,
+          "failed": 0
+        }
+      ]
+    },
+    "expanded_rollback_firefox": {
+      "path": ".local/wordpress-lab/entities-final/captions-official111-firefox.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 542,
+          "failed": 0
+        }
+      ]
+    },
+    "legacy_rollback_firefox": {
+      "path": ".local/wordpress-lab/rollback/entities-final-cycle-firefox-read.json",
+      "checks": 528,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 132,
+          "failed": 0
+        }
+      ]
+    },
+    "all_names_firefox": {
+      "path": ".local/wordpress-lab/entities-fix/all-entities-accepted-firefox.json",
+      "comparisons": 34000,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "engine": "firefox",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp84",
+          "engine": "firefox",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp63",
+          "engine": "firefox",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp68",
+          "engine": "firefox",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        }
+      ]
+    },
+    "original_browser_webkit": {
+      "path": ".local/wordpress-lab/patch/entities-final-ascii-webkit-browser.json",
+      "checks": 132,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 33,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 33,
+          "failed": 0
+        }
+      ]
+    },
+    "apos_save_webkit": {
+      "path": ".local/wordpress-lab/review2/entities-final-webkit-fixed-webkit-all.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "apos_rollback_webkit": {
+      "path": ".local/wordpress-lab/review2/entities-final-webkit-official111-webkit-all.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "focused_save_webkit": {
+      "path": ".local/wordpress-lab/entities-final/browser-save-webkit.json",
+      "checks": 160,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 40,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 40,
+          "failed": 0
+        }
+      ]
+    },
+    "focused_rollback_webkit": {
+      "path": ".local/wordpress-lab/entities-final/browser-rollback-webkit.json",
+      "checks": 168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 42,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 42,
+          "failed": 0
+        }
+      ]
+    },
+    "expanded_save_webkit": {
+      "path": ".local/wordpress-lab/entities-final/captions-candidate-webkit.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 542,
+          "failed": 0
+        }
+      ]
+    },
+    "expanded_rollback_webkit": {
+      "path": ".local/wordpress-lab/entities-final/captions-official111-webkit.json",
+      "checks": 2168,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 542,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 542,
+          "failed": 0
+        }
+      ]
+    },
+    "legacy_rollback_webkit": {
+      "path": ".local/wordpress-lab/rollback/entities-final-cycle-webkit-read.json",
+      "checks": 528,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp84",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp63",
+          "checks": 132,
+          "failed": 0
+        },
+        {
+          "service": "wp68",
+          "checks": 132,
+          "failed": 0
+        }
+      ]
+    },
+    "all_names_webkit": {
+      "path": ".local/wordpress-lab/entities-fix/all-entities-accepted-webkit.json",
+      "comparisons": 34000,
+      "failed": 0,
+      "sites": [
+        {
+          "service": "wp71",
+          "engine": "webkit",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp84",
+          "engine": "webkit",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp63",
+          "engine": "webkit",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        },
+        {
+          "service": "wp68",
+          "engine": "webkit",
+          "pipeline_failed": 0,
+          "cases": 8500,
+          "beforeCount": 8500,
+          "afterCount": 8500,
+          "failed": 0,
+          "failures": []
+        }
+      ]
+    }
+  },
+  "cycle": {
+    "versions": [
+      "1.1.1",
+      "1.1.2",
+      "resave",
+      "1.1.1",
+      "1.1.2"
+    ],
+    "records": 136,
+    "database_restore": false,
+    "content_reset": false,
+    "identities": {
+      "before": [
+        {
+          "service": "wp71",
+          "file_count": 14,
+          "exact": true
+        },
+        {
+          "service": "wp84",
+          "file_count": 14,
+          "exact": true
+        },
+        {
+          "service": "wp63",
+          "file_count": 14,
+          "exact": true
+        },
+        {
+          "service": "wp68",
+          "file_count": 14,
+          "exact": true
+        }
+      ],
+      "upgrade": [
+        {
+          "service": "wp71",
+          "file_count": 15,
+          "exact": true
+        },
+        {
+          "service": "wp84",
+          "file_count": 15,
+          "exact": true
+        },
+        {
+          "service": "wp63",
+          "file_count": 15,
+          "exact": true
+        },
+        {
+          "service": "wp68",
+          "file_count": 15,
+          "exact": true
+        }
+      ],
+      "rollback": [
+        {
+          "service": "wp71",
+          "file_count": 14,
+          "exact": true
+        },
+        {
+          "service": "wp84",
+          "file_count": 14,
+          "exact": true
+        },
+        {
+          "service": "wp63",
+          "file_count": 14,
+          "exact": true
+        },
+        {
+          "service": "wp68",
+          "file_count": 14,
+          "exact": true
+        }
+      ],
+      "reupgrade": [
+        {
+          "service": "wp71",
+          "file_count": 15,
+          "exact": true
+        },
+        {
+          "service": "wp84",
+          "file_count": 15,
+          "exact": true
+        },
+        {
+          "service": "wp63",
+          "file_count": 15,
+          "exact": true
+        },
+        {
+          "service": "wp68",
+          "file_count": 15,
+          "exact": true
+        }
+      ]
+    },
+    "data_checks": {
+      "upgrade": {
+        "posts": 136,
+        "unchanged": 136
+      },
+      "saved": {
+        "posts": 136,
+        "unchanged": 136
+      },
+      "rollback": {
+        "posts": 136,
+        "unchanged": 136
+      },
+      "rollback-after-read": {
+        "posts": 136,
+        "unchanged": 136
+      },
+      "reupgrade": {
+        "posts": 136,
+        "unchanged": 136
+      }
+    },
+    "post_content_hashes": [
+      {
+        "service": "wp71",
+        "posts": [
+          {
+            "id": 1942,
+            "baseline_content_sha256": "b792485badd0fef6f92bec9544dcfd1c5c7eda5ce17db0ba9e6ec3ef68859681",
+            "saved_content_sha256": "b528c12f06b936f1136ae6ce81697d7823c87f9c832e4200cdca6dfa7cb4227c"
+          },
+          {
+            "id": 1943,
+            "baseline_content_sha256": "1b6e64ca79d78edb48c12fc0f4546ee4e00f4266ba35805fc4808f8b6d7b5306",
+            "saved_content_sha256": "9e267f13f409a6aba2f58c5f8490f9e6e805f82d5b3bd148b33236ab0ecaccb5"
+          },
+          {
+            "id": 1944,
+            "baseline_content_sha256": "abbebfd8b1ed44c6949c32473371fe6459a4b09c912594eb3b968a03d432659b",
+            "saved_content_sha256": "2652263032f649bc92b46c7fe9649b3475181bbe22b9b2c0bda86e4197abe715"
+          },
+          {
+            "id": 1945,
+            "baseline_content_sha256": "a03dd1379c3c94e28319ba4620f498498e7ef8781ff2d7355a7f6669d8934516",
+            "saved_content_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1946,
+            "baseline_content_sha256": "b62dc4d0b94be453ec795aac3f25696795f4f9476203afcffc557ab81fdf1143",
+            "saved_content_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1947,
+            "baseline_content_sha256": "f3d86fd2064d3bd03be0f2636935c08ebfdf413f81fa405e15ce472b599ff4a5",
+            "saved_content_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1948,
+            "baseline_content_sha256": "b792485badd0fef6f92bec9544dcfd1c5c7eda5ce17db0ba9e6ec3ef68859681",
+            "saved_content_sha256": "069b29356a6ade12a32a6826da16bee4fb465dbc9dd1367510357aae70936803"
+          },
+          {
+            "id": 1949,
+            "baseline_content_sha256": "1b6e64ca79d78edb48c12fc0f4546ee4e00f4266ba35805fc4808f8b6d7b5306",
+            "saved_content_sha256": "dda8067b6ff38fe147433213ed05b85abb2281319f783cd1651696b2c32a7eee"
+          },
+          {
+            "id": 1950,
+            "baseline_content_sha256": "abbebfd8b1ed44c6949c32473371fe6459a4b09c912594eb3b968a03d432659b",
+            "saved_content_sha256": "f4c5c1bb947ee375f8c1ad389bc8ec7780a01273c56996d38344b468e594082b"
+          },
+          {
+            "id": 1951,
+            "baseline_content_sha256": "a03dd1379c3c94e28319ba4620f498498e7ef8781ff2d7355a7f6669d8934516",
+            "saved_content_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1952,
+            "baseline_content_sha256": "b62dc4d0b94be453ec795aac3f25696795f4f9476203afcffc557ab81fdf1143",
+            "saved_content_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1953,
+            "baseline_content_sha256": "f3d86fd2064d3bd03be0f2636935c08ebfdf413f81fa405e15ce472b599ff4a5",
+            "saved_content_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1954,
+            "baseline_content_sha256": "9ca4b045baedeb8f8a1aaba5982a1f9434ac2ee14112daa9afa1a268ac49cf2b",
+            "saved_content_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1955,
+            "baseline_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235",
+            "saved_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1956,
+            "baseline_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613",
+            "saved_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1957,
+            "baseline_content_sha256": "6e0e1d3359500bbc71c96057ef8e944734f3ee61f73a32c56c500d6aaf37abee",
+            "saved_content_sha256": "6e0e1d3359500bbc71c96057ef8e944734f3ee61f73a32c56c500d6aaf37abee"
+          },
+          {
+            "id": 1958,
+            "baseline_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce",
+            "saved_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1959,
+            "baseline_content_sha256": "646fd38ecead3c22bfd890dcf08267d0765bd6d62882380ba760dc6106de0f47",
+            "saved_content_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1960,
+            "baseline_content_sha256": "e5013871ee449e0dd385882e8f350e5d7549ca6811c1806fb27e13bad5497ddd",
+            "saved_content_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1961,
+            "baseline_content_sha256": "8f265e3605f2ae5f8957bf26ccc6a47ce9f0bb6c9e891d994028ce3ae4184a51",
+            "saved_content_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1962,
+            "baseline_content_sha256": "9ca4b045baedeb8f8a1aaba5982a1f9434ac2ee14112daa9afa1a268ac49cf2b",
+            "saved_content_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1963,
+            "baseline_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235",
+            "saved_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1964,
+            "baseline_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613",
+            "saved_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1965,
+            "baseline_content_sha256": "6e0e1d3359500bbc71c96057ef8e944734f3ee61f73a32c56c500d6aaf37abee",
+            "saved_content_sha256": "aceecadb0cc870c95b28eeaa7089f0c8adb3402c3ccc0eecd248dcccce0bc519"
+          },
+          {
+            "id": 1966,
+            "baseline_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce",
+            "saved_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1967,
+            "baseline_content_sha256": "646fd38ecead3c22bfd890dcf08267d0765bd6d62882380ba760dc6106de0f47",
+            "saved_content_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1968,
+            "baseline_content_sha256": "e5013871ee449e0dd385882e8f350e5d7549ca6811c1806fb27e13bad5497ddd",
+            "saved_content_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1969,
+            "baseline_content_sha256": "8f265e3605f2ae5f8957bf26ccc6a47ce9f0bb6c9e891d994028ce3ae4184a51",
+            "saved_content_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1970,
+            "baseline_content_sha256": "e78e225b4e6d8b2010663618f24e162820b9b884089d7d16cd88723e2db0b376",
+            "saved_content_sha256": "382895d021e952d482900c93bfad22c2aa529698c3f291548eba55f7386e3ca9"
+          },
+          {
+            "id": 1971,
+            "baseline_content_sha256": "8a6ec46dae40a31e405a32eae4f36380d31a212dd5fcbaba693a516bb5b8aa86",
+            "saved_content_sha256": "e3562b1102c1cbd482f583cb40a532868f27eac3ad79b3a9a6ada4c114d26b8d"
+          },
+          {
+            "id": 1972,
+            "baseline_content_sha256": "5b94a6ef1b25a3531dc7cbe4747248c4e901be5f13702c86b661018f114b828d",
+            "saved_content_sha256": "d5588c07f099da9b00be01cb4c2ada6fcc0f84f00647062978660f6a8a8d5957"
+          },
+          {
+            "id": 1973,
+            "baseline_content_sha256": "2deabeee811df70b1bdc7b1c0fccad0e7aa44a53be82b0a8d9ddf5dd5146de89",
+            "saved_content_sha256": "c9db26f656591cc2f26d1f66d8c40d991b442bde31380512f15a6e1d307ea4b7"
+          },
+          {
+            "id": 1974,
+            "baseline_content_sha256": "9776f8b6b0946a9fa7d842e518ddbb20441c4fc10c006a7ddfe9322bc8baec19",
+            "saved_content_sha256": "67e6230898b9c352358f96ee54ef05ca0f0d71a84bf1df9b67ba8d1c5d98d031"
+          },
+          {
+            "id": 1975,
+            "baseline_content_sha256": "9776f8b6b0946a9fa7d842e518ddbb20441c4fc10c006a7ddfe9322bc8baec19",
+            "saved_content_sha256": "744a043f65b68f8810abbb4b707e4808945cb8eb44a9abee80ed7d3fc99a67d9"
+          }
+        ]
+      },
+      {
+        "service": "wp84",
+        "posts": [
+          {
+            "id": 1897,
+            "baseline_content_sha256": "b792485badd0fef6f92bec9544dcfd1c5c7eda5ce17db0ba9e6ec3ef68859681",
+            "saved_content_sha256": "b528c12f06b936f1136ae6ce81697d7823c87f9c832e4200cdca6dfa7cb4227c"
+          },
+          {
+            "id": 1898,
+            "baseline_content_sha256": "1b6e64ca79d78edb48c12fc0f4546ee4e00f4266ba35805fc4808f8b6d7b5306",
+            "saved_content_sha256": "9e267f13f409a6aba2f58c5f8490f9e6e805f82d5b3bd148b33236ab0ecaccb5"
+          },
+          {
+            "id": 1899,
+            "baseline_content_sha256": "abbebfd8b1ed44c6949c32473371fe6459a4b09c912594eb3b968a03d432659b",
+            "saved_content_sha256": "2652263032f649bc92b46c7fe9649b3475181bbe22b9b2c0bda86e4197abe715"
+          },
+          {
+            "id": 1900,
+            "baseline_content_sha256": "a03dd1379c3c94e28319ba4620f498498e7ef8781ff2d7355a7f6669d8934516",
+            "saved_content_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1901,
+            "baseline_content_sha256": "b62dc4d0b94be453ec795aac3f25696795f4f9476203afcffc557ab81fdf1143",
+            "saved_content_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1902,
+            "baseline_content_sha256": "f3d86fd2064d3bd03be0f2636935c08ebfdf413f81fa405e15ce472b599ff4a5",
+            "saved_content_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1903,
+            "baseline_content_sha256": "b792485badd0fef6f92bec9544dcfd1c5c7eda5ce17db0ba9e6ec3ef68859681",
+            "saved_content_sha256": "069b29356a6ade12a32a6826da16bee4fb465dbc9dd1367510357aae70936803"
+          },
+          {
+            "id": 1904,
+            "baseline_content_sha256": "1b6e64ca79d78edb48c12fc0f4546ee4e00f4266ba35805fc4808f8b6d7b5306",
+            "saved_content_sha256": "dda8067b6ff38fe147433213ed05b85abb2281319f783cd1651696b2c32a7eee"
+          },
+          {
+            "id": 1905,
+            "baseline_content_sha256": "abbebfd8b1ed44c6949c32473371fe6459a4b09c912594eb3b968a03d432659b",
+            "saved_content_sha256": "f4c5c1bb947ee375f8c1ad389bc8ec7780a01273c56996d38344b468e594082b"
+          },
+          {
+            "id": 1906,
+            "baseline_content_sha256": "a03dd1379c3c94e28319ba4620f498498e7ef8781ff2d7355a7f6669d8934516",
+            "saved_content_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1907,
+            "baseline_content_sha256": "b62dc4d0b94be453ec795aac3f25696795f4f9476203afcffc557ab81fdf1143",
+            "saved_content_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1908,
+            "baseline_content_sha256": "f3d86fd2064d3bd03be0f2636935c08ebfdf413f81fa405e15ce472b599ff4a5",
+            "saved_content_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1909,
+            "baseline_content_sha256": "9ca4b045baedeb8f8a1aaba5982a1f9434ac2ee14112daa9afa1a268ac49cf2b",
+            "saved_content_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1910,
+            "baseline_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235",
+            "saved_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1911,
+            "baseline_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613",
+            "saved_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1912,
+            "baseline_content_sha256": "6e0e1d3359500bbc71c96057ef8e944734f3ee61f73a32c56c500d6aaf37abee",
+            "saved_content_sha256": "6e0e1d3359500bbc71c96057ef8e944734f3ee61f73a32c56c500d6aaf37abee"
+          },
+          {
+            "id": 1913,
+            "baseline_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce",
+            "saved_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1914,
+            "baseline_content_sha256": "646fd38ecead3c22bfd890dcf08267d0765bd6d62882380ba760dc6106de0f47",
+            "saved_content_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1915,
+            "baseline_content_sha256": "e5013871ee449e0dd385882e8f350e5d7549ca6811c1806fb27e13bad5497ddd",
+            "saved_content_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1916,
+            "baseline_content_sha256": "8f265e3605f2ae5f8957bf26ccc6a47ce9f0bb6c9e891d994028ce3ae4184a51",
+            "saved_content_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1917,
+            "baseline_content_sha256": "9ca4b045baedeb8f8a1aaba5982a1f9434ac2ee14112daa9afa1a268ac49cf2b",
+            "saved_content_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1918,
+            "baseline_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235",
+            "saved_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1919,
+            "baseline_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613",
+            "saved_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1920,
+            "baseline_content_sha256": "6e0e1d3359500bbc71c96057ef8e944734f3ee61f73a32c56c500d6aaf37abee",
+            "saved_content_sha256": "aceecadb0cc870c95b28eeaa7089f0c8adb3402c3ccc0eecd248dcccce0bc519"
+          },
+          {
+            "id": 1921,
+            "baseline_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce",
+            "saved_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1922,
+            "baseline_content_sha256": "646fd38ecead3c22bfd890dcf08267d0765bd6d62882380ba760dc6106de0f47",
+            "saved_content_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1923,
+            "baseline_content_sha256": "e5013871ee449e0dd385882e8f350e5d7549ca6811c1806fb27e13bad5497ddd",
+            "saved_content_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1924,
+            "baseline_content_sha256": "8f265e3605f2ae5f8957bf26ccc6a47ce9f0bb6c9e891d994028ce3ae4184a51",
+            "saved_content_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1925,
+            "baseline_content_sha256": "e78e225b4e6d8b2010663618f24e162820b9b884089d7d16cd88723e2db0b376",
+            "saved_content_sha256": "382895d021e952d482900c93bfad22c2aa529698c3f291548eba55f7386e3ca9"
+          },
+          {
+            "id": 1926,
+            "baseline_content_sha256": "8a6ec46dae40a31e405a32eae4f36380d31a212dd5fcbaba693a516bb5b8aa86",
+            "saved_content_sha256": "e3562b1102c1cbd482f583cb40a532868f27eac3ad79b3a9a6ada4c114d26b8d"
+          },
+          {
+            "id": 1927,
+            "baseline_content_sha256": "5b94a6ef1b25a3531dc7cbe4747248c4e901be5f13702c86b661018f114b828d",
+            "saved_content_sha256": "d5588c07f099da9b00be01cb4c2ada6fcc0f84f00647062978660f6a8a8d5957"
+          },
+          {
+            "id": 1928,
+            "baseline_content_sha256": "2deabeee811df70b1bdc7b1c0fccad0e7aa44a53be82b0a8d9ddf5dd5146de89",
+            "saved_content_sha256": "c9db26f656591cc2f26d1f66d8c40d991b442bde31380512f15a6e1d307ea4b7"
+          },
+          {
+            "id": 1929,
+            "baseline_content_sha256": "9776f8b6b0946a9fa7d842e518ddbb20441c4fc10c006a7ddfe9322bc8baec19",
+            "saved_content_sha256": "67e6230898b9c352358f96ee54ef05ca0f0d71a84bf1df9b67ba8d1c5d98d031"
+          },
+          {
+            "id": 1930,
+            "baseline_content_sha256": "9776f8b6b0946a9fa7d842e518ddbb20441c4fc10c006a7ddfe9322bc8baec19",
+            "saved_content_sha256": "744a043f65b68f8810abbb4b707e4808945cb8eb44a9abee80ed7d3fc99a67d9"
+          }
+        ]
+      },
+      {
+        "service": "wp63",
+        "posts": [
+          {
+            "id": 1984,
+            "baseline_content_sha256": "7b11365b8c4998463cb51a76eb7146c9ffe29e20924e3d977898ee52d6bfcc3f",
+            "saved_content_sha256": "b0eb4a8150970d6f1186cc4bd4f98675873608c1e5ce30614d621253bdcd1968"
+          },
+          {
+            "id": 1985,
+            "baseline_content_sha256": "1b6e64ca79d78edb48c12fc0f4546ee4e00f4266ba35805fc4808f8b6d7b5306",
+            "saved_content_sha256": "9e267f13f409a6aba2f58c5f8490f9e6e805f82d5b3bd148b33236ab0ecaccb5"
+          },
+          {
+            "id": 1986,
+            "baseline_content_sha256": "599670a97392fff61e44d9f228df479b7e21ca5acae4c308eb135724c48068f8",
+            "saved_content_sha256": "11a756e4d4f37306d484b803ebe7b43836d8cf9a1b7229789d3b5e5c2ab8179a"
+          },
+          {
+            "id": 1987,
+            "baseline_content_sha256": "a03dd1379c3c94e28319ba4620f498498e7ef8781ff2d7355a7f6669d8934516",
+            "saved_content_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1988,
+            "baseline_content_sha256": "ca82c88ff8caae93533b2754e71199bc5fefbc3502d32c8accae09cb2a5cf5d9",
+            "saved_content_sha256": "05061b27283ce72048cde41eda6678ced0dc52cab9adefcdfd257ce88104dfce"
+          },
+          {
+            "id": 1989,
+            "baseline_content_sha256": "d30cb6c3e6a9d46bab636dbf289b969e919cd24dfa06404a0f81b9aa53db9fda",
+            "saved_content_sha256": "b8f520ac64f6c5be1e6ffb1c31fd246db512fed393c74677b0d71d657deebc73"
+          },
+          {
+            "id": 1990,
+            "baseline_content_sha256": "7b11365b8c4998463cb51a76eb7146c9ffe29e20924e3d977898ee52d6bfcc3f",
+            "saved_content_sha256": "069b29356a6ade12a32a6826da16bee4fb465dbc9dd1367510357aae70936803"
+          },
+          {
+            "id": 1991,
+            "baseline_content_sha256": "1b6e64ca79d78edb48c12fc0f4546ee4e00f4266ba35805fc4808f8b6d7b5306",
+            "saved_content_sha256": "27ae47b41d5c326736a84f39d09314ca47a2e5c829b6cf02a8d201bfcc52942b"
+          },
+          {
+            "id": 1992,
+            "baseline_content_sha256": "599670a97392fff61e44d9f228df479b7e21ca5acae4c308eb135724c48068f8",
+            "saved_content_sha256": "fdf598f85ea12847a1c440f176212ea08cb8c167c2f47ebde2bb07bc1e5ccd88"
+          },
+          {
+            "id": 1993,
+            "baseline_content_sha256": "a03dd1379c3c94e28319ba4620f498498e7ef8781ff2d7355a7f6669d8934516",
+            "saved_content_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1994,
+            "baseline_content_sha256": "ca82c88ff8caae93533b2754e71199bc5fefbc3502d32c8accae09cb2a5cf5d9",
+            "saved_content_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1995,
+            "baseline_content_sha256": "d30cb6c3e6a9d46bab636dbf289b969e919cd24dfa06404a0f81b9aa53db9fda",
+            "saved_content_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1996,
+            "baseline_content_sha256": "9ca4b045baedeb8f8a1aaba5982a1f9434ac2ee14112daa9afa1a268ac49cf2b",
+            "saved_content_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1997,
+            "baseline_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235",
+            "saved_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1998,
+            "baseline_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613",
+            "saved_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1999,
+            "baseline_content_sha256": "4e4a93081ada116dec4cc982b47857dcbd9503346c706baf03b60e627123eb11",
+            "saved_content_sha256": "4e4a93081ada116dec4cc982b47857dcbd9503346c706baf03b60e627123eb11"
+          },
+          {
+            "id": 2000,
+            "baseline_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce",
+            "saved_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 2001,
+            "baseline_content_sha256": "646fd38ecead3c22bfd890dcf08267d0765bd6d62882380ba760dc6106de0f47",
+            "saved_content_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 2002,
+            "baseline_content_sha256": "e5013871ee449e0dd385882e8f350e5d7549ca6811c1806fb27e13bad5497ddd",
+            "saved_content_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 2003,
+            "baseline_content_sha256": "8f265e3605f2ae5f8957bf26ccc6a47ce9f0bb6c9e891d994028ce3ae4184a51",
+            "saved_content_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 2004,
+            "baseline_content_sha256": "9ca4b045baedeb8f8a1aaba5982a1f9434ac2ee14112daa9afa1a268ac49cf2b",
+            "saved_content_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 2005,
+            "baseline_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235",
+            "saved_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 2006,
+            "baseline_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613",
+            "saved_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 2007,
+            "baseline_content_sha256": "4e4a93081ada116dec4cc982b47857dcbd9503346c706baf03b60e627123eb11",
+            "saved_content_sha256": "aceecadb0cc870c95b28eeaa7089f0c8adb3402c3ccc0eecd248dcccce0bc519"
+          },
+          {
+            "id": 2008,
+            "baseline_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce",
+            "saved_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 2009,
+            "baseline_content_sha256": "646fd38ecead3c22bfd890dcf08267d0765bd6d62882380ba760dc6106de0f47",
+            "saved_content_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 2010,
+            "baseline_content_sha256": "e5013871ee449e0dd385882e8f350e5d7549ca6811c1806fb27e13bad5497ddd",
+            "saved_content_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 2011,
+            "baseline_content_sha256": "8f265e3605f2ae5f8957bf26ccc6a47ce9f0bb6c9e891d994028ce3ae4184a51",
+            "saved_content_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 2012,
+            "baseline_content_sha256": "e78e225b4e6d8b2010663618f24e162820b9b884089d7d16cd88723e2db0b376",
+            "saved_content_sha256": "382895d021e952d482900c93bfad22c2aa529698c3f291548eba55f7386e3ca9"
+          },
+          {
+            "id": 2013,
+            "baseline_content_sha256": "8a6ec46dae40a31e405a32eae4f36380d31a212dd5fcbaba693a516bb5b8aa86",
+            "saved_content_sha256": "e3562b1102c1cbd482f583cb40a532868f27eac3ad79b3a9a6ada4c114d26b8d"
+          },
+          {
+            "id": 2014,
+            "baseline_content_sha256": "5b94a6ef1b25a3531dc7cbe4747248c4e901be5f13702c86b661018f114b828d",
+            "saved_content_sha256": "d5588c07f099da9b00be01cb4c2ada6fcc0f84f00647062978660f6a8a8d5957"
+          },
+          {
+            "id": 2015,
+            "baseline_content_sha256": "2deabeee811df70b1bdc7b1c0fccad0e7aa44a53be82b0a8d9ddf5dd5146de89",
+            "saved_content_sha256": "c9db26f656591cc2f26d1f66d8c40d991b442bde31380512f15a6e1d307ea4b7"
+          },
+          {
+            "id": 2016,
+            "baseline_content_sha256": "e428c40204dcfbfe011caa6f2de8121f8a69c40b7c3fcc09e5fb986abb23d1f0",
+            "saved_content_sha256": "99ffcbe3c311b0df5b14185ea6d5c360176d4be3f3fc75575ce2b45bac8dada5"
+          },
+          {
+            "id": 2017,
+            "baseline_content_sha256": "e428c40204dcfbfe011caa6f2de8121f8a69c40b7c3fcc09e5fb986abb23d1f0",
+            "saved_content_sha256": "925545436e2ed31215c1a42809f5c4c7cc85c627d88b0cdea98bd11e9145ea66"
+          }
+        ]
+      },
+      {
+        "service": "wp68",
+        "posts": [
+          {
+            "id": 1858,
+            "baseline_content_sha256": "7b11365b8c4998463cb51a76eb7146c9ffe29e20924e3d977898ee52d6bfcc3f",
+            "saved_content_sha256": "b0eb4a8150970d6f1186cc4bd4f98675873608c1e5ce30614d621253bdcd1968"
+          },
+          {
+            "id": 1859,
+            "baseline_content_sha256": "1b6e64ca79d78edb48c12fc0f4546ee4e00f4266ba35805fc4808f8b6d7b5306",
+            "saved_content_sha256": "9e267f13f409a6aba2f58c5f8490f9e6e805f82d5b3bd148b33236ab0ecaccb5"
+          },
+          {
+            "id": 1860,
+            "baseline_content_sha256": "599670a97392fff61e44d9f228df479b7e21ca5acae4c308eb135724c48068f8",
+            "saved_content_sha256": "11a756e4d4f37306d484b803ebe7b43836d8cf9a1b7229789d3b5e5c2ab8179a"
+          },
+          {
+            "id": 1861,
+            "baseline_content_sha256": "a03dd1379c3c94e28319ba4620f498498e7ef8781ff2d7355a7f6669d8934516",
+            "saved_content_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1862,
+            "baseline_content_sha256": "ca82c88ff8caae93533b2754e71199bc5fefbc3502d32c8accae09cb2a5cf5d9",
+            "saved_content_sha256": "05061b27283ce72048cde41eda6678ced0dc52cab9adefcdfd257ce88104dfce"
+          },
+          {
+            "id": 1863,
+            "baseline_content_sha256": "d30cb6c3e6a9d46bab636dbf289b969e919cd24dfa06404a0f81b9aa53db9fda",
+            "saved_content_sha256": "b8f520ac64f6c5be1e6ffb1c31fd246db512fed393c74677b0d71d657deebc73"
+          },
+          {
+            "id": 1864,
+            "baseline_content_sha256": "7b11365b8c4998463cb51a76eb7146c9ffe29e20924e3d977898ee52d6bfcc3f",
+            "saved_content_sha256": "069b29356a6ade12a32a6826da16bee4fb465dbc9dd1367510357aae70936803"
+          },
+          {
+            "id": 1865,
+            "baseline_content_sha256": "1b6e64ca79d78edb48c12fc0f4546ee4e00f4266ba35805fc4808f8b6d7b5306",
+            "saved_content_sha256": "27ae47b41d5c326736a84f39d09314ca47a2e5c829b6cf02a8d201bfcc52942b"
+          },
+          {
+            "id": 1866,
+            "baseline_content_sha256": "599670a97392fff61e44d9f228df479b7e21ca5acae4c308eb135724c48068f8",
+            "saved_content_sha256": "fdf598f85ea12847a1c440f176212ea08cb8c167c2f47ebde2bb07bc1e5ccd88"
+          },
+          {
+            "id": 1867,
+            "baseline_content_sha256": "a03dd1379c3c94e28319ba4620f498498e7ef8781ff2d7355a7f6669d8934516",
+            "saved_content_sha256": "be2295de5a0e10ef6ecf3402e3c5a098000774379a4d8a36e00090c9acba2bfc"
+          },
+          {
+            "id": 1868,
+            "baseline_content_sha256": "ca82c88ff8caae93533b2754e71199bc5fefbc3502d32c8accae09cb2a5cf5d9",
+            "saved_content_sha256": "86bf60b8619fedbe095f4bb70c334b0b183ca76c59d0f1be8e056a25ae87bdf0"
+          },
+          {
+            "id": 1869,
+            "baseline_content_sha256": "d30cb6c3e6a9d46bab636dbf289b969e919cd24dfa06404a0f81b9aa53db9fda",
+            "saved_content_sha256": "b2e5fa8d5bef207020f3ef8290fc442a6fbb6fc012ba6d8943b2f4ac9572777a"
+          },
+          {
+            "id": 1870,
+            "baseline_content_sha256": "9ca4b045baedeb8f8a1aaba5982a1f9434ac2ee14112daa9afa1a268ac49cf2b",
+            "saved_content_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1871,
+            "baseline_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235",
+            "saved_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1872,
+            "baseline_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613",
+            "saved_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1873,
+            "baseline_content_sha256": "4e4a93081ada116dec4cc982b47857dcbd9503346c706baf03b60e627123eb11",
+            "saved_content_sha256": "4e4a93081ada116dec4cc982b47857dcbd9503346c706baf03b60e627123eb11"
+          },
+          {
+            "id": 1874,
+            "baseline_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce",
+            "saved_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1875,
+            "baseline_content_sha256": "646fd38ecead3c22bfd890dcf08267d0765bd6d62882380ba760dc6106de0f47",
+            "saved_content_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1876,
+            "baseline_content_sha256": "e5013871ee449e0dd385882e8f350e5d7549ca6811c1806fb27e13bad5497ddd",
+            "saved_content_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1877,
+            "baseline_content_sha256": "8f265e3605f2ae5f8957bf26ccc6a47ce9f0bb6c9e891d994028ce3ae4184a51",
+            "saved_content_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1878,
+            "baseline_content_sha256": "9ca4b045baedeb8f8a1aaba5982a1f9434ac2ee14112daa9afa1a268ac49cf2b",
+            "saved_content_sha256": "4676fbdecadd826a19580d3ffdc188a82e5b894f33f3b93c202a193b8b83379e"
+          },
+          {
+            "id": 1879,
+            "baseline_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235",
+            "saved_content_sha256": "da30ced6836483a6ed996896cdbc4a6c50376eabb20392d4f16766619c5bb235"
+          },
+          {
+            "id": 1880,
+            "baseline_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613",
+            "saved_content_sha256": "5b72397dd24fce96dc883077d38f6d2cd21f83bcbf41901dd6a54a0c3cf64613"
+          },
+          {
+            "id": 1881,
+            "baseline_content_sha256": "4e4a93081ada116dec4cc982b47857dcbd9503346c706baf03b60e627123eb11",
+            "saved_content_sha256": "aceecadb0cc870c95b28eeaa7089f0c8adb3402c3ccc0eecd248dcccce0bc519"
+          },
+          {
+            "id": 1882,
+            "baseline_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce",
+            "saved_content_sha256": "ce3a48bdbe8cf855df87b5db3a3d91f7e2fefb40c451ce23460d3f9a3b4eadce"
+          },
+          {
+            "id": 1883,
+            "baseline_content_sha256": "646fd38ecead3c22bfd890dcf08267d0765bd6d62882380ba760dc6106de0f47",
+            "saved_content_sha256": "bacf0725667ae5fa18dc5d63ace75266427fb72130b39e598c1dd5fd5799691e"
+          },
+          {
+            "id": 1884,
+            "baseline_content_sha256": "e5013871ee449e0dd385882e8f350e5d7549ca6811c1806fb27e13bad5497ddd",
+            "saved_content_sha256": "2f00dc91ae536fc09d12e4b992c252cb2fd99395ca08450716e8aea470e48a25"
+          },
+          {
+            "id": 1885,
+            "baseline_content_sha256": "8f265e3605f2ae5f8957bf26ccc6a47ce9f0bb6c9e891d994028ce3ae4184a51",
+            "saved_content_sha256": "bdf3c8eed797ac25a52a1714893f709c556f0a43c89cab54d808e7db52cb8e0c"
+          },
+          {
+            "id": 1886,
+            "baseline_content_sha256": "e78e225b4e6d8b2010663618f24e162820b9b884089d7d16cd88723e2db0b376",
+            "saved_content_sha256": "382895d021e952d482900c93bfad22c2aa529698c3f291548eba55f7386e3ca9"
+          },
+          {
+            "id": 1887,
+            "baseline_content_sha256": "8a6ec46dae40a31e405a32eae4f36380d31a212dd5fcbaba693a516bb5b8aa86",
+            "saved_content_sha256": "e3562b1102c1cbd482f583cb40a532868f27eac3ad79b3a9a6ada4c114d26b8d"
+          },
+          {
+            "id": 1888,
+            "baseline_content_sha256": "5b94a6ef1b25a3531dc7cbe4747248c4e901be5f13702c86b661018f114b828d",
+            "saved_content_sha256": "d5588c07f099da9b00be01cb4c2ada6fcc0f84f00647062978660f6a8a8d5957"
+          },
+          {
+            "id": 1889,
+            "baseline_content_sha256": "2deabeee811df70b1bdc7b1c0fccad0e7aa44a53be82b0a8d9ddf5dd5146de89",
+            "saved_content_sha256": "c9db26f656591cc2f26d1f66d8c40d991b442bde31380512f15a6e1d307ea4b7"
+          },
+          {
+            "id": 1890,
+            "baseline_content_sha256": "e428c40204dcfbfe011caa6f2de8121f8a69c40b7c3fcc09e5fb986abb23d1f0",
+            "saved_content_sha256": "99ffcbe3c311b0df5b14185ea6d5c360176d4be3f3fc75575ce2b45bac8dada5"
+          },
+          {
+            "id": 1891,
+            "baseline_content_sha256": "e428c40204dcfbfe011caa6f2de8121f8a69c40b7c3fcc09e5fb986abb23d1f0",
+            "saved_content_sha256": "925545436e2ed31215c1a42809f5c4c7cc85c627d88b0cdea98bd11e9145ea66"
+          }
+        ]
+      }
+    ]
+  },
+  "runtime": {
+    "node": "v26.8.2",
+    "host": "darwin",
+    "arch": "arm64",
+    "browsers": [
+      {
+        "engine": "chromium",
+        "version": "151.0.7922.34",
+        "runtime": "macOS arm64",
+        "transport": "local Playwright"
+      },
+      {
+        "engine": "firefox",
+        "version": "153.0",
+        "runtime": "Linux arm64 pinned Playwright container",
+        "transport": "loopback WebSocket with loopback network tunnel"
+      },
+      {
+        "engine": "webkit",
+        "version": "26.5",
+        "runtime": "macOS arm64",
+        "transport": "local Playwright"
+      }
+    ]
+  },
+  "upstream_serializer_control": [
+    {
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "core_function_file": "/var/www/html/wp-includes/blocks.php",
+      "original_attributes": {
+        "caption": "end\\",
+        "paths": {
+          "key\\": "value\\"
+        }
+      },
+      "core_encoded": "{\"caption\":\"end\\u005c\",\"paths\":{\"key\\u005c\":\"value\\u005c\"}}",
+      "core_round_trip_retained": true,
+      "json_error": "No error",
+      "ordinary_json_round_trip_retained": true,
+      "service": "wp71"
+    },
+    {
+      "wordpress": "7.1.3",
+      "php": "8.4.27",
+      "core_function_file": "/var/www/html/wp-includes/blocks.php",
+      "original_attributes": {
+        "caption": "end\\",
+        "paths": {
+          "key\\": "value\\"
+        }
+      },
+      "core_encoded": "{\"caption\":\"end\\u005c\",\"paths\":{\"key\\u005c\":\"value\\u005c\"}}",
+      "core_round_trip_retained": true,
+      "json_error": "No error",
+      "ordinary_json_round_trip_retained": true,
+      "service": "wp84"
+    },
+    {
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "core_function_file": "/var/www/html/wp-includes/blocks.php",
+      "original_attributes": {
+        "caption": "end\\",
+        "paths": {
+          "key\\": "value\\"
+        }
+      },
+      "core_encoded": "{\"caption\":\"end\\\\u0022,\"paths\":{\"key\\\\u0022:\"value\\\\u0022}}",
+      "core_round_trip_retained": false,
+      "json_error": "Syntax error",
+      "ordinary_json_round_trip_retained": true,
+      "service": "wp63"
+    },
+    {
+      "wordpress": "6.8.3",
+      "php": "8.3.28",
+      "core_function_file": "/var/www/html/wp-includes/blocks.php",
+      "original_attributes": {
+        "caption": "end\\",
+        "paths": {
+          "key\\": "value\\"
+        }
+      },
+      "core_encoded": "{\"caption\":\"end\\\\u0022,\"paths\":{\"key\\\\u0022:\"value\\\\u0022}}",
+      "core_round_trip_retained": false,
+      "json_error": "Syntax error",
+      "ordinary_json_round_trip_retained": true,
+      "service": "wp68"
+    }
+  ],
+  "syntax": [
+    {
+      "file": "wordpress/simple-digital-clock/includes/simple-digital-clock-admin-notices.php",
+      "exit_code": 0,
+      "output": "No syntax errors detected in /Users/yy/dev2/Simple-Digital-Clock-Widget/wordpress/simple-digital-clock/includes/simple-digital-clock-admin-notices.php"
+    },
+    {
+      "file": "wordpress/simple-digital-clock/includes/simple-digital-clock-admin-settings.php",
+      "exit_code": 0,
+      "output": "No syntax errors detected in /Users/yy/dev2/Simple-Digital-Clock-Widget/wordpress/simple-digital-clock/includes/simple-digital-clock-admin-settings.php"
+    },
+    {
+      "file": "wordpress/simple-digital-clock/includes/simple-digital-clock-kses.php",
+      "exit_code": 0,
+      "output": "No syntax errors detected in /Users/yy/dev2/Simple-Digital-Clock-Widget/wordpress/simple-digital-clock/includes/simple-digital-clock-kses.php"
+    },
+    {
+      "file": "wordpress/simple-digital-clock/index.php",
+      "exit_code": 0,
+      "output": "No syntax errors detected in /Users/yy/dev2/Simple-Digital-Clock-Widget/wordpress/simple-digital-clock/index.php"
+    },
+    {
+      "file": "wordpress/simple-digital-clock/widget_init.php",
+      "exit_code": 0,
+      "output": "No syntax errors detected in /Users/yy/dev2/Simple-Digital-Clock-Widget/wordpress/simple-digital-clock/widget_init.php"
+    },
+    {
+      "file": "tools/wordpress-lab/browser-helpers.mjs",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "file": "tools/wordpress-lab/final-review.mjs",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "file": "tools/wordpress-lab/html5-entity-dom.mjs",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "file": "tools/wordpress-lab/patch-tests.mjs",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "file": "tools/wordpress-lab/review2-entities.mjs",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "file": "tools/wordpress-lab/review3-captions.mjs",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "file": "tools/wordpress-lab/rollback-tests.mjs",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "file": "tools/wordpress-lab/smoke.mjs",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "cleanup": {
+    "lab_containers_remaining": 0,
+    "firefox_container_remaining": 0,
+    "task_label_verified": true,
+    "data_preserved": true,
+    "volumes_deleted": false,
+    "prune": false
+  },
+  "files": {
+    ".local/wordpress-lab/patch/entities-accepted-php.json": {
+      "sha256": "25dc7da062f2266b7bf36f1aa10f1089c39c5c8fda2d0436267b275ca0081992",
+      "bytes": 216731
+    },
+    ".local/wordpress-lab/entities-final/php.json": {
+      "sha256": "100da98e2f78dfd24768b2f64d62962b4a7955bfabd5c0bdcfba74fab6fadace",
+      "bytes": 86743
+    },
+    ".local/wordpress-lab/entities-fix/php-raw-accepted.json": {
+      "sha256": "6b18d3b1e5ce4384d4f070a58719c8ae1e81847815bb2ee6f075306a53481945",
+      "bytes": 7851
+    },
+    ".local/wordpress-lab/entities-fix/php-accepted.json": {
+      "sha256": "2ac1d2e42b1a1a9e9627dad9213d7e89c1ae084c0d6bb3478a3590c272ccae88",
+      "bytes": 88063
+    },
+    ".local/wordpress-lab/entities-fix/pipeline-accepted.json": {
+      "sha256": "142008e908dd6a8b4ee620365220daa579afc112663dc54349f5af03c4af32d2",
+      "bytes": 5745779
+    },
+    ".local/wordpress-lab/entities-fix/charset-green.json": {
+      "sha256": "b21f38ebbc3d80c4ca93e9cbb3e6717718db47ce7d78565fbcdadabb126d6926",
+      "bytes": 2923
+    },
+    ".local/wordpress-lab/entities-final/metadata-save.json": {
+      "sha256": "4152db2f447c9a33fd038d65879eeac08792119ca30b2a4119384765d1b566fa",
+      "bytes": 20867
+    },
+    ".local/wordpress-lab/entities-final/metadata-read.json": {
+      "sha256": "beca91c9ade7167d7a299d343ab6db17069f3a04c0fff2b80b3ca3b9edbad02c",
+      "bytes": 17507
+    },
+    ".local/wordpress-lab/entities-final/browser-reupgrade.json": {
+      "sha256": "e9119e67888680a394a466241fb73dbb308a372b068db0cce0742921c1346a60",
+      "bytes": 93107
+    },
+    ".local/wordpress-lab/entities-final/captions-reupgrade-chromium.json": {
+      "sha256": "b819a9aff9b461dd9fbe7f6123cefa0304af2d362189431748a6a12934949354",
+      "bytes": 1020571
+    },
+    ".local/wordpress-lab/patch/entities-final-ascii-chromium-browser.json": {
+      "sha256": "b95efcfafa0cbdf0ef0216e2d6dfbc41474ba829681c3660d55613d9d90fd0cc",
+      "bytes": 35135
+    },
+    ".local/wordpress-lab/review2/entities-final-chromium-fixed-chromium-all.json": {
+      "sha256": "383105a04ff65b664e60ed93f4c46251cf7c5088f1a8ae2f6572fc203dd5427e",
+      "bytes": 51871
+    },
+    ".local/wordpress-lab/review2/entities-final-chromium-official111-chromium-all.json": {
+      "sha256": "decdac92e17c8e4d618f3a2fbe20c5ab19d362c0886d69839e664c0745f4c573",
+      "bytes": 52375
+    },
+    ".local/wordpress-lab/entities-final/browser-save.json": {
+      "sha256": "73ac4806fe146dd8afc0340bc1c14fd6f02a6df7042d997ddbc7f7070bbf8e6a",
+      "bytes": 91079
+    },
+    ".local/wordpress-lab/entities-final/browser-rollback.json": {
+      "sha256": "f97f3d467504d4d31dc46e3f7214365326e28fcb6ba4215bca03bb923b284917",
+      "bytes": 93107
+    },
+    ".local/wordpress-lab/entities-final/captions-candidate-chromium.json": {
+      "sha256": "a8dce38a9c488826d5e72c885e60e459c34fa662c7a0efc71d39738babf73d19",
+      "bytes": 1008773
+    },
+    ".local/wordpress-lab/entities-final/captions-official111-chromium.json": {
+      "sha256": "a84e26aeee8896ee43e9e67878229f8236009b68bcb2be7cbcc6935c625af641",
+      "bytes": 1020579
+    },
+    ".local/wordpress-lab/rollback/entities-final-cycle-chromium-read.json": {
+      "sha256": "f11a2c30a0f5c0aabbb648c936350275ebfda1ef4be3b14229d92cf86fb7cb5d",
+      "bytes": 67187
+    },
+    ".local/wordpress-lab/entities-fix/all-entities-accepted-chromium.json": {
+      "sha256": "ee5187be14533c2908c769fd56f83ea8ccbc4799e89f0b0f570538da469f27b2",
+      "bytes": 755
+    },
+    ".local/wordpress-lab/patch/entities-final-ascii-firefox-browser.json": {
+      "sha256": "b95efcfafa0cbdf0ef0216e2d6dfbc41474ba829681c3660d55613d9d90fd0cc",
+      "bytes": 35135
+    },
+    ".local/wordpress-lab/review2/entities-final-firefox-fixed-firefox-all.json": {
+      "sha256": "0406dfcc3be1aeec0dc41bcc044a4960b9b183ea69972b7ffe6b7cbd40f77cb9",
+      "bytes": 51867
+    },
+    ".local/wordpress-lab/review2/entities-final-firefox-official111-firefox-all.json": {
+      "sha256": "747f0778af2d6c0c0ba612df6e5a25e15a5894db4210a9a922e41f5fe4b566e2",
+      "bytes": 52371
+    },
+    ".local/wordpress-lab/entities-final/browser-save-firefox.json": {
+      "sha256": "999f1ce4d3341f5b3694a14a499571064ee17cf8abe1f676f2a0ff3ede169b30",
+      "bytes": 92199
+    },
+    ".local/wordpress-lab/entities-final/browser-rollback-firefox.json": {
+      "sha256": "f97f3d467504d4d31dc46e3f7214365326e28fcb6ba4215bca03bb923b284917",
+      "bytes": 93107
+    },
+    ".local/wordpress-lab/entities-final/captions-candidate-firefox.json": {
+      "sha256": "11cad467b8e3e11c757ed0ca1ff2474918e61b14f1971936ca3bb28c9b74be54",
+      "bytes": 1020567
+    },
+    ".local/wordpress-lab/entities-final/captions-official111-firefox.json": {
+      "sha256": "60b9abe02024162de2035ede43e0959ea3318e27990583ef614d38948e0ecee3",
+      "bytes": 1020575
+    },
+    ".local/wordpress-lab/rollback/entities-final-cycle-firefox-read.json": {
+      "sha256": "f11a2c30a0f5c0aabbb648c936350275ebfda1ef4be3b14229d92cf86fb7cb5d",
+      "bytes": 67187
+    },
+    ".local/wordpress-lab/entities-fix/all-entities-accepted-firefox.json": {
+      "sha256": "c2e78f86d5df59d00110909e69ba7adbb30cb6d60e9b91615aaea7c560aa410c",
+      "bytes": 751
+    },
+    ".local/wordpress-lab/patch/entities-final-ascii-webkit-browser.json": {
+      "sha256": "b95efcfafa0cbdf0ef0216e2d6dfbc41474ba829681c3660d55613d9d90fd0cc",
+      "bytes": 35135
+    },
+    ".local/wordpress-lab/review2/entities-final-webkit-fixed-webkit-all.json": {
+      "sha256": "82385ba3c2897886052bf7fb4e37562ae5036e9f3c3b74f524a737be5d51e63e",
+      "bytes": 51863
+    },
+    ".local/wordpress-lab/review2/entities-final-webkit-official111-webkit-all.json": {
+      "sha256": "215af996fd339eca1aeb72a8daf9f9b53e1ae10cdddfbd67a66abd0512953e68",
+      "bytes": 52367
+    },
+    ".local/wordpress-lab/entities-final/browser-save-webkit.json": {
+      "sha256": "999f1ce4d3341f5b3694a14a499571064ee17cf8abe1f676f2a0ff3ede169b30",
+      "bytes": 92199
+    },
+    ".local/wordpress-lab/entities-final/browser-rollback-webkit.json": {
+      "sha256": "f97f3d467504d4d31dc46e3f7214365326e28fcb6ba4215bca03bb923b284917",
+      "bytes": 93107
+    },
+    ".local/wordpress-lab/entities-final/captions-candidate-webkit.json": {
+      "sha256": "d1d9751ce1109b2c1f306cd7973a993f6e450eb1ce98df8cd55c25ede4816060",
+      "bytes": 1020563
+    },
+    ".local/wordpress-lab/entities-final/captions-official111-webkit.json": {
+      "sha256": "3b90e2ab34de9b764eddeffe93fd2d5b0d53f1fa54374af756c6a8898d675319",
+      "bytes": 1020571
+    },
+    ".local/wordpress-lab/rollback/entities-final-cycle-webkit-read.json": {
+      "sha256": "f11a2c30a0f5c0aabbb648c936350275ebfda1ef4be3b14229d92cf86fb7cb5d",
+      "bytes": 67187
+    },
+    ".local/wordpress-lab/entities-fix/all-entities-accepted-webkit.json": {
+      "sha256": "e73c90817aef327fdcacce8703516ad3cf75435e78018d1fb815b34910d4cb20",
+      "bytes": 747
+    },
+    ".local/wordpress-lab/review3/captions-entities-red-chromium.json": {
+      "sha256": "bd5d778ed43fb6d141d4797923da8f5a2b443034e46939b639f3a38d0c1f8de2",
+      "bytes": 742373
+    },
+    ".local/wordpress-lab/entities-fix/all-entities-red-chromium.json": {
+      "sha256": "bfa6fdd4ff20c033f480279e7065857c712918aa6e8df062b53cc75d06c77b9a",
+      "bytes": 1711231
+    },
+    ".local/wordpress-lab/entities-fix/legacy-charset-red.json": {
+      "sha256": "b394de07c115e208b2bf015db35e9fc9a1ac541653a299109793ba223c1e0d51",
+      "bytes": 1935
+    },
+    ".local/wordpress-lab/entities-final/identity-before.json": {
+      "sha256": "6a72709b71c2df5c1e061d265a141512216a9f8647dcacdf91b8e6f1a9db068e",
+      "bytes": 291
+    },
+    ".local/wordpress-lab/entities-final/identity-upgrade.json": {
+      "sha256": "be6dba11fa32bdb067a5d2c5cbe963ab3006a4cefbe513d64f06f10ab37833a6",
+      "bytes": 291
+    },
+    ".local/wordpress-lab/entities-final/identity-rollback.json": {
+      "sha256": "6a72709b71c2df5c1e061d265a141512216a9f8647dcacdf91b8e6f1a9db068e",
+      "bytes": 291
+    },
+    ".local/wordpress-lab/entities-final/identity-reupgrade.json": {
+      "sha256": "be6dba11fa32bdb067a5d2c5cbe963ab3006a4cefbe513d64f06f10ab37833a6",
+      "bytes": 291
+    },
+    ".local/wordpress-lab/entities-final/upgrade-data-check.json": {
+      "sha256": "01f9c5121af4dcc41c12b08b394e9240420c7b1e59de5add4df5dfbafd08858f",
+      "bytes": 8779
+    },
+    ".local/wordpress-lab/entities-final/saved-data-check.json": {
+      "sha256": "01f9c5121af4dcc41c12b08b394e9240420c7b1e59de5add4df5dfbafd08858f",
+      "bytes": 8779
+    },
+    ".local/wordpress-lab/entities-final/rollback-data-check.json": {
+      "sha256": "01f9c5121af4dcc41c12b08b394e9240420c7b1e59de5add4df5dfbafd08858f",
+      "bytes": 8779
+    },
+    ".local/wordpress-lab/entities-final/rollback-after-read-data-check.json": {
+      "sha256": "01f9c5121af4dcc41c12b08b394e9240420c7b1e59de5add4df5dfbafd08858f",
+      "bytes": 8779
+    },
+    ".local/wordpress-lab/entities-final/reupgrade-data-check.json": {
+      "sha256": "01f9c5121af4dcc41c12b08b394e9240420c7b1e59de5add4df5dfbafd08858f",
+      "bytes": 8779
+    },
+    ".local/wordpress-lab/packages/entities-final-upgrade-snapshot.json": {
+      "sha256": "8f9ae1bab3816ea945a4b534872f1dd0ff11960f47d01bc5857568ee8b5edd5b",
+      "bytes": 347373
+    },
+    ".local/wordpress-lab/packages/entities-final-rollback-snapshot.json": {
+      "sha256": "98d305c8d1b3510e26875e4f6fcbd056dc4664032407ce2a49929097d584cc1e",
+      "bytes": 361069
+    },
+    ".local/wordpress-lab/entities-final/patch-apply.json": {
+      "sha256": "a024958d6d8773fc6b310b940d5925a723a8bac0aa8b55b7fde914271347a92b",
+      "bytes": 459
+    },
+    "wordpress/upstream-1.1.1.json": {
+      "sha256": "c7ea176a21bcafaf1e04c82b191c92c8891f6e092a2e29e8d32ae42f435ddaa7",
+      "bytes": 2598
+    },
+    ".local/wordpress-lab/entities-final/product-files.json": {
+      "sha256": "cb24dc6010060ca18a8704bdd7d6ff94a38aa55ce4fa0c3e00a4fcc66bc188be",
+      "bytes": 2121
+    },
+    ".local/wordpress-lab/packages/html5-entity-cases.json": {
+      "sha256": "2f576180e818484d1a2e4465855e5aa61dd361a59cd917b4b965936cb847f15e",
+      "bytes": 921658
+    },
+    ".local/wordpress-lab/entities-final/syntax.json": {
+      "sha256": "2b246bc04c7002e852d485ef022a2d3808c5ae0411688db83ca656b0b2773580",
+      "bytes": 2090
+    },
+    ".local/wordpress-lab/entities-final/browser-runtime.json": {
+      "sha256": "5a689b7bfd7694f1e97380bb5e453973ae34b18a4369e78b4a274fee03e07e03",
+      "bytes": 557
+    },
+    ".local/wordpress-lab/entities-fix/upstream-serializer-control.json": {
+      "sha256": "d6c6481cd919c43f0031bc14c3c6846ad4d8d893219c070b2713ee97c5f2cbe8",
+      "bytes": 1889
+    },
+    ".local/wordpress-lab/entities-final/cleanup.json": {
+      "sha256": "66611f6cd819bf77e3e285a03f1ccf1d26453cc7dbefcf26cfd06015f5ef2952",
+      "bytes": 175
+    },
+    ".local/wordpress-lab/entities-final/widget-lint.log": {
+      "bytes": 72,
+      "sha256": "8c138fd15b1be77c8e5fed81080f2cfb1a4a3bee6bf018ac69c8cd7f724fc087"
+    },
+    ".local/wordpress-lab/entities-final/widget-release.log": {
+      "bytes": 627,
+      "sha256": "9fdee8761d7c5bf03f856e9580657dbdb1b69217938c992910f6566b9e1d4ab5"
+    },
+    ".local/wordpress-lab/entities-final/widget-node.log": {
+      "bytes": 1410,
+      "sha256": "775abc9f0a4b1a46fbf17b457f6b51405f08afdf92af0cac99efc5389c20749e"
+    },
+    ".local/wordpress-lab/entities-final/widget-chromium-webkit.log": {
+      "bytes": 677,
+      "sha256": "acfcd39c7970fb353880bd2389c2ba4e3f16099c0da0051fa8d3ed1c1b3c76ac"
+    },
+    ".local/wordpress-lab/entities-final/widget-firefox-remote.log": {
+      "bytes": 396,
+      "sha256": "3cb266a21bff3f5e73de8ed02823428b1e3582d15195a198be20bb19285b630e"
+    },
+    ".local/wordpress-lab/entities-final/run-cycle.py": {
+      "bytes": 6755,
+      "sha256": "7b67d3a65bfc09f251059136a2970f8f8aa8853b221dbdcdd10f3ca621cbb48f"
+    },
+    ".local/wordpress-lab/entities-final/wtr-remote-firefox.mjs": {
+      "bytes": 470,
+      "sha256": "b4d256573914e62efcf66f01f5f33e06229f539f959a20d1a23f120747a44038"
+    }
+  },
+  "limits": [
+    "Native LocalWP untested",
+    "Multisite untested",
+    "PHP 7.x and 8.5 functional runtime untested; host PHP 8.5 syntax only",
+    "Specific third-party plugins/themes untested",
+    "Semicolon-terminated HTML5 names fully enumerated; native suite also retains semicolonless controls",
+    "Firefox is Linux container; Chromium and WebKit are macOS"
+  ],
+  "excluded_attempts": [
+    "Intermediate ZIPs in entities-fix, including Unicode utf8mb3 failure",
+    "Mixed-version browser attempt before final sequential cycle",
+    "Mac Firefox startup failures before assertions",
+    "Linux WTR startup with host platform node_modules; remote-browser WTR passed"
+  ],
+  "commands": [
+    "python3 .local/wordpress-lab/entities-final/run-cycle.py regression",
+    "python3 .local/wordpress-lab/entities-final/run-cycle.py seed",
+    "python3 .local/wordpress-lab/entities-final/run-cycle.py save",
+    "python3 .local/wordpress-lab/entities-final/run-cycle.py rollback",
+    "python3 .local/wordpress-lab/entities-final/run-cycle.py reupgrade"
+  ]
+}

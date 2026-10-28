@@ -1,0 +1,36 @@
+{
+  "source": "Official Simple Digital Clock 1.1.1 block.js through WordPress 6.3.2 native serializer",
+  "source_script_sha256": "1ce3df3a6aa541f09b5bb34a8f27e41582b417f3a309154d1eea6645d78f5eda",
+  "cases": [
+    {
+      "caption": "Plain <clock>",
+      "content": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Plain \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" second=\"true\" caption=\"Plain <clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->",
+      "expected_dom_caption": "Plain <clock>",
+      "original_valid": true
+    },
+    {
+      "caption": "&lt; <clock>",
+      "content": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026lt; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" second=\"true\" caption=\"&lt; <clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->",
+      "expected_dom_caption": "< <clock>",
+      "original_valid": true
+    },
+    {
+      "caption": "&apos;",
+      "content": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026apos;\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" second=\"true\" caption=\"&apos;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->",
+      "expected_dom_caption": "'",
+      "original_valid": true
+    },
+    {
+      "caption": "&apos; <clock>",
+      "content": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026apos; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" second=\"true\" caption=\"&apos; <clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->",
+      "expected_dom_caption": "' <clock>",
+      "original_valid": true
+    },
+    {
+      "caption": "&amp;apos; <clock>",
+      "content": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;apos; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" second=\"true\" caption=\"&amp;apos; <clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->",
+      "expected_dom_caption": "&apos; <clock>",
+      "original_valid": true
+    }
+  ]
+}

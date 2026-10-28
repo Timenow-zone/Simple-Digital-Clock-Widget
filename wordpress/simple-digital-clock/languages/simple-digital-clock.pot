@@ -1,0 +1,238 @@
+# Copyright (C) 2026 UTCTime.info
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Digital Clock 🕒 1.1.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-digital-clock\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-21T21:27:17+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: simple-digital-clock\n"
+
+#. Plugin Name of the plugin
+#: widget_init.php
+#: includes/simple-digital-clock-admin-settings.php:12
+msgid "Simple Digital Clock 🕒"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: widget_init.php
+msgid "https://utctime.info/"
+msgstr ""
+
+#. Description of the plugin
+#: widget_init.php
+msgid "It is 🪄 a magical and easy-to-use digital clock with a beautiful UI, supporting multiple languages, locales, dates, captions, and time zones."
+msgstr ""
+
+#. Author of the plugin
+#: widget_init.php
+msgid "UTCTime.info"
+msgstr ""
+
+#: includes/simple-digital-clock-admin-settings.php:14
+#: includes/simple-digital-clock-admin-settings.php:18
+msgid "Help"
+msgstr ""
+
+#: includes/simple-digital-clock-admin-settings.php:16
+msgid "Official website"
+msgstr ""
+
+#: includes/simple-digital-clock-admin-settings.php:17
+msgid "TodaysDateNow.com"
+msgstr ""
+
+#: includes/simple-digital-clock-admin-settings.php:18
+msgid "Support"
+msgstr ""
+
+#: widget_init.php:57
+msgid "Settings"
+msgstr ""
+
+#: widget_init.php:96
+msgid "Simple Digital Clock"
+msgstr ""
+
+#: widget_init.php:97
+msgid "A simple block for displaying Digital Clock."
+msgstr ""
+
+#: widget_init.php:98
+msgid "Container"
+msgstr ""
+
+#: widget_init.php:99
+msgid "Caption"
+msgstr ""
+
+#: widget_init.php:100
+msgid "Width"
+msgstr ""
+
+#: widget_init.php:101
+msgid "Full Size"
+msgstr ""
+
+#: widget_init.php:102
+msgid "Rounded"
+msgstr ""
+
+#: widget_init.php:103
+msgid "Border"
+msgstr ""
+
+#: widget_init.php:104
+msgid "Text Align"
+msgstr ""
+
+#: widget_init.php:105
+msgid "Select the alignment of the text within the container."
+msgstr ""
+
+#: widget_init.php:106
+msgid "Shadow"
+msgstr ""
+
+#: widget_init.php:107
+msgid "Background Color"
+msgstr ""
+
+#: widget_init.php:108
+msgid "Color"
+msgstr ""
+
+#: widget_init.php:109
+msgid "Gradient"
+msgstr ""
+
+#: widget_init.php:110
+msgid "Options"
+msgstr ""
+
+#: widget_init.php:111
+msgid "Time Zone"
+msgstr ""
+
+#: widget_init.php:112
+msgid "Display"
+msgstr ""
+
+#: widget_init.php:113
+msgid "Google Fonts"
+msgstr ""
+
+#: widget_init.php:114
+msgid "Google fonts are loading from the CDN, they are not included in the plugin."
+msgstr ""
+
+#: widget_init.php:115
+msgid "Locale"
+msgstr ""
+
+#: widget_init.php:116
+msgid "Language of date and including the time display format."
+msgstr ""
+
+#: widget_init.php:117
+msgid "About"
+msgstr ""
+
+#: widget_init.php:118
+msgid "❤️ Rate plugin ★★★★★"
+msgstr ""
+
+#: widget_init.php:119
+msgid "Second"
+msgstr ""
+
+#: widget_init.php:120
+msgid "Hundredths of a second"
+msgstr ""
+
+#: widget_init.php:121
+msgid "Show two digits after seconds."
+msgstr ""
+
+#: widget_init.php:122
+msgid "Date"
+msgstr ""
+
+#: widget_init.php:123
+msgid "24-Hour"
+msgstr ""
+
+#: widget_init.php:124
+msgid "Time Now"
+msgstr ""
+
+#: widget_init.php:125
+msgid "Todays Date"
+msgstr ""
+
+#: widget_init.php:126
+msgid "Left"
+msgstr ""
+
+#: widget_init.php:127
+msgid "Center"
+msgstr ""
+
+#: widget_init.php:128
+msgid "Right"
+msgstr ""
+
+#: widget_init.php:129
+msgid "Select the Shadow of the text within the container."
+msgstr ""
+
+#: widget_init.php:130
+msgid "Select a gradient (font color is automatically inverted based on background color). Note: the gradient is used on top of the background color."
+msgstr ""
+
+#: widget_init.php:131
+msgid "Time"
+msgstr ""
+
+#: widget_init.php:132
+msgid "Clock"
+msgstr ""
+
+#: widget_init.php:133
+msgid "Digital"
+msgstr ""
+
+#: widget_init.php:134
+msgid "Simple"
+msgstr ""
+
+#: widget_init.php:135
+msgid "Widget"
+msgstr ""
+
+#: widget_init.php:136
+msgid "DEMO 👀"
+msgstr ""
+
+#: widget_init.php:137
+msgid "None"
+msgstr ""
+
+#: widget_init.php:138
+msgid "Clear All Colors"
+msgstr ""
+
+#: widget_init.php:139
+msgid "Clear Gradient"
+msgstr ""
+
+#: widget_init.php:140
+msgid "Select the time zone for the clock display."
+msgstr ""

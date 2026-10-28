@@ -265,6 +265,10 @@ Testing stack:
 ## WordPress
 
 This widget powers the **Simple Digital Clock** WordPress plugin.
+The plugin source is maintained separately in [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
+See [`wordpress/README.md`](wordpress/README.md) for provenance, licensing, packaging, and local testing.
+Widget and WordPress plugin versions are independent; the widget build does not update the plugin bundle automatically.
+
 If you’re using WordPress, install the plugin from the directory:
 [https://wordpress.org/plugins/simple-digital-clock/](https://wordpress.org/plugins/simple-digital-clock/)
 
