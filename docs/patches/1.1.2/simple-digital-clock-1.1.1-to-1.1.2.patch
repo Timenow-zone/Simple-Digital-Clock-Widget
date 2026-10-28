@@ -1007,8 +1007,8 @@
 +* Fixed mouse activation of Auto language and Auto Timezone with open suggestions.
 +* Resetting Locale now restores the site language instead of an invalid empty locale.
 +* Resetting Time Zone preserves the string format supported by version 1.1.1.
-+* Fixed saved clock blocks becoming invalid when edited from a different browser time zone.
-+* Fixed clock markup being removed when saved by users without unfiltered HTML permissions.
++* Fixed saved clock blocks becoming invalid when reopened in a different browser time zone, including in LocalWP.
++* Fixed clock markup being removed when saved by users without unfiltered HTML permissions, including in LocalWP.
 +
  = 1.1.1 =
  * Fixed the clock block layout so it stays correctly positioned within WordPress content containers and block themes.
