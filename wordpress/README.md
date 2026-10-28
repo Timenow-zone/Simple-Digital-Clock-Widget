@@ -24,7 +24,9 @@ The official ZIP was also byte-compared with the existing local SVN trunk; all f
 The manifest records the imported baseline. Future fixes should intentionally differ from it.
 No `.svn` metadata is imported. SVN remains read-only during ordinary local development. Explicitly authorized release preparation may stage changes in a local checkout; remote SVN commits and Git pushes require separate publication authorization.
 The imported baseline has known findings documented in the [2026-10-27 LocalWP investigation](../docs/investigations/2026-10-27-localwp/README.md).
-The local 1.1.2 candidate fixes timezone parsing, post-content filtering, custom locale input and first-click Auto/Reset behavior. Time Zone Reset retains the string format understood by 1.1.1. Its patch and validation are documented in [the 1.1.2 patch report](../docs/patches/1.1.2/README.md).
+The local 1.1.2 candidate fixes timezone parsing, post/widget KSES filtering, HTML5 and numeric caption entities, custom locale input and first-click Auto/Reset behavior. It also preserves caption JSON through the new KSES in WordPress 7.2 Beta 2. Time Zone Reset retains the string format understood by 1.1.1. No database migration or new saved-block format is introduced.
+
+The [current patch report](../docs/patches/1.1.2/README.md), [KSES/compatibility acceptance](../docs/patches/1.1.2/KSES72-VERIFICATION.md) and [release manifest](../docs/releases/1.1.2/manifest.json) identify the accepted runtime and prepared local artifact. Functional acceptance covers 12 contexts, 18,336 PHP assertions, 1,309,248 entity DOM comparisons, upgrade/resave/rollback, LocalWP, multisite, themes/caches and native HTTPS on a private loopback port. `Tested up to: 7.1` remains unchanged; Beta 2 does not certify the final WordPress 7.2 release.
 
 ## Local development
 
@@ -36,7 +38,9 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-To create a local ZIP from the repository root:
+The prepared release ZIP is `.local/packages/simple-digital-clock-1.1.2-candidate.zip`; use the release manifest to verify its SHA-256. Repacking can change the archive hash because ZIP timestamps are included. A new development archive does not inherit the exact-artifact verification of the prepared release.
+
+To create a separate development ZIP from the repository root:
 
 ```bash
 set -euo pipefail
@@ -51,6 +55,8 @@ This local integration does not publish to GitHub, WordPress.org, or Cloudflare.
 
 ## Rollback
 
-The import does not change the standalone widget or any existing WordPress installation.
-Review `git status` and remove only the newly added WordPress/lab/report files to undo this local phase.
-Stop the named lab with `docker compose --env-file .local/wordpress-lab/env -f tools/wordpress-lab/compose.yaml down`; this preserves its data in `.local/`.
+The accepted cycle replaces only plugin files: official 1.1.1 → candidate 1.1.2 → resave → official 1.1.1 → candidate again. Existing records, widget/sidebar settings and rendering remain compatible in the tested matrix; no database restore was used. A rollback does not repair content already damaged before the fix, and editing with 1.1.1 reintroduces its known defects.
+
+To undo a repository change, inspect the relevant commit and restore or revert only its intended files. Preserve lab evidence, source snapshots and unrelated work; do not delete the imported WordPress directory or reset the entire checkout. The [release preparation report](../docs/releases/1.1.2/README.md) identifies saved payloads and the local SVN preparation.
+
+All acceptance sites are stopped after testing. Stop only the matching lab when running new tests; `docker compose --env-file .local/wordpress-lab/env -f tools/wordpress-lab/compose.yaml stop` retains its containers and data. Do not remove volumes or touch unrelated sites.
