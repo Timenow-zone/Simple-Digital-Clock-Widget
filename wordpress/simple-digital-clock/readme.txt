@@ -98,6 +98,7 @@ To reproduce the production bundle:
 == Changelog ==
 
 = 1.1.2 =
+* Fixed caption preservation with the HTML API KSES sanitizer in WordPress 7.2 Beta 2.
 * Fixed custom BCP-47 locale codes being discarded by the block editor.
 * Fixed mouse activation of Auto language and Auto Timezone with open suggestions.
 * Resetting Locale now restores the site language instead of an invalid empty locale.

@@ -238,9 +238,56 @@ function SDCW_prepare_clock_caption_html($html) {
 }
 
 /**
+ * Shield only known plain-text JSON captions during the complete Core pass.
+ * Tokens are private to this call and never replace actual HTML attributes.
+ */
+function SDCW_protect_clock_caption_metadata($html, &$captions) {
+    $captions = array();
+    if (false === strpos($html, 'wp:simple-digital-clock-block/widget-block')) {
+        return $html;
+    }
+    $prefix = 'sdcw-caption-token-' . wp_generate_uuid4() . '-';
+    return SDCW_map_clock_blocks($html, function ($attributes) use (&$captions, $prefix) {
+        if (isset($attributes->caption) && is_string($attributes->caption)) {
+            $token = $prefix . count($captions);
+            $captions[$token] = $attributes->caption;
+            $attributes->caption = $token;
+        }
+    });
+}
+
+function SDCW_restore_clock_caption_metadata($html, $captions) {
+    if (!$captions) {
+        return $html;
+    }
+    return SDCW_map_clock_blocks($html, function ($attributes) use ($captions) {
+        if (isset($attributes->caption) && is_string($attributes->caption) && array_key_exists($attributes->caption, $captions)) {
+            $attributes->caption = $captions[$attributes->caption];
+        }
+    });
+}
+
+/**
+ * Keep each nested slashed save-field call independent, including unfiltered calls.
+ */
+function &SDCW_clock_save_caption_frames() {
+    static $frames = array();
+    return $frames;
+}
+
+/**
  * These WordPress save filters receive and return slashed strings.
  */
 function SDCW_prepare_clock_caption_entities_for_save($content) {
+    $frames =& SDCW_clock_save_caption_frames();
+    $filter = current_filter();
+    $frames[] = array(
+        'filter' => $filter,
+        'depth' => count(SDCW_clock_kses_frames()),
+        'protected' => false,
+        'captions' => array(),
+        'enabled' => false !== has_filter($filter, 'wp_filter_post_kses'),
+    );
     if (false === has_filter(current_filter(), 'wp_filter_post_kses')) {
         return $content;
     }
@@ -248,8 +295,58 @@ function SDCW_prepare_clock_caption_entities_for_save($content) {
     $updated = SDCW_prepare_clock_caption_html($html);
     return $updated === $html ? $content : wp_slash($updated);
 }
+
+/**
+ * Core exposes no after-KSES hook. Identify its registered save callback without
+ * reading arguments, so unrelated sanitization in earlier callbacks stays native.
+ */
+function SDCW_is_owned_clock_kses_pass($filter) {
+    if ('sdcw-sanitize' !== $filter && !isset($GLOBALS['wp_filter'][$filter])) {
+        return false;
+    }
+    $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT, 12);
+    foreach ($trace as $index => $call) {
+        if (isset($call['function']) && 'wp_kses' === $call['function']) {
+            $parent = isset($trace[$index + 1]) ? $trace[$index + 1] : array();
+            $caller = isset($trace[$index + 2]) ? $trace[$index + 2] : array();
+            if ('sdcw-sanitize' === $filter) {
+                return isset($parent['function'], $caller['function']) && 'wp_kses_post' === $parent['function'] && 'SDCW_sanitize_clock_post_html' === $caller['function'];
+            }
+            return isset($parent['function'], $caller['object']) && 'wp_filter_post_kses' === $parent['function'] && $caller['object'] === $GLOBALS['wp_filter'][$filter];
+        }
+    }
+    return false;
+}
+
+function SDCW_protect_scoped_clock_caption_metadata($content) {
+    $frames =& SDCW_clock_save_caption_frames();
+    $index = count($frames) - 1;
+    if ($index < 0 || !$frames[$index]['enabled'] || $frames[$index]['protected'] || $frames[$index]['depth'] !== count(SDCW_clock_kses_frames()) || !isset($GLOBALS['wp_kses_operating_mode']) || 'html-api' !== $GLOBALS['wp_kses_operating_mode']) {
+        return $content;
+    }
+    if (!SDCW_is_owned_clock_kses_pass($frames[$index]['filter'])) {
+        return $content;
+    }
+    // Protect the outer owned pass only; unrelated recursive KSES calls stay native.
+    $frames[$index]['protected'] = true;
+    return SDCW_protect_clock_caption_metadata($content, $frames[$index]['captions']);
+}
+
+function SDCW_restore_clock_caption_entities_after_save($content) {
+    $frames =& SDCW_clock_save_caption_frames();
+    $index = count($frames) - 1;
+    if ($index < 0 || $frames[$index]['filter'] !== current_filter()) {
+        return $content;
+    }
+    $frame = array_pop($frames);
+    if (!$frame['captions']) {
+        return $content;
+    }
+    return wp_slash(SDCW_restore_clock_caption_metadata(wp_unslash($content), $frame['captions']));
+}
 foreach (array('content_save_pre', 'excerpt_save_pre', 'content_filtered_save_pre') as $sdcw_save_filter) {
     add_filter($sdcw_save_filter, 'SDCW_prepare_clock_caption_entities_for_save', 8);
+    add_filter($sdcw_save_filter, 'SDCW_restore_clock_caption_entities_after_save', 11);
 }
 
 function SDCW_prepare_clock_post_html($content, $allowed_html) {
@@ -282,18 +379,22 @@ function SDCW_preserve_clock_metadata_for_kses($content, $allowed_html) {
     if (!SDCW_allows_clock_html($allowed_html)) {
         return $content;
     }
-    $index = 0;
-    $content = SDCW_map_clock_blocks($content, function ($attributes, $html) use ($captions, &$index) {
-        $original = isset($captions[$index]) ? $captions[$index] : null;
-        $index++;
-        if (null !== $original && null !== $original['caption'] && $original['html'] === hash('sha256', $html)) {
-            $attributes->caption = $original['caption'];
-        }
-    });
+    if (!isset($GLOBALS['wp_kses_operating_mode']) || 'html-api' !== $GLOBALS['wp_kses_operating_mode']) {
+        $index = 0;
+        $content = SDCW_map_clock_blocks($content, function ($attributes, $html) use ($captions, &$index) {
+            $original = isset($captions[$index]) ? $captions[$index] : null;
+            $index++;
+            if (null !== $original && null !== $original['caption'] && $original['html'] === hash('sha256', $html)) {
+                $attributes->caption = $original['caption'];
+            }
+        });
+    }
     // JSON serialization escapes comment delimiters; actual HTML still runs KSES.
     return SDCW_sync_clock_content_metadata($content);
 }
 add_filter('pre_kses', 'SDCW_preserve_clock_metadata_for_kses', 11, 2);
+// Run after normal policies; modern Core processes block JSON after this hook.
+add_filter('pre_kses', 'SDCW_protect_scoped_clock_caption_metadata', PHP_INT_MAX);
 
 /**
  * Keep caption references stable after newer KSES decodes them to Unicode.
@@ -307,6 +408,27 @@ function SDCW_encode_clock_caption_html($html) {
         $processor->encode_caption_unicode();
     }
     return $processor->get_updated_html();
+}
+
+/**
+ * Sanitize clock HTML with the site's Core parser, retaining only caption JSON.
+ */
+function SDCW_sanitize_clock_post_html($html) {
+    $prepared = SDCW_prepare_clock_caption_html($html);
+    $frames =& SDCW_clock_save_caption_frames();
+    $frames[] = array(
+        'filter' => 'sdcw-sanitize',
+        'depth' => count(SDCW_clock_kses_frames()),
+        'protected' => false,
+        'captions' => array(),
+        'enabled' => true,
+    );
+    try {
+        $filtered = wp_kses_post($prepared);
+    } finally {
+        $frame = array_pop($frames);
+    }
+    return SDCW_encode_clock_caption_html(SDCW_restore_clock_caption_metadata($filtered, $frame['captions']));
 }
 
 /**
@@ -325,8 +447,7 @@ function SDCW_preserve_clock_widget_content($instance, $new_instance, $old_insta
     }
     // Use the original unslashed input because Core's first pass can lose entities.
     // Run before normal widget callbacks, retaining Core KSES for all actual HTML.
-    $prepared = SDCW_prepare_clock_caption_html($new_instance['content']);
-    $instance['content'] = SDCW_encode_clock_caption_html(wp_kses_post($prepared));
+    $instance['content'] = SDCW_sanitize_clock_post_html($new_instance['content']);
     return $instance;
 }
 add_filter('widget_update_callback', 'SDCW_preserve_clock_widget_content', 0, 4);

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { launchLabBrowser } from './browser-helpers.mjs';
-import { compareClockRenders } from './visual-helpers.mjs';
+import { compareClockRenders, freezeDate } from './visual-helpers.mjs';
 
 const [stage, engine = 'chromium', label = 'final-acceptance-921'] = process.argv.slice(2);
 if (!/^[a-z0-9-]+$/.test(stage || '') || !/^[a-z0-9-]+$/.test(label)) throw new Error('Invalid stage');
@@ -25,7 +25,7 @@ try {
       try {
         await context.route('**/*', route => ['localhost', '127.0.0.1'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
         const page = await context.newPage();
-        await page.clock.setFixedTime(new Date('2026-10-28T12:34:56.780Z'));
+        await freezeDate(page, '2026-10-28T12:34:56.780Z');
         const response = await page.goto(`${site.url}/?p=${seed.postId}`, { waitUntil: 'domcontentloaded' });
         check('Visitor HTTP 200', response.status() === 200);
         const selector = '.wp-block-post-content timenow-zone-sdcw, .entry-content timenow-zone-sdcw';

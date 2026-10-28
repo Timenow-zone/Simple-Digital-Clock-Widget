@@ -2,9 +2,9 @@
   "version": "1.1.2",
   "publication_status": "LOCAL_PREPARATION_ONLY",
   "candidate_zip": ".local/packages/simple-digital-clock-1.1.2-candidate.zip",
-  "candidate_zip_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+  "candidate_zip_sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720",
   "git_branch": "codex/prepare-simple-digital-clock-1.1.2",
-  "git_plugin_tree": "6675a436d7ddd7ba73e0aa48e23e27fa47cd3f3b",
+  "git_plugin_tree": "ffc3aa9ca9a7771a4f1cb8205590e08ed1c6d597",
   "svn_repository": "https://plugins.svn.wordpress.org/simple-digital-clock",
   "svn_base_revision": 3771402,
   "local_targets": [
@@ -31,10 +31,10 @@
     "block.js": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
     "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
     "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
-    "includes/simple-digital-clock-kses.php": "0664e49e5126290d3f9c8be45dec28096714326ffe6307ae58734d359bcf9271",
+    "includes/simple-digital-clock-kses.php": "7d6e41fa7d07d0f52f7dc84dd72e1262726f7e52c854c704425d7e9b05046ff5",
     "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
     "languages/simple-digital-clock.pot": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb",
-    "readme.txt": "63702b119d232e67ea9c8d8ec89287a28acfe36a106c86d38c7dbb4cacf758fc",
+    "readme.txt": "4234a17b4e4634c64367f48d45d4738b988f7c9aacc97ffe9a84bbf1f9006b28",
     "widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
   },
   "validation": {
@@ -45,13 +45,15 @@
     "unrelated_asset_preserved": true
   },
   "diff_sha256": {
-    "svn-trunk.diff": "8c51a47df13f50badf2737dbe567e882898e99edeb0796da597ff5165b8f7561",
-    "svn-tag-copy.diff": "619b69b11b2f87ce31fd7385b3a10cfd50272fe642dbd7f25061449dd9d88ab1"
+    "svn-trunk.diff": "ebdf41bf742e181e8e25d2a9cea80fdfe5fb7520fd55bdef7225b95fcc9d76f0",
+    "svn-tag-copy.diff": "117a1f058c4922bd61757ef15a26557ab0e8f313cacccc0e59d13827302f573f"
   },
   "preserved_untracked_asset": {
     "path": "assets/simple-digital-clock-wp-banner.html",
     "sha256": "35559dbfb7e8a9a0fa9204807414bb67ff1a35bb424e5a8a80da83c4ea4b18d5"
   },
   "git_push": false,
-  "svn_commit": false
+  "svn_commit": false,
+  "acceptance_report": "../../patches/1.1.2/KSES72-VERIFICATION.md",
+  "acceptance_evidence": "../../patches/1.1.2/kses72-evidence.json"
 }

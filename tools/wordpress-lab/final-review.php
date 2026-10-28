@@ -78,8 +78,8 @@ foreach (array('administrator' => 'clock_lab_admin', 'author' => 'clock_patch_au
         $expected_html_caption = $caption;
         sdcw_review_assert($role . '/' . $label . ': HTML retains original input semantics', $found && 'UTC' === $processor->get_attribute('time-zone') && (is_string($html_caption) ? $html_caption : '') === $expected_html_caption, array('expected' => $expected_html_caption, 'actual' => $html_caption, 'saved' => $saved));
         sdcw_review_assert($role . '/' . $label . ': siblings match normal WordPress filtering', str_starts_with($saved, $expected_prefix) && false !== strpos($saved, $expected_suffix), $saved);
-        $second_filter = wp_kses_post(wp_kses_post($saved));
-        sdcw_review_assert($role . '/' . $label . ': repeated KSES is stable', wp_kses_post($saved) === $second_filter);
+        $second_filter = SDCW_sanitize_clock_post_html(SDCW_sanitize_clock_post_html($saved));
+        sdcw_review_assert($role . '/' . $label . ': repeated KSES is stable', SDCW_sanitize_clock_post_html($saved) === $second_filter);
         for ($cycle = 1; $cycle <= 3; $cycle++) {
             $updated = wp_update_post(array('ID' => $id, 'post_content' => wp_slash($saved)), true);
             sdcw_review_assert($role . '/' . $label . ': resave stable ' . $cycle, !is_wp_error($updated) && get_post($id)->post_content === $saved);
@@ -138,7 +138,7 @@ $multiple = '';
 foreach ($values as $value) {
     $multiple .= get_comment_delimited_block_content($block_name, array('caption' => $value), $identical_html);
 }
-$multiple_saved = parse_blocks(wp_kses_post($multiple));
+$multiple_saved = parse_blocks(SDCW_sanitize_clock_post_html($multiple));
 sdcw_review_assert('identical clock HTML retains separate original captions', $multiple_saved[0]['attrs']['caption'] === $values[0] && $multiple_saved[1]['attrs']['caption'] === $values[1]);
 sdcw_review_assert('KSES frame stack empty after recursive JSON filtering', SDCW_clock_kses_frames() === array());
 $nested_content = get_comment_delimited_block_content($block_name, array('caption' => '<inner> &lt;'), '<timenow-zone-sdcw caption="&lt;inner&gt; &lt;" time-zone="UTC"></timenow-zone-sdcw>');
@@ -147,14 +147,14 @@ $nested_result = null;
 $nested_filter = function ($content) use (&$inside, &$nested_result, $nested_content) {
     if (!$inside && false !== strpos($content, 'wp:simple-digital-clock-block/widget-block')) {
         $inside = true;
-        $nested_result = wp_kses_post($nested_content);
+        $nested_result = SDCW_sanitize_clock_post_html($nested_content);
         $inside = false;
     }
     return $content;
 };
 add_filter('pre_kses', $nested_filter, 10);
 try {
-    $outer_result = wp_kses_post($multiple);
+    $outer_result = SDCW_sanitize_clock_post_html($multiple);
 } finally {
     remove_filter('pre_kses', $nested_filter, 10);
 }
@@ -166,9 +166,9 @@ $escape_before = esc_attr('&lt;');
 wp_kses_post('<timenow-zone-sdcw caption="<clock> &amp;lt;"></timenow-zone-sdcw>');
 sdcw_review_assert('strict caption escaping does not leak into global esc_attr', esc_attr('&lt;') === $escape_before);
 $unsafe_json = get_comment_delimited_block_content($block_name, array('caption' => '--><script>alert(1)</script><!--', 'unknown' => '<script>drop</script>'), '<timenow-zone-sdcw caption="safe" onclick="alert(1)"></timenow-zone-sdcw>');
-$unsafe_saved = wp_kses_post($unsafe_json);
+$unsafe_saved = SDCW_sanitize_clock_post_html($unsafe_json);
 $unsafe_attrs = parse_blocks($unsafe_saved)[0]['attrs'];
-sdcw_review_assert('caption protection does not preserve foreign unsafe JSON fields', $unsafe_attrs['unknown'] === 'drop' && $unsafe_attrs['caption'] === '--><script>alert(1)</script><!--');
+sdcw_review_assert('caption protection does not preserve foreign unsafe JSON fields', $unsafe_attrs['unknown'] === wp_kses_post('<script>drop</script>') && $unsafe_attrs['caption'] === '--><script>alert(1)</script><!--');
 sdcw_review_assert('caption protection does not preserve unsafe actual HTML', false === strpos($unsafe_saved, '<script>') && false === strpos($unsafe_saved, 'onclick='));
 
 $checks = $GLOBALS['sdcw_final_review_checks'];

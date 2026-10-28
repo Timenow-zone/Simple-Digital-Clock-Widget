@@ -55,10 +55,11 @@ foreach (array('administrator' => $admin, 'author' => $author) as $role => $user
         clock_assert($role . ': legacy JSON timezone ' . $fixture['name'], isset($stored['timeZone']) && $stored['timeZone'] === $fixture['attributes']['timeZone'], $stored);
         $stored_caption = isset($stored['caption']) ? $stored['caption'] : '';
         clock_assert($role . ': legacy JSON caption ' . $fixture['name'], $stored_caption === $fixture['attributes']['caption'], $stored);
-        $filtered = wp_kses_post($fixture['content']);
+        $filtered = SDCW_sanitize_clock_post_html($fixture['content']);
         $filtered_attrs = parse_blocks($filtered)[0]['attrs'];
         clock_assert($role . ': filtered content keeps legacy JSON ' . $fixture['name'], isset($filtered_attrs['timeZone']) && $filtered_attrs['timeZone'] === $fixture['attributes']['timeZone'] && (isset($filtered_attrs['caption']) ? $filtered_attrs['caption'] : '') === $fixture['attributes']['caption'], $filtered_attrs);
-        $widget_value = $widget->update(array('content' => $fixture['content']), array());
+        $widget_input = array('content' => $fixture['content']);
+        $widget_value = apply_filters('widget_update_callback', $widget->update($widget_input, array()), $widget_input, array(), $widget);
         $widget_attrs = parse_blocks($widget_value['content'])[0]['attrs'];
         clock_assert($role . ': block widget content retained ' . $fixture['name'], clock_markup_attributes($widget_value['content']) === $expected);
         if ('administrator' === $role) {
@@ -109,7 +110,7 @@ clock_assert('caption remains text after KSES', isset($caption_attributes['capti
 clock_assert('caption cannot create an event attribute', !isset($caption_attributes['onerror']), $safe_caption);
 $malicious_caption = '--><script>alert(1)</script><!--';
 $malicious_html = get_comment_delimited_block_content('simple-digital-clock-block/widget-block', array('caption' => $malicious_caption), '<timenow-zone-sdcw caption="' . esc_attr($malicious_caption) . '"></timenow-zone-sdcw>');
-$malicious_saved = wp_kses_post($malicious_html);
+$malicious_saved = SDCW_sanitize_clock_post_html($malicious_html);
 $malicious_attrs = parse_blocks($malicious_saved)[0]['attrs'];
 clock_assert('plain-text caption JSON cannot break a block comment', isset($malicious_attrs['caption']) && $malicious_attrs['caption'] === $malicious_caption && false === strpos($malicious_saved, '<script>'), $malicious_saved);
 $unrelated = '<!-- wp:paragraph --><p>Unrelated &amp; unchanged</p><!-- /wp:paragraph -->';

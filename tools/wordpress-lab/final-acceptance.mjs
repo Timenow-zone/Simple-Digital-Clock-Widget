@@ -1,13 +1,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { openEditor, launchLabBrowser } from './browser-helpers.mjs';
-import { compareClockRenders } from './visual-helpers.mjs';
+import { compareClockRenders, freezeDate } from './visual-helpers.mjs';
 
 const [mode, stage, engine = 'chromium', only = 'all', label = 'final-acceptance-921', reference = label] = process.argv.slice(2);
 if (!['seed', 'baseline', 'check', 'save'].includes(mode) || !/^[a-z0-9-]+$/.test(stage || '') || !/^[a-z0-9-]+$/.test(label) || !/^[a-z0-9-]+$/.test(reference)) throw new Error('Invalid acceptance arguments');
 const directory = path.resolve('.local/wordpress-lab', label);
 const sites = JSON.parse(await fs.readFile(path.join(directory, 'sites.json'), 'utf8')).filter(site => only === 'all' || site.key === only);
-const allowed = new Set(['http://localhost:10003', ...[19427,19428,19429,19430,19528,19529,19530,19531].map(port => `http://127.0.0.1:${port}`), 'http://127.0.0.1:19531/clock-child']);
+const allowed = new Set(['http://localhost:10003', ...[19427,19428,19429,19430,19528,19529,19530,19531,19533,19534].map(port => `http://127.0.0.1:${port}`), 'http://127.0.0.1:19531/clock-child']);
 if (!sites.length || sites.some(site => !allowed.has(site.url))) throw new Error('Refusing a non-lab target');
 const accounts = JSON.parse(await fs.readFile(path.join(directory, 'accounts.json'), 'utf8'));
 const fixtures = JSON.parse(await fs.readFile('tools/wordpress-lab/fixtures/1.1.1.json', 'utf8'));
@@ -24,7 +24,7 @@ async function visitor(site, post, widgetId) {
   try {
     await context.route('**/*', route => ['localhost','127.0.0.1'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
     const page = await context.newPage();
-    await page.clock.setFixedTime(new Date('2026-10-28T12:34:56.780Z'));
+    await freezeDate(page, '2026-10-28T12:34:56.780Z');
     const response = await page.goto(`${site.url}/?p=${post}`, { waitUntil: 'domcontentloaded' });
     const selector = widgetId ? `#${widgetId}` : '.wp-block-post-content, .entry-content';
     await page.waitForFunction(selector => {
@@ -152,7 +152,17 @@ async function runSite(site) {
               return {valid:leaves(blocks).every(block=>block.isValid),attrs:leaves(blocks).filter(block=>block.name===name).map(block=>block.attributes),dom:[...template.content.querySelectorAll('timenow-zone-sdcw')].map(node=>Object.fromEntries([...node.attributes].map(attr=>[attr.name,attr.value])))};
             };
             const neighbors=content=>{
-              const walk=nodes=>nodes.flatMap(block=>[...(block.name===name?[]:[{name:block.name,attrs:block.attributes,html:block.originalContent}]),...walk(block.innerBlocks||[])]);
+              // Core 7.2 sorts HTML attributes. Compare exact DOM/text for Custom HTML.
+              const html=value=>{
+                const template=document.createElement('template');template.innerHTML=value;
+                const node=value=>value.nodeType===1?{name:value.tagName,attrs:[...value.attributes].map(a=>[a.name,a.value]).sort(([a],[b])=>a.localeCompare(b)),children:[...value.childNodes].map(node)}:{type:value.nodeType,text:value.nodeValue};
+                return [...template.content.childNodes].map(node);
+              };
+              const walk=nodes=>nodes.flatMap(block=>{
+                const custom=block.name==='core/html';
+                const attrs={...block.attributes};if(custom&&typeof attrs.content==='string')attrs.content=html(attrs.content);
+                return [...(block.name===name?[]:[{name:block.name,attrs,html:custom?html(block.originalContent):block.originalContent}]),...walk(block.innerBlocks||[])];
+              });
               return walk(wp.blocks.parse(content));
             };
             const rows=[];

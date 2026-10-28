@@ -1,22 +1,24 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { launchLabBrowser, openEditor } from './browser-helpers.mjs';
+import { launchLabBrowser, openEditor, loadBetaProfile, waitForLabEditor } from './browser-helpers.mjs';
 
 const [stage, engine = 'webkit', profile = 'localwp'] = process.argv.slice(2);
-if (!/^[a-z0-9-]+$/.test(stage || '') || !['localwp', 'wp70', 'ms85-child'].includes(profile)) throw new Error('Invalid arguments');
-const folder = path.resolve('.local/wordpress-lab/gap-closure-921');
+if (!/^[a-z0-9-]+$/.test(stage || '') || !['localwp', 'wp70', 'ms85-child', 'beta83', 'beta85'].includes(profile)) throw new Error('Invalid arguments');
+const beta = ['beta83', 'beta85'].includes(profile) ? await loadBetaProfile(profile) : null;
+const folder = path.resolve(beta ? '.local/wordpress-lab/wp72-beta' : '.local/wordpress-lab/gap-closure-921');
 const target = path.join(folder, `pointer-${stage}-${profile}-${engine}.json`);
 await fs.access(target).then(() => { throw new Error('Evidence already exists'); }, error => { if (error.code !== 'ENOENT') throw error; });
 const config = path.resolve('.local/wordpress-lab/review5-compat');
-const accounts = JSON.parse(await fs.readFile(path.join(config, 'credentials.json'), 'utf8'));
-const site = profile === 'localwp' ? JSON.parse(await fs.readFile('.local/wordpress-lab/widget-fallback-final/local-site.json', 'utf8')) : JSON.parse(await fs.readFile(path.join(config, 'sites.json'), 'utf8')).find(site => site.key === profile);
-const allowed = { localwp: 'http://localhost:10003', wp70: 'http://127.0.0.1:19528', 'ms85-child': 'http://127.0.0.1:19531/clock-child/' };
+const accounts = beta?.accounts ?? JSON.parse(await fs.readFile(path.join(config, 'credentials.json'), 'utf8'));
+const site = beta?.site ?? (profile === 'localwp' ? JSON.parse(await fs.readFile('.local/wordpress-lab/widget-fallback-final/local-site.json', 'utf8')) : JSON.parse(await fs.readFile(path.join(config, 'sites.json'), 'utf8')).find(site => site.key === profile));
+const allowed = { localwp: 'http://localhost:10003', wp70: 'http://127.0.0.1:19528', 'ms85-child': 'http://127.0.0.1:19531/clock-child/', beta83: 'http://127.0.0.1:19533', beta85: 'http://127.0.0.1:19534' };
 if (site.url !== allowed[profile]) throw new Error('Wrong lab');
 site.url = site.url.replace(/\/$/, '');
 const name = 'simple-digital-clock-block/widget-block';
 const browser = await launchLabBrowser(engine);
 const result = { stage, engine, profile, checks: [], records: [], resetRecords: [], errors: [], teardownErrors: [] };
+const closingPages = new WeakSet();
 const legacySource = await fs.readFile('.local/wordpress-lab/baseline-source/simple-digital-clock/block.js', 'utf8');
 const legacySha256 = createHash('sha256').update(legacySource).digest('hex');
 if (legacySha256 !== '1ce3df3a6aa541f09b5bb34a8f27e41582b417f3a309154d1eea6645d78f5eda') throw new Error('Wrong rollback reader');
@@ -34,17 +36,24 @@ try {
   for (const role of ['administrator', 'author']) {
     const context = await browser.newContext({ timezoneId: 'UTC', viewport: { width: 1440, height: 1100 } });
     let closing = false;
-    context.on('page', page => page.on('pageerror', error => (closing ? result.teardownErrors : result.errors).push(error.message)));
+    context.on('page', page => page.on('pageerror', error => (closing || closingPages.has(page) ? result.teardownErrors : result.errors).push(error.message)));
     try {
       const user = role === 'administrator' ? accounts : { username: accounts.author_username, password: accounts.author_password };
-      const page = await openEditor(context, { ...site, post_id: role === 'administrator' ? site.post_id : seeds.author }, user);
+      let page = await openEditor(context, { ...site, post_id: role === 'administrator' ? site.post_id : seeds.author }, user);
       if (!seeds) seeds = await page.evaluate(async ({ name, owner, stage }) => {
         const content = wp.blocks.serialize([wp.blocks.createBlock(name, { locale: 'uk', timeZone: 'America/New_York' })]);
         const ids = {};
         for (const role of ['administrator', 'author']) ids[role] = (await wp.apiFetch({ path: '/wp/v2/posts', method: 'POST', data: { title: `Pointer ${stage} ${role}`, status: 'draft', content, ...(role === 'author' ? { author: owner } : {}) } })).id;
         return ids;
       }, { name, owner: site.users.author_username, stage });
-      await page.goto(`${site.url}/wp-admin/post.php?post=${seeds[role]}&action=edit`, { waitUntil: 'domcontentloaded' });
+      if (await page.evaluate(() => wp.data.select('core/editor').getCurrentPostId()) !== seeds[role]) {
+        const previous = page;
+        page = await context.newPage();
+        await page.goto(`${site.url}/wp-admin/post.php?post=${seeds[role]}&action=edit`, { waitUntil: 'load' });
+        await waitForLabEditor(page, seeds[role]);
+        closingPages.add(previous);
+        await previous.close();
+      }
       await page.waitForFunction(id => wp.data.select('core/editor').getCurrentPostId() === id && wp.data.select('core/block-editor').getBlocks().length === 1, seeds[role]);
       const close = page.getByRole('dialog').getByRole('button', { name: 'Close', exact: true });
       if (await close.count()) await close.click();

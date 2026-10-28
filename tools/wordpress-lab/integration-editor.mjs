@@ -2,9 +2,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { launchLabBrowser, openEditor } from './browser-helpers.mjs';
 
-const [stage, theme, mode] = process.argv.slice(2);
-if (![stage, theme, mode].every(value => /^[a-z0-9-]+$/.test(value || ''))) throw new Error('Invalid integration case');
-const folder = path.resolve('.local/wordpress-lab/gap-closure-921/integrations');
+const [stage, theme, mode, label = 'gap-closure-921'] = process.argv.slice(2);
+if (![stage, theme, mode, label].every(value => /^[a-z0-9-]+$/.test(value || ''))) throw new Error('Invalid integration case');
+const folder = path.resolve('.local/wordpress-lab', label, 'integrations');
 const target = path.join(folder, `editor-${stage}-${theme}-${mode}.json`);
 await fs.access(target).then(() => { throw new Error('Evidence exists'); }, error => { if (error.code !== 'ENOENT') throw error; });
 const seeds = JSON.parse(await fs.readFile(path.join(folder, 'seeds.json'), 'utf8'));
@@ -50,6 +50,17 @@ try {
       const anonymous = await fetch(post.url); const body = await anonymous.text();
       check(`${role}: changed content reaches anonymous visitors without a manual cache purge`, anonymous.ok && body.includes(marker));
       if (role === 'filtered') {
+        if (['cached', 'both'].includes(mode)) {
+          const warm = [];
+          for (let attempt = 0; attempt < 5; attempt++) {
+            const response = await fetch(seeds.posts.administrator.url);
+            const body = await response.text();
+            warm.push({ status: response.status, hit: response.headers.get('x-wp-super-cache'), currentPost: body.includes(marker) });
+            if (response.ok && warm.at(-1).hit?.includes('Served') && warm.at(-1).currentPost) break;
+          }
+          result.widgetCacheWarm = warm;
+          check('Widget save starts with a confirmed current page-cache HIT', warm.at(-1).status === 200 && warm.at(-1).hit?.includes('Served') && warm.at(-1).currentPost, warm);
+        }
         const widget = await page.evaluate(async ({ widget, marker }) => {
           const before = await wp.apiFetch({ path: `/wp/v2/widgets/${widget.id}?context=edit` });
           const blocks = wp.blocks.parse(before.instance.raw.content);
@@ -64,8 +75,8 @@ try {
         const response = await fetch(seeds.posts.administrator.url); const body = await response.text();
         const aside = body.slice(body.indexOf('<aside id="sdcw-integration-widget">'));
         if (['cached', 'both'].includes(mode)) {
-          result.widgetCache = { hit: response.headers.get('x-wp-super-cache'), stale: !aside.includes(marker), marker, requiresManualPurge: true };
-          check('Widget cache policy matches the independent Core Paragraph control', response.ok && result.widgetCache.hit?.includes('Served') && result.widgetCache.stale, result.widgetCache);
+          result.widgetCache = { hit: response.headers.get('x-wp-super-cache'), stale: !aside.includes(marker), marker, requiresManualPurge: !aside.includes(marker) };
+          check('Widget response is fresh or follows the confirmed Core cache policy', response.ok && (!result.widgetCache.stale || result.widgetCache.hit?.includes('Served')), result.widgetCache);
         } else check('Changed block widget reaches anonymous visitors', response.ok && aside.includes(marker));
       }
       result.posts.push({ role, id: post.id, marker, ...saved });

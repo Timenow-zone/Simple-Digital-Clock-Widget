@@ -4,9 +4,9 @@ import { createHash } from 'node:crypto';
 import { launchLabBrowser } from './browser-helpers.mjs';
 import { compareClockRenders, freezeDate } from './visual-helpers.mjs';
 
-const [stage, theme, mode, engine = 'chromium'] = process.argv.slice(2);
-if (![stage, theme, mode].every(value => /^[a-z0-9-]+$/.test(value || ''))) throw new Error('Invalid integration arguments');
-const folder = path.resolve('.local/wordpress-lab/gap-closure-921/integrations');
+const [stage, theme, mode, engine = 'chromium', label = 'gap-closure-921'] = process.argv.slice(2);
+if (![stage, theme, mode, label].every(value => /^[a-z0-9-]+$/.test(value || ''))) throw new Error('Invalid integration arguments');
+const folder = path.resolve('.local/wordpress-lab', label, 'integrations');
 const target = path.join(folder, `front-${stage}-${theme}-${mode}-${engine}.json`);
 await fs.access(target).then(() => { throw new Error('Evidence exists'); }, error => { if (error.code !== 'ENOENT') throw error; });
 const seeds = JSON.parse(await fs.readFile(path.join(folder, 'seeds.json'), 'utf8'));
@@ -27,7 +27,17 @@ try {
         await freezeDate(page, '2026-10-28T12:34:56.780Z');
         // Exercise the returning visitor and populated page/asset caches explicitly.
         await page.goto(post.url, { waitUntil: 'load' });
-        const response = await page.reload({ waitUntil: 'load' });
+        let response = await page.reload({ waitUntil: 'load' });
+        if (['cached', 'both'].includes(mode)) {
+          row.cacheWarmAttempts = [];
+          for (let attempt = 0; attempt < 5; attempt++) {
+            const hit = response.headers()['x-wp-super-cache'] || '';
+            row.cacheWarmAttempts.push({ status: response.status(), hit });
+            if (response.ok() && hit.includes('Served')) break;
+            await page.waitForTimeout(200);
+            response = await page.reload({ waitUntil: 'load' });
+          }
+        }
         await page.waitForFunction(() => {
           const root = document.querySelector('.entry-content, .wp-block-post-content');
           const aside = document.querySelector('#sdcw-integration-widget');

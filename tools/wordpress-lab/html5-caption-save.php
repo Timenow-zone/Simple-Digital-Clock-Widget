@@ -59,7 +59,7 @@ foreach ($cases as $name => $case) {
     $checks[] = array('name' => $name . ': original caption meaning', 'passed' => $found && $processor->get_attribute('caption') === $expected, 'actual' => $processor->get_attribute('caption'), 'expected' => $expected);
     $clocks = array_values(array_filter(parse_blocks($saved), function ($block) { return $block['blockName'] === 'simple-digital-clock-block/widget-block'; }));
     $checks[] = array('name' => $name . ': original JSON caption retained', 'passed' => count($clocks) === 1 && $clocks[0]['attrs']['caption'] === $raw);
-    $checks[] = array('name' => $name . ': unknown unsafe JSON still filtered', 'passed' => count($clocks) === 1 && $clocks[0]['attrs']['unknown'] === 'drop');
+    $checks[] = array('name' => $name . ': unknown unsafe JSON still filtered', 'passed' => count($clocks) === 1 && $clocks[0]['attrs']['unknown'] === wp_kses_post('<script>drop</script>'));
     $checks[] = array('name' => $name . ': unknown JSON keys and values retained', 'passed' => count($clocks) === 1 && $clocks[0]['attrs']['paths'] === $paths);
     $checks[] = array('name' => $name . ': unsafe actual attribute still removed', 'passed' => null === $processor->get_attribute('onclick'));
     $checks[] = array('name' => $name . ': unrelated HTML uses normal KSES', 'passed' => 0 === strpos($saved, wp_kses_post($prefix)));

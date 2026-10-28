@@ -1,20 +1,21 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { launchLabBrowser, openEditor } from './browser-helpers.mjs';
+import { launchLabBrowser, openEditor, loadBetaProfile } from './browser-helpers.mjs';
 import { freezeDate } from './visual-helpers.mjs';
 
 const [stage, engine = 'chromium', profile = 'localwp', sourceStage = 'accepted1e5v2'] = process.argv.slice(2);
-if (![stage, sourceStage].every(value => /^[a-z0-9-]+$/.test(value || '')) || !['localwp', 'wp70', 'ms85-child'].includes(profile)) throw new Error('Invalid arguments');
-const folder = path.resolve('.local/wordpress-lab/gap-closure-921');
+if (![stage, sourceStage].every(value => /^[a-z0-9-]+$/.test(value || '')) || !['localwp', 'wp70', 'ms85-child', 'beta83', 'beta85'].includes(profile)) throw new Error('Invalid arguments');
+const beta = ['beta83', 'beta85'].includes(profile) ? await loadBetaProfile(profile) : null;
+const folder = path.resolve(beta ? '.local/wordpress-lab/wp72-beta' : '.local/wordpress-lab/gap-closure-921');
 const target = path.join(folder, `reset-read-${stage}-${profile}-${engine}.json`);
 await fs.access(target).then(() => { throw new Error('Evidence exists'); }, error => { if (error.code !== 'ENOENT') throw error; });
 const source = JSON.parse(await fs.readFile(path.join(folder, `pointer-${sourceStage}-${profile}-${engine}.json`), 'utf8'));
 if (source.failed || source.resetRecords.length !== 2) throw new Error('Unaccepted Reset fixtures');
 const sites = JSON.parse(await fs.readFile(path.join(folder, 'sites.json'), 'utf8'));
 const site = sites.find(site => site.key === profile);
-const allowed = { localwp: 'http://localhost:10003', wp70: 'http://127.0.0.1:19528', 'ms85-child': 'http://127.0.0.1:19531/clock-child' };
+const allowed = { localwp: 'http://localhost:10003', wp70: 'http://127.0.0.1:19528', 'ms85-child': 'http://127.0.0.1:19531/clock-child', beta83: 'http://127.0.0.1:19533', beta85: 'http://127.0.0.1:19534' };
 if (site?.url !== allowed[profile]) throw new Error('Wrong lab');
-const accounts = JSON.parse(await fs.readFile('.local/wordpress-lab/review5-compat/credentials.json', 'utf8'));
+const accounts = beta?.accounts ?? JSON.parse(await fs.readFile('.local/wordpress-lab/review5-compat/credentials.json', 'utf8'));
 const browser = await launchLabBrowser(engine);
 const result = { stage, engine, profile, sourceStage, checks: [], records: [], errors: [], errorDetails: [], requestFailures: [], teardownErrors: [] };
 const check = (name, passed, details) => result.checks.push({ name, passed: !!passed, ...(passed ? {} : { details }) });

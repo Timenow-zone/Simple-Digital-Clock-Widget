@@ -1,17 +1,18 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { launchLabBrowser, openEditor } from './browser-helpers.mjs';
+import { launchLabBrowser, openEditor, loadBetaProfile, waitForLabEditor } from './browser-helpers.mjs';
 
 const [mode, label, engine = 'chromium', profile = 'localwp', sourceLabel = label] = process.argv.slice(2);
-if (!['test', 'read'].includes(mode) || !/^[a-z0-9-]+$/.test(label || '') || !/^[a-z0-9-]+$/.test(sourceLabel || '') || !['localwp', 'wp70', 'ms85-child'].includes(profile)) throw new Error('Invalid locale test arguments');
-const out = path.resolve('.local/wordpress-lab/locale-fix');
+if (!['test', 'read'].includes(mode) || !/^[a-z0-9-]+$/.test(label || '') || !/^[a-z0-9-]+$/.test(sourceLabel || '') || !['localwp', 'wp70', 'ms85-child', 'beta83', 'beta85'].includes(profile)) throw new Error('Invalid locale test arguments');
+const beta = ['beta83', 'beta85'].includes(profile) ? await loadBetaProfile(profile) : null;
+const out = path.resolve(beta ? '.local/wordpress-lab/wp72-beta' : '.local/wordpress-lab/locale-fix');
 await fs.mkdir(out, { recursive: true });
 const target = path.join(out, `${label}-${profile}-${engine}.json`);
 await fs.access(target).then(() => { throw new Error('Refusing to overwrite Locale evidence'); }, error => { if (error.code !== 'ENOENT') throw error; });
 const config = path.resolve('.local/wordpress-lab/review5-compat');
-const accounts = JSON.parse(await fs.readFile(path.join(config, 'credentials.json'), 'utf8'));
-const site = profile === 'localwp' ? JSON.parse(await fs.readFile('.local/wordpress-lab/widget-fallback-final/local-site.json', 'utf8')) : JSON.parse(await fs.readFile(path.join(config, 'sites.json'), 'utf8')).find(row => row.key === profile);
-const allowed = { localwp: 'http://localhost:10003', wp70: 'http://127.0.0.1:19528', 'ms85-child': 'http://127.0.0.1:19531/clock-child/' };
+const accounts = beta?.accounts ?? JSON.parse(await fs.readFile(path.join(config, 'credentials.json'), 'utf8'));
+const site = beta?.site ?? (profile === 'localwp' ? JSON.parse(await fs.readFile('.local/wordpress-lab/widget-fallback-final/local-site.json', 'utf8')) : JSON.parse(await fs.readFile(path.join(config, 'sites.json'), 'utf8')).find(row => row.key === profile));
+const allowed = { localwp: 'http://localhost:10003', wp70: 'http://127.0.0.1:19528', 'ms85-child': 'http://127.0.0.1:19531/clock-child/', beta83: 'http://127.0.0.1:19533', beta85: 'http://127.0.0.1:19534' };
 if (!site || site.url !== allowed[profile]) throw new Error('Refusing a non-lab site');
 site.url = site.url.replace(/\/$/, '');
 const name = 'simple-digital-clock-block/widget-block';
@@ -19,6 +20,7 @@ const result = { mode, label, engine, profile, started: new Date().toISOString()
 const check = (name, passed, details) => result.checks.push({ name, passed: !!passed, ...(passed ? {} : { details }) });
 const started = Date.now();
 const browser = await launchLabBrowser(engine);
+const closingPages = new WeakSet();
 
 async function settle(page) {
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
@@ -33,10 +35,14 @@ async function state(page) {
   }, name);
 }
 async function load(page, id) {
-  await page.goto(`${site.url}/wp-admin/post.php?post=${id}&action=edit`, { waitUntil: 'domcontentloaded' });
-  await page.waitForFunction(id => wp.data.select('core/editor').getCurrentPostId() === id && wp.data.select('core/block-editor').getBlocks().length > 0, id);
-  const guide = page.getByRole('dialog').getByRole('button', { name: 'Close', exact: true });
+  const next = await page.context().newPage();
+  await next.goto(`${site.url}/wp-admin/post.php?post=${id}&action=edit`, { waitUntil: 'load' });
+  await waitForLabEditor(next, id);
+  closingPages.add(page);
+  await page.close();
+  const guide = next.getByRole('dialog').getByRole('button', { name: 'Close', exact: true });
   if (await guide.count()) await guide.click();
+  return next;
 }
 async function insert(page) {
   await settle(page);
@@ -45,7 +51,9 @@ async function insert(page) {
   const count = (await state(page)).length;
   await activate(page.getByRole('button', { name: /^(Block Inserter|Toggle block inserter)$/i }));
   await page.getByRole('searchbox', { name: /Search/i }).fill('clock');
-  await activate(page.locator('.block-editor-block-types-list__item').filter({ hasText: 'Simple Digital Clock' }).first());
+  const option = page.getByRole('option', { name: 'Simple Digital Clock', exact: true });
+  await option.focus();
+  await option.press('Enter');
   await page.waitForFunction(({ name, count }) => wp.data.select('core/block-editor').getBlocks().filter(block => block.name === name).length === count + 1, { name, count });
   await activate(page.getByRole('button', { name: /^(Block Inserter|Toggle block inserter)$/i }));
   await page.getByRole('combobox', { name: 'Locale', exact: true }).waitFor();
@@ -60,7 +68,7 @@ async function frontend(context, id) {
       return clocks.length > 0 && clocks.every(element => element.shadowRoot?.querySelector('a')?.textContent.match(/\d/));
     });
     return { status: response.status(), clocks: await page.locator('.wp-block-post-content, .entry-content').first().locator('timenow-zone-sdcw').evaluateAll(elements => elements.map(element => ({ locale: element.getAttribute('locale'), caption: element.getAttribute('caption'), width: element.getBoundingClientRect().width, text: element.shadowRoot.querySelector('a').textContent }))) };
-  } finally { await page.close(); }
+  } finally { closingPages.add(page); await page.close(); }
 }
 async function snapshot(page, id) {
   const raw = await page.evaluate(id => wp.apiFetch({ path: `/wp/v2/posts/${id}?context=edit` }).then(post => post.content.raw), id);
@@ -74,7 +82,7 @@ try {
     const user = role === 'administrator' ? accounts : { username: accounts.author_username, password: accounts.author_password };
     const context = await browser.newContext({ timezoneId: mode === 'read' ? 'Asia/Tokyo' : 'UTC', viewport: { width: 1440, height: 1000 } });
     let closing = false;
-    context.on('page', page => page.on('pageerror', error => (closing ? result.teardownErrors : result.errors).push(error.message)));
+    context.on('page', page => page.on('pageerror', error => (closing || closingPages.has(page) ? result.teardownErrors : result.errors).push(error.message)));
     let page;
     try {
       const starter = mode === 'read' ? source.records.find(record => record.role === role).id : role === 'author' ? authorStarter : site.post_id;
@@ -100,8 +108,7 @@ try {
           const post = await wp.apiFetch({ path: '/wp/v2/posts', method: 'POST', data: { title: `Locale ${label} ${role}`, status: 'draft', author: me.id } });
           return post.id;
         }, { role, label });
-        await page.goto(`${site.url}/wp-admin/post.php?post=${id}&action=edit`, { waitUntil: 'domcontentloaded' });
-        await page.waitForFunction(id => wp.data.select('core/editor').getCurrentPostId() === id, id);
+        page = await load(page, id);
         await insert(page);
         const input = page.getByRole('combobox', { name: 'Locale', exact: true });
         const read = async () => (await state(page)).at(-1).attrs.locale;
@@ -200,7 +207,7 @@ try {
         await activate(page.getByRole('button', { name: 'Publish', exact: true }).first());
         await activate(page.getByRole('button', { name: 'Publish', exact: true }).last());
         await page.waitForFunction(() => !wp.data.select('core/editor').isSavingPost() && wp.data.select('core/editor').getCurrentPost().status === 'publish' && wp.data.select('core/editor').didPostSaveRequestSucceed());
-        await load(page, id);
+        page = await load(page, id);
         const first = await snapshot(page, id);
         check(`${role}: save/reopen retains all locale codes and valid blocks`, first.blocks.every(block => block.valid) && !first.dirty && JSON.stringify(first.blocks.map(block => block.attrs.locale)) === JSON.stringify(expected), first);
         const front = await frontend(context, id);
@@ -209,7 +216,7 @@ try {
         await page.evaluate(async id => {
           await wp.apiFetch({ path: `/wp/v2/posts/${id}`, method: 'POST', data: { content: wp.data.select('core/editor').getEditedPostContent() } });
         }, id);
-        await load(page, id);
+        page = await load(page, id);
         const final = await snapshot(page, id);
         check(`${role}: repeated save is byte-stable`, final.content === first.content && final.blocks.every(block => block.valid), final);
         await page.screenshot({ path: path.join(out, `${label}-${profile}-${engine}-${role}.png`) });
