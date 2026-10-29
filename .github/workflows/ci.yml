@@ -43,6 +43,8 @@ jobs:
           npx --no-install tsc --noEmit -p tsconfig.wtr.json
       - run: npm run lint
       - run: npm run test:node
+      - name: Check release metadata validation
+        run: node --test tests/release-metadata.test.mjs
       - name: Verify release metadata and versioned widget artifact consistency
         run: |
           npm run release:check

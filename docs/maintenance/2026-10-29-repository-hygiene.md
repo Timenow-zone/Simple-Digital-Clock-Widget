@@ -28,6 +28,8 @@ Local validation covers a clean `npm ci`, all three TypeScript configurations, E
 
 `scripts/check-build.mjs` overrides Parcel's explicit target output through its API, then runs Terser in the temporary directory. Passing only CLI `--dist-dir` would not override `targets.default.distDir`; published artifacts must never serve as scratch output.
 
+The first Linux CI run exposed an encoder-dependent release check: the same 32649-byte bundle compressed to 11422 bytes with Node 26/zlib 1.2.12 and 11469 bytes with Node 24/zlib Motley. README now records the measurement's encoder and the exact artifact SHA. Validation checks artifact identity and recorded metadata consistently across encoders, while printing the current gzip measurement separately. Explicit `release:sync` remeasures and records the current encoder; the recorded Node version does not identify the original release's build environment. Twelve CLI regression tests cover identity corruption, malformed measurements and explicit synchronization.
+
 The required check names are `Repository checks` and `Browser tests`. Both run on Ubuntu 24.04 with Node 24, a read-only repository token and no deployment credentials. Audit rejects moderate-or-higher findings. Cloudflare preview success does not replace these checks. The PHP/JavaScript syntax pass does not certify the full WordPress compatibility or update/rollback matrix.
 
 Rollback uses separate reverts for dependency and CI commits. Repository settings are reversible independently; changing them must preserve the release tags and unrelated work.
