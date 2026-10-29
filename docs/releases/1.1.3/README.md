@@ -2,6 +2,8 @@
 
 Status: **prepared and verified locally; not published**. The plugin bundles widget **0.7.1**. Branch: `codex/prepare-simple-digital-clock-1.1.3`, based on `main` at `095aaded29b8`.
 
+Follow-up: [native LocalWP upgrade acceptance](LOCALWP.md) passed both 1.1.1 and 1.1.2 upgrade paths with the same ZIP, including Gutenberg field edits, caption preservation and automatic sizing.
+
 The candidate fixes two defects found by the independent published-1.1.2 acceptance: Author saves changed invalid numeric caption references and invalidated blocks; automatic clock sizing could retain an initial container measurement until a window resize.
 
 ## Changes
@@ -82,7 +84,7 @@ Raw evidence and orchestration remain under `.local/release-1.1.3/lab/`. The [ac
 
 ## Scope and rollback
 
-This matrix covers Docker single-site WordPress 6.3.2/7.1.3 and the listed PHP/browser versions. Native LocalWP, multisite, native HTTPS and external Google Fonts delivery are outside this new cycle. Font selections and local fallback rendering were checked. The corpus is exhaustive for the listed selector values and booleans, not all Cartesian combinations or arbitrary malformed strings.
+This matrix covers Docker single-site WordPress 6.3.2/7.1.3 and the listed PHP/browser versions. Native LocalWP is covered separately in the [follow-up acceptance](LOCALWP.md). Multisite, native HTTPS and external Google Fonts delivery remain outside this 1.1.3 cycle. Font selections and local fallback rendering were checked. The corpus is exhaustive for the listed selector values and booleans, not all Cartesian combinations or arbitrary malformed strings.
 
 Previously damaged post content is not automatically rewritten. The fix preserves old valid content during future saves; no recovery migration was added. Legacy API/HTML attribute behavior and normal KSES restrictions remain in place.
 
