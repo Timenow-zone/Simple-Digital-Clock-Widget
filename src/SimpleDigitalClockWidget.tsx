@@ -312,8 +312,34 @@ class SimpleDigitalClockWidget extends Component<
           ? 8
           : 7;
       const width = this.containerRef.offsetWidth;
-      const fontSize = (width || 1) / fontSizeByLocale;
+      let fontSize = (width || 1) / fontSizeByLocale;
       const fontSizeTitle = (width || 1) / 15;
+      const time = this.containerRef.querySelector("a");
+
+      if (this.isHundredthsEnabled() && time) {
+        const currentFontSize = Number.parseFloat(getComputedStyle(time).fontSize);
+        const availableWidth = this.containerRef.clientWidth - 1;
+
+        if (Number.isFinite(currentFontSize) && currentFontSize > 0 && availableWidth > 0) {
+          const whiteSpace = time.style.getPropertyValue("white-space");
+          const priority = time.style.getPropertyPriority("white-space");
+          let naturalWidth = 0;
+
+          try {
+            time.style.setProperty("white-space", "nowrap", "important");
+            // Match clientWidth's layout pixels even under ancestor transforms.
+            naturalWidth = time.offsetWidth;
+          } finally {
+            if (whiteSpace) time.style.setProperty("white-space", whiteSpace, priority);
+            else time.style.removeProperty("white-space");
+          }
+
+          if (Number.isFinite(naturalWidth) && naturalWidth > 0) {
+            fontSize = Math.min(fontSize, (currentFontSize * availableWidth) / naturalWidth);
+          }
+        }
+      }
+
       this.setState({ fontSize, fontSizeTitle });
     }
   };
@@ -387,7 +413,10 @@ class SimpleDigitalClockWidget extends Component<
     this.loadGoogleFont(this.props.fontFamily as string);
   }
 
-  componentDidUpdate(prevProps: SimpleDigitalClockWidgetProps) {
+  componentDidUpdate(
+    prevProps: SimpleDigitalClockWidgetProps,
+    prevState: SimpleDigitalClockWidgetState,
+  ) {
     const hundredthsChanged = prevProps.hundredths !== this.props.hundredths;
     const hundredthsFormatChanged =
       prevProps.locale !== this.props.locale ||
@@ -401,7 +430,14 @@ class SimpleDigitalClockWidget extends Component<
     if (prevProps.fontFamily !== this.props.fontFamily) {
       this.loadGoogleFont(this.props.fontFamily as string);
     }
-    if (prevProps.width !== this.props.width || hundredthsChanged) {
+    if (
+      prevProps.width !== this.props.width ||
+      hundredthsChanged ||
+      (this.isHundredthsEnabled() &&
+        (hundredthsFormatChanged ||
+          prevProps.fontFamily !== this.props.fontFamily ||
+          prevState.timeString.length !== this.state.timeString.length))
+    ) {
       this.handleResize();
     }
     if (prevProps.prefers !== this.props.prefers) {

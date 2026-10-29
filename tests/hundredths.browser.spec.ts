@@ -4,6 +4,27 @@ import "../src/SimpleDigitalClockWidget";
 
 const wait = (ms = 60) => new Promise((resolve) => setTimeout(resolve, ms));
 
+function setFixedDate(timestamp: number): () => void {
+  const OriginalDate = window.Date;
+  const now = () => timestamp;
+
+  window.Date = new Proxy(OriginalDate, {
+    construct(target, args, newTarget) {
+      return Reflect.construct(target, args.length ? args : [timestamp], newTarget);
+    },
+    apply() {
+      return new OriginalDate(timestamp).toString();
+    },
+    get(target, key, receiver) {
+      return key === "now" ? now : Reflect.get(target, key, receiver);
+    },
+  });
+
+  return () => {
+    window.Date = OriginalDate;
+  };
+}
+
 function createWidget() {
   const el = document.createElement("timenow-zone-sdcw");
   el.setAttribute("time-zone", "UTC");
@@ -176,6 +197,7 @@ it("hundredths fits responsive widths without wrapping", async () => {
     { label: "24h", value: "false" },
   ];
   const widgets: HTMLElement[] = [];
+  const restoreDate = setFixedDate(Date.UTC(2026, 9, 29, 12, 41, 14, 690));
 
   try {
     for (const width of widths) {
@@ -224,6 +246,97 @@ it("hundredths fits responsive widths without wrapping", async () => {
     }
   } finally {
     for (const el of widgets) el.remove();
+    restoreDate();
+  }
+});
+
+it("hundredths refits locale labels after runtime changes", async () => {
+  const restoreDate = setFixedDate(Date.UTC(2026, 9, 29, 12, 41, 14, 690));
+  const el = createWidget();
+  el.setAttribute("width", "80");
+  el.setAttribute("locale", "bg");
+  el.setAttribute("period", "false");
+  el.setAttribute("hundredths", "");
+
+  try {
+    document.body.appendChild(el);
+    await wait(120);
+
+    const root = el.shadowRoot!;
+    const container = root.querySelector("div[data-version]") as HTMLDivElement;
+    const time = root.querySelector("a") as HTMLAnchorElement;
+    const shortFontSize = Number.parseFloat(getComputedStyle(time).fontSize);
+    const assertFits = () => {
+      const rects = Array.from(time.getClientRects());
+      assert.lengthOf(rects, 1, "updated time must stay on one line");
+      assert.isAtMost(rects[0].width, container.getBoundingClientRect().width + 0.5);
+    };
+
+    time.style.setProperty("white-space", "normal", "important");
+    el.setAttribute("period", "");
+    await wait(120);
+    assertFits();
+    assert.equal(time.style.getPropertyValue("white-space"), "normal");
+    assert.equal(time.style.getPropertyPriority("white-space"), "important");
+
+    el.setAttribute("period", "false");
+    await wait(120);
+    assertFits();
+    assert.approximately(Number.parseFloat(getComputedStyle(time).fontSize), shortFontSize, 0.01);
+
+    el.setAttribute("locale", "ko");
+    el.setAttribute("period", "");
+    await wait(120);
+    assertFits();
+    const narrowFontSize = Number.parseFloat(getComputedStyle(time).fontSize);
+
+    el.setAttribute("width", "120");
+    await wait(120);
+    assertFits();
+    assert.isAbove(Number.parseFloat(getComputedStyle(time).fontSize), narrowFontSize);
+  } finally {
+    el.remove();
+    restoreDate();
+  }
+});
+
+it("hundredths fitting stays consistent when an ancestor is scaled", async () => {
+  const restoreDate = setFixedDate(Date.UTC(2026, 9, 29, 12, 41, 14, 690));
+  const el = createWidget();
+  el.style.display = "inline-block";
+  el.setAttribute("width", "80");
+  el.setAttribute("locale", "bg");
+  el.setAttribute("period", "");
+  el.setAttribute("hundredths", "");
+
+  try {
+    document.body.appendChild(el);
+    await wait(120);
+
+    const root = el.shadowRoot!;
+    const container = root.querySelector("div[data-version]") as HTMLDivElement;
+    const time = root.querySelector("a") as HTMLAnchorElement;
+    const narrowFontSize = Number.parseFloat(getComputedStyle(time).fontSize);
+    el.setAttribute("width", "120");
+    await wait(120);
+    const wideFontSize = Number.parseFloat(getComputedStyle(time).fontSize);
+
+    for (const scale of [0.5, 2]) {
+      el.style.transform = `scale(${scale})`;
+
+      for (const [width, expectedFontSize] of [[80, narrowFontSize], [120, wideFontSize]]) {
+        el.setAttribute("width", String(width));
+        await wait(120);
+
+        const rects = Array.from(time.getClientRects());
+        assert.lengthOf(rects, 1, `scaled time must stay on one line at scale ${scale}`);
+        assert.isAtMost(rects[0].width, container.getBoundingClientRect().width + 0.5);
+        assert.approximately(Number.parseFloat(getComputedStyle(time).fontSize), expectedFontSize, 0.01);
+      }
+    }
+  } finally {
+    el.remove();
+    restoreDate();
   }
 });
 
