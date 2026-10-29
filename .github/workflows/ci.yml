@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CI: "true"
+
+jobs:
+  repository:
+    name: Repository checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Reject moderate, high, or critical dependency advisories
+        run: npm audit --audit-level=moderate
+      - name: Type check
+        run: |
+          npx --no-install tsc --noEmit -p tsconfig.json
+          npx --no-install tsc --noEmit -p tsconfig.test.json
+          npx --no-install tsc --noEmit -p tsconfig.wtr.json
+      - run: npm run lint
+      - run: npm run test:node
+      - name: Verify release metadata and versioned widget artifact consistency
+        run: |
+          npm run release:check
+          npm run release:verify
+      - name: Smoke test the production build in a temporary directory
+        run: node scripts/check-build.mjs
+      - name: Check WordPress PHP and JavaScript syntax
+        run: |
+          test -f wordpress/simple-digital-clock/widget_init.php
+          php --version
+          git ls-files -z -- 'wordpress/simple-digital-clock/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
+          git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
+      - name: Verify that checks leave tracked files unchanged
+        run: git diff --exit-code
+
+  browsers:
+    name: Browser tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Install the locked Playwright browsers and system dependencies
+        run: npx --no-install playwright install --with-deps chromium firefox webkit
+      - run: npm run test:browsers
+      - name: Verify that browser tests leave tracked files unchanged
+        run: git diff --exit-code
