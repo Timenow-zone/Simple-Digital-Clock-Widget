@@ -1,0 +1,102 @@
+{
+  "version": "1.1.2",
+  "status": "GIT_SYNC_FROM_RECORDED_PUBLIC_README_VERIFICATION",
+  "svn_revision": 3772710,
+  "svn_changed_paths": [
+    "trunk/readme.txt",
+    "tags/1.1.2/readme.txt"
+  ],
+  "public_snapshot_observed_at": "2026-10-29T11:11:11.879938+00:00",
+  "source_verification_status": "PUBLIC_README_VERIFIED",
+  "source_files": {
+    "approved-readme.txt": {
+      "path": ".local/readme-publish-112-umy_y41q/approved-readme.txt",
+      "sha256": "8bafc21fa868ea92675dc752c8f228d3d2a333fc5049e8e60c0eb4a8df8a041e"
+    },
+    "expected-files.json": {
+      "path": ".local/readme-publish-112-umy_y41q/expected-files.json",
+      "sha256": "96a27871b3a8d0ba61c0d7d698ac8180df2a1555ff116a3f03fcabbe952cb7fc"
+    },
+    "public-verification.json": {
+      "path": ".local/readme-publish-112-umy_y41q/public-verification.json",
+      "sha256": "a13702ffc4dd375e58c2ae302e742e948ebcb7478d9264aeefe03b7eaa2fee11"
+    }
+  },
+  "original_release": {
+    "git_tag": "wordpress-v1.1.2",
+    "git_commit": "6479ee9365e98f9b5f6822989eb89938d4955a9d",
+    "svn_revision": 3772502,
+    "manifest": "manifest.json",
+    "readme_sha256": "6584037702455e2ad540caf12bf83086dbe6a8e60755270abf741745d5b60a61",
+    "public_zip_sha256": "bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2"
+  },
+  "readme_sha256": "8bafc21fa868ea92675dc752c8f228d3d2a333fc5049e8e60c0eb4a8df8a041e",
+  "recorded_public_packages": {
+    "versioned": {
+      "zip_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+      "files": 15,
+      "crc_passed": true,
+      "unique_names": true,
+      "safe_root": true,
+      "all_files_match_approved": true,
+      "non_readme_files_checked": 14,
+      "changed_non_readme_files": [],
+      "passed": true
+    },
+    "latest-stable": {
+      "zip_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+      "files": 15,
+      "crc_passed": true,
+      "unique_names": true,
+      "safe_root": true,
+      "all_files_match_approved": true,
+      "non_readme_files_checked": 14,
+      "changed_non_readme_files": [],
+      "passed": true
+    }
+  },
+  "recorded_catalogue_checks": {
+    "short_description": true,
+    "opening_paragraph": true,
+    "device_time": true,
+    "google_fonts": true,
+    "24_hour_locale": true,
+    "seo_claim_removed": true,
+    "version_1_1_2": true
+  },
+  "recorded_plugin_info_checks": {
+    "short_description": true,
+    "opening_paragraph": true,
+    "device_time": true,
+    "google_fonts": true,
+    "24_hour_locale": true,
+    "seo_claim_removed": true,
+    "version_1_1_2": true
+  },
+  "files": {
+    "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+    "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+    "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+    "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    "assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+    "assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+    "block.js": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
+    "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+    "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+    "includes/simple-digital-clock-kses.php": "7d6e41fa7d07d0f52f7dc84dd72e1262726f7e52c854c704425d7e9b05046ff5",
+    "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+    "languages/simple-digital-clock.pot": "bc83bcfe8a030fc96863ded23d623eeb3ae01ed96884a8162d7ca439c99cd74d",
+    "readme.txt": "8bafc21fa868ea92675dc752c8f228d3d2a333fc5049e8e60c0eb4a8df8a041e",
+    "widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+  },
+  "local_validation": {
+    "plugin_files": 15,
+    "non_readme_files_identical_to_original_manifest": 14,
+    "readme_matches_approved_bytes": true,
+    "only_plugin_difference_from_original_manifest": "readme.txt",
+    "historical_manifest_and_evidence_preserved": true,
+    "live_verification_performed": false,
+    "core_update_acceptance_confirmed": false
+  }
+}

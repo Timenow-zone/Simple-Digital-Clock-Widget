@@ -10,10 +10,10 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Blocks: simple-digital-clock-block/widget-block
 
-It is 🪄 a magical and easy-to-use digital clock with a beautiful UI, supporting multiple languages, locales, dates, captions, and time zones.
+Add customizable digital clocks to WordPress. Show your office's local time, another city's time or UTC with captions, dates and colors.
 
 == 📌 Description ==
-The Digital Clock Widget – the perfect addition to your website! This sleek and minimalist digital clock Gutenberg block (widget) offers a quick and easy way to display the current time on your site. With its clean design and unobtrusive style, it seamlessly blends into any webpage. Whether you're running a blog, an e-commerce store, or a personal website, our widget keeps your visitors informed with accurate, real-time information. Easy to install and highly customizable, it's the ideal choice for adding a touch of professionalism to your online presence. Upgrade your website today with the Simple Digital Clock Widget and keep your audience in sync with the times!
+Show your office's local time, the time in another city or UTC on your WordPress site. Simple Digital Clock provides a Gutenberg block for posts, pages and block-based widget areas. Choose a time zone, add a caption and adjust colors, fonts and display options directly in the editor. Add multiple clocks to show the time in different locations, with independent settings for each block.
 
 [Live demo](https://simple-digital-clock-widget.yuri.ws/)👀 | [CodePen playground](https://codepen.io/dejurin/pen/01a025ef-f466-7534-acd0-77bc3a368a47)👀
 
@@ -24,7 +24,7 @@ The Digital Clock Widget – the perfect addition to your website! This sleek an
 * 📝 Custom caption
 * 🎨 Styling: color/gradient, radius, shadows
 * 🔢 24-hour or AM/PM, ⏱ seconds, ⏱️ optional hundredths of a second, 📅 date
-* 🔒 SSL-friendly, 📱 responsive, 🔍 SEO-friendly
+* 🔒 SSL-friendly, 📱 responsive
 * 💯 Free, no ads
 
 = How it works =
@@ -54,6 +54,9 @@ The Digital Clock Widget – the perfect addition to your website! This sleek an
 = Can I set a custom locale (e.g., `uk` or `en-GB`)? =
 Yes. Use the **Locale** field and enter any valid BCP-47 tag.
 
+= Where does the clock get its time? =
+The clock uses the date and time reported by the visitor's device and formats it for the selected time zone. It does not synchronize with a time server, so an incorrect device clock will affect the displayed time.
+
 = How do I pick the time zone? =
 Use the **Time Zone** field and select any valid IANA ID (e.g., `Europe/Kyiv`, `UTC`).
 
@@ -61,10 +64,10 @@ Use the **Time Zone** field and select any valid IANA ID (e.g., `Europe/Kyiv`, `
 Yes. Enable **“Hundredths of a second”** in the block settings. It shows two fractional digits and automatically includes seconds while enabled.
 
 = Can I use my own fonts? =
-You can choose from built-in mono fonts (Google Fonts) or keep the system font.
+You can choose from the available mono fonts (Google Fonts) or select **System** to use a local monospace font. Selecting a Google Font loads it from Google's servers.
 
 = 24-hour format =
-Yes. You can enable 24-hour time for any locale. Toggle **24-Hour** in the block settings. For 12-hour time with AM/PM, turn it off.
+Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock follows the selected locale. For AM/PM, choose a locale such as `en-US` and leave **24-Hour** disabled.
 
 = Can I show different locales and time zones on the same page? =
 Yes. Each block is independent—set its own locale and time zone.

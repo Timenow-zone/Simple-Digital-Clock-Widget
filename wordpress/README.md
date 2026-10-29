@@ -40,7 +40,9 @@ Do not run experiments against existing WordPress containers or user sites.
 
 The prepared release ZIP is `.local/packages/simple-digital-clock-1.1.2-candidate.zip`; use the release manifest to verify its SHA-256. Repacking can change the archive hash because ZIP timestamps are included. A new development archive does not inherit the exact-artifact verification of the prepared release.
 
-The public [WordPress.org 1.1.2 ZIP](https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip) has a different archive SHA-256 from the local candidate; all 15 extracted files match the accepted manifest exactly. Both hashes are recorded in the publication report. Do not replace the candidate hash with the server-generated ZIP hash.
+At the initial publication in SVN r3772502, the public [WordPress.org 1.1.2 ZIP](https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip) had a different archive SHA-256 from the local candidate; all 15 extracted files matched the original manifest. The historical hashes remain in the publication report.
+
+The later readme-only publication r3772710 is synchronized separately: [report](../docs/releases/1.1.2/README-PUBLICATION.md), [recorded file hashes](../docs/releases/1.1.2/readme-publication-evidence.json). The current source readme matches the approved published bytes; the other 14 plugin files still match the original manifest. Public-package results are a saved snapshot, not a fresh network check. The original manifest and Git release tag remain unchanged. Genuine WordPress.org Core update acceptance remains unconfirmed by this synchronization.
 
 To create a separate development ZIP from the repository root:
 
