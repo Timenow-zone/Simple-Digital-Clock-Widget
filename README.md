@@ -5,8 +5,8 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 
 <!-- SDCW_RELEASE_METADATA_START -->
 * **Current version:** `0.7.1`
-* **Tiny:** 11.5 KiB gzipped (`dist/0.7.1.min.js`; 34,013 bytes minified, 11,758 bytes gzip)
-* **Artifact SHA-256:** `fd2f9c721507274e29af8b5b787a2933cd377a3416257899104a04d5c372bab4`
+* **Tiny:** 11.5 KiB gzipped (`dist/0.7.1.min.js`; 34,042 bytes minified, 11,776 bytes gzip)
+* **Artifact SHA-256:** `affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag

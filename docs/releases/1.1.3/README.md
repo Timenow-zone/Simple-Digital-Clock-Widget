@@ -1,6 +1,20 @@
 # WordPress 1.1.3 candidate
 
-Status: **prepared and verified locally; not published**. The plugin bundles widget **0.7.1**. Branch: `codex/prepare-simple-digital-clock-1.1.3`, based on `main` at `095aaded29b8`.
+Status: **revised candidate; not published**. WordPress **1.1.3** still bundles widget **0.7.1**. The iframe follow-up fixes the WebKit observer warning found after the initial acceptance. [PR #9](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/9) remains separate from publication.
+
+## Current package after the iframe fix
+
+- ZIP: `.local/packages/simple-digital-clock-1.1.3-candidate.zip`.
+- ZIP SHA-256: `1f42bd43152501499212a06a19286fbb562e5e51338a87c0a533200b31b344b0`.
+- Widget SHA-256: `affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6`.
+- Widget size: 34,042 bytes; 11,776 bytes gzip level 9, Node 26.8.2/zlib 1.2.12.
+- Current [15-file manifest](manifest.json) and [iframe follow-up acceptance](IFRAME-ACCEPTANCE.md).
+
+Only the bundled widget and its changelog changed inside the plugin compared with the initial candidate. The PHP caption fix and block serializer are byte-identical. The previous ZIP remains under `.local/resize-observer-followup/previous-candidate.zip`; its [manifest](previous-candidate-manifest.json) and the earlier evidence are retained. Acceptance belongs to each exact ZIP; the earlier results below are not relabeled as a test of the revised package.
+
+## Initial candidate record: 21ee03d
+
+The following sections record the original candidate based on `main` at `095aaded29b8`, before the iframe warning was discovered. Their artifact identity and historical results are preserved.
 
 Follow-up: [native LocalWP upgrade acceptance](LOCALWP.md) passed both 1.1.1 and 1.1.2 upgrade paths with the same ZIP, including Gutenberg field edits, caption preservation and automatic sizing.
 
@@ -15,13 +29,13 @@ The candidate fixes two defects found by the independent published-1.1.2 accepta
 
 Runtime changes are in `src/SimpleDigitalClockWidget.tsx` and `wordpress/simple-digital-clock/includes/simple-digital-clock-kses.php`. Generated widget artifacts, package versions, cache metadata and release documentation are synchronized. No dependency versions were changed. No database migration or new saved-block schema was introduced.
 
-## Exact package
+## Initial exact package
 
-- ZIP: `.local/packages/simple-digital-clock-1.1.3-candidate.zip`.
+- Retained ZIP: `.local/resize-observer-followup/previous-candidate.zip`.
 - ZIP SHA-256: `adea5677469b98d8c94373af64202bb1dce5b91d5e340273f0f0a86a4c4b5b17`.
 - Widget SHA-256: `fd2f9c721507274e29af8b5b787a2933cd377a3416257899104a04d5c372bab4`.
 - Widget size: 34,013 bytes minified; 11,758 bytes gzip level 9, measured with Node 26.8.2/zlib 1.2.12.
-- The [manifest](manifest.json) identifies all 15 installable files. The checked private package and final copied ZIP are byte-identical. Lab code, credentials, databases and preview assets are excluded.
+- The [initial manifest](previous-candidate-manifest.json) identifies all 15 installable files. The checked private package and retained ZIP are byte-identical. Lab code, credentials, databases and preview assets are excluded.
 
 Repacking changes ZIP timestamps and can change its hash; a repacked archive does not inherit this exact-package acceptance.
 

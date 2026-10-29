@@ -103,6 +103,7 @@ To reproduce the production bundle:
 = 1.1.3 =
 * Preserve captions containing null, surrogate or out-of-range numeric HTML references when users without unfiltered HTML save existing clock blocks.
 * Recalculate automatic clock sizing when its container changes width or becomes visible, without requiring a window resize.
+* Avoid ResizeObserver loop warnings when clock containers are laid out inside iframes.
 * Release resize observers and event handlers when clocks are removed.
 * Bundle widget 0.7.1, including improved fitting for hundredths of a second.
 

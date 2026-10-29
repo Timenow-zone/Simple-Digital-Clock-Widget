@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<style>
+  body { margin: 0; padding: 32px; max-width: 1400px; margin-inline: auto; font: 16px/1.5 system-ui; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  section { min-width: 0; padding: 20px; }
+  iframe { display: block; width: 100%; height: 180px; border: 0; }
+</style>
+<h1>Clock iframe layout regression</h1>
+<div class="grid"><section><iframe title="First clock" src="/frame.html"></iframe></section><section><iframe title="Second clock" src="/frame.html"></iframe></section></div>
+<script>
+  window.clockErrors = [];
+  addEventListener("error", event => window.clockErrors.push(event.message || "Resource loading error"));
+  const frames = [...document.querySelectorAll("iframe")];
+  const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+  window.setClockWidth = width => frames.forEach(frame => {
+    frame.contentDocument.getElementById("parent").style.width = `${width}px`;
+  });
+  window.measureClocks = () => frames.map(frame => {
+    const widget = frame.contentDocument.querySelector("timenow-zone-sdcw").shadowRoot.querySelector(".widget");
+    return { width: widget.clientWidth, font: Number.parseFloat(frame.contentWindow.getComputedStyle(widget.querySelector("a")).fontSize) };
+  });
+  window.allClockErrors = () => [...window.clockErrors, ...frames.flatMap(frame => frame.contentWindow.clockErrors)];
+  (async () => {
+    while (!frames.every(frame => frame.contentDocument?.querySelector("timenow-zone-sdcw")?.shadowRoot?.querySelector("a")?.textContent)) await pause(16);
+    window.setClockWidth(600);
+    frames.forEach(frame => frame.contentWindow.dispatchEvent(new frame.contentWindow.Event("resize")));
+    await pause(150);
+    window.setClockWidth(240);
+    // Allow observer delivery without forcing an intermediate layout measurement.
+    await pause(200);
+    window.clockLayoutReady = true;
+  })();
+</script>
+</html>

@@ -419,9 +419,12 @@ class SimpleDigitalClockWidget extends Component<
     this.handleResize();
 
     if (this.containerRef && typeof ResizeObserver !== "undefined") {
-      this.resizeObserver = new ResizeObserver(() => {
-        const width = this.containerRef?.offsetWidth;
-        if (width === undefined || width === this.observedWidth) return;
+      this.resizeObserver = new ResizeObserver((entries) => {
+        // A layout read during delivery can re-enter iframe layout in WebKit.
+        const entry = entries[0];
+        if (entry?.target !== this.containerRef) return;
+        const width = entry.contentRect.width;
+        if (width === this.observedWidth) return;
         this.observedWidth = width;
         // Fit outside observer delivery so height changes cannot cause a resize loop.
         if (this.resizeFrame === undefined) {

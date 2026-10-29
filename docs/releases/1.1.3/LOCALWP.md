@@ -1,5 +1,7 @@
 # Native LocalWP upgrade acceptance: WordPress 1.1.3
 
+Historical record for the initial `21ee03d` candidate and ZIP `adea5677...`. The revised package has a separate [iframe follow-up acceptance](IFRAME-ACCEPTANCE.md); the results and exact identity below remain unchanged.
+
 Result: **PASS in the tested native LocalWP matrix; not published**. This follow-up verifies the unchanged candidate from source commit `9265e8d`. It is separate from the earlier Docker acceptance.
 
 ## Environment and package
