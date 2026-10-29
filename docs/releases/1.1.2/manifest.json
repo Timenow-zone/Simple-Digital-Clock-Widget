@@ -75,5 +75,17 @@
     ],
     "runtime_unchanged": true,
     "translation_messages_unchanged": true
+  },
+  "release_preflight": {
+    "report": "PREFLIGHT.md",
+    "evidence": "preflight-evidence.json",
+    "status": "LOCAL_RELEASE_PREFLIGHT_COMPLETED_WITH_DOCUMENTED_WARNINGS",
+    "zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+    "git_payload_commit": "f4a2caeca5ae93887af77026da82cc313f178566",
+    "smoke_checks_including_baseline": 1388,
+    "plugin_check_errors": 0,
+    "plugin_check_warnings": 7,
+    "remote_head_checked": 3772260,
+    "requires_remote_recheck_before_publication": true
   }
 }
