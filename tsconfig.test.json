@@ -22,7 +22,6 @@
   "exclude": [
     "tests/**/*.browser.spec.ts",
     "tests/**/*.browser.test.ts",
-    "tests/widget-ref.spec.ts",
     "src/SimpleDigitalClockWidget.tsx"
   ]
 }
