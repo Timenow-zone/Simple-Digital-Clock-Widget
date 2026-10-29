@@ -1,6 +1,6 @@
 {
   "version": "1.1.2",
-  "publication_status": "LOCAL_PREPARATION_ONLY",
+  "publication_status": "PUBLISHED_AWAITING_WORDPRESS_ORG_UPDATE_CHANNEL",
   "candidate_zip": ".local/packages/simple-digital-clock-1.1.2-candidate.zip",
   "candidate_zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
   "git_branch": "codex/prepare-simple-digital-clock-1.1.2",
@@ -13,7 +13,7 @@
   ],
   "tag_copy_from": "https://plugins.svn.wordpress.org/simple-digital-clock/trunk",
   "tag_copy_from_revision": 3771402,
-  "tag_schedule": "add with history; not committed",
+  "tag_schedule": "committed with history in r3772502",
   "trunk_changes": [
     "block.js",
     "includes/simple-digital-clock-kses.php",
@@ -53,8 +53,8 @@
     "path": "assets/simple-digital-clock-wp-banner.html",
     "sha256": "35559dbfb7e8a9a0fa9204807414bb67ff1a35bb424e5a8a80da83c4ea4b18d5"
   },
-  "git_push": false,
-  "svn_commit": false,
+  "git_push": true,
+  "svn_commit": true,
   "acceptance_report": "../../patches/1.1.2/KSES72-VERIFICATION.md",
   "acceptance_evidence": "../../patches/1.1.2/kses72-evidence.json",
   "patch_diff_sha256": "1eac522a09f74d8eba0f521fd87a138f72084f46e194d3af28f8bb3b32b5ff67",
@@ -86,6 +86,35 @@
     "plugin_check_errors": 0,
     "plugin_check_warnings": 7,
     "remote_head_checked": 3772260,
-    "requires_remote_recheck_before_publication": true
+    "requires_remote_recheck_before_publication": false,
+    "remote_recheck_published_revision": 3772502,
+    "remote_readback_head": 3772504
+  },
+  "svn_published_revision": 3772502,
+  "svn_published_at": "2026-10-29T09:22:01.589780Z",
+  "git_release_commit": "6479ee9365e98f9b5f6822989eb89938d4955a9d",
+  "git_release_tag": "wordpress-v1.1.2",
+  "publication_report": "PUBLICATION.md",
+  "publication_evidence": "publication-evidence.json",
+  "public_package": {
+    "versioned_download_url": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip",
+    "latest_stable_download_url": "https://downloads.wordpress.org/plugin/simple-digital-clock.latest-stable.zip",
+    "public_zip_sha256": "bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2",
+    "latest_stable_zip_sha256": "bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2",
+    "all_15_files_match_verified_manifest": true,
+    "public_zip_crc_passed": true,
+    "latest_stable_matches_manifest": true,
+    "latest_stable_zip_crc_passed": true,
+    "observed_at": "2026-10-29T09:23:14.871954+00:00"
+  },
+  "public_update": {
+    "status": "PENDING_GENUINE_OFFER",
+    "completed": false,
+    "installed_from_public_update": false,
+    "reason": "Release is still within the documented six-hour WordPress.org cooldown; update-check reports 1.1.1.",
+    "cooldown_policy": "https://make.wordpress.org/plugins/2026/09/09/automated-security-review-for-plugin-releases/",
+    "next_check_not_before": "2026-10-29T15:30:00Z",
+    "next_check_local": "2026-10-29T17:30:00+02:00",
+    "exact_hold_until_known": false
   }
 }

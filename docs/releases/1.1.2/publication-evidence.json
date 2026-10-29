@@ -1,0 +1,449 @@
+{
+  "observed_at": "2026-10-29T09:39:27.110825+00:00",
+  "version": "1.1.2",
+  "status": "PUBLISHED_AWAITING_WORDPRESS_ORG_UPDATE_CHANNEL",
+  "git_release": {
+    "observed_at": "2026-10-29T08:40:08.962394+00:00",
+    "repository": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget.git",
+    "branch": "codex/prepare-simple-digital-clock-1.1.2",
+    "tag": "wordpress-v1.1.2",
+    "commit": "6479ee9365e98f9b5f6822989eb89938d4955a9d",
+    "annotated_tag_object": "e37a04d84195c01cd39a48a824e93503ff411010",
+    "plugin_tree": "18512403b0715be777a89e302831a3cc3d5117b6",
+    "zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+    "remote_branch_verified": true,
+    "remote_tag_peeled_commit_verified": true,
+    "atomic_push": true,
+    "main_changed": false,
+    "force_push": false
+  },
+  "svn_release": {
+    "published_revision": 3772502,
+    "author": "falselight",
+    "commit_date": "2026-10-29T09:22:01.589780Z",
+    "current_head_pinned": 3772504,
+    "commit_paths": [
+      {
+        "prop-mods": "false",
+        "text-mods": "false",
+        "kind": "dir",
+        "copyfrom-path": "/simple-digital-clock/trunk",
+        "copyfrom-rev": "3771402",
+        "action": "A",
+        "path": "/simple-digital-clock/tags/1.1.2"
+      },
+      {
+        "text-mods": "true",
+        "kind": "file",
+        "action": "M",
+        "prop-mods": "false",
+        "path": "/simple-digital-clock/tags/1.1.2/block.js"
+      },
+      {
+        "text-mods": "true",
+        "kind": "file",
+        "action": "A",
+        "prop-mods": "false",
+        "path": "/simple-digital-clock/tags/1.1.2/includes/simple-digital-clock-kses.php"
+      },
+      {
+        "text-mods": "true",
+        "kind": "file",
+        "action": "M",
+        "prop-mods": "false",
+        "path": "/simple-digital-clock/tags/1.1.2/languages/simple-digital-clock.pot"
+      },
+      {
+        "kind": "file",
+        "action": "M",
+        "prop-mods": "false",
+        "text-mods": "true",
+        "path": "/simple-digital-clock/tags/1.1.2/readme.txt"
+      },
+      {
+        "action": "M",
+        "prop-mods": "false",
+        "text-mods": "true",
+        "kind": "file",
+        "path": "/simple-digital-clock/tags/1.1.2/widget_init.php"
+      },
+      {
+        "action": "M",
+        "prop-mods": "false",
+        "text-mods": "true",
+        "kind": "file",
+        "path": "/simple-digital-clock/trunk/block.js"
+      },
+      {
+        "action": "A",
+        "prop-mods": "false",
+        "text-mods": "true",
+        "kind": "file",
+        "path": "/simple-digital-clock/trunk/includes/simple-digital-clock-kses.php"
+      },
+      {
+        "action": "M",
+        "prop-mods": "false",
+        "text-mods": "true",
+        "kind": "file",
+        "path": "/simple-digital-clock/trunk/languages/simple-digital-clock.pot"
+      },
+      {
+        "action": "M",
+        "prop-mods": "false",
+        "text-mods": "true",
+        "kind": "file",
+        "path": "/simple-digital-clock/trunk/readme.txt"
+      },
+      {
+        "action": "M",
+        "prop-mods": "false",
+        "text-mods": "true",
+        "kind": "file",
+        "path": "/simple-digital-clock/trunk/widget_init.php"
+      }
+    ],
+    "checks": {
+      "commit_revision": true,
+      "author_expected": true,
+      "commit_scope_exact": true,
+      "copy_history_correct": true,
+      "commit_properties_unchanged": true,
+      "remote_exact_manifest_all": true,
+      "no_drift_since_commit": true,
+      "local_exact_manifest": true,
+      "local_property_diff_empty": true,
+      "no_local_versioned_changes": true,
+      "unrelated_banner_preserved": true,
+      "remote_properties_unchanged_from_base": true
+    }
+  },
+  "public_package": {
+    "observed_at": "2026-10-29T09:23:14.871954+00:00",
+    "version": "1.1.2",
+    "plugin_information_url": "https://api.wordpress.org/plugins/info/1.2/?action=plugin_information&request%5Bslug%5D=simple-digital-clock",
+    "versioned_download_url": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip",
+    "latest_stable_download_url": "https://downloads.wordpress.org/plugin/simple-digital-clock.latest-stable.zip",
+    "public_zip_sha256": "bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2",
+    "latest_stable_zip_sha256": "bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2",
+    "candidate_zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+    "files": {
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+      "assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+      "block.js": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
+      "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "includes/simple-digital-clock-kses.php": "7d6e41fa7d07d0f52f7dc84dd72e1262726f7e52c854c704425d7e9b05046ff5",
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "languages/simple-digital-clock.pot": "bc83bcfe8a030fc96863ded23d623eeb3ae01ed96884a8162d7ca439c99cd74d",
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "readme.txt": "6584037702455e2ad540caf12bf83086dbe6a8e60755270abf741745d5b60a61",
+      "widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+    },
+    "all_15_files_match_verified_manifest": true,
+    "public_zip_crc_passed": true,
+    "latest_stable_matches_manifest": true,
+    "latest_stable_zip_crc_passed": true,
+    "api_download_link": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip",
+    "api_requires": "6.3",
+    "api_requires_php": "7.0",
+    "api_tested": "7.1.4",
+    "attempt": 1,
+    "publication": true
+  },
+  "update_api_initial_snapshot": {
+    "response_observed_between_utc": [
+      "2026-10-29T09:28:31.012595+00:00",
+      "2026-10-29T09:28:31.826705+00:00"
+    ],
+    "status": "NO_1_1_2_UPDATE_OFFER_OBSERVED_3_REQUESTS",
+    "endpoint": "https://api.wordpress.org/plugins/update-check/1.1/",
+    "profiles": [
+      {
+        "profile": "minimum",
+        "wordpress": "6.3.2",
+        "php_version_parameter": "7.0.33",
+        "observed_at": "2026-10-29T09:28:31.012595+00:00",
+        "offer": null,
+        "no_update": {
+          "id": "w.org/plugins/simple-digital-clock",
+          "slug": "simple-digital-clock",
+          "plugin": "simple-digital-clock/widget_init.php",
+          "new_version": "1.1.1",
+          "url": "https://wordpress.org/plugins/simple-digital-clock/",
+          "package": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.1.zip",
+          "icons": {
+            "2x": "https://ps.w.org/simple-digital-clock/assets/icon-256x256.gif?rev=3659668",
+            "1x": "https://ps.w.org/simple-digital-clock/assets/icon-128x128.gif?rev=3659668"
+          },
+          "banners": {
+            "2x": "https://ps.w.org/simple-digital-clock/assets/banner-1544x500.png?rev=3659668",
+            "1x": "https://ps.w.org/simple-digital-clock/assets/banner-772x250.png?rev=3659668"
+          },
+          "banners_rtl": [],
+          "requires": "6.3"
+        },
+        "checks": {
+          "http_200": true,
+          "offer_exists": false,
+          "version_1_1_2": false,
+          "official_package": false,
+          "requires_wp_6_3": false,
+          "requires_php_7_0": false
+        },
+        "passed": false
+      },
+      {
+        "profile": "stable",
+        "wordpress": "7.1.3",
+        "php_version_parameter": "8.2.29",
+        "observed_at": "2026-10-29T09:28:31.406102+00:00",
+        "offer": null,
+        "no_update": {
+          "id": "w.org/plugins/simple-digital-clock",
+          "slug": "simple-digital-clock",
+          "plugin": "simple-digital-clock/widget_init.php",
+          "new_version": "1.1.1",
+          "url": "https://wordpress.org/plugins/simple-digital-clock/",
+          "package": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.1.zip",
+          "icons": {
+            "2x": "https://ps.w.org/simple-digital-clock/assets/icon-256x256.gif?rev=3659668",
+            "1x": "https://ps.w.org/simple-digital-clock/assets/icon-128x128.gif?rev=3659668"
+          },
+          "banners": {
+            "2x": "https://ps.w.org/simple-digital-clock/assets/banner-1544x500.png?rev=3659668",
+            "1x": "https://ps.w.org/simple-digital-clock/assets/banner-772x250.png?rev=3659668"
+          },
+          "banners_rtl": [],
+          "requires": "6.3"
+        },
+        "checks": {
+          "http_200": true,
+          "offer_exists": false,
+          "version_1_1_2": false,
+          "official_package": false,
+          "requires_wp_6_3": false,
+          "requires_php_7_0": false
+        },
+        "passed": false
+      },
+      {
+        "profile": "beta",
+        "wordpress": "7.2-beta2",
+        "php_version_parameter": "8.5.0",
+        "observed_at": "2026-10-29T09:28:31.826705+00:00",
+        "offer": null,
+        "no_update": {
+          "id": "w.org/plugins/simple-digital-clock",
+          "slug": "simple-digital-clock",
+          "plugin": "simple-digital-clock/widget_init.php",
+          "new_version": "1.1.1",
+          "url": "https://wordpress.org/plugins/simple-digital-clock/",
+          "package": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.1.zip",
+          "icons": {
+            "2x": "https://ps.w.org/simple-digital-clock/assets/icon-256x256.gif?rev=3659668",
+            "1x": "https://ps.w.org/simple-digital-clock/assets/icon-128x128.gif?rev=3659668"
+          },
+          "banners": {
+            "2x": "https://ps.w.org/simple-digital-clock/assets/banner-1544x500.png?rev=3659668",
+            "1x": "https://ps.w.org/simple-digital-clock/assets/banner-772x250.png?rev=3659668"
+          },
+          "banners_rtl": [],
+          "requires": "6.3"
+        },
+        "checks": {
+          "http_200": true,
+          "offer_exists": false,
+          "version_1_1_2": false,
+          "official_package": false,
+          "requires_wp_6_3": false,
+          "requires_php_7_0": false
+        },
+        "passed": false
+      }
+    ],
+    "php_scope": "Explicit php_version request parameter and returned requires_php metadata; no execution under these PHP interpreters and no proof the server selects offers by PHP version. Core wp_update_plugins itself sends plugins,translations,locale,all and WordPress/version UA, without a PHP field."
+  },
+  "public_update_canary": {
+    "summary": {
+      "status": "PENDING_WORDPRESS_ORG_COOLDOWN",
+      "generated_at": "2026-10-29T09:36:57.475621+00:00",
+      "svn_revision": 3772502,
+      "actual_WordPress_org_update_accepted": false,
+      "real_admin_ajax_update_plugin": false,
+      "baseline_version": "1.1.1",
+      "baseline_zip_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+      "baseline_files": 14,
+      "public_version": null,
+      "public_package_url": null,
+      "public_zip_sha256": null,
+      "public_files": null,
+      "public_files_match_approved_manifest": null,
+      "post_rows_before_update": 2426,
+      "all_post_rows_and_critical_settings_preserved_by_update": null,
+      "fresh_browser_runs": 0,
+      "fresh_browser_checks": 0,
+      "fresh_browser_failed": 0,
+      "unrelated_data_preserved_after_intended_fixture_saves": null,
+      "local_offer_injected": false,
+      "version_override_used": false,
+      "database_restore_used": false,
+      "network_restored": true,
+      "own_canary_stopped": true,
+      "scope": [
+        "Isolated native LocalWP WordPress 7.1.3 / PHP 8.2.29",
+        "Exact official 1.1.1 installed without DB restore; all 2426 post rows and critical options unchanged during preparation",
+        "Genuine Core WordPress.org update-offer checks only; updater and editor acceptance not yet executed"
+      ],
+      "limitations": [
+        "WordPress.org release cooldown still returns no_update 1.1.1. Publication and ZIP verification are separate parent checks.",
+        "Actual Core update and Chromium/WebKit save/frontend acceptance remain pending after cooldown."
+      ],
+      "publication_failure": false,
+      "public_core_updater_executed": false,
+      "public_package_download_started": false,
+      "update_offer_attempts": 10,
+      "last_no_update_version": "1.1.1",
+      "installed_plugin_version": "1.1.1",
+      "official_1_1_1_baseline_files_verified": true,
+      "existing_data_preserved_during_preparation": true,
+      "fixtures_and_goldens_retained_for_resume": true,
+      "cooldown_recheck_not_before_utc": "2026-10-29T15:22:01.589780+00:00",
+      "cooldown_recheck_time_is_estimate": true
+    },
+    "cleanup": {
+      "original_config_restored": true,
+      "original_MU_restored": true,
+      "original_external_HTTP_policy_restored": true,
+      "temporary_guard_and_logger_removed": true,
+      "site_stopped_if_started_by_canary": true,
+      "loopback_port_closed": true,
+      "databases_restored": false,
+      "volumes_deleted": false,
+      "global_router_or_trust_changed": false,
+      "other_sites_targeted": false,
+      "current_plugin": {
+        "version": "1.1.1",
+        "active": true
+      }
+    },
+    "baseline_install_data": {
+      "before": {
+        "post_rows": 2426,
+        "all_post_rows_sha256": "d3f428141872c51a3e60a9157a6c24144a64bd52a83fbe10e4d46dea18e57f3b",
+        "critical_options_count": 23,
+        "critical_options_sha256": "fa63b3ce1caf3d8b566ec561d474617234786e1f405fc1f8852f774bb23d889f"
+      },
+      "after": {
+        "post_rows": 2426,
+        "all_post_rows_sha256": "d3f428141872c51a3e60a9157a6c24144a64bd52a83fbe10e4d46dea18e57f3b",
+        "critical_options_count": 23,
+        "critical_options_sha256": "fa63b3ce1caf3d8b566ec561d474617234786e1f405fc1f8852f774bb23d889f"
+      },
+      "equal": true
+    },
+    "next_check_not_before": "2026-10-29T15:30:00Z",
+    "fresh_public_update_acceptance_completed": false
+  },
+  "development_dependency_triage": {
+    "observed_at": "2026-10-29T08:46:56.362142+00:00",
+    "status": "NO_KNOWN_RUNTIME_DEPENDENCY_BLOCKER_FOR_FROZEN_WORDPRESS_1_1_2_ARTIFACT",
+    "github_alerts": {
+      "source": "https://api.github.com/repos/Timenow-zone/Simple-Digital-Clock-Widget/dependabot/alerts",
+      "all_states_count": 90,
+      "open_count": 39,
+      "open_severities": {
+        "medium": 14,
+        "low": 6,
+        "high": 18,
+        "critical": 1
+      },
+      "open_unique_packages": 17,
+      "all_open_dependency_scope_development": true,
+      "all_current_locked_instances_of_alerted_packages_development_only": true,
+      "counter_note": "Push banner reported 40. API snapshot contains 39 open; no dependency changes were made, and this triage uses the fresh API list rather than assuming the banner count remains current."
+    },
+    "production_npm_audit": {
+      "command": "npm audit --omit=dev --package-lock-only --ignore-scripts --json",
+      "exit": 0,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "scope": "Three runtime libraries plus root package; package-lock metadata.prod=4 includes root."
+    },
+    "remaining_risk": "Development/test/build toolchain has genuine critical/high advisories; address promptly in a separate dependency-maintenance change with testing. Do not treat dev-only as harmless for untrusted builds, malicious archives, external FTP/PAC inputs or publicly exposed dev/test servers. No dependency upgrade or rebuild is performed as part of this release."
+  },
+  "evidence_files": [
+    {
+      "path": ".local/release-publish-112/git/result.json",
+      "sha256": "d315ee35b2c4b78d566f54439a51f888930fa84d8e2678a29e78f7ef6f4f902d"
+    },
+    {
+      "path": ".local/release-publish-112/interactive-result.json",
+      "sha256": "17b606d3ceaf69a1ae8f7e8beaf57153f110b3eeef457f27e903698b311523c4"
+    },
+    {
+      "path": ".local/release-publish-112/svn-readback/summary.json",
+      "sha256": "a55c1a3f7e2389d90ae835d62fb4d8bfbfe8c4c9eafb7a061a706f4da232f994"
+    },
+    {
+      "path": ".local/release-publish-112/public/result.json",
+      "sha256": "b08144c1b6c2b39e7b44a9e3b015e845412e3e861d8343308ec922de0bf7e6f4"
+    },
+    {
+      "path": ".local/release-publish-112/public/catalog-live-summary.json",
+      "sha256": "7a19ee5a17a39e915bba4da3d70191ddbae775badccb1aa8dbd101c177ab4966"
+    },
+    {
+      "path": ".local/release-publish-112/public/catalog-live.html",
+      "sha256": "8c649e69ef9eed1cbcf4b54bad8864e57db9caf95c3ceb2cbc63a7b73554e1ca"
+    },
+    {
+      "path": ".local/release-publish-112/update-offer-matrix/summary.json",
+      "sha256": "3a4b0d106f15057238e85a0ef57d7b9f5664ac9f21b13b85e910e62ff2b91d16"
+    },
+    {
+      "path": ".local/release-publish-112/dependency-triage/summary.json",
+      "sha256": "770e7396ab0d012d759efeed14b3386081552499cd80662b0330f8ae9102b909"
+    },
+    {
+      "path": ".local/release-publish-112/update-propagation-triage/summary.json",
+      "sha256": "ef3eda89b5c5695ff99548148702775275a70c0fb55c13bcbb41b4e4d022d868"
+    },
+    {
+      "path": ".local/release-publish-112/canary/resume-public-r3772502/safe/summary.json",
+      "sha256": "b14e2bac481ad0a199bf82e2ba452bd762d01721879fb1ea48a4da6a56c202cc"
+    },
+    {
+      "path": ".local/release-publish-112/canary/resume-public-r3772502/safe/cleanup.json",
+      "sha256": "a3c175e6ed3dc8d107a5cab59a62306bd8c610b0a86c6d307b5fc9236cde6a7c"
+    },
+    {
+      "path": ".local/release-publish-112/canary/resume-public-r3772502/safe/data-preservation.json",
+      "sha256": "48948d6ffe97790e9e7f3c46b16f1d08fac0a70e8b01a61974ad926fa988c9ea"
+    },
+    {
+      "path": ".local/release-publish-112/canary/resume-public-r3772502/safe/safe-evidence-index.json",
+      "sha256": "dba90014e92dc343cb216336911000352d2f2469dfdde561596065fcc56a5935"
+    }
+  ],
+  "update_channel_policy": {
+    "source": "https://make.wordpress.org/plugins/2026/09/09/automated-security-review-for-plugin-releases/",
+    "published": "2026-09-09",
+    "documented_cooldown_hours": 6,
+    "estimate_after_commit": "2026-10-29T15:22:01Z",
+    "next_check_not_before": "2026-10-29T15:30:00Z",
+    "exact_hold_until_known": false,
+    "security_review_passed_confirmed": false,
+    "release_confirmation_setting_known": false
+  }
+}

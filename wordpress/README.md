@@ -5,7 +5,7 @@ This repository contains two independently versioned components:
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
 | JavaScript widget | `../src/` | `../package.json` (`0.7.0`) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.2`, unpublished candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.2`, published on WordPress.org) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
@@ -24,9 +24,9 @@ The official ZIP was also byte-compared with the existing local SVN trunk; all f
 The manifest records the imported baseline. Future fixes should intentionally differ from it.
 No `.svn` metadata is imported. SVN remains read-only during ordinary local development. Explicitly authorized release preparation may stage changes in a local checkout; remote SVN commits and Git pushes require separate publication authorization.
 The imported baseline has known findings documented in the [2026-10-27 LocalWP investigation](../docs/investigations/2026-10-27-localwp/README.md).
-The local 1.1.2 candidate fixes timezone parsing, post/widget KSES filtering, HTML5 and numeric caption entities, custom locale input and first-click Auto/Reset behavior. It also preserves caption JSON through the new KSES in WordPress 7.2 Beta 2. Time Zone Reset retains the string format understood by 1.1.1. No database migration or new saved-block format is introduced.
+The published 1.1.2 release fixes timezone parsing, post/widget KSES filtering, HTML5 and numeric caption entities, custom locale input and first-click Auto/Reset behavior. It also preserves caption JSON through the new KSES in WordPress 7.2 Beta 2. Time Zone Reset retains the string format understood by 1.1.1. No database migration or new saved-block format is introduced.
 
-The [current patch report](../docs/patches/1.1.2/README.md), [KSES/compatibility acceptance](../docs/patches/1.1.2/KSES72-VERIFICATION.md) and [release manifest](../docs/releases/1.1.2/manifest.json) identify the accepted runtime and prepared local artifact. Functional acceptance covers 12 contexts, 18,336 PHP assertions, 1,309,248 entity DOM comparisons, upgrade/resave/rollback, LocalWP, multisite, themes/caches and native HTTPS on a private loopback port. `Tested up to: 7.1` remains unchanged; Beta 2 does not certify the final WordPress 7.2 release.
+The [current patch report](../docs/patches/1.1.2/README.md), [KSES/compatibility acceptance](../docs/patches/1.1.2/KSES72-VERIFICATION.md) and [release manifest](../docs/releases/1.1.2/manifest.json) identify the accepted runtime and release artifacts. The [publication report](../docs/releases/1.1.2/PUBLICATION.md) records SVN r3772502, Git tag `wordpress-v1.1.2` and public delivery verification. Functional acceptance covers 12 contexts, 18,336 PHP assertions, 1,309,248 entity DOM comparisons, upgrade/resave/rollback, LocalWP, multisite, themes/caches and native HTTPS on a private loopback port. `Tested up to: 7.1` remains unchanged; Beta 2 does not certify the final WordPress 7.2 release.
 
 ## Local development
 
@@ -39,6 +39,8 @@ Its runtime files, database data, logs, ZIPs, and credentials belong under ignor
 Do not run experiments against existing WordPress containers or user sites.
 
 The prepared release ZIP is `.local/packages/simple-digital-clock-1.1.2-candidate.zip`; use the release manifest to verify its SHA-256. Repacking can change the archive hash because ZIP timestamps are included. A new development archive does not inherit the exact-artifact verification of the prepared release.
+
+The public [WordPress.org 1.1.2 ZIP](https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip) has a different archive SHA-256 from the local candidate; all 15 extracted files match the accepted manifest exactly. Both hashes are recorded in the publication report. Do not replace the candidate hash with the server-generated ZIP hash.
 
 To create a separate development ZIP from the repository root:
 

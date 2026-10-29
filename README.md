@@ -269,7 +269,7 @@ The plugin source is maintained separately in [`wordpress/simple-digital-clock/`
 See [`wordpress/README.md`](wordpress/README.md) for provenance, licensing, packaging, and local testing.
 Widget and WordPress plugin versions are independent; the widget build does not update the plugin bundle automatically.
 
-The local WordPress candidate is **1.1.2**; publication is pending. Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [current patch report](docs/patches/1.1.2/README.md). The [release manifest](docs/releases/1.1.2/manifest.json) identifies the exact local ZIP and prepared SVN files. The standalone widget remains **0.7.0**.
+The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [current patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. The standalone widget remains **0.7.0**.
 
 If you’re using WordPress, install the plugin from the directory:
 [https://wordpress.org/plugins/simple-digital-clock/](https://wordpress.org/plugins/simple-digital-clock/)
