@@ -1,79 +1,79 @@
-# Историческая проверка кандидата 1.1.2 / 1ce5d1d1
+# Historical verification of candidate 1.1.2 / 1ce5d1d1
 
-**Исторический отчёт о ZIP `1ce5d1d1…`.** Найденный позднее P2 на WP 6.3.2 исправлен в новом ZIP `4f5b285c…`; см. [актуальную проверку](P2-VERIFICATION.md). Ниже сохранены прежние результаты и описание прежней реализации.
+**Historical report for ZIP `1ce5d1d1…`.** The P2 later found on WP 6.3.2 was fixed in the new ZIP `4f5b285c…`; see the [current verification](P2-VERIFICATION.md). The earlier results and implementation description are preserved below.
 
-27 октября 2026. **Обе проблемы ревью исправлены; локальные проверки пройдены. Публикации нет.**
+27 October 2026. **Both review issues were fixed; local checks passed. Nothing was published.**
 
 ZIP SHA-256: `1ce5d1d1522f5a5af317c96b8edfdf636073f638a7411efedced781a80a403b1`.
 
-## Изменения
+## Changes
 
-В `includes/simple-digital-clock-kses.php` удалена пересериализация всей записи через `serialize_blocks()`. Коррекция меняет только комментарии собственных завершённых блоков часов. Соседние блоки и их JSON остаются побайтно прежними. Собственные неизвестные атрибуты декодируются как объекты, поэтому `{}` и объекты с числовыми ключами не превращаются в массивы. Неполные или некорректные блоки не исправляются автоматически.
+Reserialization of the entire post through `serialize_blocks()` was removed from `includes/simple-digital-clock-kses.php`. The correction changes only comments belonging to complete clock blocks. Neighboring blocks and their JSON remain byte-for-byte unchanged. Unknown attributes belonging to the clock are decoded as objects, so `{}` and objects with numeric keys do not become arrays. Incomplete or malformed blocks are not repaired automatically.
 
-В `block.js` и серверной коррекции существующее значение `caption` из JSON стало основным источником. HTML используется только при отсутствии поля. При KSES исходная строка подписи сохраняется в контексте конкретного вызова и возвращается после стандартной фильтрации JSON. Вложенные вызовы имеют отдельные контексты. Восстанавливается только известное текстовое поле; остальные атрибуты и реальный HTML продолжают проходить KSES.
+In `block.js` and the server-side correction, an existing JSON `caption` became the authoritative source. HTML is used only when the field is absent. During KSES, the original caption string is retained in the context of the specific call and restored after standard JSON filtering. Nested calls have separate contexts. Only the known text field is restored; other attributes and real HTML continue through KSES.
 
-Для старых HTML Tag Processor строгое экранирование ограничено одной операцией над атрибутом подписи. Временный фильтр снимается через `finally`. Проверены отсутствие его утечки, повторные сохранения, вложенные вызовы, одинаковая HTML-разметка часов с разными исходными подписями и опасные строки в JSON/HTML.
+For older HTML Tag Processor implementations, strict escaping is limited to a single operation on the caption attribute. The temporary filter is removed through `finally`. Checks covered filter leakage, repeated saves, nested calls, identical clock HTML with different original captions, and dangerous JSON/HTML strings.
 
-Относительно кандидата `431b9157` изменены только два файла продукта: `block.js` и `includes/simple-digital-clock-kses.php`. Полный патч к официальному 1.1.1 по-прежнему содержит четыре файла: эти два, `widget_init.php` и `readme.txt`. Остальные 11 исходных файлов не изменены; JS-виджет остаётся 0.7.0.
+Only two product files changed relative to candidate `431b9157`: `block.js` and `includes/simple-digital-clock-kses.php`. The full patch against official 1.1.1 still contains four files: those two, `widget_init.php` and `readme.txt`. The other 11 original files are unchanged; the JavaScript widget remains at 0.7.0.
 
-## Уточнение теста HTML entities
+## HTML entity test clarification
 
-Оригинальный JS 1.1.1 сохраняет строку JSON `&lt;` и HTML `caption="&lt;"`. Первый вариант — исходная настройка, второй отображается браузером как `<`. Если заменить HTML на `caption="&amp;lt;"`, неизменённый 1.1.1 считает блок невалидным. Это отдельно воспроизведено оригинальным кодом.
+Original 1.1.1 JavaScript saves the JSON string `&lt;` and HTML `caption="&lt;"`. The first is the original setting; the browser renders the second as `<`. If the HTML is changed to `caption="&amp;lt;"`, unchanged 1.1.1 considers the block invalid. This was reproduced separately with the original code.
 
-Поэтому совместимый контракт проверяет раздельно:
+The compatible contract therefore checks these independently:
 
-1. Сохранность исходной строки JSON и значения в редакторе.
-2. Сохранность прежнего HTML-поведения платформы.
-3. Валидность блока и возможность открыть его после возврата к 1.1.1.
+1. Preservation of the original JSON string and editor value.
+2. Preservation of the platform's previous HTML behavior.
+3. Block validity and the ability to open it after returning to 1.1.1.
 
-Прежняя проверка требовала одновременно изменить HTML-поведение и сохранить совместимость со старым сериализатором. Это требование исправлено, а не скрыто ослаблением проверки JSON. Сборка `431b9157` с уточнёнными 136 контрактами по-прежнему даёт 14 падений. Исправленная сборка проходит их и 12 дополнительных контрактов на сайт: 148/148.
+The previous test required both a change in HTML behavior and compatibility with the old serializer. That requirement was corrected, rather than hidden by weakening JSON verification. Build `431b9157` still has 14 failures against the clarified 136 contracts. The fixed build passes them and 12 additional contracts per site: 148/148.
 
-В старых WordPress числовые entities дополнительно нормализуются самим `wp_kses()` до вызова `pre_kses`. Тест HTML учитывает штатную нормализацию отдельно от сохранности JSON. Патч не меняет общее поведение WordPress и не исправляет старый сериализатор 1.1.1.
+In older WordPress versions, `wp_kses()` itself also normalizes numeric entities before calling `pre_kses`. The HTML test accounts for native normalization separately from JSON preservation. The patch does not change global WordPress behavior or repair the old 1.1.1 serializer.
 
-## Матрица
+## Matrix
 
-| WordPress / PHP | Прежние PHP | Новые PHP | Прежняя браузерная регрессия / движок | Прежний набор отката / движок |
+| WordPress / PHP | Previous PHP | New PHP | Previous browser regression / engine | Previous rollback set / engine |
 | --- | --- | --- | --- | --- |
 | 7.1.3 / 8.3.35 | 464/464 | 148/148 | 33/33 | 132/132 |
 | 7.1.3 / 8.4.27 | 464/464 | 148/148 | 33/33 | 132/132 |
 | 6.3.2 / 8.2.12 | 464/464 | 148/148 | 33/33 | 132/132 |
 | 6.8.3 / 8.3.28 | 464/464 | 148/148 | 33/33 | 132/132 |
 
-Браузерные проверки выполнены в Chromium, Firefox и WebKit. Прежние PHP-контракты: **1856/1856**, новые: **592/592**, прежняя браузерная регрессия: **396/396**. Отдельно новые пересохранения дали **336/336**, чтение новых сценариев после отката — **336/336**, прежний набор отката — **1584/1584**.
+Browser checks ran in Chromium, Firefox and WebKit. Previous PHP contracts: **1856/1856**; new contracts: **592/592**; previous browser regression: **396/396**. Separately, new resave checks passed **336/336**, reading the new scenarios after rollback passed **336/336**, and the previous rollback set passed **1584/1584**.
 
-Повторены ESLint, release-check, 22 Node-теста и по 28 тестов standalone-виджета в каждом из трёх движков — всё прошло. Его production bundle не изменён: SHA-256 `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`.
+ESLint, release-check, 22 Node tests and 28 standalone-widget tests in each of three engines were rerun successfully. Its production bundle is unchanged: SHA-256 `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`.
 
-## Обновление и откат на существующих записях
+## Upgrade and rollback on existing posts
 
-В свежем цикле на точном официальном 1.1.1 созданы **112 записей**:
+A fresh cycle created **112 posts** on exact official 1.1.1:
 
-- 64 записи с прежними настройками и вложенными group-блоками, с владельцами Administrator/Author.
-- 32 записи с обычными подписями, буквальными entities, смешанным HTML-подобным текстом и строкой `0`.
-- 16 записей с соседними JSON-объектами, необычными пробелами в комментариях, разным порядком блоков и неизвестными атрибутами часов.
+- 64 posts with the previous settings and nested group blocks, owned by Administrator/Author.
+- 32 posts with plain captions, literal entities, mixed HTML-like text and the string `0`.
+- 16 posts with neighboring JSON objects, unusual comment whitespace, different block ordering and unknown clock attributes.
 
-Установка ZIP 1.1.2 не изменила ни одну из этих записей. Затем пересохранены **те же ID**. Проверены отдельно изменение только заголовка, полная сериализация Gutenberg/REST, сохранения Author и Administrator, а также обычные `wp_insert_post()` / `wp_update_post()` без REST-нормализации ответа.
+Installing ZIP 1.1.2 did not change any of these posts. **The same IDs** were then resaved. Separate checks covered title-only changes, full Gutenberg/REST serialization, Author and Administrator saves, and ordinary `wp_insert_post()` / `wp_update_post()` calls without REST response normalization.
 
-После пересохранения заменён только плагин на официальный 1.1.1. Все его 14 файлов сверены с исходным манифестом. **БД не восстанавливалась, содержимое всех 112 записей осталось прежним.** Проверены JSON соседних блоков, старый типизированный читатель стороннего блока, строки подписей, реальный редактор без dirty-state, фронтенд и остальные настройки. Для прежних 64 записей чтение проверено в America/New_York и Asia/Tokyo во всех трёх браузерах.
+After resaving, only the plugin was replaced with official 1.1.1. All 14 of its files were checked against the original manifest. **The database was not restored; all 112 posts retained their contents.** Checks covered neighboring-block JSON, the old typed reader of the third-party block, caption strings, the actual editor without dirty state, the frontend and other settings. Reading the previous 64 posts was tested in America/New_York and Asia/Tokyo in all three browsers.
 
-После этого выполнено повторное обновление до того же ZIP 1.1.2. Все 112 записей снова остались неизменными; повторное чтение и настоящий редактор нового набора прошли 112/112 проверок.
+The same ZIP 1.1.2 was then installed again. All 112 posts remained unchanged; rereading and the actual editor passed 112/112 checks for the new set.
 
-Штатная фильтрация WordPress для Author остаётся действующей. Некоторые REST-пути сами нормализуют JSON, поэтому сохранность чужих сырых объектов дополнительно проверяется через обычный post API и прямое чтение сохранённого содержимого.
+Native WordPress filtering for Author remains active. Some REST paths normalize JSON themselves, so preservation of other blocks' raw objects is also checked through the ordinary post API and direct reads of saved content.
 
-## Артефакты и воспроизведение
+## Artifacts and reproduction
 
-- [Машиночитаемые доказательства](verification-evidence.json): красный прежний кандидат, зелёные результаты, исходные и пересохранённые ID/содержимое, идентичность установленных файлов, повторное обновление.
-- [Патч к официальному 1.1.1](simple-digital-clock-1.1.1-to-1.1.2.patch). SHA-256: `134ba8a6bfe91bc70723739f57f88e39a5df0fc1d14796e1345464683d68f65c`.
+- [Machine-readable evidence](verification-evidence.json): the failing earlier candidate, passing results, original and resaved IDs/content, installed-file identity and reupgrade.
+- [Patch against official 1.1.1](simple-digital-clock-1.1.1-to-1.1.2.patch). SHA-256: `134ba8a6bfe91bc70723739f57f88e39a5df0fc1d14796e1345464683d68f65c`.
 - ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`.
-- [Инструкции лаборатории](../../../tools/wordpress-lab/README.md).
+- [Lab instructions](../../../tools/wordpress-lab/README.md).
 
-Dry-run и применение патча к отдельной копии официального 1.1.1 прошли; все 15 файлов результата побайтно совпали с проверенным ZIP. Предыдущие кандидаты, исходники и отчёты сохранены в игнорируемой `.local/wordpress-lab/review-fix/`.
+The patch dry-run and application to a separate copy of official 1.1.1 passed; all 15 resulting files matched the reviewed ZIP byte for byte. Previous candidates, source snapshots and reports were retained under ignored `.local/wordpress-lab/review-fix/`.
 
-## Границы вывода
+## Limits of the conclusion
 
-Один параллельный запуск чтения прервался на 20-секундном ожидании инициализации редактора до проверок содержимого. Отдельный повтор без изменений продукта прошёл 528/528; затем все три набора чтения официальным 1.1.1 также прошли. Неудачная попытка и успешный повтор сохранены в доказательствах.
+One parallel read run stopped at a 20-second editor-initialization wait before content checks. A separate rerun without product changes passed 528/528; all three official 1.1.1 read sets subsequently passed as well. Both the failed attempt and successful rerun were retained in the evidence.
 
-Нативный LocalWP, multisite, функциональная матрица PHP 7.x/8.5 и конкретные внешние плагины/темы не проверялись. Проверен синтетический сторонний блок с типизированными объектными атрибутами. Синтаксис проверен локальным PHP 8.5.10; это не runtime-проверка PHP 8.5.
+Native LocalWP, multisite, the PHP 7.x/8.5 functional matrix, and specific external plugins/themes were not tested. A synthetic third-party block with typed object attributes was tested. Syntax was checked with local PHP 8.5.10; this was not a PHP 8.5 runtime test.
 
-Возврат 1.1.1 возвращает его исходные ошибки редактирования. Уже удалённую разметку патч автоматически не восстанавливает. Для проверенного цикла восстановление записей из backup не потребовалось.
+Returning to 1.1.1 restores its original editing defects. The patch does not automatically restore markup that was already removed. Restoring posts from backup was not needed for the tested cycle.
 
-Публикации, Git commit/push, изменений SVN и пользовательских сайтов нет. Тестовая лаборатория остановлена, локальные файлы и БД сохранены.
+There was no publication, Git commit/push, SVN change or change to user sites. The test lab was stopped; local files and databases were retained.

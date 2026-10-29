@@ -1,87 +1,87 @@
-# Simple Digital Clock: импорт исходников и расследование LocalWP
+# Simple Digital Clock: source import and LocalWP investigation
 
-> Исторический снимок импорта и расследования 1.1.1 от 27 октября. Последующие исправления и приёмка: [патч 1.1.2](../../patches/1.1.2/README.md).
+> Historical snapshot of the 1.1.1 import and investigation from 27 October. Subsequent fixes and acceptance: [1.1.2 patch](../../patches/1.1.2/README.md).
 
-Дата: 27 октября 2026. Плагин: **1.1.1**. JS-виджет: **0.7.0**. Исправления продукта не внесены.
+Date: 27 October 2026. Plugin: **1.1.1**. JS widget: **0.7.0**. No product fixes were made.
 
-Обнаружены два воспроизводимых дефекта WordPress-обёртки. Причина отзыва пользователя остаётся неизвестной: его текст не содержит достаточных данных. Базовый сценарий с администратором работает во всех четырёх проверенных конфигурациях.
+Two reproducible WordPress-wrapper defects were found. The cause of the user's review remains unknown: its text does not provide enough information. The baseline administrator scenario works in all four tested configurations.
 
-## Выполненная локальная фаза
+## Completed local phase
 
-- В `wordpress/simple-digital-clock/` добавлены 14 неизменённых файлов официального ZIP 1.1.1. Они побайтно совпали и с существующим локальным SVN `trunk`.
-- Происхождение, SHA-256 ZIP и каждого файла сохранены в [`../../../wordpress/upstream-1.1.1.json`](../../../wordpress/upstream-1.1.1.json).
-- Bundle плагина побайтно совпадает с `dist/0.7.0.min.js`; SHA-256: `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`.
-- Пути сборки виджета сохранены. Версии и лицензии разделены: widget — MIT по `package.json`, plugin — GPLv2 or later по его заголовку и `LICENSE`.
-- Добавлены инструкции в корневой README и `wordpress/README.md`, изолированный стенд в `tools/wordpress-lab/`, игнорирование `.local/`, `.wrangler/`, `.svn/` и Python-кэша.
-- Проверен локальный ZIP `.local/packages/simple-digital-clock-local-import-20261027.zip`: 14 файлов, правильный корневой каталог, архив целый.
-- Коммитов, push, установки на пользовательские сайты и публикации релиза нет. SVN не обновлялся и не изменялся; существующий незарегистрированный HTML-баннер оставлен как был.
+- 14 unchanged files from the official 1.1.1 ZIP were added to `wordpress/simple-digital-clock/`. They also matched the existing local SVN `trunk` byte-for-byte.
+- Provenance and SHA-256 values for the ZIP and every file are retained in [`../../../wordpress/upstream-1.1.1.json`](../../../wordpress/upstream-1.1.1.json).
+- The plugin bundle is byte-identical to `dist/0.7.0.min.js`; SHA-256: `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`.
+- Widget build paths were preserved. Versions and licenses remain separate: widget — MIT according to `package.json`, plugin — GPLv2 or later according to its header and `LICENSE`.
+- Instructions were added to the root README and `wordpress/README.md`, an isolated environment to `tools/wordpress-lab/`, and ignore rules for `.local/`, `.wrangler/`, `.svn/`, and the Python cache.
+- Local ZIP `.local/packages/simple-digital-clock-local-import-20261027.zip` was checked: 14 files, the correct root directory, and an intact archive.
+- No commits, pushes, user-site installations, or release publication occurred in this phase. SVN was neither updated nor modified; the existing unversioned HTML banner was left unchanged.
 
-## Старая тема поддержки
+## Earlier support topic
 
-Перед публикацией повторно проверена [тема о сотых долях секунды](https://wordpress.org/support/topic/possible-to-display-hundredths-of-seconds/): после ответа YYRI от 21 августа новых сообщений не было.
+Before posting, the [hundredths-of-a-second topic](https://wordpress.org/support/topic/possible-to-display-hundredths-of-seconds/) was checked again: there had been no new messages since YYRI's reply on 21 August.
 
-Опубликован [ответ YYRI от 27 октября](https://wordpress.org/support/topic/possible-to-display-hundredths-of-seconds/#post-19056210), поясняющий завершение из-за отсутствия дальнейшей активности. Указано, что сотые добавлены в 1.1.0, а пожелание о произвольном формате даты остаётся отдельным feature request. Пользователя поблагодарили и пригласили обращаться за дальнейшей помощью.
+A [reply by YYRI on 27 October](https://wordpress.org/support/topic/possible-to-display-hundredths-of-seconds/#post-19056210) was published explaining closure due to inactivity. It stated that hundredths were added in 1.1.0, while arbitrary date formatting remains a separate feature request. The user was thanked and invited to ask for further help.
 
-Статус **resolved** подтверждён интерфейсом WordPress.org. Это отметка решённой темы, а не административная блокировка новых сообщений.
+The **resolved** status was confirmed in the WordPress.org interface. This marks the topic as resolved; it is not an administrative block on new messages.
 
-[Скриншот статуса](topic-resolved.png) · [Опубликованный ответ](topic-reply.png).
+[Status screenshot](topic-resolved.png) · [Published reply](topic-reply.png).
 
-## Что известно из отзыва
+## What the review establishes
 
-Источник: [Breaks in LocalWP](https://wordpress.org/support/topic/breaks-in-localwp/), автор `bernepe`, 3/5, 27 октября 2026. Полный текст: **“Breaks in LocapWP”**. При проверке ответов не было. Ответ этому автору не публиковался.
+Source: [Breaks in LocalWP](https://wordpress.org/support/topic/breaks-in-localwp/), author `bernepe`, 3/5, 27 October 2026. Full text: **“Breaks in LocapWP”**. There were no replies when checked. No reply to this author had been published.
 
-Заголовок указывает на LocalWP; опечатка в тексте не даёт дополнительных технических сведений. Неизвестны версии плагина, WordPress, PHP, Local, ОС и браузера, роль пользователя, тема, другие плагины, способ создания сайта и точный симптом. Нельзя отличить сбой активации, предупреждение PHP, невалидный блок, пустой preview, исчезнувшие часы или проблему маршрутизации по этому отзыву.
+The title points to LocalWP; the typo in the text supplies no additional technical information. Plugin, WordPress, PHP, Local, OS, and browser versions, user role, theme, other plugins, site-creation method, and exact symptom are unknown. This review does not distinguish an activation failure, PHP warning, invalid block, empty preview, missing clock, or routing problem.
 
-## Стенд и результаты
+## Environment and results
 
-LocalWP не найден в системном/пользовательском каталоге приложений и стандартных каталогах данных. Использованы уже имеющиеся официальные Docker-образы, Apache и отдельная MariaDB 11.4.8. Это проверка совместимых WordPress-сценариев, а не воспроизведение работы приложения Local.
+LocalWP was not found in system/user application directories or standard data directories. Existing official Docker images, Apache, and a separate MariaDB 11.4.8 were used. This tests compatible WordPress scenarios; it does not reproduce the Local application itself.
 
-| WordPress | PHP | Активация | Редактор, сохранение, iframe preview, фронтенд | Смена browser timezone | Сохранение от Author |
+| WordPress | PHP | Activation | Editor, save, iframe preview, frontend | Browser timezone change | Save by Author |
 | --- | --- | --- | --- | --- | --- |
-| 6.3.2 | 8.2.12 | PASS | PASS | Невалидный блок | Тег удалён |
-| 6.8.3 | 8.3.28 | PASS | PASS | Невалидный блок | Тег удалён |
-| 7.1.3 | 8.3.35 | PASS | PASS | Невалидный блок | Тег удалён |
-| 7.1.3 | 8.4.27 | PASS | PASS | Невалидный блок | Тег удалён |
+| 6.3.2 | 8.2.12 | PASS | PASS | Invalid block | Tag removed |
+| 6.8.3 | 8.3.28 | PASS | PASS | Invalid block | Tag removed |
+| 7.1.3 | 8.3.35 | PASS | PASS | Invalid block | Tag removed |
+| 7.1.3 | 8.4.27 | PASS | PASS | Invalid block | Tag removed |
 
-Браузер: Chromium headless. В базовом сценарии сохранение успешно, `wp.blocks.parse` признаёт блок валидным, shadow DOM присутствует в редакторе и на фронтенде, HTTP 200, время изменяется. Неперехваченных JS-исключений не было. При искусственной блокировке Google Fonts часы продолжают идти; ожидаемый сетевой error зафиксирован отдельно от ошибок продукта.
+Browser: headless Chromium. In the baseline scenario, saving succeeds, `wp.blocks.parse` considers the block valid, shadow DOM is present in the editor and frontend, HTTP is 200, and time advances. There were no uncaught JS exceptions. With Google Fonts deliberately blocked, the clock continues to run; the expected network error was recorded separately from product errors.
 
-`WP_DEBUG`, `WP_DEBUG_LOG` и `WP_DEBUG_DISPLAY` включены. В PHP-журналах есть предупреждения ядра о недоступности WordPress.org и вторичные `headers already sent`: стенд намеренно блокирует внешние WordPress HTTP-запросы. Контрольный `wp_version_check()` с деактивированным плагином воспроизвёл то же предупреждение. Это эффект окружения, не найденная ошибка часов. После контроля плагин снова активирован.
+`WP_DEBUG`, `WP_DEBUG_LOG`, and `WP_DEBUG_DISPLAY` were enabled. PHP logs contain Core warnings about WordPress.org being unavailable and secondary `headers already sent` warnings: the environment intentionally blocks external WordPress HTTP requests. A control `wp_version_check()` with the plugin deactivated reproduced the same warning. The plugin was reactivated after that control.
 
-Имеющиеся release-check и ESLint прошли, Node-тесты: **22/22**. Все четыре PHP-файла плагина и два PHP-скрипта стенда прошли `php -l` на локальном PHP 8.5.10. `block.js` и браузерный сценарий проходят `node --check`. Проверена неизменность всех 14 файлов импорта.
+Existing release checks and ESLint passed; Node tests: **22/22**. All four plugin PHP files and two environment PHP scripts passed `php -l` on local PHP 8.5.10. `block.js` and the browser scenario pass `node --check`. All 14 imported files were verified unchanged.
 
-## Дефект 1: зависимость сохранённого блока от часового пояса браузера
+## Defect 1: saved-block dependence on the browser timezone
 
-**Воспроизведено 4/4; подтверждено сохранённой записью и видимым сообщением Gutenberg.**
+**Reproduced 4/4; confirmed by a saved post and a visible Gutenberg message.**
 
-Шаги:
+Steps:
 
-1. В браузере с timezone `UTC` создать блок с настройками по умолчанию и сохранить запись.
-2. Открыть ту же запись в браузере с timezone `America/New_York`.
-3. Gutenberg показывает `Block contains unexpected or invalid content`; `isValid === false`.
+1. Create a block with default settings in a browser using timezone `UTC` and save the post.
+2. Open the same post in a browser using timezone `America/New_York`.
+3. Gutenberg shows `Block contains unexpected or invalid content`; `isValid === false`.
 
-Причина: `block.js:2086` задаёт `timeZone` как динамический `default: browserTz`. WordPress не сохраняет в JSON-комментарии атрибут со значением по умолчанию. При этом `save` (`block.js:3229`) сохраняет `time-zone="UTC"` в HTML. В другом браузере значение по умолчанию меняется, а атрибут из HTML не считывается через `source: "attribute"`.
+Cause: `block.js:2086` defines `timeZone` with a dynamic `default: browserTz`. WordPress omits an attribute from the JSON comment when its value equals the default. However, `save` (`block.js:3229`) saves `time-zone="UTC"` in HTML. In another browser, the default changes, and the HTML attribute is not read through `source: "attribute"`.
 
-Пример сохранённого JSON: `{"caption":"Timezone transfer fixture"}` — `timeZone` отсутствует. В другом браузере validator ожидает `time-zone="America/New_York"`, но получает `time-zone="UTC"`.
+Example saved JSON: `{"caption":"Timezone transfer fixture"}` — `timeZone` is absent. In another browser, the validator expects `time-zone="America/New_York"` but receives `time-zone="UTC"`.
 
-Влияние: предупреждение о невалидном блоке и риск изменения времени при восстановлении/пересохранении. Сам фронтенд с прежним HTML может продолжать работать. Копирование сайта на компьютер с другим часовым поясом — возможный триггер, но смена timezone сервера при неизменном браузере сама по себе этот сценарий не доказывает.
+Impact: an invalid-block warning and a risk of changing the time during recovery/resaving. The frontend with the original HTML may continue to work. Copying a site to a computer in another timezone is a possible trigger, but changing the server timezone while keeping the same browser does not itself demonstrate this scenario.
 
-Сравнение официальных `block.js` 1.1.0 и 1.1.1 показало отличие только в комментарии версии. Этот механизм не появился в 1.1.1.
+Comparing official 1.1.0 and 1.1.1 `block.js` files showed a difference only in the version comment. This mechanism was not introduced in 1.1.1.
 
-Направление исправления после согласования: стабильный контракт сохранения timezone и чтение фактического значения из старой разметки с совместимостью уже существующих блоков. Нельзя просто заменить default и считать миграцию решённой. Нужны проверки старых записей, разных браузерных timezone, явно выбранных значений и сохранения без нежелательного изменения времени.
+Proposed fix direction, subject to agreement: a stable timezone storage contract and reading the actual value from old markup, with compatibility for existing blocks. Simply replacing the default does not solve migration. Checks must cover existing posts, different browser timezones, explicitly selected values, and saving without unwanted time changes.
 
-[Скриншот ошибки](wp71-timezone-invalid.png).
+[Error screenshot](wp71-timezone-invalid.png).
 
-## Дефект 2: исчезновение часов при сохранении пользователем без unfiltered_html
+## Defect 2: clocks disappear when saved by a user without unfiltered_html
 
-**Воспроизведено 4/4 через штатный WordPress save pipeline.**
+**Reproduced 4/4 through the standard WordPress save pipeline.**
 
-Шаги:
+Steps:
 
-1. Создать рабочий блок от администратора.
-2. Сохранить копию той же разметки в контексте роли `author` с применением штатных KSES-фильтров.
-3. Сравнить сохранённое `post_content`.
+1. Create a working block as an administrator.
+2. Save a copy of the same markup in the `author` role context with standard KSES filters applied.
+3. Compare the saved `post_content`.
 
-У администратора `unfiltered_html === true`, тег сохранён. У автора `unfiltered_html === false`, `<timenow-zone-sdcw>` удалён. В содержимом остаются только комментарии блока:
+For the administrator, `unfiltered_html === true` and the tag is preserved. For the author, `unfiltered_html === false` and `<timenow-zone-sdcw>` is removed. Only block comments remain in the content:
 
 ```html
 <!-- wp:simple-digital-clock-block/widget-block {"hundredths":true,"date":true,"caption":"Clock QA"} -->
@@ -89,34 +89,34 @@ LocalWP не найден в системном/пользовательском
 <!-- /wp:simple-digital-clock-block/widget-block -->
 ```
 
-Причина: плагин сохраняет custom element как статическую HTML-разметку, но не согласует разрешённый тег и его атрибуты со штатной фильтрацией WordPress. На фронтенде после такого сохранения уже нет элемента, который мог бы отрисовать JS-виджет.
+Cause: the plugin saves a custom element as static HTML markup but does not align the permitted tag and its attributes with standard WordPress filtering. After that save, the frontend no longer contains an element in which to render the JS widget.
 
-Влияние: исчезновение часов после сохранения. Это не доказательство проблемы конкретного автора отзыва и не специфическое поведение LocalWP. Администратор multisite также может иметь ограничения `unfiltered_html`, но multisite в этой фазе не проверялся.
+Impact: the clock disappears after saving. This does not prove the specific reviewer's issue and is not behavior unique to LocalWP. A multisite administrator can also have `unfiltered_html` restrictions, but multisite was not tested in this phase.
 
-Направление исправления после согласования: минимальный, ограниченный post-контекстом allow-list custom element и необходимых безопасных атрибутов либо отдельно обоснованный серверный рендеринг. Не выдавать авторам `unfiltered_html` и не выключать KSES. Проверить сохранение через REST/editor, опасные атрибуты, существующие записи и multisite. Из-за удаления разметки этот дефект разумно исправлять первым.
+Proposed fix direction, subject to agreement: a minimal allow-list for the custom element and required safe attributes, limited to the post context, or separately justified server-side rendering. Do not grant authors `unfiltered_html` or disable KSES. Test saving through REST/editor, unsafe attributes, existing posts, and multisite. Since this defect deletes markup, it is reasonable to fix it first.
 
-## Оставшиеся гипотезы и границы вывода
+## Remaining hypotheses and limits
 
-| Гипотеза | Результат |
+| Hypothesis | Result |
 | --- | --- |
-| Плагин не активируется на PHP 8.2–8.4 | Не воспроизведено в четырёх конфигурациях |
-| Preview отсутствует в iframe Gutenberg | Базовый preview работает во всех проверенных версиях |
-| Часы зависят от внешнего JS CDN | Runtime загружается из плагина; внешний Google Fonts не остановил ход часов |
-| Изменение save-разметки в 1.1.1 ломает блоки 1.1.0 | `block.js` отличается только комментарием версии |
-| В Local видны предупреждения, скрытые на production | Возможный класс симптома; конкретное предупреждение пользователя неизвестно. В стенде предупреждение внешней сети воспроизведено и без плагина |
-| SSL, неверный домен, порт, Local Router, PHP-FPM | Не проверены без LocalWP и параметров пользователя |
-| Конфликт темы/другого плагина, старая версия часов, кэш | Не проверены; данных из отзыва нет |
-| PHP 7.x/8.5, multisite, Firefox/Safari | В этой диагностике не проверены |
+| Plugin fails to activate on PHP 8.2–8.4 | Not reproduced in four configurations |
+| Gutenberg iframe preview is missing | Baseline preview works in every tested version |
+| Clock depends on an external JS CDN | Runtime loads from the plugin; external Google Fonts failure did not stop the clock |
+| Changed save markup in 1.1.1 breaks 1.1.0 blocks | `block.js` differs only in the version comment |
+| Local displays warnings hidden in production | A possible class of symptom; the user's specific warning is unknown. The environment's external-network warning was also reproduced without the plugin |
+| SSL, incorrect domain, port, Local Router, PHP-FPM | Not tested without LocalWP and the user's parameters |
+| Theme/other-plugin conflict, old clock version, cache | Not tested; the review provides no data |
+| PHP 7.x/8.5, multisite, Firefox/Safari | Not tested in this investigation |
 
-Различие между настоящей поломкой и видимыми предупреждениями также описано в [официальной диагностике Local](https://localwp.com/help-docs/troubleshooting/troubleshooting-local/). Значение WP_DEBUG-флагов проверено по [документации WordPress](https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/).
+The distinction between an actual failure and visible warnings is also covered in the [official Local troubleshooting guide](https://localwp.com/help-docs/troubleshooting/troubleshooting-local/). WP_DEBUG flag semantics were checked against the [WordPress documentation](https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/).
 
-Для установления причины отзыва нужны точный симптом/ошибка, версии Local/WordPress/PHP/плагина, роль пользователя, место сбоя и указание, создавался ли сайт с нуля или переносился. До этих данных связывать найденные дефекты с отзывом нельзя.
+Establishing the review's cause requires the exact symptom/error, Local/WordPress/PHP/plugin versions, user role, failure location, and whether the site was created from scratch or migrated. Until those details are available, the discovered defects cannot be attributed to the review.
 
-## Воспроизведение и откат
+## Reproduction and rollback
 
-Настройка стенда: [`../../../tools/wordpress-lab/README.md`](../../../tools/wordpress-lab/README.md). Машиночитаемые результаты и исходная разметка: [`evidence.json`](evidence.json). Полные runtime-журналы и остальные screenshots: `.local/wordpress-lab/`.
+Environment setup: [`../../../tools/wordpress-lab/README.md`](../../../tools/wordpress-lab/README.md). Machine-readable results and original markup: [`evidence.json`](evidence.json). Complete runtime logs and remaining screenshots: `.local/wordpress-lab/`.
 
-После запуска подготовленного стенда:
+After starting the prepared environment:
 
 ```bash
 set -euo pipefail
@@ -125,14 +125,14 @@ docker compose --env-file .local/wordpress-lab/env -f tools/wordpress-lab/compos
   php /lab/wp-cli.phar --allow-root eval-file /lab/source/role-probe.php 4
 ```
 
-В последней команде `4` — созданный в этом прогоне fixture post ID; при новой установке использовать ID из `.local/wordpress-lab/sites.json`.
+In the last command, `4` is the fixture post ID created in this run; for a new setup, use the ID from `.local/wordpress-lab/sites.json`.
 
-Стенд останавливается командой ниже. Данные сохраняются в игнорируемой `.local/`; существующие контейнеры других проектов не затрагиваются.
+Stop the environment with the command below. Data remains in ignored `.local/`; existing containers from other projects are unaffected.
 
 ```bash
 docker compose --env-file .local/wordpress-lab/env -f tools/wordpress-lab/compose.yaml down
 ```
 
-После завершения этой диагностики команда выполнена: `docker compose ps -a` для стенда пуст. Данные и журналы сохранены. Точные Docker image ID записаны в `evidence.json`.
+This command was run after the investigation completed: `docker compose ps -a` showed no containers for this environment. Data and logs were preserved. Exact Docker image IDs are recorded in `evidence.json`.
 
-Откат импорта: проверить `git diff`/`git status`, убрать только новые `wordpress/`, `tools/wordpress-lab/`, этот отчёт и добавленные строки README/`.gitignore`. Исходный JS-код, его dist и существующий SVN checkout в этой фазе не изменялись. Патчи найденных дефектов ожидают отдельного решения пользователя.
+Import rollback: inspect `git diff`/`git status`, remove only the new `wordpress/`, `tools/wordpress-lab/`, this report, and the added README/`.gitignore` lines. Original JS source, its dist, and the existing SVN checkout were unchanged in this phase. Patches for the discovered defects await a separate user decision.

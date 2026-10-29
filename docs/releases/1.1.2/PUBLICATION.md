@@ -1,51 +1,51 @@
-# Simple Digital Clock 1.1.2 — публикация
+# Simple Digital Clock 1.1.2 — publication
 
-Снимок проверки от 29 октября 2026, 09:36:57 UTC. **WordPress.org SVN и публичные ZIP первоначального выпуска подтверждены. На момент этого наблюдения update API возвращал 1.1.1; настоящее обновление через WordPress.org ещё не было принято, релиз находился внутри обязательного 6-часового cooldown.** [Машиночитаемые результаты](publication-evidence.json).
+Verification snapshot from 29 October 2026, 09:36:57 UTC. **WordPress.org SVN and the initial release's public ZIPs are verified. At the time of this observation, the update API returned 1.1.1; an actual update through WordPress.org had not yet been accepted, and the release was within the mandatory 6-hour cooldown.** [Machine-readable results](publication-evidence.json).
 
-Позднейшее readme-only изменение SVN **r3772710** и новые публичные ZIP описаны [отдельно](README-PUBLICATION.md). Хеши и результаты ниже относятся к первоначальной публикации r3772502; её исходные evidence сохранены. Readme-проверка не подтверждает завершение Core update acceptance.
+The later readme-only SVN change **r3772710** and new public ZIPs are documented [separately](README-PUBLICATION.md). The hashes and results below apply to the initial r3772502 publication; its original evidence is preserved. The readme verification does not establish completion of Core update acceptance.
 
-## Опубликованный исходник
+## Published source
 
-- SVN: **r3772502**, автор `falselight`, `2026-10-29T09:22:01.589780Z` (11:22 Europe/Kyiv).
-- Цели: [trunk](https://plugins.svn.wordpress.org/simple-digital-clock/trunk/), [tags/1.1.2](https://plugins.svn.wordpress.org/simple-digital-clock/tags/1.1.2/).
-- GitHub: ветка [`codex/prepare-simple-digital-clock-1.1.2`](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/codex/prepare-simple-digital-clock-1.1.2).
-- Неизменяемый тег WordPress: [`wordpress-v1.1.2`](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/wordpress-v1.1.2), коммит `6479ee9365e98f9b5f6822989eb89938d4955a9d`.
-- Git tree установочного плагина: `18512403b0715be777a89e302831a3cc3d5117b6`.
+- SVN: **r3772502**, author `falselight`, `2026-10-29T09:22:01.589780Z` (11:22 Europe/Kyiv).
+- Targets: [trunk](https://plugins.svn.wordpress.org/simple-digital-clock/trunk/), [tags/1.1.2](https://plugins.svn.wordpress.org/simple-digital-clock/tags/1.1.2/).
+- GitHub: branch [`codex/prepare-simple-digital-clock-1.1.2`](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/codex/prepare-simple-digital-clock-1.1.2).
+- Immutable WordPress tag: [`wordpress-v1.1.2`](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/wordpress-v1.1.2), commit `6479ee9365e98f9b5f6822989eb89938d4955a9d`.
+- Installable plugin Git tree: `18512403b0715be777a89e302831a3cc3d5117b6`.
 
-Ветка и аннотированный тег отправлены атомарно, без force push и без изменения `main`. Последующие коммиты отчёта могут продвинуть ветку; тег и опубликованный исходник сохраняют указанный SHA. Версия самостоятельного JS-виджета остаётся 0.7.0.
+The branch and annotated tag were pushed atomically, without force push or changes to `main`. Subsequent report commits may advance the branch; the tag and published source retain the stated SHA. The standalone JS widget version remains 0.7.0.
 
-В SVN вошли ровно ожидаемые 11 путей: пять изменённых/добавленных файлов `trunk`, копия `tags/1.1.2` с историей из `trunk@3771402` и те же пять файлов внутри тега. Независимые exports обеих целей на r3772502 и текущем на момент проверки HEAD r3772504 совпали со всеми 15 SHA-256 из [манифеста](manifest.json). Drift отсутствует. Исторические SVN properties сохранены. Versioned-файлы локального checkout чистые; посторонний незарегистрированный HTML-баннер сохранён и не опубликован.
+SVN received exactly the expected 11 paths: five changed/added `trunk` files, the `tags/1.1.2` copy with history from `trunk@3771402`, and the same five files inside the tag. Independent exports of both targets at r3772502 and at the then-current HEAD r3772504 matched all 15 SHA-256 values in the [manifest](manifest.json). There was no drift. Historical SVN properties were preserved. Versioned files in the local checkout were clean; the unrelated unversioned HTML banner was preserved and not published.
 
-Первая попытка commit была отклонена с E215004 и не создала ревизию. После ввода SVN-пароля пользователем в интерактивном терминале выполнен один успешный commit. Пароль не передавался в чат и не включён в отчёт или evidence.
+The first commit attempt was rejected with E215004 and created no revision. After the user entered the SVN password in an interactive terminal, one successful commit completed. The password was not transmitted through chat or included in the report or evidence.
 
-## Публичная доставка
+## Public delivery
 
-В `2026-10-29T09:23:14Z` официальный plugins/info API сообщил 1.1.2. Живая [страница каталога](https://wordpress.org/plugins/simple-digital-clock/) также содержит новую версию, ссылку скачивания и changelog с двумя проверенными сценариями LocalWP.
+At `2026-10-29T09:23:14Z`, the official plugins/info API reported 1.1.2. The live [directory page](https://wordpress.org/plugins/simple-digital-clock/) also showed the new version, download link, and changelog with the two verified LocalWP scenarios.
 
-| Артефакт | SHA-256 |
+| Artifact | SHA-256 |
 | --- | --- |
-| Проверенный локальный ZIP | `7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8` |
-| [Публичный ZIP 1.1.2](https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip) | `bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2` |
+| Verified local ZIP | `7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8` |
+| [Public 1.1.2 ZIP](https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip) | `bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2` |
 | [latest-stable ZIP](https://downloads.wordpress.org/plugin/simple-digital-clock.latest-stable.zip) | `bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2` |
 
-Оба публичных ZIP прошли CRC и проверку корня, уникальности имён и ровно 15 файлов. Каждый распакованный файл побайтно совпадает с проверенным кандидатом и Git tree. Различие общего SHA относится к серверной упаковке; код, POT и readme не изменены. API сообщает minimum WordPress 6.3 / PHP 7.0; `tested=7.1.4` — текущее представление каталога для сохранённого в readme `Tested up to: 7.1`.
+Both public ZIPs passed CRC, root-directory, unique-name, and exact 15-file checks. Every extracted file is byte-identical to the verified candidate and Git tree. The overall SHA difference is due to server-side packaging; code, POT, and readme are unchanged. The API reports minimum WordPress 6.3 / PHP 7.0; `tested=7.1.4` is the directory's current representation of the readme's retained `Tested up to: 7.1`.
 
-## Обновление через WordPress.org
+## Updating through WordPress.org
 
-В 09:28:31 UTC реальные POST к `plugins/update-check/1.1/` для установленной 1.1.1 и профилей WP 6.3.2 / PHP-параметр 7.0.33, WP 7.1.3 / 8.2.29, WP 7.2-beta2 / 8.5.0 вернули HTTP 200, но `no_update` всё ещё сообщает 1.1.1. Это проверка API, а не запуск трёх PHP-сред.
+At 09:28:31 UTC, real POST requests to `plugins/update-check/1.1/` for installed 1.1.1 and profiles WP 6.3.2 / PHP parameter 7.0.33, WP 7.1.3 / 8.2.29, and WP 7.2-beta2 / 8.5.0 returned HTTP 200, but `no_update` still reported 1.1.1. This tests the API, not three running PHP environments.
 
-По [официальному сообщению Plugins Team от 9 сентября 2026](https://make.wordpress.org/plugins/2026/09/09/automated-security-review-for-plugin-releases/), перед выдачей релиза через update API действует 6-часовой cooldown для автоматической security-проверки; он распространяется и на ручную кнопку обновления. [Meta ticket #8443](https://meta.trac.wordpress.org/ticket/8443) описывает раздельное продвижение каталог/ZIP и `update_source`. Наблюдаемое расхождение совместимо с этим механизмом; отдельный security-block или включённая opt-in Release Confirmation по публичным данным не установлены.
+According to the [official Plugins Team announcement of 9 September 2026](https://make.wordpress.org/plugins/2026/09/09/automated-security-review-for-plugin-releases/), a 6-hour cooldown for automated security checks applies before a release is offered through the update API; it also applies to the manual update button. [Meta ticket #8443](https://meta.trac.wordpress.org/ticket/8443) describes separate promotion of the directory/ZIP and `update_source`. The observed discrepancy is consistent with this mechanism; public data did not establish a separate security block or enabled opt-in Release Confirmation.
 
-Для commit в 09:22 UTC ориентир нового запроса — после **15:22 UTC / 17:22 Europe/Kyiv 29 октября**, без гарантии точного срока. Практический следующий запуск — после 17:30 по Киеву. Повторный commit, изменение тега и обход cooldown не требуются.
+For the commit at 09:22 UTC, the next-request reference point was after **15:22 UTC / 17:22 Europe/Kyiv on 29 October**, without a guaranteed exact deadline. A practical next run was after 17:30 Kyiv time. Another commit, tag change, or cooldown bypass was not required.
 
-Контрольное обновление на отдельном LocalWP подготовлено только для настоящего Core offer и штатного `admin-ajax.php?action=update-plugin`. Официальная 1.1.1 установлена с проверкой 14 файлов; все 2426 строк posts и критичные настройки сохранены. Локальное предложение и подмена версии не используются. Перед будущей установкой guard проверит весь распакованный source по принятому манифесту. До появления offer установщик и новые Gutenberg Save-тесты не запускались; итоговая приёмка публичного обновления ещё не подтверждена. Предрелизный цикл обновления/пересохранения/отката остаётся отдельным уже завершённым результатом.
+A control update on a separate LocalWP site was prepared only for a genuine Core offer and standard `admin-ajax.php?action=update-plugin`. Official 1.1.1 was installed with all 14 files verified; all 2426 posts rows and critical settings were preserved. No local offer or version substitution was used. Before a future installation, the guard would verify the entire extracted source against the accepted manifest. Until an offer appeared, neither the installer nor new Gutenberg Save tests were run; final acceptance of the public update remained unconfirmed. The pre-release upgrade/resave/rollback cycle remains a separate, already completed result.
 
-В `2026-10-29T09:36:57Z` ожидание остановлено после 10 настоящих Core-запросов, последний — в 09:34:53 UTC. Исходные wp-config, MU-plugin и блокировка внешнего HTTP восстановлены; временные logger/guard удалены. Собственный сайт остановлен, `localhost:10003` закрыт. На остановленном стенде оставлена активная официальная 1.1.1, фикстуры и эталоны сохранены для следующего запуска. БД и volumes не восстанавливались и не удалялись; другие сайты, общий router и доверие TLS не менялись.
+At `2026-10-29T09:36:57Z`, waiting was stopped after 10 genuine Core requests, the last at 09:34:53 UTC. Original wp-config, MU-plugin, and external HTTP blocking were restored; temporary logger/guard files were removed. The task's own site was stopped and `localhost:10003` was closed. Official 1.1.1 remained active on the stopped environment; fixtures and references were preserved for the next run. The database and volumes were neither restored nor deleted; other sites, the shared router, and TLS trust were unchanged.
 
-## Границы проверки
+## Verification limits
 
-Предрелизная приёмка сохранена в [PREFLIGHT.md](PREFLIGHT.md): точный финальный ZIP прошёл 1388 smoke-утверждений и Plugin Check 2.1.0 с **0 ERROR / 7 разобранными WARNING**. Полная функциональная матрица относится к ZIP `6f896d42…`; финальная упаковка меняет только POT metadata/source references и две строки changelog. Все исполняемые файлы идентичны. Публикация не выдаётся за повтор полной матрицы.
+Pre-release acceptance is retained in [PREFLIGHT.md](PREFLIGHT.md): the exact final ZIP passed 1388 smoke assertions and Plugin Check 2.1.0 with **0 ERROR / 7 analyzed WARNING**. The full functional matrix applies to ZIP `6f896d42…`; final packaging changes only POT metadata/source references and two changelog lines. All executable files are identical. Publication is not presented as a rerun of the full matrix.
 
-GitHub сообщил об уязвимостях инструментов разработки. Снимок API перед выпуском: 39 открытых alerts, все development scope; production-only npm audit — 0. Проверенный bundled JS не содержит затронутых пакетов. Это не блокер для замороженного WordPress-артефакта, но исправление критических/high advisories инструментов разработки остаётся отдельной задачей после выпуска. Зависимости и JS не перестраивались.
+GitHub reported vulnerabilities in development tooling. The pre-release API snapshot had 39 open alerts, all in development scope; production-only npm audit returned 0. The verified bundled JS does not contain the affected packages. This does not block the frozen WordPress artifact, but fixing critical/high development-tool advisories remains a separate post-release task. Dependencies and JS were not rebuilt.
 
-Сайт автора отзыва и окончательная WordPress 7.2 не сертифицированы. Ранее проверенный откат на 1.1.1 сохраняет пересохранённые записи и настройки без восстановления БД; дальнейшее редактирование в 1.1.1 возвращает известные дефекты старой версии. Проверки не дают гарантии для всех сторонних плагинов и тем.
+The reviewer's site and final WordPress 7.2 have not been validated. The previously verified rollback to 1.1.1 preserves resaved posts and settings without restoring the database; further editing in 1.1.1 reintroduces the old version's known defects. These checks do not guarantee compatibility with every third-party plugin and theme.

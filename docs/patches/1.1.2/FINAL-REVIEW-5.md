@@ -1,20 +1,20 @@
-# Финальное ревью 1.1.2 и расширение совместимости
+# Final review of 1.1.2 and expanded compatibility coverage
 
-**Историческое ревью ZIP `977c5603…`. Оба описанных P2 исправлены в окончательном локальном кандидате `834b1757…`; актуальная приёмка — [WIDGET-FALLBACK-VERIFICATION.md](WIDGET-FALLBACK-VERIFICATION.md). Хеши и отрицательные результаты ниже сохранены для прежнего архива.**
+**Historical review of ZIP `977c5603…`. Both P2 issues described here were fixed in final local candidate `834b1757…`; current acceptance results are in [WIDGET-FALLBACK-VERIFICATION.md](WIDGET-FALLBACK-VERIFICATION.md). The hashes and failing results below are retained for the previous archive.**
 
-28 октября 2026. **Требуется доработка: найдены два оставшихся P2.** Последнее исправление numeric entities не внесло эти ошибки: обе воспроизведены на точном предыдущем кандидате `4c62efe3…`. Исходная причина публичного отзыва по-прежнему не установлена.
+28 October 2026. **Changes required: two remaining P2 issues were found.** The latest numeric entity fix did not introduce these errors: both were reproduced on exact previous candidate `4c62efe3…`. The original cause of the public user review is still unknown.
 
-Проверен неизменённый ZIP `977c560321b565ddfbc66aa4d5dd2c32381779751c756106c2c317e2fd6d6bbb`, diff `1f3e448f56d42c704574354cc1ce16446c81c59097a00961d8fff9f2813c7c0c`. Все 15 файлов продукта совпадают с манифестом предыдущей приёмки. В этом ревью менялись только тестовые инструменты и отчёты; код продукта, ZIP и diff не менялись. Публикаций, commit/push, изменений SVN или пользовательских сайтов нет.
+Unchanged ZIP `977c560321b565ddfbc66aa4d5dd2c32381779751c756106c2c317e2fd6d6bbb` and diff `1f3e448f56d42c704574354cc1ce16446c81c59097a00961d8fff9f2813c7c0c` were reviewed. All 15 product files match the previous acceptance manifest. Only test tools and reports changed during this review; product code, ZIP, and diff were not changed. Nothing was published; no commit/push, SVN changes, or changes to user sites were made.
 
-## P2. Multisite Site Admin сохраняет невалидные блоки в области виджетов
+## P2. Multisite Site Admin saves invalid blocks in the widget area
 
-Место: `includes/simple-digital-clock-kses.php:232–248`, подготовка caption только в post save filters; финальное кодирование также находится в `wp_insert_post_data:297–322`.
+Location: `includes/simple-digital-clock-kses.php:232–248`, caption preparation only in post save filters; final encoding is also in `wp_insert_post_data:297–322`.
 
-У обычного администратора сайта multisite есть `edit_theme_options`, но Core отклоняет `unfiltered_html` через `map_meta_cap`. `WP_Widget_Block::update()` вызывает `wp_kses_post()` напрямую. Этот отдельный путь не проходит через подготовку entities в `content_save_pre` и завершающую обработку post data.
+A regular multisite site administrator has `edit_theme_options`, but Core denies `unfiltered_html` through `map_meta_cap`. `WP_Widget_Block::update()` calls `wp_kses_post()` directly. This separate path does not pass through entity preparation in `content_save_pre` or final post-data processing.
 
-На двух сайтах сети WordPress 7.1.3 / PHP 8.5.12 проверены 103 исходных валидных блока. После сохранения виджета Site Admin **22/103 становятся невалидными** в каждом из Chromium, Firefox и WebKit. Примеры: `&NewLine;`, `&Tab;`, `&NotEqualTilde;`, числовые CR. Super Admin проходит тот же набор. На трёх single-site конфигурациях обычные администраторы проходят; Editor/Author корректно получают REST 403.
+On two sites in a WordPress 7.1.3 / PHP 8.5.12 network, 103 originally valid blocks were tested. After Site Admin saves the widget, **22/103 become invalid** in each of Chromium, Firefox, and WebKit. Examples include `&NewLine;`, `&Tab;`, `&NotEqualTilde;`, and numeric CR. Super Admin passes the same suite. Regular administrators pass on three single-site configurations; Editor/Author correctly receive REST 403.
 
-Независимый HTTP-контроль от Site Admin редактирует уже размещённый блок через штатный `/wp/v2/widgets/<id>`:
+An independent HTTP control as Site Admin edits an already placed block through the standard `/wp/v2/widgets/<id>` endpoint:
 
 ```text
 JSON caption before/after: &NotEqualTilde; <clock>
@@ -23,21 +23,21 @@ DOM after:                &NotEqualTilde; <clock>
 block.isValid after:       false
 ```
 
-На дочернем сайте используется настоящая область `sidebar-1` темы Twenty Twenty-One. Frontend этого виджета также получает буквальный текст `&NotEqualTilde;`, поэтому это не только расхождение тестового парсера. На корневом сайте проверен отдельный зарегистрированный лабораторный sidebar.
+The child site uses the actual `sidebar-1` area of the Twenty Twenty-One theme. This widget's frontend also receives the literal text `&NotEqualTilde;`, so the discrepancy is not limited to the test parser. A separate registered lab sidebar was tested on the root site.
 
-Важная деталь проверки полномочий: REST users endpoint возвращает исходные role caps, где `unfiltered_html` может быть `true`. Решающее значение `current_user_can('unfiltered_html')` проверено отдельно после Core mapping: у Site Admin оно **false**. REST разрешает редактировать виджеты; запрет Editor/Author проверен тем же контроллером.
+An important capability-check detail: the REST users endpoint returns raw role capabilities, where `unfiltered_html` may be `true`. The decisive `current_user_can('unfiltered_html')` result was checked separately after Core mapping: it is **false** for Site Admin. REST permits widget editing; the Editor/Author denial was verified through the same controller.
 
-Точный `4c62efe3…` физически установлен в multisite; его 15 файлов сверены с архивом. Статусы всех четырёх ролей и сохранённое содержимое виджетов побайтно совпадают с текущим кандидатом. Следовательно, последняя numeric-поправка эту ошибку не внесла.
+Exact `4c62efe3…` was physically installed in multisite; its 15 files were checked against the archive. Statuses for all four roles and saved widget content are byte-identical to the current candidate. The latest numeric correction therefore did not introduce this error.
 
-Нужно распространить защиту семантики caption на самостоятельный путь сохранения блочных виджетов, сохранив обычную очистку KSES. Новая проверка должна включать Site Admin с реальными mapped capabilities, валидность блока и DOM, а не только сохранённый JSON.
+Caption semantic protection must also cover the independent block-widget save path while preserving normal KSES cleanup. The new check must include Site Admin with actual mapped capabilities, block validity, and DOM, rather than only stored JSON.
 
-## P2. HTML-only caption получает неправильный JSON на WP 6.3 / PHP 7.0
+## P2. An HTML-only caption produces incorrect JSON on WP 6.3 / PHP 7.0
 
-Место: `includes/simple-digital-clock-kses.php:107–110`, восстановление отсутствующего JSON caption через `WP_HTML_Tag_Processor::get_attribute()`.
+Location: `includes/simple-digital-clock-kses.php:107–110`, restoring a missing JSON caption through `WP_HTML_Tag_Processor::get_attribute()`.
 
-У блока есть HTML-атрибут caption, но соответствующего свойства нет в JSON-комментарии. Текущий JS fallback корректно извлекает из браузерного DOM апостроф. До сохранения блок валиден, preview показывает апостроф. На WordPress 6.3.2 / PHP 7.0.33 PHP API Core возвращает reference как текст: старый Core использует стандартные флаги `html_entity_decode`, которые на PHP 7 не декодируют одинарную кавычку; `&apos;` дополнительно зависит от HTML5-режима.
+The block has a caption HTML attribute but no corresponding property in its JSON comment. The current JS fallback correctly extracts the apostrophe from the browser DOM. Before save, the block is valid and its preview shows an apostrophe. On WordPress 6.3.2 / PHP 7.0.33, the Core PHP API returns the reference as text: older Core uses default `html_entity_decode` flags, which do not decode a single quote on PHP 7; `&apos;` also depends on HTML5 mode.
 
-Проверены три независимых входа: `&#039; <clock>`, `&#x27; <clock>`, `&apos; <clock>`. Administrator с `unfiltered_html` выполняет только **title-only update**:
+Three independent inputs were tested: `&#039; <clock>`, `&#x27; <clock>`, and `&apos; <clock>`. An Administrator with `unfiltered_html` performs only a **title-only update**:
 
 ```text
 Before parsed caption:   ' <clock>
@@ -47,17 +47,17 @@ Frontend DOM caption:    ' <clock>
 block.isValid:           true
 ```
 
-Меняется поле caption и preview редактора, хотя HTML страницы сохраняет апостроф. Проверки одной валидности недостаточно. Все три случая подтверждены Chromium, Firefox и WebKit на независимых свежих записях. WP 7.1.3 / PHP 7.4.33 и 8.5.12, включая два multisite-сайта, проходят эти же входы.
+The caption field and editor preview change even though page HTML retains the apostrophe. Checking validity alone is insufficient. All three cases were confirmed by Chromium, Firefox, and WebKit on independent fresh posts. WP 7.1.3 / PHP 7.4.33 and 8.5.12, including two multisite sites, pass the same inputs.
 
-На физически установленном `4c62efe3…` в WP 6.3 / PHP 7.0 повторены свежие fixtures. JSON, HTML, DOM и результат title-only update совпадают с `977c5603…`. Это оставшаяся ошибка кандидата, а не регрессия последней numeric-поправки.
+Fresh fixtures were rerun on physically installed `4c62efe3…` on WP 6.3 / PHP 7.0. JSON, HTML, DOM, and the title-only update result match `977c5603…`. This is a remaining candidate error, not a regression introduced by the latest numeric correction.
 
-Эти fixtures моделируют программно созданные блоки с подписью только в HTML. Они не выдаются за валидные нативные оригиналы 1.1.1. Для обычных блоков с уже заданным JSON caption эта находка не воспроизводится. Нужно читать HTML-only caption с браузерной семантикой entities на минимальном Core/PHP, сохраняя приоритет явно заданного JSON и различие буквальных уровней.
+These fixtures model programmatically created blocks whose caption exists only in HTML. They are not presented as valid native 1.1.1 originals. This finding does not reproduce for regular blocks with an explicitly specified JSON caption. HTML-only captions must be read with browser entity semantics on the minimum Core/PHP versions, preserving the priority of explicit JSON and distinctions between literal layers.
 
-## Расширенная матрица
+## Extended matrix
 
-Отдельный Compose project `sdcw-extended-review-20261028`, четыре WordPress runtime и пять контекстов сайтов. Все порты привязаны к loopback, отдельная MariaDB без опубликованного порта, свои БД и тестовые аккаунты. Почта и внешний HTTP WordPress заблокированы. Docker multisite использует subdirectory-сеть.
+A separate Compose project, `sdcw-extended-review-20261028`, contains four WordPress runtimes and five site contexts. All ports bind to loopback; MariaDB has no published port, with dedicated databases and test accounts. Mail and external WordPress HTTP are blocked. Docker multisite uses a subdirectory network.
 
-| WordPress | Фактический PHP | Режим | Прежние PHP-контракты | Нативные записи / блоки на движок |
+| WordPress | Actual PHP | Mode | Existing PHP contracts | Native posts / blocks per engine |
 | --- | --- | --- | --- | --- |
 | 6.3.2 | 7.0.33 | single-site | 1295/1295 | 3 / 309 |
 | 7.1.3 | 7.4.33 | single-site | 1295/1295 | 3 / 309 |
@@ -65,35 +65,35 @@ block.isValid:           true
 | 7.1.3 | 8.5.12 | multisite root | 1295/1295 | 4 / 412 |
 | 7.1.3 | 8.5.12 | multisite child | 1295/1295 | 4 / 412 |
 
-Пройдены **6475/6475 PHP-утверждений**: regression, final-review, P2 caption, HTML5 caption/save/pipeline/charset, numeric caption/save/pipeline. Полный набор DOM также проходит: **127500/127500** named-entity и **145260/145260** literal-numeric сравнений, итого **272760/272760** в трёх движках.
+**6475/6475 PHP assertions** passed: regression, final-review, P2 caption, HTML5 caption/save/pipeline/charset, and numeric caption/save/pipeline. The complete DOM suite also passes: **127500/127500** named-entity and **145260/145260** literal-numeric comparisons, totaling **272760/272760** in three engines.
 
-Нативный набор взят из официального 1.1.1: 96 вариантов caption и семь прежних блоков с настройками, всего 103 блока плюс соседний paragraph на запись. Проверены Administrator/Editor/Author на single-site и Super Admin/Site Admin/Editor/Author в multisite. Все **17 записей / 1751 блока** проходят title-only, полную сериализацию и повторное сохранение во всех трёх движках. Полный JSON, DOM всех атрибутов, валидность редактора, dirty state и frontend проверяются против исходного валидного оригинала. Сохранённое содержимое одинаково между движками.
+The native suite comes from official 1.1.1: 96 caption variants and seven existing blocks with settings, totaling 103 blocks plus a neighboring paragraph per post. Administrator/Editor/Author were checked on single-site, and Super Admin/Site Admin/Editor/Author in multisite. All **17 posts / 1751 blocks** pass title-only updates, full serialization, and repeated saves in all three engines. Complete JSON, DOM for all attributes, editor validity, dirty state, and frontend are checked against the original valid input. Stored content is identical between engines.
 
-Сетевая активация, деактивация, активация только на дочернем сайте и восстановление сетевой активации проходят. При отдельной активации обработчики загружаются только на дочернем сайте; KSES разрешает тег часов только там. Проверка не меняет содержимое записей.
+Network activation, deactivation, activation only on the child site, and restoration of network activation pass. With separate activation, handlers load only on the child site; KSES allows the clock tag only there. This check does not change post content.
 
-При расширении на PHP 7.0 выявлено ложное ожидание старого теста `final-review.php`: он читал HTML-атрибут Core API с зависимыми от версии PHP флагами. Для fixtures с HTML4/numeric escaping тест теперь получает реальное DOM-значение через DOMDocument. Число и ожидаемая семантика 148 утверждений не менялись. Независимые браузерные проверки native JSON caption проходят. Отдельные HTML-only fixtures выше при этом остаются RED; исправление тестового парсера их не скрывает.
+Extending coverage to PHP 7.0 revealed an incorrect expectation in older test `final-review.php`: it read the HTML attribute through Core API with PHP-version-dependent flags. For fixtures using HTML4/numeric escaping, the test now obtains the actual DOM value through DOMDocument. The count and expected semantics of its 148 assertions were unchanged. Independent browser checks of native JSON captions pass. The separate HTML-only fixtures above remain RED; correcting the test parser does not hide them.
 
-## Обновление и откат
+## Upgrade and rollback
 
-Записи созданы и проверены на официальном 1.1.1 до установки кандидата. На тех же 17 ID выполнены сохранения 1.1.2, физический откат на официальный 1.1.1 и повторное обновление тем же ZIP 1.1.2. Старый редактор принимает все 1751 блока в трёх движках; после повторного обновления весь набор проходит Chromium. Чтение не пересохраняет контент.
+Posts were created and verified on official 1.1.1 before candidate installation. The same 17 IDs were saved with 1.1.2, followed by a physical rollback to official 1.1.1 and reupgrade using the same 1.1.2 ZIP. The old editor accepts all 1751 blocks in three engines; after reupgrade, the entire suite passes in Chromium. Read checks do not resave content.
 
-Каждая замена архива проверяет физический состав плагина: 14 файлов у официального 1.1.1, 15 у кандидатов. ID и raw content 17 нативных записей сверяются напрямую с БД. Дополнительно сравниваются хеши **всех 1302 строк post_content** пяти сайтов до и после отката, чтения старым редактором, повторного обновления и проверки активации. Содержимое неизменно, восстановления БД нет. Для сравнительного `4c62efe3…` также проверена неизменность всех существовавших на том этапе 1272 строк; последующие новые строки созданы отдельными контрольными fixtures.
+Every archive replacement verifies physical plugin contents: 14 files for official 1.1.1, 15 for the candidates. IDs and raw content of the 17 native posts are checked directly against the database. Hashes of **all 1302 post_content rows** across five sites are also compared before and after rollback, reads in the old editor, reupgrade, and activation checks. Content is unchanged, and the database is not restored. For comparative `4c62efe3…`, all 1272 rows existing at that stage were also checked for identity; subsequent rows were created by separate control fixtures.
 
-Это подтверждает совместимость проверенного набора обычных post blocks. Два описанных выше сценария остаются ошибочными. Замена ZIP не исправляет ранее записанный неправильный caption; полную совместимость всех путей сохранения объявлять нельзя.
+This confirms compatibility for the tested suite of regular post blocks. The two scenarios described above remain incorrect. Replacing the ZIP does not fix an incorrect caption already written; full compatibility across all save paths cannot be claimed.
 
-## LocalWP и ограничения
+## LocalWP and limitations
 
-Нативный LocalWP **не проверен**. Официальный Local 10.2.0+7022 arm64 скачан и извлечён в игнорируемую лабораторную папку, проверены опубликованный SHA-1 и подпись приложения. Он запущен и остановился на экране Terms of Service с обязательным `I agree`. Согласие не принято; пользователю отправлен отдельный запрос. Без ответа настройка тестового сайта не продолжалась. Это требование Computer Use для принятия юридически обязательных условий, не отказ доступа к приложению и не дефект плагина.
+Native LocalWP was **not tested**. Official Local 10.2.0+7022 arm64 was downloaded and extracted into an ignored lab folder; its published SHA-1 and application signature were checked. It was launched and stopped at the Terms of Service screen requiring `I agree`. The terms were not accepted; a separate request was sent to the user. Test-site setup did not continue without a response. This is a Computer Use requirement for accepting legally binding terms, not an application access denial or a plugin defect.
 
-Docker-результаты не подтверждают nginx/PHP-FPM, router, TLS и интеграции нативного Local. Subdomain multisite и сторонние расширения также не покрыты. Standalone-виджет 0.7.0 и его исходники не менялись; предыдущие успешные lint/release/Node/browser результаты не выдаются за повторный запуск этого ревью.
+Docker results do not establish coverage of native Local's nginx/PHP-FPM, router, TLS, or integrations. Subdomain multisite and third-party extensions are also outside coverage. Standalone widget 0.7.0 and its sources were not changed; previous passing lint/release/Node/browser results are not presented as reruns during this review.
 
-PHP-логи сохранены и классифицированы: Core предупреждает о заблокированных внешних update checks и отсутствующем HTTP_HOST в CLI; WP-CLI vendors выдают PHP 8.5 deprecations. Ошибки двух исправленных вспомогательных eval-команд сохранены отдельно как ошибки тестовой обвязки. Новых PHP warnings/fatals из файлов плагина не обнаружено. Новые JS-инструменты проходят `node --check`, новые PHP-инструменты — `php -l`.
+PHP logs were retained and classified: Core warns about blocked external update checks and missing HTTP_HOST in CLI; WP-CLI vendors emit PHP 8.5 deprecations. Errors from two corrected helper eval commands were retained separately as test-harness errors. No new PHP warnings/fatals originating from plugin files were found. New JS tools pass `node --check`; new PHP tools pass `php -l`.
 
-## Доказательства
+## Evidence
 
-- [Сводный JSON](review5-evidence.json): артефакты, матрица, результаты, новые P2, контроль предыдущего кандидата, откат и ограничения.
-- Полные локальные результаты: `.local/wordpress-lab/review5-compat/`.
-- Тесты: `tools/wordpress-lab/extended-browser.mjs`, `extended-widgets.php`, `extended-widgets.mjs`, `extended-widget-http.mjs`, `extended-fallback-seed.php`, `extended-fallback.mjs`.
-- Физическая замена ZIP и контроль БД: `.local/wordpress-lab/review5-compat/cycle.py`; активация: `activation.py` в той же папке.
+- [Summary JSON](review5-evidence.json): artifacts, matrix, results, new P2 issues, control using the previous candidate, rollback, and limitations.
+- Complete local results: `.local/wordpress-lab/review5-compat/`.
+- Tests: `tools/wordpress-lab/extended-browser.mjs`, `extended-widgets.php`, `extended-widgets.mjs`, `extended-widget-http.mjs`, `extended-fallback-seed.php`, `extended-fallback.mjs`.
+- Physical ZIP replacement and database checks: `.local/wordpress-lab/review5-compat/cycle.py`; activation: `activation.py` in the same folder.
 
-Лаборатория остановлена после восстановления точного кандидата. БД, архивы и доказательства сохранены. Окно лицензии Local оставлено для решения пользователя. Технического разрешения на выпуск нет: сначала нужно исправить два новых сценария, проверить их RED → GREEN и повторить затронутые проверки.
+The lab was stopped after restoring the exact candidate. Databases, archives, and evidence were retained. The Local license window was left for the user's decision. Technical release approval was not granted: the two new scenarios must first be fixed, verified RED → GREEN, and followed by the affected checks.

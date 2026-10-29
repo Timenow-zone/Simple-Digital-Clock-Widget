@@ -1,94 +1,94 @@
-# История ревью кандидата 431b9157
+# Review history of candidate 431b9157
 
-**Описанные ниже проблемы исправлены в новом локальном кандидате.** См. [актуальную проверку исправления](VERIFICATION.md). Этот отчёт и номера строк относятся только к прежней сборке с SHA-256 `431b9157…`.
+**The issues described below have been fixed in a new local candidate.** See the [current fix verification](VERIFICATION.md). This report and its line numbers apply only to the earlier build with SHA-256 `431b9157…`.
 
-Дата: 27 октября 2026. Проверен неизменённый ZIP с SHA-256 `431b9157d557f525727738b8164d85e416cdaf979a73239063026826c86f283b`.
+Date: 27 October 2026. The unchanged ZIP with SHA-256 `431b9157d557f525727738b8164d85e416cdaf979a73239063026826c86f283b` was reviewed.
 
-**Проверенный здесь прежний кандидат требовал доработки: были подтверждены две проблемы сохранения данных.** Предыдущие зелёные проверки остаются корректными для своего набора сценариев, но их покрытия было недостаточно для общего вывода об обратной совместимости. Исходники продукта, версия и ZIP во время того ревью не менялись. Были добавлены только тесты и документация.
+**The earlier candidate reviewed here required changes: two data-preservation issues were confirmed.** The previous passing checks remain valid for their scenarios, but their coverage was insufficient for a general backward-compatibility conclusion. Product source, version and ZIP remained unchanged during that review. Only tests and documentation were added.
 
-## P1. При сохранении часов меняется JSON соседнего блока
+## P1. Saving a clock changes the JSON of a neighboring block
 
-Место: `includes/simple-digital-clock-kses.php:124–130`, вызов из `wp_insert_post_data` на строке 149.
+Location: `includes/simple-digital-clock-kses.php:124–130`, called from `wp_insert_post_data` at line 149.
 
-Если у старых часов отсутствует `timeZone` в JSON — нормальный default в 1.1.1 — фильтр добавляет это поле, затем вызывает `serialize_blocks()` для **всей записи**. PHP-парсер WordPress декодирует объекты ассоциативно. При последующей сериализации пустые объекты и объекты с последовательными числовыми ключами превращаются в массивы:
+When an old clock has no `timeZone` in its JSON—a normal default in 1.1.1—the filter adds the field, then calls `serialize_blocks()` for **the entire post**. The WordPress PHP parser decodes objects as associative arrays. During subsequent serialization, empty objects and objects with sequential numeric keys become arrays:
 
 ```json
 {"options":{"0":"one","1":"two"},"empty":{}}
 ```
 
-становится:
+becomes:
 
 ```json
 {"options":["one","two"],"empty":[]}
 ```
 
-У стороннего блока с атрибутами типа `object` эти значения перестают проходить проверку. Независимый тестовый блок WordPress после такого сохранения получает значение по умолчанию вместо исходных настроек и становится невалидным. Его HTML при этом остаётся прежним.
+These values no longer pass validation for a third-party block with attributes of type `object`. After such a save, an independent test WordPress block receives its default value instead of its original settings and becomes invalid. Its HTML remains unchanged.
 
-Воспроизведение выполнено через реальные `wp_insert_post()` и `wp_update_post()` от Administrator, включая обновление **только заголовка**. Во всех четырёх конфигурациях контроль с отключённым только новым `SDCW_preserve_clock_post_metadata` сохраняет исходный JSON; включённый фильтр меняет его. Запись с тем же сторонним блоком без часов также сохраняется без изменений.
+The issue was reproduced through real `wp_insert_post()` and `wp_update_post()` calls as Administrator, including **title-only updates**. In all four configurations, a control with only the new `SDCW_preserve_clock_post_metadata` disabled preserves the original JSON; the enabled filter changes it. A post with the same third-party block but no clock also remains unchanged.
 
-Для атрибуции этого дефекта используется обычный WordPress post API. Некоторые REST-пути WordPress сами повторно сериализуют блоки и могут давать похожий результат без патча; это поведение не приписывается 1.1.2. Тестовый сторонний блок синтетический; конкретные внешние плагины не проверялись.
+The ordinary WordPress post API is used to attribute this defect. Some WordPress REST paths reserialize blocks themselves and can produce a similar result without the patch; that behavior is not attributed to 1.1.2. The third-party test block is synthetic; specific external plugins were not tested.
 
-Рекомендация: отказаться от безусловной нормализации всей записи через `wp_insert_post_data`. Если серверная коррекция необходима, изменять только собственные метаданные часов, сохраняя JSON соседних блоков. Добавить эти отрицательные тесты в обязательную регрессию. Простая замена файлов на 1.1.1 уже изменённый JSON обратно не восстанавливает.
+Recommendation: remove unconditional normalization of the entire post through `wp_insert_post_data`. If server-side correction is needed, change only the clock's own metadata while preserving neighboring block JSON. Add these negative tests to the required regressions. Simply replacing the files with 1.1.1 does not restore JSON that has already changed.
 
-## P2. Подпись из HTML перезаписывает исходное значение в JSON
+## P2. The HTML caption overwrites the original JSON value
 
-Места: `block.js:2073–2079` и `includes/simple-digital-clock-kses.php:109–113`.
+Locations: `block.js:2073–2079` and `includes/simple-digital-clock-kses.php:109–113`.
 
-Новая логика всегда предпочитает декодированный HTML-атрибут `caption`, даже когда исходное строковое значение уже есть в JSON. У оригинального JS-сериализатора 1.1.1 встречается такое сочетание:
+The new logic always prefers the decoded HTML `caption` attribute, even when the original string already exists in JSON. The original 1.1.1 JavaScript serializer can produce this combination:
 
 ```text
 JSON caption: &amp; &lt; &#34; &#x1F552;
 HTML caption: &amp; &lt; &#34; &#x1F552;
 ```
 
-Для HTML это закодированные символы, для JSON — буквальная строка. Официальный 1.1.1 читает исходную строку из JSON. После обновления и сохранения только заголовка патч заменяет её на:
+In HTML these are encoded characters; in JSON they are a literal string. Official 1.1.1 reads the original string from JSON. After an upgrade and title-only save, the patch replaces it with:
 
 ```text
 & < " 🕒
 ```
 
-Проверены 32 исходные записи, созданные оригинальным JS 1.1.1: четыре вида подписи × Administrator/Author × четыре сайта. У 16 записей с entity-строками значение меняется. После возврата к точному официальному 1.1.1 новые значения остаются; БД при замене ZIP не менялась. Старый читатель отдельно проверен на исходных снимках: все 32 исходные подписи читаются без потери строки.
+The review covered 32 original posts created by the original 1.1.1 JavaScript: four caption types × Administrator/Author × four sites. The value changes in 16 posts containing entity strings. The new values remain after returning to exact official 1.1.1; replacing the ZIP did not change the database. The old reader was also checked against the original snapshots: all 32 original captions can be read without losing the string.
 
-Это подтверждённое изменение сохранённой настройки и значения в редакторе. Старый 1.1.1 уже неоднозначно сериализовал такие подписи в HTML, поэтому изменение видимого текста на фронтенде не заявляется как новая регрессия.
+This confirms a change to the saved setting and editor value. Old 1.1.1 already serialized these captions ambiguously in HTML, so a change in visible frontend text is not claimed as a new regression.
 
-Дополнительный серверный тест с корректно двойным экранированием выявил ещё один связанный крайний случай: старые WordPress 6.3/6.8 нормализуют числовые entities до `pre_kses`. Это ограничение платформы, а не доказательство новой ошибки её нормализатора в патче. Текущая реализация защиты подписей его не покрывает.
+An additional server-side test with correct double escaping found another related edge case: older WordPress 6.3/6.8 normalize numeric entities before `pre_kses`. This is a platform limitation, not evidence of a new defect in its normalizer introduced by the patch. The current caption-protection implementation does not cover it.
 
-Рекомендация: сохранять исходное строковое значение `caption` и определить явные правила восстановления отсутствующих/отфильтрованных метаданных. Нельзя безусловно заменять существующий JSON декодированным HTML. Нужны тесты отдельно на буквальные entities, обычный текст, HTML-подобный текст и повторные сохранения; фильтрацию HTML отключать не требуется.
+Recommendation: preserve the original `caption` string and define explicit rules for recovering missing/filtered metadata. Existing JSON must not be unconditionally replaced with decoded HTML. Separate tests are needed for literal entities, plain text, HTML-like text and repeated saves; HTML filtering does not need to be disabled.
 
-## Результаты проверок
+## Check results
 
-| Конфигурация | Исходные PHP-тесты | Новые PHP-контракты | Новое браузерное ревью | Чтение 32 записей после отката |
+| Configuration | Original PHP tests | New PHP contracts | New browser review | Reading the 32 posts after rollback |
 | --- | --- | --- | --- | --- |
 | WP 7.1.3 / PHP 8.3.35 | 464/464 | 133/136 | 14/20 | 20/24 |
 | WP 7.1.3 / PHP 8.4.27 | 464/464 | 133/136 | 14/20 | 20/24 |
 | WP 6.3.2 / PHP 8.2.12 | 464/464 | 131/136 | 14/20 | 20/24 |
 | WP 6.8.3 / PHP 8.3.28 | 464/464 | 131/136 | 14/20 | 20/24 |
 
-Новые PHP-контракты: 528/544, 16 падений. Новое браузерное ревью: 56/80, 24 падения. Проверки отката нового набора: 80/96, 16 падений — только сохранность entity-подписей. Во всех 32 случаях сама замена ZIP не изменила содержимое БД, а блок часов остался валидным. Повторяющиеся падения — проверки двух описанных проблем, а не число отдельных багов.
+New PHP contracts: 528/544, 16 failures. New browser review: 56/80, 24 failures. Rollback checks for the new set: 80/96, 16 failures, all involving entity-caption preservation. In all 32 cases, replacing the ZIP itself did not change the database contents, and the clock block remained valid. Repeated failures are checks of the two issues described above, not separate bugs.
 
-Повторная исходная браузерная регрессия прошла полностью: по 33 проверки на каждом из четырёх сайтов в Chromium, Firefox и WebKit, всего 396/396. Реальная вставка через UI дополнительно проверена на всех четырёх сайтах: вариация применяет timezone браузера. Исходные исправления смены timezone и удаления тега KSES продолжают работать в этих сценариях. Ранее выполненный цикл на 64 записях также остаётся зелёным; он не включал указанные формы JSON соседнего блока и буквальные entity-подписи.
+The original browser regression was rerun successfully: 33 checks on each of four sites in Chromium, Firefox and WebKit, totaling 396/396. Actual insertion through the UI was also checked on all four sites: the variation applies the browser timezone. The original fixes for timezone changes and KSES tag removal continue to work in these scenarios. The earlier 64-post cycle also remains green; it did not include these neighboring-block JSON forms or literal entity captions.
 
-Опасные HTML/CSS-проверки исходного набора проходят; новых подтверждённых проблем безопасности в рассмотренном коде не найдено. Это не полный аудит безопасности сторонних интеграций.
+The original suite's dangerous HTML/CSS checks pass; no new security issues were confirmed in the reviewed code. This is not a complete security audit of third-party integrations.
 
-## Доказательства и воспроизведение
+## Evidence and reproduction
 
-- [Полные результаты ревью](final-review-evidence.json).
-- [Дополнительные PHP-контракты](../../../tools/wordpress-lab/final-review.php) и [запуск на четырёх сайтах](../../../tools/wordpress-lab/final-review-php.py).
-- [Независимый цикл создания, сохранения и отката](../../../tools/wordpress-lab/final-review.mjs).
-- [Подготовка лаборатории и исходная регрессия](../../../tools/wordpress-lab/README.md).
+- [Full review results](final-review-evidence.json).
+- [Additional PHP contracts](../../../tools/wordpress-lab/final-review.php) and [four-site runner](../../../tools/wordpress-lab/final-review-php.py).
+- [Independent creation, save and rollback cycle](../../../tools/wordpress-lab/final-review.mjs).
+- [Lab setup and original regression](../../../tools/wordpress-lab/README.md).
 
-На уже подготовленном кандидате дополнительные PHP-тесты запускаются из корня репозитория:
+With the candidate already prepared, run the additional PHP tests from the repository root:
 
 ```bash
 python3 tools/wordpress-lab/final-review-php.py
 ```
 
-Для текущего ZIP ожидается exit code 1 и 16 отрицательных проверок. Они намеренно оставлены красными: продукт в рамках ревью не исправлялся. Браузерные режимы `seed`, `save`, `rollback` выполняются соответственно на 1.1.1, кандидате и снова 1.1.1; снимки не перезаписываются. Для нового полного цикла нужна отдельная свежая лаборатория с подготовленными fixtures.
+For the ZIP reviewed here, exit code 1 and 16 failed checks are expected. They were deliberately left red: the product was not fixed as part of this review. Browser modes `seed`, `save` and `rollback` run on 1.1.1, the candidate and 1.1.1 again, respectively; snapshots are not overwritten. A new full cycle requires a separate fresh lab with prepared fixtures.
 
-## Границы и состояние
+## Scope and status
 
-Нативный LocalWP, multisite, функциональная матрица PHP 7.x/8.5, сторонние плагины и темы не проверялись. Дополнительная синтаксическая проверка PHP 8.5.10 и `node --check` прошла; это не заменяет runtime-тесты этих окружений.
+Native LocalWP, multisite, the PHP 7.x/8.5 functional matrix, and third-party plugins and themes were not tested. Additional PHP 8.5.10 syntax checks and `node --check` passed; they do not replace runtime tests in those environments.
 
-Публикации, Git commit/push, изменений SVN и пользовательских сайтов нет. Лабораторные данные сохранены. Продукт и ZIP оставлены в проверенном состоянии для отдельного исправления обеих проблем; статус текущего кандидата — **требуется доработка**.
+There was no publication, Git commit/push, SVN change or change to user sites. Lab data was retained. The product and ZIP were left in the reviewed state for separate fixes to both issues; the candidate's status at that point was **changes required**.
 
-Лабораторные контейнеры и выделенная сеть остановлены и удалены через compose down; локальные файлы и БД сохранены.
+The lab containers and dedicated network were stopped and removed with compose down; local files and databases were retained.

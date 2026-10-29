@@ -1,89 +1,89 @@
-# Финальное ревью 1.1.2 после исправления WordPress 6.3
+# Final review of 1.1.2 after the WordPress 6.3 fix
 
-**Исторический отчёт для `4f5b285c…`. Найденный ниже P2 исправлен в новом локальном кандидате; актуальные результаты и артефакты — в [HTML5-VERIFICATION.md](HTML5-VERIFICATION.md). Приведённые ниже хеши относятся к прежнему архиву и прежней версии diff.**
+**Historical report for `4f5b285c…`. The P2 identified below was fixed in a new local candidate; current results and artifacts are in [HTML5-VERIFICATION.md](HTML5-VERIFICATION.md). The hashes below identify the previous archive and previous diff.**
 
-27 октября 2026. Проверен неизменённый локальный ZIP SHA-256 `4f5b285c30fde609edb2252f7e8be782fe59d9967be37ecbc34b6c06795a0da2`.
+27 October 2026. The unchanged local ZIP with SHA-256 `4f5b285c30fde609edb2252f7e8be782fe59d9967be37ecbc34b6c06795a0da2` was reviewed.
 
-**Результат: требуется доработка. Найден один оставшийся P2 с HTML5 entities в подписи Author. Новых подтверждённых регрессий, внесённых последним исправлением `&apos;`, не найдено.**
+**Result: changes required. One remaining P2 involving HTML5 entities in an Author caption was found. No new confirmed regressions introduced by the latest `&apos;` fix were found.**
 
-Код продукта, ZIP и diff не менялись. Добавлены независимый тест и отчёт. Публикаций, Git commit/push, изменений SVN и пользовательских сайтов нет.
+The product code, ZIP, and diff were not changed. An independent test and report were added. Nothing was published; no Git commit/push, SVN changes, or changes to user sites were made.
 
-## P2. Часть HTML5 entities меняет отображение и делает блок невалидным
+## P2. Some HTML5 entities change rendering and make the block invalid
 
-Место: `includes/simple-digital-clock-kses.php:151–173`, обработка HTML подписи в `pre_kses`.
+Location: `includes/simple-digital-clock-kses.php:151–173`, caption HTML processing in `pre_kses`.
 
-Сценарий воспроизведения:
+Reproduction:
 
-1. На официальном 1.1.1 Administrator создаёт валидную запись для Author с подписью `&NotEqualTilde; <clock>` через оригинальный сериализатор. HTML5-браузер получает `≂̸ <clock>`; исходная строка настройки хранится в JSON.
-2. Устанавливается проверяемый ZIP 1.1.2, содержимое записи остаётся прежним.
-3. Author изменяет **только заголовок** той же записи.
-4. JSON-подпись сохраняется, но HTML получает `caption="&amp;NotEqualTilde; &lt;clock&gt;"`. Браузер теперь показывает буквальное `&NotEqualTilde; <clock>`.
-5. Парсер блоков и настоящий редактор считают блок невалидным. Полное пересохранение Gutenberg также не устраняет расхождение. После фактического отката официальный 1.1.1 отвергает тот же блок; замена ZIP содержимое БД не меняет.
+1. On official 1.1.1, an Administrator creates a valid post for an Author with caption `&NotEqualTilde; <clock>` using the original serializer. An HTML5 browser receives `≂̸ <clock>`; the original setting string is stored in JSON.
+2. The 1.1.2 ZIP under review is installed, leaving post content unchanged.
+3. The Author changes **only the title** of the same post.
+4. The JSON caption is preserved, but HTML receives `caption="&amp;NotEqualTilde; &lt;clock&gt;"`. The browser now displays the literal `&NotEqualTilde; <clock>`.
+5. The block parser and actual editor consider the block invalid. A full Gutenberg resave also fails to resolve the mismatch. After an actual rollback, official 1.1.1 rejects the same block; replacing the ZIP does not change database content.
 
-Проверены семь строк с общей причиной: `&NewLine;`, `&Tab;`, `&NotEqualTilde;`, `&CounterClockwiseContourIntegral;`, `&colon;`, `&sol;`, `&lbrace;`, каждая с ` <clock>`. Все семь ломаются для Author на всех четырёх конфигурациях. Administrator проходит эти случаи.
+Seven strings sharing the same cause were tested: `&NewLine;`, `&Tab;`, `&NotEqualTilde;`, `&CounterClockwiseContourIntegral;`, `&colon;`, `&sol;`, and `&lbrace;`, each followed by ` <clock>`. All seven fail for Author on all four configurations. Administrator passes these cases.
 
-Это **один дефект**, а не семь независимых ошибок. Стандартные `&apos;`, `&amp;apos;`, многоуровневые `&amp;`, числовые entities, кавычки, CR/LF, табуляция, Unicode и HTML-подобный текст в расширенном наборе проходят.
+This is **one defect**, not seven independent errors. Standard `&apos;`, `&amp;apos;`, multiple `&amp;` layers, numeric entities, quotes, CR/LF, tabs, Unicode, and HTML-like text pass in the extended suite.
 
-## Причина и сравнение с прежним кандидатом
+## Cause and comparison with the previous candidate
 
-В штатном `wp_kses()` нормализация entities выполняется **до** `wp_kses_hook()` / `pre_kses`. Часть HTML5 имён отсутствует в разрешённом списке KSES; нормализатор превращает их в буквальный текст. На всех четырёх сайтах перехват на приоритете 8 подтвердил: к моменту входа в обработчик плагина амперсанд уже стал `&amp;`.
+In standard `wp_kses()`, entity normalization runs **before** `wp_kses_hook()` / `pre_kses`. Some HTML5 names are absent from the KSES allowlist; the normalizer turns them into literal text. A priority-8 probe on all four sites confirmed that the ampersand has already become `&amp;` by the time the plugin handler receives it.
 
-Отдельно проверено, что `&NotEqualTilde;` и `&amp;NotEqualTilde;` после этой нормализации дают одну и ту же строку. Поэтому простое изменение приоритета внутри `pre_kses` или повторное декодирование текущего HTML не гарантирует сохранения исходного смысла. Коррекция должна сохранять различие до его потери либо использовать неизменённую исходную настройку блока, сохраняя безопасность KSES и прежний формат чтения 1.1.1.
+A separate check confirmed that `&NotEqualTilde;` and `&amp;NotEqualTilde;` become the same string after this normalization. Simply changing priority within `pre_kses` or decoding the current HTML again therefore cannot guarantee the original meaning. The correction must preserve the distinction before it is lost or use the unchanged original block setting, while preserving KSES safety and the existing 1.1.1 reading format.
 
-Точный прежний ZIP `1ce5d1d1…` установлен в лаборатории и проверен на **отдельных копиях** исходных записей. Те же семь строк ломаются и там. На WP 6.3 дополнительно ломается старый `&apos; <clock>`, который текущий ZIP уже исправляет. Следовательно, найденный P2 не внесён последним изменением native lexer; он оставался вне предыдущих тестовых наборов.
+Exact previous ZIP `1ce5d1d1…` was installed in the lab and tested on **separate copies** of the original posts. The same seven strings fail there as well. On WP 6.3, the older `&apos; <clock>` case also fails; the current ZIP already fixes it. The P2 was therefore not introduced by the latest native lexer change; it had remained outside the previous test suites.
 
-Основные 136 записей во время сравнительного контроля не изменились. Затем текущий ZIP восстановлен и сверён побайтно перед отдельным откатом на официальный 1.1.1.
+The main 136 posts were unchanged during the comparative control. The current ZIP was then restored and checked byte for byte before a separate rollback to official 1.1.1.
 
-## Результаты
+## Results
 
-| Конфигурация | PHP, все прежние наборы | Прежняя браузерная регрессия / движок | Расширенные подписи / движок | Чтение этих подписей официальным 1.1.1 / движок |
+| Configuration | PHP, all existing suites | Existing browser regression / engine | Extended captions / engine | Official 1.1.1 reading these captions / engine |
 | --- | --- | --- | --- | --- |
 | WP 7.1.3 / PHP 8.3.35 | 630/630 | 33/33 | **345/374** | **345/374** |
 | WP 7.1.3 / PHP 8.4.27 | 630/630 | 33/33 | **345/374** | **345/374** |
 | WP 6.3.2 / PHP 8.2.12 | 630/630 | 33/33 | **345/374** | **345/374** |
 | WP 6.8.3 / PHP 8.3.28 | 630/630 | 33/33 | **345/374** | **345/374** |
 
-Проверки выполнены в Chromium, Firefox и WebKit. Сохранения расширенного набора выполнены Chromium; Firefox/WebKit независимо читают полученный результат. Пересохранения основного набора выполнены во всех трёх движках. В расширенном наборе 46 видов подписей для двух ролей, по одной составной записи на роль и сайт. 29 отрицательных проверок на сайт — семь случаев × четыре утверждения после title-only/full save, плюс проверка настоящего редактора. Все исходные JSON-подписи сохранены.
+Checks ran in Chromium, Firefox, and WebKit. The extended suite was saved using Chromium; Firefox/WebKit independently read the results. The main suite was resaved in all three engines. The extended suite contains 46 caption types for two roles, with one composite post per role and site. The 29 failed assertions per site are seven cases × four assertions after title-only/full save, plus an actual editor check. All original JSON captions were preserved.
 
-Повторно прошли:
+The following passed again:
 
-- **2520/2520** PHP-проверок: 1856 исходных, 592 предыдущего ревью, 72 raw-caption.
-- **396/396** прежних браузерных проверок.
-- **480/480** пересохранений/проверок основного набора подписей; **504/504** его проверок после отката.
-- **1584/1584** прежних проверок отката: все настройки, вложенные блоки, два часовых пояса, три движка.
-- Сырые метаданные соседних блоков: **68/68** при сохранении, **32/32** после отката.
-- **168/168** проверок после повторного обновления.
-- Lint, release-check, **22/22** Node-теста и **84/84** браузерных теста standalone-виджета.
+- **2520/2520** PHP checks: 1856 original, 592 from the previous review, and 72 raw-caption checks.
+- **396/396** existing browser checks.
+- **480/480** resaves/checks of the main caption suite; **504/504** checks of that suite after rollback.
+- **1584/1584** existing rollback checks: all settings, nested blocks, two time zones, and three engines.
+- Raw metadata of neighboring blocks: **68/68** during save, **32/32** after rollback.
+- **168/168** checks after reupgrade.
+- Lint, release-check, **22/22** Node tests, and **84/84** browser tests for the standalone widget.
 
-Последнее исправление `&apos; <clock>` проходит на WP 6.3.2 для Author как текущим, так и официальным старым читателем. Новый HTML5 entity-набор даёт **1380/1496** на каждый движок текущим и официальным старым читателем.
+The latest `&apos; <clock>` fix passes on WP 6.3.2 for Author with both the current reader and the official older reader. The new HTML5 entity suite returns **1380/1496** per engine with both readers.
 
-## Обновление, откат и артефакты
+## Upgrade, rollback, and artifacts
 
-Свежий цикл содержит **136 исходных ID**: 128 записей прежних наборов и восемь составных записей нового entity-набора. Все созданы на точном официальном 1.1.1; его 14 файлов сверены с манифестом.
+The fresh cycle contains **136 original IDs**: 128 posts from existing suites and eight composite posts from the new entity suite. All were created on exact official 1.1.1; its 14 files were checked against the manifest.
 
-После установки 1.1.2 исходное содержимое осталось прежним: 128 записей проверены прямым чтением из БД до их пересохранения, ещё восемь — по REST `content.raw` непосредственно перед первым сохранением каждой записи. Пересохранены те же ID. После отката все 136 записей побайтно равны снимку после сохранения кандидатом. БД не восстанавливалась.
+After 1.1.2 was installed, original content remained unchanged: 128 posts were checked by direct database reads before resaving, and another eight through REST `content.raw` immediately before each post's first save. The same IDs were resaved. After rollback, all 136 posts were byte-identical to the snapshot taken after saving with the candidate. The database was not restored.
 
-Основной набор из 128 записей проходит старый редактор. Новый набор подтверждает описанный P2: изменение HTML возникает при Author save, а откат ZIP его не ремонтирует. При повторном обновлении все 136 записей снова остаются неизменными; 15 файлов установленного плагина совпадают с текущим ZIP.
+The main suite of 128 posts passes in the old editor. The new suite confirms the P2 described here: HTML changes during Author save, and rolling back the ZIP does not repair it. After reupgrade, all 136 posts remain unchanged again; the installed plugin's 15 files match the current ZIP.
 
-- [Машиночитаемые доказательства](review3-evidence.json): неизменность продукта, результаты, исходные/пересохранённые ID, сравнение прежнего кандидата, порядок нормализации KSES, фактический откат и проверка файлов.
-- [Независимый браузерный тест](../../../tools/wordpress-lab/review3-captions.mjs).
-- [Проверенный diff](simple-digital-clock-1.1.1-to-1.1.2.patch), SHA-256 `98e5afeda9c8d895a78b28f0dd90a9b54e866ef690ca910d080617457bd87d3c`.
-- [Инструкция лаборатории](../../../tools/wordpress-lab/README.md).
+- [Machine-readable evidence](review3-evidence.json): product identity, results, original/resaved IDs, comparison with the previous candidate, KSES normalization order, actual rollback, and file checks.
+- [Independent browser test](../../../tools/wordpress-lab/review3-captions.mjs).
+- [Verified diff](simple-digital-clock-1.1.1-to-1.1.2.patch), SHA-256 `98e5afeda9c8d895a78b28f0dd90a9b54e866ef690ca910d080617457bd87d3c`.
+- [Lab instructions](../../../tools/wordpress-lab/README.md).
 
-Dry-run и применение diff к отдельной копии официального 1.1.1 прошли; все 15 файлов результата совпадают с ZIP. Standalone bundle 0.7.0 неизменён, SHA-256 `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`.
+A dry run and application of the diff to a separate copy of official 1.1.1 passed; all 15 resulting files match the ZIP. Standalone bundle 0.7.0 is unchanged, SHA-256 `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`.
 
-На подготовленной лаборатории с сохранённым исходным snapshot повторная проверка на независимых копиях:
+In the prepared lab with the original snapshot retained, repeat the control on independent copies:
 
 ```bash
 node tools/wordpress-lab/review3-captions.mjs control fresh-phase chromium
 ```
 
-Для текущего ZIP ожидается exit code 1. Для новой исходной лаборатории сначала выполнить `seed baseline` с официальным 1.1.1; сценарий отказывается перезаписывать доказательства. Ключевые команды текущего запуска сохранены в JSON-отчёте.
+For the ZIP reviewed here, exit code 1 is expected. In a new source lab, first run `seed baseline` with official 1.1.1; the scenario refuses to overwrite evidence. Key commands from this run are preserved in the JSON report.
 
-## Ограничения
+## Limitations
 
-Нативный LocalWP, multisite, runtime PHP 7.x/8.5 и конкретные сторонние плагины/темы не проверялись. Проверен синтетический сторонний блок с типизированными объектными атрибутами. Причина исходного пользовательского отзыва LocalWP остаётся неизвестной; данный P2 не выдаётся за её объяснение.
+Native LocalWP, multisite, PHP 7.x/8.5 runtime, and specific third-party plugins/themes were not tested. A synthetic third-party block with typed object attributes was tested. The cause of the original LocalWP user review remains unknown; this P2 is not presented as its explanation.
 
-Кроме описанного P2, новых подтверждённых проблем в проверенных сценариях не найдено. Проверки не дают полной гарантии для всех допустимых строк и сторонних расширений. Сам факт прохождения прежних тестов оказался недостаточным для вывода о всех HTML5 entities.
+Apart from the P2 described here, no new confirmed problems were found in the tested scenarios. These checks do not provide a complete guarantee for every valid string or third-party extension. Passing the previous tests proved insufficient to establish coverage of all HTML5 entities.
 
-Публикаций нет. Лаборатория остановлена; её файлы, записи, БД и результаты сохранены. Код продукта, ZIP и diff оставлены неизменными для отдельного согласованного исправления.
+Nothing was published. The lab was stopped; its files, posts, databases, and results were retained. Product code, ZIP, and diff were left unchanged for a separately approved correction.

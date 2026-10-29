@@ -1,90 +1,90 @@
-# Историческое повторное ревью 1.1.2 / 1ce5d1d1
+# Historical follow-up review of 1.1.2 / 1ce5d1d1
 
-**Обновление:** описанный P2 исправлен в ZIP `4f5b285c…`; новые и прежние тесты пройдены. [Актуальный отчёт](P2-VERIFICATION.md). Ниже сохранено исходное ревью прежнего архива.
+**Update:** the P2 described here was fixed in ZIP `4f5b285c…`; new and existing tests passed. [Current report](P2-VERIFICATION.md). The original review of the previous archive is preserved below.
 
-27 октября 2026. Проверен неизменённый ZIP SHA-256 `1ce5d1d1522f5a5af317c96b8edfdf636073f638a7411efedced781a80a403b1`.
+27 October 2026. The unchanged ZIP with SHA-256 `1ce5d1d1522f5a5af317c96b8edfdf636073f638a7411efedced781a80a403b1` was reviewed.
 
-**Результат: требуется доработка. Найден один оставшийся P2 — нарушение HTML-семантики подписи и валидности блока на WordPress 6.3.2.**
+**Result: changes required. One remaining P2 was found: caption HTML semantics and block validity are broken on WordPress 6.3.2.**
 
-Исходники продукта и ZIP не менялись. Добавлены независимые тесты и этот отчёт. Публикаций, Git commit/push, изменений SVN и пользовательских сайтов нет.
+The product sources and ZIP were not changed. Independent tests and this report were added. Nothing was published; no Git commit/push, SVN changes, or changes to user sites were made.
 
-## P2. Author save с `&apos; <clock>` делает валидный блок невалидным
+## P2. An Author save with `&apos; <clock>` makes a valid block invalid
 
-Место: `includes/simple-digital-clock-kses.php:153–155`, внутри `SDCW_prepare_clock_post_html()`.
+Location: `includes/simple-digital-clock-kses.php:153–155`, inside `SDCW_prepare_clock_post_html()`.
 
-Проверенный сценарий:
+Verified scenario:
 
-1. На официальном 1.1.1 создан валидный блок с подписью `&apos; <clock>`, владелец записи — Author.
-2. Плагин обновлён тем же проверяемым ZIP 1.1.2.
-3. Author изменяет **только заголовок** той же записи.
-4. JSON-подпись остаётся исходной, но HTML меняется с `caption="&apos; <clock&gt;"` на `caption="&amp;apos; &lt;clock&gt;"`.
-5. Отображение меняется с `' <clock>` на буквальное `&apos; <clock>`. `wp.blocks.parse()` и настоящий редактор получают `isValid: false`.
+1. On official 1.1.1, a valid block with caption `&apos; <clock>` was created in a post owned by an Author.
+2. The plugin was upgraded using the same 1.1.2 ZIP under review.
+3. The Author changes **only the title** of the same post.
+4. The JSON caption remains unchanged, but HTML changes from `caption="&apos; <clock&gt;"` to `caption="&amp;apos; &lt;clock&gt;"`.
+5. Rendering changes from `' <clock>` to the literal `&apos; <clock>`. Both `wp.blocks.parse()` and the actual editor report `isValid: false`.
 
-Тот же существующий ID сохранён на всём пути. Текущий JS и неизменённый JS 1.1.1 отвергают результат. Отдельный фактический откат до официального 1.1.1 на записях нового набора также подтвердил ошибку во всех трёх браузерах; замена ZIP содержимое БД не изменила.
+The same existing ID was retained throughout. Both the current JS and unchanged 1.1.1 JS reject the result. A separate actual rollback to official 1.1.1 on posts from the new suite also confirmed the error in all three browsers; replacing the ZIP did not change database content.
 
-На WordPress 6.8.3 и 7.1.3 этот сценарий проходит. На WordPress 6.3.2 Administrator проходит его, а Author — нет. Для `&apos;` без `<`, `&lt; <clock>` и `&amp;apos; <clock>` проверки также проходят. Значит, это не общее повреждение JSON или ошибка всех entity-строк.
+This scenario passes on WordPress 6.8.3 and 7.1.3. On WordPress 6.3.2 it passes for Administrator and fails for Author. Checks also pass for `&apos;` without `<`, `&lt; <clock>`, and `&amp;apos; <clock>`. This is therefore not general JSON corruption or a failure affecting all entity strings.
 
-## Причина и хронология
+## Cause and chronology
 
-В WordPress 6.3.2 `WP_HTML_Tag_Processor::get_attribute()` использует `html_entity_decode($raw_value)` с поведением HTML 4.01: `&apos;` не превращается в апостроф. Возвращённая строка всё ещё содержит `&apos;`, а также `<`, поэтому патч отправляет её на строгое повторное экранирование. Амперсанд превращается в `&amp;` и меняет смысл атрибута для HTML5-браузера.
+On WordPress 6.3.2, `WP_HTML_Tag_Processor::get_attribute()` uses `html_entity_decode($raw_value)` with HTML 4.01 behavior: `&apos;` is not converted to an apostrophe. The returned string still contains `&apos;` and `<`, so the patch applies strict escaping again. The ampersand becomes `&amp;`, changing the attribute's meaning in an HTML5 browser.
 
-В WordPress 6.8/7.1 штатный декодер возвращает настоящий апостроф, и операция сохраняет семантику. Это подтверждено отдельным сравнением реальных HTML Tag Processor всех четырёх сайтов.
+On WordPress 6.8/7.1, the native decoder returns an actual apostrophe, so the operation preserves semantics. A separate comparison of the actual HTML Tag Processors on all four sites confirmed this.
 
-Контроль прежним ZIP `431b9157` показывает тот же дефект для Author на 6.3.2. Поэтому он **не приписывается двум последним исправлениям**: это оставшийся случай совместимости, не охваченный прежними сценариями. Предыдущие исправления сохранности соседнего JSON и исходной JSON-подписи продолжают проходить проверки.
+A control run using previous ZIP `431b9157` shows the same defect for Author on 6.3.2. It is therefore **not attributed to the two latest fixes**: it is a remaining compatibility case that earlier scenarios did not cover. The previous fixes preserving neighboring JSON and the original JSON caption continue to pass.
 
-Эта ошибка относится к локальному кандидату. Причина исходного отзыва LocalWP по-прежнему неизвестна; данный случай не выдаётся за её объяснение.
+This error affects the local candidate. The cause of the original LocalWP review remains unknown; this case is not presented as its explanation.
 
-## Что нужно исправить
+## Required correction
 
-Корректно получать HTML5-значение атрибута на поддерживаемом старом WordPress до строгого экранирования. Сохранить различие между `&apos;` и `&amp;apos;`: повторное декодирование уже обработанной строки может сломать второй случай. Изменение только выходных флагов `htmlspecialchars()` не исправит неверно декодированный вход.
+Obtain the attribute's HTML5 value correctly on supported older WordPress versions before strict escaping. Preserve the distinction between `&apos;` and `&amp;apos;`: decoding an already processed string again can break the second case. Changing only the output flags of `htmlspecialchars()` does not fix incorrectly decoded input.
 
-Добавленные ожидания берутся из DOM валидного блока, созданного оригинальным JS 1.1.1, а не из PHP-декодера патча. Их следует оставить обязательными и добиться зелёного результата без изменения ожидаемого HTML-поведения.
+The added expectations come from the DOM of a valid block created by the original 1.1.1 JS, not from the patch's PHP decoder. They should remain mandatory, and the suite should pass without changing the expected HTML behavior.
 
-## Результаты
+## Results
 
-| Конфигурация | Новый набор Chromium, обе роли | Прежние PHP | Расширенные PHP | Прежний Chromium |
+| Configuration | New Chromium suite, both roles | Existing PHP | Extended PHP | Existing Chromium |
 | --- | --- | --- | --- | --- |
 | WP 7.1.3 / PHP 8.3.35 | 42/42 | 464/464 | 148/148 | 33/33 |
 | WP 7.1.3 / PHP 8.4.27 | 42/42 | 464/464 | 148/148 | 33/33 |
 | WP 6.3.2 / PHP 8.2.12 | **39/42** | 464/464 | 148/148 | 33/33 |
 | WP 6.8.3 / PHP 8.3.28 | 42/42 | 464/464 | 148/148 | 33/33 |
 
-Три падения на 6.3.2 — три проверки одного дефекта: прежнее HTML-значение, валидность сохранённого блока и настоящий редактор. JSON-значения всех 40 записей нового набора сохранены.
+The three failures on 6.3.2 are three assertions for one defect: the original HTML value, saved block validity, and the actual editor. JSON values were preserved for all 40 posts in the new suite.
 
-На 6.3.2 Firefox и WebKit также дали 39/42. После фактического отката до официального 1.1.1 Chromium, Firefox и WebKit дали те же 39/42. Во всех этих чтениях содержимое записей осталось побайтно тем же.
+Firefox and WebKit also returned 39/42 on 6.3.2. After an actual rollback to official 1.1.1, Chromium, Firefox, and WebKit returned the same 39/42. Post content remained byte-identical throughout these read checks.
 
-Повторно прошли 1856/1856 прежних PHP-проверок, 592/592 расширенных PHP-проверок и 132/132 прежних проверок Chromium. Все 112 записей предыдущего приёмочного цикла остались неизменными. Их ранее зелёный результат корректен для своего набора данных, но он не включал смешанную подпись `&apos; <clock>`.
+The existing 1856/1856 PHP checks, 592/592 extended PHP checks, and 132/132 existing Chromium checks passed again. All 112 posts from the previous acceptance cycle remained unchanged. Their earlier passing result is valid for that dataset, which did not include the mixed caption `&apos; <clock>`.
 
-Других подтверждённых дефектов в новых сценариях не обнаружено. Это не утверждение о полной совместимости всех сторонних плагинов и всех допустимых строк.
+No other confirmed defects were found in the new scenarios. This does not establish full compatibility with every third-party plugin or every valid string.
 
-## Доказательства и повторение
+## Evidence and reproduction
 
-- [Машиночитаемые доказательства](review2-evidence.json): результаты, оригинальная и изменённая запись одного ID, сравнение декодеров, прежний кандидат, фактический откат и идентичность файлов.
-- [Новый тест](../../../tools/wordpress-lab/review2-entities.mjs).
-- [Неизменяемые входные данные оригинального сериализатора](../../../tools/wordpress-lab/fixtures/review2-entities.json).
-- Локальные скриншоты настоящего редактора: `.local/wordpress-lab/review2/current-candidate-chromium-wp63-author.png` и `current-official111-chromium-wp63-author.png`.
+- [Machine-readable evidence](review2-evidence.json): results, the original and modified post with the same ID, decoder comparisons, the previous candidate, actual rollback, and file identity.
+- [New test](../../../tools/wordpress-lab/review2-entities.mjs).
+- [Immutable inputs from the original serializer](../../../tools/wordpress-lab/fixtures/review2-entities.json).
+- Local screenshots of the actual editor: `.local/wordpress-lab/review2/current-candidate-chromium-wp63-author.png` and `current-official111-chromium-wp63-author.png`.
 
-На подготовленной лаборатории с проверяемым кандидатом, из корня репозитория, с новым именем запуска:
+In the prepared lab with the candidate under review, run from the repository root with a fresh run name:
 
 ```bash
 node tools/wordpress-lab/review2-entities.mjs save fresh-review candidate chromium all
 ```
 
-Для проверенного здесь прежнего ZIP `1ce5d1d1…` ожидаются exit code 1 и три отрицательных проверки на `wp63`. Исправленный ZIP `4f5b285c…` проходит набор. Дальнейшее чтение не пересохраняет содержимое:
+For previous ZIP `1ce5d1d1…` reviewed here, exit code 1 and three failed assertions on `wp63` are expected. Fixed ZIP `4f5b285c…` passes the suite. Subsequent reads do not resave content:
 
 ```bash
 node tools/wordpress-lab/review2-entities.mjs read fresh-review candidate firefox wp63
 node tools/wordpress-lab/review2-entities.mjs read fresh-review candidate webkit wp63
 ```
 
-Тесты отказываются перезаписывать снимки. Правила подготовки, версий и остановки находятся в [инструкции лаборатории](../../../tools/wordpress-lab/README.md).
+The tests refuse to overwrite snapshots. Setup, version, and shutdown rules are in the [lab instructions](../../../tools/wordpress-lab/README.md).
 
-## Состояние и ограничения
+## State and limitations
 
-После сравнений все четыре лабораторных сайта возвращены к точному проверяемому ZIP, все 15 файлов сверены. Исходники продукта и ZIP по-прежнему идентичны началу ревью.
+After the comparisons, all four lab sites were restored to the exact ZIP under review, and all 15 files were checked. The product sources and ZIP remain identical to their state at the start of the review.
 
-Нативный LocalWP, multisite, PHP 7.x runtime и конкретные внешние плагины/темы не проверялись. Вывод о дефекте основан на фактическом WP 6.3.2 / PHP 8.2.12; он не экстраполируется на непроверенные сочетания.
+Native LocalWP, multisite, PHP 7.x runtime, and specific external plugins/themes were not tested. The defect finding is based on actual WP 6.3.2 / PHP 8.2.12; it is not extrapolated to untested combinations.
 
-Текущий кандидат требует исправления этого P2 до окончательной готовности. Ничего не опубликовано. Лабораторные данные и снимки сохранены.
+The candidate reviewed here requires this P2 to be fixed before final readiness. Nothing was published. Lab data and snapshots were retained.
 
-Тестовые контейнеры и выделенная сеть остановлены и удалены через compose down; локальные файлы и БД сохранены.
+Test containers and the dedicated network were stopped and removed through compose down; local files and databases were retained.

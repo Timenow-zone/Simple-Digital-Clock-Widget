@@ -1,97 +1,97 @@
-# Simple Digital Clock 1.1.2 — дополнительная приёмка
+# Simple Digital Clock 1.1.2 — additional acceptance
 
-> Исторический отчёт о предыдущем артефакте. Текущий кандидат и результаты: [README](README.md), [приёмка KSES72](KSES72-VERIFICATION.md). Указанные ниже общие пути ZIP/diff могли быть обновлены после этого запуска; исходные SHA и результаты сохранены как история.
+> Historical report for an earlier artifact. Current candidate and results: [README](README.md), [KSES72 acceptance](KSES72-VERIFICATION.md). The shared ZIP/diff paths below may have been updated after this run; the original SHAs and results are preserved as history.
 
-28 октября 2026. **Локальная приёмка точного ZIP `1e5d3f0d…` пройдена. Новых подтверждённых продуктовых регрессий в проверенной матрице не найдено. Публикаций нет.**
+28 October 2026. **Local acceptance of exact ZIP `1e5d3f0d…` passed. No new product regressions were confirmed in the tested matrix. Nothing was published.**
 
-Этот отчёт дополняет и заменяет выводы о текущем кандидате в [приёмке `92121d67…`](FINAL-ACCEPTANCE.md). Старые доказательства и ZIP сохранены отдельно. Счётчики ниже относятся к новым запускам, если прямо не указано иное.
+This report supplements and supersedes the current-candidate conclusions in [acceptance of `92121d67…`](FINAL-ACCEPTANCE.md). Earlier evidence and ZIPs are retained separately. Unless stated otherwise, the counts below refer to new runs.
 
 - ZIP SHA-256: `1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3`.
-- Итоговый ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`.
-- ZIP во время тестов: `.local/packages/simple-digital-clock-1.1.2-pointer3-candidate.zip`.
-- Официальный ZIP 1.1.1: `b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10`.
-- [Полный diff к 1.1.1](simple-digital-clock-1.1.1-to-1.1.2.patch): SHA-256 `8b87567d1932d25f4439084058232806cf04d133b2d35309a05bdbb7afd8ac5e`.
-- Новые результаты: `.local/wordpress-lab/gap-closure-921/`, Locale — `.local/wordpress-lab/locale-fix/accepted1e5v2-*.json`. Число `921` в имени каталога обозначает исходный кандидат расследования.
+- Final ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`.
+- ZIP used during tests: `.local/packages/simple-digital-clock-1.1.2-pointer3-candidate.zip`.
+- Official 1.1.1 ZIP: `b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10`.
+- [Full diff against 1.1.1](simple-digital-clock-1.1.1-to-1.1.2.patch): SHA-256 `8b87567d1932d25f4439084058232806cf04d133b2d35309a05bdbb7afd8ac5e`.
+- New results: `.local/wordpress-lab/gap-closure-921/`; Locale: `.local/wordpress-lab/locale-fix/accepted1e5v2-*.json`. The number `921` in the directory name identifies the investigation's initial candidate.
 
-[Машиночитаемый итог и хеши доказательств](gap-closure-evidence.json).
+[Machine-readable summary and evidence hashes](gap-closure-evidence.json).
 
-## Найдено и исправлено
+## Findings and fixes
 
-1. Ранее не закрытый мышиный Reset → Auto воспроизведён также в обычных Safari 27.0.1 и Firefox 159.0. При потере фокуса Core сворачивает Combobox между mousedown и click: кнопка перемещается, первый click не применяет действие. Теперь основные кнопки сохраняют фокус до click; Auto сначала завершает blur, затем применяет явный выбор. Клавиатурные Enter/Tab/Escape и IME guard сохранены.
-2. Reset Locale раньше оставлял пустую строку, которую Intl отвергает; preview показывал ошибку. Явный Reset теперь возвращает язык сайта. Чтение уже сохранённых языков ничего не меняет.
-3. Дополнительный сценарий Time Zone Reset выявил `timeZone: null`. После сохранения старый JS 1.1.1 отвергал такой блок, особенно при открытии в другом часовом поясе. Reset теперь сохраняет `timeZone: ""`: прежний строковый формат для времени посетителя. Это исправление обработчика действия, без миграции записей или изменения сериализатора.
+1. The previously unresolved mouse Reset → Auto issue was also reproduced in ordinary Safari 27.0.1 and Firefox 159.0. On blur, Core collapses the Combobox between mousedown and click: the button moves, so the first click does not apply the action. The main buttons now retain focus until click; Auto first completes blur, then applies the explicit choice. Keyboard Enter/Tab/Escape behavior and the IME guard are preserved.
+2. Reset Locale previously left an empty string that Intl rejects, causing the preview to show an error. Explicit Reset now restores the site language. Reading already saved locales changes nothing.
+3. An additional Time Zone Reset scenario exposed `timeZone: null`. After saving, old 1.1.1 JavaScript rejected that block, particularly when opened in another timezone. Reset now saves `timeZone: ""`, the previous string format for the visitor's local time. This changes the action handler, without migrating posts or changing the serializer.
 
-Относительно `92121d67…` продуктовые изменения ограничены `block.js` и changelog `readme.txt`. PHP, схема атрибутов, `save()`, восстановление старых атрибутов, CSS и bundled runtime не менялись. Относительно официального 1.1.1 полный патч затрагивает также `widget_init.php` и добавляет `includes/simple-digital-clock-kses.php` — прежние исправления сохранены.
+Relative to `92121d67…`, product changes are limited to `block.js` and the `readme.txt` changelog. PHP, the attribute schema, `save()`, recovery of old attributes, CSS and the bundled runtime are unchanged. Relative to official 1.1.1, the full patch also changes `widget_init.php` and adds `includes/simple-digital-clock-kses.php`; the earlier fixes are retained.
 
-Bundled runtime 0.7.0 SHA-256: `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`. Standalone `src/`, `dist/`, зависимости и версия не менялись.
+Bundled runtime 0.7.0 SHA-256: `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`. Standalone `src/`, `dist/`, dependencies and version are unchanged.
 
-## Матрица и результаты
+## Matrix and results
 
-Основная матрица сохраняет девять физических установок / десять контекстов: WordPress 6.3.2, 6.8.3 и 7.1.3; PHP 7.0.33–8.5.12; настоящий Local 10.2.0/nginx/MySQL; multisite с дочерним сайтом; темы Twenty Twenty-Three, Twenty Twenty-Five и Twenty Twenty-One. Точные сочетания приведены в [предыдущей таблице](FINAL-ACCEPTANCE.md#матрица) и новом `sites.json`.
+The main matrix retains nine physical installations / ten contexts: WordPress 6.3.2, 6.8.3 and 7.1.3; PHP 7.0.33–8.5.12; actual Local 10.2.0/nginx/MySQL; multisite with a child site; Twenty Twenty-Three, Twenty Twenty-Five and Twenty Twenty-One themes. Exact combinations are listed in the [previous table](FINAL-ACCEPTANCE.md#матрица) and new `sites.json`.
 
-| Проверка нового ZIP | Результат |
+| Check of the new ZIP | Result |
 | --- | --- |
-| 11 прежних PHP-наборов × 10 контекстов | **13 520/13 520** |
-| HTML5 и числовые entities: записи/виджеты, 3 движка | **1 091 040/1 091 040** DOM-сравнений |
-| Прежние Locale UI, теперь мышиная активация во всех движках | **378/378** |
-| Новые мышиные/клавиатурные сценарии, сохранение Reset и контроль старым JS | **315/315** |
-| Полное чтение старых записей/виджетов на новом ZIP, 30 runs | **1740/1740** |
-| Title-only, полное и повторное сохранение, 30 runs | **1527/1527** |
-| Mobile/tablet: 390/768 px, 10 контекстов × 3 движка | **300/300** |
-| Standalone Node / browser suites, исходники standalone неизменны | **22/22**, **84/84** |
-| ZIP CRC, 15 файлов точно равны исходникам, синтаксис JS, ESLint | PASS |
-| Dry-run diff и применение к официальному 1.1.1 | PASS, результат побайтно равен ZIP |
-| Полное чтение после физического отката на 1.1.1, 30 runs | **1740/1740** |
-| Locale / Reset timezone после отката, 3 среды × 3 движка | **63/63**, **99/99** |
-| После повторного штатного обновления, Chromium × 10 контекстов | **580/580** |
-| Locale / Reset timezone после повторного обновления, Chromium × 3 среды | **21/21**, **33/33** |
+| 11 previous PHP suites × 10 contexts | **13 520/13 520** |
+| HTML5 and numeric entities: posts/widgets, 3 engines | **1 091 040/1 091 040** DOM comparisons |
+| Previous Locale UI, now using mouse activation in every engine | **378/378** |
+| New mouse/keyboard scenarios, saved Reset and old-JavaScript control | **315/315** |
+| Full reading of old posts/widgets on the new ZIP, 30 runs | **1740/1740** |
+| Title-only, full and repeated saves, 30 runs | **1527/1527** |
+| Mobile/tablet: 390/768 px, 10 contexts × 3 engines | **300/300** |
+| Standalone Node / browser suites, standalone source unchanged | **22/22**, **84/84** |
+| ZIP CRC, 15 files exactly matching source, JS syntax, ESLint | PASS |
+| Diff dry-run and application to official 1.1.1 | PASS, result matches the ZIP byte for byte |
+| Full reading after physical rollback to 1.1.1, 30 runs | **1740/1740** |
+| Locale / Reset timezone after rollback, 3 environments × 3 engines | **63/63**, **99/99** |
+| After another native upgrade, Chromium × 10 contexts | **580/580** |
+| Locale / Reset timezone after reupgrade, Chromium × 3 environments | **21/21**, **33/33** |
 
-Сравниваются все 103 конфигурации/подписи в корпусе, вложенные и синхронизированные блоки, части шаблонов, соседний Custom HTML и legacy Text widget, активные/неактивные block widgets. Роли: Administrator, Editor, Author и обычный администратор multisite без `unfiltered_html`. Проверяются значения, валидность редактора, отсутствие dirty state при чтении, HTML/DOM, время при фиксированной дате, размеры и стили. Допуск геометрии — 0,001 CSS px; остальные сравнения точные.
+Comparisons cover all 103 configurations/captions in the corpus, nested and synced blocks, template parts, neighboring Custom HTML and a legacy Text widget, and active/inactive block widgets. Roles: Administrator, Editor, Author and an ordinary multisite administrator without `unfiltered_html`. Checks cover values, editor validity, no dirty state when reading, HTML/DOM, time at a fixed date, dimensions and styles. Geometry tolerance is 0.001 CSS px; other comparisons are exact.
 
-Обычные Safari/Firefox проверены мышью через Computer Use на собственных черновиках настоящего LocalWP: Reset соседнего поля при открытых подсказках, первый Auto, живая preview, реальная Save draft, проверка БД и повторное открытие. После Reset в БД подтверждена пустая строка; после Auto Timezone — `Europe/Kyiv`. Новые контрольные вкладки закрыты, прежние вкладки пользователя сохранены. Ручная проверка выполнена под Administrator; Author покрыт автоматическими UI-тестами.
+Ordinary Safari/Firefox were checked with a mouse through Computer Use on this investigation's own drafts in actual LocalWP: resetting the neighboring field while suggestions are open, first Auto activation, live preview, actual Save draft, database inspection and reopening. The database confirmed an empty string after Reset, and `Europe/Kyiv` after Auto Timezone. New control tabs were closed; the user's existing tabs were preserved. Manual checks used Administrator; Author is covered by automated UI tests.
 
-## Сторонние темы и кеш
+## Third-party themes and caching
 
-Дополнительный одноразовый сайт — отдельный Compose-проект `sdcw-gap-integrations-20261028`, `127.0.0.1:19532`, WP 7.1.3/PHP 8.3.35. Проверены:
+The additional disposable site uses a separate Compose project, `sdcw-gap-integrations-20261028`, `127.0.0.1:19532`, WP 7.1.3/PHP 8.3.35. Tested combinations:
 
 - Twenty Twenty-Five, [Astra 4.14.1](https://wordpress.org/themes/astra/), [GeneratePress 3.6.1](https://wordpress.org/themes/generatepress/).
-- Без оптимизации; [Autoptimize 3.1.17](https://wordpress.org/plugins/autoptimize/); [WP Super Cache 3.1.4](https://wordpress.org/plugins/wp-super-cache/); оба плагина вместе.
-- Desktop 1440 px и mobile 390 px, Administrator/Author content, по семь часов в записи и в зарегистрированном Core sidebar. Sidebar выводится контрольным MU-кодом; автоматическое размещение именно в штатных областях каждой темы не заявляется.
+- No optimization; [Autoptimize 3.1.17](https://wordpress.org/plugins/autoptimize/); [WP Super Cache 3.1.4](https://wordpress.org/plugins/wp-super-cache/); both plugins together.
+- Desktop 1440 px and mobile 390 px, Administrator/Author content, seven clocks per post and in a registered Core sidebar. The sidebar is rendered by control MU code; automatic placement specifically in each theme's native widget areas is not claimed.
 
-На 1.1.1 сняты **144** эталонных page/viewport результата. После штатного обновления и сохранений на новом ZIP все **144** совпали по настройкам, тексту, геометрии и стилям часов. **216/216** проверок сохранения пройдены; ещё шесть проверок подтвердили видимость изменённого widget после штатной очистки page cache. Autoptimize действительно обрабатывает код часов: проверены MIME/content и хеш сгенерированного JavaScript, включая `.php` endpoints. Для WP Super Cache проверяется заголовок реального `Served …` HIT.
+On 1.1.1, **144** baseline page/viewport results were captured. After a native upgrade and saves on the new ZIP, all **144** matched in clock settings, text, geometry and styles. **216/216** save checks passed; six additional checks confirmed visibility of the changed widget after native page-cache clearing. Autoptimize actually processes the clock code: MIME/content and the generated JavaScript hash were checked, including `.php` endpoints. WP Super Cache checks verify a real `Served …` HIT header.
 
-**Особенность WP Super Cache:** сохранение block widget через REST не очищает существующий page cache. Это независимо воспроизведено чистым Core Paragraph widget при выключенном плагине часов: в БД новый текст, в ответе cache HIT старый, после `wp_cache_clear_cache()` новый текст виден. При сохранении записей автоматическая инвалидация работает. Для widget после изменения нужна очистка page cache. Данные не теряются; это не регрессия 1.1.2. В продукт не добавлены зависимости от API стороннего кеша.
+**WP Super Cache behavior:** saving a block widget through REST does not clear the existing page cache. This was independently reproduced with a plain Core Paragraph widget while the clock plugin was disabled: the database has new text, the cache HIT response has old text, and the new text becomes visible after `wp_cache_clear_cache()`. Automatic invalidation works for post saves. A widget change requires page-cache clearing. Data is not lost; this is not a 1.1.2 regression. No dependency on a third-party cache API was added to the product.
 
-После физического отката на 1.1.1 все **144** интеграционных page/viewport результата также совпали с эталоном. Повторная установка точного кандидата сохранила записи/виджеты; smoke GeneratePress + оба кеширующих плагина прошёл.
+After physical rollback to 1.1.1, all **144** integration page/viewport results also matched the baseline. Reinstalling the exact candidate preserved posts/widgets; the GeneratePress smoke with both caching plugins passed.
 
-## Обновление и откат
+## Upgrade and rollback
 
-Штатное обновление тестируется через локальный offer с точным ZIP/SHA и тем же `Plugin_Upgrader::bulk_upgrade()`/AJAX skin, который применяет Core. Публичная доставка WordPress.org не имитируется. Физическая замена файлов отдельно сверяется с полным manifest; активация, все строки posts, `widget_*`, `sidebars_widgets`, `theme_mods_*` и network activation сравниваются до/после.
+Native upgrading is tested through a local offer with the exact ZIP/SHA and the same `Plugin_Upgrader::bulk_upgrade()`/AJAX skin that Core uses. Public WordPress.org delivery is not simulated. Physical file replacement is independently checked against the full manifest; activation, all posts rows, `widget_*`, `sidebars_widgets`, `theme_mods_*` and network activation are compared before/after.
 
-Физический откат на официальный 1.1.1 и повторное штатное обновление на точный новый ZIP прошли на всех девяти установках. **24 137 полных строк posts**, настройки и расположение виджетов, theme mods и активация до/после замены файлов совпали; чтение после обеих замен также не изменило данные. Новых пустых auto-drafts нет. БД не восстанавливалась. Новые Reset-записи прочитаны в Asia/Tokyo: строка и HTML остаются прежними, блок валиден, время соответствует посетителю, а не UTC. После отката выполнен полный read в трёх движках; после повторного обновления — read в Chromium во всех десяти контекстах.
+Physical rollback to official 1.1.1 and another native upgrade to the exact new ZIP passed on all nine installations. **24 137 complete posts rows**, widget settings and placement, theme mods and activation matched before/after file replacement; reading after both replacements also left data unchanged. There were no new empty auto-drafts. The database was not restored. New Reset posts were read in Asia/Tokyo: the string and HTML remain unchanged, the block is valid, and the time follows the visitor rather than UTC. A full read in three engines followed rollback; a Chromium read in all ten contexts followed reupgrade.
 
-Откат файлов не требует преобразования формата БД. Однако редактирование под старым 1.1.1 возвращает его прежний дефект KSES/Author. Резервная копия нужна для возврата потерянного содержимого, если оно уже было сохранено сломанной старой версией; новый патч не может восстановить ранее удалённый HTML.
+File rollback requires no database-format conversion. However, editing on old 1.1.1 restores its previous KSES/Author defect. A backup is needed to recover lost content if a broken old-version save has already occurred; the new patch cannot recover previously removed HTML.
 
-## Контроли и неудачные попытки
+## Controls and unsuccessful attempts
 
-- Исходные RED сохранены: mouse/UI на `921`, Reset timezone на `353`. Последний дал шесть содержательных отказов и отдельную ошибку Heartbeat при закрытии контекста. Ошибки закрытия теперь записываются отдельно; runtime ошибки не игнорируются.
-- В первом новом контроле старый JS был реально перехвачен дважды из-за editor iframe; требование ровно одного HTTP-ответа было ошибкой теста. Теперь требуется хотя бы один перехват, и каждый получает проверенный SHA исходного 1.1.1.
-- В одном Chrome эталоне WP 6.8 auto-width шрифт отличался. Три независимых загрузки физического 1.1.1 дали геометрию нового ZIP, в отличие от первого холодного эталона. Начальный неудачный снимок и контролы сохранены; отдельная reference-папка содержит новый эталон с 1.1.1. Причина первого выброса не установлена. Product runtime/CSS не менялись.
-- На физическом 1.1.1 один WebKit Reset-read прошёл все десять проверок данных/времени, но зарегистрировал Core Heartbeat `admin-ajax.php` access-control error. Отдельный повтор с сетевой диагностикой прошёл 11/11; первый JSON сохранён. Причина единичной ошибки неизвестна, исключение не скрыто фильтром. Это не доказательство ошибки нового ZIP.
-- Полные PHP-журналы содержат три исторических ошибки диагностического CLI eval и предупреждения Core о заблокированных внешних update requests, а также WP-CLI Colors deprecation. В отдельном интеграционном setup также сохранены предупреждения WP Super Cache от ошибочно заданного пути его debug log; настройка исправлена до принятых прогонов. Ошибки классифицированы; ошибок PHP из файлов плагина часов в просмотренных журналах не найдено. Полная чистота журналов не заявляется.
-- Locale на `353` один раз остановился на Core inserter timeout в WebKit. Новый полный прогон текущего ZIP прошёл; первичный JSON сохранён, причина единичного timeout неизвестна.
-- Интеграционный setup уточнён по фактам: повторное присваивание widget дублировало его ID; новые instances требуют явного назначения sidebar; непальские цифры не совпадают с ASCII `\d`; Autoptimize может выдавать JS через `.php`; WP Super Cache требует slash-политики, соответствующей permalink. Старые неудачные JSON не заменялись успешными.
-- Playwright Clock удаляет navigation performance entries, нужные Core Interactivity, и вызывал Core JS-ошибки. Независимый контроль без fake clock подтвердил причину; интеграционные снимки фиксируют только Date, сохраняя реальные performance/timers. Основные старые визуальные эталоны используют прежний clock для сопоставимости; чистота Core console на их основании не заявляется.
+- Original RED results are retained: mouse/UI on `921` and Reset timezone on `353`. The latter produced six substantive failures and a separate Heartbeat error while closing the context. Close errors are now recorded separately; runtime errors are not ignored.
+- In the first new control, old JavaScript was actually intercepted twice because of the editor iframe; requiring exactly one HTTP response was a test error. At least one interception is now required, and each receives the verified SHA of original 1.1.1.
+- One Chrome baseline on WP 6.8 had a different auto-width font. Three independent loads of physically installed 1.1.1 produced the new ZIP's geometry, unlike the first cold baseline. The initial failed snapshot and controls were retained; a separate reference directory contains a new 1.1.1 baseline. The cause of the first outlier is unknown. Product runtime/CSS were unchanged.
+- On physically installed 1.1.1, one WebKit Reset-read passed all ten data/time checks but recorded a Core Heartbeat `admin-ajax.php` access-control error. A separate rerun with network diagnostics passed 11/11; the first JSON was retained. The cause of the single error is unknown, and no filter hid the exception. This does not establish a new-ZIP defect.
+- Full PHP logs contain three historical diagnostic CLI eval errors, Core warnings about blocked external update requests, and a WP-CLI Colors deprecation. The separate integration setup also retains WP Super Cache warnings caused by an incorrect debug-log path; that setting was corrected before accepted runs. Errors were classified; no PHP errors originating in clock-plugin files were found in the inspected logs. Entirely clean logs are not claimed.
+- Locale on `353` stopped once at a Core inserter timeout in WebKit. A new full run of the current ZIP passed; the initial JSON was retained, and the single timeout's cause is unknown.
+- Integration setup was corrected based on observed behavior: reassigning a widget duplicated its ID; new instances need explicit sidebar assignment; Nepali digits do not match ASCII `\d`; Autoptimize may serve JS through `.php`; WP Super Cache requires a slash policy matching the permalink. Earlier failed JSON files were not replaced with successful ones.
+- Playwright Clock removes navigation performance entries required by Core Interactivity and caused Core JS errors. An independent control without a fake clock confirmed the cause; integration snapshots fix only Date, preserving real performance/timers. The main earlier visual baselines use the previous clock for comparability; they do not establish a clean Core console.
 
-## Границы вывода
+## Limits of the conclusion
 
-Проверены перечисленные версии, темы, роли и сочетания. Произвольные сторонние плагины, native HTTPS/Site Domains, subdomain multisite, ручной системный IME, доставка Google Fonts, Windows/iOS и конкретный сайт автора отзыва не проверены. Проверки не устанавливают причину его жалобы. Обновление из публичного каталога возможно проверить только после отдельной разрешённой публикации.
+The listed versions, themes, roles and combinations were tested. Arbitrary third-party plugins, native HTTPS/Site Domains, subdomain multisite, manual system IME, Google Fonts delivery, Windows/iOS and the review author's specific site were not tested. These checks do not establish the cause of that complaint. Updating from the public directory can be tested only after a separately authorized publication.
 
-Ничего не публиковалось; SVN и реальные сайты не изменялись. Все пять собственных runtime-групп остановлены после проверки ID/labels: native LocalWP, три Compose-проекта и отдельный Firefox server. Базы, файлы, snapshots и архивы сохранены; `down -v`, volume deletion и prune не применялись.
+Nothing was published; SVN and real sites were unchanged. All five investigation-owned runtime groups were stopped after checking IDs/labels: native LocalWP, three Compose projects and a separate Firefox server. Databases, files, snapshots and archives were retained; `down -v`, volume deletion and prune were not used.
 
-## Повторение
+## Reproduction
 
-Стенды и `.local/` должны быть сохранены; команды ограничены указанными loopback-адресами и создают только тестовые записи. Для нового запуска выбирать свежий label: результаты защищены от перезаписи. Не менять версию файлов одновременно с browser runs.
+The test sites and `.local/` must be retained; commands are limited to the listed loopback addresses and create only test posts. Choose a fresh label for a new run: results are protected from overwriting. Do not change the installed file version concurrently with browser runs.
 
 ```bash
 set -euo pipefail
@@ -100,4 +100,4 @@ node tools/wordpress-lab/locale-tests.mjs test manual-unique chromium localwp
 node tools/wordpress-lab/timezone-reset-read.mjs manual-unique chromium localwp accepted1e5v2
 ```
 
-Фактическая последовательность, полные snapshots, manifests и команды остаются в `gap-closure-921/accept.py`, `matrix.py`, `compare_reads.py`, `integrations/cycle.py` и JSON. Это продолжение локальной приёмки, не готовая конфигурация для пользовательского сайта.
+The actual sequence, complete snapshots, manifests and commands remain in `gap-closure-921/accept.py`, `matrix.py`, `compare_reads.py`, `integrations/cycle.py` and JSON. This continues local acceptance; it is not a ready-made configuration for a user site.

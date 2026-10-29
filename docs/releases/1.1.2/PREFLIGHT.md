@@ -1,66 +1,66 @@
-# Финальные проверки перед выпуском 1.1.2
+# Final checks before the 1.1.2 release
 
-Это исторический снимок до публикации. Релиз затем опубликован 29 октября 2026 в SVN r3772502; последующие проверки описаны в [отчёте публикации](PUBLICATION.md).
+This is a historical snapshot from before publication. The release was subsequently published on 29 October 2026 in SVN r3772502; later checks are documented in the [publication report](PUBLICATION.md).
 
-29 октября 2026. **Проверки выполнены. Функциональных ошибок в smoke не найдено; Plugin Check завершён с 0 ERROR и 7 WARNING. Предупреждения разобраны ниже. Публикаций нет.** [Машиночитаемые доказательства](preflight-evidence.json).
+29 October 2026. **Checks completed. No functional errors were found in the smoke test; Plugin Check completed with 0 ERROR and 7 WARNING. The warnings are analyzed below. Nothing had been published at this stage.** [Machine-readable evidence](preflight-evidence.json).
 
-## Точный артефакт
+## Exact artifact
 
 - ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`.
 - SHA-256: `7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8`.
-- Установочный Git tree: `18512403b0715be777a89e302831a3cc3d5117b6`; исходный коммит `f4a2cae`.
-- Все 15 файлов исходников, финального ZIP и локальных SVN `trunk` / `tags/1.1.2` совпадают по SHA-256.
+- Installable Git tree: `18512403b0715be777a89e302831a3cc3d5117b6`; source commit `f4a2cae`.
+- All 15 files in the sources, final ZIP, and local SVN `trunk` / `tags/1.1.2` match by SHA-256.
 
-В этой задаче исполняемый код, POT, changelog и архив не менялись. Полная прежняя матрица 18 336 PHP / 1 309 248 DOM относится к функциональному ZIP `6f896d42…`. Ниже — отдельный новый smoke **точного финального ZIP** `7a0e061f…`, а не повтор всей матрицы.
+Executable code, POT, changelog, and archive were unchanged in this task. The full earlier matrix of 18 336 PHP / 1 309 248 DOM checks applies to the functional ZIP `6f896d42…`. The following is a separate new smoke test of the **exact final ZIP** `7a0e061f…`, not a rerun of the full matrix.
 
-## Smoke финального ZIP
+## Final ZIP smoke test
 
-Два изолированных контекста: настоящий LocalWP (WP 7.1.3, PHP 8.2.29, nginx/MySQL) и Docker WP 7.2 Beta 2 / PHP 8.3.35. Chromium, Firefox и WebKit. Свежие фикстуры созданы официальной 1.1.1: 103 clock-блока на нативную запись, Administrator/Editor/Author, паттерн, template part, смешанная раскладка, Custom HTML, активный/неактивный block widget и соседний Text widget.
+Two isolated contexts: real LocalWP (WP 7.1.3, PHP 8.2.29, nginx/MySQL) and Docker WP 7.2 Beta 2 / PHP 8.3.35. Chromium, Firefox, and WebKit. Fresh fixtures were created by official 1.1.1: 103 clock blocks per native post, Administrator/Editor/Author, a pattern, template part, mixed layout, Custom HTML, active/inactive block widget, and an adjacent Text widget.
 
-| Этап | Утверждения | Ошибки |
+| Stage | Assertions | Errors |
 | --- | ---: | ---: |
-| Исходная 1.1.1 и независимые визуальные эталоны | 8 | 0 |
-| Штатное обновление и чтение старых блоков | 342 | 0 |
-| Title-only, полное и повторное сохранение записей/виджетов | 300 | 0 |
-| Реальная кнопка Gutenberg Save и повторное открытие Administrator/Author | 54 | 0 |
-| Физический откат на 1.1.1 после пересохранения | 342 | 0 |
-| Повторное штатное обновление финальным ZIP | 342 | 0 |
-| Всего, включая исходные эталоны | **1388** | **0** |
+| Baseline 1.1.1 and independent visual references | 8 | 0 |
+| Standard upgrade and reading existing blocks | 342 | 0 |
+| Title-only, full, and repeated post/widget saves | 300 | 0 |
+| Actual Gutenberg Save button and reopening as Administrator/Author | 54 | 0 |
+| Physical rollback to 1.1.1 after resaving | 342 | 0 |
+| Standard reupgrade with the final ZIP | 342 | 0 |
+| Total, including baseline references | **1388** | **0** |
 
-Завершены 36 браузерных запусков. Сравнивались валидность и clean state редактора, содержимое и настройки блоков, подписи/entities, соседние блоки, сайдбары, frontend DOM, время, размеры и стили часов. Файловые операции проверялись хешами всех колонок всех строк posts и точными настройками widget/sidebar/theme/URL/activation. Первое обновление сохранило все **3999** строк posts, откат и повторное обновление — **4035**, включая тестовые записи и ревизии. БД не восстанавливалась.
+36 browser runs completed. Comparisons covered editor validity and clean state, block content and settings, captions/entities, adjacent blocks, sidebars, frontend DOM, time, clock dimensions, and styles. File operations were checked using hashes of every column in every posts row and exact widget/sidebar/theme/URL/activation settings. The first upgrade preserved all **3999** posts rows; rollback and reupgrade preserved **4035**, including test posts and revisions. The database was not restored.
 
-Новая проверка Native HTTPS не запускалась; она уже выполнена для побайтно того же исполняемого кода в прежней матрице. Здесь Local работал на своём `http://localhost:10003`; общий router и доверие сертификатам не менялись. Внешние fonts/CDN в браузерах заблокированы как в основной изолированной матрице.
+A new Native HTTPS check was not run; it had already been completed for byte-identical executable code in the earlier matrix. Here Local used its own `http://localhost:10003`; the shared router and certificate trust were unchanged. External fonts/CDN requests were blocked in browsers, as in the main isolated matrix.
 
 ## Plugin Check
 
-Официальный [Plugin Check](https://github.com/WordPress/plugin-check#how-to-use) **2.1.0**, ZIP SHA-256 `6ff4bd2145f3befcf907df158cc466b1649dafed5686de8369907403c3013fc4`, запускался на отдельном WP 7.1.3 / PHP 8.5.12. Выполнены режимы `update` и стандартный `new`, с включением низкой severity. Выбраны 29 статических и 5 runtime-проверок; runtime загружен официальным `--require=.../plugin-check/cli.php`. Дополнительный read-only hook фиксировал классы выбранных проверок без изменения их результатов.
+Official [Plugin Check](https://github.com/WordPress/plugin-check#how-to-use) **2.1.0**, ZIP SHA-256 `6ff4bd2145f3befcf907df158cc466b1649dafed5686de8369907403c3013fc4`, ran on a separate WP 7.1.3 / PHP 8.5.12. Both `update` and standard `new` modes ran, including low severity. 29 static and 5 runtime checks were selected; runtime was loaded through the official `--require=.../plugin-check/cli.php`. An additional read-only hook recorded the selected check classes without changing their results.
 
-| Установленная версия | ERROR | WARNING |
+| Installed version | ERROR | WARNING |
 | --- | ---: | ---: |
-| Официальная 1.1.1 | 0 | 1 |
-| Финальная 1.1.2 | 0 | 7 |
+| Official 1.1.1 | 0 | 1 |
+| Final 1.1.2 | 0 | 7 |
 
-Все шесть новых предупреждений — `WordPress.PHP.DevelopmentFunctions` в `includes/simple-digital-clock-kses.php`:
+All six new warnings are `WordPress.PHP.DevelopmentFunctions` in `includes/simple-digital-clock-kses.php`:
 
-- Пять `error_log` на строках 90, 143, 156, 211, 217. Они записывают только фиксированные сообщения на ошибках парсинга/кодирования. Подписи, HTML, аргументы, stack traces и секреты не журналируются. Это диагностика отказов с сохранением исходного ввода; код не менялся ради подавления эвристики.
-- Один `debug_backtrace` на строке 307. Используется для определения собственного вызова KSES, с `DEBUG_BACKTRACE_IGNORE_ARGS`, максимум 12 кадров, без вывода. Анализируются имена функций и идентичность объектов. Его замена требует сохранения уже проверенной вложенной санитизации.
+- Five `error_log` calls at lines 90, 143, 156, 211, 217. They log only fixed messages on parsing/encoding errors. Captions, HTML, arguments, stack traces, and secrets are not logged. These are failure diagnostics that preserve the original input; the code was not changed to suppress the heuristic.
+- One `debug_backtrace` at line 307. It identifies the plugin's own KSES invocation using `DEBUG_BACKTRACE_IGNORE_ARGS`, a maximum of 12 frames, and no output. Function names and object identity are inspected. Replacing it requires preserving the already verified nested sanitization behavior.
 
-Унаследованное предупреждение `EnqueuedScriptsScope` относится к загрузке runtime JS во всех frontend-контекстах. Оно одинаково в 1.1.1 и 1.1.2; изменение enqueueing потребует отдельной проверки raw HTML и динамических виджетов.
+The inherited `EnqueuedScriptsScope` warning concerns loading runtime JS across all frontend contexts. It is identical in 1.1.1 and 1.1.2; changing enqueueing requires separate testing of raw HTML and dynamic widgets.
 
-Это документированные контекстные исключения, а не результат «0 предупреждений». Исправлять проверенную логику только ради этой эвристики оснований не найдено. Экспериментальные и AI checks не включались. Сам PCP декларирует Tested up to 7.0, но реально завершил проверки на указанной WP 7.1.3. Внешний HTTP WordPress оставался заблокированным, публичная доставка этим прогоном не сертифицирована.
+These are documented contextual exceptions, not a “0 warnings” result. No justification was found for changing verified logic solely to satisfy this heuristic. Experimental and AI checks were not enabled. PCP itself declares Tested up to 7.0, but actually completed the checks on the stated WP 7.1.3. External WordPress HTTP remained blocked; this run does not validate public delivery.
 
-Первая попытка остановилась до проверок из-за `--user`, неприменимого к временным runtime-таблицам PCP. Ошибка драйвера и все повторы сохранены отдельно. Корректные прогоны прошли без этого аргумента. Исходные posts, все постоянные options, таблицы, виджеты и активация сохранены; временные PCP-таблицы/drop-in и checker удалены штатно. Финальный ZIP восстановлен точно по манифесту.
+The first attempt stopped before checks because `--user` was not applicable to PCP's temporary runtime tables. The driver error and all retries were retained separately. Correct runs completed without this argument. Original posts, all persistent options, tables, widgets, and activation were preserved; temporary PCP tables/drop-in and the checker were removed normally. The final ZIP was restored exactly according to the manifest.
 
-## Удалённый SVN и область выпуска
+## Remote SVN and release scope
 
-Read-only проверка на `2026-10-29T07:17:25.957888+00:00`: HEAD **r3772260**, trunk не изменился относительно **r3771402** (0 путей), последнее изменение **r3659668**. Trunk остаётся 1.1.1; все 14 файлов совпали с официальным ZIP. Удалённый тег **1.1.2 отсутствует**.
+Read-only check at `2026-10-29T07:17:25.957888+00:00`: HEAD **r3772260**, trunk unchanged relative to **r3771402** (0 paths), last change **r3659668**. Trunk remained at 1.1.1; all 14 files matched the official ZIP. Remote tag **1.1.2 was absent**.
 
-Локально в каждой цели ровно 15 файлов, пять ожидаемых отличий: `block.js`, новый `includes/simple-digital-clock-kses.php`, `languages/simple-digital-clock.pot`, `readme.txt`, `widget_init.php`. Тег `A +`, copy-from `trunk@3771402`, свойства не менялись. Посторонний незарегистрированный баннер `assets/` сохранён и исключён из будущего commit. В предполагаемую публикацию входят только подготовленные `trunk` и `tags/1.1.2`.
+Each local target contained exactly 15 files, with five expected differences: `block.js`, new `includes/simple-digital-clock-kses.php`, `languages/simple-digital-clock.pot`, `readme.txt`, `widget_init.php`. Tag status was `A +`, copy-from `trunk@3771402`, and properties were unchanged. The unrelated unversioned `assets/` banner was preserved and excluded from the future commit. Only the prepared `trunk` and `tags/1.1.2` were in the proposed publication scope.
 
-SVN update/commit/copy и Git push не выполнялись. Удалённое состояние может измениться: непосредственно перед разрешённой публикацией нужно повторить чтение и проверку области commit. Текущий результат не является разрешением на публикацию.
+No SVN update/commit/copy or Git push was performed. Remote state can change: immediately before authorized publication, repeat the reads and verify the commit scope. This result does not authorize publication.
 
-## Завершение и оставшаяся граница
+## Completion and remaining limits
 
-Собственные LocalWP/beta83/Firefox и отдельный PCP-стенд db/wp85 остановлены. Их loopback endpoints закрыты; данные и volumes сохранены. Другие Local-сайты и beta85 не запускались и не останавливались. Все доказательства лежат в `.local/release-final-112/` и `.local/wordpress-lab/release-smoke-112/`.
+The task's own LocalWP/beta83/Firefox and separate PCP db/wp85 environment were stopped. Their loopback endpoints were closed; data and volumes were preserved. Other Local sites and beta85 were neither started nor stopped. All evidence is retained in `.local/release-final-112/` and `.local/wordpress-lab/release-smoke-112/`.
 
-После будущей публикации остаются отдельные проверки: публичная версия/stable tag, распакованные файлы публичного ZIP по манифесту, update offer и контрольное обновление через WordPress.org на изолированном сайте. Сайт автора отзыва, окончательная WP 7.2 и произвольные сторонние комбинации не сертифицированы. `Tested up to: 7.1` сохранён.
+Separate checks remain after a future publication: public version/stable tag, extracted public ZIP files against the manifest, an update offer, and a control upgrade through WordPress.org on an isolated site. The reviewer's site, final WP 7.2, and arbitrary third-party combinations have not been validated. `Tested up to: 7.1` was preserved.

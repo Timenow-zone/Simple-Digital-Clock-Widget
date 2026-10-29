@@ -1,69 +1,69 @@
-# Исправление ручного ввода Locale в 1.1.2
+# Manual Locale input fix in 1.1.2
 
-> Исторический отчёт о предыдущем артефакте. Текущий кандидат и результаты: [README](README.md), [приёмка KSES72](KSES72-VERIFICATION.md). Указанные ниже общие пути ZIP/diff могли быть обновлены после этого запуска; исходные SHA и результаты сохранены как история.
+> Historical report for a previous artifact. Current candidate and results: [README](README.md), [KSES72 acceptance](KSES72-VERIFICATION.md). The shared ZIP/diff paths below may have been updated after this run; the original SHA values and results are retained as history.
 
-28 октября 2026. **Locale исправлен; новые и прежние проверки, обновление и физический откат на официальный 1.1.1 прошли. Публичных публикаций нет.**
+28 October 2026. **Locale is fixed; new and previous checks, upgrade, and physical rollback to official 1.1.1 passed. Nothing has been published publicly.**
 
 - ZIP SHA-256: `92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e`.
-- Полный diff к 1.1.1: SHA-256 `ba3623a4aac2dfd60799c6fde1e7cd707a6816589bf404d8e47e67b5a73e101c`.
-- [Машиночитаемые доказательства](locale-evidence.json).
+- Full diff against 1.1.1: SHA-256 `ba3623a4aac2dfd60799c6fde1e7cd707a6816589bf404d8e47e67b5a73e101c`.
+- [Machine-readable evidence](locale-evidence.json).
 
-## Изменение
+## Change
 
-Ранее введённый `uk-UA` оставлял прежний `uk`. Core [`ComboboxControl`](https://developer.wordpress.org/block-editor/reference-guides/components/combobox-control/) использует ввод для поиска по списку; произвольный текст сам по себе не является сохранённым значением.
+Previously, entering `uk-UA` left the previous `uk` value. Core's [`ComboboxControl`](https://developer.wordpress.org/block-editor/reference-guides/components/combobox-control/) uses input to search the list; arbitrary text by itself is not the saved value.
 
-Список языков и компонент сохранены. Новый `LocaleControl` добавляет валидный введённый код как вариант и показывает сохранённые коды, которых нет в списке. Enter выбирает код; потеря фокуса подтверждает его также при Tab и клике вне поля. Неверный код не заменяет настройку и показывает прежнее локализованное сообщение. Escape отменяет ввод. IME Enter не перехватывается. Для Core 6.3 учтены Tab на Reset внутри компонента и всплытие Enter от Reset к старому обработчику предложений.
+The language list and component are retained. The new `LocaleControl` adds a valid typed code as an option and displays saved codes that are absent from the list. Enter selects the code; blur also commits it when using Tab or clicking outside the field. An invalid code does not replace the setting and displays the existing localized message. Escape cancels input. IME Enter is not intercepted. Core 6.3 handling accounts for Tab onto Reset inside the component and Enter bubbling from Reset to the older suggestions handler.
 
-Нормализация пробелов, `_` и `ua → uk` использует прежний helper. Проверяется синтаксис через `Intl.getCanonicalLocales`; поддержка конкретной локали зависит от ICU браузера, как раньше. Новых строк перевода нет.
+Whitespace, `_`, and `ua → uk` normalization uses the existing helper. Syntax is checked through `Intl.getCanonicalLocales`; support for a particular locale still depends on the browser's ICU. No new translation strings were added.
 
-Относительно `834b1757…` изменены только **`block.js` и changelog `readme.txt`**. PHP, standalone bundle 0.7.0, схема атрибутов и весь `save()` побайтно прежние. Новых полей, миграции БД и фонового пересохранения записей нет.
+Relative to `834b1757…`, only **`block.js` and the `readme.txt` changelog** changed. PHP, standalone bundle 0.7.0, the attribute schema, and all of `save()` are byte-for-byte unchanged. There are no new fields, database migrations, or background post resaves.
 
-## Воспроизведение и итоговые тесты
+## Reproduction and final tests
 
-Новые тесты до правки на точном 834 дали **11/30** у Administrator и Author. Промежуточные прогоны выявили IME Enter (**34/36**), отличие Tab на Core 6.3 (**31/36**) и клавиатурный Reset старого Core (**36/38**). Дополнительный тест начального некорректного значения дал 38/42 на 7569aff3: Enter блокировал исправление. Условие сужено до неверного поискового ввода, поэтому корректный код и выбор из списка принимаются. В этих двух сценариях на роль исходное значение `%%` задаётся через editor store; исправление выполняется реальными клавишами. Окончательный ZIP проходит 42/42; промежуточные ZIP и RED evidence сохранены.
+Before the product change, the new tests on exact 834 returned **11/30** for both Administrator and Author. Intermediate runs exposed IME Enter (**34/36**), a Tab difference on Core 6.3 (**31/36**), and keyboard Reset on older Core (**36/38**). An additional test with an initially invalid value returned 38/42 on 7569aff3: Enter prevented correction. The condition was narrowed to invalid search input, allowing a valid code and list selection. In these two scenarios per role, the initial value `%%` is set through the editor store; correction uses real key presses. The final ZIP passes 42/42; intermediate ZIPs and RED evidence are retained.
 
-| Проверка точного окончательного ZIP | Результат |
+| Check of the exact final ZIP | Result |
 | --- | --- |
-| Locale UI: три среды × Chromium/Firefox/WebKit × Administrator/Author | **378/378** |
-| Прежние 11 PHP-наборов в четырёх контекстах | **5408/5408** |
-| Прежние Native LocalWP UI-сценарии: timezone, caption, опции, Author/Editor, сохранение, фронтенд | **76/76** |
-| 309 существующих блоков с подписями/entities, прочитанных тремя движками | **927 сочетаний блок/движок**, расхождений нет |
-| Чтение новых Locale-записей после физического отката на 1.1.1 | **63/63** |
-| Чтение после повторного обновления с 1.1.1 на этот ZIP | **21/21** |
-| ZIP CRC, соответствие 15 файлов исходникам, dry-run и применение diff к 1.1.1 | PASS |
+| Locale UI: three environments × Chromium/Firefox/WebKit × Administrator/Author | **378/378** |
+| Previous 11 PHP suites in four contexts | **5408/5408** |
+| Previous Native LocalWP UI scenarios: timezone, caption, options, Author/Editor, saving, frontend | **76/76** |
+| 309 existing caption/entity blocks read by three engines | **927 block/engine combinations**, no differences |
+| Reading new Locale posts after physical rollback to 1.1.1 | **63/63** |
+| Reading after reupgrade from 1.1.1 to this ZIP | **21/21** |
+| ZIP CRC, all 15 files matching source, dry-run and application of the diff to 1.1.1 | PASS |
 
-Среды UI: native **Local 10.2.0 / WP 7.1.3 / PHP 8.2.29 / nginx 1.26.1 / MySQL 8.4.0**; Docker **WP 6.3.2 / PHP 7.0.33**; дочерний сайт subdirectory multisite **WP 7.1.3 / PHP 8.5.12**. PHP-наборы дополнительно выполнены на корне той же сети: три установки, четыре контекста. Firefox использует официальный Playwright 1.62.1 Linux browser server; Chromium/WebKit локальные.
+UI environments: native **Local 10.2.0 / WP 7.1.3 / PHP 8.2.29 / nginx 1.26.1 / MySQL 8.4.0**; Docker **WP 6.3.2 / PHP 7.0.33**; a subdirectory multisite child site on **WP 7.1.3 / PHP 8.5.12**. The PHP suites also ran on that network's root site: three installations, four contexts. Firefox uses the official Playwright 1.62.1 Linux browser server; Chromium/WebKit run locally.
 
-Проверены `uk-UA`, `en-GB`, `fr-CA`, `ja-JP`, `uk_UA` с пробелами, `ua`, выбор из списка до/после ручного ввода, неверные строки, Escape, оба способа Reset, Auto language, несколько часов, сохранение/повторное открытие/повторная запись и frontend. Для IME проверен `KeyboardEvent` с `isComposing`; системная IME вручную не проверялась.
+Coverage includes `uk-UA`, `en-GB`, `fr-CA`, `ja-JP`, `uk_UA` with whitespace, `ua`, list selection before/after manual input, invalid strings, Escape, both Reset methods, Auto language, multiple clocks, save/reopen/resave, and frontend. IME coverage uses a `KeyboardEvent` with `isComposing`; a system IME was not tested manually.
 
-В итоговых UI-прогонах неперехваченных ошибок нет. Один прежний WebKit/multisite-прогон после функциональных проверок сообщил `admin-ajax.php ... access control checks`; отдельный повтор прошёл без ошибки. Причина единичного сообщения не установлена. Неудачный результат сохранён; ошибки при закрытии контекста теперь учитываются отдельно, но в успешном повторе их также нет.
+The final UI runs had no uncaught errors. One earlier WebKit/multisite run reported `admin-ajax.php ... access control checks` after its functional checks; a separate retry passed without the error. The cause of that isolated message is unknown. The failed result is retained; errors during context closure are now recorded separately, but the successful retry had none of those either.
 
-Такое же единичное сообщение возникло в Native WebKit уже на официальном 1.1.1 при откате: все шесть функциональных проверок прошли, итоговое требование отсутствия исключений — нет. Повторный запуск прошёл 7/7; неудачный файл не перезаписан. В read-режиме убран лишний повторный переход к уже открытой записи, сами проверки не изменены. Причина сообщения не установлена и не объявляется исправлением продукта.
+The same isolated message appeared in Native WebKit on official 1.1.1 during rollback: all six functional checks passed, but the final no-exceptions requirement failed. A retry passed 7/7; the failed file was not overwritten. Read mode no longer performs an unnecessary second navigation to the already open post; the checks themselves are unchanged. The cause of the message is unknown and is not claimed as a product fix.
 
-Исправлены только ошибки setup/ожиданий самого теста: Author получил собственный стартовый post; `fr-CA` проверяется с её форматом времени `h/min/s`, а не обязательным двоеточием; в multisite сравнивается post content без дополнительных часов в footer widgets. Эти первые неудачные попытки сохранены.
+Only test setup/expectation errors were corrected: Author received its own initial post; `fr-CA` is checked using its `h/min/s` time format rather than requiring colons; multisite comparison uses post content without additional clocks in footer widgets. These initial failed attempts are retained.
 
-## Ограничение мышиного прогона
+## Mouse-run limitation
 
-В headless WebKit/Firefox зафиксирована смена цели событий после потери фокуса: mousedown попадал в Auto language, mouseup/click — в контейнер. Часть мышиных Reset/Auto не выполняла действие. Контроль с **точным прежним `block.js` из 834**, подставленным только в браузерный HTTP-ответ, воспроизвёл поведение. Записаны SHA JS и число действительно перехваченных ответов. После гарантированного очищения мышиный Auto оставлял пустую строку, клавиатурный возвращал `en-US`.
+Headless WebKit/Firefox showed a change in event target after blur: mousedown reached Auto language, while mouseup/click reached the container. Some mouse Reset/Auto actions did not execute. A control using the **exact previous `block.js` from 834**, substituted only in the browser HTTP response, reproduced the behavior. The JS SHA and the number of responses actually intercepted were recorded. After guaranteed clearing, mouse Auto left an empty string, whereas keyboard activation restored `en-US`.
 
-Это не объявлено новой регрессией и не приписывается LocalWP. Причина смены цели событий и поведение обычных Safari/Firefox пользователя не установлены. Итоговые Firefox/WebKit-сценарии активируют кнопки клавиатурой, Chromium — мышью. Неудачные мышиные попытки и события фокуса сохранены отдельно. Это не подтверждение всех мышиных взаимодействий в любых браузерах.
+This is not claimed as a new regression and is not attributed to LocalWP. The reason for the event-target change and the behavior of users' regular Safari/Firefox browsers are unknown. The final Firefox/WebKit scenarios activate buttons by keyboard; Chromium uses the mouse. Failed mouse attempts and focus events are retained separately. This does not confirm every mouse interaction in every browser.
 
-## Обновление и откат
+## Upgrade and rollback
 
-На трёх установках физически установлен официальный ZIP 1.1.1, SHA-256 `b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10`; сверены 14 файлов. Его редактор и frontend прочитали шесть новых записей / девять часов с Locale-кодами в трёх движках и другом browser timezone. Блоки валидны, чтение не делает post dirty и не меняет содержимое.
+The official 1.1.1 ZIP was physically installed on three installations, SHA-256 `b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10`; all 14 files were verified. Its editor and frontend read six new posts / nine clocks with Locale codes in three engines and a different browser timezone. Blocks remain valid; reading does not make the post dirty or change its content.
 
-Затем физически возвращён тот же окончательный 1.1.2: сверены 15 файлов, повторено чтение. На переходах и между reader runs сохранились все **4750 строк post_content и 50 widget contents** четырёх контекстов. БД не восстанавливалась. Откат возвращает прежние ограничения UI и известную фильтрацию Author в 1.1.1; это не обещание исправности редактирования на старом плагине.
+The same final 1.1.2 was then physically restored: all 15 files were verified and reading repeated. Across replacements and between reader runs, all **4750 post_content rows and 50 widget contents** in four contexts were preserved. The database was not restored. Rollback brings back the previous UI limitations and known Author filtering in 1.1.1; it does not promise correct editing on the old plugin.
 
-После проверки на стендах оставлен новый кандидат, стенды остановлены, данные сохранены. Старые ZIP/diff и промежуточные сборки остаются в `.local/wordpress-lab/locale-fix/`. Пользовательские сайты, SVN, удалённые Git-репозитории и форум не менялись.
+After verification, the new candidate was left on the test sites, the sites were stopped, and data was retained. Old ZIPs/diffs and intermediate builds remain in `.local/wordpress-lab/locale-fix/`. User sites, SVN, remote Git repositories, and the forum were unchanged.
 
-## Связь с жалобой LocalWP
+## Relation to the LocalWP complaint
 
-Публичный 1.1.1 действительно воспроизводит два исходных сбоя **также в настоящем LocalWP**: удаление часов при сохранении Author и невалидный блок при смене browser timezone. Это подтверждённые возможные объяснения жалобы. Они воспроизводились и вне LocalWP; считать причиной сам LocalWP нельзя.
+Public 1.1.1 does reproduce two original failures **also in real LocalWP**: clock removal on Author save and invalid blocks after a browser timezone change. These are confirmed possible explanations for the complaint. They were also reproduced outside LocalWP; LocalWP itself cannot be declared the cause.
 
-Автор не сообщил симптомов, версий и шагов, поэтому причина именно его жалобы остаётся неизвестной. После релиза можно сообщить о проверенных исправлениях и предложить повторную проверку; утверждать «мы установили причину вашей проблемы» нельзя.
+The reviewer supplied no symptoms, versions, or steps, so the cause of that particular complaint remains unknown. After release, it is reasonable to describe the verified fixes and invite a retest; it is not justified to claim “we identified the cause of your problem.”
 
-## Артефакты и границы
+## Artifacts and scope
 
-Runner: `tools/wordpress-lab/locale-tests.mjs`. ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`. [Полный diff](simple-digital-clock-1.1.1-to-1.1.2.patch). Результаты, контролы, snapshots, промежуточные ZIP и cycle runner: `.local/wordpress-lab/locale-fix/`; дополнительные старые UI-наборы перечислены в манифесте.
+Runner: `tools/wordpress-lab/locale-tests.mjs`. ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`. [Full diff](simple-digital-clock-1.1.1-to-1.1.2.patch). Results, controls, snapshots, intermediate ZIPs, and the cycle runner: `.local/wordpress-lab/locale-fix/`; additional older UI suites are listed in the manifest.
 
-Прежние 13 520 PHP-проверок и 1 091 040 DOM-сравнений из [приёмки 834](WIDGET-FALLBACK-VERIFICATION.md) не выдаются за новый запуск. PHP и bundle в них побайтно прежние; текущие повторы перечислены выше. Native HTTPS, чужие темы/плагины, сайт автора и ручная работа в его браузере не покрыты.
+The previous 13 520 PHP checks and 1 091 040 DOM comparisons from [834 acceptance](WIDGET-FALLBACK-VERIFICATION.md) are not presented as a new run. Their PHP and bundle bytes are unchanged; current reruns are listed above. Native HTTPS, third-party themes/plugins, the reviewer's site, and manual operation in their browser are outside coverage.
