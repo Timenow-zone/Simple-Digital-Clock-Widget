@@ -1,0 +1,904 @@
+{
+  "date_local": "2026-10-28",
+  "status": "requires_changes_two_remaining_P2_native_Local_pending",
+  "product_changed": false,
+  "published": false,
+  "git_commit_or_push": false,
+  "svn_mutated": false,
+  "user_sites_mutated": false,
+  "artifacts": {
+    "candidate_zip_sha256": "977c560321b565ddfbc66aa4d5dd2c32381779751c756106c2c317e2fd6d6bbb",
+    "diff_sha256": "1f3e448f56d42c704574354cc1ce16446c81c59097a00961d8fff9f2813c7c0c",
+    "previous_control_zip_sha256": "4c62efe3ae3a935a88686e354e405169cd3495e4dab45dd8b27634c08f21e880",
+    "baseline_zip_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+    "product_files": {
+      "index.php": {
+        "bytes": 133,
+        "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69"
+      },
+      "LICENSE": {
+        "bytes": 18092,
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "widget_init.php": {
+        "bytes": 8609,
+        "sha256": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+      },
+      "block.js": {
+        "bytes": 115244,
+        "sha256": "2dd37dc1973176e42861391f3b177b08878f7cad42661967c61820235d587615"
+      },
+      "readme.txt": {
+        "bytes": 6713,
+        "sha256": "c640023699e0e39b9fac30059cdeca95f06fd80403d6167700601fba38fa2395"
+      },
+      "includes/simple-digital-clock-admin-notices.php": {
+        "bytes": 3714,
+        "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87"
+      },
+      "includes/simple-digital-clock-kses.php": {
+        "bytes": 13085,
+        "sha256": "dd1f81e4d1fb93f0b9bacca82629cb6bcd3ec09a2804e802093a2559f966c7e3"
+      },
+      "includes/simple-digital-clock-admin-settings.php": {
+        "bytes": 906,
+        "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1"
+      },
+      "languages/simple-digital-clock.pot": {
+        "bytes": 4351,
+        "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb"
+      },
+      "assets/public/css/simple-digital-clock.css": {
+        "bytes": 328,
+        "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a"
+      },
+      "assets/public/js/simple-digital-clock.min.js": {
+        "bytes": 32649,
+        "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+      },
+      "assets/admin/js/simple-digital-clock-notify.js": {
+        "bytes": 648,
+        "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa"
+      },
+      "assets/admin/img/icon.png": {
+        "bytes": 551,
+        "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2"
+      },
+      "assets/admin/img/icon.svg": {
+        "bytes": 747,
+        "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1"
+      },
+      "assets/admin/img/stars.png": {
+        "bytes": 2043,
+        "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+      }
+    },
+    "bundled_widget_sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+  },
+  "matrix": [
+    {
+      "post_id": 6,
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "users": {
+        "username": 1,
+        "author_username": 2,
+        "site_admin_username": 3,
+        "editor_username": 4
+      },
+      "service": "wp70",
+      "key": "wp70",
+      "url": "http://127.0.0.1:19528",
+      "multisite": false
+    },
+    {
+      "post_id": 6,
+      "wordpress": "7.1.3",
+      "php": "7.4.33",
+      "users": {
+        "username": 1,
+        "author_username": 2,
+        "site_admin_username": 3,
+        "editor_username": 4
+      },
+      "service": "wp74",
+      "key": "wp74",
+      "url": "http://127.0.0.1:19529",
+      "multisite": false
+    },
+    {
+      "post_id": 6,
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "users": {
+        "username": 1,
+        "author_username": 2,
+        "site_admin_username": 3,
+        "editor_username": 4
+      },
+      "service": "wp85",
+      "key": "wp85",
+      "url": "http://127.0.0.1:19530",
+      "multisite": false
+    },
+    {
+      "post_id": 4,
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "users": {
+        "username": 1,
+        "author_username": 2,
+        "site_admin_username": 3,
+        "editor_username": 4
+      },
+      "service": "ms85",
+      "key": "ms85",
+      "url": "http://127.0.0.1:19531",
+      "multisite": true
+    },
+    {
+      "post_id": 3,
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "users": {
+        "username": 1,
+        "author_username": 2,
+        "site_admin_username": 3,
+        "editor_username": 4
+      },
+      "service": "ms85",
+      "key": "ms85-child",
+      "url": "http://127.0.0.1:19531/clock-child/",
+      "multisite": true
+    }
+  ],
+  "php_suites": [
+    {
+      "suite": "final-review-green.json",
+      "site_contexts": 5,
+      "assertions": 740,
+      "failed": 0
+    },
+    {
+      "suite": "html5-caption-save-green.json",
+      "site_contexts": 5,
+      "assertions": 965,
+      "failed": 0
+    },
+    {
+      "suite": "html5-charset-green.json",
+      "site_contexts": 5,
+      "assertions": 20,
+      "failed": 0
+    },
+    {
+      "suite": "html5-entity-pipeline-green.json",
+      "site_contexts": 5,
+      "assertions": 15,
+      "failed": 0
+    },
+    {
+      "suite": "numeric-caption-save-green.json",
+      "site_contexts": 5,
+      "assertions": 2300,
+      "failed": 0
+    },
+    {
+      "suite": "numeric-entity-pipeline-green.json",
+      "site_contexts": 5,
+      "assertions": 25,
+      "failed": 0
+    },
+    {
+      "suite": "p2-caption-green.json",
+      "site_contexts": 5,
+      "assertions": 90,
+      "failed": 0
+    },
+    {
+      "suite": "regression-green.json",
+      "site_contexts": 5,
+      "assertions": 2320,
+      "failed": 0
+    }
+  ],
+  "php_assertions": 6475,
+  "dom_suites": [
+    {
+      "kind": "named",
+      "engine": "chromium",
+      "cases": 42500,
+      "failed": 0,
+      "file": "all-entities-named-chromium.json"
+    },
+    {
+      "kind": "named",
+      "engine": "firefox",
+      "cases": 42500,
+      "failed": 0,
+      "file": "all-entities-named-firefox.json"
+    },
+    {
+      "kind": "named",
+      "engine": "webkit",
+      "cases": 42500,
+      "failed": 0,
+      "file": "all-entities-named-webkit.json"
+    },
+    {
+      "kind": "numeric",
+      "engine": "chromium",
+      "cases": 48420,
+      "failed": 0,
+      "file": "all-entities-numeric-chromium.json"
+    },
+    {
+      "kind": "numeric",
+      "engine": "firefox",
+      "cases": 48420,
+      "failed": 0,
+      "file": "all-entities-numeric-firefox.json"
+    },
+    {
+      "kind": "numeric",
+      "engine": "webkit",
+      "cases": 48420,
+      "failed": 0,
+      "file": "all-entities-numeric-webkit.json"
+    }
+  ],
+  "dom_comparisons": 272760,
+  "native_post_cycles": [
+    {
+      "phase": "candidate",
+      "engine": "chromium",
+      "posts": 17,
+      "clocks": 1751,
+      "failed": 0,
+      "file": "browser-candidate-chromium.json"
+    },
+    {
+      "phase": "candidate",
+      "engine": "firefox",
+      "posts": 17,
+      "clocks": 1751,
+      "failed": 0,
+      "file": "browser-candidate-firefox.json"
+    },
+    {
+      "phase": "candidate",
+      "engine": "webkit",
+      "posts": 17,
+      "clocks": 1751,
+      "failed": 0,
+      "file": "browser-candidate-webkit.json"
+    },
+    {
+      "phase": "official111",
+      "engine": "chromium",
+      "posts": 17,
+      "clocks": 1751,
+      "failed": 0,
+      "file": "browser-official111-chromium.json"
+    },
+    {
+      "phase": "official111",
+      "engine": "firefox",
+      "posts": 17,
+      "clocks": 1751,
+      "failed": 0,
+      "file": "browser-official111-firefox.json"
+    },
+    {
+      "phase": "official111",
+      "engine": "webkit",
+      "posts": 17,
+      "clocks": 1751,
+      "failed": 0,
+      "file": "browser-official111-webkit.json"
+    },
+    {
+      "phase": "reupgrade",
+      "engine": "chromium",
+      "posts": 17,
+      "clocks": 1751,
+      "failed": 0,
+      "file": "browser-reupgrade-chromium.json"
+    }
+  ],
+  "database": {
+    "native_posts": 17,
+    "all_post_content_rows": 1302,
+    "unchanged_during_all_final_version_changes_and_readers": true,
+    "restored_from_backup": false
+  },
+  "multisite_activation": {
+    "initial": {
+      "root": {
+        "loaded": true,
+        "network": true,
+        "site": false,
+        "plain_clock_kept": true
+      },
+      "child": {
+        "loaded": true,
+        "network": true,
+        "site": false,
+        "plain_clock_kept": true
+      }
+    },
+    "inactive": {
+      "root": {
+        "loaded": false,
+        "network": false,
+        "site": false,
+        "plain_clock_kept": false
+      },
+      "child": {
+        "loaded": false,
+        "network": false,
+        "site": false,
+        "plain_clock_kept": false
+      }
+    },
+    "child_only": {
+      "root": {
+        "loaded": false,
+        "network": false,
+        "site": false,
+        "plain_clock_kept": false
+      },
+      "child": {
+        "loaded": true,
+        "network": false,
+        "site": true,
+        "plain_clock_kept": true
+      }
+    },
+    "restored": {
+      "root": {
+        "loaded": true,
+        "network": true,
+        "site": false,
+        "plain_clock_kept": true
+      },
+      "child": {
+        "loaded": true,
+        "network": true,
+        "site": false,
+        "plain_clock_kept": true
+      }
+    },
+    "all_post_content_unchanged": true
+  },
+  "findings": [
+    {
+      "id": "P2-widget-caption",
+      "priority": 2,
+      "source": "wordpress/simple-digital-clock/includes/simple-digital-clock-kses.php",
+      "line": 247,
+      "affected": "WordPress7.1.3/PHP8.5.12 multisite Site Admin block widget save",
+      "results": [
+        {
+          "engine": "chromium",
+          "compared_blocks": 1030,
+          "failed_blocks": 44,
+          "permission_denials_correct": 10,
+          "failing_records": [
+            {
+              "key": "ms85",
+              "login": "clock_site_admin",
+              "failed_blocks": 22
+            },
+            {
+              "key": "ms85-child",
+              "login": "clock_site_admin",
+              "failed_blocks": 22
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "compared_blocks": 1030,
+          "failed_blocks": 44,
+          "permission_denials_correct": 10,
+          "failing_records": [
+            {
+              "key": "ms85",
+              "login": "clock_site_admin",
+              "failed_blocks": 22
+            },
+            {
+              "key": "ms85-child",
+              "login": "clock_site_admin",
+              "failed_blocks": 22
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "compared_blocks": 1030,
+          "failed_blocks": 44,
+          "permission_denials_correct": 10,
+          "failing_records": [
+            {
+              "key": "ms85",
+              "login": "clock_site_admin",
+              "failed_blocks": 22
+            },
+            {
+              "key": "ms85-child",
+              "login": "clock_site_admin",
+              "failed_blocks": 22
+            }
+          ]
+        }
+      ],
+      "actual_http_control": [
+        {
+          "key": "ms85",
+          "id": "block-8",
+          "user_id": 3,
+          "role_cap_edit_widgets": true,
+          "role_cap_unfiltered_html": true,
+          "before": {
+            "valid": true,
+            "caption": "&NotEqualTilde; <clock>",
+            "dom": "≂̸ <clock>"
+          },
+          "after": {
+            "valid": false,
+            "caption": "&NotEqualTilde; <clock>",
+            "dom": "&NotEqualTilde; <clock>"
+          }
+        },
+        {
+          "key": "ms85-child",
+          "id": "block-8",
+          "user_id": 3,
+          "role_cap_edit_widgets": true,
+          "role_cap_unfiltered_html": true,
+          "before": {
+            "valid": true,
+            "caption": "&NotEqualTilde; <clock>",
+            "dom": "≂̸ <clock>"
+          },
+          "after": {
+            "valid": false,
+            "caption": "&NotEqualTilde; <clock>",
+            "dom": "&NotEqualTilde; <clock>"
+          },
+          "frontend_caption": "&NotEqualTilde; <clock>"
+        }
+      ],
+      "previous4c_control": [
+        {
+          "key": "ms85",
+          "all_four_role_results_identical": true,
+          "site_admin_widget_content_identical": true
+        },
+        {
+          "key": "ms85-child",
+          "all_four_role_results_identical": true,
+          "site_admin_widget_content_identical": true
+        }
+      ],
+      "introduced_by_last_numeric_fix": false
+    },
+    {
+      "id": "P2-html-sourced-caption",
+      "priority": 2,
+      "source": "wordpress/simple-digital-clock/includes/simple-digital-clock-kses.php",
+      "line": 108,
+      "affected": "WordPress6.3.2/PHP7.0.33 caption omitted from JSON; HTML numeric/HTML5 apostrophe",
+      "results": [
+        {
+          "engine": "chromium",
+          "cases": 15,
+          "failed": 3,
+          "affected_key": "wp70",
+          "file": "fallback-chromium.json"
+        },
+        {
+          "engine": "firefox",
+          "cases": 15,
+          "failed": 3,
+          "affected_key": "wp70",
+          "file": "fallback-firefox-ready-firefox.json"
+        },
+        {
+          "engine": "webkit",
+          "cases": 15,
+          "failed": 3,
+          "affected_key": "wp70",
+          "file": "fallback-webkit-ready-webkit.json"
+        }
+      ],
+      "previous4c_control": {
+        "key": "wp70",
+        "cases": 3,
+        "all_content_and_semantics_identical": true
+      },
+      "introduced_by_last_numeric_fix": false,
+      "native_111_fixture": false
+    }
+  ],
+  "localwp": {
+    "version_downloaded": "10.2.0+7022 arm64",
+    "official_dmg_sha1": "a6d4308186c7f5906b6b4b11d5ffa3b052673399",
+    "dmg_sha256": "845d161115b5d52b9c25fc9c7f0ff0518cf3bb05dd805b9639421283cfb5fb5d",
+    "signature_checked": true,
+    "status": "awaiting_user_terms_of_service_confirmation",
+    "terms_accepted_by_agent": false,
+    "site_created": false,
+    "native_runtime_tested": false
+  },
+  "uncovered": [
+    "native LocalWP",
+    "subdomain multisite",
+    "third-party plugins/themes beyond recorded fixtures",
+    "original public review root cause"
+  ],
+  "php_log_review": [
+    {
+      "service": "wp70",
+      "debug_message_count": 35,
+      "categories": {
+        "core_cli_missing_http_host": 2,
+        "core_update_blocked_external_http": 31,
+        "review_snapshot_helper_missing_global_corrected": 2
+      },
+      "engine_vendor_deprecations": 0,
+      "unclassified": [],
+      "plugin_path_messages": []
+    },
+    {
+      "service": "wp74",
+      "debug_message_count": 28,
+      "categories": {
+        "core_cli_missing_http_host": 1,
+        "core_update_blocked_external_http": 27
+      },
+      "engine_vendor_deprecations": 0,
+      "unclassified": [],
+      "plugin_path_messages": []
+    },
+    {
+      "service": "wp85",
+      "debug_message_count": 63,
+      "categories": {
+        "core_cli_missing_http_host": 1,
+        "wp_cli_php85_vendor_deprecation": 35,
+        "core_update_blocked_external_http": 27
+      },
+      "engine_vendor_deprecations": 82,
+      "unclassified": [],
+      "plugin_path_messages": []
+    },
+    {
+      "service": "ms85",
+      "debug_message_count": 73,
+      "categories": {
+        "core_cli_missing_http_host": 1,
+        "wp_cli_php85_vendor_deprecation": 43,
+        "core_update_blocked_external_http": 28,
+        "review_activation_eval_quoting_corrected": 1
+      },
+      "engine_vendor_deprecations": 134,
+      "unclassified": [],
+      "plugin_path_messages": []
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": ".local/wordpress-lab/review5-compat/all-entities-named-chromium.json",
+      "bytes": 949,
+      "sha256": "b1acbb75f076ff4c52aa61500d531e41cb0bbd16dd3173f9c77fcc99fdaf4112"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/all-entities-named-firefox.json",
+      "bytes": 944,
+      "sha256": "a88435fbd30b0f37bf1c7661733909a5885cfeae30c016e4640046920f8ca0a2"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/all-entities-named-webkit.json",
+      "bytes": 939,
+      "sha256": "6e91e54d2deb208288eb49a291791243fdc101595caef85818b2fcb51831ec4e"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/all-entities-numeric-chromium.json",
+      "bytes": 949,
+      "sha256": "c81c70456ef51b580d0d9e2eba792ecafec930ea22950b256db6a3209ce0585e"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/all-entities-numeric-firefox.json",
+      "bytes": 944,
+      "sha256": "cf4e283667e4fc9174462368aab6e8fb648adce0fc373eea3fdc36b256385eff"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/all-entities-numeric-webkit.json",
+      "bytes": 939,
+      "sha256": "d3262f2758c3aea33c9feb7e2713cc6a4679818d2aa4fcebe725dfbd18a380eb"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/browser-baseline-chromium.json",
+      "bytes": 3788248,
+      "sha256": "0d5320b6fb60db0540429581de8a2f8f3cd7751debe139e9b418c262922cf7d0"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/browser-candidate-chromium.json",
+      "bytes": 1059786,
+      "sha256": "b11f21a6f1bca4bce78431a903421d94876b16bf0a5a704a7f988c0161619218"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/browser-candidate-firefox.json",
+      "bytes": 1059933,
+      "sha256": "8e42713dfff03380724f940923f0fac98c1fed0045b9593355c88c87ef1d8e62"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/browser-candidate-webkit.json",
+      "bytes": 1059769,
+      "sha256": "d65e78f0ee5c0039264f9216accd9fb20655b14ca4825472318704af018a4f0a"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/browser-official111-chromium.json",
+      "bytes": 1059786,
+      "sha256": "b3ed42312bacbe1928a1abf0fc6f81abc206a9bffa72c20f1e9115ae8fe69fdf"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/browser-official111-firefox.json",
+      "bytes": 1059933,
+      "sha256": "e72ebe8161ad276f5ba86ab8f73dca94d0b201f6d08ee8f62f83675ba5e69daf"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/browser-official111-webkit.json",
+      "bytes": 1059769,
+      "sha256": "7447ee950fddcf9fa8e1bb82671e3227639bd969af5fe0408e54cc3a331d0e84"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/browser-reupgrade-chromium.json",
+      "bytes": 1059786,
+      "sha256": "ea3248aa2cdae987b10ea898613df236bd8a38399e0b22200ed3533abc6f9c22"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-activation-after.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-activation-before.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-official111-after-read.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-official111-after.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-official111-before.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-previous4c-after.json",
+      "bytes": 103121,
+      "sha256": "946896f28bc5e1a1e97d3bcd9de758a03d1db82f0ec4331bdff50d9ab281edb7"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-previous4c-before.json",
+      "bytes": 103121,
+      "sha256": "946896f28bc5e1a1e97d3bcd9de758a03d1db82f0ec4331bdff50d9ab281edb7"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-restored-after-control-after.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-restored-after-control-before.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-reupgrade-after.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/db-reupgrade-before.json",
+      "bytes": 105551,
+      "sha256": "34eec6ec1da3a17795c6fffa9d645ddd9feace9c399a7a9bc6cec3bcd9c55c36"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-chromium.json",
+      "bytes": 231100,
+      "sha256": "89429b069980942b5d605adec236ce6da1d00b980bd22654a634e5bdf47afc68"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-firefox-ready-firefox.json",
+      "bytes": 17485,
+      "sha256": "3c7a31c19861da4c3ca70648c04ce6a9134e3068a6617340a608693f28d8a7db"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-inputs.json",
+      "bytes": 9045,
+      "sha256": "64ee7922d550f7be2d1005603cf007a6ad66a593dd6c0fc7b74dbe6014e53764"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-previous4c-chromium.json",
+      "bytes": 17485,
+      "sha256": "58f7c86a71b6ed578d4b4b23e5125007e2f2b124d4457299719fcda2f88ce1e7"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-seeds-firefox-ready.json",
+      "bytes": 9330,
+      "sha256": "09086a67d11be656278c9652ca78501f0d6bfa608f8441dca0d261c45ebb8363"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-seeds-firefox.json",
+      "bytes": 9330,
+      "sha256": "2a725ffec4fe7d9478cce4f5acaa73bd9ce1c9afb58e944596e1f470b07b19eb"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-seeds-previous4c.json",
+      "bytes": 9330,
+      "sha256": "131c913af9fc8b0e3d9a068ae7da41cf41ef64736c84d8899c5a13184551515c"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-seeds-webkit-ready.json",
+      "bytes": 9330,
+      "sha256": "e85cd615973c40c2932ce2923842d82dd90f2ffa1b19566be6f8f2ee893a2723"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-seeds-webkit.json",
+      "bytes": 9330,
+      "sha256": "1ce27a89b4ce8117ecfb1c1f71cd0a13a776b94e3bf894f7fbca765d9bd08166"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-seeds.json",
+      "bytes": 9330,
+      "sha256": "371b5b3b62fc34ab26c3d0e97ca30b3230224244910249f9afe0d64b936ee0a2"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/fallback-webkit-ready-webkit.json",
+      "bytes": 17485,
+      "sha256": "0cacc9aa62b99f6dc14e2f06b7218ad3dd4dc17dd666ada241a6a1e57dc60033"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/final-review-green.json",
+      "bytes": 108174,
+      "sha256": "8ac88efa235a6923b638c02a742a06e9ebfa6a94d016f7bf91f8d973012451c4"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/html5-caption-save-green.json",
+      "bytes": 110064,
+      "sha256": "d5c20a639e72d23426bfad07a3c10436c2c86d6db6be881bbb7f0240434d1db4"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/html5-charset-green.json",
+      "bytes": 3639,
+      "sha256": "0ab452ed00fa9a6378c10a7c5e78debd8eb49b6c25504f73881240ef06c92f3d"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/html5-entity-pipeline-green.json",
+      "bytes": 7181405,
+      "sha256": "bd30b88643384d278bba9dbcabb4cfcae9ac2c5d85922584195c39143c1847fd"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/identity-candidate.json",
+      "bytes": 271,
+      "sha256": "8f12184fabba4f7250d452282ebae15dd50b653a78809c3834bf9205cf2f13fa"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/identity-official111.json",
+      "bytes": 6807,
+      "sha256": "c7e3a9951487b3ea84b6a54758149ce36fd6e4529e02a43ae7c9afde6c3412ae"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/identity-previous4c.json",
+      "bytes": 3722,
+      "sha256": "b4dbe56cf7c8d42f1ec9314ae58a8cf1b4746ebb120e122a41dc5463d068af6b"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/identity-restored-after-control.json",
+      "bytes": 7290,
+      "sha256": "ec01bb2f3e30b0728dc2186bf0a5d510518010d1dc05a3556eb913d1d97f7f55"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/identity-reupgrade.json",
+      "bytes": 7277,
+      "sha256": "0022c5ffc33b40292338ba1fa78a762e23713b532e8eb83d508227f4b43a6516"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/multisite-activation.json",
+      "bytes": 1079,
+      "sha256": "aef83e6585224c88d5cc81dfc1aa79a7a0b6e43b3b2578b64ce6b42622570b1a"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/numeric-caption-save-green.json",
+      "bytes": 304384,
+      "sha256": "78b8486b4c65adc8b4cdd0d53de15d85055a3af9c2eef275a34f2b5217a29ebb"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/numeric-entity-pipeline-green.json",
+      "bytes": 8867201,
+      "sha256": "e9b187b6f36892e04c63116b0ad8f6ce58a425ad68ffa9b785e2072bc2d3176b"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/p2-caption-green.json",
+      "bytes": 9799,
+      "sha256": "fe2d85bbab088374872db2696791afb2a5bc87fab55c7bfb719eccdcf1fe9208"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/php-log-review.json",
+      "bytes": 1277,
+      "sha256": "b1ba11b04241336365fc9e09233a572cb2d136aa2bbd4292b2a99bb2bf5b3125"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/previous4c-fallback-comparison.json",
+      "bytes": 81,
+      "sha256": "8017fbbaf2180b43ffaff15f12f64885928673f71fef7319c5b4530ed09be435"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/previous4c-widget-comparison.json",
+      "bytes": 251,
+      "sha256": "d0612f98981a84951a4472cac8a87a4900048351bf9fd6b3c7afe3756153aa62"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/regression-green.json",
+      "bytes": 270899,
+      "sha256": "4fe72c4963fb1e9a6d94c4ecbd6528fb7ee4f684aa2697e91641c211fdc333ca"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/widgets-dom-chromium.json",
+      "bytes": 19528,
+      "sha256": "cd3014e3a7499353f7fe465cf5d5143adea995a8c082e5fa7d2f8cb345a19eff"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/widgets-dom-firefox.json",
+      "bytes": 19528,
+      "sha256": "cd3014e3a7499353f7fe465cf5d5143adea995a8c082e5fa7d2f8cb345a19eff"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/widgets-dom-webkit.json",
+      "bytes": 19528,
+      "sha256": "cd3014e3a7499353f7fe465cf5d5143adea995a8c082e5fa7d2f8cb345a19eff"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/widgets-http-chromium.json",
+      "bytes": 3058,
+      "sha256": "e7bb0662601e4096972d21d1635303ae5f4fbb88b94020ad0a0c32ebf7dfdde0"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/widgets-rest-previous4c.json",
+      "bytes": 642051,
+      "sha256": "06aa85cf967c5f8bfaed6f84ac3673f4ef443ce3d1933601db97957c0819d1b6"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/widgets-rest.json",
+      "bytes": 1597083,
+      "sha256": "7a1083478ef1234a6b77ecfe388b5fd228fe3a8079b87996bb1ae01f323ba7fc"
+    },
+    {
+      "path": ".local/wordpress-lab/review5-compat/cleanup.json",
+      "bytes": 298,
+      "sha256": "e06b199245d516a2c68137df5f72b749802b13dda91133d2d24fe7c8ac152083"
+    }
+  ],
+  "cleanup": {
+    "project": "sdcw-extended-review-20261028",
+    "compose_containers_removed": 5,
+    "remaining_project_containers": 0,
+    "firefox_stopped": true,
+    "firefox_automatically_removed_after_stop": true,
+    "database_files_retained": true,
+    "images_retained": true,
+    "no_volume_or_image_prune": true
+  }
+}

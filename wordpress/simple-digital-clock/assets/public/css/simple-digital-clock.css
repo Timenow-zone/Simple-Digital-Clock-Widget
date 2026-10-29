@@ -1,0 +1,11 @@
+/**
+ * Simple Digital Clock — WordPress integration styles.
+ *
+ * @version 1.1.1
+ */
+
+/* Custom elements default to inline participation; the block root must be
+   block-level to behave correctly in constrained/block-theme layouts. */
+timenow-zone-sdcw.wp-block-simple-digital-clock-block-widget-block {
+    display: block;
+}

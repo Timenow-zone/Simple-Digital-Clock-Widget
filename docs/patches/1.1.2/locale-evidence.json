@@ -1,0 +1,1956 @@
+{
+  "version": "1.1.2",
+  "unpublished": true,
+  "artifact": {
+    "zip_sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e",
+    "diff_sha256": "ba3623a4aac2dfd60799c6fde1e7cd707a6816589bf404d8e47e67b5a73e101c",
+    "files": 15,
+    "patch_application_exact": true,
+    "zip_exact": true,
+    "schema_and_save_unchanged": true,
+    "widget_bundle_unchanged": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+  },
+  "new_locale_ui": [
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-chromium.json",
+      "passed": 42,
+      "total": 42
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-webkit.json",
+      "passed": 42,
+      "total": 42
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-firefox.json",
+      "passed": 42,
+      "total": 42
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-chromium.json",
+      "passed": 42,
+      "total": 42
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-webkit.json",
+      "passed": 42,
+      "total": 42
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-firefox.json",
+      "passed": 42,
+      "total": 42
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-chromium.json",
+      "passed": 42,
+      "total": 42
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-webkit.json",
+      "passed": 42,
+      "total": 42
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-firefox.json",
+      "passed": 42,
+      "total": 42
+    }
+  ],
+  "php_assertions": 5408,
+  "php_results": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921.json",
+  "previous_ui": {
+    "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/published-localwp-recheck/candidate-chromium-locale921.json",
+    "passed": 76,
+    "total": 76
+  },
+  "existing_block_reads": [
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/widget-fallback-fix-green/local-browser/browser-locale921-chromium.json",
+      "blocks": 309
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/widget-fallback-fix-green/local-browser/browser-locale921-webkit.json",
+      "blocks": 309
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/widget-fallback-fix-green/local-browser/browser-locale921-firefox.json",
+      "blocks": 309
+    }
+  ],
+  "rollback": [
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-localwp-chromium.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-retry-localwp-webkit.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-localwp-firefox.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-wp70-chromium.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-wp70-webkit.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-wp70-firefox.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-ms85-child-chromium.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-ms85-child-webkit.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-ms85-child-firefox.json",
+      "passed": 7,
+      "total": 7
+    }
+  ],
+  "reupgrade": [
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921-localwp-chromium.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921-wp70-chromium.json",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921-ms85-child-chromium.json",
+      "passed": 7,
+      "total": 7
+    }
+  ],
+  "preservation": {
+    "roundtrip_post_rows": 4750,
+    "roundtrip_widget_contents": 50,
+    "post_and_widget_contents_unchanged_across_install_readers_reupgrade": true,
+    "final_snapshot_retains_all_roundtrip_rows": true,
+    "original_native_post_rows_unchanged": 430,
+    "native_status": "halted",
+    "docker_lab_and_browser_removed": true,
+    "bind_databases_retained": true
+  },
+  "source_changes_vs_834": [
+    "block.js",
+    "readme.txt"
+  ],
+  "mouse_limitation_controls": [
+    "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-verified-control.json",
+    "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-verified-control.json"
+  ],
+  "reviewer_root_cause_confirmed": false,
+  "evidence": [
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/packages/simple-digital-clock-1.1.2-candidate.zip",
+      "bytes": 58914,
+      "sha256": "92121d672e1aa190b54bcc51f5f6a81b89827f43defca85cf647807e5019c04e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-localwp-firefox-administrator-error.png",
+      "bytes": 99447,
+      "sha256": "fdf15060da23859fd074a8b4bdb1649c7994e7e1019576cc03ce17c689ec37fd"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-localwp-firefox.json",
+      "bytes": 6143,
+      "sha256": "f89067db122a5e46919b15c83a15b8f8a680c11599c47d3d87b83773702238ab"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-localwp-webkit-administrator.png",
+      "bytes": 126670,
+      "sha256": "b6c8640ff07c5d049167e3b4c944aff55ed6b99bdd9a13b40631eec07b80d17b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-localwp-webkit-author.png",
+      "bytes": 101915,
+      "sha256": "374167f70471c600627d492ce1757b528e922faa6326a8f55f746d06a54d27ea"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-localwp-webkit.json",
+      "bytes": 8510,
+      "sha256": "263a1fe4b05433d510c55fb295e528ed8e455b73f903afceea3f0236c0913167"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-ms85-child-webkit-administrator.png",
+      "bytes": 141945,
+      "sha256": "405fc9e9f7604e44616480adf2407b69111964d89030c5de5f1517490321df0c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-ms85-child-webkit-author.png",
+      "bytes": 116714,
+      "sha256": "574b0fd0b7908ca9b7d3853c66ae7adffeaec1be8148f523828ad828403de35c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-ms85-child-webkit.json",
+      "bytes": 8727,
+      "sha256": "71c350907995e08fa28ec6887d0e3ee3cc699f141347c1a8185d51c9c3c66762"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-wp70-firefox-administrator.png",
+      "bytes": 86127,
+      "sha256": "486812ff665d476b0e819fcc64e3a7b167668410e48232ceae5f16391e33a11d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-wp70-firefox-author.png",
+      "bytes": 69631,
+      "sha256": "3aa1142e86eb0a179f50e0fe75f9e9ec0cd9905820da7f8d1cdd165414b2de21"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-wp70-firefox.json",
+      "bytes": 10584,
+      "sha256": "ad61f41c390298c33aad962e7b0e1e0c84a69fb23ad9fb70e710a72d07b35b8b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-wp70-webkit-administrator.png",
+      "bytes": 113800,
+      "sha256": "9e21056217e6d068122854f49737ac40e432caf0cb6b3e736e3b6f07bfe1d420"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-wp70-webkit-author.png",
+      "bytes": 90417,
+      "sha256": "ec2e5a5f56f879233132a11de6aed03ee41f68631365d8125362fec022a02e12"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-final-wp70-webkit.json",
+      "bytes": 8507,
+      "sha256": "4ab3372149f07dad376c92d9051c3c3371c356d58ad1d462543a6970e68709ec"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-localwp-chromium-administrator.png",
+      "bytes": 85894,
+      "sha256": "c07e421ce486798e600fb2e89507ed1e838036e9b7d114c8723d6b3c36ae2f00"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-localwp-chromium-author.png",
+      "bytes": 71304,
+      "sha256": "8659eecccd7d7c56966bb645a9db101a9be2e81aa26ff5c35278a7c43c9fd783"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-localwp-chromium.json",
+      "bytes": 29530,
+      "sha256": "2a44d00dd566a09f06edc3418d123f1ee12345c5d7d95b1b39eeccce04acbcd4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-localwp-webkit-administrator.png",
+      "bytes": 122234,
+      "sha256": "510830082de4b1b0b0ec6bdef28f5d915fe49af4fbba310d3060ec6c9de898c0"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-localwp-webkit.json",
+      "bytes": 20001,
+      "sha256": "7d94a243c38fe07247d9e280fc5a5ba599508de2d7cc8291888d1f451c5b3a02"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-ms85-child-chromium-administrator.png",
+      "bytes": 102179,
+      "sha256": "8af64360b5dfb16195df43998f00f9af5c98413d4a07714b7760e18a185c5980"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-ms85-child-chromium.json",
+      "bytes": 1557149,
+      "sha256": "112ca326eed5e09f6dbbfcb3396e59ade5cdfc7ff55d345d6f0233974c7b4efb"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/accepted-wp70-chromium.json",
+      "bytes": 1044,
+      "sha256": "42cf20d4443a741a2a711b7ebaf6200a53d7db18dcec49a0de0d4d9abf000cf9"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/artifact-verification.json",
+      "bytes": 414,
+      "sha256": "fb64c07952274d865e359c2006f674380f407087b131766206c5f313c6b5ba1f"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/artifact-verification921.json",
+      "bytes": 377,
+      "sha256": "a804f2302d9afe116ec0062b7c975584351660869141b5f609bc268dc6f9df4d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/candidate.patch",
+      "bytes": 22781,
+      "sha256": "66a8cff774a11c968a3f239be8091889a0f4dde4bf1177d58e7ce5ace5dc7208"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/candidate921.patch",
+      "bytes": 22810,
+      "sha256": "ba3623a4aac2dfd60799c6fde1e7cd707a6816589bf404d8e47e67b5a73e101c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-install-after.json",
+      "bytes": 245987,
+      "sha256": "fa4f2fa7dd0431bdfd80f0a9ff8c9013dca375d55fa784f9478a555209858f88"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-install-before.json",
+      "bytes": 245987,
+      "sha256": "fa4f2fa7dd0431bdfd80f0a9ff8c9013dca375d55fa784f9478a555209858f88"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-install.json",
+      "bytes": 1790,
+      "sha256": "e1b8501e09f9308ed82f7abf28bf6e0d0543c9ecaec48cdd42d480ee11228747"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-localwp-chromium-administrator.png",
+      "bytes": 88978,
+      "sha256": "5f7f57407393422a2a44764e91da24f1edb9ab61c702357016022786be5d723d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-localwp-chromium-author.png",
+      "bytes": 73577,
+      "sha256": "8b8a823f43536effbfbdb558392a31da669c2cbada0940bd25868dd711d0ed17"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-localwp-chromium.json",
+      "bytes": 8298,
+      "sha256": "d906a5a0c9a80161256eb412facf7e93fedfabcca313ee16f326e6a5aff9545c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-ms85-child-chromium-administrator.png",
+      "bytes": 103579,
+      "sha256": "674aea02d02abf3e41e23428938f601413a09c3f39386d79a3d0836f1618bc81"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-ms85-child-chromium-author-error.png",
+      "bytes": 90926,
+      "sha256": "97adbc2ddd1dc4cc1f6c09974c9c21e0f38ae9712c3840a35ecb0ccbed7d456c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-ms85-child-chromium.json",
+      "bytes": 7003,
+      "sha256": "1bb41e4fd2926bee82df4e154e7ecd1eaa2b2272006b14ab1d21f0d1ad35b821"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-wp70-chromium-administrator-error.png",
+      "bytes": 75392,
+      "sha256": "9798375d9cedb6be85006b4d6686a14e07f06a92e35f6f5eecd26324a7f18c62"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/compatible-wp70-chromium.json",
+      "bytes": 6922,
+      "sha256": "c321f9e767a62f3c86cfacb379c936c7946fd5b300ad7830afd651bcda550c1a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-install-after.json",
+      "bytes": 325453,
+      "sha256": "37e4602996ab5e409fabd79060ca6df84a7b68f276a35ffc09cc056a57171469"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-install-before.json",
+      "bytes": 325453,
+      "sha256": "37e4602996ab5e409fabd79060ca6df84a7b68f276a35ffc09cc056a57171469"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-install.json",
+      "bytes": 1790,
+      "sha256": "b7e0347dccad785e8bb590207d330fa1dc9fbae38b09cd0aaf8399d1b129394f"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-localwp-chromium-administrator.png",
+      "bytes": 86015,
+      "sha256": "8d671a09bda4168367d0993248d8dc90c3fce617ae224dc8c98be5de36f71d8a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-localwp-chromium-author.png",
+      "bytes": 71286,
+      "sha256": "9893bb03abac358b5ee9d48739e3d9b389ab94c9a976f76be8064a9eb4983c3c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-localwp-chromium.json",
+      "bytes": 8297,
+      "sha256": "6b3749a935b92067328614b6bdb4c3da5d655c972147ec805cb65a79069de347"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-ms85-child-chromium-administrator.png",
+      "bytes": 101788,
+      "sha256": "441106b1970f209383cb2731581a95cc892e582b12498311138a92329c1b3def"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-ms85-child-chromium-author.png",
+      "bytes": 83607,
+      "sha256": "572f849a7b68a4aa815a8f3cc1dc7c00bbae206d6ff0223d6500a9ea9557bdc7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-ms85-child-chromium.json",
+      "bytes": 8300,
+      "sha256": "aea3a1f288538c13bf6c9e8a6afff78489726693005dc480a7d4f4a8d135a9bc"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-wp70-chromium-administrator.png",
+      "bytes": 77713,
+      "sha256": "1c217b32ef395ab75be31048432c10c47605f727ce6aa33300e675bd360d2034"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-wp70-chromium-author.png",
+      "bytes": 58945,
+      "sha256": "fd5ce9b0fa1f63282b1f6d485fd02f8c34d3463daacd6a9818ec6c834d18b02a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/complete-wp70-chromium.json",
+      "bytes": 12420,
+      "sha256": "020bddb88aac55b79af6afc7b8713fae4e38d39dc7f805b3909ac196422b73a3"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/cycle-cli.log",
+      "bytes": 57258161,
+      "sha256": "3b7488ae96cfed2d161420117075ce2cacd3c08758c83fb9ff9a300abc1b3be1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/cycle.py",
+      "bytes": 6343,
+      "sha256": "84cebdffc07a07d7fcb52a318b883f4c36b5c8a8963e35f9a8c5a5eb0a651c47"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-compat-install-after.json",
+      "bytes": 247232,
+      "sha256": "42a9068f3c7dac5643fca313a91e03efda1cec43d135905dc23bb1b654a969ba"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-compat-install-before.json",
+      "bytes": 247232,
+      "sha256": "42a9068f3c7dac5643fca313a91e03efda1cec43d135905dc23bb1b654a969ba"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-compat-install.json",
+      "bytes": 1790,
+      "sha256": "a14b6b19315bec395af6fc922e6a1c6f824b8c67fb60c7b31c42a9e014199f99"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-data.json",
+      "bytes": 325038,
+      "sha256": "48083653817b50adffe2ddaee0b2941921c69d965eba32b545c329e41a98340b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-data921.json",
+      "bytes": 399461,
+      "sha256": "930bded9ab661af0b1a5ea46139e82559d333b152a0b8eedbed15801123f4f5a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-install-after.json",
+      "bytes": 242584,
+      "sha256": "d31cbc831f907781811e1118150dccba58ec5d7f4ce5889a03f6e6ba78e34917"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-install-before.json",
+      "bytes": 242584,
+      "sha256": "d31cbc831f907781811e1118150dccba58ec5d7f4ce5889a03f6e6ba78e34917"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-install.json",
+      "bytes": 1790,
+      "sha256": "902b4765d75428cd9dc88668b6de9314075942e58473fbfc08ff51f7881556f4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-localwp-chromium-administrator.png",
+      "bytes": 83256,
+      "sha256": "7d1f680667a04b65a5c453d390925460669adb2f6618f255ac0a505a21a564a5"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-localwp-chromium-author.png",
+      "bytes": 69024,
+      "sha256": "e8de0ab209a9b50a8371a7ebd3ca1b0a7e60f47f58a5425bbdaa2950f6c2fa38"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-localwp-chromium.json",
+      "bytes": 8518,
+      "sha256": "e6a5b14887848076f56be18fa8d6cd57e5e3ffee472de6a5406cce721e5368f2"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-localwp-webkit-administrator.png",
+      "bytes": 119580,
+      "sha256": "630811eeb528bc2954a7f69ce642619f358aadfab1b0ec49bf7ae9e5996d6cc7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-localwp-webkit-author-error.png",
+      "bytes": 133990,
+      "sha256": "03dd1e2e4eefc1235561a9562edc48c642b600b077f79d212e0786350ff801ed"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-localwp-webkit.json",
+      "bytes": 9936,
+      "sha256": "b85e9567822893f8a8b00cd86978dd3abe241f3b1b54c87b9a02e5d665e6b90e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-ms85-child-chromium-administrator.png",
+      "bytes": 93560,
+      "sha256": "28551dcbbb0f6d76201b6fb3a95bb389506e5345bf3b1acd32c8f72dbd9e3ccc"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-ms85-child-chromium-author.png",
+      "bytes": 76621,
+      "sha256": "197732170f10987cf58b1a394724afba22884029a32a740515dd5086a6f212b8"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-ms85-child-chromium.json",
+      "bytes": 8521,
+      "sha256": "b39516e2bcae1df389e0f7a5835135b6f4a552cd6cfde34ce0a7b04514cd75f3"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-ms85-child-webkit-administrator-error.png",
+      "bytes": 100660,
+      "sha256": "07368966acedcb66e265e82b675d41d433e484e7723b2ecbe3a05f61b7f4f4d8"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-ms85-child-webkit.json",
+      "bytes": 3657,
+      "sha256": "52cf6474a9204e703e6195444d1cca4bbd2d75275bc8dec3f872d94ba212328d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-wp70-chromium-administrator.png",
+      "bytes": 74494,
+      "sha256": "f84d26a09108541da40c8030e588ac883df04699bb652f07c608cc5ea4588a6e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-wp70-chromium-author.png",
+      "bytes": 57292,
+      "sha256": "4865302df7777c7ec78d78b04155324e194d34e7c1cffc192dd9a0df8e46e4bf"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-wp70-chromium.json",
+      "bytes": 8516,
+      "sha256": "0f4827c12b3a30bdb414aa327481614da3f1946d52042366d649c0d91607c6c1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-wp70-webkit-administrator.png",
+      "bytes": 109094,
+      "sha256": "c15dea9e3ea3053a57b4bedc00db16fb60d4ca2336d406414833f9a41223f0f1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-wp70-webkit-author.png",
+      "bytes": 85939,
+      "sha256": "4d0fe2693d9a1097167b28d6dc1902b291a051e6bc164e499ce894d147800905"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final-wp70-webkit.json",
+      "bytes": 8541,
+      "sha256": "aad99301ec2deae956596fa514c5cf1ebfe2468bde8bf3f5242eb28165d64a6c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-chromium-administrator.png",
+      "bytes": 85601,
+      "sha256": "a067b247bd91828afa661194d441f4fb673e356f733e5d4f7cf1def7313ce6ef"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-chromium-author.png",
+      "bytes": 72080,
+      "sha256": "4793e22b33d296b556cc41f13b40702ffb198670851e461d8cad35446053562f"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-chromium.json",
+      "bytes": 9038,
+      "sha256": "463130fbcea052a406ebe35ad34e13f294732fdf9884435ef8d68690f4f7c5fc"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-firefox-administrator.png",
+      "bytes": 92415,
+      "sha256": "c892b2fc70dd39e9a801bba245a90a45d238936edcb725091578caa7ca469ab9"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-firefox-author.png",
+      "bytes": 79410,
+      "sha256": "03f0b1a7ee053d5bec2e383ecece1f6644c69e8560d4c5551a403a143aaab434"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-firefox.json",
+      "bytes": 9037,
+      "sha256": "9d571c8d7de2ea469c7d1e439ad4d0fdfcc5ceaa2760f26be5feab4e06cbb08a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-webkit-administrator.png",
+      "bytes": 122750,
+      "sha256": "f3c0edc5fe9bd40be9b1886c44b1bac5e0811d06b430edcf202f8c45e9960b27"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-webkit-author.png",
+      "bytes": 100789,
+      "sha256": "00809509360bd9cb1cafa9425676cadd02862064c7bea69e93c074f5084c129a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-localwp-webkit.json",
+      "bytes": 9019,
+      "sha256": "56e528ae3f60cf6129d6462d6f0b25b85a19eadd71b197461eff2b3a726b7888"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-chromium-administrator.png",
+      "bytes": 97782,
+      "sha256": "86452da92393e63484b785452657b6847d7884fda31c9129d90c46f05cbfd46a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-chromium-author.png",
+      "bytes": 81570,
+      "sha256": "3f0c91f8d97e9f8facb501bcf3f91a4b478143961a78d5f9138c15e2df7587df"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-chromium.json",
+      "bytes": 9043,
+      "sha256": "e763dab69eab832e78f810e2b613ddd4cbc71b1f7b3297d9a376861511ab0e97"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-firefox-administrator.png",
+      "bytes": 112378,
+      "sha256": "c6bb40602cdc441dbb0300e4ab4c5fbb39f4989b52959f85b4efc0299a5b14fe"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-firefox-author.png",
+      "bytes": 95501,
+      "sha256": "b1d8b89401ad084cdae0ee49f6e4950cd832b7cb102e284b69dba2f78b5a9ac1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-firefox.json",
+      "bytes": 9042,
+      "sha256": "52e0cb975c6a44088e192f3dc5077798a7750e97d575f66df46fd5922f23f55b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-webkit-administrator.png",
+      "bytes": 136720,
+      "sha256": "3ff5b1469c213b406cb5e5461217c6e66018956c9d2972663226fec3547611d0"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-webkit-author.png",
+      "bytes": 112207,
+      "sha256": "696b6c6859ff60614752cfd24ebb8aa5f1934313472a0609cbf273f13f73047e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-ms85-child-webkit.json",
+      "bytes": 9025,
+      "sha256": "e3ccbfa711f9d3fbeca4c558385554cc6f76a366e5863af69aa53876e36a5002"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-chromium-administrator.png",
+      "bytes": 75893,
+      "sha256": "51311136b50a2275a3391f623204637f5591483dc468c7d0b4e3ae701572f7af"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-chromium-author.png",
+      "bytes": 58747,
+      "sha256": "bea774300b72e79b1b79336d6e423a5e5b1d7bcb73928df7db4f47f2e76be13e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-chromium.json",
+      "bytes": 9037,
+      "sha256": "0d376eae273084d36289c37505cf426d853cf2d27591423769142dcc1954d8a8"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-firefox-administrator.png",
+      "bytes": 82857,
+      "sha256": "e309f978569a849760c900017e0d149da9de43caec72b0d0ff7c38eea763685b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-firefox-author.png",
+      "bytes": 65919,
+      "sha256": "94dcc32327595ef740188b9be26b857070a409883715f42ab69b7a3756ecda28"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-firefox.json",
+      "bytes": 9036,
+      "sha256": "ba827f963b75a039302be120b20aa59b6cfc0c46db247e9bb0de6a00bdc0c852"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-webkit-administrator.png",
+      "bytes": 114084,
+      "sha256": "ff5fa35d34394ef8dae86bf526b7d5543903127808929fed208f695358e08027"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-webkit-author.png",
+      "bytes": 87387,
+      "sha256": "937b5b7145f5059e85e062eec7e094063a708153ef8d7fc9b355a294abc85444"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/final921-wp70-webkit.json",
+      "bytes": 9019,
+      "sha256": "615fccbcb76ab2e9e63efb5becbcc399abf5e3e4ee3d954b61395d88018c21fb"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-localwp-firefox-administrator.png",
+      "bytes": 96843,
+      "sha256": "dcd8946dce98c1cc1907f346948c9aad30166cc3831c24c456654e0656939335"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-localwp-firefox-author.png",
+      "bytes": 79812,
+      "sha256": "4c4cbb311912bbadbbd2366f3cfffd1a215379241ebd0bcf1f8fdef638740c30"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-localwp-firefox.json",
+      "bytes": 8550,
+      "sha256": "ded4a8f53d3f1867bb3bd72aef9772f3b05d119bb972d60bcf896301b2047632"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-ms85-child-firefox-administrator.png",
+      "bytes": 115946,
+      "sha256": "12f296f7831ba36a96d55c910f0580a678012dc1845fed10c02c5e9cafc327ca"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-ms85-child-firefox-author.png",
+      "bytes": 95838,
+      "sha256": "aac99dff1b6799f7af00b28c4a616d7c045bec0d5a4a94c46f27dc3face1d423"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-ms85-child-firefox.json",
+      "bytes": 8553,
+      "sha256": "d75294b0bb9103fed3343b58586e9e8f8ea446a2ba595b4c1a83dc46d7800770"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-wp70-firefox-administrator.png",
+      "bytes": 86344,
+      "sha256": "bd1dd4fbd00307334a01769423f1d2ca37bad72bdcc168f1dc6ed3fbdb87efaa"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-wp70-firefox-author.png",
+      "bytes": 69129,
+      "sha256": "721e303b6e92395ccab7d95b6b145c166092aa7b18286501677a55a3facae341"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-clean-wp70-firefox.json",
+      "bytes": 8547,
+      "sha256": "b3061ea77b6a2ccc2f3e47aa4bf43f5d8e9f16b2c03e7d4403b1562c9c12ad4b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-prior-cleared-control.json",
+      "bytes": 251,
+      "sha256": "9ad9fee955b435b1067d728d7c99e6e208c265cea1a30c7e5f0aeeaaf2ba8868"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-prior-control.json",
+      "bytes": 205,
+      "sha256": "2b2809a6d8d37624faac011dab1e6647f99a20f18a85e001d135fe7f0456c921"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/firefox-verified-control.json",
+      "bytes": 357,
+      "sha256": "258485525b679852d6a29a5dbc4b244b4df4a3ab2ea9d300d2f29fa4d48135a5"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/first-install-after.json",
+      "bytes": 40672,
+      "sha256": "66495652682a1cf57e163a1bf4490e171bead23602a8b18b5959c4ed4fcf420e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/first-install-before.json",
+      "bytes": 40672,
+      "sha256": "66495652682a1cf57e163a1bf4490e171bead23602a8b18b5959c4ed4fcf420e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/first-install.json",
+      "bytes": 1788,
+      "sha256": "3dd34ec61a1fa4e368ef90e75ad505ab6f27ae7bc52e45bde40a19717fa3619d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/green-final-localwp-chromium-administrator.png",
+      "bytes": 87855,
+      "sha256": "e39615a41baa32a476183ad5ba7cb6b59c10daf9a332b1c942b722004840c352"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/green-final-localwp-chromium-author.png",
+      "bytes": 72262,
+      "sha256": "b3e98e06b46b1427999f1aa715ffb8baf82a0ad12106204b4e52d8a74bccfa5a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/green-final-localwp-chromium.json",
+      "bytes": 28928,
+      "sha256": "8e9dd5937f8f3b0e6cdbe8fe71dc511b5406491e70b9040b27f2e6c31c0ab4e7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/green-localwp-chromium.json",
+      "bytes": 2241,
+      "sha256": "d1e3a5ac03c6c45730746c4368cf453e4005668672d755c79a7c4666eb04659c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/guarded-install-after.json",
+      "bytes": 245987,
+      "sha256": "fa4f2fa7dd0431bdfd80f0a9ff8c9013dca375d55fa784f9478a555209858f88"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/guarded-install-before.json",
+      "bytes": 245987,
+      "sha256": "fa4f2fa7dd0431bdfd80f0a9ff8c9013dca375d55fa784f9478a555209858f88"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/guarded-install.json",
+      "bytes": 1790,
+      "sha256": "67144505455583bca83466614ef7442894aacc19ed47fc0937cd8b40c860e29f"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/ime-red-localwp-chromium-administrator.png",
+      "bytes": 84649,
+      "sha256": "c6d53d0cafe304fa2b9014754cc990d11674299d5a9f70916af274cea48f1abe"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/ime-red-localwp-chromium-author.png",
+      "bytes": 70766,
+      "sha256": "776c469797a7d41628356959c15551d2786bfc50a496605f61d6e327e348a455"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/ime-red-localwp-chromium.json",
+      "bytes": 29531,
+      "sha256": "87fff8d6d9a04a53ab884c04677b55c6af3c7de25b2303631b17755578ef6ebc"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/intermediate-64c0a1dd.zip",
+      "bytes": 58875,
+      "sha256": "64c0a1dd8e55bb9ee0b9c38a35c32488c76799558e67de387e0a21c88315ca92"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/intermediate-7569aff3.zip",
+      "bytes": 58911,
+      "sha256": "7569aff33b1f462a5f08822751851a240124801da4b7e28f62c5b89724132e3b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/intermediate-7aab4d99.zip",
+      "bytes": 58861,
+      "sha256": "7aab4d99197508ad8420e34c4f76e9d802f25988add7cef38190631acf9795c3"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/intermediate-9d5fe4a5.zip",
+      "bytes": 58853,
+      "sha256": "9d5fe4a5df82ddc4dd48de366528c5e78acd0404f9d4561529d4ea32fcbd6e99"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/intermediate-a6041980.zip",
+      "bytes": 58842,
+      "sha256": "a6041980cd0056a36a2ce8b10c1209788f56addcc4ad2c354ac5ad52eb5ad5fd"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/malformed-red-localwp-chromium-administrator.png",
+      "bytes": 88627,
+      "sha256": "3c8c6e59adf910a42e9caf3d730c91c6384046d6774bd83eb53373aac4563bd2"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/malformed-red-localwp-chromium-author.png",
+      "bytes": 74025,
+      "sha256": "9b72be634461701e15774c26c150d755159f04461976b184b5b375606bec40fe"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/malformed-red-localwp-chromium.json",
+      "bytes": 9139,
+      "sha256": "02ea206b8daafbb72a3262600c943582c03077e2923dc47f08370ac4816e916a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/final-review.php",
+      "bytes": 14921,
+      "sha256": "895d7446b307e566d0d534540f0de009d178db77da6b80469328fc61ef3a6b5d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/html5-caption-save.php",
+      "bytes": 6055,
+      "sha256": "5ab762b360a94608f2a4278a269b53797c103f9cfee51a151ee5cf093568c869"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/html5-charset.php",
+      "bytes": 2316,
+      "sha256": "5e024549f96a50f843401d36d092e811c3afdf0f32dd7366808379ba86a94a60"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/html5-entity-pipeline.php",
+      "bytes": 1941,
+      "sha256": "6a0b87d5f4bdb064b2572f63726f167e815c6f9041353b93eb796c930f312db5"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/numeric-caption-save.php",
+      "bytes": 5684,
+      "sha256": "33edc8b8fe85f9d70503fe26e055c915904a47c3716ce1d0cafe72b7ae9715c8"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/numeric-entity-pipeline.php",
+      "bytes": 2415,
+      "sha256": "4e9cf0e3bab8d03c745c58f55863acfe3f58bdf4bd18b6f395cf590a11c2aa6c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/p2-caption.php",
+      "bytes": 4194,
+      "sha256": "97ef27d9177f374fcfa9837b1fdeb4e3e77bf4886a3307c80f073cbc10e74341"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/regression.php",
+      "bytes": 8208,
+      "sha256": "e29a242e2d350f136d478298955e974148ceefbc6fd66af81d85f69bd4684954"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/widget-entity-pipeline.php",
+      "bytes": 2637,
+      "sha256": "26aae8fa8efaa4af1e81183e6cf3b09054fad2a5513e9052e06b55625036b82d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-probes/widget-fallback.php",
+      "bytes": 6170,
+      "sha256": "91217b725ae9148807c66f4f0b8300fb98aaf32436054e1679b0856c0dc4a96c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-retry-reupgrade-after.json",
+      "bytes": 84425,
+      "sha256": "e984867b0533847746f7578e88c408efbebcd5bae5ad917f89b026cb7f5b37f1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-retry-reupgrade-before.json",
+      "bytes": 84425,
+      "sha256": "e984867b0533847746f7578e88c408efbebcd5bae5ad917f89b026cb7f5b37f1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-retry-reupgrade.json",
+      "bytes": 1789,
+      "sha256": "eb353709b29566cfcb2c7a6023d35f2c46d48f8dee4ec3ef71e92621bd4ca41d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-retry-rollback-after.json",
+      "bytes": 84425,
+      "sha256": "e984867b0533847746f7578e88c408efbebcd5bae5ad917f89b026cb7f5b37f1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-retry-rollback-before.json",
+      "bytes": 84425,
+      "sha256": "e984867b0533847746f7578e88c408efbebcd5bae5ad917f89b026cb7f5b37f1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/native-retry-rollback.json",
+      "bytes": 1674,
+      "sha256": "b80855993425fa4fd87968accb6d5673911724ff4ad9c34b91cadd59c4c46b0c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/LICENSE",
+      "bytes": 18092,
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/assets/admin/img/icon.png",
+      "bytes": 551,
+      "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/assets/admin/img/icon.svg",
+      "bytes": 747,
+      "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/assets/admin/img/stars.png",
+      "bytes": 2043,
+      "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/assets/admin/js/simple-digital-clock-notify.js",
+      "bytes": 648,
+      "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/assets/public/css/simple-digital-clock.css",
+      "bytes": 328,
+      "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/assets/public/js/simple-digital-clock.min.js",
+      "bytes": 32649,
+      "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/block.js",
+      "bytes": 117184,
+      "sha256": "48d835aaa7ddd69f319d4441a7353c2e58567fca879e7cd1d97568cdbb2a310b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/includes/simple-digital-clock-admin-notices.php",
+      "bytes": 3714,
+      "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/includes/simple-digital-clock-admin-settings.php",
+      "bytes": 906,
+      "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/includes/simple-digital-clock-kses.php",
+      "bytes": 14429,
+      "sha256": "0664e49e5126290d3f9c8be45dec28096714326ffe6307ae58734d359bcf9271"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/index.php",
+      "bytes": 133,
+      "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/languages/simple-digital-clock.pot",
+      "bytes": 4351,
+      "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/readme.txt",
+      "bytes": 6786,
+      "sha256": "9f24cfeccafa81aad8466bd9c2bb3a309fe750431f45197e93384edadf482f76"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply/simple-digital-clock/widget_init.php",
+      "bytes": 8609,
+      "sha256": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/LICENSE",
+      "bytes": 18092,
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/assets/admin/img/icon.png",
+      "bytes": 551,
+      "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/assets/admin/img/icon.svg",
+      "bytes": 747,
+      "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/assets/admin/img/stars.png",
+      "bytes": 2043,
+      "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/assets/admin/js/simple-digital-clock-notify.js",
+      "bytes": 648,
+      "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/assets/public/css/simple-digital-clock.css",
+      "bytes": 328,
+      "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/assets/public/js/simple-digital-clock.min.js",
+      "bytes": 32649,
+      "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/block.js",
+      "bytes": 117213,
+      "sha256": "6c13cd91d7e3f3ae4957bbe757a2de415ce74ed0de1258e8014896c69618f514"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/includes/simple-digital-clock-admin-notices.php",
+      "bytes": 3714,
+      "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/includes/simple-digital-clock-admin-settings.php",
+      "bytes": 906,
+      "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/includes/simple-digital-clock-kses.php",
+      "bytes": 14429,
+      "sha256": "0664e49e5126290d3f9c8be45dec28096714326ffe6307ae58734d359bcf9271"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/index.php",
+      "bytes": 133,
+      "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/languages/simple-digital-clock.pot",
+      "bytes": 4351,
+      "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/readme.txt",
+      "bytes": 6786,
+      "sha256": "9f24cfeccafa81aad8466bd9c2bb3a309fe750431f45197e93384edadf482f76"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/patch-apply921/simple-digital-clock/widget_init.php",
+      "bytes": 8609,
+      "sha256": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-final-review.php.json",
+      "bytes": 20109,
+      "sha256": "2cab365601c8d809c999193188b5cb8976cc2b8538283010ea7342524791fbb7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-html5-caption-save.php.json",
+      "bytes": 20349,
+      "sha256": "9a1d279a0bd3e3f77bb890ed8bad5cb3dfcf7a6ea2344225b77dff6a18636ee0"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-html5-charset.php.json",
+      "bytes": 652,
+      "sha256": "c5611293651e53652764c0588a3016d87dec9f267bf481ffea23e7f72d77358e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-html5-entity-pipeline.php.json",
+      "bytes": 1419104,
+      "sha256": "7d4ad741bfaca86208aaa62e4652c921a8d93285cc6b967264875f6813fcca37"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-numeric-caption-save.php.json",
+      "bytes": 56835,
+      "sha256": "3736930cdc4321e4ba42c3f9d0dd1eca8842318eba3357a886f03cc06a3fb397"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-numeric-entity-pipeline.php.json",
+      "bytes": 1754634,
+      "sha256": "adb4ac8e99fb7d26452d4a855cdf3bde6c5b2b9b081cdccca72536a2d2eb34a3"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-p2-caption.php.json",
+      "bytes": 1750,
+      "sha256": "74e1dde71db7108a2dcea23c67eb73babe2694c55598f06f5061785ed3aef5d4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-regression.php.json",
+      "bytes": 49504,
+      "sha256": "10484fa9f7af6432437604d7b6d34d001ce8eb33ddb0418f81ec967f30d73927"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-widget-entity-pipeline.php-named.json",
+      "bytes": 1419273,
+      "sha256": "1d4c565aff0d2b075a598233e7ff09d52507820ca844c40b7ecf46c6e8ec9ba2"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-widget-entity-pipeline.php-numeric.json",
+      "bytes": 1754650,
+      "sha256": "fd940aa4a97fc58adbc9a9a0d303220abeafa76068687964db08a70ac75901dd"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-localwp-widget-fallback.php.json",
+      "bytes": 4599,
+      "sha256": "b5323c17841396143b1cb2a33075fdf1f8ed1cc0b6c83823385f239896ba4e21"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-final-review.php.json",
+      "bytes": 20109,
+      "sha256": "7cf67591f8688f9304b443c2cd5a88b7065fa307b3ebc746478096d3a01d3266"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-html5-caption-save.php.json",
+      "bytes": 20349,
+      "sha256": "d31ae27752aed667f6b338805f352fbec35aeff8e4e59417872a5a855ae54d4d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-html5-charset.php.json",
+      "bytes": 652,
+      "sha256": "477ead4689002aa24e7c5aee40c01382a20153220dacb89712f7afe07640fdca"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-html5-entity-pipeline.php.json",
+      "bytes": 1419104,
+      "sha256": "6d26d29b17912b8ebf0d9178bd6329e9f2cdd51dc6527274ff945763103c4430"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-numeric-caption-save.php.json",
+      "bytes": 56835,
+      "sha256": "9e5068af23ec8015f3004fe3f5e3a54bb20ba40d94fb2412df2d4c87c8f43ca6"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-numeric-entity-pipeline.php.json",
+      "bytes": 1754634,
+      "sha256": "c10f8fbe2539b491ad9a0271ad049dba76669fee0c6f2b5dcd024110d7d53602"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-p2-caption.php.json",
+      "bytes": 1750,
+      "sha256": "b638c86e73fc29eaea772ed061a20013885b38e1b87ddc3f6f87ee72d28263ed"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-regression.php.json",
+      "bytes": 49504,
+      "sha256": "6d6babd5161cb5b2ed34013d91f865c487b770e0ac9ad37cd2f620cd843a2be4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-widget-entity-pipeline.php-named.json",
+      "bytes": 1419273,
+      "sha256": "36356db3bb3c687f20dbec9f8d9ac4085e1dcae45ab89e931228d7d27db753f7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-widget-entity-pipeline.php-numeric.json",
+      "bytes": 1754650,
+      "sha256": "1b75141ac67e9aabb6e2bee603c5226e95a3ed122eb62e7f4a46af492b1fc520"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-child-widget-fallback.php.json",
+      "bytes": 4599,
+      "sha256": "9b7e88441333510337e4c8138b6d9dc41c3c8ee15db3b25ef966b752ce1cd800"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-final-review.php.json",
+      "bytes": 20109,
+      "sha256": "7cf67591f8688f9304b443c2cd5a88b7065fa307b3ebc746478096d3a01d3266"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-html5-caption-save.php.json",
+      "bytes": 20349,
+      "sha256": "d31ae27752aed667f6b338805f352fbec35aeff8e4e59417872a5a855ae54d4d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-html5-charset.php.json",
+      "bytes": 652,
+      "sha256": "477ead4689002aa24e7c5aee40c01382a20153220dacb89712f7afe07640fdca"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-html5-entity-pipeline.php.json",
+      "bytes": 1419104,
+      "sha256": "6d26d29b17912b8ebf0d9178bd6329e9f2cdd51dc6527274ff945763103c4430"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-numeric-caption-save.php.json",
+      "bytes": 56835,
+      "sha256": "9e5068af23ec8015f3004fe3f5e3a54bb20ba40d94fb2412df2d4c87c8f43ca6"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-numeric-entity-pipeline.php.json",
+      "bytes": 1754634,
+      "sha256": "c10f8fbe2539b491ad9a0271ad049dba76669fee0c6f2b5dcd024110d7d53602"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-p2-caption.php.json",
+      "bytes": 1750,
+      "sha256": "b638c86e73fc29eaea772ed061a20013885b38e1b87ddc3f6f87ee72d28263ed"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-regression.php.json",
+      "bytes": 49504,
+      "sha256": "6d6babd5161cb5b2ed34013d91f865c487b770e0ac9ad37cd2f620cd843a2be4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-widget-entity-pipeline.php-named.json",
+      "bytes": 1419273,
+      "sha256": "36356db3bb3c687f20dbec9f8d9ac4085e1dcae45ab89e931228d7d27db753f7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-widget-entity-pipeline.php-numeric.json",
+      "bytes": 1754650,
+      "sha256": "1b75141ac67e9aabb6e2bee603c5226e95a3ed122eb62e7f4a46af492b1fc520"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-ms85-widget-fallback.php.json",
+      "bytes": 4599,
+      "sha256": "9b7e88441333510337e4c8138b6d9dc41c3c8ee15db3b25ef966b752ce1cd800"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-final-review.php.json",
+      "bytes": 20109,
+      "sha256": "69a37de32e547cead73137a5fd687cd0a44b01c9e17391f63a748fa3dfdf4e2b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-html5-caption-save.php.json",
+      "bytes": 20349,
+      "sha256": "1f81e89cb53d04b4f5131eb31354d7b4c22d5c76fc03d6ee5f74d2288a6ccedc"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-html5-charset.php.json",
+      "bytes": 652,
+      "sha256": "e007a020b37b73302b829780508a06504bb835cef5979c62bd75897006d784ab"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-html5-entity-pipeline.php.json",
+      "bytes": 1419640,
+      "sha256": "2776e4c740464150f09a005a4e5ad78778fe73508980096163a482f4fd1f9a4c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-numeric-caption-save.php.json",
+      "bytes": 56835,
+      "sha256": "71a0bd384a8ed3c0d4f7fe38474263b1c93693b89df15b87621e5f2bc1fcf647"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-numeric-entity-pipeline.php.json",
+      "bytes": 1751406,
+      "sha256": "b2445a3e2efa9f8069c6d644d3f3507aaf746bebfb2d633ccff12dd27dbf0d85"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-p2-caption.php.json",
+      "bytes": 1750,
+      "sha256": "552c6c3b0f55290343897f1670a32268401ab831eceacfd665625046d2f93938"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-regression.php.json",
+      "bytes": 49504,
+      "sha256": "ac09a4913338e12593ae9bd4b34c2323ff79a19c4f0139bbb54268af25a7d242"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-widget-entity-pipeline.php-named.json",
+      "bytes": 1419809,
+      "sha256": "78ef640f2e48b94b3dd3e707d502e95bf4505500268aa24c343a5326c915be73"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-widget-entity-pipeline.php-numeric.json",
+      "bytes": 1751422,
+      "sha256": "989d9ca1ed9b30f35466f2747bcb729d36495ec9b8c362a136663b9b3d075d11"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921-wp70-widget-fallback.php.json",
+      "bytes": 4599,
+      "sha256": "5e5926807e881086a8bdb8a9a2e6c5a8a1c15513c01c1413e03a4a64350fea08"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-921.json",
+      "bytes": 4856,
+      "sha256": "76deb5c594c8390f39af9abd1b640ba885a036b3a774dc7d116e4fcd5f9f4f94"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-final-review.php.json",
+      "bytes": 20109,
+      "sha256": "2cab365601c8d809c999193188b5cb8976cc2b8538283010ea7342524791fbb7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-html5-caption-save.php.json",
+      "bytes": 20349,
+      "sha256": "9a1d279a0bd3e3f77bb890ed8bad5cb3dfcf7a6ea2344225b77dff6a18636ee0"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-html5-charset.php.json",
+      "bytes": 652,
+      "sha256": "c5611293651e53652764c0588a3016d87dec9f267bf481ffea23e7f72d77358e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-html5-entity-pipeline.php.json",
+      "bytes": 1419104,
+      "sha256": "7d4ad741bfaca86208aaa62e4652c921a8d93285cc6b967264875f6813fcca37"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-numeric-caption-save.php.json",
+      "bytes": 56835,
+      "sha256": "3736930cdc4321e4ba42c3f9d0dd1eca8842318eba3357a886f03cc06a3fb397"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-numeric-entity-pipeline.php.json",
+      "bytes": 1754634,
+      "sha256": "adb4ac8e99fb7d26452d4a855cdf3bde6c5b2b9b081cdccca72536a2d2eb34a3"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-p2-caption.php.json",
+      "bytes": 1750,
+      "sha256": "74e1dde71db7108a2dcea23c67eb73babe2694c55598f06f5061785ed3aef5d4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-regression.php.json",
+      "bytes": 49504,
+      "sha256": "10484fa9f7af6432437604d7b6d34d001ce8eb33ddb0418f81ec967f30d73927"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-widget-entity-pipeline.php-named.json",
+      "bytes": 1419273,
+      "sha256": "1d4c565aff0d2b075a598233e7ff09d52507820ca844c40b7ecf46c6e8ec9ba2"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-widget-entity-pipeline.php-numeric.json",
+      "bytes": 1754650,
+      "sha256": "fd940aa4a97fc58adbc9a9a0d303220abeafa76068687964db08a70ac75901dd"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-localwp-widget-fallback.php.json",
+      "bytes": 4599,
+      "sha256": "b5323c17841396143b1cb2a33075fdf1f8ed1cc0b6c83823385f239896ba4e21"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-final-review.php.json",
+      "bytes": 20109,
+      "sha256": "7cf67591f8688f9304b443c2cd5a88b7065fa307b3ebc746478096d3a01d3266"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-html5-caption-save.php.json",
+      "bytes": 20349,
+      "sha256": "d31ae27752aed667f6b338805f352fbec35aeff8e4e59417872a5a855ae54d4d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-html5-charset.php.json",
+      "bytes": 652,
+      "sha256": "477ead4689002aa24e7c5aee40c01382a20153220dacb89712f7afe07640fdca"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-html5-entity-pipeline.php.json",
+      "bytes": 1419104,
+      "sha256": "6d26d29b17912b8ebf0d9178bd6329e9f2cdd51dc6527274ff945763103c4430"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-numeric-caption-save.php.json",
+      "bytes": 56835,
+      "sha256": "9e5068af23ec8015f3004fe3f5e3a54bb20ba40d94fb2412df2d4c87c8f43ca6"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-numeric-entity-pipeline.php.json",
+      "bytes": 1754634,
+      "sha256": "c10f8fbe2539b491ad9a0271ad049dba76669fee0c6f2b5dcd024110d7d53602"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-p2-caption.php.json",
+      "bytes": 1750,
+      "sha256": "b638c86e73fc29eaea772ed061a20013885b38e1b87ddc3f6f87ee72d28263ed"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-regression.php.json",
+      "bytes": 49504,
+      "sha256": "6d6babd5161cb5b2ed34013d91f865c487b770e0ac9ad37cd2f620cd843a2be4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-widget-entity-pipeline.php-named.json",
+      "bytes": 1419273,
+      "sha256": "36356db3bb3c687f20dbec9f8d9ac4085e1dcae45ab89e931228d7d27db753f7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-widget-entity-pipeline.php-numeric.json",
+      "bytes": 1754650,
+      "sha256": "1b75141ac67e9aabb6e2bee603c5226e95a3ed122eb62e7f4a46af492b1fc520"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-child-widget-fallback.php.json",
+      "bytes": 4599,
+      "sha256": "9b7e88441333510337e4c8138b6d9dc41c3c8ee15db3b25ef966b752ce1cd800"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-final-review.php.json",
+      "bytes": 20109,
+      "sha256": "7cf67591f8688f9304b443c2cd5a88b7065fa307b3ebc746478096d3a01d3266"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-html5-caption-save.php.json",
+      "bytes": 20349,
+      "sha256": "d31ae27752aed667f6b338805f352fbec35aeff8e4e59417872a5a855ae54d4d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-html5-charset.php.json",
+      "bytes": 652,
+      "sha256": "477ead4689002aa24e7c5aee40c01382a20153220dacb89712f7afe07640fdca"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-html5-entity-pipeline.php.json",
+      "bytes": 1419104,
+      "sha256": "6d26d29b17912b8ebf0d9178bd6329e9f2cdd51dc6527274ff945763103c4430"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-numeric-caption-save.php.json",
+      "bytes": 56835,
+      "sha256": "9e5068af23ec8015f3004fe3f5e3a54bb20ba40d94fb2412df2d4c87c8f43ca6"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-numeric-entity-pipeline.php.json",
+      "bytes": 1754634,
+      "sha256": "c10f8fbe2539b491ad9a0271ad049dba76669fee0c6f2b5dcd024110d7d53602"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-p2-caption.php.json",
+      "bytes": 1750,
+      "sha256": "b638c86e73fc29eaea772ed061a20013885b38e1b87ddc3f6f87ee72d28263ed"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-regression.php.json",
+      "bytes": 49504,
+      "sha256": "6d6babd5161cb5b2ed34013d91f865c487b770e0ac9ad37cd2f620cd843a2be4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-widget-entity-pipeline.php-named.json",
+      "bytes": 1419273,
+      "sha256": "36356db3bb3c687f20dbec9f8d9ac4085e1dcae45ab89e931228d7d27db753f7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-widget-entity-pipeline.php-numeric.json",
+      "bytes": 1754650,
+      "sha256": "1b75141ac67e9aabb6e2bee603c5226e95a3ed122eb62e7f4a46af492b1fc520"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-ms85-widget-fallback.php.json",
+      "bytes": 4599,
+      "sha256": "9b7e88441333510337e4c8138b6d9dc41c3c8ee15db3b25ef966b752ce1cd800"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-final-review.php.json",
+      "bytes": 20109,
+      "sha256": "69a37de32e547cead73137a5fd687cd0a44b01c9e17391f63a748fa3dfdf4e2b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-html5-caption-save.php.json",
+      "bytes": 20349,
+      "sha256": "1f81e89cb53d04b4f5131eb31354d7b4c22d5c76fc03d6ee5f74d2288a6ccedc"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-html5-charset.php.json",
+      "bytes": 652,
+      "sha256": "e007a020b37b73302b829780508a06504bb835cef5979c62bd75897006d784ab"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-html5-entity-pipeline.php.json",
+      "bytes": 1419640,
+      "sha256": "2776e4c740464150f09a005a4e5ad78778fe73508980096163a482f4fd1f9a4c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-numeric-caption-save.php.json",
+      "bytes": 56835,
+      "sha256": "71a0bd384a8ed3c0d4f7fe38474263b1c93693b89df15b87621e5f2bc1fcf647"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-numeric-entity-pipeline.php.json",
+      "bytes": 1751406,
+      "sha256": "b2445a3e2efa9f8069c6d644d3f3507aaf746bebfb2d633ccff12dd27dbf0d85"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-p2-caption.php.json",
+      "bytes": 1750,
+      "sha256": "552c6c3b0f55290343897f1670a32268401ab831eceacfd665625046d2f93938"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-regression.php.json",
+      "bytes": 49504,
+      "sha256": "ac09a4913338e12593ae9bd4b34c2323ff79a19c4f0139bbb54268af25a7d242"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-widget-entity-pipeline.php-named.json",
+      "bytes": 1419809,
+      "sha256": "78ef640f2e48b94b3dd3e707d502e95bf4505500268aa24c343a5326c915be73"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-widget-entity-pipeline.php-numeric.json",
+      "bytes": 1751422,
+      "sha256": "989d9ca1ed9b30f35466f2747bcb729d36495ec9b8c362a136663b9b3d075d11"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final-wp70-widget-fallback.php.json",
+      "bytes": 4599,
+      "sha256": "5e5926807e881086a8bdb8a9a2e6c5a8a1c15513c01c1413e03a4a64350fea08"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/php-final.json",
+      "bytes": 4856,
+      "sha256": "76deb5c594c8390f39af9abd1b640ba885a036b3a774dc7d116e4fcd5f9f4f94"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/preservation-and-cleanup.json",
+      "bytes": 353,
+      "sha256": "f234f0a4e8671e24df938604ffcec17ed574f3ce529f70877955bdc0ca731334"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/preservation-and-cleanup921.json",
+      "bytes": 353,
+      "sha256": "6a09450c9a49cd73ae81acef88a0d7c400f88a461f966f036776a8d04eb8b688"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/prior-block.js",
+      "bytes": 115244,
+      "sha256": "2dd37dc1973176e42861391f3b177b08878f7cad42661967c61820235d587615"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/prior-candidate-834b1757.zip",
+      "bytes": 58241,
+      "sha256": "834b1757263a7b9536990a9c64d9c698d73c3747a2a5af755a3e28d0d9e6b352"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/prior-diff-e442cb72.patch",
+      "bytes": 19315,
+      "sha256": "e442cb72ef893822474bb8669e9700febbfb994b43ec86a9fa7c1538d986f79a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/prior-readme.txt",
+      "bytes": 6713,
+      "sha256": "c640023699e0e39b9fac30059cdeca95f06fd80403d6167700601fba38fa2395"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/product-files.json",
+      "bytes": 2121,
+      "sha256": "2b699ae506f29e9236f835e07be16dff535e1fc689e52b4af112e32b344e0c86"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/product-files921.json",
+      "bytes": 2121,
+      "sha256": "d586126728c9a2450cbbae366cbc73ad57aba90f2f7fc3efbd32c0d376432863"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/red-confirmed-localwp-chromium-administrator.png",
+      "bytes": 84775,
+      "sha256": "d8dc738a2f60c9af38a77f201e07f77578b44eb6eecc6c87254b3bf2f0cefcd3"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/red-confirmed-localwp-chromium-author.png",
+      "bytes": 68560,
+      "sha256": "d2230eafca379a5723512dbc166df92068dc34c076c634d8a0f94a4b5e0e6140"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/red-confirmed-localwp-chromium.json",
+      "bytes": 56020,
+      "sha256": "b6d072a39982df9fa1bb7aa4d59810d3f3e6288959d2a48f2912c9a2489c1ec4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/red-localwp-chromium-administrator.png",
+      "bytes": 79462,
+      "sha256": "7c499b8621a7248c97a1923c3011afe02996e340fcc3ae2c730b8d79bf656d41"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/red-localwp-chromium.json",
+      "bytes": 37849,
+      "sha256": "99c702cff4d7899336d019126c641c093badf44142c63c8e5128f52ad831e790"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade-after.json",
+      "bytes": 324872,
+      "sha256": "c19b5b136269a0540610f0ea8cdef3be91a709928d758606dc281cfcb75b516d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade-before.json",
+      "bytes": 324872,
+      "sha256": "c19b5b136269a0540610f0ea8cdef3be91a709928d758606dc281cfcb75b516d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade-localwp-chromium.json",
+      "bytes": 5268,
+      "sha256": "94bfc63fa57554331b7305ed9c3b8dcb4aac9b276920e56d3c8a5d6e63f51d92"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade-ms85-child-chromium.json",
+      "bytes": 5271,
+      "sha256": "f34f74d3e4be4be019eb3142ef73fbdebc2dbea5b9fde9c38ac52d0175cccb87"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade-wp70-chromium.json",
+      "bytes": 5265,
+      "sha256": "d298084797f6085d7c830f03eebfff1bcac67d26036ade7af4e0aeea500eebb0"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade.json",
+      "bytes": 1790,
+      "sha256": "169acfa457eb6310d76df83c1f6846a766d652bcfd45be10be28a61357de4096"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921-after.json",
+      "bytes": 399461,
+      "sha256": "930bded9ab661af0b1a5ea46139e82559d333b152a0b8eedbed15801123f4f5a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921-before.json",
+      "bytes": 399461,
+      "sha256": "930bded9ab661af0b1a5ea46139e82559d333b152a0b8eedbed15801123f4f5a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921-localwp-chromium.json",
+      "bytes": 5271,
+      "sha256": "af8cba71b88690666eac7f3ad1011e883ed7adf2675f39053bf2083d713076fd"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921-ms85-child-chromium.json",
+      "bytes": 5276,
+      "sha256": "0d5c69f2a82fd21838e16ae6474cac3058c9b16b372ccb7eab3d9bef23c6513b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921-wp70-chromium.json",
+      "bytes": 5270,
+      "sha256": "634e761a453a01dcf9b800f03386a1197b7644afca875e6b84dc9618abf10e27"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/reupgrade921.json",
+      "bytes": 1790,
+      "sha256": "2a192f4b3a37306864fce5a8169f72f6600842b363e94c2f9b17028fff9b9e97"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-after.json",
+      "bytes": 324872,
+      "sha256": "c19b5b136269a0540610f0ea8cdef3be91a709928d758606dc281cfcb75b516d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-before.json",
+      "bytes": 324872,
+      "sha256": "c19b5b136269a0540610f0ea8cdef3be91a709928d758606dc281cfcb75b516d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-localwp-chromium.json",
+      "bytes": 5267,
+      "sha256": "6d1593f4c26136de3f60ff20ddea28ec04199f3d10dedcc2b5bf93d8df1a0e4a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-localwp-firefox.json",
+      "bytes": 5266,
+      "sha256": "7828372b1d98ac41687fa344a0194a80d9d8b6f496033a6039910788e0828d85"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-localwp-webkit.json",
+      "bytes": 5249,
+      "sha256": "eb8b05a53838878a9645aec20a86fde8b8addce421283072b9b3adc13fb1c263"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-ms85-child-chromium.json",
+      "bytes": 5270,
+      "sha256": "c5e36fc5dea3a3150e097b9628b0c30b6a49f700ce81bc43a656f3483b215e96"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-ms85-child-firefox.json",
+      "bytes": 5269,
+      "sha256": "69ff49766917baa2d79ace77b74bb9d818e9897c36f53c6a4005de61accae778"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-ms85-child-webkit.json",
+      "bytes": 5252,
+      "sha256": "ded60e25fa69d5e518a12e3e76e4aa607791de2054c1f131c9ac0bce43927c61"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-wp70-chromium.json",
+      "bytes": 5263,
+      "sha256": "3d88590e7db55effd8f9ab7de8a88a7b79d9d6b8095f2651fc01758e43be90f5"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-wp70-firefox.json",
+      "bytes": 5263,
+      "sha256": "bdb7fe1ed418c2676e63e68c7d5bd3375e277bf8e6e349c488e2636f7f28fcab"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback-wp70-webkit.json",
+      "bytes": 5246,
+      "sha256": "625dab434056c325f9106d093eb6322842b380c09562304d954f1b258df16e4f"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback.json",
+      "bytes": 1675,
+      "sha256": "a69e6cb20656618f8cac25e1878fa2701db369aa26b208f16bb390fc9f5b10e9"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-after.json",
+      "bytes": 399461,
+      "sha256": "930bded9ab661af0b1a5ea46139e82559d333b152a0b8eedbed15801123f4f5a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-before.json",
+      "bytes": 399461,
+      "sha256": "930bded9ab661af0b1a5ea46139e82559d333b152a0b8eedbed15801123f4f5a"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-localwp-chromium.json",
+      "bytes": 5270,
+      "sha256": "597870cf230b32a835f0219342767a2e881048829fcd48a9639a07649a4bb11c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-localwp-firefox.json",
+      "bytes": 5269,
+      "sha256": "12a1eda5c8f9f4de62404e36ba2757bc7b0d4e45ccde13334aefd740187c279c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-localwp-webkit.json",
+      "bytes": 5442,
+      "sha256": "c56e52c8dc0918783031f82c3b4f8ffceb13c7a77ec466388ac731cd4e3c7250"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-ms85-child-chromium.json",
+      "bytes": 5275,
+      "sha256": "4693ce42a0eb115f4ffd06348cb1075842d0052aa8fa50618804751ecc0d6388"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-ms85-child-firefox.json",
+      "bytes": 5274,
+      "sha256": "1dcd2205db104464e84d2e100c8693b3026a7334ed49e5812e3c30250a5815e3"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-ms85-child-webkit.json",
+      "bytes": 5257,
+      "sha256": "9b9c35b4dba04a5acafdca04099c9585ea33a86bd7914cd63f65b71771946690"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-retry-localwp-webkit.json",
+      "bytes": 5258,
+      "sha256": "cc764a33ceb2a3d613f03983a2be8e3fe71bd5bfe3912cedfd86765d8e71c943"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-wp70-chromium.json",
+      "bytes": 5269,
+      "sha256": "bba141a8a961e2424bb961bef523223c67088cf49103f9e56d394cc27507b31f"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-wp70-firefox.json",
+      "bytes": 5267,
+      "sha256": "42594e994a11c5e6c30fffe2722460d075c2f75ce7e51e3091db857433342d2d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921-wp70-webkit.json",
+      "bytes": 5251,
+      "sha256": "3b5c9d7e2f80653df7b6417250953985f0ea6c0055ddb203651c86990ff78faf"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/rollback921.json",
+      "bytes": 1675,
+      "sha256": "72dc4dcdf4260afee3d763f16234c52bebd465aadf9deb9d02bba77ab3a98086"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/storage-contract.json",
+      "bytes": 127,
+      "sha256": "1125a0b7550a7de740bbce360d321c700ee91655407f33a253782eff2417d02d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/ui-summary.json",
+      "bytes": 409,
+      "sha256": "1992de560f705e2830021bfa3e30a674588263313f0029c6986c348a5966c64e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/ui-summary921.json",
+      "bytes": 387,
+      "sha256": "d47601a310ffa42425a733fdea553dc89499dd88c90cd2f37fe54509e0ea8a9b"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-localwp-chromium-administrator.png",
+      "bytes": 84417,
+      "sha256": "5f33ddba08daa61c6659441aac80350170ea9348188a9441fca2568c278bb85c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-localwp-chromium-author.png",
+      "bytes": 71577,
+      "sha256": "762f487936e5846dc85c821493c40c6d5bec3a2bec231bb00a185f50058245de"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-localwp-chromium.json",
+      "bytes": 8522,
+      "sha256": "e0c629721306f8b336f56592855f0bef3e460418f2b75039f2fde83ef48ed72f"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-ms85-child-chromium-administrator.png",
+      "bytes": 96941,
+      "sha256": "7ee962925cf367a97dcb8447c7a12e96d78fc3daf4780a26f99195d7c36b447d"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-ms85-child-chromium-author.png",
+      "bytes": 80757,
+      "sha256": "363d6c51d172f0b2a8826fc0bf9b10c1b91f0a847c6d2bae072e4d20200534e4"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-ms85-child-chromium.json",
+      "bytes": 8525,
+      "sha256": "f2f92c9ec5e9458c8ee9accda1689d6dc55e6dae12160d2ddd8064ed9b284433"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-wp70-chromium-administrator.png",
+      "bytes": 76495,
+      "sha256": "a48be284b6bbbcb511a983dced4c2519fb37ca40a66843d7da24b2e50ab5e0ba"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-wp70-chromium-author.png",
+      "bytes": 58892,
+      "sha256": "36080d09d6f55bcbf872b9ba63c231be202a5787797206e31d9eb083ed8d72e7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verified-wp70-chromium.json",
+      "bytes": 8573,
+      "sha256": "23ba15fc230497bd794931ce044331716a33d5b5982381fd7a83967d49f26e7e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/verify-final.py",
+      "bytes": 6470,
+      "sha256": "f96ea62a9ef1a84990a899a8ba27ed10e4520eba49e2245ea644e6bbfbb21823"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-clean-ms85-child-webkit-administrator.png",
+      "bytes": 143173,
+      "sha256": "40c4998b11019bec29342cffef4d8d88c9819a6aa15ac5e1e5bca70b7d795ca1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-clean-ms85-child-webkit-author.png",
+      "bytes": 115669,
+      "sha256": "e94359ede7dc46bfb2c626fae890dff556c071fbca8daea44e085498d4fc471e"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-clean-ms85-child-webkit.json",
+      "bytes": 8535,
+      "sha256": "c1e2e37b7c4ed7cb500e8ffc3baac5856cc6e953e5fe59b8c04749203ab63344"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-confirmed-localwp-webkit-administrator-error.png",
+      "bytes": 142659,
+      "sha256": "aa2061cd3b948cab72e37fce34c7e2d19114eda5e216db326cf5947b837d56bc"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-confirmed-localwp-webkit.json",
+      "bytes": 6138,
+      "sha256": "32569ca242acdc97107c2b0d363b990c4e395b33223c53d9f5429a7aba54f899"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-confirmed-ms85-child-webkit-administrator-error.png",
+      "bytes": 124014,
+      "sha256": "264decbfc029b46e7c37f81726e73336ff1b6e300458a87077d64a2437ea2396"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-confirmed-ms85-child-webkit.json",
+      "bytes": 3682,
+      "sha256": "2e091c4701c6d7270a6d28eae3022d80c0321f10b56dcb136be554b80d5484ff"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-confirmed-wp70-webkit-administrator.png",
+      "bytes": 115715,
+      "sha256": "c6ba15fbdfd18ea065c55d58314d686bc1d6f46fcd008e5dd0b6236adb5d3089"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-confirmed-wp70-webkit-author.png",
+      "bytes": 92672,
+      "sha256": "37cbae6329a0fe4595756d0dfdebdeab0616c1f53de5e1d855722779758a60e7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-confirmed-wp70-webkit.json",
+      "bytes": 10556,
+      "sha256": "87e0596ddbd8bb32b08084d442b9be3718f22c19a44c4540fec9e26101b33834"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-control.mjs",
+      "bytes": 3490,
+      "sha256": "0ef763fadd72269ef13e5a58d74359b0aea951df15e86bee1f8b803e7df3790f"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-prior-control.json",
+      "bytes": 198,
+      "sha256": "c2dcede2536d0b8bcb67e3d757afcd5c288814ba980306751b3fcc52ed8f8af5"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/locale-fix/webkit-verified-control.json",
+      "bytes": 326,
+      "sha256": "fc2a63f6f45fcf17dbb7441e177d67506b4e402070bea8636a469ec2f287853c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/published-localwp-recheck/candidate-chromium-locale921.json",
+      "bytes": 197554,
+      "sha256": "df583e7c4d621a1a6448bb37dd2e66778e3ec822a33bdfd9aa983eae4985a707"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/widget-fallback-fix-green/local-browser/browser-locale921-chromium.json",
+      "bytes": 187072,
+      "sha256": "9e7097d46f982f91a49c1d359d6ad533358ca2d4b299790afeeee4ec3e5b4340"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/widget-fallback-fix-green/local-browser/browser-locale921-firefox.json",
+      "bytes": 187098,
+      "sha256": "ab8b0fe5b3e83915195526e9d9ec96afffa1f635bf76235585e7be127244b307"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/widget-fallback-fix-green/local-browser/browser-locale921-webkit.json",
+      "bytes": 187069,
+      "sha256": "3d5aebdf4a61a5a40c0bc0b4bf4738c69407156203a458c980736dfbde5aa5f7"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/docs/patches/1.1.2/LOCALE-VERIFICATION.md",
+      "bytes": 12505,
+      "sha256": "02ddb8a98e6d81325b75dd24a1709fbd7b19d9c43788f61fd22a2462b1f1b1f1"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/docs/patches/1.1.2/README.md",
+      "bytes": 3469,
+      "sha256": "9e8e48feb12501156a318e7a106e0c4a0475f65cea49aa5e95c4f4a50575c4d3"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/docs/patches/1.1.2/simple-digital-clock-1.1.1-to-1.1.2.patch",
+      "bytes": 22810,
+      "sha256": "ba3623a4aac2dfd60799c6fde1e7cd707a6816589bf404d8e47e67b5a73e101c"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/README.md",
+      "bytes": 24546,
+      "sha256": "2f3f3613028643abdb7c771f346d6e0daeb758f8a456abbfe16d80c801a6b1bf"
+    },
+    {
+      "path": "/Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/locale-tests.mjs",
+      "bytes": 17422,
+      "sha256": "ed17b3d0727e06a1f301c1e70ff8e06e309d2187884311d1098df5100a1e6130"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+ARG PHP_IMAGE=php:7.0.33-apache
+FROM ${PHP_IMAGE}
+RUN docker-php-ext-install mysqli
+RUN a2enmod rewrite

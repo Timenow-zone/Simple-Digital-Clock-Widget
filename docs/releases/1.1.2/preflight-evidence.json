@@ -1,0 +1,1438 @@
+{
+  "observed_at": "2026-10-29T07:29:53.017272+00:00",
+  "status": "LOCAL_RELEASE_PREFLIGHT_COMPLETED_WITH_DOCUMENTED_WARNINGS",
+  "publication": false,
+  "zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+  "git_payload_commit": "f4a2caeca5ae93887af77026da82cc313f178566",
+  "git_plugin_tree": "18512403b0715be777a89e302831a3cc3d5117b6",
+  "smoke": {
+    "original111": {
+      "files": 6,
+      "checks": 8,
+      "failed": 0
+    },
+    "updated112": {
+      "files": 6,
+      "checks": 342,
+      "failed": 0
+    },
+    "saved112": {
+      "files": 6,
+      "checks": 300,
+      "failed": 0
+    },
+    "rollback111": {
+      "files": 6,
+      "checks": 342,
+      "failed": 0
+    },
+    "reupgrade112": {
+      "files": 6,
+      "checks": 342,
+      "failed": 0
+    },
+    "actual_ui": {
+      "files": 6,
+      "checks": 54,
+      "failed": 0
+    },
+    "replacement_cycles": {
+      "baseline111": {
+        "sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+        "files": 14,
+        "all_data_unchanged": true,
+        "post_rows": 3985
+      },
+      "updated112": {
+        "sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+        "files": 15,
+        "all_data_unchanged": true,
+        "post_rows": 3999
+      },
+      "rollback111": {
+        "sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+        "files": 14,
+        "all_data_unchanged": true,
+        "post_rows": 4035
+      },
+      "reupgrade112": {
+        "sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+        "files": 15,
+        "all_data_unchanged": true,
+        "post_rows": 4035
+      }
+    }
+  },
+  "smoke_driver_invocations": 36,
+  "smoke_checks_including_baseline": 1388,
+  "smoke_sites": [
+    {
+      "key": "localwp",
+      "url": "http://localhost:10003",
+      "post_id": 2399,
+      "multisite": false,
+      "runtime": "localwp",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.2.29",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "beta83",
+      "runtime": "beta83",
+      "url": "http://127.0.0.1:19533",
+      "multisite": false,
+      "post_id": 1586,
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 2,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 3,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.2-beta2",
+      "php": "8.3.35",
+      "theme": "ipsum",
+      "block_theme": true
+    }
+  ],
+  "smoke_teardown": {
+    "results": [
+      {
+        "name": "firefox",
+        "exit": 0
+      },
+      {
+        "name": "beta",
+        "exit": 0
+      },
+      {
+        "name": "native",
+        "exit": 0
+      }
+    ],
+    "ports_checked": [
+      10003,
+      19527,
+      19533
+    ],
+    "ports_open": [],
+    "volumes_deleted": false,
+    "unrelated_sites_targeted": false,
+    "temporary_firefox_container_retained_stopped": true
+  },
+  "plugin_check": {
+    "observed_at": "2026-10-29T07:25:24.242855+00:00",
+    "status": "COMPLETED_WITH_WARNINGS_NO_ERRORS",
+    "publication": false,
+    "tool": {
+      "source": "https://downloads.wordpress.org/plugin/plugin-check.latest-stable.zip",
+      "version": "2.1.0",
+      "sha256": "6ff4bd2145f3befcf907df158cc466b1649dafed5686de8369907403c3013fc4",
+      "bytes": 4458043,
+      "container_package": "/lab/packages/plugin-check-2.1.0.zip",
+      "official_instructions": "https://github.com/WordPress/plugin-check#how-to-use",
+      "cli_runtime_requires": "/var/www/html/wp-content/plugins/plugin-check/cli.php"
+    },
+    "environment": {
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "service": "wp85",
+      "project": "sdcw-extended-review-20261028",
+      "port": 19530,
+      "scope": "Own isolated Docker service only; no production sites"
+    },
+    "candidate_zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+    "baseline_zip_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+    "modes_executed": [
+      "update",
+      "new"
+    ],
+    "final_export_mode": "new",
+    "static_checks_selected": 29,
+    "runtime_checks_selected": 5,
+    "runtime_proof": {
+      "command_detected": true,
+      "runtime_checks": 5,
+      "static_checks": 29,
+      "runtime_slugs": [
+        "enqueued_scripts_size",
+        "enqueued_styles_size",
+        "enqueued_styles_scope",
+        "enqueued_scripts_scope",
+        "non_blocking_scripts"
+      ],
+      "static_slugs": [
+        "i18n_usage",
+        "php_error_reporting",
+        "code_obfuscation",
+        "plugin_content",
+        "file_type",
+        "plugin_header_fields",
+        "late_escaping",
+        "safe_redirect",
+        "plugin_updater",
+        "plugin_uninstall",
+        "plugin_review_phpcs",
+        "direct_db_queries",
+        "performant_wp_query_params",
+        "enqueued_scripts_in_footer",
+        "enqueued_resources",
+        "plugin_readme",
+        "localhost",
+        "no_unfiltered_uploads",
+        "trademarks",
+        "offloading_files",
+        "write_file",
+        "setting_sanitization",
+        "prefixing",
+        "direct_db",
+        "minified_files",
+        "direct_file_access",
+        "external_admin_menu_links",
+        "wp_functions_compatibility",
+        "ai_provider"
+      ]
+    },
+    "candidate": {
+      "findings": 7,
+      "counts": {
+        "WARNING": 7
+      },
+      "exit": 0
+    },
+    "baseline": {
+      "findings": 1,
+      "counts": {
+        "WARNING": 1
+      },
+      "exit": 0
+    },
+    "new_findings": [
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 90,
+        "column": 9,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 143,
+        "column": 17,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 156,
+        "column": 13,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 211,
+        "column": 13,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 217,
+        "column": 9,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 307,
+        "column": 14,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace",
+        "message": "debug_backtrace() found. Debug code should not normally be used in production.",
+        "docs": ""
+      }
+    ],
+    "inherited_findings": [
+      {
+        "file": "assets/public/js/simple-digital-clock.min.js",
+        "line": 0,
+        "column": 0,
+        "type": "WARNING",
+        "code": "EnqueuedScriptsScope",
+        "message": "This script is being loaded in all frontend contexts.",
+        "docs": ""
+      }
+    ],
+    "classification": {
+      "new_error_log_warnings": {
+        "count": 5,
+        "file": "includes/simple-digital-clock-kses.php",
+        "lines": [
+          90,
+          143,
+          156,
+          211,
+          217
+        ],
+        "reason": "Fixed diagnostic strings on parser/encoding error branches; no user caption/content, arguments, stack traces, secrets or dynamic values are logged. These are operational diagnostics, not routine debug dumps.",
+        "assessment": "Documented contextual exception; no immediate runtime change warranted solely to silence the heuristic."
+      },
+      "new_debug_backtrace_warning": {
+        "count": 1,
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 307,
+        "reason": "Functional KSES ownership detection. DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT, maximum 12 frames, function names/object identity only, no output.",
+        "assessment": "Documented contextual exception; replacing it without a valid alternative risks the tested nested-sanitization guarantees."
+      },
+      "inherited_scope_warning": {
+        "count": 1,
+        "file": "assets/public/js/simple-digital-clock.min.js",
+        "code": "EnqueuedScriptsScope",
+        "reason": "Clock runtime is enqueued on all frontend contexts; identical warning in official 1.1.1.",
+        "assessment": "Inherited performance/design concern, not a new 1.1.2 regression; conditional enqueueing requires a separately tested change."
+      }
+    },
+    "data_retention": {
+      "post_rows_unchanged": true,
+      "widgets_theme_url_activation_unchanged": true,
+      "table_names_unchanged": true,
+      "persistent_options_added": [],
+      "persistent_options_removed": [],
+      "persistent_options_changed": [],
+      "checker_directory_removed": true,
+      "object_cache_dropin_removed": true
+    },
+    "final_plugin_files_match_manifest": true,
+    "final_plugin_files": 15,
+    "teardown": {
+      "completed": true,
+      "started_services": [
+        "db",
+        "wp85"
+      ],
+      "cleanup_errors": [],
+      "publication": false
+    },
+    "limitations": [
+      "Plugin Check 2.1.0 official metadata declares Tested up to 7.0; it executed here on the actual WP 7.1.3 runtime.",
+      "Default stable checks only; experimental checks and AI review were not requested or enabled.",
+      "WordPress external HTTP remained intentionally blocked; checks depending on external delivery/API availability do not certify public WordPress.org packaging or installed user sites.",
+      "First attempted invocation used an invalid pre-existing user in PCP temporary runtime tables and exited before checks. Its logs are retained; temporary tables were subsequently cleaned through the checker normal cleanup API."
+    ],
+    "preserved_attempts": {
+      "attempt_1": "Failed pre-check user resolution; original posts/settings unchanged; temporary table cleanup completed later.",
+      "attempt_2": "Completed update-mode run: 0 errors, 7 warnings vs baseline 0 errors, 1 warning; later default new-mode rerun includes source file fields."
+    },
+    "evidence_files": [
+      {
+        "path": ".local/release-final-112/plugin-check/tool.json",
+        "sha256": "0106391cbf8d53ad34173131592e19facd7526aa8ed5e2fc45dda341dafd4ce6"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/candidate-findings.json",
+        "sha256": "a07d5eba40fe1c1f2f88b5dcd0c12ea2523d9cd02b2b230fd5c16568b0e906d6"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/candidate-proof.json",
+        "sha256": "121b1d8ef0b454776eef6eadbd9d711f3b5b489317d0f694bcc91eca22cf42ea"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/candidate-result.json",
+        "sha256": "131950d0c7df2cdeecb3486aa3c0446f357672878740ee57f5296280c6c85f85"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/baseline-findings.json",
+        "sha256": "a77379f42ef73971c18d1096844b582165af28eafc9452731fd77b49533e0c18"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/baseline-proof.json",
+        "sha256": "121b1d8ef0b454776eef6eadbd9d711f3b5b489317d0f694bcc91eca22cf42ea"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/baseline-result.json",
+        "sha256": "1423c614172becc302732a92d6a3a73623e8012b3beae983bb5d71458f952b0b"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/data-retention.json",
+        "sha256": "e750581b030a8054bc6f124b61a5c5a0a8dcfd8d9cc0fcbb3103e385c9b7ec3d"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/accepted-run.json",
+        "sha256": "374f832df2981614ac0e29a1aa39bb4fa32563344a1b658433bc8beee5600d3b"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/teardown.json",
+        "sha256": "4712be107e6ee1609250880d026488f943b65d9791ab8898aa51d948cad11e4f"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/plugin-check.zip",
+        "sha256": "6ff4bd2145f3befcf907df158cc466b1649dafed5686de8369907403c3013fc4"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/attempt-2/candidate-findings.json",
+        "sha256": "f8e503b8351b8647b9a1117286c514d3e40713da0e5b110eb7ede5a0643e37cd"
+      },
+      {
+        "path": ".local/release-final-112/plugin-check/attempt-2/baseline-findings.json",
+        "sha256": "cc3a09a42006227c0474b4ecf13417f88231fee3e37c0e8e9cb0e6c27964951e"
+      }
+    ]
+  },
+  "svn_preflight": {
+    "observed_at": "2026-10-29T07:17:25.957888+00:00",
+    "status": "PASSED_READ_ONLY_RELEASE_PREFLIGHT",
+    "remote": {
+      "url": "https://plugins.svn.wordpress.org/simple-digital-clock",
+      "pinned_head_revision": 3772260,
+      "base_revision": 3771402,
+      "trunk_last_changed_revision": 3659668,
+      "trunk_last_changed_date": "2026-08-21T21:41:50.812567Z",
+      "trunk_version": "1.1.1",
+      "trunk_matches_official_1_1_1": true,
+      "remote_files": 14,
+      "trunk_changes_since_base": 0,
+      "tag_1_1_2_available": true
+    },
+    "local": {
+      "git_head_at_check": "f4a2caeca5ae93887af77026da82cc313f178566",
+      "git_plugin_tree": "18512403b0715be777a89e302831a3cc3d5117b6",
+      "manifest_zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+      "targets": [
+        "trunk",
+        "tags/1.1.2"
+      ],
+      "files_per_target": 15,
+      "changed_files_per_target": 5,
+      "all_payloads_match": true,
+      "copy_history_correct": true,
+      "property_changes": false,
+      "untracked_banner_preserved_and_excluded": true,
+      "status_unchanged": true
+    },
+    "future_publication_scope": [
+      "trunk",
+      "tags/1.1.2"
+    ],
+    "excluded_from_publication": [
+      "assets/"
+    ],
+    "svn_update_executed": false,
+    "svn_commit_executed": false,
+    "svn_copy_executed": false,
+    "working_copy_modified": false,
+    "publication": false,
+    "limitation": "This is a point-in-time pinned read. Repository HEAD can advance; repeat remote and local scope checks immediately before an explicitly authorized publication.",
+    "evidence_files": [
+      {
+        "path": ".local/release-final-112/svn-preflight/local-info-tags-1.1.2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-info-tags-1.1.2.stdout",
+        "sha256": "8eaa818f2199e6c50f600e925a59e6b698b16b0a0988189f3e02ee75902b183e"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-info-trunk.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-info-trunk.stdout",
+        "sha256": "548ddd4d8fd93d0a7938ff0e5bf176bd490ec0aa846b74d3aa717c6651a625af"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-property-diff.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-property-diff.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-props-tags-1.1.2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-props-tags-1.1.2.stdout",
+        "sha256": "63779316a9d0b543f7677099c9c0745fd1a02218c38e01d3a45516714be27492"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-props-trunk.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-props-trunk.stdout",
+        "sha256": "0f588e588ca4b0c564677c43457c949be2c991c8af8cc1341b6fc6dbc10f0a37"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-status-after.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-status-after.stdout",
+        "sha256": "ff53ec10d50c2c2b24160857956116275c1d48dce229497aa1d6ac456a7d5f66"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-status-before.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-status-before.stdout",
+        "sha256": "b9b3f719ac26be08620d5fd518bcb6edc0caa987304125ac1f9bda0c750072ec"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-summary.json",
+        "sha256": "dd8a9592616bcde867882e9be06ac675e475a0ff8195d5932918d0f866319f50"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-tag-copy-diff.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-tag-copy-diff.stdout",
+        "sha256": "ab61c9d878c45285e45f431b752219934bfe7c9e39832d4d9b24c108758ef07f"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-trunk-diff.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/local-trunk-diff.stdout",
+        "sha256": "0e43d21b10aac655d042b6b4805206bb4e0ff821acd76193ee76359dba806632"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-LICENSE.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-LICENSE.stdout",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__icon.png.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__icon.png.stdout",
+        "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__icon.svg.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__icon.svg.stdout",
+        "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__stars.png.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__stars.png.stdout",
+        "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__js__simple-digital-clock-notify.js.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__js__simple-digital-clock-notify.js.stdout",
+        "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__public__css__simple-digital-clock.css.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__public__css__simple-digital-clock.css.stdout",
+        "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__public__js__simple-digital-clock.min.js.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-assets__public__js__simple-digital-clock.min.js.stdout",
+        "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-block.js.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-block.js.stdout",
+        "sha256": "1ce3df3a6aa541f09b5bb34a8f27e41582b417f3a309154d1eea6645d78f5eda"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-includes__simple-digital-clock-admin-notices.php.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-includes__simple-digital-clock-admin-notices.php.stdout",
+        "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-includes__simple-digital-clock-admin-settings.php.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-includes__simple-digital-clock-admin-settings.php.stdout",
+        "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-index.php.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-index.php.stdout",
+        "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-languages__simple-digital-clock.pot.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-languages__simple-digital-clock.pot.stdout",
+        "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-readme.txt.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-readme.txt.stdout",
+        "sha256": "468af1709fc6984f3f5a144208cd57ab5c641fa74eac630922ef67c0a95698b8"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-widget_init.php.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-cat-widget_init.php.stdout",
+        "sha256": "5c1c28075ec196ed4086de1fbee1e6b35e4b9e0ae98203479f7312b9739f8c79"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-root-info.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-root-info.stdout",
+        "sha256": "fdff234fb2e1cca597848acdbff0555fe06ac1567bb0447cf48e186453deb243"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-summary.json",
+        "sha256": "b48eb86d710d80cdb9439a8adead0d47d7e07ccaefe50195b5836db9d840a260"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-tag-1.1.2-info.stderr",
+        "sha256": "6b3b7c057ec3449c5ae6871203cae67f1cef5d0eb115507c188ece396efa6864"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-tag-1.1.2-info.stdout",
+        "sha256": "24db24c9eb8a48a74a5879dc9147e8ab58247b6020414a3adf997e3174853d86"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-tags-list.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-tags-list.stdout",
+        "sha256": "817313bc3c45a10ea2c5da6749f8017e89c5525ed0f6cc986d25f0cb47b70e65"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-changes-since-base.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-changes-since-base.stdout",
+        "sha256": "22ed99fbee543df98e872817518e8364be7f6a76c8f2023878d390de029967cb"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/LICENSE",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/admin/img/icon.png",
+        "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/admin/img/icon.svg",
+        "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/admin/img/stars.png",
+        "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/admin/js/simple-digital-clock-notify.js",
+        "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/public/css/simple-digital-clock.css",
+        "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/public/js/simple-digital-clock.min.js",
+        "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/block.js",
+        "sha256": "1ce3df3a6aa541f09b5bb34a8f27e41582b417f3a309154d1eea6645d78f5eda"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/includes/simple-digital-clock-admin-notices.php",
+        "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/includes/simple-digital-clock-admin-settings.php",
+        "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/index.php",
+        "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/languages/simple-digital-clock.pot",
+        "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/readme.txt",
+        "sha256": "468af1709fc6984f3f5a144208cd57ab5c641fa74eac630922ef67c0a95698b8"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-files/widget_init.php",
+        "sha256": "5c1c28075ec196ed4086de1fbee1e6b35e4b9e0ae98203479f7312b9739f8c79"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-info.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-info.stdout",
+        "sha256": "b9a910691cc59bd1c11693063bb2b20a08fe96890f892d97a5e217c6cbae75bc"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-list.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".local/release-final-112/svn-preflight/remote-trunk-list.stdout",
+        "sha256": "48db43ee3c4d9a4aa258f0f82d661eaed3e35efa4f86c9a762862996b24b963b"
+      }
+    ]
+  },
+  "release_scope": {
+    "targets": [
+      "trunk",
+      "tags/1.1.2"
+    ],
+    "files_per_target": 15,
+    "changed_files_per_target": 5,
+    "excluded_paths": [
+      "assets/"
+    ],
+    "runtime_source_changes_in_this_task": false,
+    "requires_remote_recheck_before_publication": true
+  },
+  "evidence_files": [
+    {
+      "path": ".local/release-final-112/plugin-check/accepted-run.json",
+      "sha256": "374f832df2981614ac0e29a1aa39bb4fa32563344a1b658433bc8beee5600d3b",
+      "bytes": 573
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/attempt-2/baseline-findings.json",
+      "sha256": "cc3a09a42006227c0474b4ecf13417f88231fee3e37c0e8e9cb0e6c27964951e",
+      "bytes": 190
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/attempt-2/candidate-findings.json",
+      "sha256": "f8e503b8351b8647b9a1117286c514d3e40713da0e5b110eb7ede5a0643e37cd",
+      "bytes": 1657
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/baseline-findings.json",
+      "sha256": "a77379f42ef73971c18d1096844b582165af28eafc9452731fd77b49533e0c18",
+      "bytes": 250
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/baseline-proof.json",
+      "sha256": "121b1d8ef0b454776eef6eadbd9d711f3b5b489317d0f694bcc91eca22cf42ea",
+      "bytes": 963
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/baseline-result.json",
+      "sha256": "1423c614172becc302732a92d6a3a73623e8012b3beae983bb5d71458f952b0b",
+      "bytes": 63
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/candidate-findings.json",
+      "sha256": "a07d5eba40fe1c1f2f88b5dcd0c12ea2523d9cd02b2b230fd5c16568b0e906d6",
+      "bytes": 2041
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/candidate-proof.json",
+      "sha256": "121b1d8ef0b454776eef6eadbd9d711f3b5b489317d0f694bcc91eca22cf42ea",
+      "bytes": 963
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/candidate-result.json",
+      "sha256": "131950d0c7df2cdeecb3486aa3c0446f357672878740ee57f5296280c6c85f85",
+      "bytes": 63
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/data-retention.json",
+      "sha256": "e750581b030a8054bc6f124b61a5c5a0a8dcfd8d9cc0fcbb3103e385c9b7ec3d",
+      "bytes": 299
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/plugin-check.zip",
+      "sha256": "6ff4bd2145f3befcf907df158cc466b1649dafed5686de8369907403c3013fc4",
+      "bytes": 4458043
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/runtime-proof.php",
+      "sha256": "248e56bf6268770f4dd9e72d371a0257ab552e36e696b1b4c52147108607934a",
+      "bytes": 891
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/summary.json",
+      "sha256": "4e2bf4019d41644fa0c3245181a29ee74f10a80e0f12222a9878c55846fc5432",
+      "bytes": 9910
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/teardown.json",
+      "sha256": "4712be107e6ee1609250880d026488f943b65d9791ab8898aa51d948cad11e4f",
+      "bytes": 122
+    },
+    {
+      "path": ".local/release-final-112/plugin-check/tool.json",
+      "sha256": "0106391cbf8d53ad34173131592e19facd7526aa8ed5e2fc45dda341dafd4ce6",
+      "bytes": 439
+    },
+    {
+      "path": ".local/release-final-112/smoke-teardown.json",
+      "sha256": "98662ebcda88db043a9ec8f50085807dcbf911670d0a056216c9849871fccad6",
+      "bytes": 379
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-info-tags-1.1.2.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-info-tags-1.1.2.stdout",
+      "sha256": "8eaa818f2199e6c50f600e925a59e6b698b16b0a0988189f3e02ee75902b183e",
+      "bytes": 814
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-info-trunk.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-info-trunk.stdout",
+      "sha256": "548ddd4d8fd93d0a7938ff0e5bf176bd490ec0aa846b74d3aa717c6651a625af",
+      "bytes": 671
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-property-diff.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-property-diff.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-props-tags-1.1.2.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-props-tags-1.1.2.stdout",
+      "sha256": "63779316a9d0b543f7677099c9c0745fd1a02218c38e01d3a45516714be27492",
+      "bytes": 1031
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-props-trunk.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-props-trunk.stdout",
+      "sha256": "0f588e588ca4b0c564677c43457c949be2c991c8af8cc1341b6fc6dbc10f0a37",
+      "bytes": 976
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-status-after.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-status-after.stdout",
+      "sha256": "ff53ec10d50c2c2b24160857956116275c1d48dce229497aa1d6ac456a7d5f66",
+      "bytes": 2685
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-status-before.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-status-before.stdout",
+      "sha256": "b9b3f719ac26be08620d5fd518bcb6edc0caa987304125ac1f9bda0c750072ec",
+      "bytes": 2685
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-summary.json",
+      "sha256": "dd8a9592616bcde867882e9be06ac675e475a0ff8195d5932918d0f866319f50",
+      "bytes": 4001
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-tag-copy-diff.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-tag-copy-diff.stdout",
+      "sha256": "ab61c9d878c45285e45f431b752219934bfe7c9e39832d4d9b24c108758ef07f",
+      "bytes": 227130
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-trunk-diff.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/local-trunk-diff.stdout",
+      "sha256": "0e43d21b10aac655d042b6b4805206bb4e0ff821acd76193ee76359dba806632",
+      "bytes": 36584
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-LICENSE.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-LICENSE.stdout",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "bytes": 18092
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__icon.png.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__icon.png.stdout",
+      "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "bytes": 551
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__icon.svg.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__icon.svg.stdout",
+      "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "bytes": 747
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__stars.png.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__img__stars.png.stdout",
+      "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+      "bytes": 2043
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__js__simple-digital-clock-notify.js.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__admin__js__simple-digital-clock-notify.js.stdout",
+      "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "bytes": 648
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__public__css__simple-digital-clock.css.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__public__css__simple-digital-clock.css.stdout",
+      "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+      "bytes": 328
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__public__js__simple-digital-clock.min.js.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-assets__public__js__simple-digital-clock.min.js.stdout",
+      "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+      "bytes": 32649
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-block.js.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-block.js.stdout",
+      "sha256": "1ce3df3a6aa541f09b5bb34a8f27e41582b417f3a309154d1eea6645d78f5eda",
+      "bytes": 113750
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-includes__simple-digital-clock-admin-notices.php.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-includes__simple-digital-clock-admin-notices.php.stdout",
+      "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+      "bytes": 3714
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-includes__simple-digital-clock-admin-settings.php.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-includes__simple-digital-clock-admin-settings.php.stdout",
+      "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "bytes": 906
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-index.php.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-index.php.stdout",
+      "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "bytes": 133
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-languages__simple-digital-clock.pot.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-languages__simple-digital-clock.pot.stdout",
+      "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb",
+      "bytes": 4351
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-readme.txt.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-readme.txt.stdout",
+      "sha256": "468af1709fc6984f3f5a144208cd57ab5c641fa74eac630922ef67c0a95698b8",
+      "bytes": 6514
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-widget_init.php.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-cat-widget_init.php.stdout",
+      "sha256": "5c1c28075ec196ed4086de1fbee1e6b35e4b9e0ae98203479f7312b9739f8c79",
+      "bytes": 8529
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-root-info.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-root-info.stdout",
+      "sha256": "fdff234fb2e1cca597848acdbff0555fe06ac1567bb0447cf48e186453deb243",
+      "bytes": 490
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-summary.json",
+      "sha256": "b48eb86d710d80cdb9439a8adead0d47d7e07ccaefe50195b5836db9d840a260",
+      "bytes": 11648
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-tag-1.1.2-info.stderr",
+      "sha256": "6b3b7c057ec3449c5ae6871203cae67f1cef5d0eb115507c188ece396efa6864",
+      "bytes": 215
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-tag-1.1.2-info.stdout",
+      "sha256": "24db24c9eb8a48a74a5879dc9147e8ab58247b6020414a3adf997e3174853d86",
+      "bytes": 54
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-tags-list.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-tags-list.stdout",
+      "sha256": "817313bc3c45a10ea2c5da6749f8017e89c5525ed0f6cc986d25f0cb47b70e65",
+      "bytes": 1901
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-changes-since-base.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-changes-since-base.stdout",
+      "sha256": "22ed99fbee543df98e872817518e8364be7f6a76c8f2023878d390de029967cb",
+      "bytes": 71
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/LICENSE",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "bytes": 18092
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/admin/img/icon.png",
+      "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "bytes": 551
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/admin/img/icon.svg",
+      "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "bytes": 747
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/admin/img/stars.png",
+      "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+      "bytes": 2043
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/admin/js/simple-digital-clock-notify.js",
+      "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "bytes": 648
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/public/css/simple-digital-clock.css",
+      "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+      "bytes": 328
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/assets/public/js/simple-digital-clock.min.js",
+      "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+      "bytes": 32649
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/block.js",
+      "sha256": "1ce3df3a6aa541f09b5bb34a8f27e41582b417f3a309154d1eea6645d78f5eda",
+      "bytes": 113750
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/includes/simple-digital-clock-admin-notices.php",
+      "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+      "bytes": 3714
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/includes/simple-digital-clock-admin-settings.php",
+      "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "bytes": 906
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/index.php",
+      "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "bytes": 133
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/languages/simple-digital-clock.pot",
+      "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb",
+      "bytes": 4351
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/readme.txt",
+      "sha256": "468af1709fc6984f3f5a144208cd57ab5c641fa74eac630922ef67c0a95698b8",
+      "bytes": 6514
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-files/widget_init.php",
+      "sha256": "5c1c28075ec196ed4086de1fbee1e6b35e4b9e0ae98203479f7312b9739f8c79",
+      "bytes": 8529
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-info.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-info.stdout",
+      "sha256": "b9a910691cc59bd1c11693063bb2b20a08fe96890f892d97a5e217c6cbae75bc",
+      "bytes": 487
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-list.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/remote-trunk-list.stdout",
+      "sha256": "48db43ee3c4d9a4aa258f0f82d661eaed3e35efa4f86c9a762862996b24b963b",
+      "bytes": 4469
+    },
+    {
+      "path": ".local/release-final-112/svn-preflight/summary.json",
+      "sha256": "9dfef0eb2ae2b40bb7a8cf12b0f314659de6850342f9944382360b99db470bdf",
+      "bytes": 15664
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/accepted-results.json",
+      "sha256": "0ce2cb8291b2a2567fe3a408b4811a3e04ef693a06236c21172182837334495b",
+      "bytes": 8803
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/actual-ui-beta83-chromium.json",
+      "sha256": "ae11a0ffd7a5bde30c7d10aa362048234dc6a71e5e32691c6f87f45962296aaa",
+      "bytes": 1033
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/actual-ui-beta83-firefox.json",
+      "sha256": "4cc260d611ed5ee7f7730d0ac2f6298b2db48ae1faf8dad8e1e0bcfcdf1a4ce8",
+      "bytes": 1032
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/actual-ui-beta83-webkit.json",
+      "sha256": "db6b8fa3d1bccebce6120ed7650fb72f5b697945bf3e5b6bae0d57da1c0a588e",
+      "bytes": 1031
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/actual-ui-localwp-chromium.json",
+      "sha256": "47e92efa157cbaf860dfec882874538a367d42e78c71ff3cc22647430414948f",
+      "bytes": 1034
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/actual-ui-localwp-firefox.json",
+      "sha256": "321f798e90b6096d6de8111e0cd59688f5557055b6102195b34c82a793aab128",
+      "bytes": 1033
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/actual-ui-localwp-webkit.json",
+      "sha256": "0a6b884fd6502abf270f6cdc26352378c792e657daf1d104d2ee414fac17cdc8",
+      "bytes": 1032
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/original111-beta83-chromium.json",
+      "sha256": "7f66a8b8104c3f7761113bddb3f146b63f1d54862f7692c4f9e02a1bcd789267",
+      "bytes": 706398
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/original111-beta83-firefox.json",
+      "sha256": "c5fb50c906aae13becc1f60e076d8c3fa7e2ff523d5be4230f9dc65d9e5b0262",
+      "bytes": 196301
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/original111-beta83-webkit.json",
+      "sha256": "10357a5b59daeda27d1ebf5489ab577ede7f538ef6bc7f9e0c9885e06dfeb998",
+      "bytes": 195399
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/original111-localwp-chromium.json",
+      "sha256": "6733ee067286e625de01c32d121ff0d52a7c0494888c960019c68d0160a33e16",
+      "bytes": 706329
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/original111-localwp-firefox.json",
+      "sha256": "ce6eafb528f640a4760b267242fb3c28aba95b24943b651095e7158fd1d9df6f",
+      "bytes": 196305
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/original111-localwp-webkit.json",
+      "sha256": "8d938edc404b7e403fa292363e6737e1bca79fcfe7985444e3be7dd3be3d2460",
+      "bytes": 195402
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/reupgrade112-beta83-chromium.json",
+      "sha256": "75350dcc0b731c2af504616589a9c8a7575cca642f986d116b12ff5e33a0b3ff",
+      "bytes": 1531043
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/reupgrade112-beta83-firefox.json",
+      "sha256": "55c5cb6eb64db8ad38202bb7e2656ed007aaa5aa4b965e9650d589d8f9a21031",
+      "bytes": 1528678
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/reupgrade112-beta83-webkit.json",
+      "sha256": "c3a8a8edc5dc045df9cd8935cbda03a612f10ec695622d6e21c665af842185c2",
+      "bytes": 1527776
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/reupgrade112-localwp-chromium.json",
+      "sha256": "ff03781dbed342bf8b658fa091de378c61b9776daca76690a2c3b9da5dea316d",
+      "bytes": 1531072
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/reupgrade112-localwp-firefox.json",
+      "sha256": "f13e4655d1f5cf8a494351e50eff6d9637e80afeb54dbf9948f20674423dcfbb",
+      "bytes": 1528704
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/reupgrade112-localwp-webkit.json",
+      "sha256": "2a86ca4713f41c9a6d82a757817b471ce5d31f6c4c31c6ea92cc77e45e32642e",
+      "bytes": 1527801
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/reupgrade112.json",
+      "sha256": "b2bcd73aa4d019d774e39a08482903ee75d80f5e5e442b32c8033dc22247b37d",
+      "bytes": 1730
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/rollback111-beta83-chromium.json",
+      "sha256": "d4399349fbf2b37d2a5d7a3c231a63d394ddc297d7edbf317024378ce275a26d",
+      "bytes": 1531042
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/rollback111-beta83-firefox.json",
+      "sha256": "b58cfdac1f5db36d218bd75d2d5ec46e6160943e61c3b2e08d5ecde0e9d9f5e9",
+      "bytes": 1528677
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/rollback111-beta83-webkit.json",
+      "sha256": "6a574975e9b017634a0f8b5e05004a9703c293ffb7f4369db00609ef57a57e27",
+      "bytes": 1527775
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/rollback111-localwp-chromium.json",
+      "sha256": "15accb9f277a52caee2576694840e1b25d3ec2d2218a54d98a335fb210c48f32",
+      "bytes": 1531071
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/rollback111-localwp-firefox.json",
+      "sha256": "ab678c4625ba92f422574407e540c459cb483c72741ac5c012f78e0a45ab52fc",
+      "bytes": 1528703
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/rollback111-localwp-webkit.json",
+      "sha256": "276e2ce8e9082d572a4a4e430a15f631779d8eac80e75b4069f808f213a850d3",
+      "bytes": 1527800
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/rollback111.json",
+      "sha256": "5bad16ac1d9ebb297450caa52b2d5a9858afee6d3860c0fe91e383f67fef3fa1",
+      "bytes": 360
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/saved112-beta83-chromium.json",
+      "sha256": "8f2e25f0e7530278af010e36c3f4cd168b6f939efa16af7a8633665c1f6a3355",
+      "bytes": 1523934
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/saved112-beta83-firefox.json",
+      "sha256": "4a09afcc8940fe78e1d3a48019c2ff3fa6f103b363af28bf21a5c5644bed2b7f",
+      "bytes": 1527981
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/saved112-beta83-webkit.json",
+      "sha256": "82f62a6920a540e2132b2efa58f611d0efbe8eded79b84b35dd5b76d18632a30",
+      "bytes": 1527079
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/saved112-localwp-chromium.json",
+      "sha256": "6befc08d6ae7c27156c7ced15111b612b7872758332ab3e8f7acc38da4e61a42",
+      "bytes": 1523963
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/saved112-localwp-firefox.json",
+      "sha256": "d55d03528f076ea173c6ef51263b0f4160fdec25dfcc875b484ed87e146c6b02",
+      "bytes": 1528007
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/saved112-localwp-webkit.json",
+      "sha256": "02b2e98faea9b7fa8b69818dc81db63801e822b8d8cfb3c5d395cb590d1531e7",
+      "bytes": 1527104
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/summary.json",
+      "sha256": "446f1114f3e0955159aecc83331e0accda4cf196e874216481f58250992e5e3a",
+      "bytes": 1231
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/updated112-beta83-chromium.json",
+      "sha256": "e68adadeffa6f94e69d33f5a76b60fbf43947b7892916c34b7f7d1b77db1bf2a",
+      "bytes": 1518081
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/updated112-beta83-firefox.json",
+      "sha256": "3c31ac4d3d66fda9d00de518d8d5af9fdc37d770ab288c99ea22cad7f9d2eb6e",
+      "bytes": 1515716
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/updated112-beta83-webkit.json",
+      "sha256": "c4c5750b8c239a566183814736848036c4dbffc1e19b21e21c24d92e18f69186",
+      "bytes": 1514814
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/updated112-localwp-chromium.json",
+      "sha256": "fe656ecb7dbc0a00443432f34731243701149dad1c2831cf72e39ed51fe07fd9",
+      "bytes": 1518110
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/updated112-localwp-firefox.json",
+      "sha256": "e4f49bc7e1c241c0a3cab8f9ef9792e35495272e07685f33ed3e4ee89f51f871",
+      "bytes": 1515742
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/updated112-localwp-webkit.json",
+      "sha256": "4d8f30752e4aa86341e5862bc8b6530dfb1dba114c96a44b4bcb6dec08f2331d",
+      "bytes": 1514839
+    },
+    {
+      "path": ".local/wordpress-lab/release-smoke-112/updated112.json",
+      "sha256": "3a03f6afa2a9c69b620f5eea3589909d733baa75280ce96f30294e90f997b65c",
+      "bytes": 1730
+    }
+  ]
+}

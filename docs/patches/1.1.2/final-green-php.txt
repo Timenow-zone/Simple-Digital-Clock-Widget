@@ -1,0 +1,9 @@
+[1/4] php-tests: wp71; elapsed=0.0s
+464/464 passed; failed=0
+[2/4] php-tests: wp84; elapsed=0.5s
+464/464 passed; failed=0
+[3/4] php-tests: wp63; elapsed=0.9s
+464/464 passed; failed=0
+[4/4] php-tests: wp68; elapsed=1.3s
+464/464 passed; failed=0
+Completed 4/4; elapsed=1.7s; output=/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/patch/p2-initial-php.json

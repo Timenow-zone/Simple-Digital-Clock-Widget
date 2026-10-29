@@ -1,0 +1,71 @@
+{
+  "plugin": "simple-digital-clock",
+  "version": "1.1.1",
+  "imported_on": "2026-10-27",
+  "source": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.1.zip",
+  "zip_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+  "local_svn_comparison": {
+    "path": "/Users/yy/Documents/ChatGPT/WordPress/wp-plugin-work/simple-digital-clock/svn/trunk",
+    "working_copy_revision": 3659328,
+    "all_14_files_identical": true
+  },
+  "bundled_widget_version": "0.7.0",
+  "files": {
+    "LICENSE": {
+      "bytes": 18092,
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    "assets/admin/img/icon.png": {
+      "bytes": 551,
+      "sha256": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2"
+    },
+    "assets/admin/img/icon.svg": {
+      "bytes": 747,
+      "sha256": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1"
+    },
+    "assets/admin/img/stars.png": {
+      "bytes": 2043,
+      "sha256": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    },
+    "assets/admin/js/simple-digital-clock-notify.js": {
+      "bytes": 648,
+      "sha256": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa"
+    },
+    "assets/public/css/simple-digital-clock.css": {
+      "bytes": 328,
+      "sha256": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a"
+    },
+    "assets/public/js/simple-digital-clock.min.js": {
+      "bytes": 32649,
+      "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+    },
+    "block.js": {
+      "bytes": 113750,
+      "sha256": "1ce3df3a6aa541f09b5bb34a8f27e41582b417f3a309154d1eea6645d78f5eda"
+    },
+    "includes/simple-digital-clock-admin-notices.php": {
+      "bytes": 3714,
+      "sha256": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87"
+    },
+    "includes/simple-digital-clock-admin-settings.php": {
+      "bytes": 906,
+      "sha256": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1"
+    },
+    "index.php": {
+      "bytes": 133,
+      "sha256": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69"
+    },
+    "languages/simple-digital-clock.pot": {
+      "bytes": 4351,
+      "sha256": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb"
+    },
+    "readme.txt": {
+      "bytes": 6514,
+      "sha256": "468af1709fc6984f3f5a144208cd57ab5c641fa74eac630922ef67c0a95698b8"
+    },
+    "widget_init.php": {
+      "bytes": 8529,
+      "sha256": "5c1c28075ec196ed4086de1fbee1e6b35e4b9e0ae98203479f7312b9739f8c79"
+    }
+  }
+}

@@ -1,0 +1,3393 @@
+{
+  "observed_at": "2026-10-28T22:02:23.211230+00:00",
+  "status": "ACCEPTED_LOCAL_KSES72_FIX",
+  "publication": false,
+  "zip_sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720",
+  "source_changes_from_prior_candidate": [
+    "includes/simple-digital-clock-kses.php",
+    "readme.txt"
+  ],
+  "matrix": [
+    {
+      "key": "wp70",
+      "url": "http://127.0.0.1:19528",
+      "post_id": 2325,
+      "multisite": false,
+      "runtime": "extended/wp70",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "theme": "twentytwentythree",
+      "block_theme": true
+    },
+    {
+      "key": "wp74",
+      "url": "http://127.0.0.1:19529",
+      "post_id": 1676,
+      "multisite": false,
+      "runtime": "extended/wp74",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "7.4.33",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "wp85",
+      "url": "http://127.0.0.1:19530",
+      "post_id": 1667,
+      "multisite": false,
+      "runtime": "extended/wp85",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "ms85",
+      "url": "http://127.0.0.1:19531",
+      "post_id": 2103,
+      "multisite": true,
+      "runtime": "extended/ms85",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        },
+        "siteadmin": {
+          "id": 7,
+          "unfiltered_html": false,
+          "widgets": true
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "ms85-child",
+      "url": "http://127.0.0.1:19531/clock-child",
+      "post_id": 2221,
+      "multisite": true,
+      "runtime": "extended/ms85",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 8,
+          "unfiltered_html": false,
+          "widgets": false
+        },
+        "author": {
+          "id": 9,
+          "unfiltered_html": false,
+          "widgets": false
+        },
+        "siteadmin": {
+          "id": 10,
+          "unfiltered_html": false,
+          "widgets": true
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyone",
+      "block_theme": false
+    },
+    {
+      "key": "wp71",
+      "url": "http://127.0.0.1:19427",
+      "post_id": 4276,
+      "multisite": false,
+      "runtime": "old/wp71",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 4,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "wp84",
+      "url": "http://127.0.0.1:19428",
+      "post_id": 4231,
+      "multisite": false,
+      "runtime": "old/wp84",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 4,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.4.27",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "wp63",
+      "url": "http://127.0.0.1:19429",
+      "post_id": 4195,
+      "multisite": false,
+      "runtime": "old/wp63",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 4,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "theme": "twentytwentythree",
+      "block_theme": true
+    },
+    {
+      "key": "wp68",
+      "url": "http://127.0.0.1:19430",
+      "post_id": 3998,
+      "multisite": false,
+      "runtime": "old/wp68",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 4,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 5,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "6.8.3",
+      "php": "8.3.28",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "localwp",
+      "url": "http://localhost:10003",
+      "post_id": 2086,
+      "multisite": false,
+      "runtime": "localwp",
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 5,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 6,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.1.3",
+      "php": "8.2.29",
+      "theme": "twentytwentyfive",
+      "block_theme": true
+    },
+    {
+      "key": "beta83",
+      "runtime": "beta83",
+      "url": "http://127.0.0.1:19533",
+      "multisite": false,
+      "post_id": 1294,
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 2,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 3,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.2-beta2",
+      "php": "8.3.35",
+      "theme": "ipsum",
+      "block_theme": true
+    },
+    {
+      "key": "beta85",
+      "runtime": "beta85",
+      "url": "http://127.0.0.1:19534",
+      "multisite": false,
+      "post_id": 1267,
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 2,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 3,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.2-beta2",
+      "php": "8.5.12",
+      "theme": "ipsum",
+      "block_theme": true
+    }
+  ],
+  "php": {
+    "files": 156,
+    "rows": 156,
+    "checks": 18336,
+    "failed": 0
+  },
+  "dom": {
+    "files": 12,
+    "comparisons": 1309248,
+    "failed": 0
+  },
+  "browser": {
+    "original111": {
+      "files": 36,
+      "rows": 36,
+      "checks": 49,
+      "failed": 0
+    },
+    "updated112": {
+      "files": 36,
+      "rows": 36,
+      "checks": 2082,
+      "failed": 0
+    },
+    "saved112": {
+      "files": 36,
+      "rows": 36,
+      "checks": 1827,
+      "failed": 0
+    },
+    "rollback111": {
+      "files": 36,
+      "rows": 36,
+      "checks": 2082,
+      "failed": 0
+    },
+    "reupgrade112": {
+      "files": 12,
+      "rows": 12,
+      "checks": 694,
+      "failed": 0
+    }
+  },
+  "filtered_widgets": {
+    "original111": {
+      "files": 6,
+      "rows": 6,
+      "checks": 48,
+      "failed": 0
+    },
+    "saved112": {
+      "files": 6,
+      "rows": 6,
+      "checks": 60,
+      "failed": 0
+    },
+    "rollback111": {
+      "files": 6,
+      "rows": 6,
+      "checks": 60,
+      "failed": 0
+    }
+  },
+  "actual_beta_save": {
+    "files": 6,
+    "rows": 6,
+    "checks": 30,
+    "failed": 0
+  },
+  "locale": {
+    "files": 15,
+    "rows": 15,
+    "checks": 630,
+    "failed": 0
+  },
+  "pointer": {
+    "files": 15,
+    "rows": 15,
+    "checks": 525,
+    "failed": 0
+  },
+  "locale_rollback": {
+    "files": 15,
+    "rows": 15,
+    "checks": 105,
+    "failed": 0
+  },
+  "reset_rollback": {
+    "files": 15,
+    "rows": 15,
+    "checks": 165,
+    "failed": 0
+  },
+  "viewports": {
+    "baseline": {
+      "files": 3,
+      "rows": 72,
+      "checks": 216,
+      "failed": 0
+    },
+    "candidate": {
+      "files": 3,
+      "rows": 72,
+      "checks": 360,
+      "failed": 0
+    },
+    "rollback": {
+      "files": 3,
+      "rows": 72,
+      "checks": 360,
+      "failed": 0
+    }
+  },
+  "replacement_cycles": {
+    "updated112": {
+      "sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720",
+      "all_data_unchanged": true,
+      "all_post_rows": 31426,
+      "physical_installations": 11
+    },
+    "rollback111": {
+      "sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+      "all_data_unchanged": true,
+      "all_post_rows": 34468,
+      "physical_installations": 11
+    },
+    "reupgrade112": {
+      "sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720",
+      "all_data_unchanged": true,
+      "all_post_rows": 34468,
+      "physical_installations": 11
+    }
+  },
+  "integrations": {
+    "candidate": {
+      "files": 36,
+      "rows": 144,
+      "checks": 576,
+      "failed": 0
+    },
+    "rollback": {
+      "files": 36,
+      "rows": 144,
+      "checks": 576,
+      "failed": 0
+    },
+    "editor": {
+      "files": 12,
+      "rows": 12,
+      "checks": 222,
+      "failed": 0
+    },
+    "teardown": {
+      "stop_exit": 0,
+      "results": [
+        {
+          "stage": "rollback-kses72-r3",
+          "exit": 0
+        },
+        {
+          "stage": "reupgrade",
+          "exit": 0
+        }
+      ]
+    }
+  },
+  "native_https": {
+    "baseline": {
+      "files": 2,
+      "rows": 2,
+      "checks": 62,
+      "failed": 0
+    },
+    "saved": {
+      "files": 2,
+      "rows": 2,
+      "checks": 98,
+      "failed": 0
+    },
+    "rollback": {
+      "files": 2,
+      "rows": 2,
+      "checks": 74,
+      "failed": 0
+    },
+    "reupgrade": {
+      "files": 2,
+      "rows": 2,
+      "checks": 74,
+      "failed": 0
+    },
+    "server": {
+      "files": 1,
+      "rows": 1,
+      "checks": 28,
+      "failed": 0
+    },
+    "port": 19443,
+    "scope": "Own Local nginx binary, PHP-FPM and MySQL, direct loopback TLS; shared router unchanged",
+    "teardown": {
+      "home": "http://localhost:10003",
+      "siteurl": "http://localhost:10003",
+      "shared_configuration_unchanged": true,
+      "private_port_closed": true,
+      "certificate_trust_changed": false,
+      "results": [
+        {
+          "label": "baseline-chromium",
+          "exit": 0
+        },
+        {
+          "label": "baseline-webkit",
+          "exit": 0
+        },
+        {
+          "label": "server-cycle",
+          "exit": 0
+        },
+        {
+          "label": "saved-chromium",
+          "exit": 0
+        },
+        {
+          "label": "saved-webkit",
+          "exit": 0
+        },
+        {
+          "label": "rollback-chromium",
+          "exit": 0
+        },
+        {
+          "label": "rollback-webkit",
+          "exit": 0
+        },
+        {
+          "label": "reupgrade-chromium",
+          "exit": 0
+        },
+        {
+          "label": "reupgrade-webkit",
+          "exit": 0
+        }
+      ]
+    }
+  },
+  "teardown": {
+    "results": [
+      {
+        "lab": "firefox",
+        "exit": 0
+      },
+      {
+        "lab": "beta",
+        "exit": 0
+      },
+      {
+        "lab": "extended",
+        "exit": 0
+      },
+      {
+        "lab": "original",
+        "exit": 0
+      },
+      {
+        "lab": "native",
+        "exit": 0
+      }
+    ],
+    "checked_loopback_ports": [
+      10003,
+      19427,
+      19428,
+      19429,
+      19430,
+      19527,
+      19528,
+      19529,
+      19530,
+      19531,
+      19532,
+      19533,
+      19534,
+      19443
+    ],
+    "remaining_open_ports": [],
+    "volumes_deleted": false,
+    "unrelated_sites_changed": false
+  },
+  "official_core": [
+    {
+      "site": "beta83",
+      "official_core_files": 3516,
+      "mismatches": 0
+    },
+    {
+      "site": "beta85",
+      "official_core_files": 3516,
+      "mismatches": 0
+    }
+  ],
+  "package": {
+    "zip_sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720",
+    "diff_sha256": "ae89ed02b7f2eebeaa7988a907b58dbdd0315a82c55f43c2013a3924407a4ee3",
+    "changed": [
+      "block.js",
+      "includes/simple-digital-clock-kses.php",
+      "readme.txt",
+      "widget_init.php"
+    ],
+    "files": {
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077",
+      "block.js": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
+      "readme.txt": "4234a17b4e4634c64367f48d45d4738b988f7c9aacc97ffe9a84bbf1f9006b28",
+      "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+      "includes/simple-digital-clock-kses.php": "7d6e41fa7d07d0f52f7dc84dd72e1262726f7e52c854c704425d7e9b05046ff5",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "languages/simple-digital-clock.pot": "99814c2c86fd9953da180e2de4e0bc6aedb56b89fbf29e43ee1586776d1cbdfb",
+      "assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+      "assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    },
+    "patch_dry_run_and_apply_match_zip": true
+  },
+  "svn": {
+    "trunk_and_tag_match_final_zip": true,
+    "files": 15,
+    "changed_from_prior_preparation": [
+      "includes/simple-digital-clock-kses.php",
+      "readme.txt"
+    ],
+    "properties_unchanged": true,
+    "untracked_banner_preserved": true,
+    "copy_history_preserved": true,
+    "diff_dry_run_and_apply_match_zip": true,
+    "status_compared_semantically": true,
+    "publication": false
+  },
+  "git_plugin_tree": "ffc3aa9ca9a7771a4f1cb8205590e08ed1c6d597",
+  "standalone_node": {
+    "checks": 22,
+    "failed": 0,
+    "changes": false
+  },
+  "red_controls": [
+    {
+      "path": ".local/wordpress-lab/kses72-fix/red/beta83.json",
+      "checks": 132,
+      "failed": 27
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-fix/red/beta85.json",
+      "checks": 132,
+      "failed": 27
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-fix/red/early-late-owned-beta83.json",
+      "checks": 42,
+      "failed": 8
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-fix/red/early-late-owned-beta85.json",
+      "checks": 42,
+      "failed": 8
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-fix/red/owned-pass-beta83.json",
+      "checks": 10,
+      "failed": 9
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-fix/red/owned-pass-beta85.json",
+      "checks": 10,
+      "failed": 9
+    }
+  ],
+  "preserved_failed_browser_attempts": [
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-ms85-child-webkit.json",
+      "sha256": "550ebbdba0c8a0e41c06474c491e498441de9bf262f157fd1bb92535e53a17b2"
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-localwp-firefox.json",
+      "sha256": "7d2e72500e6a845b413dc46458f919f4905559826d9d52c0c9b509e6d40b19c5"
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-twentytwentyfive-both.json",
+      "sha256": "90c0e80c0a3cdaf113b32b7e79502fcfba2a58b6a3b6c321ce81f1b22a3d368a"
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r2-generatepress-cached-chromium.json",
+      "sha256": "908cada9ae9779e7beeae151998e943f69f2a0bd5d5d616cb8b5fcad0bc0e46b"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-localwp-chromium.json",
+      "sha256": "455708e03618562a025d8cd369cb5db461910a7e06f4be9f364b9d38af05e6d5",
+      "bytes": 9339
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-localwp-firefox.json",
+      "sha256": "64b1fea1d77f7a321289d50211a2a594e4a63a3bdd98c1f28d318f18d3881e84",
+      "bytes": 9338
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-localwp-webkit.json",
+      "sha256": "1af8d36440ead7be78e234411333c54ef080e01030fa4f65326dfc3ce0f68981",
+      "bytes": 9337
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-ms85-child-chromium.json",
+      "sha256": "9c1de56c7f9353e96ecf4c1134d29bcc5dd281f17dcf379cf7aab05061e0d7b8",
+      "bytes": 9342
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-ms85-child-firefox.json",
+      "sha256": "be835368992e0db840dc6b6ae61e3c298a8fc8f50fc2ec6d56bdd760600f3b32",
+      "bytes": 9341
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-ms85-child-webkit.json",
+      "sha256": "2dc1bad70ee945ed7b255ab904080b5722f371cf82296d65ed443c7e4628e42c",
+      "bytes": 9340
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-wp70-chromium.json",
+      "sha256": "a9c10106997e126db4ce7000dae7a27a38df280e170beb357a8249fdbd396aa6",
+      "bytes": 9336
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-wp70-firefox.json",
+      "sha256": "2974a5f41c8213eb4a93203de7eafc5074ce918d60dec518148181a831a94ebc",
+      "bytes": 9335
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/pointer-kses72-final-pointer-wp70-webkit.json",
+      "sha256": "cf477e5eb4f17e35e9d1a820bbf81e698a78ab2de98e6e53da97d08d1de2ba67",
+      "bytes": 9334
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-localwp-chromium.json",
+      "sha256": "420f208e089abe546f528de19a55bc2dc071201460793ee3b4faa5fbd6cc7604",
+      "bytes": 5731
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-localwp-firefox.json",
+      "sha256": "febeb524945444bf0fe92cb1710efe06423d084b6233f713efa04bfeade36af4",
+      "bytes": 5311
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-localwp-webkit.json",
+      "sha256": "291f7592252a152709e4a236cf9c6940e25dda0cff0d42b6f9aa5fec9c848c6a",
+      "bytes": 5358
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-ms85-child-chromium.json",
+      "sha256": "dcdc2c9246641a2f11ae8208d25329b1d3a9a8b92f50c2c229dd3220b7e11059",
+      "bytes": 6255
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-ms85-child-firefox.json",
+      "sha256": "399debcbccad61f3d569b22611b2bbb896737f42101918669d7bef6159cf7076",
+      "bytes": 6367
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-ms85-child-webkit.json",
+      "sha256": "9d343d450f19f7b6d4286cd55208560dc96404c736a01a32315a149c2e5b7df8",
+      "bytes": 5900
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-wp70-chromium.json",
+      "sha256": "96d213f83b0eff635514b4d29cf3c0fb2000566c7912d346ab6bfc751631d748",
+      "bytes": 4263
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-wp70-firefox.json",
+      "sha256": "1d26c1302454388d27af0a4a891af0a774ec537c612548ff89030c8a86fd6902",
+      "bytes": 4022
+    },
+    {
+      "path": ".local/wordpress-lab/gap-closure-921/reset-read-kses72-final-rollback-reset-wp70-webkit.json",
+      "sha256": "e3e416083b5bd2ac419ef4692cd2c3bd3c702ced04ba7f7506d0102699fdf189",
+      "bytes": 4468
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-named-post-chromium.json",
+      "sha256": "fc3b9df46d75eadc7843f382e1f80b577efcdc06c9920e9e66962e73d6c0fed2",
+      "bytes": 2272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-named-post-firefox.json",
+      "sha256": "a0803c5dd533ead7536e3e3533046db33bc028ced05e46513fee6b8f7bbf6ec2",
+      "bytes": 2260
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-named-post-webkit.json",
+      "sha256": "9f4a911daabc634afe768d6b6466cc7608990cf4ae46e91452673ce6ccef24ba",
+      "bytes": 2248
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-named-widget-chromium.json",
+      "sha256": "fc3b9df46d75eadc7843f382e1f80b577efcdc06c9920e9e66962e73d6c0fed2",
+      "bytes": 2272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-named-widget-firefox.json",
+      "sha256": "a0803c5dd533ead7536e3e3533046db33bc028ced05e46513fee6b8f7bbf6ec2",
+      "bytes": 2260
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-named-widget-webkit.json",
+      "sha256": "9f4a911daabc634afe768d6b6466cc7608990cf4ae46e91452673ce6ccef24ba",
+      "bytes": 2248
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-numeric-post-chromium.json",
+      "sha256": "e32f78ddca460b6b94329abd2968bfd770e5938073f1e4ab8abd02d9ea912b84",
+      "bytes": 2272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-numeric-post-firefox.json",
+      "sha256": "fa6c620c5c4cea95d1d87d8b6750d150e8febc8f66a62da9651b612971e1b097",
+      "bytes": 2260
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-numeric-post-webkit.json",
+      "sha256": "b7b245eb82aa7f7f9f86bf015e91da12cc3523958c2c4ae29de644f53ce944bb",
+      "bytes": 2248
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-numeric-widget-chromium.json",
+      "sha256": "e32f78ddca460b6b94329abd2968bfd770e5938073f1e4ab8abd02d9ea912b84",
+      "bytes": 2272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-numeric-widget-firefox.json",
+      "sha256": "fa6c620c5c4cea95d1d87d8b6750d150e8febc8f66a62da9651b612971e1b097",
+      "bytes": 2260
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/all-entities-numeric-widget-webkit.json",
+      "sha256": "b7b245eb82aa7f7f9f86bf015e91da12cc3523958c2c4ae29de644f53ce944bb",
+      "bytes": 2248
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/candidate-browser-results.json",
+      "sha256": "9726ad10f4606417ad93420ea38b5e734f66510ec8fd3f59b45f0363fd90312b",
+      "bytes": 27573
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/candidate-resume-results.json",
+      "sha256": "7448ca118766505193f9f8312b990b31a90221ac20df3073bb8ad4cf1196c0c0",
+      "bytes": 2004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/core-identity.json",
+      "sha256": "ebb3ecc2a37872287fd9ea51b3c564fb1518f2a0e2f3ccde67eee94ea6a5892c",
+      "bytes": 170
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/dom-summary.json",
+      "sha256": "b87b2cd7499ea46bfb2730182417a6643b7e10b9cccdaa443d5704d3b3823aa0",
+      "bytes": 914
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-original111-beta83-chromium.json",
+      "sha256": "3c5919349319b7f4317c38d3166820cf0199342e2de62080e517e8dff5acfa54",
+      "bytes": 31980
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-original111-beta83-firefox.json",
+      "sha256": "172ceb4798c16a0192450f001cda254f4b2518762015a10a4aa73ac44b5d4fc7",
+      "bytes": 32057
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-original111-beta83-webkit.json",
+      "sha256": "3a6e27adca8cb50e307256f63851547c9109303f3bb4e5e950fce72da5ad3fec",
+      "bytes": 31994
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-original111-beta85-chromium.json",
+      "sha256": "4e1fe229907b6659b4626a80f3b4584de6f25f691b63784eb162a407c7e4d813",
+      "bytes": 31980
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-original111-beta85-firefox.json",
+      "sha256": "7cbcd7b63473f982943664e5d3b1f293c2bedb2c53c49c47ed2ae002922dcafc",
+      "bytes": 32057
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-original111-beta85-webkit.json",
+      "sha256": "a10e405aef8f88ad43e75c44f9a5b22825a89899035fb5e862ca47c1c027e630",
+      "bytes": 31994
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-rollback111-beta83-chromium.json",
+      "sha256": "029d20683bab65372bd19225d98e0892a98e552d1de7404ed381ca1225c637ab",
+      "bytes": 32203
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-rollback111-beta83-firefox.json",
+      "sha256": "85620b099c180cc0bd678d9eb07d27e36924af21c40898ad8689385e4acb1cfe",
+      "bytes": 32276
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-rollback111-beta83-webkit.json",
+      "sha256": "93f34c9906574ee994f4cb43dbce0e19227596247d1e97f94a8f5af336e836bb",
+      "bytes": 32213
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-rollback111-beta85-chromium.json",
+      "sha256": "eaee5ad287e1b4662d86b6845b430f1fff202c7d0ba57f9f996088dc5a611e48",
+      "bytes": 32203
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-rollback111-beta85-firefox.json",
+      "sha256": "348da7ead0fd15fd04dc0baccaa15316e4badfe82bdd3e8ac4904c1a7fffe718",
+      "bytes": 32276
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-rollback111-beta85-webkit.json",
+      "sha256": "e635056b8b9e616171641915458ed52d4ab8959eace1b522b0eb14224b529d56",
+      "bytes": 32213
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-saved112-beta83-chromium.json",
+      "sha256": "6e31e958499971bda6ca2c644ca8fd9ec69e73725c80621c666e4c9b8bce8f1c",
+      "bytes": 32199
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-saved112-beta83-firefox.json",
+      "sha256": "56bd6b7fd18b9ba66aefa18bf0f79f4e1806a6a0f47220cb5cc7168de281dd51",
+      "bytes": 32272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-saved112-beta83-webkit.json",
+      "sha256": "aadab60a2d652ea11ae6bb6cd4d8e7050382ecdc2a0c35601d8040176c62770e",
+      "bytes": 32209
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-saved112-beta85-chromium.json",
+      "sha256": "afc6748a97ac72681e4816182729a299293f4b720070f41ce206fdb0c22f8926",
+      "bytes": 32199
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-saved112-beta85-firefox.json",
+      "sha256": "c2c0b741813c92828970a4bd9f881a9a6199b25b87d89cd3aa51f1f82fa75fee",
+      "bytes": 32272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/filtered-widget-saved112-beta85-webkit.json",
+      "sha256": "af5748949dc393579cb730dd6cb7fe5e21757c8ec50ef62127dd5603089c76cb",
+      "bytes": 32209
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/finish-cycle-results.json",
+      "sha256": "2d5951984023dcc6723611b19a29db1d1624ad2e0962c380521ccfa7aa815060",
+      "bytes": 607
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/accepted-results.json",
+      "sha256": "dc20176c90a24a4024cc9edfdf6334a5a0bc7c4d3531ea05119ed086bdb247fa",
+      "bytes": 218
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-astra-both.json",
+      "sha256": "309fc7962ae48c0ee185e4933d73b3f35c3f0e1790d153b8872632068550f97e",
+      "bytes": 97598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-astra-cached.json",
+      "sha256": "6656b67e17a96f8fb25e36604eea67d0c373d50d826674d34127be8f2b553901",
+      "bytes": 97693
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-astra-optimized.json",
+      "sha256": "06f381ecfc494a0e51b5c0ddc8c81f1394f114612eefa4f9387cc1e06e15ce96",
+      "bytes": 97176
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-astra-plain.json",
+      "sha256": "247551c44df11ed43c9e65d2bf63e865b089befb1027cd5c8d7efe715eca614f",
+      "bytes": 97148
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-generatepress-both.json",
+      "sha256": "2d690fe6fca7739b0b531c2c93c6ba7508b649f09c8e2c27dc0fe2e971ab8fcf",
+      "bytes": 97662
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-generatepress-cached.json",
+      "sha256": "f3d83c94bd4e15b169f9a719e95ac460a218af0ee840fbac96b28cf13b8ebebc",
+      "bytes": 97678
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-generatepress-optimized.json",
+      "sha256": "def3e3d65b8e1a7b7edef33b6b1b173f8ad4c0ed9fb75891a1c9e25faca4b2bc",
+      "bytes": 97232
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-generatepress-plain.json",
+      "sha256": "4e352776525d4ea8eabc156fb6d5c3b95551d52c553e2e3acb21b57ae4dda7c5",
+      "bytes": 97204
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-twentytwentyfive-both.json",
+      "sha256": "66524538997eba5362c0e0a0a9b44318237a07cf13d8cf8c24e618db3dc48c39",
+      "bytes": 97686
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-twentytwentyfive-cached.json",
+      "sha256": "b74d9cd94b8c53a4b04885a57d5b20372f80825e52cc98fee73e58ea82b90450",
+      "bytes": 97702
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-twentytwentyfive-optimized.json",
+      "sha256": "0e5e3130bc6e12c509e9f3441feb20e0097692a3f844d984bbc3fa0b10215509",
+      "bytes": 97253
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/editor-candidate-kses72-r2-twentytwentyfive-plain.json",
+      "sha256": "7d306066dd3c285ce2191f044c80a1eed9610de789fe67272413679c93085fcc",
+      "bytes": 97225
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-both-chromium.json",
+      "sha256": "f46a09c89fb6046ff93ca66630c791b57b3ad3e449e756d14e214847e4a60af2",
+      "bytes": 55659
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-both-firefox.json",
+      "sha256": "49ad48264e04774146acd3676b15250e9fa633b0e217cf62139b0d11b11b13a1",
+      "bytes": 56027
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-both-webkit.json",
+      "sha256": "5bc0cdd1a5c38abb95633bee0dd79cc800bf2d68fb8792e7b96cd060793e299a",
+      "bytes": 55885
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-cached-chromium.json",
+      "sha256": "bf84a87c3ff74e94ef0fd26cdde669398a18e55cf302382d43bcd0f53a632a4b",
+      "bytes": 55203
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-cached-firefox.json",
+      "sha256": "1639c21d8ed1b2e099eeb907969aee2e1986ecce23e5dbe53daa2bd4ed2abfa5",
+      "bytes": 55589
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-cached-webkit.json",
+      "sha256": "9ea5875c5d8bf4df1d48e96f47f7489fc01273e9605689a8d24b062919ebc7b2",
+      "bytes": 55429
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-optimized-chromium.json",
+      "sha256": "341a5bfa0b3fe302702e4266ffdd53c8ffb5f4e71bc228b33143950559d26ed3",
+      "bytes": 54503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-optimized-firefox.json",
+      "sha256": "1b4d150518fd68439283ce55f3df4566516c1a982afb20d875b1e613c72d89cc",
+      "bytes": 54889
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-optimized-webkit.json",
+      "sha256": "da602407ae66a7ba0612f81496a3846de068064096412e7a438a16fb67826ef7",
+      "bytes": 54729
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-plain-chromium.json",
+      "sha256": "d68681c96ed61e429cdc61810e782a30667dfdc9a67f4c7eb544cb50df202821",
+      "bytes": 52071
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-plain-firefox.json",
+      "sha256": "f31bd269fd0dfd899549fa034c53f737cb518cd2c59f0c92e8b892f3522cf92d",
+      "bytes": 52457
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-astra-plain-webkit.json",
+      "sha256": "3a33ef290239bc61afe92faeb7d8c6ff516f84fe67eebc3b7a4a8bfacae74dc6",
+      "bytes": 52297
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-both-chromium.json",
+      "sha256": "ba368da388d6d011d18e27869b914f251f6091493154b68806dd80e632ff3087",
+      "bytes": 55493
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-both-firefox.json",
+      "sha256": "c5990d59974c9408983b01c25b5a68980dc8b5fc7110143fa9f31d2d2299a990",
+      "bytes": 55712
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-both-webkit.json",
+      "sha256": "7f62b2e89757d2d8c8147bb1d256d6e2e091f4a7d0be734217cba244b21e8ff6",
+      "bytes": 55697
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-cached-chromium.json",
+      "sha256": "8a408f031cc5e4124a0b881553ab2ca78e1f151883af57397ddcc27f65e5cf21",
+      "bytes": 55457
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-cached-firefox.json",
+      "sha256": "526281415c2be2e55602df6c585aec93f1502ae94880659f09c465082a1d391c",
+      "bytes": 55676
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-cached-webkit.json",
+      "sha256": "b1fad1c716721cebc3f26af71c1f33784c6aa3036865739156ce3d81dd758ac3",
+      "bytes": 55661
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-optimized-chromium.json",
+      "sha256": "8dcf3d9b9abc6e0494d3ac863522b910d39bd2a7757c9c4afd57c61e27adda78",
+      "bytes": 54337
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-optimized-firefox.json",
+      "sha256": "6584b2687c800f9fd153701af673ecacced85b8e9f90ac5654b73a3a45615c88",
+      "bytes": 54556
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-optimized-webkit.json",
+      "sha256": "344944e3ad5f9f667e7b1f5d4d59b9b874a3938ce43f72509222e05588a37f71",
+      "bytes": 54541
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-plain-chromium.json",
+      "sha256": "7285ffccb6f3abf07b7ecd11399d4a988117b9606850ec35d8704c749cdc0412",
+      "bytes": 52325
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-plain-firefox.json",
+      "sha256": "551d41fc3d2a0d405fa0bbd3ba51f07a0de8dc5b9ce70b6626f9a2a80cb4de84",
+      "bytes": 52544
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-generatepress-plain-webkit.json",
+      "sha256": "e5ff50ee3565742517b3b2cb5e9e44d068a1423d5ebd5f72ab5bc2868b84265b",
+      "bytes": 52529
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-both-chromium.json",
+      "sha256": "3608b700f3dc665fe636948409352874aaa48273861b45a8911279af51f04b94",
+      "bytes": 56021
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-both-firefox.json",
+      "sha256": "ba86a268fda472c443cf3696fd24480658f2229493b2b89a204846f6b6de8bb9",
+      "bytes": 56303
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-both-webkit.json",
+      "sha256": "11e52266b32e4241b963727154ee6782f8e547169522284a8e34450ce15fef57",
+      "bytes": 56223
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-cached-chromium.json",
+      "sha256": "e19a38768ecd5d0723f1c5694a3dd93313973b6797caa165fe9af3966c7a942f",
+      "bytes": 55097
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-cached-firefox.json",
+      "sha256": "269e45c0b4a3bf807bb3f43f78b2131d56f67490bcfa83e8ccd9fcdccf954c11",
+      "bytes": 55379
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-cached-webkit.json",
+      "sha256": "91b5d88cc44f2bc343541f8e0f1cdc319b8d2a1f9af5e19be3a2dc286e61eb79",
+      "bytes": 55299
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-optimized-chromium.json",
+      "sha256": "97f03ccb02a6db25c4d56255926cdac130fa6c76cc9151e43d385a391e687de5",
+      "bytes": 54865
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-optimized-firefox.json",
+      "sha256": "55f12aec238f25ea5d96d33037a824a93bf5dc55ee618a44eb85a153e574cf4a",
+      "bytes": 55147
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-optimized-webkit.json",
+      "sha256": "4eb0cfd76618e977b6f2efcec33271264d405fdcce4f6a9188483bd4014ac341",
+      "bytes": 55067
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-plain-chromium.json",
+      "sha256": "d266e2635d96359d385eda79617cb3f9f718921ab66ebdec73ecf5347f299d7a",
+      "bytes": 51969
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-plain-firefox.json",
+      "sha256": "20616eab3755aa2122825024cf3833dd8dacd132522a5d21cfa56693dd670b27",
+      "bytes": 52251
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-candidate-kses72-r2-twentytwentyfive-plain-webkit.json",
+      "sha256": "72ac84016e60e4b053ed2323cd76433b5bd82b1649206d3cc9471027ff4f2f85",
+      "bytes": 52171
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-both-chromium.json",
+      "sha256": "79083cee765bd97fcd956ae2de83f3a6b7ea3a42cab848107e354e8443c3628d",
+      "bytes": 56179
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-both-firefox.json",
+      "sha256": "6698daa79050dc3a1186598281d45bd3d6fd5dfe9034316bf239a8a680d03cc9",
+      "bytes": 56565
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-both-webkit.json",
+      "sha256": "b422a5eebf65cad3f81d1faf56dd2cf1cfe292171258edaa68a22010433d7e3d",
+      "bytes": 56405
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-cached-chromium.json",
+      "sha256": "ad9b64e3c59dd8d4b05c592b8f4bb1fbb5caabcbd4c9c2066616ecf595102fd6",
+      "bytes": 55715
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-cached-firefox.json",
+      "sha256": "a5626dcf01872f12d8001eeb642d80b511c041b58224e9f0aae81d77849b5e39",
+      "bytes": 56101
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-cached-webkit.json",
+      "sha256": "0968ad203a84c66d10cbcad640dcb8d86e38f0f3f6e62a3e28f101acaaef392f",
+      "bytes": 55941
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-optimized-chromium.json",
+      "sha256": "ad4009a6817912b53af48bb5c75da373345f2131767dea6ee52eb4284bfc7165",
+      "bytes": 54515
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-optimized-firefox.json",
+      "sha256": "130d2933669b34e7b0e8f519e9fad230d56abcbe7041f621f5853ea51b381996",
+      "bytes": 54901
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-optimized-webkit.json",
+      "sha256": "f2b3969e144d20534acfd7b9eeaab50042476542a815a233d4cf4034dac14675",
+      "bytes": 54741
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-plain-chromium.json",
+      "sha256": "2073b38e29a4adc6db6722c25bc6dc11289f979652d1394d4f0aeddc7e066055",
+      "bytes": 52099
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-plain-firefox.json",
+      "sha256": "74442957ee88a09dd2d9577ef6ce162254ace4a7c6af90567c727362cffbe270",
+      "bytes": 52485
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-astra-plain-webkit.json",
+      "sha256": "593495667d089d41787c67325c87d646bd34274fc9bbe42ec75b0cf01c918d7f",
+      "bytes": 52325
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-both-chromium.json",
+      "sha256": "4ba15ffa857a3d49730fbc1cb37c08b7c6b830e55382fa5668cdaf49bd954d54",
+      "bytes": 55981
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-both-firefox.json",
+      "sha256": "bbb8c5473b76a6d82722f1e9fcf7c56e4f07a2d6f7faa820cf1b8d45d1bf58e7",
+      "bytes": 56200
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-both-webkit.json",
+      "sha256": "7752e16ff5e5fbc4f01898aef1eaf48f8a903acf875ff7309c14c46aac838512",
+      "bytes": 56185
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-cached-chromium.json",
+      "sha256": "f5d19d284af116f09de63757ae7a1437d3e572905be3e5dae27d589e4d1b11cf",
+      "bytes": 55937
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-cached-firefox.json",
+      "sha256": "853f470243b39dea84cc05b72db7e95e2abe6742c48a6972ebc7bc80e7a5bf1e",
+      "bytes": 56156
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-cached-webkit.json",
+      "sha256": "9c467289091597dfc9fdfed9afa92aecc6f26fd8400fa21fd4d888ae008d5107",
+      "bytes": 56141
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-optimized-chromium.json",
+      "sha256": "23fdee011020aa9448b205568f311273491b87b278f866c2154285794098360c",
+      "bytes": 54317
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-optimized-firefox.json",
+      "sha256": "93e771ac5ad9b4422bf2b4e05094634d56c8149e0bb6896927a9872d9edd669f",
+      "bytes": 54536
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-optimized-webkit.json",
+      "sha256": "4425c9f1a488c0332c33d1bcf9eb5afcc83c3c478ebb18bf0ce2743bc754d899",
+      "bytes": 54521
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-plain-chromium.json",
+      "sha256": "f3dda4cd9b1e1a296f28368240f304a75470e1a4e5eeb026090e5b91ec697b39",
+      "bytes": 52321
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-plain-firefox.json",
+      "sha256": "0436e25c8016db13a17ba245b0ca46f79d969bd12a3725d417669e837bba4fc3",
+      "bytes": 52540
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-generatepress-plain-webkit.json",
+      "sha256": "64bce9fc4c82e0563986e66ef0b5d589ea17e37142e30a717753a8ff3fabf55a",
+      "bytes": 52525
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-both-chromium.json",
+      "sha256": "2cafa78de27e379b9ab07e0dac58f6648056c0a5951cd5cd552158ea8bc5bcf4",
+      "bytes": 56497
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-both-firefox.json",
+      "sha256": "e327ee245e4776e6c926a6cfd62a128d8013f8ca0b0f4f812fbb70da2f4ec48b",
+      "bytes": 56749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-both-webkit.json",
+      "sha256": "b167d892e90e72a97cf362163a03abf3554d63aa9d2f463f40f507677dd9e73d",
+      "bytes": 56618
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-cached-chromium.json",
+      "sha256": "a12a5398b0f01a61a1f8ad6fa02b05b7ef0551c1f3328603191320c21650705f",
+      "bytes": 55681
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-cached-firefox.json",
+      "sha256": "1f17c906e8e270d4d8e0a21b8c1ab9c1bde82a92876aee3a009b80712fb78644",
+      "bytes": 55817
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-cached-webkit.json",
+      "sha256": "1f0a2fb9a95628f08ac23394608ec49e308386a5a3320ad7c7e3a85af3d54308",
+      "bytes": 55767
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-optimized-chromium.json",
+      "sha256": "ea5576efcef40e8d41b278e8fae364f47b05b71cfa475f50cf50141cf82ead28",
+      "bytes": 54833
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-optimized-firefox.json",
+      "sha256": "3e6f5630291e941c42072567420651345ecd38dd1de0dc4790717f1987c34fb0",
+      "bytes": 55085
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-optimized-webkit.json",
+      "sha256": "fa90e3078cc0470227169bc2274a1f18b8852e94bce30bd3ac80110f70e61ee4",
+      "bytes": 55035
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-plain-chromium.json",
+      "sha256": "f09b380d3b067beabb59d6a64bfb9792ebf62f55d3225e938445d8fca7d2bdb5",
+      "bytes": 51953
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-plain-firefox.json",
+      "sha256": "de39dea7bfb58856a4a75937ebef23b60c24935cfe9d10e4e0548fd29e016c56",
+      "bytes": 52205
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/front-rollback-kses72-r3-twentytwentyfive-plain-webkit.json",
+      "sha256": "b7211a40748f7e38b5bcefd04ffe1a7a561bfd5e2742aac54d6621645061a664",
+      "bytes": 52155
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/integrations/resume-teardown.json",
+      "sha256": "5f93e6a7b2d86b759f0847dc5cf5ce2b828fea2c29d6da7b016a2dba10c16f16",
+      "bytes": 162
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/accepted-results.json",
+      "sha256": "2c25488551a9846caf66aba9928e79fb3b2abdab86fa5d293b7cd2f787360bcb",
+      "bytes": 499
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/baseline-chromium.json",
+      "sha256": "4244d2ea0151621971840901bb64e5113da6e15a9e302fda2b39f99f767d4c7b",
+      "bytes": 209582
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/baseline-webkit.json",
+      "sha256": "ad3cb176790ad6e2384f5a4fe5ca48dec028426d63f0427c70247be4ba0c7791",
+      "bytes": 193140
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/reupgrade-chromium.json",
+      "sha256": "57e25f2c608418b094c666078d5d4d4451eda12a6267cba09fbf778441adda00",
+      "bytes": 210591
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/reupgrade-webkit.json",
+      "sha256": "7d91cd83d4003322bfab8f153b7c2681789c80db249228829be4cfafa2180b1b",
+      "bytes": 194149
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/rollback-chromium.json",
+      "sha256": "a5c87f6370d9588227f344453f11ba069a1fc109ef73ef8c68fcafb6d1266f91",
+      "bytes": 210590
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/rollback-webkit.json",
+      "sha256": "08b48b46420a1cae5ce13cc317876ab168753e57102f21026e9e21f858e64195",
+      "bytes": 194148
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/saved-chromium.json",
+      "sha256": "c9617d0690c248b87b1711bd659191ec12b6ae2b4d47d6e8d3db9482ca29b9b7",
+      "bytes": 216248
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/saved-webkit.json",
+      "sha256": "392e8ef5ee2b8d48a21892bb4b4ee770d11cf9b1ad55dc36a882b30d85146124",
+      "bytes": 199806
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/server-cycle.json",
+      "sha256": "2b9b0411e8d1a60a026c3f035504d85d7bccb9ad81cc081a3e7160db001d8319",
+      "bytes": 3057
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/native-https/teardown.json",
+      "sha256": "48bfd843a7005e9e13a0a40a45e61ba5298c2679e90cc5803b7e03ea7d2a7223",
+      "bytes": 776
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-beta83-chromium.json",
+      "sha256": "a2a61cf18f63b47064524430b0b3af5e317c8f66839cc8408aa0d6dbdf8c4626",
+      "bytes": 706398
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-beta83-firefox.json",
+      "sha256": "c5fb50c906aae13becc1f60e076d8c3fa7e2ff523d5be4230f9dc65d9e5b0262",
+      "bytes": 196301
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-beta83-webkit.json",
+      "sha256": "10357a5b59daeda27d1ebf5489ab577ede7f538ef6bc7f9e0c9885e06dfeb998",
+      "bytes": 195399
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-beta85-chromium.json",
+      "sha256": "42e9c66e207aa40c4f585f90020c102884764aee2a7b9a4c123bcf1608cc1381",
+      "bytes": 706398
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-beta85-firefox.json",
+      "sha256": "846de1b0d4403434221cb2f1aa21cbb7a786babb6edee95501da7bdffed1cec0",
+      "bytes": 196301
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-beta85-webkit.json",
+      "sha256": "1e185581a04d9e3b633160c9f775624b17fee08681f7add6695d88f8db165bbb",
+      "bytes": 195399
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-localwp-chromium.json",
+      "sha256": "475a7386286adb5588370ffb2a8baadff9c8f365cda7dacf1e61575dc02caf87",
+      "bytes": 706329
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-localwp-firefox.json",
+      "sha256": "ce6eafb528f640a4760b267242fb3c28aba95b24943b651095e7158fd1d9df6f",
+      "bytes": 196305
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-localwp-webkit.json",
+      "sha256": "8d938edc404b7e403fa292363e6737e1bca79fcfe7985444e3be7dd3be3d2460",
+      "bytes": 195402
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-ms85-child-chromium.json",
+      "sha256": "65574cc819d25c7b6c426f959a4c8d3dff301aa8bca35b032f4cc542c7bbc2d2",
+      "bytes": 869421
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-ms85-child-firefox.json",
+      "sha256": "fd503471e31f1ab2173c468f78b27d83eee6b73c21c291535135301714412db0",
+      "bytes": 204824
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-ms85-child-webkit.json",
+      "sha256": "893b114d142b711e84bc3393b7f47f9c661f8b2243fe4df95667ab580c440905",
+      "bytes": 204122
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-ms85-chromium.json",
+      "sha256": "bcb2e2e6525263edfb18ae31e3e43be2f0a821a2e1ab1228789404b20414cea6",
+      "bytes": 863783
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-ms85-firefox.json",
+      "sha256": "d4b6620fcec3a9aef7d7567f95ab63c3192216da7ce2b59f1903901de5ad66bc",
+      "bytes": 196302
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-ms85-webkit.json",
+      "sha256": "2c2b904ed7040df11748059837b5806ecf356b325fadb46e681be550d6f14ad7",
+      "bytes": 195400
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp63-chromium.json",
+      "sha256": "9b548a3206276d14fbe17207da85e4c2cbea44041a87b00029dad41ff7d4c44d",
+      "bytes": 705558
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp63-firefox.json",
+      "sha256": "770294ff64b8fbb44a362ea6486b13750fee8cc8d1dbc1d3ad7a5165fd903243",
+      "bytes": 196299
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp63-webkit.json",
+      "sha256": "45b180ab494a8490436d3d61554e9dac157bf7886697504e2a1d398109140d35",
+      "bytes": 195401
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp68-chromium.json",
+      "sha256": "ea5b02b11819a1935d250fe3788b68c22f59d23a8d202d4e9d888b6b87ca572a",
+      "bytes": 705630
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp68-firefox.json",
+      "sha256": "0a5c7b96660ac03130e35b3e05d00abccd9c2b0d34c010458fe0a2f96bbc2509",
+      "bytes": 196302
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp68-webkit.json",
+      "sha256": "1deb34dbd68673f27ee8e0e2651c070f64831b88dc3c5a03c77d85317c1b369e",
+      "bytes": 195400
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp70-chromium.json",
+      "sha256": "4f001739ddb8b29219d297bb40af7f894f326bbf7fcd5408aafd8e379614f7a6",
+      "bytes": 705558
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp70-firefox.json",
+      "sha256": "ec9f959e3ebe1e901dda686ec42de67988cbefde6d97eaa0510d159bb1b0e771",
+      "bytes": 196299
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp70-webkit.json",
+      "sha256": "a755ebce6bed01feb3ad96d6c90f378274eb5a1e826bdfe5c0c20c93dc825394",
+      "bytes": 195401
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp71-chromium.json",
+      "sha256": "969ccc6f71e8e97e80660018bf68ab00af468053f365171ec8dbd57b6091b03b",
+      "bytes": 706425
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp71-firefox.json",
+      "sha256": "ef8a53303e83e098edb6abc61ec48aed8dd014bdea538b8c2a66f77cda804bc2",
+      "bytes": 196302
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp71-webkit.json",
+      "sha256": "7efb1db06bf86c7f76fe80efb2d121655530ffc214f32b58bf4e51a40ed0e435",
+      "bytes": 195400
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp74-chromium.json",
+      "sha256": "bb372acea541ddacfd090a03515dd697fe29f0e6c597c3d97614dba0b344f0dc",
+      "bytes": 706425
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp74-firefox.json",
+      "sha256": "31dc29e1b1a61df49f4e56f8023885da957e274bb80f12a62a29d89bbda6b185",
+      "bytes": 196302
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp74-webkit.json",
+      "sha256": "036d244e9e09b6a2adeabb2e45203f357df5144891575a8e5b3b08cba18347f6",
+      "bytes": 195400
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp84-chromium.json",
+      "sha256": "914b56e185d58f70f326383538f4446af92f08a6dfd675a7395b38c933a41955",
+      "bytes": 706425
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp84-firefox.json",
+      "sha256": "b36ab462d7dc34a545bcd5335df9c1ffc7372a6bf035a9fb3872b7263887ca89",
+      "bytes": 196302
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp84-webkit.json",
+      "sha256": "abda3e39abd933b7e3564fadbac68dbcc4d42a2f00d3791b4cf0f78054e539f8",
+      "bytes": 195400
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp85-chromium.json",
+      "sha256": "32f8838b00312f2c9a9b13fa2f2d02e3590c21e85365fc818e01b856384e73db",
+      "bytes": 706425
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp85-firefox.json",
+      "sha256": "23deb95c65377a6e705eb71d3b789761f28e91b9dd99de93b64226460bcbdff8",
+      "bytes": 196302
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/original111-wp85-webkit.json",
+      "sha256": "280d904dc9e31998723e6d714670e0381e7498f1fa3f80ca0aea0aa956730da8",
+      "bytes": 195400
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/package-verified.json",
+      "sha256": "ae99aa0ded37763ac2f80e2d1d9c82718b243036f0912da704e5c91033824ce5",
+      "bytes": 1919
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-final-review.php.json",
+      "sha256": "4fb2726239619591107bf1c59b6d4ee3a23ef4a9bbec55b7113e3a3928df512c",
+      "bytes": 20112
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-html5-caption-save.php.json",
+      "sha256": "703c8eaece9b5ed5ff7078e49a9f4de49b51b96dd275f6a9b00a558f75cb21c6",
+      "bytes": 20324
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-html5-charset.php.json",
+      "sha256": "ecb51cc88cd84f6c48869095e1eb64dd300a9ce940afec4bd9f99123d5820fdc",
+      "bytes": 655
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-html5-entity-pipeline.php.json",
+      "sha256": "523fa495ac2e290629234afdf0813dc4a6b0d3e597e085ee03c75d38c952d144",
+      "bytes": 1419107
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-kses72-owned-pass.php.json",
+      "sha256": "44f35906888b95cb9ed5a52b9d436fd756594767bc1a9a90d8220c5f6ebc5c88",
+      "bytes": 3882
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-kses72-regression.php.json",
+      "sha256": "5035faa3d1179c84cbf7bd8990b601b91e71a10a13be61ddd18e97cfb95f778f",
+      "bytes": 17007
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-numeric-caption-save.php.json",
+      "sha256": "fbe9735ded915a502ef8d03f2a639e8ecf94f912516b90589590a45384409369",
+      "bytes": 56670
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-numeric-entity-pipeline.php.json",
+      "sha256": "18b34286bdb5843c70e4442cc1641ad58db2cb12d006a82a190646334953921f",
+      "bytes": 1754637
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-p2-caption.php.json",
+      "sha256": "85304764d950817377a9ef0dacf4a7ff716a48a58561cf836a98b3f7dc8e9b70",
+      "bytes": 1753
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-regression.php.json",
+      "sha256": "bb43d7c29c2d088fcd7e86ba8027fb30a2e7a6e699c33aabd07df8afc1c636c0",
+      "bytes": 49507
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-widget-entity-pipeline.php-named.json",
+      "sha256": "6c0d307502fbaf5bc00af5199a806ada5bf72da5c5fb00a1263916c35f3b077a",
+      "bytes": 1419276
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-widget-entity-pipeline.php-numeric.json",
+      "sha256": "c1e3f4072070a3a82fc5d25e72e324b72249ae1ef9396d39021841d4b9d16592",
+      "bytes": 1754653
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta83-widget-fallback.php.json",
+      "sha256": "d159d5db0260811b3e6354c969f66e5421e1b626e09262df57a34808141f4e42",
+      "bytes": 4602
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-final-review.php.json",
+      "sha256": "d2729e990446671d6b285eaa61f631c06f1e10bca07acb88f76c68120a13c7d1",
+      "bytes": 20112
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-html5-caption-save.php.json",
+      "sha256": "272fb54e1937dba5f3df56d37687b6959f65347c9baf6e43aafcdc360ddf9a03",
+      "bytes": 20324
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-html5-charset.php.json",
+      "sha256": "894b5ec135e22f3e8bfebfd82cdcca313c16410d05685e0e60a5c8a95ed4e02c",
+      "bytes": 655
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-html5-entity-pipeline.php.json",
+      "sha256": "df8dd1d69b285035349795e557c7823b8f0eff2099c4a835d03b2c36823de2c8",
+      "bytes": 1419107
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-kses72-owned-pass.php.json",
+      "sha256": "18b581a280923ab2ef5f02631106ee8132aa2c1742bf619204dd7cc002e605f4",
+      "bytes": 3882
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-kses72-regression.php.json",
+      "sha256": "80d27d1d9363006b879e3fde07801faa7d8d0ec50c4614bacba6deb2190ee3d5",
+      "bytes": 17007
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-numeric-caption-save.php.json",
+      "sha256": "01505cbed1fb693dd37b7146a38c4e0b8963a84036111027725f442dd8618fdf",
+      "bytes": 56670
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-numeric-entity-pipeline.php.json",
+      "sha256": "d7e225d389f98cd4f05e88396bad1c5f4f1ae6deab2519e386213aab9882a713",
+      "bytes": 1754637
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-p2-caption.php.json",
+      "sha256": "98e912714cd359be5cd83e6021237126a6e8a7dce91423e8fb87f3d93c889443",
+      "bytes": 1753
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-regression.php.json",
+      "sha256": "d746dbefff11f94ea82b4d8c0871f023f144551d24da19988dff16370f513413",
+      "bytes": 49507
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-widget-entity-pipeline.php-named.json",
+      "sha256": "4c349f122cf75dc2a575a1894376e942edae087e184e7e54f2302df4f5ffa24c",
+      "bytes": 1419276
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-widget-entity-pipeline.php-numeric.json",
+      "sha256": "0e3287795227540ac504e267956b6463e80db3c2a2b27626013e5d4995a0a82e",
+      "bytes": 1754653
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/beta85-widget-fallback.php.json",
+      "sha256": "a3b2fa5f6773c4da0419703c2d8f9174a700a523132a2b59cba7224764fea877",
+      "bytes": 4602
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-final-review.php.json",
+      "sha256": "abb5abd21fee5f3f65898f2376487f84e66eb9562a41f24d5fb75c730d3333b1",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-html5-caption-save.php.json",
+      "sha256": "b112cb817c3327b9dbafe4f6ae597c37eb896540dc61531008e5c8d14cb1a5bf",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-html5-charset.php.json",
+      "sha256": "127c01378367d28341191a64c679c0170fa098819ab5a94a4ac4a5c65d380cb0",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-html5-entity-pipeline.php.json",
+      "sha256": "19ce2255d95fb1702da3a7156db4ff95f3c8e7578195e64b100949162cb2dfb9",
+      "bytes": 1419103
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-kses72-owned-pass.php.json",
+      "sha256": "67f5e943e3c1e7d9a7958d0b0b6b817b1919d1def82ca6ec7c39bae2a21b4abf",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-kses72-regression.php.json",
+      "sha256": "48597bb8bcff5b8a34a2c06cc7cc0984ad858f71fa918b439e49a4ebc58cb867",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-numeric-caption-save.php.json",
+      "sha256": "88ee328a1e1b46e93c5ca2cfcd53cd9d996b2261759ee821b490398304e030ed",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-numeric-entity-pipeline.php.json",
+      "sha256": "22b7adf40e2ce177102a199761f71f91d2cb98ec63e78bd642165bd67734a4f8",
+      "bytes": 1754633
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-p2-caption.php.json",
+      "sha256": "574c062cd9e01d2cb6dac44a8f65886325b1e47684a48b5b8f8463ac8ea07ab3",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-regression.php.json",
+      "sha256": "021f3b4b702638ef862f164b449cdf65ef90ce807d1297bbb0a49cc8a0473687",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-widget-entity-pipeline.php-named.json",
+      "sha256": "bf144c1f8fff936e0efbd30cca0afcadd2f5aaf8cb2a107902ffc43d9020624c",
+      "bytes": 1419272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-widget-entity-pipeline.php-numeric.json",
+      "sha256": "aae58299ae9dec27292cde052cd38c12561711f13550932b817032d2b57b499a",
+      "bytes": 1754649
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/localwp-widget-fallback.php.json",
+      "sha256": "deb37e4636711b23b4ad92f7378b02cf353d4187ca8ad62e67e0ac10a0d400ed",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-final-review.php.json",
+      "sha256": "01f246572424ec5e1af1c3bdcc374e68e44806819b38da4135743f928c3f01dd",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-html5-caption-save.php.json",
+      "sha256": "f8977c8fd0204d50b92707a31565f4400b219f3a275cdec9c3b640742c86bb1c",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-html5-charset.php.json",
+      "sha256": "fa1b4407be53e40dc44bd9c79eca3c590927593d08e87de027bdec6ad6a44eda",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-html5-entity-pipeline.php.json",
+      "sha256": "d615ff9582105c180673977aa4eef497bbf33858a79bb426a36f31d5cce38ebe",
+      "bytes": 1419103
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-kses72-owned-pass.php.json",
+      "sha256": "1862df304f422e237b373d8590c9aa958ae7bba0593fd6f9790d82fd7628bc98",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-kses72-regression.php.json",
+      "sha256": "21e6fbc3f0990451dec7911c010c246b6463527213a763a90c89aa93b80c8465",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-numeric-caption-save.php.json",
+      "sha256": "f12f040e2daea32a6acc4cfb099d1d46f990dcedff9a4f02c728fdb1a5dd0683",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-numeric-entity-pipeline.php.json",
+      "sha256": "20f7f96752a3c68575f2cbe9d26e2278727f893267e163f24304d59208efd2d5",
+      "bytes": 1754633
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-p2-caption.php.json",
+      "sha256": "dfaead0719fbc5d923dff3d6bbd076e316493053df1160c41372c4f8103ae722",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-regression.php.json",
+      "sha256": "bc379a458190d54a8e1e045a0b4613449c771d90c96e6cd33f0b460a36508e73",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-widget-entity-pipeline.php-named.json",
+      "sha256": "dced20cb150bc63a5e4c53b76ac13cd419445a649f59941c5d22fcb9d8865fc6",
+      "bytes": 1419272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-widget-entity-pipeline.php-numeric.json",
+      "sha256": "3b957a20a3c78ec2cd2e947f590195d9ea49df058d0f977fc200f1c303c060ae",
+      "bytes": 1754649
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-child-widget-fallback.php.json",
+      "sha256": "86b518893c08ac3be6087cc8376b84a8b752c907b0362666f7a6916f9ceeb4a5",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-final-review.php.json",
+      "sha256": "01f246572424ec5e1af1c3bdcc374e68e44806819b38da4135743f928c3f01dd",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-html5-caption-save.php.json",
+      "sha256": "f8977c8fd0204d50b92707a31565f4400b219f3a275cdec9c3b640742c86bb1c",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-html5-charset.php.json",
+      "sha256": "fa1b4407be53e40dc44bd9c79eca3c590927593d08e87de027bdec6ad6a44eda",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-html5-entity-pipeline.php.json",
+      "sha256": "d615ff9582105c180673977aa4eef497bbf33858a79bb426a36f31d5cce38ebe",
+      "bytes": 1419103
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-kses72-owned-pass.php.json",
+      "sha256": "1862df304f422e237b373d8590c9aa958ae7bba0593fd6f9790d82fd7628bc98",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-kses72-regression.php.json",
+      "sha256": "21e6fbc3f0990451dec7911c010c246b6463527213a763a90c89aa93b80c8465",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-numeric-caption-save.php.json",
+      "sha256": "f12f040e2daea32a6acc4cfb099d1d46f990dcedff9a4f02c728fdb1a5dd0683",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-numeric-entity-pipeline.php.json",
+      "sha256": "20f7f96752a3c68575f2cbe9d26e2278727f893267e163f24304d59208efd2d5",
+      "bytes": 1754633
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-p2-caption.php.json",
+      "sha256": "dfaead0719fbc5d923dff3d6bbd076e316493053df1160c41372c4f8103ae722",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-regression.php.json",
+      "sha256": "bc379a458190d54a8e1e045a0b4613449c771d90c96e6cd33f0b460a36508e73",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-widget-entity-pipeline.php-named.json",
+      "sha256": "dced20cb150bc63a5e4c53b76ac13cd419445a649f59941c5d22fcb9d8865fc6",
+      "bytes": 1419272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-widget-entity-pipeline.php-numeric.json",
+      "sha256": "3b957a20a3c78ec2cd2e947f590195d9ea49df058d0f977fc200f1c303c060ae",
+      "bytes": 1754649
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/ms85-widget-fallback.php.json",
+      "sha256": "86b518893c08ac3be6087cc8376b84a8b752c907b0362666f7a6916f9ceeb4a5",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-final-review.php.json",
+      "sha256": "6c5a95a269f3f7cb82c72aab8dc13ece2f8519131e3f228839373ede8fbafa37",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-html5-caption-save.php.json",
+      "sha256": "039dbbe0d394dc970e3ed5465078b345d0eece6f1ef3242650617ec2e9b9ad87",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-html5-charset.php.json",
+      "sha256": "88e96c95b16d1b8b79ac1c5f484bd3b289bab719ee13e6025198a8a97292096b",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-html5-entity-pipeline.php.json",
+      "sha256": "d420e6c82fdb8e26090423b1bfa020dcd00e1144c2314826500bd3397fe4075b",
+      "bytes": 1419639
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-kses72-owned-pass.php.json",
+      "sha256": "58433b0aed5a5783ac3044cdaf1ae21cb0c502b60db187bd227f9cf0e946da19",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-kses72-regression.php.json",
+      "sha256": "d74d7fe2b61e40dc613361c03b759ece96c34fb9fc7aa4981fe645f749388a8d",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-numeric-caption-save.php.json",
+      "sha256": "93a815e68eae210c132e283eaf1dc374e26f3b743f72455e9859b4835a35b802",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-numeric-entity-pipeline.php.json",
+      "sha256": "ed80d722f57403bbddf1972a4043d8eb9daf255b3964dcd21fa99701cf6262b6",
+      "bytes": 1751405
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-p2-caption.php.json",
+      "sha256": "4d0175a30529e965226405a591f53dc8a4146600ed48bc8c856275c1b97944b7",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-regression.php.json",
+      "sha256": "d96882896ef357bd9f534fc45d48f6bc66cff4315d3422fe0a52393046777129",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-widget-entity-pipeline.php-named.json",
+      "sha256": "2aa00957686147db812778e3619f0dd21025f6fb46c150bb95e50a57d3166195",
+      "bytes": 1419808
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-widget-entity-pipeline.php-numeric.json",
+      "sha256": "822169f31007434f71946b5f846d27e6cff9f47bffc6452b058333c94edbc1e3",
+      "bytes": 1751421
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp63-widget-fallback.php.json",
+      "sha256": "360de4ce6e672bbb9759feeec8c22dcf2668f3ddc8f9581e6df03a88f713fc60",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-final-review.php.json",
+      "sha256": "a201b5a0c9810613a38e53b4a32e81eb3182b14cfb79de08d9f3d31f2d3fabbf",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-html5-caption-save.php.json",
+      "sha256": "672204ff283675dee78ca890f2ab0bb69e3406eed5dcf7e38e50ea5f6c19d2ca",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-html5-charset.php.json",
+      "sha256": "ada219ec23ced39ebebfa8d2c353d75c93e099a0b3ca61c4384538936cc45aab",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-html5-entity-pipeline.php.json",
+      "sha256": "7f52bbeb34445b533915ecf2570f156f1a22e635cfd3f2ab2f49ff7ef7913350",
+      "bytes": 1419639
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-kses72-owned-pass.php.json",
+      "sha256": "b44fbf461326d728b4826cea8f599e83dbcceb5bdf5ec00aa92ab2e24cc96ad0",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-kses72-regression.php.json",
+      "sha256": "a4a5bff43589b287e63320c961fd80501ccbe1ca4f4f85bd2949af5dda3570b6",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-numeric-caption-save.php.json",
+      "sha256": "076808ac12e780f5c8128abe2333a8cdaf9c0a0dac88fa4891b126c62872fbc9",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-numeric-entity-pipeline.php.json",
+      "sha256": "3e633bfbe0d130c7c917830f7985eff857e331a55f75386a7424c0278099c46b",
+      "bytes": 1751405
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-p2-caption.php.json",
+      "sha256": "b072031eac4149b87503762a702a1b9b9f9d1ee38409d477455f9e1bbb67cd93",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-regression.php.json",
+      "sha256": "c8c30c66946ea3fde6121f4ae2f08440c5dca1a5a3651a2761ffe4c6372678aa",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-widget-entity-pipeline.php-named.json",
+      "sha256": "accf0130037112e32c9824446155891b97de31302672b1ae12e8a15653229a6f",
+      "bytes": 1419808
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-widget-entity-pipeline.php-numeric.json",
+      "sha256": "439c4bcf77bd6abd8d991ca993aa616c7278f6481a166458562d8a9fdeaab907",
+      "bytes": 1751421
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp68-widget-fallback.php.json",
+      "sha256": "bb1724157d6e511822def3cc9cb6673c7607bf0da078795b804906959082cc3e",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-final-review.php.json",
+      "sha256": "8cc44a477956df1e1e5fae163ba3fce8074d2cf457be79c95d01cce4fcb8cf74",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-html5-caption-save.php.json",
+      "sha256": "8f82e0aa5a0560fe321fccfdccd375a22b752964a17c75acbc5957cc035eb5a5",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-html5-charset.php.json",
+      "sha256": "e259baab2afb0c0d54be5d1a11bc3f2b6e71eb7958a392462f804717e57c0d6c",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-html5-entity-pipeline.php.json",
+      "sha256": "8817f9e5005aae04ac7a0b12d3a132b1ca31fc361d1b0a7650c8c3b876d21f2e",
+      "bytes": 1419639
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-kses72-owned-pass.php.json",
+      "sha256": "b92057beda1bdd85868b66fa709c50fec3c6baebb513c98445e0001c2bfc52a4",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-kses72-regression.php.json",
+      "sha256": "6820e20dd2af4c70913851e0293611df1df5ef874441114612e340d1cebc5229",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-numeric-caption-save.php.json",
+      "sha256": "68eb5b278cbc44a5a9d8a0b08f0b56208cfbc8c1374e19f254865050bd1acead",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-numeric-entity-pipeline.php.json",
+      "sha256": "27cd7bbfe62ede34c5918d1d40dcf7e296f17ffc0625db25ae68fa8b704b7bba",
+      "bytes": 1751405
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-p2-caption.php.json",
+      "sha256": "c02cc2df110d76560a5901e493548cf814b5870e2c3620da426ab8707d506b39",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-regression.php.json",
+      "sha256": "74bda5d83af593e1e7fcfeda1231806853624100b6dae3669ba17f5f2a052d0c",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-widget-entity-pipeline.php-named.json",
+      "sha256": "13219e72a9e83ec7ac9e3c83a7088c3f6240a167c0ddbef4ecb44058bbc051c3",
+      "bytes": 1419808
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-widget-entity-pipeline.php-numeric.json",
+      "sha256": "b12068da308b16a29eee1a1f2bea3d0a64d7dedacdc4ebc44ef193b45cd7b610",
+      "bytes": 1751421
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp70-widget-fallback.php.json",
+      "sha256": "ae592c62fb9e45df9ac4201091e7d20386304635be828bdb4310d6610c914ae0",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-final-review.php.json",
+      "sha256": "c3cbb56c5dc9ba556353f334894798e377b0deb99b200b0776f500c5edd732ed",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-html5-caption-save.php.json",
+      "sha256": "c4a5973d85623540140c25aca8ca75f770b8411ae3033262649c19c3de28eba0",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-html5-charset.php.json",
+      "sha256": "72d8e8a983a3d124b7480fed984bd0795ca42a303a5cd40da66ac68aaa01c251",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-html5-entity-pipeline.php.json",
+      "sha256": "04cc4abbcb15ed33be09970e96375fbcc6867e6925ad1a8ee78a8d2657739b2d",
+      "bytes": 1419103
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-kses72-owned-pass.php.json",
+      "sha256": "d6404bd8b4fcdd7f96a3420e07a976a7cf6cf4e9b2a5fc75a519c96bc1c2372d",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-kses72-regression.php.json",
+      "sha256": "c5b5f5543d31ce7d4a96aa93055ec8131bea0584cbe66c07b175a2ac64124cdb",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-numeric-caption-save.php.json",
+      "sha256": "f865eb88c45f5942cb7053915bc4981e1e08b23bb3cf89d98c23b729ec130273",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-numeric-entity-pipeline.php.json",
+      "sha256": "386aeb5f8f00508296f158b5cabedf86aef647699c4f84e53948d5bbc69d32bb",
+      "bytes": 1754633
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-p2-caption.php.json",
+      "sha256": "4da2287799bc29d71d9d8e5a870de1658ae1e1328589e2a9c686d838f191f1d8",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-regression.php.json",
+      "sha256": "4d81b686272976fc2e9b3d06c8885771e3396c504e232c1a96993c67a021e842",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-widget-entity-pipeline.php-named.json",
+      "sha256": "b948f1e40d5d162ba90d8687e861664b6904c6739f02d74807510360a16079da",
+      "bytes": 1419272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-widget-entity-pipeline.php-numeric.json",
+      "sha256": "0c355f46efe27833ae0299325489b8894cd7732297461f9010e919ec0aea458a",
+      "bytes": 1754649
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp71-widget-fallback.php.json",
+      "sha256": "5da55db6a595be4deb7c9e4912f95e80ca9d4573db095b160c1c8a677c61d2fc",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-final-review.php.json",
+      "sha256": "efa58dad04be2352b331cb3baa7edeb1bb2e72adca9a7db0079bae5802024f36",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-html5-caption-save.php.json",
+      "sha256": "6e6835f0a20443f91025635af8dda55cb3a87f94da937b3a772761f7fac2424f",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-html5-charset.php.json",
+      "sha256": "ed126370c22b1730a00d47cb1781f77de117c18dfab0109e07f2b2ce13e344f5",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-html5-entity-pipeline.php.json",
+      "sha256": "43bd03a7fde9ab6db8a20620f201c498440a466a33f7393fe927cfdb3265f423",
+      "bytes": 1419103
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-kses72-owned-pass.php.json",
+      "sha256": "37bf8792da5983bb7402cf846c4d3459b89c4cabc0e0b64684c7b568aa21fc1d",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-kses72-regression.php.json",
+      "sha256": "bc39e4404d4ab0390b0921288fa92a5e660f84a9e8ffd6373524a90e982a5bde",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-numeric-caption-save.php.json",
+      "sha256": "be79020e74109ddbd54345be16920e5ce777099924d64f56ec7edd0adb7b38c8",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-numeric-entity-pipeline.php.json",
+      "sha256": "c36f8437fc5b8612b2bae46cd396eff48dd734b92f5f11513c26711ca680389a",
+      "bytes": 1754633
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-p2-caption.php.json",
+      "sha256": "4b117bbcc987696c0d042e48b56293cd11da6641f87a4189d0eb765670d64ed8",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-regression.php.json",
+      "sha256": "dac0c748204dda81fa7c6b39a9edf4950c92a9f914f019decd807595b3e7e255",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-widget-entity-pipeline.php-named.json",
+      "sha256": "b84f242c047edd1222026ce128b3d52ec4033eb919a7d19fbf719e62420abc68",
+      "bytes": 1419272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-widget-entity-pipeline.php-numeric.json",
+      "sha256": "b7458bbd34285f1d0cdcae960cdcaa42d4cef191a5099ad0865dac375007faee",
+      "bytes": 1754649
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp74-widget-fallback.php.json",
+      "sha256": "09bf606ee15daf4cb2b308a359fd816a2904dd3a0f2c9405c72c66be390b833a",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-final-review.php.json",
+      "sha256": "8dec6a83464e6669f45059a510c2e9276f899a903466f8b3d30b0e29d76beef5",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-html5-caption-save.php.json",
+      "sha256": "2eb03f2028d8a1102ae9c6fb19724a38c11c64d88a9b9b78f38c7502ff8e3ee4",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-html5-charset.php.json",
+      "sha256": "7e956f2fdeb5642e094001be8b02ab2f62ca811707bd2557fe89996036b465f5",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-html5-entity-pipeline.php.json",
+      "sha256": "512603fdca12a853c2c06cee26f57a95097c90f43be8ae5101d7b616fbfe0dff",
+      "bytes": 1419103
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-kses72-owned-pass.php.json",
+      "sha256": "a7ef9eaec8e6b688049f9f696973306f704511659bdf7e5b6dc3d1fb8167745b",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-kses72-regression.php.json",
+      "sha256": "db87054cf1e43948e43f2a6932111e3b3f8a74cb9fcb1b529c613c4001ccbd9b",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-numeric-caption-save.php.json",
+      "sha256": "3e64550654e423dbff1fcdd7e0a112f4ae399e03cea74ee42199e0dd4749ed22",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-numeric-entity-pipeline.php.json",
+      "sha256": "be819df77843699d0a0ac86457fad6f53558b345e7b7e4a5358c719bfdcc85f4",
+      "bytes": 1754633
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-p2-caption.php.json",
+      "sha256": "f78b9b02819c66e1217d78c7011c546dc2659723bba5bc0ebf9d5381b3b98ad1",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-regression.php.json",
+      "sha256": "ec6390568ebf76bb8285b594fc80da3c4ee9706aa7a96b7b2e9fe38b91354dac",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-widget-entity-pipeline.php-named.json",
+      "sha256": "ceb2ac33300c5b4e016693d598d8e2e4dd90e59956922edc1a452538dbb95a65",
+      "bytes": 1419272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-widget-entity-pipeline.php-numeric.json",
+      "sha256": "3526774493a1a3144c1a62fd3077979057677654587930ce120ab34eccbbb643",
+      "bytes": 1754649
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp84-widget-fallback.php.json",
+      "sha256": "a4feb5eda3ff1bf2169191621c3f8dae820b592b1699cc15cf33bafc02b0b434",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-final-review.php.json",
+      "sha256": "01f246572424ec5e1af1c3bdcc374e68e44806819b38da4135743f928c3f01dd",
+      "bytes": 20108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-html5-caption-save.php.json",
+      "sha256": "f8977c8fd0204d50b92707a31565f4400b219f3a275cdec9c3b640742c86bb1c",
+      "bytes": 20320
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-html5-charset.php.json",
+      "sha256": "fa1b4407be53e40dc44bd9c79eca3c590927593d08e87de027bdec6ad6a44eda",
+      "bytes": 651
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-html5-entity-pipeline.php.json",
+      "sha256": "d615ff9582105c180673977aa4eef497bbf33858a79bb426a36f31d5cce38ebe",
+      "bytes": 1419103
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-kses72-owned-pass.php.json",
+      "sha256": "1862df304f422e237b373d8590c9aa958ae7bba0593fd6f9790d82fd7628bc98",
+      "bytes": 3878
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-kses72-regression.php.json",
+      "sha256": "21e6fbc3f0990451dec7911c010c246b6463527213a763a90c89aa93b80c8465",
+      "bytes": 17004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-numeric-caption-save.php.json",
+      "sha256": "f12f040e2daea32a6acc4cfb099d1d46f990dcedff9a4f02c728fdb1a5dd0683",
+      "bytes": 56666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-numeric-entity-pipeline.php.json",
+      "sha256": "20f7f96752a3c68575f2cbe9d26e2278727f893267e163f24304d59208efd2d5",
+      "bytes": 1754633
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-p2-caption.php.json",
+      "sha256": "dfaead0719fbc5d923dff3d6bbd076e316493053df1160c41372c4f8103ae722",
+      "bytes": 1749
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-regression.php.json",
+      "sha256": "bc379a458190d54a8e1e045a0b4613449c771d90c96e6cd33f0b460a36508e73",
+      "bytes": 49503
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-widget-entity-pipeline.php-named.json",
+      "sha256": "dced20cb150bc63a5e4c53b76ac13cd419445a649f59941c5d22fcb9d8865fc6",
+      "bytes": 1419272
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-widget-entity-pipeline.php-numeric.json",
+      "sha256": "3b957a20a3c78ec2cd2e947f590195d9ea49df058d0f977fc200f1c303c060ae",
+      "bytes": 1754649
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php/wp85-widget-fallback.php.json",
+      "sha256": "86b518893c08ac3be6087cc8376b84a8b752c907b0362666f7a6916f9ceeb4a5",
+      "bytes": 4598
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/php-summary.json",
+      "sha256": "b289cd26644fe6ade45f1237538256f8b0177704270e1770cf2ee055b34cadb4",
+      "bytes": 19563
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-beta83-chromium.json",
+      "sha256": "e870a62ba81e24fc0dc19acb8b8bc3bb6dd008a794b7654d66126c98800dd31a",
+      "bytes": 1531043
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-beta85-chromium.json",
+      "sha256": "8aaaabd27178dc77f847ccef9254e4338ab694d678b496e2c6f7328af9746d0d",
+      "bytes": 1531043
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-localwp-chromium.json",
+      "sha256": "15b4262b04702e701a01d962bd15ed75ea81ee963a9e29c35e8478d49009b1c5",
+      "bytes": 1531072
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-ms85-child-chromium.json",
+      "sha256": "6263ec2a52f7002944243b5d813162834de8b71a034e3e63147590d52e2f53c9",
+      "bytes": 1955372
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-ms85-chromium.json",
+      "sha256": "83562a13ea176d9fc74c50f5d3166f8912cf2e853899b00c63659298c8080bef",
+      "bytes": 1955553
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-wp63-chromium.json",
+      "sha256": "7926710ce8c23e857e3267acbf8d1017f850fd3a3dd2bfc894a8924330cb870d",
+      "bytes": 1530089
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-wp68-chromium.json",
+      "sha256": "06b0fa9d3bdc81cd8fe7cfd2c59cdd7a2925e0a0f5e5a407aca360a51eb5919b",
+      "bytes": 1530092
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-wp70-chromium.json",
+      "sha256": "42aca36a64f044b0ef068f4fcd0fd74332d63a1a4057ccd58bf3a282f8ba7ad2",
+      "bytes": 1530089
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-wp71-chromium.json",
+      "sha256": "fecc97bf79909e398abe75235cabaf7bf1d9abb92b54eb4795fc27697fe1623d",
+      "bytes": 1531070
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-wp74-chromium.json",
+      "sha256": "9fd555d6bb28fd36dd9b4633c1a83c3fd0c1cb2f899ad6e9a2e187dd8e4221df",
+      "bytes": 1531070
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-wp84-chromium.json",
+      "sha256": "10daececd68c9ff6badba54a81d99abf7397cd4ca7f3ee67cf3c955f2206cef6",
+      "bytes": 1531070
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112-wp85-chromium.json",
+      "sha256": "34dd0e73df337b4c686bc4dc70d1b04de9838e46b669d79e1b917287d4b24526",
+      "bytes": 1531070
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/reupgrade112.json",
+      "sha256": "aaf4cedd2ab182aa2023d75ffb8d9dfd4146d8f981b07cf915204cefe7fc0bb4",
+      "bytes": 8830
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-beta83-chromium.json",
+      "sha256": "ddf05dafcf9f33572e27c63b5d200daeae7b717bcee368a5c0b6564eafba674c",
+      "bytes": 1531042
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-beta83-firefox.json",
+      "sha256": "e862bed404b2402450a8c34c006cbca75ebe8c7d8d5afe8051f9d6b347d034ff",
+      "bytes": 1528677
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-beta83-webkit.json",
+      "sha256": "9231bac0c39644460726bfc0c2367b48f636facf7ee62d8ca5b6f077ebf095f2",
+      "bytes": 1527775
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-beta85-chromium.json",
+      "sha256": "a06dab59ef7676f4bd44156f4bc40f8e947bcc04934588da967db91aafe88df5",
+      "bytes": 1531042
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-beta85-firefox.json",
+      "sha256": "ba50d8552aff74c4882efd604970186d65768d9112397b64ee4f5d2bd86270cb",
+      "bytes": 1528677
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-beta85-webkit.json",
+      "sha256": "bceb3982ecb06a7a211a45e4c4bdbe731e8563f3dfcc8f613db528aba462ff92",
+      "bytes": 1527775
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-localwp-chromium.json",
+      "sha256": "d264783c4702a3f9cf02f5d4391987c7ba0b6b41a2e396132cb6600b470d0b41",
+      "bytes": 1531071
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-localwp-firefox.json",
+      "sha256": "682244ec1752cea1cbf9d8ef974a5be180e5d0804f5b0b2f6ad7becab1424005",
+      "bytes": 1528703
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-localwp-webkit.json",
+      "sha256": "b86e0a3689c2f23032695efaad9a16eb98089b368d29cec4f9ca4eea95d03d0c",
+      "bytes": 1527800
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-ms85-child-chromium.json",
+      "sha256": "6d846265ed7171046f46e9c48aa1eb18ac5ff16757e5870c0194052703ad5e91",
+      "bytes": 1955371
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-ms85-child-firefox.json",
+      "sha256": "302830e8389cf9e95cbc59ed1c3af340bb2980d8f02d0c2a04e5932a0edcaa2f",
+      "bytes": 1952666
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-ms85-child-webkit.json",
+      "sha256": "bc9b6962479a14d524597d0cce33b4d91d2e743cefffc90b3d1004107fd24cc6",
+      "bytes": 1951964
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-ms85-chromium.json",
+      "sha256": "0ccae877ad183abec1364933645ae037a880253a1a0cc44afc0a340a1ec20dd0",
+      "bytes": 1955552
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-ms85-firefox.json",
+      "sha256": "ebd27642de99f12c52a59f3d1ee792ac27ca6ae0ffc8611994c680cfb859187d",
+      "bytes": 1953183
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-ms85-webkit.json",
+      "sha256": "b7dd0bcf03d7929b84627363458cd59bb2eff3d832c4e6381547ac7335d43f27",
+      "bytes": 1952281
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp63-chromium.json",
+      "sha256": "2662fd4106c19445bfc9c8c6e9f788aa6bfb06f579101a1ccd3a14de0f32faaa",
+      "bytes": 1530088
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp63-firefox.json",
+      "sha256": "4bdd8637abc81576080216e298d5f51730d39b6112cf185ce9bceff515357d74",
+      "bytes": 1527757
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp63-webkit.json",
+      "sha256": "272c44de53933ad6902fa31ce283e1ca3ebfda6fb914f8fb908bb8d0c3e3d4f2",
+      "bytes": 1526823
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp68-chromium.json",
+      "sha256": "cd05fd196dc8b7cfeba2c098258a4557ea354f7f0bb647a92226b413c94bb9d8",
+      "bytes": 1530091
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp68-firefox.json",
+      "sha256": "a152abd25fc84fc081bec36710fd85a56ab8ada8b11d6cb30f30fd590a78f3f3",
+      "bytes": 1527722
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp68-webkit.json",
+      "sha256": "a37fcefb301580617875fbd28967ae246f99f7f47ac3ba208b405783d35de0c3",
+      "bytes": 1526820
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp70-chromium.json",
+      "sha256": "588c3b24738286b5e79204f13efd5952753aef37ec129a38c0e7fb0588069d47",
+      "bytes": 1530088
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp70-firefox.json",
+      "sha256": "2ff83d618cb57946bf266b64dd270b351de3f9e24a7b92021d478862b6cf5315",
+      "bytes": 1527757
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp70-webkit.json",
+      "sha256": "d750910ce79391204f91bcf457038833650f507b643018fbb30328488a3fb095",
+      "bytes": 1526823
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp71-chromium.json",
+      "sha256": "aff7aa192544e80cef34feec20d1231cb846f30c31dafb370ed19eff2bbaf655",
+      "bytes": 1531069
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp71-firefox.json",
+      "sha256": "5703fbef579b7f96009218aa61c2ea87f130699a60d86c59b32e343d5489e455",
+      "bytes": 1528700
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp71-webkit.json",
+      "sha256": "3ba4e5aebbab4d13317dda4e5445b1b9541238b333e16db1fd7b4b143051c280",
+      "bytes": 1527798
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp74-chromium.json",
+      "sha256": "18d262cca45271efc2b9d39527c1a4a2898301d25e51df37665bf1de25394987",
+      "bytes": 1531069
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp74-firefox.json",
+      "sha256": "3510ba8701b08f2c9f46fa7ece7ce62f5845638931734347dd140b2f162e87cf",
+      "bytes": 1528700
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp74-webkit.json",
+      "sha256": "31e83b2f0ad69525a17e3f25fef140d6d812ba7a732ce14c8e3237f5dc21ccf6",
+      "bytes": 1527798
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp84-chromium.json",
+      "sha256": "b71fadb638dde14908dba2aa4c6f91cdf4c3b9ea67d39b6dcfcb5f831ad6546f",
+      "bytes": 1531069
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp84-firefox.json",
+      "sha256": "b741e27d4001bc40041a976f3bd0735a0f1ae5b813d18b3bca896d16507d4f25",
+      "bytes": 1528700
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp84-webkit.json",
+      "sha256": "ed0eed0e584e887e0910a6fec7d01c59a9ce7fc98f82742ebbc943826c2c7668",
+      "bytes": 1527798
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp85-chromium.json",
+      "sha256": "43b6c28c2ab65571af2603d3798f38cd3036816006477f846f13796aeaea3c71",
+      "bytes": 1531069
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp85-firefox.json",
+      "sha256": "cd78d58905729b33fa7788e0eab96acc7198138adc74624a7581522cf31e8cef",
+      "bytes": 1528700
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111-wp85-webkit.json",
+      "sha256": "4216d54c3a3c0214feb46dc4b179d1978dd34d105a63ede0abf8c77ed2cbcd5d",
+      "bytes": 1527798
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/rollback111.json",
+      "sha256": "6518a8435083d3596c97938f36945fbab58d6d1c85d467dc33d480c140431201",
+      "bytes": 1239
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-beta83-chromium.json",
+      "sha256": "65614addbad362ce060aa9a7fed8b03f8a809de8ed809e76641178201815f22e",
+      "bytes": 1523934
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-beta83-firefox.json",
+      "sha256": "5ebc493a863f7152b0c819b715490fe89feca8d87a3a72d6b41d8c8756bfc743",
+      "bytes": 1527981
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-beta83-webkit.json",
+      "sha256": "52939ad8892b2ffe076dae788df4d3a475a65b628a4c8b5bf95fe1af3c63aca7",
+      "bytes": 1527079
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-beta85-chromium.json",
+      "sha256": "fa2700767266d48f0a67552e48939289779ec2b2ef29ae9ba55b3d67bcb70e6d",
+      "bytes": 1523934
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-beta85-firefox.json",
+      "sha256": "e74a8d53ec525dbb225c915f4be61c6752804a710369bae80ea585c8fa931c81",
+      "bytes": 1527981
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-beta85-webkit.json",
+      "sha256": "af46cfd0de48cb7ffb6e7737f7e747d0bc2805e4897d44356bb05d8ff715af82",
+      "bytes": 1527079
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-localwp-chromium.json",
+      "sha256": "87b96996f0c6c46c66057609f0910d094927a0513fb0c17bc996ad38dd2aef30",
+      "bytes": 1523963
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-localwp-firefox.json",
+      "sha256": "d9084df974b05c181505382187cb7192f696a5e0dc71ca42d4311496beb5b85e",
+      "bytes": 1528007
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-localwp-webkit.json",
+      "sha256": "045120fc6e1590bea76740fa823b7cdd894478fee058a5b1edf136f7351e0bcb",
+      "bytes": 1527104
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-ms85-child-chromium.json",
+      "sha256": "cfeb45be7bb91f68fa0868e763fc0dd7075382ae0ea7a9e8364ba48cad348aa0",
+      "bytes": 1946130
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-ms85-child-firefox.json",
+      "sha256": "c5fb6ed2f2412f27a7b1bb0ff2564fc7c1b6d06bb187d9a11822722b151da2aa",
+      "bytes": 1951981
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-ms85-child-webkit.json",
+      "sha256": "9c75c49ae1fb41c2a2c0dff7a7f5648b5ffe60edf87d40e105c8dd59ad74f9cc",
+      "bytes": 1951279
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-ms85-chromium.json",
+      "sha256": "9662632db60aa74fbe1c43bad529d4cc30aae68d4504c4f58178cc2a3d05bb8a",
+      "bytes": 1946157
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-ms85-firefox.json",
+      "sha256": "31ac4c323091a4430119069b5904ba902dd8be0f373f7b295baf34a50d6e68af",
+      "bytes": 1952390
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-ms85-webkit.json",
+      "sha256": "a5f4feab1c0c5188edf13a39daed0601e21b0d745306a8296ec70916723adc43",
+      "bytes": 1951488
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp63-chromium.json",
+      "sha256": "4ac66e5f09f3a6091f06fa4d2513a051156aa0777f8efb4238a4e66c75f96361",
+      "bytes": 1522671
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp63-firefox.json",
+      "sha256": "584ba6c413fc782162185c08b27d5d589658434e00aa6baf1fd94b3dce57e88e",
+      "bytes": 1527061
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp63-webkit.json",
+      "sha256": "b111de41a400d5ac7d3f17829de5f41956462698071dd1585b054e6649656322",
+      "bytes": 1526127
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp68-chromium.json",
+      "sha256": "220dfad48067c5798cbf6e930fd510e5d7434d84cb6bdc51d023f534cf358388",
+      "bytes": 1522674
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp68-firefox.json",
+      "sha256": "96e9ec1b4e0501fe31845040f2b6cbf08632889795984be8f581bdef8af79886",
+      "bytes": 1527026
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp68-webkit.json",
+      "sha256": "c25f1d1b5cc49b2b47f6efcbe7737facb98549f50b9f0d56c25e960bed926b7b",
+      "bytes": 1526124
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp70-chromium.json",
+      "sha256": "78b621258644892f6314f0cd4cbc782f854148cdd9f8ed4d492b7f7d01eb3a5d",
+      "bytes": 1522671
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp70-firefox.json",
+      "sha256": "3d941dea337ae819c2f95d28be87176f43e20a6349b8404e4ac7fc568a0737d9",
+      "bytes": 1527061
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp70-webkit.json",
+      "sha256": "5bbd0984b7dd89baf38ac6cb4ee643f7062914541ae0a0d7efce1b5b97b380d9",
+      "bytes": 1526127
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp71-chromium.json",
+      "sha256": "0013bc988bbaf11295fdb9c7bcc040fc3ebaea55df81449e5f45159e9581d8d3",
+      "bytes": 1523961
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp71-firefox.json",
+      "sha256": "5732e9d3f1c6a5433cb61082f5cfd144d8b424692c8400deb91eddd60cb47206",
+      "bytes": 1528004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp71-webkit.json",
+      "sha256": "7e8c24559a104ab23dffb604b544273128ed81b29dd5929022a53f3a95c7aa32",
+      "bytes": 1527102
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp74-chromium.json",
+      "sha256": "37edf7dfe880e60c182f6df6ba2493513a86d01714d5b826f6e011463918e0ca",
+      "bytes": 1523961
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp74-firefox.json",
+      "sha256": "31701ca8edf9fae90d5edefc287a259f6c7dfd1ae9f97ef5467ec66c50e3d6b8",
+      "bytes": 1528004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp74-webkit.json",
+      "sha256": "f0bc1205cc23151ff0b261da33f046f3627d0cdf9c609da58c4785a21db540f2",
+      "bytes": 1527102
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp84-chromium.json",
+      "sha256": "a61dcb0dcd5a04a5892d23b07b80060cf517c0647c489f9970e54c6ccb04761d",
+      "bytes": 1523961
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp84-firefox.json",
+      "sha256": "92f77e95d71b731dbd32a900f55bfcd76e7fd7afd9fd25d24ec62667dddfe2b5",
+      "bytes": 1528004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp84-webkit.json",
+      "sha256": "7f28ddae03ed1e4ed6b58af4668184cc4fa5a68477e844d814fa4765759cc2f3",
+      "bytes": 1527102
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp85-chromium.json",
+      "sha256": "4aa8b557e4a1e11399ca9a0f131ed6ffb5215e6c87069f7113c3732ec320addd",
+      "bytes": 1523961
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp85-firefox.json",
+      "sha256": "5350105c2d0855b8cb0958a976215e64b74b503988775eca8afb1ba78e124331",
+      "bytes": 1528004
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/saved112-wp85-webkit.json",
+      "sha256": "d7bb7c88338c076faccd68acd04ae8853b34017c07b4c9ab89b5852193b9c924",
+      "bytes": 1527102
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/standalone-node.log",
+      "sha256": "d93aca7aeef16ba829d52445540a04ce700ac2fe4cbbc2025b26e399af3e7330",
+      "bytes": 1401
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/svn-prep/result.json",
+      "sha256": "a13cbc7e7d371325adf001c71ba6937e4324468cd35d0c2560c1bed770be290f",
+      "bytes": 377
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/teardown.json",
+      "sha256": "8bcbcda9bb9db85c11a736e94c45ef222d4c68acc09b5cbea733070db6803d08",
+      "bytes": 567
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-beta83-chromium.json",
+      "sha256": "e2ddeeeda2b9bc6470233c72f053d280617c8c73f53bd82814893e24226eb909",
+      "bytes": 1518081
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-beta83-firefox.json",
+      "sha256": "42b0c234fb5e5026338afd04ec356e5b36eb4e8e378c43588b1967d79171ad42",
+      "bytes": 1515716
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-beta83-webkit.json",
+      "sha256": "8a6abcc2a177e2b06b8f4af2522b552c16dc3271b2ec81239718ef6a165a32ef",
+      "bytes": 1514814
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-beta85-chromium.json",
+      "sha256": "3159b9b8722539125e888267dbe5fc818705a59cee0186d944de8b799598d66b",
+      "bytes": 1518081
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-beta85-firefox.json",
+      "sha256": "98c3a6a7b15526aeb05445f025329644aa4a8409daa9da78f75834ebd1b4a653",
+      "bytes": 1515716
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-beta85-webkit.json",
+      "sha256": "dddeb9bfdbb6ac179aca7e770541cd884a58b54a8cf59bd5910495d91e39ad34",
+      "bytes": 1514814
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-localwp-chromium.json",
+      "sha256": "180e6665a6aebba6f0e2819d01d3c2038de245995e12aabe0bdb4d39141cd693",
+      "bytes": 1518110
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-localwp-firefox.json",
+      "sha256": "844fef071646b8c490fdab846e0e6338fa7cd9b519d9a52fc2ab9dfe5c8ec649",
+      "bytes": 1515742
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-localwp-webkit.json",
+      "sha256": "3ba8345dc9ffbcb165fcfc5ecdfb36c2bf5dcf1f834278c9fda48b5013588fd3",
+      "bytes": 1514839
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-ms85-child-chromium.json",
+      "sha256": "64c090c192a8015942211523f71817353a88462467337b96c9aadbe6935e163f",
+      "bytes": 1938082
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-ms85-child-firefox.json",
+      "sha256": "c98299bfdd0468e7cc00d90661dafc190f6f292680f064e468ca36fe9600b9d5",
+      "bytes": 1935377
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-ms85-child-webkit.json",
+      "sha256": "a33291eeb45f41998c4dbf5ed96b22bb33ed00aff0c8b2041d463d67609cbc09",
+      "bytes": 1934675
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-ms85-chromium.json",
+      "sha256": "0b5fe278fb7e6f073473a30a5bc69ef7125a3589bffc7d602391241c7d43530c",
+      "bytes": 1938171
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-ms85-firefox.json",
+      "sha256": "044f70241bbf6c246c473809bf9f94bf1a4badb6ada8cf9375536d425fc5bce7",
+      "bytes": 1935802
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-ms85-webkit.json",
+      "sha256": "9e07a436bca3c9418a5e9257e6f0fdbf290d9f6e74ce40a056d852c031670dc5",
+      "bytes": 1934900
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp63-chromium.json",
+      "sha256": "67a1e862e34e4868fdaef41755676c23cd66f2d5b6d5db98ac0c12176bf38efc",
+      "bytes": 1516515
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp63-firefox.json",
+      "sha256": "0c2f1de1ea63e4761b320b5d3aa3add100e226b09d8b81f4db7a2fa46980fa71",
+      "bytes": 1514148
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp63-webkit.json",
+      "sha256": "285272e9609f19b9779503e62fb6a6ee22094edcfeb51ce84e3c3705ccddf22e",
+      "bytes": 1513250
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp68-chromium.json",
+      "sha256": "bc8f57885abdaaf310f855739e21072f9c0aa58a2da6ccbcddf3ab75d0007b9d",
+      "bytes": 1516518
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp68-firefox.json",
+      "sha256": "00cdfea067707d95cff1a8cb55c435f8ea17c02581ebb1ee6347ad90e306c06c",
+      "bytes": 1514149
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp68-webkit.json",
+      "sha256": "43e707a9226740c2383b9cd5ecb9ebf751437d761d8e13cf55521afeb928dc92",
+      "bytes": 1513247
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp70-chromium.json",
+      "sha256": "ff79711a13f1da3f1953a014ee5a8381171afa02534363973de9c128c3faa749",
+      "bytes": 1516515
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp70-firefox.json",
+      "sha256": "acc77c32d224fb8eee1fc8164d624b3ebf8af443979b39410ed9918cc1ffc1e7",
+      "bytes": 1514148
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp70-webkit.json",
+      "sha256": "319aac3c7b10fde3cc1bcd6373fff0405d04bebbfc820dad93b250c73b2d2a42",
+      "bytes": 1513250
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp71-chromium.json",
+      "sha256": "eb5ce424f5dbc442d85d2644cbf2711a6399a977a84235b0b0bd36cc2dfe0429",
+      "bytes": 1518108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp71-firefox.json",
+      "sha256": "a21ba5807aa3f07dcbb883e0262735e7f9fa52a4424cc8923ade4fef261469ba",
+      "bytes": 1515739
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp71-webkit.json",
+      "sha256": "155b94894b288370d7c06f87243ed1b12350257d007a6004d401703088b91217",
+      "bytes": 1514837
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp74-chromium.json",
+      "sha256": "adb22ae9d4f03e991135dea74c2328b6e34dbee96067093826ba12adba6e43be",
+      "bytes": 1518108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp74-firefox.json",
+      "sha256": "79e8df86c9e4257c0da56563e484c5c8712af73e007b69f86959ffa670b7a381",
+      "bytes": 1515739
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp74-webkit.json",
+      "sha256": "8dc910f8e6dbe6b4cf31a00533418278c60aec74c25acce5cf4306ebb3af8cb0",
+      "bytes": 1514837
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp84-chromium.json",
+      "sha256": "931788adc4da53ff56a64dded83413060dd35e8b66df09b1ec3566e48f0d6ab6",
+      "bytes": 1518108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp84-firefox.json",
+      "sha256": "8fd26a7cb76546aefdbf51f6d4b0ab12eb40cd253277e0cb4b9ca259ce4f99db",
+      "bytes": 1515739
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp84-webkit.json",
+      "sha256": "c4f4123647de741a4f88901468e33b9ae6af42e59894b8fc283028aa34f4e9b2",
+      "bytes": 1514837
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp85-chromium.json",
+      "sha256": "e4e010942a560515e92aab734c7e675644b57871b89df3725ef17acb04b25aed",
+      "bytes": 1518108
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp85-firefox.json",
+      "sha256": "1e1fa418355f8e2a68201410e97f2503a3bf30fa2de44eaaddfd598b8cb076ac",
+      "bytes": 1515739
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112-wp85-webkit.json",
+      "sha256": "b96c29ebda185dad425d4f7fbd748ea3cf25e752c6abef4f7d86c35b6daa34d4",
+      "bytes": 1514837
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/updated112.json",
+      "sha256": "1020c828986cf094e14cec3adca2bb581c2efed615abf8783d874380ce4248a2",
+      "bytes": 8830
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-baseline-chromium.json",
+      "sha256": "c1598f74cc77737785313b20e8b755cc23866c7792925a48799aa444903f85b4",
+      "bytes": 1420132
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-baseline-firefox.json",
+      "sha256": "eb56de5b7e8eab5b902b18d74f6dd2dd9aea40d31641c6097c34e543db3871ee",
+      "bytes": 1442294
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-baseline-webkit.json",
+      "sha256": "01a17fe2f01c881dbf0ddc88d6fedd7afef43c08f847507fa9d6a9f6575d886a",
+      "bytes": 1426959
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-candidate-chromium.json",
+      "sha256": "732a56f5fdabe2bc5138c67d1d5251d013d0770c223f041fb5e6211bda97dec1",
+      "bytes": 1428844
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-candidate-firefox.json",
+      "sha256": "d40fe618fada004888c4c15c9940672f5aca9ce6965e1fab146b958b492723cb",
+      "bytes": 1451360
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-candidate-webkit.json",
+      "sha256": "e47297de10d9ffd75a9bd3fa3855c2115b4d033413b6fddefdfee36dc158aecd",
+      "bytes": 1435671
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-rollback-chromium.json",
+      "sha256": "732a56f5fdabe2bc5138c67d1d5251d013d0770c223f041fb5e6211bda97dec1",
+      "bytes": 1428844
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-rollback-firefox.json",
+      "sha256": "d40fe618fada004888c4c15c9940672f5aca9ce6965e1fab146b958b492723cb",
+      "bytes": 1451360
+    },
+    {
+      "path": ".local/wordpress-lab/kses72-final/viewport-rollback-webkit.json",
+      "sha256": "e47297de10d9ffd75a9bd3fa3855c2115b4d033413b6fddefdfee36dc158aecd",
+      "bytes": 1435671
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-r2-localwp-chromium.json",
+      "sha256": "0c3e2439e3619cb870a369fdc9b91a500d77438f6e9df039af9a67444f183940",
+      "bytes": 9070
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-r2-localwp-firefox.json",
+      "sha256": "2b16abf221a958b5e0dba4c9f5c6b58ac890cfd6256a12688080058f54d87b7d",
+      "bytes": 9069
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-r2-localwp-webkit.json",
+      "sha256": "8e92a655bd153ed47dbc2c8489f95230c2fd41e4411bebc705c5d8389acf1bbe",
+      "bytes": 9052
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-r2-ms85-child-chromium.json",
+      "sha256": "79184ab0b4a831dac8873db263eb58477f7f5303a573678149e8ecdde9c40777",
+      "bytes": 9073
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-r2-ms85-child-firefox.json",
+      "sha256": "f2e047d06b7299b04d5a4d3d41a67d9f23e324918fa2be593dabea8c8726080c",
+      "bytes": 9072
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-r2-ms85-child-webkit.json",
+      "sha256": "8c833c34ccb71b33ea8a91beb854d5e70a850c0f3027048fd84df96cef4bf67f",
+      "bytes": 9054
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-wp70-chromium.json",
+      "sha256": "c283a294be6c4b8f25184fc071b0d2df9dcba3ba7cf8138624011698da5a466b",
+      "bytes": 9064
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-wp70-firefox.json",
+      "sha256": "965941436393b7692893e9214791358c2b46c481302d4471e96904f6437a6b15",
+      "bytes": 9063
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-locale-wp70-webkit.json",
+      "sha256": "4e36837652000127f96a1077ae7b49f76285626296941acc7ca97ffea94b11ba",
+      "bytes": 9046
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-localwp-chromium.json",
+      "sha256": "000d4d49d064660266e2eb209e2a91fcd05291821ed6fbdcffc940466509e92f",
+      "bytes": 5289
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-localwp-firefox.json",
+      "sha256": "f7a2a993e955cfc5bc41220ef7acc16b3b15b17057f0280985c8dcca18d2993e",
+      "bytes": 5288
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-localwp-webkit.json",
+      "sha256": "95b3b9c7a257573c976b880cea8ebe752b7a1e2d9274cad7abc79a718f680214",
+      "bytes": 5271
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-ms85-child-chromium.json",
+      "sha256": "a9fee01beaa42f66ea61453ffafaa43de4f3f161901d222271ab84f02e87d758",
+      "bytes": 5292
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-ms85-child-firefox.json",
+      "sha256": "e944e7f24c945fb938d7458fceae616c4183bf8faac060120f8590c53fe417fb",
+      "bytes": 5291
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-ms85-child-webkit.json",
+      "sha256": "14dceb4b153c24023f26b5bac1edb9f7e45d0a4cf6dec38c57919cd667f8d360",
+      "bytes": 5274
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-wp70-chromium.json",
+      "sha256": "08c56020e6d2d6ca1098c4a24c590ffb9100dc20739e093f607769832505cccd",
+      "bytes": 5286
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-wp70-firefox.json",
+      "sha256": "4a7aeb6673ad9669306ac74f401eddcfca12c1e374012a9a2189efd4b62a5f15",
+      "bytes": 5285
+    },
+    {
+      "path": ".local/wordpress-lab/locale-fix/kses72-final-rollback-locale-wp70-webkit.json",
+      "sha256": "e7fd140d5f999d25e4fb7a7ffb7a217154abdcad41e027f45bb67d206eabdb8d",
+      "bytes": 5268
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-locale-beta83-chromium.json",
+      "sha256": "e2abf84389b877f69aebaaa4fe34edb1078e13e3b5d8411f72aabdf787a39988",
+      "bytes": 9065
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-locale-beta83-firefox.json",
+      "sha256": "58178dbdeac1ce55f38609f57bd2eb4776e65a2de812032bbb75256e399ba5f2",
+      "bytes": 9065
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-locale-beta83-webkit.json",
+      "sha256": "f5c9deb4e4fa2d4f98ad93658a6fc7527bcac4045792ed0fd5f23f143083c5aa",
+      "bytes": 9048
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-locale-beta85-chromium.json",
+      "sha256": "e8344378b40d21f88bab0b0c31aeb181b7a9ebd26ef5c4c7a5a0f2e49fbbf62c",
+      "bytes": 9066
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-locale-beta85-firefox.json",
+      "sha256": "8d93d6c41ab64694b8ac3aded91cab98d4d1c23805524567e996f55780c9455d",
+      "bytes": 9065
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-locale-beta85-webkit.json",
+      "sha256": "cb5b3d619ea23dda232329d801a677fa8fcfa4dfd66537aa836fb8faf577fe3d",
+      "bytes": 9048
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-rollback-locale-beta83-chromium.json",
+      "sha256": "895b25a50c48e4312ca622dbece89af427b796a8a910b813da0ac083c4da907e",
+      "bytes": 5288
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-rollback-locale-beta83-firefox.json",
+      "sha256": "11399b501e9f96aadca5731919508f22a83f3f1ce80a11162ac9267ed65837e1",
+      "bytes": 5287
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-rollback-locale-beta83-webkit.json",
+      "sha256": "e141639f989094a9a3d7872e9e75d044ae41486e02e81b452f0e4ea09881678d",
+      "bytes": 5270
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-rollback-locale-beta85-chromium.json",
+      "sha256": "cc8a50d584bb2a4fd73b4f49ebfccd5814b3a213027ac2d72d9be268e769ebff",
+      "bytes": 5288
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-rollback-locale-beta85-firefox.json",
+      "sha256": "8491d27d67140ca64e085761e7bb7570a599dbbf7a942cd252bd07e9ebd3be13",
+      "bytes": 5287
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-rollback-locale-beta85-webkit.json",
+      "sha256": "9f47226ac35dbef4ec97df386e88ffaa806afdf81d6b9001fa3e19b9f9cc5f81",
+      "bytes": 5270
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-ui-beta83-chromium.json",
+      "sha256": "d5ea37ab4463eac4e1d9b7a622ffa0a4e253318c92a763f465343e0b1597194f",
+      "bytes": 3934
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-ui-beta83-firefox.json",
+      "sha256": "9e0ab27311f21ec0171394f430d76f4d4560993bd0b3e07603e71d3ebd885645",
+      "bytes": 3933
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-ui-beta83-webkit.json",
+      "sha256": "738cfb6ff3ff3e200af0bca35b87cecd854cc6ad17675398ddd74ed83a8693e0",
+      "bytes": 3932
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-ui-beta85-chromium.json",
+      "sha256": "6d28b7911cb9210730607bd60cdc3dfe9b960b40d9ee3fdd4c6bc0b31d202dfa",
+      "bytes": 3934
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-ui-beta85-firefox.json",
+      "sha256": "6ac8394982b0b80d857d1b1ef58ccdbdd28b02adbeb7b5bd22d3b3745f4312b2",
+      "bytes": 3933
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/kses72-final-ui-beta85-webkit.json",
+      "sha256": "08f0c4870eee2060f4370d5eb31ee1678222106392413712642d1ed9fec8da8c",
+      "bytes": 3932
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-kses72-final-pointer-beta83-chromium.json",
+      "sha256": "9e72b033094b550f7bee5c74052e9505d05ef064f9144db4b55393a719317bce",
+      "bytes": 9338
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-kses72-final-pointer-beta83-firefox.json",
+      "sha256": "33bdbe2967a81ca405168c3cca928094dbfc218eca5d1fc88e76414880c9a8be",
+      "bytes": 9337
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-kses72-final-pointer-beta83-webkit.json",
+      "sha256": "1cba205edac41fc15c0c610a01441be399f56dcc019528c4b5e325352324bcee",
+      "bytes": 9336
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-kses72-final-pointer-beta85-chromium.json",
+      "sha256": "125385732b285aaff8bcd1c262861621eaed8c87c123eb3c65568a91029ac821",
+      "bytes": 9338
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-kses72-final-pointer-beta85-firefox.json",
+      "sha256": "b09fa7fb4da9bacd8c2298dd1120ae0a65c563a708086fdf5d4d339c72724045",
+      "bytes": 9337
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-kses72-final-pointer-beta85-webkit.json",
+      "sha256": "4e75a58f5d00f58fd6d3f3ec65649319bfca37b0f44646660e0ba609e1485a36",
+      "bytes": 9336
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-kses72-final-rollback-reset-beta83-chromium.json",
+      "sha256": "fcce244b5cfec0b4c5927e4a43c86098443c46eafe08b3a037f06f08850f6b59",
+      "bytes": 6072
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-kses72-final-rollback-reset-beta83-firefox.json",
+      "sha256": "8e6a95d1cc7f4edbb931352ad24de6f656595e7a12befe9badc2a7bda58afb74",
+      "bytes": 5653
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-kses72-final-rollback-reset-beta83-webkit.json",
+      "sha256": "a0c10005e536f0242119f849bc02e1480ce946922073a14a9c5fa232ca6478b6",
+      "bytes": 10378
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-kses72-final-rollback-reset-beta85-chromium.json",
+      "sha256": "dde58615ee23e6687ad93547c828893147d37ee6e22abec1025d16bb99cc5301",
+      "bytes": 6072
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-kses72-final-rollback-reset-beta85-firefox.json",
+      "sha256": "5111261e495f8d9ca4f49873184314c46e2736cdcaca48369ad3ae25b2b2650c",
+      "bytes": 5653
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-kses72-final-rollback-reset-beta85-webkit.json",
+      "sha256": "e1cb9f77e5965b9bef660a349492f710b8f5c27e0cac99681e9732e198f83df3",
+      "bytes": 6247
+    }
+  ]
+}

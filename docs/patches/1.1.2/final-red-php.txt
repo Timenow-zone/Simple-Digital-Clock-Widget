@@ -1,0 +1,9 @@
+[1/4] php-tests: wp71; elapsed=0.0s
+30/392 passed; failed=362
+[2/4] php-tests: wp84; elapsed=0.4s
+30/392 passed; failed=362
+[3/4] php-tests: wp63; elapsed=0.8s
+30/392 passed; failed=362
+[4/4] php-tests: wp68; elapsed=1.2s
+30/392 passed; failed=362
+Completed 4/4; elapsed=1.5s; output=/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-lab/patch/final-red-php.json

@@ -136,3 +136,9 @@ performance-results.json
 performance-results.md
 
 product-dist/
+
+# Local WordPress labs, downloaded releases, logs, and credentials
+.local/
+.wrangler/
+.svn/
+__pycache__/

@@ -1,0 +1,120 @@
+{
+  "version": "1.1.2",
+  "publication_status": "PUBLISHED_AWAITING_WORDPRESS_ORG_UPDATE_CHANNEL",
+  "candidate_zip": ".local/packages/simple-digital-clock-1.1.2-candidate.zip",
+  "candidate_zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+  "git_branch": "codex/prepare-simple-digital-clock-1.1.2",
+  "git_plugin_tree": "18512403b0715be777a89e302831a3cc3d5117b6",
+  "svn_repository": "https://plugins.svn.wordpress.org/simple-digital-clock",
+  "svn_base_revision": 3771402,
+  "local_targets": [
+    "trunk",
+    "tags/1.1.2"
+  ],
+  "tag_copy_from": "https://plugins.svn.wordpress.org/simple-digital-clock/trunk",
+  "tag_copy_from_revision": 3771402,
+  "tag_schedule": "committed with history in r3772502",
+  "trunk_changes": [
+    "block.js",
+    "includes/simple-digital-clock-kses.php",
+    "languages/simple-digital-clock.pot",
+    "readme.txt",
+    "widget_init.php"
+  ],
+  "files": {
+    "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+    "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+    "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+    "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    "assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+    "assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+    "block.js": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
+    "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+    "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+    "includes/simple-digital-clock-kses.php": "7d6e41fa7d07d0f52f7dc84dd72e1262726f7e52c854c704425d7e9b05046ff5",
+    "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+    "languages/simple-digital-clock.pot": "bc83bcfe8a030fc96863ded23d623eeb3ae01ed96884a8162d7ca439c99cd74d",
+    "readme.txt": "6584037702455e2ad540caf12bf83086dbe6a8e60755270abf741745d5b60a61",
+    "widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+  },
+  "validation": {
+    "trunk_and_tag_match_accepted_payload": true,
+    "trunk_property_changes": false,
+    "tag_properties_equal_trunk": true,
+    "svn_trunk_diff_dry_run_and_apply_match_zip": true,
+    "unrelated_asset_preserved": true
+  },
+  "diff_sha256": {
+    "svn-trunk.diff": "0e43d21b10aac655d042b6b4805206bb4e0ff821acd76193ee76359dba806632",
+    "svn-tag-copy.diff": "ab61c9d878c45285e45f431b752219934bfe7c9e39832d4d9b24c108758ef07f"
+  },
+  "preserved_untracked_asset": {
+    "path": "assets/simple-digital-clock-wp-banner.html",
+    "sha256": "35559dbfb7e8a9a0fa9204807414bb67ff1a35bb424e5a8a80da83c4ea4b18d5"
+  },
+  "git_push": true,
+  "svn_commit": true,
+  "acceptance_report": "../../patches/1.1.2/KSES72-VERIFICATION.md",
+  "acceptance_evidence": "../../patches/1.1.2/kses72-evidence.json",
+  "patch_diff_sha256": "1eac522a09f74d8eba0f521fd87a138f72084f46e194d3af28f8bb3b32b5ff67",
+  "functional_acceptance": {
+    "git_payload_commit": "9dd7c53f64a96ce2012cb439490eae39eda0e84e",
+    "git_plugin_tree": "ffc3aa9ca9a7771a4f1cb8205590e08ed1c6d597",
+    "zip_sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720",
+    "report": "../../patches/1.1.2/KSES72-VERIFICATION.md",
+    "evidence": "../../patches/1.1.2/kses72-evidence.json"
+  },
+  "metadata_validation": {
+    "report": "METADATA-SYNC.md",
+    "evidence": "changelog-sync-evidence.json",
+    "previous_stage_evidence": "metadata-sync-evidence.json",
+    "changed_files_since_functional_acceptance": [
+      "languages/simple-digital-clock.pot",
+      "readme.txt"
+    ],
+    "runtime_unchanged": true,
+    "translation_messages_unchanged": true
+  },
+  "release_preflight": {
+    "report": "PREFLIGHT.md",
+    "evidence": "preflight-evidence.json",
+    "status": "LOCAL_RELEASE_PREFLIGHT_COMPLETED_WITH_DOCUMENTED_WARNINGS",
+    "zip_sha256": "7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8",
+    "git_payload_commit": "f4a2caeca5ae93887af77026da82cc313f178566",
+    "smoke_checks_including_baseline": 1388,
+    "plugin_check_errors": 0,
+    "plugin_check_warnings": 7,
+    "remote_head_checked": 3772260,
+    "requires_remote_recheck_before_publication": false,
+    "remote_recheck_published_revision": 3772502,
+    "remote_readback_head": 3772504
+  },
+  "svn_published_revision": 3772502,
+  "svn_published_at": "2026-10-29T09:22:01.589780Z",
+  "git_release_commit": "6479ee9365e98f9b5f6822989eb89938d4955a9d",
+  "git_release_tag": "wordpress-v1.1.2",
+  "publication_report": "PUBLICATION.md",
+  "publication_evidence": "publication-evidence.json",
+  "public_package": {
+    "versioned_download_url": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip",
+    "latest_stable_download_url": "https://downloads.wordpress.org/plugin/simple-digital-clock.latest-stable.zip",
+    "public_zip_sha256": "bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2",
+    "latest_stable_zip_sha256": "bebcfedfa9a27a517dcb3af44355700e1cd12ab7770e68310bfb2feeec9670c2",
+    "all_15_files_match_verified_manifest": true,
+    "public_zip_crc_passed": true,
+    "latest_stable_matches_manifest": true,
+    "latest_stable_zip_crc_passed": true,
+    "observed_at": "2026-10-29T09:23:14.871954+00:00"
+  },
+  "public_update": {
+    "status": "PENDING_GENUINE_OFFER",
+    "completed": false,
+    "installed_from_public_update": false,
+    "reason": "Release is still within the documented six-hour WordPress.org cooldown; update-check reports 1.1.1.",
+    "cooldown_policy": "https://make.wordpress.org/plugins/2026/09/09/automated-security-review-for-plugin-releases/",
+    "next_check_not_before": "2026-10-29T15:30:00Z",
+    "next_check_local": "2026-10-29T17:30:00+02:00",
+    "exact_hold_until_known": false
+  }
+}
