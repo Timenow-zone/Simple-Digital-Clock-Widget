@@ -1,75 +1,75 @@
-# Повторная проверка публичного 1.1.1 в настоящем LocalWP
+# Rechecking public 1.1.1 in real LocalWP
 
-28 октября 2026. **Два известных дефекта публичного 1.1.1 воспроизведены в нативном LocalWP; на том же стенде 1.1.2 проходит эти сценарии. Причина конкретного отзыва остаётся неизвестной.** Дополнительно подтверждён старый дефект ручного ввода Locale, присутствующий в обеих версиях. Исходники продукта и выпускной ZIP в этой проверке не менялись. Публичных публикаций нет.
+28 October 2026. **Two known defects in public 1.1.1 were reproduced in native LocalWP; 1.1.2 passes those scenarios on the same test site. The cause of the particular review remains unknown.** An existing manual Locale-input defect was also confirmed in both versions. Product source and the release ZIP were unchanged during this check. Nothing has been published publicly.
 
-## Источник жалобы и проверенные версии
+## Complaint source and verified versions
 
-На [странице плагина](https://wordpress.org/plugins/simple-digital-clock/) текущая публичная версия — 1.1.1. В [отзыве bernepe](https://wordpress.org/support/topic/breaks-in-localwp/) по-прежнему только «Breaks in LocapWP». На момент повторного чтения был один ответ — наш запрос деталей; новых сведений от автора нет. Версии, роль, настройки сайта и точный симптом автора неизвестны.
+The current public version on the [plugin page](https://wordpress.org/plugins/simple-digital-clock/) is 1.1.1. The [review by bernepe](https://wordpress.org/support/topic/breaks-in-localwp/) still contains only “Breaks in LocapWP”. At the time of rereading, there was one reply—our request for details—and no new information from the reviewer. Their versions, role, site settings, and exact symptom are unknown.
 
-Скачан новый официальный `simple-digital-clock.1.1.1.zip`, SHA-256 `b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10`. Повторная установка через официальный Local CLI дала ровно 14 файлов архива. Дополнительный контроль деактивации/активации 1.1.1 прошёл.
+A fresh official `simple-digital-clock.1.1.1.zip` was downloaded, SHA-256 `b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10`. Reinstallation through the official Local CLI produced exactly the archive's 14 files. An additional 1.1.1 deactivation/activation control passed.
 
-Для сравнения установлен неизменённый локальный кандидат **1.1.2**, SHA-256 `834b1757263a7b9536990a9c64d9c698d73c3747a2a5af755a3e28d0d9e6b352`. Все 15 установленных файлов и исходники `wordpress/simple-digital-clock/` совпадают с ранее принятой версией. Это 1.1.2, не отдельный выпуск 1.2.
+For comparison, the unchanged local **1.1.2** candidate was installed, SHA-256 `834b1757263a7b9536990a9c64d9c698d73c3747a2a5af755a3e28d0d9e6b352`. All 15 installed files and `wordpress/simple-digital-clock/` source files match the previously accepted version. This is 1.1.2, not a separate 1.2 release.
 
-## Окружение и способ проверки
+## Environment and verification method
 
-- Нативный Local **10.2.0**, macOS; приложение имеет CFBundleVersion `10.2.0.20261015.1`.
-- Только собственный сайт `SDCW-112-Isolated-20261028`, ID `ujo3kaSGV`, `http://localhost:10003`.
-- WordPress **7.1.3**, PHP-FPM **8.2.29**, nginx **1.26.1**, MySQL **8.4.0**, тема **Twenty Twenty-Five**, single-site.
-- Единственный активный обычный плагин — Simple Digital Clock. Изоляционный MU-плагин блокирует почту и внешний HTTP WordPress, регистрирует тестовый sidebar. Это не полностью неизменённая установка Local.
-- Браузерные timezone: UTC, America/New_York, Asia/Tokyo. Часовой пояс WordPress — UTC.
-- Созданы отдельные пустые записи. Вставка блока, подпись, выбор пунктов Locale/Time Zone, переключатели, публикация на loopback и повторное редактирование выполнены настоящими кликами/вводом в Gutenberg через Playwright Chromium. Содержимое и валидность дополнительно прочитаны через REST и editor store; запись блоков через искусственную замену `post_content` не использовалась.
-- Независимое чтение записей кандидата, полный набор атрибутов и фронтенд проверены WebKit в Asia/Tokyo. Firefox и расширенная матрица этого же ZIP относятся к [предыдущей приёмке](WIDGET-FALLBACK-VERIFICATION.md), здесь повторно не запускались.
+- Native Local **10.2.0**, macOS; the application has CFBundleVersion `10.2.0.20261015.1`.
+- Only the dedicated site `SDCW-112-Isolated-20261028`, ID `ujo3kaSGV`, `http://localhost:10003`.
+- WordPress **7.1.3**, PHP-FPM **8.2.29**, nginx **1.26.1**, MySQL **8.4.0**, **Twenty Twenty-Five** theme, single-site.
+- Simple Digital Clock is the only active regular plugin. An isolation MU-plugin blocks mail and external WordPress HTTP and registers a test sidebar. This is not a completely unmodified Local installation.
+- Browser timezones: UTC, America/New_York, Asia/Tokyo. WordPress timezone: UTC.
+- Separate empty posts were created. Block insertion, caption input, Locale/Time Zone list selection, toggles, loopback publication, and subsequent editing used real Gutenberg clicks/input through Playwright Chromium. Content and validity were additionally read through REST and the editor store; blocks were not written by artificially replacing `post_content`.
+- Independent reading of candidate posts, the full attribute set, and frontend were checked with WebKit in Asia/Tokyo. Firefox and the extended matrix for this same ZIP belong to the [previous acceptance](WIDGET-FALLBACK-VERIFICATION.md) and were not rerun here.
 
-## Результаты сравнения
+## Comparison results
 
-| Сценарий | Официальный 1.1.1 | Кандидат 1.1.2 |
+| Scenario | Official 1.1.1 | Candidate 1.1.2 |
 | --- | --- | --- |
-| Administrator: вставить часы, опубликовать, открыть повторно | Работает | Работает |
-| Administrator/Editor: подпись, язык из списка, timezone, секунды, сотые, дата, повторное редактирование | Работает | Работает; все атрибуты сохранены |
-| Author: вставить такой же блок и опубликовать | Custom element удалён; после открытия блок невалиден, часов на фронтенде нет | Тег, настройки и подпись сохранены; редактор и фронтенд работают |
-| Создать часы с timezone по умолчанию в UTC, открыть запись в America/New_York | Видимое предупреждение Gutenberg; `isValid=false` | Валидный блок с прежним UTC, содержимое при чтении не меняется |
-| Создать часы в America/New_York, открыть в Asia/Tokyo | Видимое предупреждение Gutenberg; `isValid=false` | Валидный блок с прежним America/New_York |
-| Открыть созданную в 1.1.1 UTC-запись после установки 1.1.2 в другом timezone | — | Валидна без изменения сохранённого содержимого |
+| Administrator: insert clocks, publish, reopen | Works | Works |
+| Administrator/Editor: caption, language from the list, timezone, seconds, hundredths, date, subsequent editing | Works | Works; all attributes retained |
+| Author: insert the same block and publish | Custom element removed; block is invalid after reopening, no clock on frontend | Tag, settings, and caption retained; editor and frontend work |
+| Create clocks with the default timezone in UTC, open the post in America/New_York | Visible Gutenberg warning; `isValid=false` | Valid block retaining UTC; reading does not change content |
+| Create clocks in America/New_York, open in Asia/Tokyo | Visible Gutenberg warning; `isValid=false` | Valid block retaining America/New_York |
+| Open a UTC post created in 1.1.1 after installing 1.1.2, using another timezone | — | Valid without changing stored content |
 
-В исправном сценарии фронтенд возвращает HTTP 200, custom element имеет shadow DOM и ненулевой размер; подпись выводится текстом, тег `<clock>` из подписи не создаёт HTML-элемент. При включённых секундах время меняется. В Chromium нет неперехваченных JS-исключений. Повторное сохранение через UI сохраняет все атрибуты, кроме намеренно изменённой подписи.
+In a working scenario, frontend returns HTTP 200, the custom element has a shadow DOM and nonzero size, the caption is rendered as text, and `<clock>` in the caption does not create an HTML element. Time advances when seconds are enabled. Chromium has no uncaught JS exceptions. UI resaving retains every attribute except the intentionally changed caption.
 
-Итоговый прогон: **68/68 проверок ожидаемого поведения 1.1.1**, **76/76 для 1.1.2**, **20/20 независимых проверок WebKit**. Число 68 не означает исправность публичного плагина: в него входят утверждения, специально подтверждающие удаление тега и невалидность блока. Все атрибуты до/после повторного сохранения дополнительно сравнены по сохранённым JSON: четыре исправных записи 1.1.1 и пять записей 1.1.2 совпали.
+Final run: **68/68 checks of expected 1.1.1 behavior**, **76/76 for 1.1.2**, **20/20 independent WebKit checks**. The number 68 does not mean the public plugin is correct: it includes assertions specifically confirming tag removal and invalid blocks. All attributes before/after resaving were additionally compared using saved JSON: four working 1.1.1 posts and five 1.1.2 posts matched.
 
-Оба основных дефекта не являются специфическими ошибками LocalWP: ранее они воспроизводились и в Docker. Проверка подтверждает их наличие **также в настоящем LocalWP**. Связать их с этим автором отзыва без его ответа нельзя. Если тег уже был удалён в 1.1.1, обновление само не восстанавливает утраченную разметку; потребуется прежняя ревизия или повторная вставка блока. Сравнение Author выполнено на одинаково настроенных новых блоках.
+Neither main defect is specific to LocalWP: both were previously reproduced in Docker. This check confirms their presence **also in real LocalWP**. They cannot be linked to this reviewer without a reply. If the tag was already removed in 1.1.1, an upgrade does not itself restore the lost markup; an earlier revision or block reinsertion is needed. The Author comparison used equivalently configured new blocks.
 
-## Дополнительный найденный дефект: ручной ввод Locale
+## Additional defect found: manual Locale input
 
-**Подтверждён в 1.1.1 и 1.1.2, не исправлен.** Это прежнее поведение интерфейса, а не новая регрессия патча.
+**Confirmed in 1.1.1 and 1.1.2, not fixed.** This is existing UI behavior, not a new patch regression.
 
-1. Выбрать `Українська` в Locale: атрибут становится `uk`.
-2. Ввести допустимый BCP-47 код `uk-UA`, нажать Enter.
-3. Поле возвращается к `Українська`, атрибут остаётся `uk`. После обычной публикации в HTML также сохранено `locale="uk"`, а не введённое `uk-UA`.
+1. Select `Українська` in Locale: the attribute becomes `uk`.
+2. Enter the valid BCP-47 code `uk-UA` and press Enter.
+3. The field returns to `Українська`; the attribute remains `uk`. After normal publication, HTML also stores `locale="uk"` rather than the typed `uk-UA`.
 
-Сам `Intl.getCanonicalLocales('uk-UA')` принимает этот код. Список готовых языков работает; ручной ввод отсутствующего в нём кода не передаёт его в атрибут блока. Это противоречит подсказке «Select or enter a BCP-47 tag». Контроль Locale в `block.js` побайтно одинаков между публичной версией и кандидатом; хеш и фрагмент сохранены отдельно. Изменения продукта в рамках этого расследования не вносились. Для дальнейшей работы это отдельный открытый дефект; текущий патч не следует описывать как исправление всех настроек плагина.
+`Intl.getCanonicalLocales('uk-UA')` itself accepts this code. The predefined language list works; manually entering a code absent from it does not pass that code to the block attribute. This contradicts the help text “Select or enter a BCP-47 tag”. The Locale control in `block.js` is byte-for-byte identical between the public version and the candidate; its hash and excerpt were saved separately. No product changes were made during this investigation. This remains a separate open defect for further work; the current patch must not be described as fixing all plugin settings.
 
-## Контроли, журналы и сохранность
+## Controls, logs, and preservation
 
-У Author Gutenberg получает 403 на служебное чтение `tags/categories?context=edit`. Проверка при отключённом плагине вернула те же `rest_forbidden_context`; это штатные права Core, не сбой часов. Эти ответы сохранены отдельно от неожиданных REST-ошибок.
+For Author, Gutenberg receives 403 on its auxiliary `tags/categories?context=edit` read. A check with the plugin disabled returned the same `rest_forbidden_context`; these are standard Core permissions, not a clock failure. These responses were retained separately from unexpected REST errors.
 
-Первый разведочный прогон `published-chromium.json` дал 55/68 и сохранён без перезаписи. Он предполагал сохранение `Europe/Kyiv`, хотя пункт меню хранит допустимый IANA alias `Europe/Kiev`; вводил код языка вместо выбора пункта; искал предупреждение вне iframe; относил штатные 403 к ошибкам. После разбора причин созданы новые записи и выполнен прогон `v2` с явным выбором пунктов и проверкой предупреждения внутри iframe. Проблема ручного ввода языка выделена в отдельное воспроизведение, а не объявлена исправленной.
+The first exploratory run, `published-chromium.json`, returned 55/68 and is retained without overwriting. It expected `Europe/Kyiv` even though the menu item stores the valid IANA alias `Europe/Kiev`, entered a language code instead of selecting an option, searched for the warning outside the iframe, and classified standard 403 responses as errors. After identifying those causes, new posts were created and run `v2` explicitly selected options and checked the warning inside the iframe. Manual language input was isolated as a separate reproduction rather than declared fixed.
 
-Новых PHP fatal/parse ошибок и сообщений из файлов плагина нет. В `debug.log` восемь новых предупреждений Core `wp_version_check/wp_update_plugins/wp_update_themes` о недоступности WordPress.org при заблокированном внешнем HTTP. В журнале nginx новых ошибок нет, PHP-FPM записал только остановку процессов. Журналы сохранены с исходных byte offsets.
+There are no new PHP fatal/parse errors or messages from plugin files. `debug.log` contains eight new Core `wp_version_check/wp_update_plugins/wp_update_themes` warnings about WordPress.org being unavailable with external HTTP blocked. The nginx log has no new errors; PHP-FPM recorded only process shutdown. Logs were retained from their original byte offsets.
 
-Перед заменой сделаны SQL-бэкап и хеши содержимого. Все первоначальные **430 строк post_content** и содержимое block widgets сохранились; замены ZIP также не меняли ни одну существовавшую на тот момент запись. Итог — 477 строк с новыми тестовыми записями/ревизиями. После проверки на стенде оставлен точный кандидат 1.1.2, сайт остановлен. БД не восстанавливалась и не сбрасывалась.
+Before replacement, an SQL backup and content hashes were saved. All original **430 post_content rows** and block-widget content were preserved; ZIP replacements also left every record existing at each replacement unchanged. The final count is 477 rows including new test posts/revisions. After verification, the exact 1.1.2 candidate was left on the site and the site was stopped. The database was neither restored nor reset.
 
-Native HTTPS/Site Domains, импорт сайта автора, его тема, плагины, ОС, настройки и неизвестные версии Local/PHP этой проверкой не покрыты. Данных о его фактическом сбое по-прежнему недостаточно.
+Native HTTPS/Site Domains, importing the reviewer's site, their theme, plugins, OS, settings, and unknown Local/PHP versions are outside this check. Information about their actual failure remains insufficient.
 
-## Доказательства и повторение
+## Evidence and reproduction
 
-- [Сводный манифест и хеши доказательств](localwp-published-evidence.json).
+- [Summary manifest and evidence hashes](localwp-published-evidence.json).
 - Runner: `tools/wordpress-lab/localwp-published-recheck.mjs`.
-- Все исходные результаты, HTML отзыва, свежий ZIP, снимки экрана, SQL-бэкап, контролы и служебные скрипты: `.local/wordpress-lab/published-localwp-recheck/`.
+- All original results, review HTML, fresh ZIP, screenshots, SQL backup, controls, and helper scripts: `.local/wordpress-lab/published-localwp-recheck/`.
 
-Проверка синтаксиса runner:
+Runner syntax check:
 
 ```bash
 set -euo pipefail
 node --check tools/wordpress-lab/localwp-published-recheck.mjs
 ```
 
-Фактически выполнены `localwp-published-recheck.mjs published chromium`, затем `candidate chromium`, затем `candidate webkit v2 read`; суффикс по умолчанию — `v2`. Это последовательные этапы на подготовленном работающем стенде с заменой ZIP между первыми двумя, а не готовый пакет команд для повторного запуска. Имеющиеся evidence-файлы runner не перезаписывает. Новый UI-прогон требует другого суффикса и новых пустых test drafts. Пользовательские сайты для этих команд использовать нельзя.
+The actual sequence was `localwp-published-recheck.mjs published chromium`, then `candidate chromium`, then `candidate webkit v2 read`; the default suffix is `v2`. These are sequential stages on a prepared, running site, with ZIP replacement between the first two, not a ready-to-run reproduction command set. The runner does not overwrite existing evidence files. A new UI run requires another suffix and fresh empty test drafts. These commands must not target user sites.

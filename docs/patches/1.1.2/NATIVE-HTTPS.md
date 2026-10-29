@@ -1,82 +1,82 @@
 # Native HTTPS — Simple Digital Clock 1.1.2
 
-> Исторический отчёт о предыдущем артефакте. Текущий кандидат и результаты: [README](README.md), [приёмка KSES72](KSES72-VERIFICATION.md). Указанные ниже общие пути ZIP/diff могли быть обновлены после этого запуска; исходные SHA и результаты сохранены как история.
+> Historical report for a previous artifact. Current candidate and results: [README](README.md), [KSES72 acceptance](KSES72-VERIFICATION.md). The shared ZIP/diff paths below may have been updated after this run; the original SHA values and results are retained as history.
 
-28 октября 2026. **Native HTTPS проверен: 28/28 серверных и 271/271 браузерных проверок. Пробел закрыт в указанной конфигурации. Новых регрессий не найдено. Публикаций нет.**
+28 October 2026. **Native HTTPS verified: 28/28 server checks and 271/271 browser checks. The gap is closed for the specified configuration. No new regressions found. Nothing published.**
 
-Проверен прежний точный ZIP `1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3`. Исходники продукта и архив не менялись.
+The previous exact ZIP `1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3` was checked. Product source and the archive were unchanged.
 
-## Среда и TLS
+## Environment and TLS
 
-- Настоящий Local 10.2.0, сайт `SDCW-112-Isolated-20261028`, ID `ujo3kaSGV`.
+- Real Local 10.2.0, site `SDCW-112-Isolated-20261028`, ID `ujo3kaSGV`.
 - WordPress 7.1.3, PHP 8.2.29, nginx 1.26.1, MySQL 8.4.0, Twenty Twenty-Five.
-- Native Local router в режиме Site Domains: `https://sdcw-112-isolated-20261028.local`, стандартный порт 443. Это не Docker и не отдельная имитация TLS.
-- В Local зарегистрирован только этот тестовый сайт. До смены режима проверены свободные порты 80/443, сохранены конфиги, полный SQL и снимок 1598 исходных строк posts с настройками.
-- Изменены только `home`/`siteurl` тестового сайта на HTTPS. Массовая замена содержимого не проводилась.
-- Проверка TLS выполнялась с валидацией цепочки и hostname по явно заданному файлу собственного сертификата, без `-k`, `verify=false` или `ignoreHTTPSErrors=true`. Клиенты запрещают прокси из окружения и перенаправления на другие origins.
+- Native Local router in Site Domains mode: `https://sdcw-112-isolated-20261028.local`, standard port 443. This is neither Docker nor a separate TLS simulation.
+- Only this test site is registered in Local. Before changing mode, ports 80/443 were checked as available, and configurations, full SQL, and a snapshot of 1598 original posts rows with settings were saved.
+- Only this test site's `home`/`siteurl` were changed to HTTPS. No bulk content replacement was performed.
+- TLS checks validated the chain and hostname against an explicitly specified file containing the site's own certificate, without `-k`, `verify=false`, or `ignoreHTTPSErrors=true`. Clients disallow environment proxies and redirects to other origins.
 
-Self-signed сертификат Local имеет SAN нужного домена и его wildcard. SHA-256 fingerprint:
+Local's self-signed certificate has the required domain and its wildcard in the SAN. SHA-256 fingerprint:
 
 ```text
 CF:3E:5A:39:69:FE:5E:4A:49:05:04:81:38:F5:8D:57:C2:A2:4D:F7:6C:34:14:AB:1B:D4:2D:1F:21:62:8E:65
 ```
 
-Подтверждён TLS 1.3. До доверия Headless Chromium с `ignoreHTTPSErrors:false` ожидаемо отклонил сертификат: `ERR_CERT_AUTHORITY_INVALID`. После отдельного разрешения пользователя доверие настроено для этого сертификата только по политике SSL, в пользовательском login keychain, без `-d`/admin/System store. `security verify-cert` подтвердил доверие; Chromium/WebKit и обычный Safari далее открывали сайт без исключения проверки сертификата. Разрешённое пользовательское SSL-доверие сохранено после теста.
+TLS 1.3 was confirmed. Before trust was configured, headless Chromium with `ignoreHTTPSErrors:false` correctly rejected the certificate: `ERR_CERT_AUTHORITY_INVALID`. After separate user authorization, trust was configured for this certificate using only the SSL policy in the user's login keychain, without `-d`/admin/System store. `security verify-cert` confirmed trust; Chromium/WebKit and regular Safari subsequently opened the site without bypassing certificate validation. The authorized user-level SSL trust was retained after testing.
 
-## Изоляция
+## Isolation
 
-Штатный Local router слушает wildcard-интерфейсы. Попытка проверить новую loopback-привязку nginx через CLI получила системный `Permission denied` при bind привилегированного порта; отдельный сервер не запускался. Безопасная альтернатива применена к существующему Native router: HTTP ACL `allow 127.0.0.1; allow ::1; deny all;`. Сами штатные listeners и TLS/proxy-настройки не заменялись.
+The standard Local router listens on wildcard interfaces. An attempt to check a new nginx loopback binding through the CLI received a system `Permission denied` when binding a privileged port; no separate server was started. A safe alternative was applied to the existing Native router: HTTP ACL `allow 127.0.0.1; allow ::1; deny all;`. Its standard listeners and TLS/proxy settings were not replaced.
 
-Проверены два запроса к сокету `127.0.0.1:443`: с loopback-источника запрос проходит; с другого собственного локального адреса ответ — **403**. Проверочные пакеты не уходят на внешний сервер. Оригиналы трёх конфигов сохранены. Это ограничение HTTP-доступа, а не утверждение о loopback bind TCP-listener.
+Two requests to socket `127.0.0.1:443` were checked: a request from a loopback source succeeds; a request from another local address belonging to the same machine returns **403**. The probe packets do not go to an external server. Originals of three configuration files were saved. This restricts HTTP access; it does not claim that the TCP listener is bound to loopback.
 
-## Что прошло
+## Passed checks
 
-| Проверка | Результат |
+| Check | Result |
 | --- | --- |
-| Проверка сертификата/hostname и TLS handshake | PASS, TLS 1.3 |
-| Вход по HTTPS и cookie обоих типов | PASS, Secure + HttpOnly |
-| Authenticated REST с session nonce | PASS |
-| Настоящий HTTP POST `admin-ajax.php`, `action=update-plugin`, Core updates nonce | PASS, 1.1.1 → точный 1.1.2 |
-| Все 15 установленных файлов после HTTP-обновления равны принятому ZIP | PASS |
-| Title-only, полное и повторное REST-сохранение от Administrator/Editor/Author | PASS, семь конфигураций часов в каждой записи |
-| REST-сохранение block widget и его sidebar | PASS |
-| Серверная HTML-разметка трёх страниц: по 7 часов в записи и 7 в sidebar | PASS, 14 тегов; активные ресурсы без HTTP URL |
-| Физический откат на официальный 1.1.1 и чтение сохранённого контента через HTTPS | PASS |
-| Повторное обновление и HTTPS REST-read | PASS |
-| Исходные 1598 полных строк posts после всего цикла | Побайтно сохранены; добавлены 6 тестовых строк; SQL не восстанавливался |
+| Certificate/hostname validation and TLS handshake | PASS, TLS 1.3 |
+| HTTPS login and both cookie types | PASS, Secure + HttpOnly |
+| Authenticated REST with session nonce | PASS |
+| Real HTTP POST `admin-ajax.php`, `action=update-plugin`, Core updates nonce | PASS, 1.1.1 → exact 1.1.2 |
+| All 15 installed files after HTTP update match the accepted ZIP | PASS |
+| Title-only, full, and repeated REST saves as Administrator/Editor/Author | PASS, seven clock configurations in each post |
+| REST saving of a block widget and its sidebar | PASS |
+| Server HTML for three pages: 7 clocks in each post and 7 in the sidebar | PASS, 14 tags; active resources contain no HTTP URLs |
+| Physical rollback to official 1.1.1 and reading saved content over HTTPS | PASS |
+| Reupgrade and HTTPS REST-read | PASS |
+| Original 1598 complete posts rows after the entire cycle | Preserved byte-for-byte; 6 test rows added; SQL was not restored |
 
-Серверный сценарий содержит **28 проверок**; дополнительные TLS/auth и access-пробы сохранены отдельно. В update offer передавалась временная копия точного локального ZIP; публичная доставка WordPress.org не проверялась. Update transient восстановлен после запроса. Снимки всех записей и `widget_*`, `sidebars_widgets`, `theme_mods_*`, `home`, `siteurl`, `active_plugins` совпали до/после каждой замены файлов.
+The server scenario contains **28 checks**; additional TLS/auth and access probes are retained separately. The update offer supplied a temporary copy of the exact local ZIP; public WordPress.org delivery was not tested. The update transient was restored after the request. Snapshots of all posts and `widget_*`, `sidebars_widgets`, `theme_mods_*`, `home`, `siteurl`, and `active_plugins` matched before/after every file replacement.
 
-Cookie-проверка сначала ошибочно ожидала ровно два экземпляра. WordPress ставит secure-auth cookie на два пути и logged-in на корень: фактически три экземпляра. Уточнён критерий — наличие обоих типов и Secure/HttpOnly у каждого. Метаданные путей сохранены без значений cookie.
+The cookie check initially expected exactly two instances. WordPress sets the secure-auth cookie on two paths and the logged-in cookie at the root: there are actually three instances. The criterion was corrected to require both types and Secure/HttpOnly on each. Path metadata was retained without cookie values.
 
-## Браузерная приёмка — завершена
+## Browser acceptance — complete
 
-`native-https/browser-tests.mjs` выполнен с обычной TLS-валидацией (`ignoreHTTPSErrors:false`). Проверены Administrator, Editor и Author; семь часов в записи и семь в отдельном Core sidebar; 1440/390 px. Редакторы после обновления и отката открывались в America/New_York, исходный эталон — в UTC.
+`native-https/browser-tests.mjs` ran with normal TLS validation (`ignoreHTTPSErrors:false`). It checked Administrator, Editor, and Author; seven clocks in a post and seven in a separate Core sidebar; 1440/390 px. Editors after upgrade and rollback opened in America/New_York; the original reference used UTC.
 
-| Стадия | Chromium | WebKit |
+| Stage | Chromium | WebKit |
 | --- | --- | --- |
-| Эталон официального 1.1.1 по HTTPS | 31/31 | 31/31 |
-| 1.1.2: настоящая кнопка Save, title-only, полная Gutenberg-сериализация и повторное сохранение | 49/49 | 49/49 |
-| Чтение после физического отката на 1.1.1 | 37/37 | 37/37 |
-| Чтение после повторного штатного обновления на точный ZIP | 37/37 | — |
+| Official 1.1.1 HTTPS reference | 31/31 | 31/31 |
+| 1.1.2: real Save button, title-only, full Gutenberg serialization, and repeated saving | 49/49 | 49/49 |
+| Reading after physical rollback to 1.1.1 | 37/37 | 37/37 |
+| Reading after another standard upgrade to the exact ZIP | 37/37 | — |
 
-Итого **271/271**. Сохранились настройки, caption DOM, соседний контент и sidebar. Блоки валидны и при чтении не создают dirty state. Живая shadow DOM, текст при фиксированном времени, геометрия и стили совпали с 1.1.1; допуск геометрии 0,001 CSS px. Mixed content и uncaught runtime errors в принятых прогонах отсутствовали; запросы local assets/REST оставались HTTPS. Secure/HttpOnly проверены по всем путям cookie.
+Total: **271/271**. Settings, caption DOM, neighboring content, and sidebar were preserved. Blocks are valid, and reading does not create a dirty state. Live shadow DOM, text at a fixed time, geometry, and styles matched 1.1.1; geometry tolerance is 0.001 CSS px. Accepted runs had no mixed content or uncaught runtime errors; local asset/REST requests stayed on HTTPS. Secure/HttpOnly was checked across all cookie paths.
 
-Обычный Safari отдельно открыл Native HTTPS на 1.1.1 и после обновления на 1.1.2: окно отмечено `IsSecure=true`, видны 14 работающих часов, viewer-local время и Unicode-подписи. Исключение сертификата не добавлялось. Закрыта только созданная контрольная вкладка. Ручное редактирование в обычном Safari не заявляется: реальные кнопки Save проверены в Chromium/WebKit automation.
+Regular Safari separately opened Native HTTPS on 1.1.1 and after upgrade to 1.1.2: the window reported `IsSecure=true`, displaying 14 working clocks, viewer-local time, and Unicode captions. No certificate exception was added. Only the newly created control tab was closed. Manual editing in regular Safari is not claimed: real Save buttons were tested through Chromium/WebKit automation.
 
-После полного цикла все **1598 исходных строк posts сохранены побайтно**; добавлены 23 тестовые строки, включая revisions. БД не восстанавливалась. Вернуты исходные `home`/`siteurl` (`http://localhost:10003`), Router Mode `localhost` и три конфигурационных файла Native router. Проверено закрытие портов 80/443, сайт `ujo3kaSGV` остановлен; данные, SQL и evidence оставлены.
+After the complete cycle, all **1598 original posts rows were preserved byte-for-byte**; 23 test rows, including revisions, were added. The database was not restored. Original `home`/`siteurl` (`http://localhost:10003`), Router Mode `localhost`, and the three Native router configuration files were restored. Ports 80/443 were confirmed closed and site `ujo3kaSGV` was stopped; data, SQL, and evidence were retained.
 
-## Настройка и сохранённые неудачные попытки
+## Setup and retained failed attempts
 
-- Кнопка Trust в Local вернула ошибку; Keychain Access UI отвечал таймаутом. После разрешения пользователя применена штатная команда macOS `security add-trusted-cert`, только политика SSL и user keychain. Пароль пользователя не запрашивался и не вводился агентом.
-- Вариант user SSL trust с дополнительной policy-string hostname прошёл в macOS/WebKit, но Chromium продолжал отклонять сертификат. Стандартное SSL-доверие тому же сертификату, с проверкой hostname по его SAN, прошло в обоих движках. Продукт не менялся; первоначальный отказ сохранён.
-- В первой cookie-проверке браузера URL `/` исключал secure-auth cookie с путей `/wp-admin` и `/wp-content/plugins`. Уточнено чтение всех cookie контекста; каждый экземпляр проверен на Secure/HttpOnly.
-- Первый Save-прогон остановился на Editor из-за welcome guide Gutenberg, скрывавшего кнопку от accessibility locator. Контроль сохранил список кнопок и статус published; тест закрывает штатный guide, затем повтор успешно прошёл. Исходный JSON не перезаписан.
+- Local's Trust button returned an error; the Keychain Access UI timed out. After user authorization, the standard macOS `security add-trusted-cert` command was used with only the SSL policy and user keychain. The agent neither requested nor entered the user's password.
+- User SSL trust with an additional hostname policy-string passed in macOS/WebKit, but Chromium still rejected the certificate. Standard SSL trust for the same certificate, with hostname validation against its SAN, passed in both engines. The product was unchanged; the initial rejection is retained.
+- In the first browser cookie check, URL `/` excluded secure-auth cookies on `/wp-admin` and `/wp-content/plugins`. Reading was corrected to include all context cookies; every instance was checked for Secure/HttpOnly.
+- The first Save run stopped at Editor because Gutenberg's welcome guide hid the button from the accessibility locator. The control saved the button list and published status; the test closes the standard guide, then the retry passed. The original JSON was not overwritten.
 
-## Границы вывода
+## Scope and limitations
 
-Подтверждён single-site Native Local HTTPS на этом Mac: Chromium, WebKit и фронтенд обычного Safari. Firefox HTTPS, Windows/iOS, subdomain multisite, публичная доставка WordPress.org и сайт автора отзыва не проверялись. Доставка внешних Google Fonts блокировалась, их URL проверены на HTTPS. Новые миллионы PHP/entities тестов не заявляются: этот проход дополняет прежнюю приёмку **того же неизменённого ZIP**.
+Single-site Native Local HTTPS on this Mac is confirmed for Chromium, WebKit, and regular Safari frontend. Firefox HTTPS, Windows/iOS, subdomain multisite, public WordPress.org delivery, and the reviewer's site were not tested. External Google Fonts delivery was blocked; their URLs were checked for HTTPS. No new millions of PHP/entities tests are claimed: this run supplements previous acceptance of **the same unchanged ZIP**.
 
-Предыдущее ограничение Native HTTPS в [GAP-CLOSURE.md](GAP-CLOSURE.md) относится к стадии до этой проверки. [Новый манифест доказательств](native-https-evidence.json) фиксирует дополнительную стадию отдельно.
+The previous Native HTTPS limitation in [GAP-CLOSURE.md](GAP-CLOSURE.md) applies to the stage before this check. The [new evidence manifest](native-https-evidence.json) records this additional stage separately.
 
-Доказательства и скрипты: `.local/wordpress-lab/native-https/`. SQL, credentials, ключи и environment не предназначены для публикации. Плагин, SVN, GitHub, форум и реальные сайты не публиковались и не изменялись.
+Evidence and scripts: `.local/wordpress-lab/native-https/`. SQL, credentials, keys, and environment are not intended for publication. The plugin, SVN, GitHub, forum, and real sites were neither published to nor changed.

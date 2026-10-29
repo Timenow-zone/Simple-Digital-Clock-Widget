@@ -1,73 +1,73 @@
-# WordPress 7.2 Beta 2 — первоначальная диагностика 1.1.2
+# WordPress 7.2 Beta 2 — initial 1.1.2 investigation
 
-**Исторический отчёт о ZIP `1e5d3f0d…`. Последующее исправление и отдельная приёмка: [KSES72-VERIFICATION.md](KSES72-VERIFICATION.md).**
+**Historical report for ZIP `1e5d3f0d…`. Subsequent fix and separate acceptance: [KSES72-VERIFICATION.md](KSES72-VERIFICATION.md).**
 
-28 октября 2026. **Приёмка WP 7.2 Beta 2 не пройдена: подтверждена несовместимость сохранения подписи с новым KSES. Продукт, принятый ZIP и подготовленный SVN не изменены. Публикаций нет.**
+28 October 2026. **WP 7.2 Beta 2 acceptance failed: caption saving is confirmed incompatible with the new KSES. Product, accepted ZIP, and prepared SVN remain unchanged. Nothing published.**
 
-## Стенд и артефакты
+## Test sites and artifacts
 
-Использована официальная [WP 7.2 Beta 2 от 27 октября](https://wordpress.org/news/2026/10/wordpress-7-2-beta-2/), а не nightly. Два новых Docker-сайта: PHP **8.3.35** / **8.5.12**, MariaDB **11.4.8**, стандартная блоковая тема **Ipsum 1.0**. HTTP доступен только на `127.0.0.1:19533/19534`; БД не публикует порт. Своя Compose-сеть `10.254.120.0/28`, свои каталоги данных, внешний HTTP из WordPress и автоматические обновления отключены. Существующие сайты, LocalWP, маршрутизация и доверие сертификатам не менялись.
+The official [WP 7.2 Beta 2 dated 27 October](https://wordpress.org/news/2026/10/wordpress-7-2-beta-2/) was used, not a nightly build. Two new Docker sites: PHP **8.3.35** / **8.5.12**, MariaDB **11.4.8**, default block theme **Ipsum 1.0**. HTTP is available only at `127.0.0.1:19533/19534`; the database publishes no port. Dedicated Compose network `10.254.120.0/28`, separate data directories, external WordPress HTTP and automatic updates disabled. Existing sites, LocalWP, routing, and certificate trust were unchanged.
 
 - Core: `https://wordpress.org/wordpress-7.2-beta2.zip`, SHA-256 `b1e1257fb208b6a399a457182f20d96726f2812ff003eadeb60bb9232f623e81`.
-- Кандидат: `1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3`, те же 15 файлов.
-- Официальный 1.1.1: `b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10`, 14 файлов.
-- Исходный Git-коммит: `b945c3330d1ed318d500a1c1b819316857ee1e9c`; установочный tree `6675a436d7ddd7ba73e0aa48e23e27fa47cd3f3b`.
+- Candidate: `1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3`, the same 15 files.
+- Official 1.1.1: `b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10`, 14 files.
+- Original Git commit: `b945c3330d1ed318d500a1c1b819316857ee1e9c`; installable tree `6675a436d7ddd7ba73e0aa48e23e27fa47cd3f3b`.
 
-Сначала на публичной 1.1.1 созданы старые записи Administrator/Editor/Author, синхронизированный паттерн, template part, смешанная раскладка, Custom HTML и активный/неактивный block widget с соседним Text widget. В каждой нативной записи 103 синтетических clock-фикстуры, включая 96 сложных подписей. Сняты отдельные визуальные эталоны Chromium, Firefox и WebKit. При сравнении заморожен только `Date`; настоящие таймеры и navigation/performance API сохранены.
+First, public 1.1.1 created original Administrator/Editor/Author posts, a synced pattern, template part, mixed layout, Custom HTML, and active/inactive block widgets with a neighboring Text widget. Each native post contains 103 synthetic clock fixtures, including 96 complex captions. Separate Chromium, Firefox, and WebKit visual references were captured. Only `Date` was frozen for comparisons; real timers and navigation/performance APIs were retained.
 
-## Подтверждённый P2: подпись меняется при сохранении
+## Confirmed P2: caption changes on save
 
-Триггер: пользователь без `unfiltered_html` (проверена роль Author), опубликованный старый блок с подписью, содержащей HTML-подобный текст или entities. Достаточно изменить **только заголовок записи** и нажать обычный Save. Администратор и Editor с `unfiltered_html` не воспроизводят этот сценарий в одиночном сайте.
+Trigger: a user without `unfiltered_html` (Author was tested), an old published block with a caption containing HTML-like text or entities. Changing **only the post title** and pressing the regular Save button is sufficient. Administrator and Editor with `unfiltered_html` do not reproduce this scenario on single-site.
 
-Например, исходная JSON-подпись `Київ & <clock> "quoted"` превращается в `Київ &amp;  "quoted"`. HTML-атрибут часов сохраняет первоначальную видимую подпись. Метаданные перестают соответствовать сохранённому HTML; после перезагрузки Gutenberg показывает **Block contains unexpected or invalid content**. Само обновление ZIP и чтение без пересохранения этого не вызывают. Проверки фронтенда продолжают показывать прежние часы — это не доказательство исправного редактирования.
+For example, original JSON caption `Київ & <clock> "quoted"` becomes `Київ &amp;  "quoted"`. The clock's HTML attribute retains the original visible caption. Metadata no longer matches stored HTML; after reload, Gutenberg displays **Block contains unexpected or invalid content**. Merely replacing the ZIP and reading without resaving does not cause this. Frontend checks still display the previous clocks; this does not prove editing works.
 
-В корпусе сложных подписей изменились 90 из 103 JSON-подписей Author на каждом PHP. Это доля специально подобранных тестовых случаев, а не оценка числа затронутых сайтов. Во всех шести сочетаниях PHP/браузера реальная кнопка Save воспроизвела изменение JSON и невалидный блок после reload. Скриншоты и содержимое до/после сохранены в `ui-repro-*`.
+In the complex-caption corpus, 90 of 103 Author JSON captions changed on each PHP version. This is the proportion of deliberately selected test cases, not an estimate of affected sites. In all six PHP/browser combinations, the real Save button reproduced changed JSON and an invalid block after reload. Screenshots and before/after content are retained under `ui-repro-*`.
 
-Причина проверена по коду установленной beta:
+The cause was checked against the installed beta's code:
 
-1. `wp-includes/default-filters.php` включает новый HTML API KSES через `wp_kses_force_legacy_parser => false`.
-2. Наши `pre_kses` callbacks на приоритетах 9 и 11 защищают plain-text подпись вокруг прежнего `wp_pre_kses_block_attributes` на приоритете 10.
-3. В режиме `html-api` этот Core callback пропускает прежний проход. Новый sanitizer фильтрует JSON блока позже, внутри своего токенизатора, после восстановления подписи нашим callback.
+1. `wp-includes/default-filters.php` enables the new HTML API KSES through `wp_kses_force_legacy_parser => false`.
+2. Our `pre_kses` callbacks at priorities 9 and 11 protect the plain-text caption around the previous `wp_pre_kses_block_attributes` at priority 10.
+3. In `html-api` mode, this Core callback skips the previous pass. The new sanitizer filters block JSON later, inside its tokenizer, after our callback has restored the caption.
 
-Контроль в **отдельных PHP-запросах** принудительно выбирал прежний parser: те же 11 наборов прошли **2704/2704** на тех же двух beta-сайтах и неизменённом плагине. Три минимальных сценария на каждом PHP также сохраняют подпись только в legacy-контроле. Это диагностический переключатель; постоянно отключать новый KSES для всего сайта не предлагается.
+A control in **separate PHP requests** forced the legacy parser: the same 11 suites passed **2704/2704** on the same two beta sites and unchanged plugin. Three minimal scenarios on each PHP version also preserve captions only in the legacy control. This is a diagnostic switch; permanently disabling the new KSES for the whole site is not proposed.
 
-Нужна точечная адаптация защиты известной plain-text подписи к новому проходу KSES. Санитизация настоящего HTML и остальных JSON-полей должна сохраняться. Исправление в рамках этой проверки не вносилось.
+The known plain-text caption protection needs a targeted adaptation to the new KSES pass. Sanitization of real HTML and other JSON fields must remain intact. No fix was made during this check.
 
-## Результаты
+## Results
 
-| Проверка | Результат |
+| Check | Result |
 | --- | --- |
-| Штатный `Plugin_Upgrader::bulk_upgrade`, 1.1.1 → 1.1.2 | Оба PHP: успех, точные файлы ZIP, все 28 строк posts и настройки неизменны |
-| 11 PHP-наборов, стандартный новый KSES | **2544/2704**, 160 неуспешных проверок, по 80 на PHP |
-| Те же PHP-наборы, временный legacy-контроль | **2704/2704**, постоянного изменения Core нет |
-| Named/numeric entities, post/widget pipelines × 3 движка × 2 PHP | **218 208/218 208** сравнений DOM-смысла |
-| Пересохранение старого корпуса, 3 движка × 2 PHP | **270/300**; JSON/валидность Author не сохранены, изменился также сырой Custom HTML |
-| Визуальные сравнения после пересохранения | **18/18**: прежние DOM, время, стили и геометрия |
-| Locale UI | Все 246 функциональных проверок в шести завершённых контекстах успешны; два WebKit guards отсутствия ошибок не пройдены |
-| Auto/Reset Locale и Time Zone | Все 204 функциональные проверки успешны; два WebKit guards отсутствия ошибок не пройдены |
-| Физический откат на 1.1.1 | Точные 14 файлов; все 1035 строк posts и настройки неизменны |
-| Чтение после отката | **312/342**, прежняя несовместимость пересохранённых на beta записей остаётся; визуально **18/18** |
-| Locale после отката, 3 движка × 2 PHP | **41/42**: все 36 функциональных проверок успешны; один WebKit guard не пройден |
-| Time Zone Reset после отката, Chromium/Firefox × 2 PHP | **44/44**; два WebKit запуска заблокированы guard исходных фикстур с ошибками браузера |
-| Повторное штатное обновление 1.1.1 → 1.1.2 | Оба PHP: успех, все 1035 строк posts и настройки неизменны |
-| Чтение после повторного обновления, Chromium × 2 PHP | **104/114**, прежние несовместимые записи автоматически не восстановлены |
+| Standard `Plugin_Upgrader::bulk_upgrade`, 1.1.1 → 1.1.2 | Both PHP versions: success, exact ZIP files, all 28 posts rows and settings unchanged |
+| 11 PHP suites, standard new KSES | **2544/2704**, 160 failing assertions, 80 per PHP version |
+| Same PHP suites, temporary legacy control | **2704/2704**, no persistent Core change |
+| Named/numeric entities, post/widget pipelines × 3 engines × 2 PHP versions | **218 208/218 208** DOM-meaning comparisons |
+| Resaving the old corpus, 3 engines × 2 PHP versions | **270/300**; Author JSON/validity not preserved; raw Custom HTML also changed |
+| Visual comparisons after resaving | **18/18**: previous DOM, time, styles, and geometry |
+| Locale UI | All 246 functional checks in six completed contexts passed; two WebKit no-error guards failed |
+| Auto/Reset Locale and Time Zone | All 204 functional checks passed; two WebKit no-error guards failed |
+| Physical rollback to 1.1.1 | Exact 14 files; all 1035 posts rows and settings unchanged |
+| Reading after rollback | **312/342**, existing incompatibility of posts resaved on beta persists; visually **18/18** |
+| Locale after rollback, 3 engines × 2 PHP versions | **41/42**: all 36 functional checks passed; one WebKit guard failed |
+| Time Zone Reset after rollback, Chromium/Firefox × 2 PHP versions | **44/44**; two WebKit runs blocked by the guard for original fixtures with browser errors |
+| Another standard upgrade 1.1.1 → 1.1.2 | Both PHP versions: success, all 1035 posts rows and settings unchanged |
+| Reading after reupgrade, Chromium × 2 PHP versions | **104/114**, earlier incompatible posts were not automatically restored |
 
-160 падений PHP-проверок — не 160 отдельных дефектов. Часть строгих контрактов сравнивает точную форму entities/JSON, включая более строгое удаление чужого небезопасного JSON новым Core. Подтверждённый продуктовый эффект — потеря исходной подписи в JSON и невалидный clock block. Изменение сырой сериализации Custom HTML само по себе не означает поломку фронтенда.
+160 failed PHP assertions are not 160 separate defects. Some strict contracts compare exact entity/JSON forms, including stricter removal of unrelated unsafe JSON by the new Core. The confirmed product effect is loss of the original JSON caption and an invalid clock block. Changed raw Custom HTML serialization by itself does not mean the frontend is broken.
 
-## Отдельные ошибки тестовой среды
+## Separate test-environment failures
 
-Два первых чтения PHP 8.5 завершились тайм-аутами входа/готовности редактора при одновременном PHP-прогоне. Отдельное чтение Chromium после снятия нагрузки прошло; последующие циклы Firefox завершаются. Первый Firefox Locale/PHP 8.3 остановился на вставке блока; отдельный повтор прошёл 42/42. Первичные отказы сохранены, причина нестабильности вставки окончательно не установлена.
+The first two PHP 8.5 reads timed out during login/editor readiness while the PHP suite ran concurrently. A separate Chromium read after that load was removed passed; subsequent Firefox cycles completed. The first Firefox Locale/PHP 8.3 run stopped at block insertion; a separate retry passed 42/42. Original failures are retained; the reason for insertion instability is not fully established.
 
-WebKit сообщает `due to access control checks` при переходах между страницами. Контроль **с полностью выключенным плагином** и одним Core Paragraph воспроизвёл CSS-prefetch ошибки на обоих PHP: по 18 ошибок, при этом все шесть сохранений Core Paragraph валидны. Активация плагина после контроля восстановлена. Это исключает плагин как необходимое условие этих CSS-ошибок. Отдельные ошибки `admin-ajax.php` этим коротким контролем не воспроизведены и остаются неопределённостью браузерного прогона. Guards не отключались, исключения не превращались в успешные результаты.
+WebKit reports `due to access control checks` during page transitions. A control **with the plugin completely disabled** and one Core Paragraph reproduced CSS-prefetch errors on both PHP versions: 18 errors each, while all six Core Paragraph saves were valid. Plugin activation was restored after the control. This rules out the plugin as a necessary condition for those CSS errors. Separate `admin-ajax.php` errors were not reproduced by this brief control and remain an uncertainty in the browser run. Guards were not disabled, and exceptions were not converted into passing results.
 
-## Обновление, откат и границы вывода
+## Upgrade, rollback, and scope
 
-Замена файлов при обновлении и откате не переписывает БД. Но откат ZIP не восстанавливает JSON, уже изменённый **при сохранении на beta**; возвращение 1.1.2 также не является восстановлением данных. Проверка выполняется без восстановления БД и без попыток автоматически чинить невалидные блоки.
+Replacing files during upgrade/rollback does not rewrite the database. However, rolling back the ZIP does not restore JSON already changed **by saving on beta**; returning to 1.1.2 also does not restore data. Verification runs without restoring the database and without attempting automatic repair of invalid blocks.
 
-Результаты прежней стабильной матрицы WP 6.3.2–7.1.3 относятся к тому же неизменённому артефакту. Проверка beta не заменяет их и не подтверждает окончательную WP 7.2. Native LocalWP/HTTPS, multisite и матрица сторонних тем/кешей заново на beta не проверялись. Поле `Tested up to: 7.1` не менялось.
+The previous stable WP 6.3.2–7.1.3 matrix applies to this same unchanged artifact. Beta verification does not replace it and does not certify final WP 7.2. Native LocalWP/HTTPS, multisite, and the third-party theme/cache matrix were not rerun on beta. `Tested up to: 7.1` was unchanged.
 
-Раннеры: `tools/wordpress-lab/beta72-lab.py`, `beta72-browser.py`; минимальный KSES-контроль: `beta72-repro.php`; реальная кнопка Save: `beta72-ui.mjs`; независимый Core/WebKit-контроль: `beta72-navigation-control.mjs`. В allowlists прежних browser suites добавлены только два новых loopback-сайта. Runtime-файлы и сырые результаты находятся в игнорируемом `.local/wordpress-lab/wp72-beta/`. [Машиночитаемые результаты и SHA-256 доказательств](wp72-beta-evidence.json) сохраняют также неуспешные и неполные прогоны.
+Runners: `tools/wordpress-lab/beta72-lab.py`, `beta72-browser.py`; minimal KSES control: `beta72-repro.php`; real Save button: `beta72-ui.mjs`; independent Core/WebKit control: `beta72-navigation-control.mjs`. Only the two new loopback sites were added to the previous browser suites' allowlists. Runtime files and raw results are under ignored `.local/wordpress-lab/wp72-beta/`. [Machine-readable results and evidence SHA-256](wp72-beta-evidence.json) also retain failed and incomplete runs.
 
-Новые контейнеры и временный Firefox остановлены; порты 19527/19533/19534 закрыты. Данные БД и доказательства сохранены, volumes не удалялись. В PHP-логах нет fatal errors или сообщений об ошибках плагина; присутствуют предупреждения Core о намеренно запрещённом внешнем HTTP и deprecation WP-CLI на PHP 8.5.
+New containers and temporary Firefox were stopped; ports 19527/19533/19534 are closed. Database data and evidence are retained; volumes were not removed. PHP logs have no fatal errors or plugin-error messages; they contain Core warnings about deliberately blocked external HTTP and WP-CLI deprecations on PHP 8.5.
 
-Публикация и исправление несовместимости с beta — отдельные действия. **Совместимость с WP 7.2 Beta 2 не принята.**
+Publication and fixing beta incompatibility are separate actions. **WP 7.2 Beta 2 compatibility is not accepted.**

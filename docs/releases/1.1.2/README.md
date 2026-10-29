@@ -1,31 +1,31 @@
-# Simple Digital Clock 1.1.2 — подготовка и публикация релиза
+# Simple Digital Clock 1.1.2 — release preparation and publication
 
-29 октября 2026. **Релиз опубликован: SVN r3772502, Git tag `wordpress-v1.1.2`. При первоначальной публикации удалённые trunk/tag, оба публичных ZIP и проверенный кандидат содержали одинаковые 15 установочных файлов.** [Отчёт публикации и проверки публичного обновления](PUBLICATION.md), [машиночитаемые результаты](publication-evidence.json).
+29 October 2026. **Release published: SVN r3772502, Git tag `wordpress-v1.1.2`. At initial publication, remote trunk/tag, both public ZIPs, and the verified candidate contained the same 15 installable files.** [Publication and public-update verification report](PUBLICATION.md), [machine-readable results](publication-evidence.json).
 
-- Ветка: `codex/prepare-simple-digital-clock-1.1.2`.
-- Коммит выпуска: `6479ee9365e98f9b5f6822989eb89938d4955a9d`; отдельный тег WordPress — `wordpress-v1.1.2`.
-- Git tree установочного плагина: `18512403b0715be777a89e302831a3cc3d5117b6`.
+- Branch: `codex/prepare-simple-digital-clock-1.1.2`.
+- Release commit: `6479ee9365e98f9b5f6822989eb89938d4955a9d`; separate WordPress tag: `wordpress-v1.1.2`.
+- Installable plugin Git tree: `18512403b0715be777a89e302831a3cc3d5117b6`.
 - ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`.
 - ZIP SHA-256: `7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8`.
-- [Финальный smoke, Plugin Check и read-only SVN preflight](PREFLIGHT.md).
-- [Синхронизация POT, граница функциональной приёмки и новая упаковка](METADATA-SYNC.md).
-- [Манифест файлов](manifest.json), [diff trunk](svn-trunk.diff), [полная добавляемая копия тега](svn-tag-copy.diff).
-- [Исправление и окончательная приёмка](../../patches/1.1.2/KSES72-VERIFICATION.md), [evidence](../../patches/1.1.2/kses72-evidence.json).
+- [Final smoke, Plugin Check, and read-only SVN preflight](PREFLIGHT.md).
+- [POT synchronization, functional-acceptance limits, and repackaging](METADATA-SYNC.md).
+- [File manifest](manifest.json), [trunk diff](svn-trunk.diff), [complete tag copy as additions](svn-tag-copy.diff).
+- [Fix and final acceptance](../../patches/1.1.2/KSES72-VERIFICATION.md), [evidence](../../patches/1.1.2/kses72-evidence.json).
 
-Последующее readme-only изменение SVN **r3772710** синхронизировано в Git отдельно: [отчёт и границы проверки](README-PUBLICATION.md), [актуальный для этого снимка состав файлов](readme-publication-evidence.json). Исторический манифест и Git tag первоначального выпуска сохранены.
+The subsequent readme-only SVN change **r3772710** was synchronized into Git separately: [report and verification limits](README-PUBLICATION.md), [file inventory for that snapshot](readme-publication-evidence.json). The initial release's historical manifest and Git tag are preserved.
 
-## История локальной подготовки SVN
+## Local SVN preparation history
 
-Checkout: `/Users/yy/Documents/ChatGPT/WordPress/wp-plugin-work/simple-digital-clock/svn`. База подготовки — **r3771402**. В `trunk` относительно официальной 1.1.1 изменены `block.js`, `readme.txt`, `widget_init.php`; добавлен `includes/simple-digital-clock-kses.php`; обновлены метаданные и source references `languages/simple-digital-clock.pot`. Перед публикацией тег `tags/1.1.2` имел состояние `A +` и copy-from `trunk@3771402`. Публикация r3772502 сохранила эту историю копии; после неё versioned-файлы checkout чистые, посторонний баннер остаётся незарегистрированным.
+Checkout: `/Users/yy/Documents/ChatGPT/WordPress/wp-plugin-work/simple-digital-clock/svn`. Preparation base: **r3771402**. In `trunk`, compared with official 1.1.1, `block.js`, `readme.txt`, and `widget_init.php` were changed; `includes/simple-digital-clock-kses.php` was added; metadata and source references in `languages/simple-digital-clock.pot` were updated. Before publication, tag `tags/1.1.2` had status `A +` and copy-from `trunk@3771402`. Publication r3772502 preserved that copy history; afterward, the checkout's versioned files were clean, while the unrelated banner remained unversioned.
 
-Сначала синхронизирован POT, затем уточнены два пункта changelog о подтверждённых сценариях LocalWP. Последняя итерация обновила в обоих каталогах только `readme.txt`: перед копированием все файлы совпали с ZIP `e939a89b…`, после — с новым манифестом. Свойства не менялись, история копии сохранена. Посторонний незарегистрированный HTML-баннер в `assets/` сохранён побайтно и не добавлен в SVN.
+POT was synchronized first, then the two changelog entries about confirmed LocalWP scenarios were clarified. The last iteration updated only `readme.txt` in both directories: before copying, all files matched ZIP `e939a89b…`; afterward, they matched the new manifest. Properties were unchanged and copy history was preserved. The unrelated unversioned HTML banner in `assets/` was preserved byte-for-byte and not added to SVN.
 
-Plain SVN diff сохранён побайтно, включая CRLF. Dry-run и применение diff к чистой копии официальной 1.1.1 дали точно 15 файлов окончательного ZIP. Статус SVN сравнен структурно: порядок XML-атрибутов между процессами может отличаться. Для тега использован штатный `svn diff --show-copies-as-adds`.
+The plain SVN diff was retained byte-for-byte, including CRLF. Dry-run and application of the diff to a clean copy of official 1.1.1 produced exactly the final ZIP's 15 files. SVN status was compared structurally: XML attribute order can differ between processes. The standard `svn diff --show-copies-as-adds` was used for the tag.
 
-## Проверка и откат
+## Verification and rollback
 
-Функциональные результаты относятся к коммиту `9dd7c53` и ZIP `6f896d42…`: 18 336 PHP-проверок, 1 309 248 DOM-сравнений, браузерные сценарии обновления/пересохранения/отката, LocalWP, multisite, темы/кеши и Native HTTPS. Формат хранения и исходники standalone-виджета в исправлении KSES не менялись. Поле `Tested up to: 7.1` сохранено. Новая упаковка меняет только metadata/source references POT и две формулировки changelog о LocalWP; остальные 13 файлов идентичны. Для неё проверены gettext, ZIP, манифесты и применение diff; полная функциональная матрица повторно не запускалась. После синхронизации точный финальный ZIP отдельно прошёл 1388 smoke-утверждений; PCP завершился с 0 ERROR / 7 разобранными WARNING.
+Functional results apply to commit `9dd7c53` and ZIP `6f896d42…`: 18 336 PHP checks, 1 309 248 DOM comparisons, browser upgrade/resave/rollback scenarios, LocalWP, multisite, themes/caches, and Native HTTPS. The KSES fix did not change the storage format or standalone widget sources. `Tested up to: 7.1` was preserved. Repackaging changes only POT metadata/source references and two LocalWP changelog descriptions; the other 13 files are identical. Gettext, ZIP, manifests, and diff application were verified for that package; the full functional matrix was not rerun. After synchronization, the exact final ZIP separately passed 1388 smoke assertions; PCP completed with 0 ERROR / 7 analyzed WARNING.
 
-Старые исходники, ZIP, исходный SVN-статус и подготовка сохранены в `.local/release-prep-1.1.2/` и `.local/wordpress-lab/kses72-fix/`; снимки до синхронизации POT — `.local/docs-sync-1.1.2/`, до уточнения changelog — `.local/localwp-changelog-1.1.2/`; снимок перед исправлением KSES в SVN — `.local/wordpress-lab/kses72-final/svn-prep/`. Для отмены требуется точечный возврат файлов соответствующей итерации, без очистки checkout и без затрагивания баннера. Откат установленного плагина на 1.1.1 проверен поверх пересохранённых данных, без восстановления БД; он не исправляет ранее испорченные данные и возвращает известные дефекты редактирования 1.1.1.
+Older sources, ZIP, initial SVN status, and preparation are retained in `.local/release-prep-1.1.2/` and `.local/wordpress-lab/kses72-fix/`; snapshots from before POT synchronization are in `.local/docs-sync-1.1.2/`, those from before the changelog clarification are in `.local/localwp-changelog-1.1.2/`; the snapshot before the SVN KSES fix is in `.local/wordpress-lab/kses72-final/svn-prep/`. Reversal requires targeted restoration of the relevant iteration's files, without cleaning the checkout or touching the banner. Rollback of an installed plugin to 1.1.1 was verified against resaved data without restoring the database; it does not repair previously corrupted data and reintroduces the known 1.1.1 editing defects.
 
-Git push и SVN commit выполнены после явного разрешения пользователя. GitHub сохраняет ветку релиза; тег `wordpress-v1.1.2` зафиксирован на проверенном коммите. SVN r3772502 включает только `trunk` и `tags/1.1.2`. Независимый readback опубликованной ревизии и HEAD r3772504 подтвердил все 15 файлов, отсутствие drift и сохранение properties. `assets/` исключён. Runtime-данные стендов, дампы, credentials и TLS-материалы не добавлены в Git. Подробности доставки и контрольного обновления — в [отчёте публикации](PUBLICATION.md).
+Git push and SVN commit were performed after explicit user authorization. GitHub retains the release branch; tag `wordpress-v1.1.2` is fixed at the verified commit. SVN r3772502 includes only `trunk` and `tags/1.1.2`. Independent readback of the published revision and HEAD r3772504 confirmed all 15 files, no drift, and preserved properties. `assets/` was excluded. Environment runtime data, dumps, credentials, and TLS materials were not added to Git. Delivery and control-update details are in the [publication report](PUBLICATION.md).

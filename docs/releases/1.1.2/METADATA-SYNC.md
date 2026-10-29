@@ -1,35 +1,35 @@
-# Синхронизация сопутствующих файлов 1.1.2
+# Synchronizing the 1.1.2 supporting files
 
-29 октября 2026. **Документация, POT и changelog синхронизированы. Публикации нет.** [Текущая машиночитаемая проверка](changelog-sync-evidence.json), [предыдущий этап POT](metadata-sync-evidence.json).
+29 October 2026. **Documentation, POT, and changelog are synchronized. Nothing has been published at this stage.** [Current machine-readable verification](changelog-sync-evidence.json), [previous POT stage](metadata-sync-evidence.json).
 
-## Установочный артефакт
+## Installable artifact
 
-- Новый ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`.
-- SHA-256 ZIP: `7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8`.
-- Git tree 15 установочных файлов: `18512403b0715be777a89e302831a3cc3d5117b6`.
-- SHA-256 полного diff: `1eac522a09f74d8eba0f521fd87a138f72084f46e194d3af28f8bb3b32b5ff67`.
-- [Манифест](manifest.json) и локальные SVN `trunk` / `tags/1.1.2` совпадают с ZIP по всем 15 файлам.
+- New ZIP: `.local/packages/simple-digital-clock-1.1.2-candidate.zip`.
+- ZIP SHA-256: `7a0e061fafa0e9b08c14b337ff8ced46be920119f368ff1d80815829cce839a8`.
+- Git tree of the 15 installable files: `18512403b0715be777a89e302831a3cc3d5117b6`.
+- Full diff SHA-256: `1eac522a09f74d8eba0f521fd87a138f72084f46e194d3af28f8bb3b32b5ff67`.
+- The [manifest](manifest.json) and local SVN `trunk` / `tags/1.1.2` match the ZIP across all 15 files.
 
-Относительно функционально проверенного ZIP `6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720` обновлены только `languages/simple-digital-clock.pot` и две формулировки changelog в `readme.txt`. В POT: `Project-Id-Version` приведён к 1.1.2, дата и описание способа подготовки обновлены, 46 source references исправлены на текущие строки PHP. Все **54 сообщения**, их порядок, `msgid`, `msgstr`, контексты, plural forms и placeholders сохранены. Использована ручная синхронизация с независимым PHP-аудитом GNU xgettext; она не выдана за новый запуск WP-CLI. `msgfmt --check-format` прошёл.
+Compared with the functionally verified ZIP `6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720`, only `languages/simple-digital-clock.pot` and two changelog descriptions in `readme.txt` were updated. In the POT, `Project-Id-Version` was set to 1.1.2, the date and description of the preparation method were updated, and 46 source references were corrected to the current PHP lines. All **54 messages**, their order, `msgid`, `msgstr`, contexts, plural forms, and placeholders were preserved. Manual synchronization was used, with independent PHP extraction by GNU gettext xgettext; it is not presented as a new WP-CLI run. `msgfmt --check-format` passed.
 
-В changelog явно указано, что два дефекта воспроизведены также в LocalWP: невалидный блок при повторном открытии в другом browser timezone и потеря разметки у пользователя без `unfiltered_html`. Уточнены существующие пункты без дублирования. Формулировки не утверждают, что установлен конкретный сценарий автора отзыва или исправлен сам LocalWP. Остальные строки `readme.txt`, его CRLF и версия сохранены.
+The changelog explicitly states that both defects were also reproduced in LocalWP: an invalid block when reopened in a different browser timezone, and markup loss for a user without `unfiltered_html`. The existing entries were clarified without duplication. The descriptions do not claim that the reviewer's specific scenario has been established or that LocalWP itself has been fixed. The remaining `readme.txt` lines, its CRLF, and its version were preserved.
 
-Все остальные **13 файлов побайтно совпадают** с функциональным ZIP. PHP, JS, CSS, runtime bundle, схема блоков и сохранённые настройки не менялись. Standalone остаётся 0.7.0. Исходный манифест официальной 1.1.1 сохранён неизменным.
+All other **13 files are byte-identical** to the functional ZIP. PHP, JS, CSS, the runtime bundle, block schema, and saved settings were unchanged. Standalone remains at 0.7.0. The original official 1.1.1 manifest was preserved unchanged.
 
-## Проверки и их граница
+## Verification and its limits
 
-Функциональная приёмка относится к коммиту `9dd7c53f64a96ce2012cb439490eae39eda0e84e`, tree `ffc3aa9ca9a7771a4f1cb8205590e08ed1c6d597` и ZIP `6f896d42…`: **18 336 PHP-проверок**, **1 309 248 DOM-сравнений**, сохранение старых записей/виджетов, обновление, пересохранение, откат и повторное обновление, LocalWP/HTTPS, multisite, темы и кеши. [Исходный отчёт](../../patches/1.1.2/KSES72-VERIFICATION.md) и evidence не переименовываются в новый ZIP.
+Functional acceptance applies to commit `9dd7c53f64a96ce2012cb439490eae39eda0e84e`, tree `ffc3aa9ca9a7771a4f1cb8205590e08ed1c6d597`, and ZIP `6f896d42…`: **18 336 PHP checks**, **1 309 248 DOM comparisons**, preservation of existing posts/widgets, upgrade, resave, rollback and reupgrade, LocalWP/HTTPS, multisite, themes, and caches. The [original report](../../patches/1.1.2/KSES72-VERIFICATION.md) and evidence are not relabeled as results for the new ZIP.
 
-Для новой упаковки проверены ZIP CRC, точный состав, неизменность всех исполняемых файлов, семантическая идентичность каталога переводов, source references, согласованность версий, dry-run и применение полного diff к чистой 1.1.1. Результат применения равен новому ZIP. Та же проверка выполнена для SVN trunk diff. Полная функциональная матрица повторно не запускалась: изменения ограничены метаданными/комментариями POT и описанием уже проверенных исправлений в changelog. На этапе синхронизации тестовые сайты не запускались. Затем точный ZIP `7a0e061f…` прошёл отдельный [финальный smoke и Plugin Check](PREFLIGHT.md); это новый ограниченный прогон, описанный отдельно.
+The new package was checked for ZIP CRC, exact contents, unchanged executable files, semantic identity of the translation catalog, source references, version consistency, dry-run, and application of the full diff to a clean 1.1.1. The applied result equals the new ZIP. The same verification was performed for the SVN trunk diff. The full functional matrix was not rerun: the changes are limited to POT metadata/comments and descriptions of already verified fixes in the changelog. Test sites were not started during synchronization. The exact ZIP `7a0e061f…` subsequently passed a separate [final smoke and Plugin Check](PREFLIGHT.md); this is a new, limited run documented separately.
 
-## Документация и история
+## Documentation and history
 
-Обновлены корневой и WordPress README, инструкции lab, обзор патча и подготовки релиза. Текущие версии, SHA, ссылки и статус согласованы с манифестом. Старые отчёты помечены как история; их исходные числа и evidence сохранены. Удалены недействующие рекомендации запускать candidate-only PHP-наборы на официальной 1.1.1 и удалять импортированные файлы для отката. Исходная beta-ошибка больше не выдаётся за состояние текущего кандидата.
+The root and WordPress README files, lab instructions, patch overview, and release-preparation overview were updated. Current versions, SHA values, links, and status were aligned with the manifest. Older reports were marked as historical; their original counts and evidence were preserved. Invalid recommendations to run candidate-only PHP suites against official 1.1.1 and to delete imported files for rollback were removed. The original beta failure is no longer presented as the current candidate's state.
 
-`npm run release:check` и `npm run release:verify` подтвердили согласованность standalone 0.7.0 и неизменность versioned/latest bundle. Проверены локальные ссылки документации и SHA сопутствующих файлов. Точные результаты завершающих проверок сохранены в `.local/docs-sync-1.1.2/`.
+`npm run release:check` and `npm run release:verify` confirmed standalone 0.7.0 consistency and unchanged versioned/latest bundles. Local documentation links and hashes of supporting files were checked. Exact final verification results are retained in `.local/docs-sync-1.1.2/`.
 
-## Откат и публикация
+## Rollback and publication
 
-Функциональные ZIP/diff сохранены в `.local/docs-sync-1.1.2/functional-6f.zip` и `functional-6f.patch`. Снимки обоих SVN-каталогов и прежний манифест лежат рядом. Предыдущий ZIP `e939a89b…` и SVN-снимки перед уточнением changelog сохранены в `.local/localwp-changelog-1.1.2/`. Для отмены этой синхронизации достаточно точечного возврата POT/readme, его архивов/манифестов и документации; БД не затрагивается. SVN copy history и посторонний HTML-баннер сохранены, свойства не менялись.
+The functional ZIP/diff are retained in `.local/docs-sync-1.1.2/functional-6f.zip` and `functional-6f.patch`. Snapshots of both SVN directories and the previous manifest are alongside them. The previous ZIP `e939a89b…` and SVN snapshots from before the changelog clarification are retained in `.local/localwp-changelog-1.1.2/`. Reversing this synchronization requires targeted restoration of the POT/readme, its archives/manifests, and documentation; the database is unaffected. SVN copy history and the unrelated HTML banner were preserved, and properties were unchanged.
 
-Git push, SVN commit, обновлений пользовательских сайтов и внешних публикаций нет. Перед будущей публикацией нужно проверить удалённое состояние. Принята конкретная WP 7.2 Beta 2; `Tested up to: 7.1` сохранён.
+No Git push, SVN commit, user-site updates, or external publications occurred at this stage. Remote state must be checked before a future publication. Acceptance covers the specific WP 7.2 Beta 2 build; `Tested up to: 7.1` was preserved.

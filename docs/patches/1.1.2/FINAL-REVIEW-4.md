@@ -1,103 +1,103 @@
-# Финальное ревью 1.1.2 после исправления HTML5 entities
+# Final review of 1.1.2 after the HTML5 entity fix
 
-**Исторический отчёт для `4c62efe3…`. Оба описанных ниже P2 исправлены в новом локальном кандидате. Актуальная приёмка и новые артефакты — [NUMERIC-VERIFICATION.md](NUMERIC-VERIFICATION.md). Хеши и результаты ниже относятся к прежнему ZIP и прежней версии diff.**
+**Historical report for `4c62efe3…`. Both P2 issues described below were fixed in a new local candidate. Current acceptance results and new artifacts are in [NUMERIC-VERIFICATION.md](NUMERIC-VERIFICATION.md). The hashes and results below identify the previous ZIP and previous diff.**
 
-27 октября 2026. Проверен неизменённый ZIP `4c62efe3ae3a935a88686e354e405169cd3495e4dab45dd8b27634c08f21e880`, diff `25c6242ecabfc3fdcb00ba34f5f48663d06793827f8766d140782adfdade378b`.
+27 October 2026. Unchanged ZIP `4c62efe3ae3a935a88686e354e405169cd3495e4dab45dd8b27634c08f21e880` and diff `25c6242ecabfc3fdcb00ba34f5f48663d06793827f8766d140782adfdade378b` were reviewed.
 
-**Результат: требуется доработка. Найдены два оставшихся P2 с числовыми entities. Новых подтверждённых регрессий, внесённых последним исправлением именованных HTML5 entities, не обнаружено. Оба новых сценария воспроизводятся и на точном прежнем кандидате `4f5b285c…`.**
+**Result: changes required. Two remaining P2 issues involving numeric entities were found. No new confirmed regressions introduced by the latest named HTML5 entity fix were found. Both new scenarios also reproduce on exact previous candidate `4f5b285c…`.**
 
-Код продукта, ZIP и diff не менялись. Добавлены независимые тесты и этот отчёт. Публикаций, Git commit/push, изменений SVN и пользовательских сайтов нет.
+The product code, ZIP, and diff were not changed. Independent tests and this report were added. Nothing was published; no Git commit/push, SVN changes, or changes to user sites were made.
 
-## P2. Буквальные числовые entities теряют уровень экранирования на WP 6.3/6.8
+## P2. Literal numeric entities lose an escaping layer on WP 6.3/6.8
 
-Место: `includes/simple-digital-clock-kses.php:199–205`, защита подписи до Core KSES.
+Location: `includes/simple-digital-clock-kses.php:199–205`, caption protection before Core KSES.
 
-Нативный сериализатор создаёт валидный блок с caption `&amp;#34; <clock>`. JSON хранит эту исходную строку, HTML содержит `caption="&amp;#34; <clock>"`, а браузер получает буквальное `&#34; <clock>`.
+The native serializer creates a valid block with caption `&amp;#34; <clock>`. JSON stores that original string, HTML contains `caption="&amp;#34; <clock>"`, and the browser receives the literal `&#34; <clock>`.
 
-После Author **title-only update** на WP 6.3.2 и 6.8.3:
+After an Author **title-only update** on WP 6.3.2 and 6.8.3:
 
 ```text
-JSON caption: &amp;#34; <clock>      (сохранён)
+JSON caption: &amp;#34; <clock>      (preserved)
 HTML caption: &#034; &lt;clock&gt;
-DOM caption:  " <clock>             (изменён)
+DOM caption:  " <clock>             (changed)
 block.isValid: false
 ```
 
-Так же ломаются `&amp;#13; <clock>` и `&amp;#x1F552; <clock>`. В последнем случае буквальное `&#x1F552;` превращается в символ часов. Два уровня `&amp;amp;#…;` в текущем наборе проходят; один уровень теряется.
+`&amp;#13; <clock>` and `&amp;#x1F552; <clock>` fail in the same way. In the latter case, the literal `&#x1F552;` becomes a clock character. Two layers, `&amp;amp;#…;`, pass in the current suite; one layer is lost.
 
-Причина подтверждена без загрузки плагина: старый `wp_kses_normalize_entities()` сначала восстанавливает именованное `&amp;`, затем тем же проходом восстанавливает появившееся числовое reference. Например, `wp_kses_normalize_entities('&amp;#34;')` возвращает `&#034;`. Текущий preparatory callback рассматривает только отдельные именованные references и оставляет `&amp;` неизменным, поэтому защита буквальных уровней не покрывает числовые references. На WP 7.1.3 эти три случая проходят.
+The cause was confirmed without loading the plugin: older `wp_kses_normalize_entities()` first restores named `&amp;`, then restores the resulting numeric reference in the same pass. For example, `wp_kses_normalize_entities('&amp;#34;')` returns `&#034;`. The current preparatory callback handles only individual named references and leaves `&amp;` unchanged, so its protection of literal layers does not cover numeric references. These three cases pass on WP 7.1.3.
 
-Нужно защищать буквальные числовые references до потери уровня экранирования, сохраняя исходный JSON и штатную фильтрацию остального HTML. Регрессионный тест должен различать `&#34;`, `&amp;#34;`, `&amp;amp;#34;` и аналогичные hex-формы.
+Literal numeric references must be protected before their escaping layer is lost, while preserving original JSON and standard filtering of the remaining HTML. Regression tests must distinguish `&#34;`, `&amp;#34;`, `&amp;amp;#34;`, and equivalent hexadecimal forms.
 
-## P2. Числовой CR меняется на LF и нарушает валидацию на WP 7.1
+## P2. Numeric CR becomes LF and breaks validation on WP 7.1
 
-Места: `includes/simple-digital-clock-kses.php:146` и `:298–303`, финальное кодирование подписи после KSES.
+Locations: `includes/simple-digital-clock-kses.php:146` and `:298–303`, final caption encoding after KSES.
 
-Валидные нативные caption `&#13; <clock>` и `&#xD; <clock>` дают DOM-строку с U+000D (CR). После Author **title-only update** на обеих WP 7.1.3/PHP-конфигурациях Core сериализует reference как сырой `\r` внутри HTML-атрибута. При следующем браузерном разборе HTML входной CR нормализуется в U+000A (LF).
+Valid native captions `&#13; <clock>` and `&#xD; <clock>` produce a DOM string containing U+000D (CR). After an Author **title-only update** on both WP 7.1.3/PHP configurations, Core serializes the reference as raw `\r` inside the HTML attribute. During the next browser HTML parse, the input CR is normalized to U+000A (LF).
 
 ```text
-JSON caption: &#13; <clock>          (сохранён)
+JSON caption: &#13; <clock>          (preserved)
 HTML caption: <literal CR> &lt;clock&gt;
 DOM before:   U+000D + " <clock>"
 DOM after:    U+000A + " <clock>"
 block.isValid: false
 ```
 
-Текущий post-data guard запускается только при наличии байтов выше ASCII, а `encode_caption_unicode()` обрабатывает только U+00A0 и выше. Возвращённый Core ASCII CR остаётся сырым. На WP 6.3.2/6.8.3 числовые CR сохраняются references и эти два случая проходят.
+The current post-data guard runs only when bytes above ASCII are present, and `encode_caption_unicode()` handles only U+00A0 and above. The ASCII CR returned by Core remains raw. On WP 6.3.2/6.8.3, numeric CR values remain references and these two cases pass.
 
-Контроль без плагина с обычным `<p title="&#13;">` подтверждает тот же сырой CR в выходе Core 7.1. Это не побочный эффект последнего HTML5-исправления, но текущий кандидат всё ещё нарушает контракт валидного статического блока. Требуется сохранить семантику numeric CR, отдельно проверяя сырые CR/LF, чтобы очередная коррекция не изменила их прежнее HTML-поведение.
+A control without the plugin using an ordinary `<p title="&#13;">` confirms the same raw CR in Core 7.1 output. This is not a side effect of the latest HTML5 fix, but the candidate still violates the valid static-block contract. Numeric CR semantics must be preserved, with separate checks for raw CR/LF so the next correction does not change their existing HTML behavior.
 
-## Подтверждение и результаты
+## Confirmation and results
 
-Новые fixtures содержат 12 нативных caption, две роли, по две составные записи на сайт. Все исходные блоки валидны; Administrator save оставляет их побайтно неизменными. Исходный raw content одинаков для Administrator/Author. После Author update JSON остаётся исходным, меняется только семантика HTML. Настоящий Gutenberg показывает невалидный блок. Firefox и WebKit подтверждают результат Chromium.
+The new fixtures contain 12 native captions, two roles, and two composite posts per site. All original blocks are valid; Administrator save leaves them byte-identical. Original raw content is identical for Administrator/Author. After Author update, JSON remains unchanged and only HTML semantics change. The actual Gutenberg editor reports an invalid block. Firefox and WebKit confirm the Chromium result.
 
-| Конфигурация | Прежние PHP-контракты, включая HTML5 | Новый нативный набор | Не прошедшие случаи Author | Старый читатель 1.1.1 |
+| Configuration | Existing PHP contracts, including HTML5 | New native suite | Failing Author cases | Older 1.1.1 reader |
 | --- | --- | --- | --- | --- |
-| WP 7.1.3 / PHP 8.3.35 | 830/830 | **22/24** | decimal/hex CR | те же два случая |
-| WP 7.1.3 / PHP 8.4.27 | 830/830 | **22/24** | decimal/hex CR | те же два случая |
-| WP 6.3.2 / PHP 8.2.12 | 830/830 | **21/24** | три literal numeric entities | те же три случая |
-| WP 6.8.3 / PHP 8.3.28 | 830/830 | **21/24** | три literal numeric entities | те же три случая |
+| WP 7.1.3 / PHP 8.3.35 | 830/830 | **22/24** | decimal/hex CR | the same two cases |
+| WP 7.1.3 / PHP 8.4.27 | 830/830 | **22/24** | decimal/hex CR | the same two cases |
+| WP 6.3.2 / PHP 8.2.12 | 830/830 | **21/24** | three literal numeric entities | the same three cases |
+| WP 6.8.3 / PHP 8.3.28 | 830/830 | **21/24** | three literal numeric entities | the same three cases |
 
-Числа нового набора считают блоки с одновременно сохранёнными валидностью, исходным JSON и DOM-значением. Итого **86/96**, десять отрицательных случаев. Для каждой роли проверен также реальный редактор; Administrator проходит, Author получает invalid content. Read-проверки не пересохраняют записи и не пытаются их восстановить.
+The new suite counts blocks that retain validity, original JSON, and DOM value together. Total: **86/96**, with ten failing cases. The actual editor was also checked for each role: Administrator passes, while Author receives invalid content. Read checks do not resave posts or attempt to repair them.
 
-Точный прежний ZIP `4f5b285c…` физически установлен в четыре сайта. Его 15 файлов совпадают с сохранённым исходным манифестом. На независимых новых копиях те же numeric-сценарии дают те же ошибки. Именованные `&NewLine;`, `&AMP;…` и `&NotEqualTilde;…`, которые раньше ломались, текущий ZIP уже исправляет. Общая причина новых находок связана с Core, однако это два разных механизма и две отдельные корректировки.
+Exact previous ZIP `4f5b285c…` was physically installed on four sites. Its 15 files match the retained original manifest. The same numeric scenarios fail on independent fresh copies. The current ZIP already fixes named `&NewLine;`, `&AMP;…`, and `&NotEqualTilde;…` cases that failed previously. The new findings share a Core-related origin, but involve two different mechanisms and require two separate corrections.
 
-Дополнительное сравнение 1629 граничных HTML-входов выполнено во всех трёх браузерах: сочетания references с соседним текстом, decimal/hex, кавычки, backslashes, Unicode и control characters. **Новых ухудшений относительно `4f5b285c…` нет**, включая повторное сохранение. Эти результаты не означают, что все 1629 входов сохраняют исходный DOM: часть intentionally проверяет штатную очистку Core (NUL, запрещённые controls, surrogate references и т. п.), а часть выявляет описанные оставшиеся numeric-случаи. Полные различия сохранены, а не отфильтрованы из доказательств.
+An additional comparison of 1629 boundary HTML inputs ran in all three browsers: combinations of references with neighboring text, decimal/hex forms, quotes, backslashes, Unicode, and control characters. **There are no new degradations compared with `4f5b285c…`**, including repeated save. These results do not mean that all 1629 inputs preserve their original DOM: some intentionally test standard Core cleanup (NUL, prohibited controls, surrogate references, etc.), while others reveal the remaining numeric cases described here. Complete differences were retained rather than filtered out of the evidence.
 
-Повторно прошли на точном текущем ZIP:
+The following passed again on the exact current ZIP:
 
-- **3320/3320** PHP-утверждений, включая прежние тесты, новые post updates, полный named-entity pipeline и `utf8mb3`.
-- **102000/102000** сравнений DOM полного набора именованных HTML5 entities.
-- **396/396** прежних браузерных проверок.
-- **6504/6504** проверок прежнего 67-caption набора официальным 1.1.1 в трёх движках после фактического отката.
-- **2168/2168** того же набора после повторного обновления.
+- **3320/3320** PHP assertions, including existing tests, new post updates, the full named-entity pipeline, and `utf8mb3`.
+- **102000/102000** DOM comparisons of the complete named HTML5 entity suite.
+- **396/396** existing browser checks.
+- **6504/6504** checks of the existing 67-caption suite by official 1.1.1 in three engines after an actual rollback.
+- **2168/2168** checks of the same suite after reupgrade.
 
-Standalone bundle 0.7.0 не менялся. Его предыдущие lint, release-check, Node и browser результаты сохранены; в этом ревью они повторно не запускались, поскольку исходники и bundle неизменны.
+Standalone bundle 0.7.0 was not changed. Its previous lint, release-check, Node, and browser results were retained; they were not rerun in this review because the sources and bundle were unchanged.
 
-## Обратная совместимость и неизменность данных
+## Backward compatibility and data identity
 
-Сохранённые 136 записей предыдущего полного цикла не сбрасывались. Добавлены 16 отдельных нативных записей этого ревью: первый набор из восьми и расширенный набор из восьми записей. Это **152 ID** для прямого контроля БД. Новые записи созданы валидным нативным сериализатором текущего кандидата; неизменённые Administrator-копии также валидны при чтении официальным 1.1.1.
+The 136 retained posts from the previous full cycle were not reset. This review added 16 separate native posts: an initial set of eight and an extended set of eight. This gives **152 IDs** for direct database checks. New posts were created by the current candidate's valid native serializer; unchanged Administrator copies are also valid when read by official 1.1.1.
 
-Порядок: текущий кандидат → сравнительный `4f5b285c…` с независимыми копиями → официальный **1.1.1** → тот же текущий **1.1.2**. После каждой замены проверены физические файлы плагина и побайтная неизменность всех 152 записей. БД не восстанавливалась. После чтения старым редактором содержимое также не менялось.
+Order: current candidate → comparative `4f5b285c…` with independent copies → official **1.1.1** → the same current **1.1.2**. Physical plugin files and byte identity of all 152 posts were checked after every replacement. The database was not restored. Content also remained unchanged after reads in the old editor.
 
-Прежние 136 записей проходят старый читатель. Новые numeric-сценарии показывают, что совместимость нельзя объявлять полной: уже записанное неправильное HTML остаётся неправильным после отката, а 1.1.1 также отвергает соответствующие блоки. Замена ZIP не ремонтирует содержимое записи. Причина здесь в семантике сохранения подписи, а не в новом формате JSON или миграции БД.
+The previous 136 posts pass the old reader. New numeric scenarios show why full compatibility cannot be claimed: incorrect HTML already written remains incorrect after rollback, and 1.1.1 rejects the corresponding blocks as well. Replacing the ZIP does not repair post content. The cause is caption save semantics, not a new JSON format or database migration.
 
-После проверки восстановлен точный текущий кандидат; исходники, ZIP и diff оставлены неизменными. Лаборатория остановлена; БД, fixtures, предыдущий ZIP и все результаты сохранены.
+After verification, the exact current candidate was restored; sources, ZIP, and diff were left unchanged. The lab was stopped; databases, fixtures, the previous ZIP, and all results were retained.
 
-## Артефакты и воспроизведение
+## Artifacts and reproduction
 
-- [Машиночитаемые доказательства](review4-evidence.json): результаты, source/ZIP/diff hashes, Core controls, сравнение прежнего кандидата, rollback/reupgrade и 152 ID.
-- [Нативный тест](../../../tools/wordpress-lab/review4-native.mjs).
-- [PHP-тест границ](../../../tools/wordpress-lab/review4-boundaries.php), [независимый DOM comparator](../../../tools/wordpress-lab/review4-boundaries.mjs).
-- [Core-only контроль](../../../tools/wordpress-lab/review4-core.php).
-- Полные локальные результаты: `.local/wordpress-lab/review4/`.
+- [Machine-readable evidence](review4-evidence.json): results, source/ZIP/diff hashes, Core controls, comparison with the previous candidate, rollback/reupgrade, and 152 IDs.
+- [Native test](../../../tools/wordpress-lab/review4-native.mjs).
+- [PHP boundary test](../../../tools/wordpress-lab/review4-boundaries.php), [independent DOM comparator](../../../tools/wordpress-lab/review4-boundaries.mjs).
+- [Core-only control](../../../tools/wordpress-lab/review4-core.php).
+- Complete local results: `.local/wordpress-lab/review4/`.
 
-В подготовленной изолированной лаборатории с этим ZIP можно создать независимые копии новым phase:
+In the prepared isolated lab with this ZIP, create independent copies using a fresh phase:
 
 ```bash
 node tools/wordpress-lab/review4-native.mjs save fresh-numeric-review chromium
 ```
 
-Ожидается exit code **1**, с десятью описанными не прошедшими блоками на четырёх конфигурациях. Скрипт отказывается перезаписывать evidence; новый запуск создаёт свои fixture posts. Запускать только в Clock lab. Для Firefox доступен сохранённый официальный Playwright image и loopback remote server, описанные в [инструкции](../../../tools/wordpress-lab/README.md).
+Exit code **1** is expected, with the ten failing blocks described above across four configurations. The script refuses to overwrite evidence; each fresh run creates its own fixture posts. Run only in the Clock lab. For Firefox, the retained official Playwright image and loopback remote server are available as described in the [instructions](../../../tools/wordpress-lab/README.md).
 
-Нативный LocalWP, multisite, функциональный runtime PHP 7.x/8.5 и конкретные сторонние расширения не проверялись. Исходная причина пользовательского отзыва остаётся неизвестной. Приёмка именованных HTML5 entities остаётся корректной для своего набора; она не покрывала CR references и literal numeric entities, добавленные здесь.
+Native LocalWP, multisite, functional PHP 7.x/8.5 runtime, and specific third-party extensions were not tested. The original cause of the user review remains unknown. Named HTML5 entity acceptance remains valid for its dataset; it did not cover the CR references and literal numeric entities added here.
