@@ -5,7 +5,7 @@ Donate link: https://utctime.info/
 Tested up to: 7.1
 Requires at least: 6.3
 Requires PHP: 7.0
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Blocks: simple-digital-clock-block/widget-block
@@ -18,7 +18,7 @@ Show your office's local time, the time in another city or UTC on your WordPress
 [Live demo](https://simple-digital-clock-widget.yuri.ws/)👀 | [CodePen playground](https://codepen.io/dejurin/pen/01a025ef-f466-7534-acd0-77bc3a368a47)👀
 
 = ⭐️ FEATURES ⭐️ =
-* 🚀 Lightweight (~11.2 KiB gzip)
+* 🚀 Lightweight (~11.5 KiB gzip)
 * 🗣 Locale support (BCP-47, e.g., `en-US`, `uk`, `de-DE`)
 * 🌐 IANA time zones (e.g., `Europe/Kyiv`, `UTC`)
 * 📝 Custom caption
@@ -99,6 +99,12 @@ To reproduce the production bundle:
 * `npm run build`
 
 == Changelog ==
+
+= 1.1.3 =
+* Preserve captions containing null, surrogate or out-of-range numeric HTML references when users without unfiltered HTML save existing clock blocks.
+* Recalculate automatic clock sizing when its container changes width or becomes visible, without requiring a window resize.
+* Release resize observers and event handlers when clocks are removed.
+* Bundle widget 0.7.1, including improved fitting for hundredths of a second.
 
 = 1.1.2 =
 * Fixed caption preservation with the HTML API KSES sanitizer in WordPress 7.2 Beta 2.

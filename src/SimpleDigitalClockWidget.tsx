@@ -7,7 +7,7 @@
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.7.0
+ * Version: 0.7.1
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */
@@ -21,7 +21,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.7.0";
+const v = "0.7.1";
 
 const googleFontsMonospace: string[] = (data?.allowFonts ?? []) as string[];
 
@@ -79,6 +79,9 @@ class SimpleDigitalClockWidget extends Component<
 > {
   interval?: number;
   animationFrame?: number;
+  resizeObserver?: ResizeObserver;
+  resizeFrame?: number;
+  observedWidth?: number;
   hundredthsMetadataAt = 0;
   hundredthsFormatter?: Intl.DateTimeFormat;
   hundredthsFormatterFailed = false;
@@ -344,7 +347,9 @@ class SimpleDigitalClockWidget extends Component<
         }
       }
 
-      this.setState({ fontSize, fontSizeTitle });
+      if (fontSize !== this.state.fontSize || fontSizeTitle !== this.state.fontSizeTitle) {
+        this.setState({ fontSize, fontSizeTitle });
+      }
     }
   };
 
@@ -413,6 +418,22 @@ class SimpleDigitalClockWidget extends Component<
     window.addEventListener("resize", this.handleResize);
     this.handleResize();
 
+    if (this.containerRef && typeof ResizeObserver !== "undefined") {
+      this.resizeObserver = new ResizeObserver(() => {
+        const width = this.containerRef?.offsetWidth;
+        if (width === undefined || width === this.observedWidth) return;
+        this.observedWidth = width;
+        // Fit outside observer delivery so height changes cannot cause a resize loop.
+        if (this.resizeFrame === undefined) {
+          this.resizeFrame = requestAnimationFrame(() => {
+            this.resizeFrame = undefined;
+            this.handleResize();
+          });
+        }
+      });
+      this.resizeObserver.observe(this.containerRef);
+    }
+
     // Load the Google Font
     this.loadGoogleFont(this.props.fontFamily as string);
   }
@@ -467,6 +488,9 @@ class SimpleDigitalClockWidget extends Component<
   componentWillUnmount() {
     // console.log("componentWillUnmount");
     this.stopClock();
+    window.removeEventListener("resize", this.handleResize);
+    this.resizeObserver?.disconnect();
+    if (this.resizeFrame !== undefined) cancelAnimationFrame(this.resizeFrame);
   }
 
   render() {

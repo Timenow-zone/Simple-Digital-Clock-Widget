@@ -12,7 +12,7 @@ function $parcel$interopDefault(a) {
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.7.0
+ * Version: 0.7.1
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */ var $6bd3564550fc0340$var$n, $6bd3564550fc0340$export$41c562ebe57d11e2, $6bd3564550fc0340$var$u, $6bd3564550fc0340$export$a8257692ac88316c, $6bd3564550fc0340$var$i, $6bd3564550fc0340$var$r, $6bd3564550fc0340$var$o, $6bd3564550fc0340$var$e, $6bd3564550fc0340$var$f, $6bd3564550fc0340$var$c, $6bd3564550fc0340$var$a, $6bd3564550fc0340$var$s, $6bd3564550fc0340$var$h, $6bd3564550fc0340$var$p, $6bd3564550fc0340$var$v, $6bd3564550fc0340$var$y, $6bd3564550fc0340$var$d = {}, $6bd3564550fc0340$var$w = [], $6bd3564550fc0340$var$_ = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i, $6bd3564550fc0340$var$g = Array.isArray;
@@ -695,7 +695,7 @@ $b2927e49b2707936$exports = {
 var $02a8a47a7fc1ea47$export$2e2bcd8739ae039 = $02a8a47a7fc1ea47$var$isDark;
 
 
-const $aa43cbaf8926a599$var$v = "0.7.0";
+const $aa43cbaf8926a599$var$v = "0.7.1";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc0340$export$16fa2f45be04daa8) {
     constructor(props){
@@ -827,9 +827,32 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc03
                 const isLocaleMatch = localeList.some((prefix)=>currentLocale.startsWith(prefix));
                 const fontSizeByLocale = this.isHundredthsEnabled() ? isLocaleMatch ? 12 : 11 : isLocaleMatch ? 8 : 7;
                 const width = this.containerRef.offsetWidth;
-                const fontSize = (width || 1) / fontSizeByLocale;
+                let fontSize = (width || 1) / fontSizeByLocale;
                 const fontSizeTitle = (width || 1) / 15;
-                this.setState({
+                const time = this.containerRef.querySelector("a");
+                if (this.isHundredthsEnabled() && time) {
+                    const availableWidth = this.containerRef.clientWidth - 1;
+                    if (fontSize > 0 && availableWidth > 0) {
+                        const previousFontSize = time.style.getPropertyValue("font-size");
+                        const fontPriority = time.style.getPropertyPriority("font-size");
+                        const whiteSpace = time.style.getPropertyValue("white-space");
+                        const priority = time.style.getPropertyPriority("white-space");
+                        let naturalWidth = 0;
+                        try {
+                            time.style.setProperty("font-size", `${fontSize}px`, "important");
+                            time.style.setProperty("white-space", "nowrap", "important");
+                            // Match clientWidth's layout pixels even under ancestor transforms.
+                            naturalWidth = time.offsetWidth;
+                        } finally{
+                            if (previousFontSize) time.style.setProperty("font-size", previousFontSize, fontPriority);
+                            else time.style.removeProperty("font-size");
+                            if (whiteSpace) time.style.setProperty("white-space", whiteSpace, priority);
+                            else time.style.removeProperty("white-space");
+                        }
+                        if (Number.isFinite(naturalWidth) && naturalWidth > 0) fontSize = Math.min(fontSize, fontSize * availableWidth / naturalWidth);
+                    }
+                }
+                if (fontSize !== this.state.fontSize || fontSizeTitle !== this.state.fontSizeTitle) this.setState({
                     fontSize: fontSize,
                     fontSizeTitle: fontSizeTitle
                 });
@@ -944,15 +967,28 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc03
         this.startClock();
         window.addEventListener("resize", this.handleResize);
         this.handleResize();
+        if (this.containerRef && typeof ResizeObserver !== "undefined") {
+            this.resizeObserver = new ResizeObserver(()=>{
+                const width = this.containerRef?.offsetWidth;
+                if (width === undefined || width === this.observedWidth) return;
+                this.observedWidth = width;
+                // Fit outside observer delivery so height changes cannot cause a resize loop.
+                if (this.resizeFrame === undefined) this.resizeFrame = requestAnimationFrame(()=>{
+                    this.resizeFrame = undefined;
+                    this.handleResize();
+                });
+            });
+            this.resizeObserver.observe(this.containerRef);
+        }
         // Load the Google Font
         this.loadGoogleFont(this.props.fontFamily);
     }
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
         const hundredthsChanged = prevProps.hundredths !== this.props.hundredths;
         const hundredthsFormatChanged = prevProps.locale !== this.props.locale || prevProps.timeZone !== this.props.timeZone || prevProps.period !== this.props.period;
         if (hundredthsFormatChanged) this.resetHundredthsFormatter();
         if (prevProps.fontFamily !== this.props.fontFamily) this.loadGoogleFont(this.props.fontFamily);
-        if (prevProps.width !== this.props.width || hundredthsChanged) this.handleResize();
+        if (prevProps.width !== this.props.width || hundredthsChanged || this.isHundredthsEnabled() && (hundredthsFormatChanged || prevProps.fontFamily !== this.props.fontFamily || prevState.timeString.length !== this.state.timeString.length)) this.handleResize();
         if (prevProps.prefers !== this.props.prefers) this.handlePrefers();
         // Recalc time immediately when formatting-related props change
         if (prevProps.locale !== this.props.locale || prevProps.timeZone !== this.props.timeZone || prevProps.second !== this.props.second || prevProps.hundredths !== this.props.hundredths || prevProps.period !== this.props.period || prevProps.timeZoneName !== this.props.timeZoneName) this.updateTimeAndDateString();
@@ -961,6 +997,9 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $6bd3564550fc03
     componentWillUnmount() {
         // console.log("componentWillUnmount");
         this.stopClock();
+        window.removeEventListener("resize", this.handleResize);
+        this.resizeObserver?.disconnect();
+        if (this.resizeFrame !== undefined) cancelAnimationFrame(this.resizeFrame);
     }
     render() {
         const { backgroundColor: backgroundColor, background: background, fontFamily: fontFamily, caption: caption, rounded: rounded, shadow: shadow, border: border, width: width, align: align, date: date } = this.props;

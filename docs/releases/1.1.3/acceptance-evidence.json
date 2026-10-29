@@ -1,0 +1,487 @@
+{
+  "observed_at": "2026-10-29T19:18:17.777936+00:00",
+  "status": "LOCAL_CANDIDATE_PREPARED_NOT_PUBLISHED",
+  "plugin_version": "1.1.3",
+  "widget_version": "0.7.1",
+  "branch": "codex/prepare-simple-digital-clock-1.1.3",
+  "base_commit": "095aaded29b89d9f795b86eb987d2213ea724417",
+  "package_sha256": "adea5677469b98d8c94373af64202bb1dce5b91d5e340273f0f0a86a4c4b5b17",
+  "widget_sha256": "fd2f9c721507274e29af8b5b787a2933cd377a3416257899104a04d5c372bab4",
+  "source_cases": 1423,
+  "sites": [
+    {
+      "key": "p70a",
+      "port": 19851,
+      "url": "http://127.0.0.1:19851",
+      "image": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+      "family": "p70",
+      "baseline_version": "1.1.1",
+      "theme": "twentytwentyone",
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "block_theme": false,
+      "initial_plugin_version": "1.1.1",
+      "final_plugin_version": "1.1.3"
+    },
+    {
+      "key": "p70b",
+      "port": 19852,
+      "url": "http://127.0.0.1:19852",
+      "image": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+      "family": "p70",
+      "baseline_version": "1.1.2",
+      "theme": "twentytwentyone",
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "block_theme": false,
+      "initial_plugin_version": "1.1.2",
+      "final_plugin_version": "1.1.3"
+    },
+    {
+      "key": "p82a",
+      "port": 19853,
+      "url": "http://127.0.0.1:19853",
+      "image": "sha256:d21fe989984f59966eda539d204dba28904837280ff3a52db177926e2d3d5381",
+      "family": "p82",
+      "baseline_version": "1.1.1",
+      "theme": "twentytwentyone",
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "block_theme": false,
+      "initial_plugin_version": "1.1.1",
+      "final_plugin_version": "1.1.3"
+    },
+    {
+      "key": "p82b",
+      "port": 19854,
+      "url": "http://127.0.0.1:19854",
+      "image": "sha256:d21fe989984f59966eda539d204dba28904837280ff3a52db177926e2d3d5381",
+      "family": "p82",
+      "baseline_version": "1.1.2",
+      "theme": "twentytwentyone",
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "block_theme": false,
+      "initial_plugin_version": "1.1.2",
+      "final_plugin_version": "1.1.3"
+    },
+    {
+      "key": "p83a",
+      "port": 19855,
+      "url": "http://127.0.0.1:19855",
+      "image": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+      "family": "p83",
+      "baseline_version": "1.1.1",
+      "theme": "twentytwentyfive",
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "block_theme": true,
+      "initial_plugin_version": "1.1.1",
+      "final_plugin_version": "1.1.3"
+    },
+    {
+      "key": "p83b",
+      "port": 19856,
+      "url": "http://127.0.0.1:19856",
+      "image": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+      "family": "p83",
+      "baseline_version": "1.1.2",
+      "theme": "twentytwentyfive",
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "block_theme": true,
+      "initial_plugin_version": "1.1.2",
+      "final_plugin_version": "1.1.3"
+    },
+    {
+      "key": "p85a",
+      "port": 19857,
+      "url": "http://127.0.0.1:19857",
+      "image": "sha256:69ae07c7644201fc3af59bafef8cece591399020964b4d4f998c8ed907205e1b",
+      "family": "p85",
+      "baseline_version": "1.1.1",
+      "theme": "twentytwentyfive",
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "block_theme": true,
+      "initial_plugin_version": "1.1.1",
+      "final_plugin_version": "1.1.3"
+    },
+    {
+      "key": "p85b",
+      "port": 19858,
+      "url": "http://127.0.0.1:19858",
+      "image": "sha256:69ae07c7644201fc3af59bafef8cece591399020964b4d4f998c8ed907205e1b",
+      "family": "p85",
+      "baseline_version": "1.1.2",
+      "theme": "twentytwentyfive",
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "block_theme": true,
+      "initial_plugin_version": "1.1.2",
+      "final_plugin_version": "1.1.3"
+    },
+    {
+      "key": "p74b",
+      "port": 19859,
+      "url": "http://127.0.0.1:19859",
+      "image": "sha256:3f4e6ae5f942110a115f8a40de5c83377aad5e5fb91615ccd046b31e86b3a160",
+      "family": "p74",
+      "baseline_version": "1.1.2",
+      "theme": "twentytwentyone",
+      "wordpress": "6.3.2",
+      "php": "7.4.33",
+      "block_theme": false,
+      "initial_plugin_version": "1.1.2",
+      "final_plugin_version": "1.1.3"
+    }
+  ],
+  "browsers": {
+    "chromium": "151.0.7922.34",
+    "webkit": "26.5",
+    "firefox": "153.0"
+  },
+  "pairs": [
+    {
+      "site": "p70a",
+      "from": "1.1.1",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p70a",
+      "from": "1.1.1",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p70a",
+      "from": "1.1.1",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p70b",
+      "from": "1.1.2",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p70b",
+      "from": "1.1.2",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p70b",
+      "from": "1.1.2",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p82a",
+      "from": "1.1.1",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p82a",
+      "from": "1.1.1",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p82a",
+      "from": "1.1.1",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p82b",
+      "from": "1.1.2",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p82b",
+      "from": "1.1.2",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p82b",
+      "from": "1.1.2",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p83a",
+      "from": "1.1.1",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p83a",
+      "from": "1.1.1",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p83a",
+      "from": "1.1.1",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p83b",
+      "from": "1.1.2",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p83b",
+      "from": "1.1.2",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p83b",
+      "from": "1.1.2",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p85a",
+      "from": "1.1.1",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p85a",
+      "from": "1.1.1",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p85a",
+      "from": "1.1.1",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p85b",
+      "from": "1.1.2",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p85b",
+      "from": "1.1.2",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p85b",
+      "from": "1.1.2",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p74b",
+      "from": "1.1.2",
+      "engine": "chromium",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p74b",
+      "from": "1.1.2",
+      "engine": "webkit",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    },
+    {
+      "site": "p74b",
+      "from": "1.1.2",
+      "engine": "firefox",
+      "blocks": 4897,
+      "saved_records": 82,
+      "visible_ui_saves": 6,
+      "invalid_blocks": 0,
+      "initial_layout_samples": 6
+    }
+  ],
+  "visible_ui_saves": 162,
+  "initial_layout_samples": 162,
+  "native_block_checks_per_matrix_pass": 132219,
+  "php_regression_assertions": 8784,
+  "entity_dom_comparisons": 109104,
+  "final_frontend_pages": 1944,
+  "final_clock_renders": 121014,
+  "intentional_sizing_differences": 97,
+  "anonymous_author_caption_checks": 972,
+  "rollback_reader_checks": 29382,
+  "rollback_database_restore": false,
+  "plugin_check_errors": 0,
+  "plugin_check_inherited_warnings": 7,
+  "npm_audit_low_affected_dev_packages": 5,
+  "npm_audit_moderate_high_critical": 0,
+  "historical_070_preserved": true,
+  "publication": false,
+  "user_sites_modified": false,
+  "cleanup": {
+    "all_project_containers_stopped": true,
+    "stopped_containers": 11,
+    "temporary_firefox_removed": true,
+    "database_and_evidence_retained": true,
+    "production_modified": false,
+    "containers": [
+      {
+        "name": "sdcw-113-20261029-p83a-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-p83b-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-p85a-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-p85b-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-p82b-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-p82a-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-p74b-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-p70a-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-p70b-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-db-1",
+        "state": "exited"
+      },
+      {
+        "name": "sdcw-113-20261029-packages-1",
+        "state": "exited"
+      }
+    ]
+  }
+}
