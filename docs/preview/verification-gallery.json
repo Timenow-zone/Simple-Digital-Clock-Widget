@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-29",
+  "blueprintSha256": "ebdd5f5db02f37b6f947ea41e68d5626d5af140b134b5d2750f25f0cc7ad73ef",
+  "blueprintBytes": 19949,
+  "publiclyPublished": false,
+  "local": [
+    {
+      "engine": "chromium",
+      "passed": 38,
+      "failed": 0,
+      "widths": [
+        320,
+        360,
+        390,
+        768,
+        900,
+        1280
+      ],
+      "nativeBlocks": 41,
+      "clocks": 9,
+      "autoLogin": true,
+      "finalDirty": false,
+      "evidence": ".local/wordpress-preview-evidence/acceptance-03-chromium/results.json"
+    },
+    {
+      "engine": "webkit",
+      "passed": 38,
+      "failed": 0,
+      "widths": [
+        320,
+        360,
+        390,
+        768,
+        900,
+        1280
+      ],
+      "nativeBlocks": 41,
+      "clocks": 9,
+      "autoLogin": true,
+      "finalDirty": false,
+      "evidence": ".local/wordpress-preview-evidence/acceptance-03-webkit/results.json"
+    }
+  ],
+  "publicBrowserWasm": {
+    "passed": true,
+    "tickingClocks": 9,
+    "validBlocks": 41,
+    "invalidBlocks": 0,
+    "editorSaveSucceeded": true,
+    "editorCanvasRendered": true,
+    "evidence": [
+      ".local/wordpress-preview-evidence/public-candidate.json",
+      ".local/wordpress-preview-evidence/public-candidate-editor-ready.json"
+    ]
+  },
+  "rollbackSha256": "a581555e661141fe178966f77e5e19c1dda407420dffdf587133fc2c48196ad2"
+}

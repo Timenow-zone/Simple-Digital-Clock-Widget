@@ -30,6 +30,8 @@ The [current patch report](../docs/patches/1.1.2/README.md), [KSES/compatibility
 
 ## Local development
 
+The WordPress.org Live Preview is maintained separately in `preview/` and generated into `wporg-assets/blueprints/blueprint.json`. See the [preview workflow](../docs/preview/README.md) for browser verification, asset-only publication, and rollback. These files do not belong in the installable plugin ZIP.
+
 Edit the WordPress wrapper here. Keep the bundled production JavaScript unchanged until an explicit widget update is tested.
 `npm run build` only builds the standalone widget; it does not replace files inside the plugin.
 Before deliberately copying a new widget bundle, verify its version and hash, then test the block editor, saved block validation, and frontend.
