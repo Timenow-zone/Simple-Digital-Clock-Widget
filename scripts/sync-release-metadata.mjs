@@ -523,11 +523,17 @@ async function checkMode() {
     return;
   }
 
+  const sameEncoder = recordedGzip.gzipMeasurement.node === artifact.gzipMeasurement.node &&
+    recordedGzip.gzipMeasurement.zlib === artifact.gzipMeasurement.zlib;
+  if (sameEncoder && recordedGzip.gzipBytes !== artifact.gzipBytes) {
+    throw new Error(`README.md recorded gzip size (${recordedGzip.gzipBytes}) does not match the current encoder measurement (${artifact.gzipBytes}).`);
+  }
+
   console.log("PASS README.md version, artifact size/SHA256, and recorded gzip metadata format");
   console.log(`Recorded gzip: ${recordedGzip.gzipBytes} bytes (level 9; Node ${recordedGzip.gzipMeasurement.node}; zlib ${recordedGzip.gzipMeasurement.zlib})`);
   console.log(`Current gzip: ${artifact.gzipBytes} bytes (level 9; Node ${artifact.gzipMeasurement.node}; zlib ${artifact.gzipMeasurement.zlib})`);
-  if (recordedGzip.gzipBytes !== artifact.gzipBytes) {
-    console.log("INFO gzip measurements differ by encoder; artifact identity is verified by exact minified size and SHA256.");
+  if (!sameEncoder && recordedGzip.gzipBytes !== artifact.gzipBytes) {
+    console.log("INFO recorded gzip differs from the current runtime measurement; artifact identity is verified by exact minified size and SHA256.");
   }
   console.log("PASS release metadata is synchronized.");
 }

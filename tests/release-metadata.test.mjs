@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
+import { gzipSync } from "node:zlib";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const pkg = JSON.parse(await readFile(path.join(root, "package.json"), "utf8"));
@@ -40,12 +41,37 @@ async function changeReadme(directory, change) {
   await writeFile(file, after);
 }
 
+function replaceGzipMeasurement(text, gzipBytes, { node, zlib }) {
+  return text
+    .replace(/[\d.]+ KiB gzipped/, `${(gzipBytes / 1024).toFixed(1)} KiB gzipped`)
+    .replace(/[\d,]+ bytes gzip/, `${gzipBytes.toLocaleString("en-US")} bytes gzip`)
+    .replace(/Node `[^`]+`; zlib `[^`]+`/, `Node \`${node}\`; zlib \`${zlib}\``);
+}
+
 test("release check verifies artifact identity with recorded gzip metadata", async (t) => {
   const result = run(await fixture(t));
   assert.equal(result.status, 0, result.output);
   assert.match(result.output, /artifact size\/SHA256/);
   assert.match(result.output, /Recorded gzip:/);
   assert.match(result.output, /Current gzip:/);
+});
+
+test("release check rejects a coherent wrong gzip size for the current encoder", async (t) => {
+  const directory = await fixture(t);
+  const wrongGzip = gzipSync(await readFile(path.join(directory, artifactPath)), { level: 9 }).length + 128;
+  await changeReadme(directory, (text) => replaceGzipMeasurement(text, wrongGzip, { node: process.version, zlib: process.versions.zlib }));
+  const result = run(directory);
+  assert.equal(result.status, 1, result.output);
+  assert.match(result.output, /recorded gzip size .* does not match the current encoder measurement/);
+});
+
+test("release check accepts a coherent gzip measurement recorded with another encoder", async (t) => {
+  const directory = await fixture(t);
+  const recordedGzip = gzipSync(await readFile(path.join(directory, artifactPath)), { level: 9 }).length + 128;
+  await changeReadme(directory, (text) => replaceGzipMeasurement(text, recordedGzip, { node: "v0.0.0", zlib: "fixture-encoder" }));
+  const result = run(directory);
+  assert.equal(result.status, 0, result.output);
+  assert.match(result.output, /INFO recorded gzip differs from the current runtime measurement/);
 });
 
 for (const [label, change] of [
