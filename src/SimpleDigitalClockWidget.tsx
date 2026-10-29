@@ -317,25 +317,29 @@ class SimpleDigitalClockWidget extends Component<
       const time = this.containerRef.querySelector("a");
 
       if (this.isHundredthsEnabled() && time) {
-        const currentFontSize = Number.parseFloat(getComputedStyle(time).fontSize);
         const availableWidth = this.containerRef.clientWidth - 1;
 
-        if (Number.isFinite(currentFontSize) && currentFontSize > 0 && availableWidth > 0) {
+        if (fontSize > 0 && availableWidth > 0) {
+          const previousFontSize = time.style.getPropertyValue("font-size");
+          const fontPriority = time.style.getPropertyPriority("font-size");
           const whiteSpace = time.style.getPropertyValue("white-space");
           const priority = time.style.getPropertyPriority("white-space");
           let naturalWidth = 0;
 
           try {
+            time.style.setProperty("font-size", `${fontSize}px`, "important");
             time.style.setProperty("white-space", "nowrap", "important");
             // Match clientWidth's layout pixels even under ancestor transforms.
             naturalWidth = time.offsetWidth;
           } finally {
+            if (previousFontSize) time.style.setProperty("font-size", previousFontSize, fontPriority);
+            else time.style.removeProperty("font-size");
             if (whiteSpace) time.style.setProperty("white-space", whiteSpace, priority);
             else time.style.removeProperty("white-space");
           }
 
           if (Number.isFinite(naturalWidth) && naturalWidth > 0) {
-            fontSize = Math.min(fontSize, (currentFontSize * availableWidth) / naturalWidth);
+            fontSize = Math.min(fontSize, (fontSize * availableWidth) / naturalWidth);
           }
         }
       }
