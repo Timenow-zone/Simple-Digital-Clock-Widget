@@ -6,6 +6,8 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 <!-- SDCW_RELEASE_METADATA_START -->
 * **Current version:** `0.7.0`
 * **Tiny:** 11.2 KiB gzipped (`dist/0.7.0.min.js`; 32,649 bytes minified, 11,422 bytes gzip)
+* **Artifact SHA-256:** `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`
+* **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
 * **Theme-aware:** auto light/dark, or force it
@@ -160,7 +162,14 @@ Uses Web Components and `Intl.*`. For very old browsers you may need polyfills.
 
 ### Prerequisites
 
-* Node 18+ recommended
+* Node.js 22+ required; Node.js 24 LTS recommended and used by CI.
+
+Install dependencies and the browser binaries before running tests:
+
+```bash
+npm ci
+npx --no-install playwright install chromium firefox webkit
+```
 
 ### Scripts
 
@@ -260,6 +269,10 @@ Testing stack:
 * **Browsers**: `@web/test-runner` + Playwright (Chromium/Firefox/WebKit)
 * **Coverage**: `c8`
 
+The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, and all three browsers. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [maintenance record](docs/maintenance/2026-10-29-repository-hygiene.md) for the current tooling exception.
+
+Run `node scripts/check-build.mjs` for a build and minification smoke test in a temporary directory; it prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
+
 ---
 
 ## WordPress
@@ -270,6 +283,8 @@ See [`wordpress/README.md`](wordpress/README.md) for provenance, licensing, pack
 Widget and WordPress plugin versions are independent; the widget build does not update the plugin bundle automatically.
 
 The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [current patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. The standalone widget remains **0.7.0**.
+
+The later readme-only publication r3772710 is recorded [separately](docs/releases/1.1.2/README-PUBLICATION.md); the original release manifest and tag remain historical records.
 
 If you’re using WordPress, install the plugin from the directory:
 [https://wordpress.org/plugins/simple-digital-clock/](https://wordpress.org/plugins/simple-digital-clock/)

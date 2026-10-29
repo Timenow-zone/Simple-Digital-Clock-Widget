@@ -42,8 +42,10 @@ Modes:
         - package-lock.json root versions
         - source Version header
         - source const v
-        - README generated release-metadata block
+        - README version, artifact size/SHA256, and recorded gzip metadata
       against package.json and dist/<version>.min.js.
+      Gzip size records a release-time encoder measurement; it is not an
+      artifact identity check and may differ with the current Node/zlib.
 
   --sync
       Uses package.json as source of truth and synchronizes:
@@ -52,6 +54,8 @@ Modes:
         - source header "Version: ..."
         - source "const v = ..."
         - README generated release-metadata block
+      This explicit update measures gzip with the current Node/zlib encoder
+      and records its provenance; --check preserves that recorded measurement.
 
   --version <x.y.z>
       Sets package.json to the supplied version and synchronizes package-lock
@@ -265,6 +269,7 @@ async function artifactInfo(file) {
     file: path.relative(ROOT, file),
     bytes: bytes.length,
     gzipBytes: gzipSync(bytes, { level: 9 }).length,
+    gzipMeasurement: { node: process.version, zlib: process.versions.zlib },
     sha256: sha256(bytes),
   };
 }
@@ -297,8 +302,28 @@ function expectedReadmeBlock(version, artifact) {
     README_START,
     `* **Current version:** \`${version}\``,
     `* **Tiny:** ${formatKiB(artifact.gzipBytes)} KiB gzipped (\`dist/${version}.min.js\`; ${formatInteger(artifact.bytes)} bytes minified, ${formatInteger(artifact.gzipBytes)} bytes gzip)`,
+    `* **Artifact SHA-256:** \`${artifact.sha256}\``,
+    `* **Gzip measurement:** level 9; Node \`${artifact.gzipMeasurement.node}\`; zlib \`${artifact.gzipMeasurement.zlib}\`. Other encoders may produce different sizes.`,
     README_END,
   ].join("\n");
+}
+
+function recordedGzipMetadata(block, artifactBytes) {
+  const size = block.match(/, ([0-9][0-9,]*) bytes gzip\)/);
+  const encoder = block.match(/^\* \*\*Gzip measurement:\*\* level 9; Node `([^`]+)`; zlib `([^`]+)`\. Other encoders may produce different sizes\.$/m);
+  if (!size || !encoder) {
+    throw new Error("README.md recorded gzip metadata is missing or malformed. Run release:sync with the intended release encoder.");
+  }
+
+  const gzipBytes = Number(size[1].replaceAll(",", ""));
+  if (!Number.isSafeInteger(gzipBytes) || gzipBytes <= 0 || gzipBytes > artifactBytes) {
+    throw new Error("README.md recorded gzip bytes must be a positive safe integer no greater than the minified artifact size.");
+  }
+  if (!/^v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(encoder[1]) || !/^[0-9A-Za-z][0-9A-Za-z.+-]{0,63}$/.test(encoder[2])) {
+    throw new Error("README.md recorded gzip encoder metadata is malformed.");
+  }
+
+  return { gzipBytes, gzipMeasurement: { node: encoder[1], zlib: encoder[2] } };
 }
 
 function findReadmeBlock(readmeText) {
@@ -367,6 +392,7 @@ function printArtifacts(artifacts) {
     console.log(`  ${item.file}`);
     console.log(`    bytes:      ${item.bytes}`);
     console.log(`    gzip bytes: ${item.gzipBytes}`);
+    console.log(`    gzip encoder: level 9; Node ${item.gzipMeasurement.node}; zlib ${item.gzipMeasurement.zlib}`);
     console.log(`    sha256:     ${item.sha256}`);
   }
 }
@@ -484,9 +510,10 @@ async function checkMode() {
     state.versions.packageVersion,
   );
   const actualBlock = findReadmeBlock(state.readmeText).content;
+  const recordedGzip = recordedGzipMetadata(actualBlock, artifact.bytes);
   const expectedBlock = expectedReadmeBlock(
     state.versions.packageVersion,
-    artifact,
+    { ...artifact, ...recordedGzip },
   );
 
   if (actualBlock !== expectedBlock) {
@@ -496,7 +523,18 @@ async function checkMode() {
     return;
   }
 
-  console.log("PASS README.md release metadata block");
+  const sameEncoder = recordedGzip.gzipMeasurement.node === artifact.gzipMeasurement.node &&
+    recordedGzip.gzipMeasurement.zlib === artifact.gzipMeasurement.zlib;
+  if (sameEncoder && recordedGzip.gzipBytes !== artifact.gzipBytes) {
+    throw new Error(`README.md recorded gzip size (${recordedGzip.gzipBytes}) does not match the current encoder measurement (${artifact.gzipBytes}).`);
+  }
+
+  console.log("PASS README.md version, artifact size/SHA256, and recorded gzip metadata format");
+  console.log(`Recorded gzip: ${recordedGzip.gzipBytes} bytes (level 9; Node ${recordedGzip.gzipMeasurement.node}; zlib ${recordedGzip.gzipMeasurement.zlib})`);
+  console.log(`Current gzip: ${artifact.gzipBytes} bytes (level 9; Node ${artifact.gzipMeasurement.node}; zlib ${artifact.gzipMeasurement.zlib})`);
+  if (!sameEncoder && recordedGzip.gzipBytes !== artifact.gzipBytes) {
+    console.log("INFO recorded gzip differs from the current runtime measurement; artifact identity is verified by exact minified size and SHA256.");
+  }
   console.log("PASS release metadata is synchronized.");
 }
 

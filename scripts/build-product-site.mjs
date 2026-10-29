@@ -126,6 +126,7 @@ async function releaseState() {
     bytes: artifact.length,
     gzipBytes,
     gzipKiB: (gzipBytes / 1024).toFixed(1),
+    gzipMeasurement: { level: 9, node: process.version, zlib: process.versions.zlib },
     sha256: sha256(artifact),
   };
 }
@@ -169,6 +170,7 @@ function printState(state) {
   console.log(`Widget artifact: dist/${state.version}.min.js`);
   console.log(`  bytes:      ${state.bytes}`);
   console.log(`  gzip bytes: ${state.gzipBytes}`);
+  console.log(`  gzip encoder: level ${state.gzipMeasurement.level}; Node ${state.gzipMeasurement.node}; zlib ${state.gzipMeasurement.zlib}`);
   console.log(`  sha256:     ${state.sha256}`);
 }
 
@@ -198,6 +200,7 @@ async function buildMode() {
       path: state.assetPath,
       bytes: state.bytes,
       gzipBytes: state.gzipBytes,
+      gzipMeasurement: state.gzipMeasurement,
       sha256: state.sha256,
     },
   };
