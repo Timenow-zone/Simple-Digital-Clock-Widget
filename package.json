@@ -63,20 +63,16 @@
   },
   "devDependencies": {
     "@esm-bundle/chai": "^4.3.4-fix.0",
-    "@parcel/compressor-brotli": "^2.16.4",
-    "@parcel/compressor-gzip": "^2.16.4",
     "@parcel/config-default": "^2.16.4",
     "@parcel/transformer-inline-string": "2.16.4",
     "@parcel/transformer-yaml": "2.16.4",
-    "@parcel/validator-typescript": "^2.16.4",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.3.3",
     "@types/preact-custom-element": "^4.0.4",
     "@typescript-eslint/eslint-plugin": "^8.67.0",
     "@typescript-eslint/parser": "^8.67.0",
-    "@web/test-runner": "^0.20.2",
-    "@web/test-runner-playwright": "^0.11.1",
-    "autoprefixer": "^10.5.4",
+    "@web/test-runner": "^1.0.0",
+    "@web/test-runner-playwright": "^1.0.0",
     "c8": "^10.1.3",
     "eslint": "^9.35.0",
     "eslint-config-preact": "^2.0.0",
@@ -88,7 +84,7 @@
     "tailwindcss": "^3.4.17",
     "terser": "^5.50.0",
     "typescript": "^5.9.2",
-    "wrangler": "^4.125.0"
+    "wrangler": "^4.155.0"
   },
   "targets": {
     "default": {
@@ -106,5 +102,8 @@
   "browserslist": [
     "> 0.25%",
     "not dead"
-  ]
+  ],
+  "engines": {
+    "node": ">=22"
+  }
 }
