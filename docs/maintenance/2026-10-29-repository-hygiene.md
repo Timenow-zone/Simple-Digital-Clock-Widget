@@ -37,3 +37,9 @@ This correction does not replace `dist/0.7.0.min.js`, `latest.min.js`, or the Wo
 The required check names are `Repository checks` and `Browser tests`. Both run on Ubuntu 24.04 with Node 24, a read-only repository token and no deployment credentials. Audit rejects moderate-or-higher findings. Cloudflare preview success does not replace these checks. The PHP/JavaScript syntax pass does not certify the full WordPress compatibility or update/rollback matrix.
 
 Rollback uses separate reverts for dependency and CI commits. Repository settings are reversible independently; changing them must preserve the release tags and unrelated work.
+
+## Public documentation language
+
+All maintained repository prose follows the [English-language policy](../../AGENTS.md). PRs #5–#7 have English titles and descriptions, and 24 release, investigation and review reports were translated from their repository versions at `86b3e92a978c66b192141d6a2ba118bd795898f0`. Translation preserves factual scope, counts, technical identifiers, commands and link destinations; it does not constitute a new acceptance run.
+
+Historical evidence may contain hashes of earlier Markdown revisions. Those hashes still identify the original captured bytes, rather than translated files at HEAD; use the corresponding Git revision when verifying an old report hash. Raw captures, localization fixtures, archived diffs, release tags and existing Git commit objects retain their original contents.
