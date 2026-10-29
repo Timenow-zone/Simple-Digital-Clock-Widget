@@ -1,0 +1,29 @@
+
+> simple-digital-clock-widget@0.7.0 pretest:browsers
+> rm -rf .tmp-web && tsc -p tsconfig.wtr.json
+
+
+> simple-digital-clock-widget@0.7.0 test:browsers
+> npm run pretest:browsers && web-test-runner ".tmp-web/tests/**/*.browser.spec.js" --root-dir ./.tmp-web --config wtr.config.mjs --playwright --browsers chromium firefox webkit
+
+
+> simple-digital-clock-widget@0.7.0 pretest:browsers
+> rm -rf .tmp-web && tsc -p tsconfig.wtr.json
+
+
+Chromium: |██████████████████████████████| 0/6 test files | 0 passed, 0 failed
+Firefox:  |██████████████████████████████| 0/6 test files | 0 passed, 0 failed
+Webkit:   |                              | 0/6 test files | 0 passed, 0 failed
+
+Running tests...
+
+Running 6 test files...
+
+
+[2K[1A[2K[GChromium: |██████████████████████████████| 6/6 test files | 28 passed, 0 failed
+Firefox:  |██████████████████████████████| 6/6 test files | 28 passed, 0 failed
+Webkit:   |██████████████████████████████| 6/6 test files | 28 passed, 0 failed
+
+Finished running tests in 3.9s, all tests passed! 🎉
+
+

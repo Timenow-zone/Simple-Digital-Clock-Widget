@@ -1,0 +1,2212 @@
+{
+  "observed_at": "2026-10-28T19:29:36.469977+00:00",
+  "status": "FAILED_WP_7_2_BETA2_KSES_COMPATIBILITY",
+  "publication": false,
+  "product_fixes_applied": false,
+  "core": {
+    "version": "7.2-beta2",
+    "url": "https://wordpress.org/wordpress-7.2-beta2.zip",
+    "sha256": "b1e1257fb208b6a399a457182f20d96726f2812ff003eadeb60bb9232f623e81"
+  },
+  "sites": [
+    {
+      "key": "beta83",
+      "runtime": "beta83",
+      "url": "http://127.0.0.1:19533",
+      "multisite": false,
+      "post_id": 4,
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 2,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 3,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.2-beta2",
+      "php": "8.3.35",
+      "theme": "ipsum",
+      "block_theme": true
+    },
+    {
+      "key": "beta85",
+      "runtime": "beta85",
+      "url": "http://127.0.0.1:19534",
+      "multisite": false,
+      "post_id": 4,
+      "users": {
+        "administrator": {
+          "id": 1,
+          "unfiltered_html": true,
+          "widgets": true
+        },
+        "editor": {
+          "id": 2,
+          "unfiltered_html": true,
+          "widgets": false
+        },
+        "author": {
+          "id": 3,
+          "unfiltered_html": false,
+          "widgets": false
+        }
+      },
+      "wordpress": "7.2-beta2",
+      "php": "8.5.12",
+      "theme": "ipsum",
+      "block_theme": true
+    }
+  ],
+  "candidate_zip_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+  "php_default": {
+    "checks": 2704,
+    "failed": 160,
+    "suites": [
+      {
+        "key": "beta83",
+        "suites": [
+          {
+            "file": "regression.php",
+            "argument": null,
+            "checks": 464,
+            "failed": 5,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "final-review.php",
+            "argument": null,
+            "checks": 148,
+            "failed": 6,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "p2-caption.php",
+            "argument": null,
+            "checks": 18,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-caption-save.php",
+            "argument": null,
+            "checks": 193,
+            "failed": 39,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "html5-entity-pipeline.php",
+            "argument": null,
+            "checks": 3,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-charset.php",
+            "argument": null,
+            "checks": 4,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "numeric-caption-save.php",
+            "argument": null,
+            "checks": 460,
+            "failed": 25,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "numeric-entity-pipeline.php",
+            "argument": null,
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-fallback.php",
+            "argument": null,
+            "checks": 47,
+            "failed": 5,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "widget-entity-pipeline.php",
+            "argument": "named",
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-entity-pipeline.php",
+            "argument": "numeric",
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "key": "beta85",
+        "suites": [
+          {
+            "file": "regression.php",
+            "argument": null,
+            "checks": 464,
+            "failed": 5,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "final-review.php",
+            "argument": null,
+            "checks": 148,
+            "failed": 6,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "p2-caption.php",
+            "argument": null,
+            "checks": 18,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-caption-save.php",
+            "argument": null,
+            "checks": 193,
+            "failed": 39,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "html5-entity-pipeline.php",
+            "argument": null,
+            "checks": 3,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-charset.php",
+            "argument": null,
+            "checks": 4,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "numeric-caption-save.php",
+            "argument": null,
+            "checks": 460,
+            "failed": 25,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "numeric-entity-pipeline.php",
+            "argument": null,
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-fallback.php",
+            "argument": null,
+            "checks": 47,
+            "failed": 5,
+            "exit_code": 1,
+            "stderr": ""
+          },
+          {
+            "file": "widget-entity-pipeline.php",
+            "argument": "named",
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-entity-pipeline.php",
+            "argument": "numeric",
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  "php_legacy_control": {
+    "checks": 2704,
+    "failed": 0,
+    "suites": [
+      {
+        "key": "beta83",
+        "suites": [
+          {
+            "file": "regression.php",
+            "argument": null,
+            "checks": 464,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "final-review.php",
+            "argument": null,
+            "checks": 148,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "p2-caption.php",
+            "argument": null,
+            "checks": 18,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-caption-save.php",
+            "argument": null,
+            "checks": 193,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-entity-pipeline.php",
+            "argument": null,
+            "checks": 3,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-charset.php",
+            "argument": null,
+            "checks": 4,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "numeric-caption-save.php",
+            "argument": null,
+            "checks": 460,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "numeric-entity-pipeline.php",
+            "argument": null,
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-fallback.php",
+            "argument": null,
+            "checks": 47,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-entity-pipeline.php",
+            "argument": "named",
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-entity-pipeline.php",
+            "argument": "numeric",
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "key": "beta85",
+        "suites": [
+          {
+            "file": "regression.php",
+            "argument": null,
+            "checks": 464,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "final-review.php",
+            "argument": null,
+            "checks": 148,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "p2-caption.php",
+            "argument": null,
+            "checks": 18,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-caption-save.php",
+            "argument": null,
+            "checks": 193,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-entity-pipeline.php",
+            "argument": null,
+            "checks": 3,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "html5-charset.php",
+            "argument": null,
+            "checks": 4,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "numeric-caption-save.php",
+            "argument": null,
+            "checks": 460,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "numeric-entity-pipeline.php",
+            "argument": null,
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-fallback.php",
+            "argument": null,
+            "checks": 47,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-entity-pipeline.php",
+            "argument": "named",
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          },
+          {
+            "file": "widget-entity-pipeline.php",
+            "argument": "numeric",
+            "checks": 5,
+            "failed": 0,
+            "exit_code": 0,
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  "entity_dom": {
+    "cases": 218208,
+    "failed": 0,
+    "runs": [
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-post-chromium.json",
+        "service": "beta83",
+        "engine": "chromium",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-post-chromium.json",
+        "service": "beta85",
+        "engine": "chromium",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-post-firefox.json",
+        "service": "beta83",
+        "engine": "firefox",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-post-firefox.json",
+        "service": "beta85",
+        "engine": "firefox",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-post-webkit.json",
+        "service": "beta83",
+        "engine": "webkit",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-post-webkit.json",
+        "service": "beta85",
+        "engine": "webkit",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-widget-chromium.json",
+        "service": "beta83",
+        "engine": "chromium",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-widget-chromium.json",
+        "service": "beta85",
+        "engine": "chromium",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-widget-firefox.json",
+        "service": "beta83",
+        "engine": "firefox",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-widget-firefox.json",
+        "service": "beta85",
+        "engine": "firefox",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-widget-webkit.json",
+        "service": "beta83",
+        "engine": "webkit",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-named-widget-webkit.json",
+        "service": "beta85",
+        "engine": "webkit",
+        "cases": 8500,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-chromium.json",
+        "service": "beta83",
+        "engine": "chromium",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-chromium.json",
+        "service": "beta85",
+        "engine": "chromium",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-firefox.json",
+        "service": "beta83",
+        "engine": "firefox",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-firefox.json",
+        "service": "beta85",
+        "engine": "firefox",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-webkit.json",
+        "service": "beta83",
+        "engine": "webkit",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-webkit.json",
+        "service": "beta85",
+        "engine": "webkit",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-chromium.json",
+        "service": "beta83",
+        "engine": "chromium",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-chromium.json",
+        "service": "beta85",
+        "engine": "chromium",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-firefox.json",
+        "service": "beta83",
+        "engine": "firefox",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-firefox.json",
+        "service": "beta85",
+        "engine": "firefox",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-webkit.json",
+        "service": "beta83",
+        "engine": "webkit",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      },
+      {
+        "path": ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-webkit.json",
+        "service": "beta85",
+        "engine": "webkit",
+        "cases": 9684,
+        "failed": 0,
+        "pipeline_failed": 0
+      }
+    ]
+  },
+  "caption_changes": [
+    {
+      "key": "beta83",
+      "captions": 103,
+      "changed": 90,
+      "valid": false
+    },
+    {
+      "key": "beta85",
+      "captions": 103,
+      "changed": 90,
+      "valid": false
+    }
+  ],
+  "cycles": {
+    "upgrade112": {
+      "zip_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+      "files": 15,
+      "results": [
+        {
+          "key": "beta83",
+          "result": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.2-beta2",
+            "php": "8.3.35",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+            "messages": [
+              "Enabling Maintenance mode…",
+              "Unpacking the update…",
+              "Installing the latest version…",
+              "Removing the old version of the plugin…",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode…"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "key": "beta85",
+          "result": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.2-beta2",
+            "php": "8.5.12",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+            "messages": [
+              "Enabling Maintenance mode…",
+              "Unpacking the update…",
+              "Installing the latest version…",
+              "Removing the old version of the plugin…",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode…"
+            ],
+            "output": "",
+            "error": null
+          }
+        }
+      ],
+      "all_data_unchanged": true,
+      "post_rows": 28
+    },
+    "rollback111": {
+      "zip_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+      "files": 14,
+      "results": [
+        {
+          "key": "beta83",
+          "result": {
+            "mode": "baseline"
+          }
+        },
+        {
+          "key": "beta85",
+          "result": {
+            "mode": "baseline"
+          }
+        }
+      ],
+      "all_data_unchanged": true,
+      "post_rows": 1035
+    },
+    "reupgrade112": {
+      "zip_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+      "files": 15,
+      "results": [
+        {
+          "key": "beta83",
+          "result": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.2-beta2",
+            "php": "8.3.35",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+            "messages": [
+              "Enabling Maintenance mode…",
+              "Unpacking the update…",
+              "Installing the latest version…",
+              "Removing the old version of the plugin…",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode…"
+            ],
+            "output": "",
+            "error": null
+          }
+        },
+        {
+          "key": "beta85",
+          "result": {
+            "before": "1.1.1",
+            "after": "1.1.2",
+            "success": true,
+            "failed": false,
+            "wordpress": "7.2-beta2",
+            "php": "8.5.12",
+            "local_offer": true,
+            "core_path": "Plugin_Upgrader::bulk_upgrade (wp_ajax_update_plugin)",
+            "package_sha256": "1e5d3f0d5f7189f0fa6dca4539bf83860fbc46a7a7513f8c2c2b004f722038a3",
+            "messages": [
+              "Enabling Maintenance mode…",
+              "Unpacking the update…",
+              "Installing the latest version…",
+              "Removing the old version of the plugin…",
+              "Plugin updated successfully.",
+              "Disabling Maintenance mode…"
+            ],
+            "output": "",
+            "error": null
+          }
+        }
+      ],
+      "all_data_unchanged": true,
+      "post_rows": 1035
+    }
+  },
+  "browser_saves": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/saved112-beta83-chromium.json",
+      "checks": 50,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/saved112-beta83-firefox.json",
+      "checks": 50,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/saved112-beta83-webkit.json",
+      "checks": 50,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/saved112-beta85-chromium.json",
+      "checks": 50,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/saved112-beta85-firefox.json",
+      "checks": 50,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/saved112-beta85-webkit.json",
+      "checks": 50,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "rollback_reads": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback111-beta83-chromium.json",
+      "checks": 57,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback111-beta83-firefox.json",
+      "checks": 57,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback111-beta83-webkit.json",
+      "checks": 57,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback111-beta85-chromium.json",
+      "checks": 57,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback111-beta85-firefox.json",
+      "checks": 57,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback111-beta85-webkit.json",
+      "checks": 57,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "reupgrade_reads": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reupgrade112-beta83-chromium.json",
+      "checks": 57,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reupgrade112-beta85-chromium.json",
+      "checks": 57,
+      "failed": 5,
+      "failed_checks": [
+        "author/native/title: all stored settings and markup retained",
+        "author/native/full: all stored settings and markup retained",
+        "author/native/repeat: all stored settings and markup retained",
+        "author/html: unrelated blocks, text, HTML and layout retained",
+        "author: actual editor opens old post valid and clean"
+      ],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "locale_initial": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/beta-locale-beta83-chromium.json",
+      "checks": 42,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/beta-locale-beta83-firefox.json",
+      "checks": 1,
+      "failed": 1,
+      "failed_checks": [
+        "Locale scenario completes"
+      ],
+      "errors": [],
+      "error": "page.waitForFunction: Timeout 20000ms exceeded.\n    at insert (/Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/locale-tests.mjs:50:14)\n    at async file:///Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/locale-tests.mjs:106:9"
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/beta-locale-beta83-webkit.json",
+      "checks": 42,
+      "failed": 1,
+      "failed_checks": [
+        "No uncaught browser exceptions"
+      ],
+      "errors": [
+        "/127.0.0.1:19533/wp-admin/admin-ajax.php due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/edit-post/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-directory/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/format-library/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/editor.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/media-views.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-editor/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/editor/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-library/editor.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-library/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/preferences/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/reusable-blocks/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/patterns/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/media-utils/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-library/reset.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-editor/content.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17 due to access control checks.",
+        "/127.0.0.1:19533/wp-admin/admin-ajax.php due to access control checks."
+      ],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/beta-locale-beta85-chromium.json",
+      "checks": 42,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/beta-locale-beta85-firefox.json",
+      "checks": 42,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/beta-locale-beta85-webkit.json",
+      "checks": 42,
+      "failed": 1,
+      "failed_checks": [
+        "No uncaught browser exceptions"
+      ],
+      "errors": [
+        "/127.0.0.1:19534/wp-admin/admin-ajax.php due to access control checks."
+      ],
+      "error": null
+    }
+  ],
+  "locale_recheck": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/beta-locale-recheck-beta83-firefox.json",
+      "checks": 42,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "pointer": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta83-chromium.json",
+      "checks": 35,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta83-firefox.json",
+      "checks": 35,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta83-webkit.json",
+      "checks": 35,
+      "failed": 1,
+      "failed_checks": [
+        "No uncaught browser errors"
+      ],
+      "errors": [
+        "/127.0.0.1:19533/wp-admin/admin-ajax.php due to access control checks.",
+        "/127.0.0.1:19533/wp-admin/admin-ajax.php due to access control checks."
+      ],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta85-chromium.json",
+      "checks": 35,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta85-firefox.json",
+      "checks": 35,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta85-webkit.json",
+      "checks": 35,
+      "failed": 1,
+      "failed_checks": [
+        "No uncaught browser errors"
+      ],
+      "errors": [
+        "/127.0.0.1:19534/wp-admin/admin-ajax.php due to access control checks."
+      ],
+      "error": null
+    }
+  ],
+  "locale_rollback": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback-locale-beta83-chromium.json",
+      "checks": 7,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback-locale-beta83-firefox.json",
+      "checks": 7,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback-locale-beta83-webkit.json",
+      "checks": 7,
+      "failed": 1,
+      "failed_checks": [
+        "No uncaught browser exceptions"
+      ],
+      "errors": [
+        "/127.0.0.1:19533/wp-admin/admin-ajax.php due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/edit-post/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-directory/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/format-library/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/editor.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/media-views.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-editor/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/editor/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-library/editor.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-library/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/preferences/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/reusable-blocks/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/patterns/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/media-utils/style.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-library/reset.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/css/dist/block-editor/content.min.css?ver=7.2-beta2 due to access control checks.",
+        "/127.0.0.1:19533/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17 due to access control checks."
+      ],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback-locale-beta85-chromium.json",
+      "checks": 7,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback-locale-beta85-firefox.json",
+      "checks": 7,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/rollback-locale-beta85-webkit.json",
+      "checks": 7,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "timezone_reset_rollback": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-rollback-reset-beta83-chromium.json",
+      "checks": 11,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-rollback-reset-beta83-firefox.json",
+      "checks": 11,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-rollback-reset-beta85-chromium.json",
+      "checks": 11,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/reset-read-rollback-reset-beta85-firefox.json",
+      "checks": 11,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "timezone_reset_rollback_attempts": [
+    {
+      "args": [
+        "timezone-reset-read.mjs",
+        "rollback-reset",
+        "chromium",
+        "beta83",
+        "beta-pointer"
+      ],
+      "exit_code": 0,
+      "stdout": "rollback-reset/beta83/chromium: 11/11\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "timezone-reset-read.mjs",
+        "rollback-reset",
+        "chromium",
+        "beta85",
+        "beta-pointer"
+      ],
+      "exit_code": 0,
+      "stdout": "rollback-reset/beta85/chromium: 11/11\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "timezone-reset-read.mjs",
+        "rollback-reset",
+        "firefox",
+        "beta83",
+        "beta-pointer"
+      ],
+      "exit_code": 0,
+      "stdout": "rollback-reset/beta83/firefox: 11/11\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "timezone-reset-read.mjs",
+        "rollback-reset",
+        "firefox",
+        "beta85",
+        "beta-pointer"
+      ],
+      "exit_code": 0,
+      "stdout": "rollback-reset/beta85/firefox: 11/11\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "timezone-reset-read.mjs",
+        "rollback-reset",
+        "webkit",
+        "beta83",
+        "beta-pointer"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "file:///Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/timezone-reset-read.mjs:13\nif (source.failed || source.resetRecords.length !== 2) throw new Error('Unaccepted Reset fixtures');\n                                                             ^\n\nError: Unaccepted Reset fixtures\n    at file:///Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/timezone-reset-read.mjs:13:62\n\nNode.js v26.8.2\n"
+    },
+    {
+      "args": [
+        "timezone-reset-read.mjs",
+        "rollback-reset",
+        "webkit",
+        "beta85",
+        "beta-pointer"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "file:///Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/timezone-reset-read.mjs:13\nif (source.failed || source.resetRecords.length !== 2) throw new Error('Unaccepted Reset fixtures');\n                                                             ^\n\nError: Unaccepted Reset fixtures\n    at file:///Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/timezone-reset-read.mjs:13:62\n\nNode.js v26.8.2\n"
+    }
+  ],
+  "actual_ui_reproduction": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/ui-repro-beta83-chromium.json",
+      "checks": 5,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/ui-repro-beta83-firefox.json",
+      "checks": 5,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/ui-repro-beta83-webkit.json",
+      "checks": 5,
+      "failed": 1,
+      "failed_checks": [
+        "No uncaught runtime errors"
+      ],
+      "errors": [
+        "/127.0.0.1:19533/wp-admin/admin-ajax.php due to access control checks."
+      ],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/ui-repro-beta85-chromium.json",
+      "checks": 5,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/ui-repro-beta85-firefox.json",
+      "checks": 5,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/ui-repro-beta85-webkit.json",
+      "checks": 5,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "minimal_kses_controls": {
+    "beta83": {
+      "wordpress": "7.2-beta2",
+      "php": "8.3.35",
+      "default_legacy_parser": false,
+      "rows": [
+        {
+          "mode": "default",
+          "id": 250,
+          "caption": "Київ & <clock> \"quoted\"",
+          "stored_caption": "Київ &amp;  \"quoted\"",
+          "caption_unchanged": false,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Київ \\u0026 \\u003cclock\\u003e \\u0022quoted\\u0022\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"Київ & <clock> &quot;quoted&quot;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Київ \\u0026amp;  \\u0022quoted\\u0022\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw caption=\"&#1050;&#1080;&#1111;&#1074; &amp; &lt;clock&gt; &quot;quoted&quot;\" time-zone=\"UTC\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "default",
+          "id": 252,
+          "caption": "&NotEqualTilde; <clock>",
+          "stored_caption": "≂̸ ",
+          "caption_unchanged": false,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026NotEqualTilde; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&NotEqualTilde; <clock>\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"≂̸ \",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw caption=\"&#8770;&#824; &lt;clock&gt;\" time-zone=\"UTC\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "default",
+          "id": 254,
+          "caption": "&amp;#34; <clock>",
+          "stored_caption": "&amp;#34; ",
+          "caption_unchanged": false,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;#34; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&amp;#34; <clock>\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;#34; \",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw caption=\"&amp;#34; &lt;clock&gt;\" time-zone=\"UTC\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "legacy-control",
+          "id": 256,
+          "caption": "Київ & <clock> \"quoted\"",
+          "stored_caption": "Київ & <clock> \"quoted\"",
+          "caption_unchanged": true,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Київ \\u0026 \\u003cclock\\u003e \\u0022quoted\\u0022\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"Київ & <clock> &quot;quoted&quot;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Київ \\u0026 \\u003cclock\\u003e \\u0022quoted\\u0022\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&#1050;&#1080;&#1111;&#1074; &amp; &lt;clock&gt; &quot;quoted&quot;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "legacy-control",
+          "id": 258,
+          "caption": "&NotEqualTilde; <clock>",
+          "stored_caption": "&NotEqualTilde; <clock>",
+          "caption_unchanged": true,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026NotEqualTilde; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&NotEqualTilde; <clock>\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026NotEqualTilde; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&#8770;&#824; &lt;clock&gt;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "legacy-control",
+          "id": 260,
+          "caption": "&amp;#34; <clock>",
+          "stored_caption": "&amp;#34; <clock>",
+          "caption_unchanged": true,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;#34; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&amp;#34; <clock>\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;#34; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&amp;#34; &lt;clock&gt;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        }
+      ]
+    },
+    "beta85": {
+      "wordpress": "7.2-beta2",
+      "php": "8.5.12",
+      "default_legacy_parser": false,
+      "rows": [
+        {
+          "mode": "default",
+          "id": 235,
+          "caption": "Київ & <clock> \"quoted\"",
+          "stored_caption": "Київ &amp;  \"quoted\"",
+          "caption_unchanged": false,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Київ \\u0026 \\u003cclock\\u003e \\u0022quoted\\u0022\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"Київ & <clock> &quot;quoted&quot;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Київ \\u0026amp;  \\u0022quoted\\u0022\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw caption=\"&#1050;&#1080;&#1111;&#1074; &amp; &lt;clock&gt; &quot;quoted&quot;\" time-zone=\"UTC\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "default",
+          "id": 237,
+          "caption": "&NotEqualTilde; <clock>",
+          "stored_caption": "≂̸ ",
+          "caption_unchanged": false,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026NotEqualTilde; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&NotEqualTilde; <clock>\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"≂̸ \",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw caption=\"&#8770;&#824; &lt;clock&gt;\" time-zone=\"UTC\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "default",
+          "id": 239,
+          "caption": "&amp;#34; <clock>",
+          "stored_caption": "&amp;#34; ",
+          "caption_unchanged": false,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;#34; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&amp;#34; <clock>\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;#34; \",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw caption=\"&amp;#34; &lt;clock&gt;\" time-zone=\"UTC\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "legacy-control",
+          "id": 241,
+          "caption": "Київ & <clock> \"quoted\"",
+          "stored_caption": "Київ & <clock> \"quoted\"",
+          "caption_unchanged": true,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Київ \\u0026 \\u003cclock\\u003e \\u0022quoted\\u0022\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"Київ & <clock> &quot;quoted&quot;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"Київ \\u0026 \\u003cclock\\u003e \\u0022quoted\\u0022\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&#1050;&#1080;&#1111;&#1074; &amp; &lt;clock&gt; &quot;quoted&quot;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "legacy-control",
+          "id": 243,
+          "caption": "&NotEqualTilde; <clock>",
+          "stored_caption": "&NotEqualTilde; <clock>",
+          "caption_unchanged": true,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026NotEqualTilde; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&NotEqualTilde; <clock>\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026NotEqualTilde; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&#8770;&#824; &lt;clock&gt;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        },
+        {
+          "mode": "legacy-control",
+          "id": 245,
+          "caption": "&amp;#34; <clock>",
+          "stored_caption": "&amp;#34; <clock>",
+          "caption_unchanged": true,
+          "initial": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;#34; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&amp;#34; <clock>\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->",
+          "stored": "<!-- wp:simple-digital-clock-block/widget-block {\"caption\":\"\\u0026amp;#34; \\u003cclock\\u003e\",\"timeZone\":\"UTC\"} --><timenow-zone-sdcw time-zone=\"UTC\" caption=\"&amp;#34; &lt;clock&gt;\"></timenow-zone-sdcw><!-- /wp:simple-digital-clock-block/widget-block -->"
+        }
+      ]
+    }
+  },
+  "core_navigation_control": {
+    "beta83": {
+      "profile": "beta83",
+      "engine": "webkit",
+      "plugin_disabled": true,
+      "core_saves": [
+        {
+          "id": 521,
+          "valid": true
+        },
+        {
+          "id": 522,
+          "valid": true
+        },
+        {
+          "id": 523,
+          "valid": true
+        }
+      ],
+      "errors": [
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/edit-post/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/edit-post/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/block-directory/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/block-directory/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/format-library/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/format-library/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/editor.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/editor.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/media-views.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/media-views.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/block-editor/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/block-editor/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/editor/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/editor/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/block-library/editor.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/block-library/editor.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/block-library/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/block-library/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/preferences/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/preferences/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/reusable-blocks/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/reusable-blocks/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/patterns/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/patterns/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/media-utils/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/media-utils/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/block-library/reset.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/block-library/reset.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/css/dist/block-editor/content.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/css/dist/block-editor/content.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/",
+          "message": "/127.0.0.1:19533/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19533/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17 due to access control checks.\n    at prefetch (http://127.0.0.1:19533/wp-admin/:164:9)\n    at j (http://127.0.0.1:19533/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        }
+      ],
+      "teardownErrors": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/d20793295df38541ba41b485f60852059e515b61a9c5c217809c28d4bd7df576?s=28&d=mm&r=g",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/8e1606e6fba450a9362af43874c1b2dfad34c782e33d0a51e1b46c18a2a567dd?s=50&d=mm&r=g",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19533/index.php?rest_route=%2Fwp%2Fv2%2Fusers&context=view&include%5B0%5D=1&who=authors&_locale=user",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/d20793295df38541ba41b485f60852059e515b61a9c5c217809c28d4bd7df576?s=64&d=mm&r=g",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/d20793295df38541ba41b485f60852059e515b61a9c5c217809c28d4bd7df576?s=64&d=mm&r=g",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19533/index.php?rest_route=%2Fwp%2Fv2%2Fusers&context=view&include%5B0%5D=1&who=authors&_locale=user",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/d20793295df38541ba41b485f60852059e515b61a9c5c217809c28d4bd7df576?s=64&d=mm&r=g",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19533/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        }
+      ]
+    },
+    "beta85": {
+      "profile": "beta85",
+      "engine": "webkit",
+      "plugin_disabled": true,
+      "core_saves": [
+        {
+          "id": 504,
+          "valid": true
+        },
+        {
+          "id": 505,
+          "valid": true
+        },
+        {
+          "id": 506,
+          "valid": true
+        }
+      ],
+      "errors": [
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/edit-post/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/edit-post/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/block-directory/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/block-directory/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/format-library/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/format-library/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/editor.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/editor.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/media-views.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/media-views.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/block-editor/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/block-editor/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/editor/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/editor/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/block-library/editor.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/block-library/editor.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/block-library/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/block-library/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/preferences/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/preferences/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/reusable-blocks/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/reusable-blocks/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/patterns/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/patterns/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/media-utils/style.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/media-utils/style.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/block-library/reset.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/block-library/reset.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/css/dist/block-editor/content.min.css?ver=7.2-beta2 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/css/dist/block-editor/content.min.css?ver=7.2-beta2 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/",
+          "message": "/127.0.0.1:19534/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17 due to access control checks.",
+          "stack": "Fetch API cannot load http://127.0.0.1:19534/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17 due to access control checks.\n    at prefetch (http://127.0.0.1:19534/wp-admin/:164:9)\n    at j (http://127.0.0.1:19534/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b:3:1765)"
+        }
+      ],
+      "teardownErrors": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19534/index.php?rest_route=%2Fwp%2Fv2%2Fusers&context=view&include%5B0%5D=1&who=authors&_locale=user",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/d20793295df38541ba41b485f60852059e515b61a9c5c217809c28d4bd7df576?s=64&d=mm&r=g",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/d20793295df38541ba41b485f60852059e515b61a9c5c217809c28d4bd7df576?s=64&d=mm&r=g",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19534/index.php?rest_route=%2Fwp%2Fv2%2Fusers&context=view&include%5B0%5D=1&who=authors&_locale=user",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "https://secure.gravatar.com/avatar/d20793295df38541ba41b485f60852059e515b61a9c5c217809c28d4bd7df576?s=64&d=mm&r=g",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19534/wp-admin/admin-ajax.php",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        },
+        {
+          "url": "http://127.0.0.1:19534/index.php?rest_route=%2Fwp%2Fv2%2Fusers&context=view&include%5B0%5D=1&who=authors&_locale=user",
+          "failure": {
+            "errorText": "cancelled"
+          },
+          "closing": false
+        }
+      ]
+    }
+  },
+  "incomplete_initial_reads": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/candidate112-beta83-chromium.json",
+      "checks": 57,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/candidate112-beta83-firefox.json",
+      "checks": 57,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/candidate112-beta83-webkit.json",
+      "checks": 57,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/candidate112-beta85-chromium.json",
+      "checks": 33,
+      "failed": 1,
+      "failed_checks": [
+        "Acceptance scenario completes"
+      ],
+      "errors": [],
+      "error": "page.waitForFunction: Timeout 20000ms exceeded.\n    at openEditor (/Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/browser-helpers.mjs:51:14)\n    at async runSite (/Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/final-acceptance.mjs:146:51)\n    at async file:///Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/final-acceptance.mjs:234:15"
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/candidate112-beta85-firefox.json",
+      "checks": 1,
+      "failed": 1,
+      "failed_checks": [
+        "Acceptance scenario completes"
+      ],
+      "errors": [],
+      "error": "page.waitForURL: Timeout 20000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/wp-admin/**\" until \"domcontentloaded\"\n============================================================\n    at openEditor (/Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/browser-helpers.mjs:47:10)\n    at async runSite (/Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/final-acceptance.mjs:73:18)\n    at async file:///Users/yy/dev2/Simple-Digital-Clock-Widget/tools/wordpress-lab/final-acceptance.mjs:234:15"
+    },
+    {
+      "path": ".local/wordpress-lab/wp72-beta/candidate112-beta85-webkit.json",
+      "checks": 57,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "standalone_idle_read": [
+    {
+      "path": ".local/wordpress-lab/wp72-beta/candidate112-idle-beta85-chromium.json",
+      "checks": 57,
+      "failed": 0,
+      "failed_checks": [],
+      "errors": [],
+      "error": null
+    }
+  ],
+  "frozen_artifact_validation": {
+    "head": "b945c3330d1ed318d500a1c1b819316857ee1e9c",
+    "source_trunk_tag_match_accepted_manifest": true,
+    "svn_status_unchanged": true,
+    "candidate_zip_unchanged": true,
+    "release_diffs_unchanged": true,
+    "standalone_widget_unchanged": true,
+    "preserved_banner_sha256": "35559dbfb7e8a9a0fa9204807414bb67ff1a35bb424e5a8a80da83c4ea4b18d5",
+    "core_official_files_unchanged": {
+      "beta83": 3516,
+      "beta85": 3516
+    }
+  },
+  "cleanup": {
+    "project": "sdcw-wp72-beta2-20261028",
+    "running_project_containers": "",
+    "loopback_ports_closed": {
+      "19527": true,
+      "19533": true,
+      "19534": true
+    },
+    "database_directory_preserved": true,
+    "volumes_removed": false,
+    "native_localwp_changed": false
+  },
+  "source_sha256": {
+    "tools/wordpress-lab/beta72-lab.py": "70522b409eaeea00782766a2c93a4bb52a80613a4fe03f1723e050dfeadf6515",
+    "tools/wordpress-lab/beta72-browser.py": "fce69380b13a4d899fb130b723b372898116c4076bb91c7d18bc2416eb1009ce",
+    "tools/wordpress-lab/beta72-repro.php": "12cab7135e2d88f8fc843c046d9aa3e56ef03b87e451bf658c6d2d1c30a632d9",
+    "tools/wordpress-lab/beta72-ui.mjs": "a5d9cc9e62d26137b4ed5a87a2fa700fa61998226a621ea43d1347ce1319193b",
+    "tools/wordpress-lab/beta72-navigation-control.mjs": "200e061d0fe0ab29d8fb2d7ab87af5fde0d238bf5aaad67a31a3e4e94b97300d",
+    "tools/wordpress-lab/browser-helpers.mjs": "63c4f7cbaf900a4cb7222c13ab4e05f5515c9404c4b9a826c519a2ab102cd20e",
+    "tools/wordpress-lab/visual-helpers.mjs": "362fad24033230e0560ec9689077a794e8e4b14dc047066f50217be180f52c2d",
+    "tools/wordpress-lab/final-acceptance.mjs": "644c13c4d4b6adb8774f8cdf610062a2f5139cf14542c7630a6b0f48506b784b",
+    "tools/wordpress-lab/locale-tests.mjs": "140305c595436a399a1f3583b04941c75f7d527c8768713ef06c6c7de99be513",
+    "tools/wordpress-lab/locale-pointer-tests.mjs": "370e01261f5511e9c410a4a38d5e8c9049b1aac34c0a14d1dbaaecdcb3a0cd11",
+    "tools/wordpress-lab/timezone-reset-read.mjs": "d17ced5fcc08589a2fe85d62fa48946db816fba60d4afdda4da1caec39d04f8e",
+    "tools/wordpress-lab/html5-entity-dom.mjs": "d1dbbb77b5e7ada8403288a4f4e56e4dbdccd6bde84d5888085cbfb2a06c14f5"
+  },
+  "evidence_sha256": {
+    ".local/wordpress-lab/wp72-beta/actual-ui-runner.json": "5e74e6d18fd3c72385eea4e7b42034e2a753de904382a4e252b7da3f370ed626",
+    ".local/wordpress-lab/wp72-beta/all-entities-named-post-chromium.json": "025f1b0c9d6ad3490e522357408f3cf7198c0c497d08e22fa1b4f3b7620cb6bc",
+    ".local/wordpress-lab/wp72-beta/all-entities-named-post-firefox.json": "81b23d49a50a36cfcb0c5428d805c1668f890dc690b1932222e79c99c4add5a8",
+    ".local/wordpress-lab/wp72-beta/all-entities-named-post-webkit.json": "d8fb2011948b43357bf44b973f1bf02764cf74f501da1129533279266e6e79b7",
+    ".local/wordpress-lab/wp72-beta/all-entities-named-widget-chromium.json": "025f1b0c9d6ad3490e522357408f3cf7198c0c497d08e22fa1b4f3b7620cb6bc",
+    ".local/wordpress-lab/wp72-beta/all-entities-named-widget-firefox.json": "81b23d49a50a36cfcb0c5428d805c1668f890dc690b1932222e79c99c4add5a8",
+    ".local/wordpress-lab/wp72-beta/all-entities-named-widget-webkit.json": "d8fb2011948b43357bf44b973f1bf02764cf74f501da1129533279266e6e79b7",
+    ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-chromium.json": "e21848dcc7251ed05a7419214cbc0cd3d827c6f5ee3b26519601495f4d4fc9d6",
+    ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-firefox.json": "36c31ce845fd3ba2310471054a5101ce3fb3ca353c53a68587f225c161ba224a",
+    ".local/wordpress-lab/wp72-beta/all-entities-numeric-post-webkit.json": "8492c3daea52d701af0ba52fe583f4b0383304e5eaa9e5d5ec717a8754609231",
+    ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-chromium.json": "e21848dcc7251ed05a7419214cbc0cd3d827c6f5ee3b26519601495f4d4fc9d6",
+    ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-firefox.json": "36c31ce845fd3ba2310471054a5101ce3fb3ca353c53a68587f225c161ba224a",
+    ".local/wordpress-lab/wp72-beta/all-entities-numeric-widget-webkit.json": "8492c3daea52d701af0ba52fe583f4b0383304e5eaa9e5d5ec717a8754609231",
+    ".local/wordpress-lab/wp72-beta/baseline-firefox.log": "b59f1fb1ecd5348d4523692dd1fdbaf53838c96d9388d7664a7142a93361dae3",
+    ".local/wordpress-lab/wp72-beta/baseline-webkit.log": "bf74f71999241f54b0c962d8596e78decc86d24b14b317db66dc2fa25ae6d53a",
+    ".local/wordpress-lab/wp72-beta/baseline111-beta83-chromium.json": "fb2236b5a66794de1374657d121fb4c50d3b90e2896e8007df7ddf5524eccabb",
+    ".local/wordpress-lab/wp72-beta/baseline111-beta83-firefox.json": "2cf1d2958e69a7e8e8d02df50a5cefd60a56782cf414babb39700f60eeaec8bf",
+    ".local/wordpress-lab/wp72-beta/baseline111-beta83-webkit.json": "dc52d00a1698d7424e79fb96bb611b08190f8dcc4a5102b699d1e2a6c142c7e0",
+    ".local/wordpress-lab/wp72-beta/baseline111-beta85-chromium.json": "524d4847edc98faa381ece21ec47d07a9df75046d914cb85d3e94fb36625c0c8",
+    ".local/wordpress-lab/wp72-beta/baseline111-beta85-firefox.json": "59f9509a0224acbd5c6423d536bc935548c3c6b2f222744cc9b6da39bc86705c",
+    ".local/wordpress-lab/wp72-beta/baseline111-beta85-webkit.json": "404aacb0a6f3c3a22d3b25d6d129b44bd1af2182b145d639bac89bb6476de527",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta83-chromium-administrator.png": "90ea4350cc582ac2fa7f94af54c500eb01d3a20515de55bac51c06ddf3790067",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta83-chromium-author.png": "c47127cecf89d7249dc9bf397dbe433e86f6324f051b91ce4aa603e6eb978998",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta83-chromium.json": "a6d856f96160464d4b5d1a2d48f9bc2bbe5f28af845df41c57b0986282c5e8b2",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta83-firefox-administrator-error.png": "dc4a93d9b7eab532fcbab7bee70aef046689056f33e1ba8ecb19148f161c1383",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta83-firefox.json": "b974a4c8c5e7f57b8a03b01c630cbe40accafd7face4f3e6b81083257fdcd9fd",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta83-webkit-administrator.png": "d13af4631b4d1a1ee53c01b45829543b6dc0a3075f407ca745b39add89026ec0",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta83-webkit-author.png": "e3b261f1523cae2319a53d29ccf584e391838ec9ed655678c6279fd17ede4391",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta83-webkit.json": "063f079d42c284c4574c0505115ac4361787522cdd7c29b1274efec6d31f34aa",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-chromium-administrator.png": "0fe4061b11c732c26a6d7c60ec982ca62ae280681e93b2661518a3d69e94816f",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-chromium-author.png": "65bf02485ddf45a48d46bfaff894eb05750702979a15d7ffb88054c28245dabe",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-chromium.json": "0c8eae0b63619dde8401480b5a3fc576af63aa600386c5b630a4a900fff44808",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-firefox-administrator.png": "31438abe09fb7febec49e26dad599756a3b8d796175bd5c09e384e653bd48fd0",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-firefox-author.png": "8db197ad415a99d2680959791f303cfc08576f768e5926798d4d90e38c89ddaa",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-firefox.json": "e5713848179a4617f6f1fe9c44bcdbeddec02c2ad17212276d22855268b3a1d8",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-webkit-administrator.png": "ecfad5de4b295512d8442caf697e89bc839989326c42745c010ce5518828cabd",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-webkit-author.png": "f968d981649230e0076800e697554093006cecb1dd7915b41f7225bf6d61bdd0",
+    ".local/wordpress-lab/wp72-beta/beta-locale-beta85-webkit.json": "0dc9e00b4c2be46ecbfe20214defdc325ef88e81a8b2bac4d45aeb7407076ae0",
+    ".local/wordpress-lab/wp72-beta/beta-locale-recheck-beta83-firefox-administrator.png": "c8f76c713a5e71bcd9288ce492cb8bc950c25dfd793a2859456a38e0f2c54da5",
+    ".local/wordpress-lab/wp72-beta/beta-locale-recheck-beta83-firefox-author.png": "1db6140e664d6ef22cd940df8a4dbbc977c8e5123e57c6ea63bae0c966539f95",
+    ".local/wordpress-lab/wp72-beta/beta-locale-recheck-beta83-firefox.json": "17724944f93fc1eae9fd9c11229ed0b1ea4408983131c2fba6d912577ced62c5",
+    ".local/wordpress-lab/wp72-beta/beta-locale-runner.json": "4d05232827b83f28c85a178568bbe28e1a89d34e074fbebaacac83e20a389be8",
+    ".local/wordpress-lab/wp72-beta/beta-pointer-runner.json": "faaaaf795db995a8877b3fe255d55c83e664bf665c26960cec944f29d32b8927",
+    ".local/wordpress-lab/wp72-beta/candidate112-beta83-chromium.json": "7a6748244206b5abb742c45fb3301026aa754b24cd2c551990f648e9a76330c3",
+    ".local/wordpress-lab/wp72-beta/candidate112-beta83-firefox.json": "d6f526b322ec917fac5491eda41680155d4e34e9758f7551182c1b823bce60e4",
+    ".local/wordpress-lab/wp72-beta/candidate112-beta83-webkit.json": "0a20e43587b9043195d3a74f4f299f115d5288d5d013fcd1982b6889a6f31a67",
+    ".local/wordpress-lab/wp72-beta/candidate112-beta85-chromium.json": "04f8d8a0c17e8a953a21fc87c8d3be544290e6574f2536d9f46094626e5b32eb",
+    ".local/wordpress-lab/wp72-beta/candidate112-beta85-firefox.json": "0183226823aa8723d27c03f71ae396f9f934cf0c67d627db28ab17cc7716b7f6",
+    ".local/wordpress-lab/wp72-beta/candidate112-beta85-webkit.json": "76d1f23683611952fd7faca7d530bb79250ddebe8fe9da2681c3245a7f69987f",
+    ".local/wordpress-lab/wp72-beta/candidate112-idle-beta85-chromium.json": "5c42554eb3d3d974ccc5a9555d9f9826c453fececcb2f9c9f4e2b7fb503a5c5e",
+    ".local/wordpress-lab/wp72-beta/check-chromium.log": "c2d14da099f9f9bf0c2624beb25c144db55ef63d2395dde097243ea3676a3f86",
+    ".local/wordpress-lab/wp72-beta/check-firefox.log": "3e3144e940678d1afc0b1c671e337afcf533a2669f2a3c0a3408556f2c5438c8",
+    ".local/wordpress-lab/wp72-beta/check-idle-chromium.log": "665aa5a4dca2fdac6389bef55ddfa9609175b7b2d185a1c145bf1cc582af5c9e",
+    ".local/wordpress-lab/wp72-beta/check-webkit.log": "25426d397ff35ce47c70e8c1b198b0e140287c1115fa16cdad73e9e42c3e1875",
+    ".local/wordpress-lab/wp72-beta/cleanup.json": "f7967e83eb475129a74ef67d2546a17105282b80a9dbbfc468270733416d1a6e",
+    ".local/wordpress-lab/wp72-beta/core-navigation-beta83.json": "7ef09997ba75d6c9ab1e55974242d85cb5657b4580589b451707714cf11fc433",
+    ".local/wordpress-lab/wp72-beta/core-navigation-beta85.json": "aba729dbe59a877226a57133377475620e704bda3b86cf86296ecd5a2da2c398",
+    ".local/wordpress-lab/wp72-beta/core-navigation-runner.json": "2f4a14c4887fe574ad0065c919754060d889a1f7f6aaf635a648395bd6fc836c",
+    ".local/wordpress-lab/wp72-beta/core.json": "984511f73b11376f4386d9eaf591ee025bb54f68bf878c38abb415c5cc0aded5",
+    ".local/wordpress-lab/wp72-beta/entities.log": "938c640ab7a2417c7ba875689dbb1ba656f9334d8aecd86dee9633115163926d",
+    ".local/wordpress-lab/wp72-beta/entity-dom-runner.json": "c3c3533322ae1ffd99dbbbf74329b0d745658090417a800443ac29a559cea59c",
+    ".local/wordpress-lab/wp72-beta/frozen-after.json": "a0b862357546b103736d069d51a67deeb04cc47b4c42a9a27e441fbb209581db",
+    ".local/wordpress-lab/wp72-beta/frozen-before.json": "bcec14e38d9a9986ef6cac251f185c86e12d2d15122f8a5ff4763e1e4d81e4f3",
+    ".local/wordpress-lab/wp72-beta/initialize.log": "d1186a61ea69fa775d5659a9e4d9860cabf81ab5b70ea04a16aa1d6b17415935",
+    ".local/wordpress-lab/wp72-beta/kses-control-beta83.json": "3713cbe52f9b3a87b0d23d11cb2d3a5dcdd61529e5829f1b76cdfbb875cf9be9",
+    ".local/wordpress-lab/wp72-beta/kses-control-beta85.json": "32d53367f981fc9b9b1d10f54078d91183d4514de958c820f28f5e1ec26ced3a",
+    ".local/wordpress-lab/wp72-beta/legacy-cycle.log": "fda84db496a5b9f02cda1e80f471b49509bf7914b3a4db5efa5983b7712ca206",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-final-review.php.json": "7563408fd898fbb542396dd07da3c5cdaa96ff01223126bde4f91adba9313f69",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-html5-caption-save.php.json": "de768a4ac39aa23be53a64b3d54d2cfa304f2dd84b360bb0e6e2cdbc72b85065",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-html5-charset.php.json": "85f670c951663d2a05962df8ca7c6f9af1b89b831ca3bff04d11e9c2b1e13815",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-html5-entity-pipeline.php.json": "e29b69e88a9177e05e575cfc0a9aa3e228ae177a178bedaf56ae1d6c9495171b",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-numeric-caption-save.php.json": "e09e5f48fa0ab2099e6600733a33fa45b8bad8b4c52aa42935509a7ac6a9dd10",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-numeric-entity-pipeline.php.json": "a6acc4e0be1bfcd840891558fdcd4552b6c659446d5aedcf085e9bd6e032838b",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-p2-caption.php.json": "70be588db4979e4a99a3572c434d4b411f8c56b99cc33ad97921a9006b0bd058",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-regression.php.json": "d30451d33b12ecd21bea3522f2f3389ae912145eca743b13f523c37ebd3494c6",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-widget-entity-pipeline.php-named.json": "a0d366b4276fe3c5ee70cb57db3b8a2ee18bc676efc4a336c698827de9567fbd",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-widget-entity-pipeline.php-numeric.json": "3c5c730e61e95932191dbc4cd67ff5cbabeb15f2acdcb508869a1ed52f6ea53d",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta83-widget-fallback.php.json": "75a6e643747c2fdfaaeae77bfb63f429294cd6acb5d353d71aa4291b42aa35a8",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-final-review.php.json": "67c34d428fb7396aeaf553552b2b3759578168f3d04a94095335288f523aaaa7",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-html5-caption-save.php.json": "a50bb069a6645c46f2d72fe6e33e345e39cfd7d4c3b8ba1d3a339b78c1df7e6b",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-html5-charset.php.json": "a6c7916d75b343ecbe87eff34817d4667c409733dde99f7d12aa172274613627",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-html5-entity-pipeline.php.json": "1036c75669708ec310224a1c91b1313600063c35ac8094cdf1e6200e83fb7029",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-numeric-caption-save.php.json": "1cc344691ad9cbf097674d93965c4cb794106d4c47522db358325cfd706f6018",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-numeric-entity-pipeline.php.json": "bbaee6a6e99ae71968210dade3dddfe1213d4fe529969b5f8cdef960c6eabab9",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-p2-caption.php.json": "17f7e86314d28cb5c6e3568743ba7bb38e69d2f17e177243fdbc28047ebc4532",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-regression.php.json": "aff3363f3fc661633d1b581337b616a171f2f8f98c25a97cfc60897c94dbdfd3",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-widget-entity-pipeline.php-named.json": "7f9c09701e2034128a904036b97de66144572b997e17c003f0ccc42027d3b9c6",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-widget-entity-pipeline.php-numeric.json": "9c221f770b7eae51555701b79b2915ce0f1cb18a9935c6389d53b9d71fda4de3",
+    ".local/wordpress-lab/wp72-beta/legacy-php-beta85-widget-fallback.php.json": "3409ee4a6d71d989ff709e3ae2a4c0f0dfa81eaa1fd02127ba0dfbea48092482",
+    ".local/wordpress-lab/wp72-beta/legacy-php-summary.json": "4c4fb21bce0f50bb2138c1c1348ab5b948caee637fd270bd889a78405e564893",
+    ".local/wordpress-lab/wp72-beta/legacy-pipeline-named-post.json": "945830de6d671498ff47b4ea8b8dc49e0650415927730a40df5e75878a2d9d93",
+    ".local/wordpress-lab/wp72-beta/legacy-pipeline-named-widget.json": "d1119863c1bbcb8cd705db4ae5c8f1922f81067d5dff078ab8b24b0590f3187a",
+    ".local/wordpress-lab/wp72-beta/legacy-pipeline-numeric-post.json": "d65cc0e0e4f92281cc794de16c3f8d8d1ac93b7fbb91c027d95a1b6aae0e7429",
+    ".local/wordpress-lab/wp72-beta/legacy-pipeline-numeric-widget.json": "7f6e84ec09de693a52e269cf84305869c918b7136660fb93b58ac2941aecd5a7",
+    ".local/wordpress-lab/wp72-beta/locale-recheck-cycle.log": "61945305af266d45d81cfbd114dac2a32f33a87c2f5433c5ff50161396fb1442",
+    ".local/wordpress-lab/wp72-beta/locale.log": "770a47adf49e42375937a274835394db3d212a0c3bddd8f9293c983b44ddb6b6",
+    ".local/wordpress-lab/wp72-beta/php-beta83-final-review.php.json": "50bffbc26939528ab88b97a02cca8e4ecb550a08259aa73a78fb4d14751aaf01",
+    ".local/wordpress-lab/wp72-beta/php-beta83-html5-caption-save.php.json": "e435bc51744ee94979296fe906b653092c07be0a2936b0e7658617d28c73894b",
+    ".local/wordpress-lab/wp72-beta/php-beta83-html5-charset.php.json": "85f670c951663d2a05962df8ca7c6f9af1b89b831ca3bff04d11e9c2b1e13815",
+    ".local/wordpress-lab/wp72-beta/php-beta83-html5-entity-pipeline.php.json": "e29b69e88a9177e05e575cfc0a9aa3e228ae177a178bedaf56ae1d6c9495171b",
+    ".local/wordpress-lab/wp72-beta/php-beta83-numeric-caption-save.php.json": "8c3378860631b38b7704b90cef1b8fd56658b24658b97850a742435f90745120",
+    ".local/wordpress-lab/wp72-beta/php-beta83-numeric-entity-pipeline.php.json": "a6acc4e0be1bfcd840891558fdcd4552b6c659446d5aedcf085e9bd6e032838b",
+    ".local/wordpress-lab/wp72-beta/php-beta83-p2-caption.php.json": "70be588db4979e4a99a3572c434d4b411f8c56b99cc33ad97921a9006b0bd058",
+    ".local/wordpress-lab/wp72-beta/php-beta83-regression.php.json": "27cc5b8faac18542e6a9616027ef0564c4367d345f9b32da5954e5a32ba4a3be",
+    ".local/wordpress-lab/wp72-beta/php-beta83-widget-entity-pipeline.php-named.json": "a0d366b4276fe3c5ee70cb57db3b8a2ee18bc676efc4a336c698827de9567fbd",
+    ".local/wordpress-lab/wp72-beta/php-beta83-widget-entity-pipeline.php-numeric.json": "3c5c730e61e95932191dbc4cd67ff5cbabeb15f2acdcb508869a1ed52f6ea53d",
+    ".local/wordpress-lab/wp72-beta/php-beta83-widget-fallback.php.json": "f5993eb46989bb416564c7bca3693368a3debec77a89c2b4f06be3e2d9de79b9",
+    ".local/wordpress-lab/wp72-beta/php-beta85-final-review.php.json": "c529b20aa486cf729361f0ee3a47f852fb3c1db4b649b55f21a5ba60b6e707de",
+    ".local/wordpress-lab/wp72-beta/php-beta85-html5-caption-save.php.json": "97ad45853f42bda1798d2302242ae434a7e41a1842a4aaee885e3e860f85dc96",
+    ".local/wordpress-lab/wp72-beta/php-beta85-html5-charset.php.json": "a6c7916d75b343ecbe87eff34817d4667c409733dde99f7d12aa172274613627",
+    ".local/wordpress-lab/wp72-beta/php-beta85-html5-entity-pipeline.php.json": "1036c75669708ec310224a1c91b1313600063c35ac8094cdf1e6200e83fb7029",
+    ".local/wordpress-lab/wp72-beta/php-beta85-numeric-caption-save.php.json": "90d6e8de54a4880704242abfcbd8a50db4d29276bd246bb3adb75297b2fd6b0e",
+    ".local/wordpress-lab/wp72-beta/php-beta85-numeric-entity-pipeline.php.json": "bbaee6a6e99ae71968210dade3dddfe1213d4fe529969b5f8cdef960c6eabab9",
+    ".local/wordpress-lab/wp72-beta/php-beta85-p2-caption.php.json": "17f7e86314d28cb5c6e3568743ba7bb38e69d2f17e177243fdbc28047ebc4532",
+    ".local/wordpress-lab/wp72-beta/php-beta85-regression.php.json": "b7583e7a581d6dc2051a484972145ce952f197507d16e1ba7c56a41b7f986387",
+    ".local/wordpress-lab/wp72-beta/php-beta85-widget-entity-pipeline.php-named.json": "7f9c09701e2034128a904036b97de66144572b997e17c003f0ccc42027d3b9c6",
+    ".local/wordpress-lab/wp72-beta/php-beta85-widget-entity-pipeline.php-numeric.json": "9c221f770b7eae51555701b79b2915ce0f1cb18a9935c6389d53b9d71fda4de3",
+    ".local/wordpress-lab/wp72-beta/php-beta85-widget-fallback.php.json": "b225b35b71bf0d785ec6e81ac8771e3a8d6f2b34648c178b820246cc934481d5",
+    ".local/wordpress-lab/wp72-beta/php-full.log": "7c195ee33e3fb1b314d2e5159a74a69c5f54cef620e80fe8dd84e8e9305b3414",
+    ".local/wordpress-lab/wp72-beta/php-summary.json": "ea8a6f051caf79216d471aa3de58318452fd2ef7b2a47155bc7928e93f344c68",
+    ".local/wordpress-lab/wp72-beta/php.log": "2fbf67c8d5b24b19462901eae083531a4ad6d57e27c8c6b3250e210120fe8cf3",
+    ".local/wordpress-lab/wp72-beta/pipeline-named-post.json": "945830de6d671498ff47b4ea8b8dc49e0650415927730a40df5e75878a2d9d93",
+    ".local/wordpress-lab/wp72-beta/pipeline-named-widget.json": "d1119863c1bbcb8cd705db4ae5c8f1922f81067d5dff078ab8b24b0590f3187a",
+    ".local/wordpress-lab/wp72-beta/pipeline-numeric-post.json": "d65cc0e0e4f92281cc794de16c3f8d8d1ac93b7fbb91c027d95a1b6aae0e7429",
+    ".local/wordpress-lab/wp72-beta/pipeline-numeric-widget.json": "7f6e84ec09de693a52e269cf84305869c918b7136660fb93b58ac2941aecd5a7",
+    ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta83-chromium.json": "094eaf4cf38690f186db090812b4013e512017b6b5e3f833aa234b23461edba0",
+    ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta83-firefox.json": "a37766604c0271ac7c99fdd4c344cd4d73bf9b26aa3ea08bf22dc0b26924d97e",
+    ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta83-webkit.json": "d18d2556beac125b539c8015137038736bcdb2a0fe7b3c1ccbb4dc685fddafa5",
+    ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta85-chromium.json": "11fdac7b753333127950cf4025037608dcec79d740bacd04a8f58eb1a59f69ee",
+    ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta85-firefox.json": "33eddc79b6f2d618c441db2f752f313ee72aad21392b4e696e2dc1434ad69fe3",
+    ".local/wordpress-lab/wp72-beta/pointer-beta-pointer-beta85-webkit.json": "3fffaf79b0bdb8abae38526b17b99ccebf79f26fd0edce53d6a0c4d4a456f8a0",
+    ".local/wordpress-lab/wp72-beta/pointer-cycle.log": "3da6486674dcb5fc66f177994eace9a6ac2dfb0d10c1d44100ee28b8c39bba3e",
+    ".local/wordpress-lab/wp72-beta/reset-read-rollback-reset-beta83-chromium.json": "9105079b4e7b321524d49c1415dcf2dec2a09cf196f098df0dda424b07aa9d22",
+    ".local/wordpress-lab/wp72-beta/reset-read-rollback-reset-beta83-firefox.json": "828a20836de6779fb8032d3e61b3fbff1cd54cc4dbd7956d38c96e57274b2cf5",
+    ".local/wordpress-lab/wp72-beta/reset-read-rollback-reset-beta85-chromium.json": "32d55bf1851952ef56131457b853de650818b151506986c2668cd36ce963f182",
+    ".local/wordpress-lab/wp72-beta/reset-read-rollback-reset-beta85-firefox.json": "a22f5112377c8678d2c07b8a4797a95c26bc6f38dfa21d15704c8df669153508",
+    ".local/wordpress-lab/wp72-beta/reupgrade-read.log": "57f9233a143135548c90aab5cadb4aa1d6d61402e3e4bbc0d7b8c9f35bece510",
+    ".local/wordpress-lab/wp72-beta/reupgrade.log": "c9f2dab9675dd593b3e50bcb46427a13d9f39c0586ea874ebb487e87fcf15843",
+    ".local/wordpress-lab/wp72-beta/reupgrade112-after.json": "eb6e47ec765caca6435e3af2e28e1123fd70a7614aab61840a9e0ca9f633b063",
+    ".local/wordpress-lab/wp72-beta/reupgrade112-before.json": "eb6e47ec765caca6435e3af2e28e1123fd70a7614aab61840a9e0ca9f633b063",
+    ".local/wordpress-lab/wp72-beta/reupgrade112-beta83-chromium.json": "73c3f7741cb4bc1645312314e2b0cac8b85d8003bffa3899216a9f357719e5fe",
+    ".local/wordpress-lab/wp72-beta/reupgrade112-beta85-chromium.json": "c319a62c2de068421e9d5d187f9698eb1ef57fe94952070c6315b877d27905d6",
+    ".local/wordpress-lab/wp72-beta/reupgrade112.json": "50300f2be72c62fc39fb08a047be1011af3158f5b54256f9a8ef1a255fa9b850",
+    ".local/wordpress-lab/wp72-beta/rollback-install.log": "de198b8130c1eeb9a0e893c8a6ff71f945190bc7cbab4fa3aa85dc1d7ec761c4",
+    ".local/wordpress-lab/wp72-beta/rollback-locale-beta83-chromium.json": "c73535e382273af6eadea28d01f1ce11fa3009818f506df443953dc088c37843",
+    ".local/wordpress-lab/wp72-beta/rollback-locale-beta83-firefox.json": "b1226be60e8b918f803fb837f30860eb9a4b4c1340761350408033fe2aed1c6f",
+    ".local/wordpress-lab/wp72-beta/rollback-locale-beta83-webkit.json": "235ddfc4104b202161cd77e39024c17bfb7c87d72d854c8698a0156f77277aac",
+    ".local/wordpress-lab/wp72-beta/rollback-locale-beta85-chromium.json": "26c60f0493d095ce363a0b6b1a3526a2374ede0b682a0570e8ff9d42d2dc653b",
+    ".local/wordpress-lab/wp72-beta/rollback-locale-beta85-firefox.json": "2547cd35fad5effee27ea07bdc7424046d25788da2412b647066f746b15d3887",
+    ".local/wordpress-lab/wp72-beta/rollback-locale-beta85-webkit.json": "c09ec58a48d4c545ccd3cf8142cedca81e96d395dfac98e2d6a251ff97602180",
+    ".local/wordpress-lab/wp72-beta/rollback-locale-cycle.log": "9f10e5c8a5b9807e54002bb3a5b8523d8389a86beaeddf042fe84e4f70a686e8",
+    ".local/wordpress-lab/wp72-beta/rollback-locale-runner.json": "0f68c852acf20205db8e8731b8b71102f54350b2f286e28856fbf3f2860d5ad2",
+    ".local/wordpress-lab/wp72-beta/rollback-reset-cycle.log": "b866994a330fe0ecab6c0bc7246e0bf3fa8b78302509ba056d45894fe6a79ae8",
+    ".local/wordpress-lab/wp72-beta/rollback-reset-runner.json": "9f74930d5dcab25279c9b4ff3754da3ca8c7d2f0cafe0528bd8909d666e72d52",
+    ".local/wordpress-lab/wp72-beta/rollback111-after.json": "eb6e47ec765caca6435e3af2e28e1123fd70a7614aab61840a9e0ca9f633b063",
+    ".local/wordpress-lab/wp72-beta/rollback111-before.json": "eb6e47ec765caca6435e3af2e28e1123fd70a7614aab61840a9e0ca9f633b063",
+    ".local/wordpress-lab/wp72-beta/rollback111-beta83-chromium.json": "b00aacc4d91fef13d5a491d3a8bed7b0bb16268f101cb4d4a6f943846d48254c",
+    ".local/wordpress-lab/wp72-beta/rollback111-beta83-firefox.json": "2808920c1359fbd626f6a1f8ffb2bd124e386edfb172e8cbd576e018af73f5bd",
+    ".local/wordpress-lab/wp72-beta/rollback111-beta83-webkit.json": "eb0f9fa35167fa9bdaaaa7338a9bf5d59bd4c4a0e64a40c32d9a73d5617b4b0f",
+    ".local/wordpress-lab/wp72-beta/rollback111-beta85-chromium.json": "db3d4b4d8db2a3e71396e35115c41428c161f9b4aea525c2da2a62a7f4c97023",
+    ".local/wordpress-lab/wp72-beta/rollback111-beta85-firefox.json": "5fc8e4fc96d84f00d77228b7e956b738b435c8b45937f320a51bd000c0d42fb0",
+    ".local/wordpress-lab/wp72-beta/rollback111-beta85-webkit.json": "ee6097d3cb0da2bf4203cd3a73c71c6a66e67bd63decd0aca89af75ea5a398e4",
+    ".local/wordpress-lab/wp72-beta/rollback111-cycle.log": "48df70db56ff4514c5c0496b40c8a2d5be951417ef6b4279428a6cd38737e0ca",
+    ".local/wordpress-lab/wp72-beta/rollback111-runner.json": "0bea7b4225b8d4323fb5c979154e059cee83abe67f77c02d6d068b1616857251",
+    ".local/wordpress-lab/wp72-beta/rollback111.json": "890a17a3934798540f5fd42ba8e13e08aca4cff0a8d2bd0e857c33359c1a6866",
+    ".local/wordpress-lab/wp72-beta/save.log": "593693384b53af5c5cf1376cf3fd4082782a46750a0d1c95c0b2e00c0d3384bc",
+    ".local/wordpress-lab/wp72-beta/saved112-beta83-chromium.json": "a7fda63cd0aefb07e0dbea5a2af86779ce997a7dfd5728712da8887ad54ef98f",
+    ".local/wordpress-lab/wp72-beta/saved112-beta83-firefox.json": "ca96f347cd6168e74000ed274ed3c00a9585a5ee82cb8dfdba0afdaa13ef9363",
+    ".local/wordpress-lab/wp72-beta/saved112-beta83-webkit.json": "6f6134c5ad48930801f9a292da5928484116aeaeb78122125b81588c5b9a6757",
+    ".local/wordpress-lab/wp72-beta/saved112-beta85-chromium.json": "e96bc3f770b33d847d0ed1ab8dbc7f4d85b03d50896841642ee8455e7736b0be",
+    ".local/wordpress-lab/wp72-beta/saved112-beta85-firefox.json": "459effe68cbb6f7ebefe7fba4cb269488a5dde054be006821d0f7e89b80fe730",
+    ".local/wordpress-lab/wp72-beta/saved112-beta85-webkit.json": "c75a44bb0aa51140041632bef6de15f427cd516ecd4270ff851e43b29fa0d6e0",
+    ".local/wordpress-lab/wp72-beta/saved112-runner.json": "d7b8330634d7239ddc2d648a445b7316125b051b4430830861772ee7c6e370d8",
+    ".local/wordpress-lab/wp72-beta/seed-beta83.json": "220edf81b28f6466ae4cdb6afc090fa0f7d694f6f2af1ace72c56371341a4eab",
+    ".local/wordpress-lab/wp72-beta/seed-beta85.json": "44f3ec136305d9501d40835ad9c930ae1b9b66abcbc4be345f40e5dc2f64a555",
+    ".local/wordpress-lab/wp72-beta/seed.log": "786a514a0bbebdb583c6c48898443a1d022736403c7bdf05623fad44120d5a0a",
+    ".local/wordpress-lab/wp72-beta/setup.log": "977d32bc3586e6d9ef2b44b5367b60d6c4fe8c1ae6f72cbc33564ba47487c462",
+    ".local/wordpress-lab/wp72-beta/sites.json": "b6b30444a566f68a9974079eb86a6895c19e0a2e3965d3b3066c041bebcc4be8",
+    ".local/wordpress-lab/wp72-beta/ui-cycle.log": "54d2988afd216be2fae0af88e60df2f304bf67f93c065ad5fb7893181280512f",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta83-chromium.json": "e2083a02e00b609a662bdedb8c2265029d8cf64e84ac96ff38b33c7b15bb8804",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta83-chromium.png": "87a2edb084c91e88d5246b75c69286b57a423b207ed530cf9c89e0d3b49b2ecc",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta83-firefox.json": "d6fb686a43f0aad15a9cfd31c8e493cf117187ae443db7f1d01d792cfc85d8c1",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta83-firefox.png": "01165bcb00e59c6587b5702aecb19cdf328c13532955afe7f232838f7460fb45",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta83-webkit.json": "a8ffaa1bb037a362aedd2c5a2b3cf8a01008cc46adf4d534d231822882fe5622",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta83-webkit.png": "9553f30c0b2cc3cc5ba3fda2f7a80c6ac42557a596605370cd308ad827a4841d",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta85-chromium.json": "9015b222d71d49d3647b24340de3cfa4e3c2537082c241bfa46c5c6f69990b3e",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta85-chromium.png": "89b980058caad0daff489aa092e59fc5e288a719211facca4a43e13e692dc0a1",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta85-firefox.json": "e4d84a611fbe61afdf2c4a2e630d53e5776f28084e3e95e7a0a632a9a561e9eb",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta85-firefox.png": "727c30a7d82724272ffc8b6a0498525461139e08d177c9162eea42eb9b9e6f1c",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta85-webkit.json": "fe59348faab3baf5f6dc736a3761fab31a371898efebfdc0fb14ba4061cba4af",
+    ".local/wordpress-lab/wp72-beta/ui-repro-beta85-webkit.png": "a587b77dfb18ed309d7b4a2bf75766abe5e7c71a0bbc544ff5b33e1f4cbeaa79",
+    ".local/wordpress-lab/wp72-beta/upgrade.log": "85866211fe0955720fdeb6042e420639b8fe1d6943739eb584074df8b8bd3f84",
+    ".local/wordpress-lab/wp72-beta/upgrade112-after.json": "9f01f3289b60ce770c4f0a915601b3558be362a8420e3f9dd110939c6453173e",
+    ".local/wordpress-lab/wp72-beta/upgrade112-before.json": "9f01f3289b60ce770c4f0a915601b3558be362a8420e3f9dd110939c6453173e",
+    ".local/wordpress-lab/wp72-beta/upgrade112.json": "b3760c536e3cef0fc9cc695b209bd7637457dd5654333b07e15f7d4dc9d5fc8c",
+    ".local/wordpress-lab/wp72-beta/visual-baseline-beta83-chromium.json": "67181eb333e6c1736e3f1aae74acee2faaf082d7e44486615c1887a25271437f",
+    ".local/wordpress-lab/wp72-beta/visual-baseline-beta83-firefox.json": "b39dc9c3f77655633ab650e695b382a5e5429769ac30f04313a07aa00ec2439a",
+    ".local/wordpress-lab/wp72-beta/visual-baseline-beta83-webkit.json": "4a63ef69aa0e2c26f990d3534e302194e2218b8c46d52a4ef5b43f5f3306b59f",
+    ".local/wordpress-lab/wp72-beta/visual-baseline-beta85-chromium.json": "67181eb333e6c1736e3f1aae74acee2faaf082d7e44486615c1887a25271437f",
+    ".local/wordpress-lab/wp72-beta/visual-baseline-beta85-firefox.json": "b39dc9c3f77655633ab650e695b382a5e5429769ac30f04313a07aa00ec2439a",
+    ".local/wordpress-lab/wp72-beta/visual-baseline-beta85-webkit.json": "4a63ef69aa0e2c26f990d3534e302194e2218b8c46d52a4ef5b43f5f3306b59f",
+    ".local/wordpress-lab/wp72-beta/beta83/wp-content/debug.log": "1ab392b9ca7554bf6f27a924901069deaeb99a82a32d3c33d05d8b856dd68e80",
+    ".local/wordpress-lab/wp72-beta/beta85/wp-content/debug.log": "9a02823a3508b1130b76fb4a1193a28685348f64fa1a6da8002ee86334d6d14a"
+  },
+  "unresolved": [
+    "Initial simultaneous browser/PHP login and editor timeouts",
+    "One Firefox inserter timeout; standalone repeat passed",
+    "WebKit admin-ajax navigation errors not reproduced by the short plugin-disabled Core control"
+  ]
+}

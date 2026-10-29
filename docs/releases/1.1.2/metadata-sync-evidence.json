@@ -1,0 +1,136 @@
+{
+  "observed_at": "2026-10-28T22:37:47.807184+00:00",
+  "status": "ACCEPTED_LOCAL_METADATA_SYNC",
+  "publication": false,
+  "package": {
+    "previous_zip_sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720",
+    "zip_sha256": "e939a89b6fba498e713d9afa22d423370c7e3a03411a0589f528ddd45328852b",
+    "diff_sha256": "b95ae2d123a678ddb1944dcf0f180c5c31a7b0495a5f7c1cdb8b8f477627f201",
+    "changed_from_tested_payload": [
+      "languages/simple-digital-clock.pot"
+    ],
+    "files": {
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+      "assets/public/js/simple-digital-clock.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+      "block.js": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
+      "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "includes/simple-digital-clock-kses.php": "7d6e41fa7d07d0f52f7dc84dd72e1262726f7e52c854c704425d7e9b05046ff5",
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "languages/simple-digital-clock.pot": "bc83bcfe8a030fc96863ded23d623eeb3ae01ed96884a8162d7ca439c99cd74d",
+      "readme.txt": "4234a17b4e4634c64367f48d45d4738b988f7c9aacc97ffe9a84bbf1f9006b28",
+      "widget_init.php": "1edb55b67d8cb6f6ef15019e8b2bf1e60ea4fcaefb28cf12e9dac3c43991b077"
+    },
+    "all_14_other_files_identical": true,
+    "runtime_php_js_css_identical": true,
+    "pot_messages_identical": true,
+    "pot_messages": 54,
+    "zip_crc_passed": true,
+    "patch_dry_run_and_apply_match_zip": true,
+    "functional_matrix_rerun": false,
+    "functional_acceptance_commit": "9dd7c53f64a96ce2012cb439490eae39eda0e84e",
+    "functional_acceptance_tree": "ffc3aa9ca9a7771a4f1cb8205590e08ed1c6d597",
+    "publication": false,
+    "git_plugin_tree": "61cd23fe9223c7fe23c832ce447afa19c1b0835a"
+  },
+  "svn": {
+    "targets": [
+      "trunk",
+      "tags/1.1.2"
+    ],
+    "only_new_changed_file": "languages/simple-digital-clock.pot",
+    "exact_zip_match": true,
+    "files": 15,
+    "trunk_properties_unchanged": true,
+    "tag_copy_history_preserved": true,
+    "untracked_banner_preserved": true,
+    "diff_dry_run_and_apply_exact": true,
+    "svn_commit": false
+  },
+  "gettext": {
+    "method": "Manual metadata/reference synchronization; independent GNU gettext xgettext PHP extraction, not WP-CLI regeneration",
+    "php_source_files": 5,
+    "catalogue_messages": 54,
+    "extracted_php_messages": 51,
+    "messages_added": 0,
+    "messages_removed": 0,
+    "msgid_msgstr_context_plural_identical": true,
+    "placeholder_parity": true,
+    "message_order_preserved": true,
+    "all_source_references_verified": true,
+    "reference_entries_changed": 46,
+    "msgfmt_check_format_exit": 0
+  },
+  "functional_acceptance": {
+    "git_payload_commit": "9dd7c53f64a96ce2012cb439490eae39eda0e84e",
+    "git_plugin_tree": "ffc3aa9ca9a7771a4f1cb8205590e08ed1c6d597",
+    "zip_sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720",
+    "report": "../../patches/1.1.2/KSES72-VERIFICATION.md",
+    "evidence": "../../patches/1.1.2/kses72-evidence.json"
+  },
+  "functional_tests_repeated": false,
+  "standalone_widget_version": "0.7.0",
+  "upstream_manifest_unchanged": true,
+  "runtime_sites_started": false,
+  "preserved_functional_zip": ".local/docs-sync-1.1.2/functional-6f.zip",
+  "preserved_functional_diff": ".local/docs-sync-1.1.2/functional-6f.patch",
+  "evidence_files": [
+    {
+      "path": ".local/docs-sync-1.1.2/package.json",
+      "sha256": "ef7d95f32ca9af9b85491ce280c642a9f8a62d773a9ca12a258dc02ce7a6e234"
+    },
+    {
+      "path": ".local/docs-sync-1.1.2/svn-result.json",
+      "sha256": "66d659aa6ffdabb5e8e821f3acf023da0b9b982833517e9dd79a6d530d1fae21"
+    },
+    {
+      "path": ".local/docs-sync-1.1.2/audit-pot/report.json",
+      "sha256": "9e25f07f69adb7d0c7ec8a6a12264c9a25939b089f56be7c3997b6af5107075c"
+    },
+    {
+      "path": ".local/docs-sync-1.1.2/functional-6f.zip",
+      "sha256": "6f896d42797e6d3a4727f8ece6d13bb8f4be2ed8e9425473ef02ea5e374d8720"
+    },
+    {
+      "path": ".local/docs-sync-1.1.2/functional-6f.patch",
+      "sha256": "ae89ed02b7f2eebeaa7988a907b58dbdd0315a82c55f43c2013a3924407a4ee3"
+    },
+    {
+      "path": ".local/docs-sync-1.1.2/verification.json",
+      "sha256": "daa1a5c1ac6171482274a0ce6d8ba095c587b25ca11d719ddbaad16814b8f524"
+    },
+    {
+      "path": ".local/docs-sync-1.1.2/standalone-release-check.log",
+      "sha256": "9fdee8761d7c5bf03f856e9580657dbdb1b69217938c992910f6566b9e1d4ab5"
+    },
+    {
+      "path": ".local/docs-sync-1.1.2/standalone-release-verify.log",
+      "sha256": "e57bccf499bebc058b1410f399cdf0aff18cd376ec14d1b13b569eb54f091c1a"
+    }
+  ],
+  "final_checks": {
+    "checks": [
+      "source_index_zip_trunk_tag_15_files_identical",
+      "versions_consistent",
+      "POT_54_messages_unchanged",
+      "full_and_SVN_diff_hashes_match",
+      "functional_evidence_unchanged",
+      "official_1_1_1_manifest_unchanged",
+      "standalone_bundle_unchanged",
+      "beta_runner_pinned_to_release_zip",
+      "relative_documentation_links_exist"
+    ],
+    "relative_links_checked": 79,
+    "zip_sha256": "e939a89b6fba498e713d9afa22d423370c7e3a03411a0589f528ddd45328852b",
+    "plugin_tree": "61cd23fe9223c7fe23c832ce447afa19c1b0835a",
+    "runtime_changes": false,
+    "publication": false
+  },
+  "standalone_release_check": true,
+  "standalone_versioned_bundle_check": true
+}
