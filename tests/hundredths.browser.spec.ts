@@ -203,7 +203,17 @@ it("hundredths fits responsive widths without wrapping", async () => {
       const locale = el.getAttribute("locale");
       const period = el.getAttribute("period") === "false" ? "24h" : "12h";
       const text = time.textContent || "";
-      const context = `${width}px ${locale} ${period}: "${text}"`;
+      const style = getComputedStyle(time);
+      const layout = {
+        font: style.font,
+        fontSize: style.fontSize,
+        letterSpacing: style.letterSpacing,
+        lineHeight: style.lineHeight,
+        containerWidth: container.getBoundingClientRect().width,
+        rects: rects.map(({ x, y, width, height }) => ({ x, y, width, height })),
+        fonts: document.fonts.status,
+      };
+      const context = `${width}px ${locale} ${period}: "${text}"; layout=${JSON.stringify(layout)}`;
 
       assert.lengthOf(rects, 1, `time must stay on one line at ${context}`);
       assert.isAtMost(
