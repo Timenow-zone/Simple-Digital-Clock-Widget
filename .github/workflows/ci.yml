@@ -64,6 +64,8 @@ jobs:
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
       - name: Verify WordPress package identity and release versions
         run: node --test tests/wordpress-package.test.mjs
+      - name: Check WordPress 6.3 serialization compatibility
+        run: node --test tests/wordpress-serialization.test.mjs
       - name: Verify that checks leave tracked files unchanged
         run: git diff --exit-code
 

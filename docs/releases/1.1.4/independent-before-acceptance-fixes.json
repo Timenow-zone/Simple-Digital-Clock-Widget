@@ -1,0 +1,350 @@
+{
+  "verdict": "NO-GO",
+  "completed_at_utc": "2026-10-30T18:32:44.405810+00:00",
+  "completed_at_kyiv": "2026-10-30T20:32:44.405810+02:00",
+  "artifact": {
+    "commit": "9a84e74cec67b112af2bd0f02aab29b653308266",
+    "zip_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
+    "zip_bytes": 62003,
+    "files": 15,
+    "unchanged": true,
+    "origin_matches_requested_repository": true
+  },
+  "blocking_findings": [
+    {
+      "id": "B1",
+      "priority": "P1",
+      "title": "Missing third-party MIT notices",
+      "evidence": "license-audit.json"
+    },
+    {
+      "id": "B2",
+      "priority": "P2",
+      "title": "Terminal backslash invalidates nondefault clock settings on supported Core 6.3",
+      "inherited_from_public_112": true,
+      "evidence": [
+        {
+          "file": "ui-defect-repro.json",
+          "failed_cases": [
+            {
+              "site": "minclean",
+              "role": "administrator",
+              "id": 202,
+              "observed_width": 200
+            },
+            {
+              "site": "minclean",
+              "role": "editor",
+              "id": 205,
+              "observed_width": 200
+            },
+            {
+              "site": "minclean",
+              "role": "author",
+              "id": 208,
+              "observed_width": 200
+            }
+          ]
+        },
+        {
+          "file": "ui-defect-repro-public-112.json",
+          "failed_cases": [
+            {
+              "site": "minupgrade",
+              "role": "administrator",
+              "id": 104,
+              "observed_width": 200
+            },
+            {
+              "site": "minupgrade",
+              "role": "editor",
+              "id": 107,
+              "observed_width": 200
+            },
+            {
+              "site": "minupgrade",
+              "role": "author",
+              "id": 110,
+              "observed_width": 200
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nonblocking_findings": [
+    {
+      "id": "D1",
+      "priority": "P3",
+      "title": "Root README current paragraphs incorrectly reference widget 0.8.0",
+      "locations": [
+        "README.md:289",
+        "README.md:291"
+      ]
+    }
+  ],
+  "plugin_check": {
+    "version": "2.1.0",
+    "wordpress": "7.1.4",
+    "php": "8.3.35",
+    "mode": "update",
+    "static_checks": [
+      "i18n_usage",
+      "php_error_reporting",
+      "code_obfuscation",
+      "plugin_content",
+      "file_type",
+      "plugin_header_fields",
+      "late_escaping",
+      "safe_redirect",
+      "plugin_updater",
+      "plugin_uninstall",
+      "plugin_review_phpcs",
+      "direct_db_queries",
+      "performant_wp_query_params",
+      "enqueued_scripts_in_footer",
+      "enqueued_resources",
+      "plugin_readme",
+      "localhost",
+      "no_unfiltered_uploads",
+      "trademarks",
+      "offloading_files",
+      "write_file",
+      "setting_sanitization",
+      "prefixing",
+      "direct_db",
+      "minified_files",
+      "direct_file_access",
+      "external_admin_menu_links",
+      "wp_functions_compatibility",
+      "ai_provider"
+    ],
+    "runtime_checks": [
+      "enqueued_scripts_size",
+      "enqueued_styles_size",
+      "enqueued_styles_scope",
+      "enqueued_scripts_scope",
+      "non_blocking_scripts"
+    ],
+    "runtime_individual_completed": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "errors": 0,
+    "warnings": [
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 90,
+        "column": 9,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 143,
+        "column": 17,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 156,
+        "column": 13,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 222,
+        "column": 13,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 228,
+        "column": 9,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 318,
+        "column": 14,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace",
+        "message": "debug_backtrace() found. Debug code should not normally be used in production.",
+        "docs": ""
+      },
+      {
+        "file": "assets/public/js/simple-digital-clock.min.js",
+        "line": 0,
+        "column": 0,
+        "type": "WARNING",
+        "code": "EnqueuedScriptsScope",
+        "message": "This script is being loaded in all frontend contexts.",
+        "docs": ""
+      }
+    ],
+    "raw": "logs/pcp-all.json"
+  },
+  "file_transitions": [
+    {
+      "site": "minupgrade",
+      "phase": "update",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00"
+    },
+    {
+      "site": "currentupgrade",
+      "phase": "update",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00"
+    },
+    {
+      "site": "minupgrade",
+      "phase": "rollback",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55"
+    },
+    {
+      "site": "currentupgrade",
+      "phase": "rollback",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55"
+    },
+    {
+      "site": "minupgrade",
+      "phase": "reupdate",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00"
+    },
+    {
+      "site": "currentupgrade",
+      "phase": "reupdate",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00"
+    }
+  ],
+  "browsers": [
+    {
+      "engine": "chromium",
+      "browser": "151.0.7922.34",
+      "platform": "macOS",
+      "final_editor_records": 10,
+      "final_clock_blocks": 240,
+      "preexisting_invalid_blocks": 6,
+      "additional_trailing_slash_invalid_blocks": 1,
+      "unhandled_page_errors": 0,
+      "final_widget_sites": 2,
+      "native_intl_observations": 102
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.5",
+      "platform": "macOS",
+      "final_editor_records": 10,
+      "final_clock_blocks": 240,
+      "preexisting_invalid_blocks": 6,
+      "additional_trailing_slash_invalid_blocks": 1,
+      "unhandled_page_errors": 0,
+      "final_widget_sites": 2,
+      "native_intl_observations": 102
+    },
+    {
+      "engine": "firefox",
+      "browser": "153.0",
+      "platform": "Linux container",
+      "final_editor_records": 10,
+      "final_clock_blocks": 240,
+      "preexisting_invalid_blocks": 6,
+      "additional_trailing_slash_invalid_blocks": 1,
+      "unhandled_page_errors": 0,
+      "final_widget_sites": 2,
+      "native_intl_observations": 102
+    }
+  ],
+  "security": {
+    "current_php_probe_assertions": 298,
+    "current_php_probe_failures": 0,
+    "minimum_php_probe_assertions": 298,
+    "minimum_php_probe_failures": 12,
+    "php56_negative_is_simulation": true,
+    "actual_simulation_interpreter": "8.3.35",
+    "real_wp62_zip_and_activation_refused": true,
+    "ajax_and_direct_access": "ajax-security.json"
+  },
+  "coverage_limits": [
+    "Multisite",
+    "Actual HTTPS site",
+    "Native Safari UI and VoiceOver",
+    "Successful real Google font transport",
+    "Public WordPress.org 1.1.4 update delivery",
+    "Exhaustive entity corpus",
+    "Every synced-pattern UI save in every phase/engine",
+    "Native LocalWP site",
+    "Production CWV/cache acceptance"
+  ],
+  "database_restores": 0,
+  "fixture_resets": 0,
+  "candidate_source_edits": 0,
+  "publication_actions": 0,
+  "evidence_ignored": true,
+  "report": "REPORT.md",
+  "harness_history": "HARNESS-CHANGES.md",
+  "teardown": {
+    "containers_stopped": 8,
+    "ports_closed": 6,
+    "data_retained": true,
+    "raw": "teardown-final.json"
+  }
+}

@@ -1,55 +1,51 @@
-# WordPress 1.1.4 candidate: explicit minimum requirements
+# WordPress 1.1.4 candidate: minimum-Core compatibility and dependency notices
 
-Status: **candidate accepted; Core minimum-version checks, focused upgrades and source CI passed; not published**. Plugin version remains 1.1.4 and the bundled widget remains the already published 0.8.1. This preparation does not merge a PR, publish to WordPress.org or change production CDN delivery.
+Status: **corrective candidate prepared; native author verification, required PR CI and independent reacceptance pending; not published**. This revision addresses the independent NO-GO for the earlier requirements candidate. Plugin version remains **1.1.4**, minimum requirements remain **WordPress 6.3 / PHP 7.0**, and the shared widget remains **0.8.1**.
 
-## Exact new package
+## Exact candidate
 
-- ZIP: `.local/packages/simple-digital-clock-1.1.4-requirements-candidate.zip`, **15 installable files**.
-- ZIP SHA-256: `fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00`.
-- [Current fifteen-file manifest](manifest.json) and [revision preflight](preflight-evidence.json).
-- Widget: 0.8.1, 36,009 bytes, SHA-256 `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`. It remains identical to `dist/0.8.1.min.js` and the accepted public CDN artifact. Runtime source commit remains `b44f944b60babf45bf266e73ba12f7eba53cfef2`.
+- ZIP: `.local/packages/simple-digital-clock-1.1.4-compatibility-candidate.zip`; **64,020 bytes**, **16 installable files**.
+- ZIP SHA-256: `9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1`.
+- [Manifest](manifest.json), [package preflight](preflight-evidence.json), and [acceptance status](acceptance-evidence.json).
+- Widget: **0.8.1**, **36,009 bytes**, SHA-256 `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`.
+- Widget source commit: `b44f944b60babf45bf266e73ba12f7eba53cfef2`; widget bytes remain identical to `dist/0.8.1.min.js`. This WordPress-only correction does not rebuild or redeploy the shared runtime or change its dependencies.
 
-Only `widget_init.php` differs from the accepted pre-requirement package: two lines in its existing PHP comment declare `Requires at least: 6.3` and `Requires PHP: 7.0`. All fourteen other files, including the readme/changelog, block serializer, KSES, POT and JavaScript, are byte-identical. The executable PHP body, dependencies and saved-block schema are unchanged. Readme values and both header requirements agree; no artificial version bump or runtime rebuild is needed.
+Only `block.js`, `includes/simple-digital-clock-kses.php` and `readme.txt` change relative to the requirements candidate, with one new file, `THIRD-PARTY-NOTICES.txt`. The other twelve files, including the main PHP requirements, wrapper GPL license, POT and production widget, remain byte-identical. The complete manifest is authoritative.
 
-The previous accepted archive remains `.local/packages/simple-digital-clock-1.1.4-widget-0.8.1-candidate.zip`, SHA-256 `5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088`. Its [manifest](manifest-before-requirements.json), [acceptance](acceptance-before-requirements.json) and [preflight](preflight-before-requirements.json) are preserved separately. The earlier 0.8.0 candidate and frozen 1.1.3 archive also remain unchanged. A repacked archive must not inherit an old exact-ZIP result by relabeling its hash.
+## Independent blockers and corrections
 
-## Why the header change is necessary
+The [preserved independent result](independent-before-acceptance-fixes.json) returned **NO-GO** for ZIP `fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00` at commit `9a84e74cec67b112af2bd0f02aab29b653308266`. Its passing checks do not certify this new artifact.
 
-The readme already declares WordPress 6.3 and PHP 7.0, but the earlier main PHP header left both fields empty. Core ZIP installation and activation read these fields from the main PHP file and accept empty requirements; catalogue API metadata is a separate source. The new declarations let Core reject an incompatible target before installation or activation.
+### Bundled dependency notices
 
-A permanent package guard requires nonempty numeric requirements in both PHP and readme and exact parity. It fails against the previous missing-header state. Existing identity/version guards continue to check all files, the independent widget version, source reference and script cache version. [Core header documentation](https://developer.wordpress.org/plugins/plugin-basics/header-requirements/) and [Core requirement validation](https://developer.wordpress.org/reference/functions/validate_plugin_requirements/) describe the enforced fields.
+The installable package now includes the complete, exact upstream MIT copyright and permission notices for Preact **11.1.0**, preact-custom-element **4.6.0** and clsx **2.1.1** in `THIRD-PARTY-NOTICES.txt`. The existing wrapper GPL license and immutable JavaScript bundle remain unchanged. A permanent package guard checks locked/installed versions, MIT metadata and each full upstream license body; the package/manifest guard also requires the new file. A missing-file RED control fails; the new notices pass.
 
-## Current revision acceptance
+### Caption saving on WordPress 6.3
 
-The [minimum-version evidence](requirements-evidence.json) records three passing permanent package guards and six isolated negative controls: each missing field, each README mismatch and each nonnumeric value is rejected. The exact new ZIP is also checked with unchanged retained Core 7.1.3 header-parser, ZIP-check and activation-requirement function bodies. Supported minima pass; WordPress 6.2.9, PHP 5.6.40 and combined incompatibility return the corresponding Core errors. The old blank-header ZIP accepts unsupported inputs despite its readme declarations, reproducing the defect.
+Core 6.3's comment-attribute serializer can corrupt JSON when a caption ends in a backslash. The independent reviewer reproduced an invalid clock block and Width 200 instead of the saved 180 on actual WP 6.3.14 / PHP 7.0.33 for Administrator, Editor and Author. The exact public 1.1.2 has the same defect; current Core is a passing control. This is an inherited support boundary, not a claim that 1.1.4 introduced it.
 
-Those negative version decisions are controlled logic probes: WordPress uses Core's supported test-version override and PHP uses an isolated namespace constant. The actual interpreter is PHP 8.5.10, not PHP 5.6. Filesystem mapping, translations, filters and the no-plugin-dependency boundary use documented narrow doubles; this is not a complete WordPress activation/bootstrap. Separate real minimum/current Core updates supply the runtime acceptance below.
+New saves store Caption in the existing HTML `caption` attribute, avoiding that defective JSON path. The plugin preserves valid historical string caption metadata as authoritative when reading an old block. If old JSON settings are absent or were lost, the reader recovers only the clock's known attributes from its existing HTML with explicit numeric/boolean conversion. Raw HTML stays the source of truth for recovered values; settings absent from both representations cannot be reconstructed.
 
-The [focused upgrade evidence](requirements-upgrade-evidence.json) records the completed real cycle for this exact new ZIP:
+PHP metadata rewrites use a clock-specific safe serializer with escaped backslashes and comment delimiters. Around legacy Core's JSON KSES pass, only the known plain-text caption containing a backslash is temporarily omitted and restored if the clock HTML is unchanged. Other metadata and actual HTML still pass native KSES. Permissions, allowed HTML and foreign blocks are not broadened. Encoding failure retains original content and logs a fixed diagnostic without user input.
 
-| Actual environment | Core 1.1.2 upgrade | Physical rollback and Core reupdate | Installed Core minimum checks |
-| --- | --- | --- | --- |
-| WordPress 6.3.2 / PHP 7.0.33 | Passed | Passed | WordPress 6.3 / PHP 7.0; compatible |
-| WordPress 7.1.3 / PHP 8.3.35 | Passed | Passed | WordPress 6.3 / PHP 7.0; compatible |
+There is no database migration. Caption serialization intentionally changes on an explicit save; this is not a claim of byte-identical old/new block serialization. The exact public 1.1.2 reader already has an HTML-caption fallback. Its old writer can reintroduce its known Core 6.3 defect after a rollback; acceptance must distinguish old-writer behavior from reading new content and verify recovery on reupdate.
 
-Both initial Core HTTP AJAX upgrades and reupdates preserved complete post rows and critical options; all fifteen installed file hashes matched. Actual installed Core header parsing and requirement validation passed on both stacks after each update.
+### Documentation
 
-Across Chromium/WebKit and the two sites, each baseline/updated/resave/rollback/final stage passed **19,588 native block checks over four pairs**. There were **24 visible preservation saves**, **12 Caption/Width field saves**, four ticking final clocks and eight frontend/editor HTTP contexts verifying exact 0.8.1 bytes/cache version. All-frame capture recorded zero unexpected page/iframe/ResizeObserver errors. Caption/width frontend checks used the logged-in role context and are not claimed as new anonymous coverage.
+Root README's current CDN and 1.1.4 paragraphs now consistently identify widget **0.8.1**. WordPress README and the plugin changelog describe the compatibility correction and dependency notices. Historical release snapshots and published versioned files are retained.
 
-One original baseline authentication/navigation attempt failed before installing this candidate. A single bounded fresh-context read-only retry passed its 4,897 checks; the other successful groups were not repeated. Concurrent session-token changes are suspected, not causally proven. A normal later iframe navigation used an existing bounded frame reacquisition with no runtime error; it was not a failed save.
+## Verification and pending gates
 
-[Source CI run 41093506356](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/41093506356) passed Repository checks, Browser tests and the Cloudflare preview build. The final documentation commit must also pass the required PR checks; its final result is retained privately and visible on the PR. No merge or publication is implied by those checks.
+`node --test tests/wordpress-serialization.test.mjs` passes **4/4** controlled contracts, including **48 PHP assertions** for slash parity, quotes, Unicode/entities, nondefault settings, legacy JSON precedence, malformed numeric/boolean attributes, foreign blocks, no-op preservation, safe comment delimiters and encoding failure. The old source extracted from `9a84e74` fails **4/4**, including **19/48 PHP assertions**. The JavaScript unit fixture supplies Core-decoded HTML attributes; the PHP fixture retains the exact legacy escaping order with narrow doubles. These tests do not replace real Core, Gutenberg or KSES acceptance. Required Repository checks execute this regression suite.
 
-The focused cycle reuses only disposable fixture databases, with physical predecessor file restoration and no database resets. It checks actual Core HTTP AJAX updates, exact installed bytes/headers, post rows/options, editor validity, caption/width saves, live clocks and rollback readers in Chromium/WebKit. All four own test services are stopped, both site ports are closed and evidence/data are retained; the other nine project sites remained stopped. Public WordPress.org update offers are not supplied by this local package test.
+The package preflight verifies CRC, sixteen unique safe paths, every file against the source and manifest, unchanged widget/GPL bytes and preservation of thirteen earlier artifact snapshots. `npm run release:check` and `npm run release:verify` pass for the unchanged shared widget.
 
-## Preserved runtime acceptance
+Fresh native WordPress save/upgrade/rollback checks, exact installed hashes, actual Plugin Check static/runtime, all three browser engines and independent reacceptance remain separate pending gates. The previous seven-warning Plugin Check result must not be copied: the new explicit encoding-error diagnostic may add a warning, which requires fresh review. A green CI alone does not authorize publication.
 
-The [previous complete report at the accepted main merge](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/blob/bf6c4e6afc28236b2191a97f53046f295107a0d1/docs/releases/1.1.4/README.md), [Docker evidence](docker-evidence.json), [native evidence](native-runtime-evidence.json) and [original acceptance](acceptance-before-requirements.json) explicitly belong to archive `5963f947...6088`. They are not presented as a fresh full-matrix run of the new archive.
+## Preserved artifacts and publication boundaries
 
-That historical cycle covered eleven Docker sites and one fresh native Local-runtime site, direct 1.1.2 upgrades in six environments, four file rollbacks/reupdates, 216 visible preservation saves and nine caption/width saves. Both visual defects were closed with immutable 0.8.0 RED controls and exact 0.8.1 GREEN checks. The unchanged widget/block/KSES bytes preserve that runtime identity; this revision adds focused package and Core requirement checks instead of repeating the large visual/entity matrix. Retained harness retries and scope limits remain in the original reports.
+The rejected requirements ZIP remains `.local/packages/simple-digital-clock-1.1.4-requirements-candidate.zip`, SHA-256 `fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00`. Its [manifest](manifest-before-acceptance-fixes.json), [author status](acceptance-evidence-before-acceptance-fixes.json), [preflight](preflight-evidence-before-acceptance-fixes.json) and [historical author report](REQUIREMENTS-CANDIDATE.md) are preserved. That author report predates the independent NO-GO and is not the current release verdict.
 
-## CDN state, publication boundaries and rollback
+The earlier 0.8.1 candidate (`5963f947…6088`), 0.8.0 candidate and 1.1.3 ZIP also remain unchanged. Their large earlier matrices and minimum-header probes stay scoped to those exact artifacts. Widget 0.8.1's [CDN publication record](../0.8.1/PUBLICATION.md) records its original delivery; it is not WordPress 1.1.4 publication evidence.
 
-Widget 0.8.1 was already [published and verified](../0.8.1/PUBLICATION.md) after PR #11 merged. Production deployment `e6229332-a27a-4595-8cf4-3a6d63a43f7e` uses Worker version `49773ac2-fd37-43b8-93fa-a2fa1bc879f0` at 100% traffic. This header/documentation revision does not rebuild, replace or redeploy immutable widget bytes. The earlier [production-unchanged snapshot](production-unchanged.json) records the pre-publication stage and remains historical.
-
-WordPress 1.1.4 remains unpublished. Merging the new PR and publishing WordPress.org require later authorization; branch preview success does not authorize either. A repository rollback reverts the two PHP header lines and matching package metadata without resetting unrelated work. A test-site rollback restores the pinned official predecessor files without restoring its database. Preserve all old archives and evidence; do not overwrite accepted artifacts or run an older publication script against the new source tree.
+No merge, WordPress.org/SVN publication, release tag, npm publication or owner-site update is authorized by this preparation. Rollback restores pinned plugin files while preserving database data; it does not repair previously damaged content by itself. Keep every archive and manifest, inspect the exact new SHA before any later release, and never run an old publication script against this candidate.

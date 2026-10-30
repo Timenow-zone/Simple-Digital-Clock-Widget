@@ -63,6 +63,26 @@ function SDCW_allow_clock_post_html($tags, $context) {
 add_filter('wp_kses_allowed_html', 'SDCW_allow_clock_post_html', 10, 2);
 
 /**
+ * Serialize only clock metadata without older Core's backslash ambiguity.
+ * This is the current Core escaping order; foreign blocks keep their native path.
+ */
+function SDCW_serialize_clock_block_attributes($attributes) {
+    $encoded = wp_json_encode($attributes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    if (!is_string($encoded)) {
+        error_log('Simple Digital Clock: unable to encode block metadata; original content retained.');
+        return null;
+    }
+    return strtr($encoded, array(
+        '\\\\' => '\\u005c',
+        '--' => '\\u002d\\u002d',
+        '<' => '\\u003c',
+        '>' => '\\u003e',
+        '&' => '\\u0026',
+        '\\"' => '\\u0022',
+    ));
+}
+
+/**
  * Edit only complete clock blocks. Foreign comments and HTML remain untouched.
  * Decode objects as objects, including unknown attributes with numeric keys.
  */
@@ -78,9 +98,12 @@ function SDCW_map_clock_blocks($content, $callback) {
         if (!is_object($attributes) || preg_match('~<!--\s+/?wp:~', $match[4])) {
             return $match[0];
         }
-        $before = serialize_block_attributes($attributes);
+        $before = SDCW_serialize_clock_block_attributes($attributes);
         $callback($attributes, $match[4]);
-        $after = serialize_block_attributes($attributes);
+        $after = SDCW_serialize_clock_block_attributes($attributes);
+        if (null === $before || null === $after) {
+            return $match[0];
+        }
         if ($before === $after) {
             return $match[0];
         }
@@ -372,11 +395,17 @@ function SDCW_prepare_clock_post_html($content, $allowed_html) {
             }
             $content = $processor->get_updated_html();
         }
-        SDCW_map_clock_blocks($content, function ($attributes, $html) use (&$captions) {
+        $content = SDCW_map_clock_blocks($content, function ($attributes, $html) use (&$captions) {
+            $caption = isset($attributes->caption) && is_string($attributes->caption) ? $attributes->caption : null;
             $captions[] = array(
                 'html' => hash('sha256', $html),
-                'caption' => isset($attributes->caption) && is_string($attributes->caption) ? $attributes->caption : null,
+                'caption' => $caption,
             );
+            // Older Core corrupts escaped backslashes while reserializing JSON.
+            // Restore this plain-text field after that pass only if HTML is unchanged.
+            if (null !== $caption && false !== strpos($caption, '\\') && (!isset($GLOBALS['wp_kses_operating_mode']) || 'html-api' !== $GLOBALS['wp_kses_operating_mode'])) {
+                unset($attributes->caption);
+            }
         });
     }
     $frames[] = $captions;
