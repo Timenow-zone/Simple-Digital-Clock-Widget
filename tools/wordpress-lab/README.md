@@ -1,5 +1,15 @@
 # WordPress lab and compatibility acceptance
 
+## WordPress 1.1.3 regressions
+
+The [1.1.3 candidate report](../../docs/releases/1.1.3/README.md) records the fresh upgrade matrix from both published predecessors. The exact package, private lab orchestration and full raw evidence are retained under `.local/release-1.1.3/`; that prepared environment is not a clean-checkout CI bootstrap.
+
+`invalid-numeric-caption.php` exercises 75 direct and escaped numeric references through real Author title-only updates, all three post-save fields, repeat saves, filtered block-widget callbacks and normal KSES safety controls. It requires the disposable site's `local` environment, the `SDCW independent public upgrade` title and the three `independent_*` test accounts. The [six native regression fixtures](fixtures/invalid-numeric-native.json) retain exact Gutenberg output from the official 1.1.1 serializer and its source archive hash.
+
+`tests/container-resize.browser.spec.ts` runs in the normal browser suite. It checks parent-width changes without a window resize, initially hidden clocks, reconnects and cleanup of observers and event listeners. The candidate also retains the existing hundredths fitting and formatting tests. The WordPress matrix separately compares initial geometry with the result of an explicit resize, including the original two failing configurations.
+
+## Historical 1.1.2 acceptance
+
 See [KSES72-VERIFICATION.md](../../docs/patches/1.1.2/KSES72-VERIFICATION.md) for the functionally tested 1.1.2 runtime and its exact matrix. The [metadata synchronization](../../docs/releases/1.1.2/METADATA-SYNC.md) identifies the subsequent POT/changelog-only release package; the executable files are identical. `kses72-regression.php` adds 134 checks of real save filters and widget callbacks; `kses72-owned-pass.php` adds 42 checks of nested and unrelated sanitization. `kses72-widget-rest.mjs <seed|baseline|save|check> <stage> <engine> <beta83|beta85> [evidence-folder]` exercises the real filtered widget REST path. `beta72-ui.mjs <engine> <profile> <label> [fixed|broken]` verifies an actual title-only Gutenberg Save and reload. Beta profiles are explicitly allowlisted local ports 19533/19534. Temporary caption tokens must never reach stored content.
 
 The exact final ZIP `7a0e061f…` subsequently passed [release smoke and Plugin Check](../../docs/releases/1.1.2/PREFLIGHT.md). Smoke covers native LocalWP and WP 7.2 Beta 2 in three engines, actual Gutenberg Save and physical rollback. PCP 2.1.0 ran 29 static/5 runtime checks: zero errors, seven documented warnings versus one warning in public 1.1.1. These results are separate from the full KSES matrix and do not imply publication.

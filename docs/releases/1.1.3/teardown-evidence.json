@@ -1,0 +1,53 @@
+{
+  "all_project_containers_stopped": true,
+  "stopped_containers": 11,
+  "temporary_firefox_removed": true,
+  "database_and_evidence_retained": true,
+  "production_modified": false,
+  "containers": [
+    {
+      "name": "sdcw-113-20261029-p83a-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-p83b-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-p85a-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-p85b-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-p82b-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-p82a-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-p74b-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-p70a-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-p70b-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-db-1",
+      "state": "exited"
+    },
+    {
+      "name": "sdcw-113-20261029-packages-1",
+      "state": "exited"
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "scope": "Production demo and CDN only; no PR merge, WordPress.org/npm publication, or Git tag",
+  "source_commit": "d3cfbbe1963b08cae24f1d865a2bd1964c03bc39",
+  "version": "0.7.1",
+  "verified_at": "2026-10-30T07:39:32.849230+00:00",
+  "site": "https://simple-digital-clock-widget.yuri.ws",
+  "asset": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.7.1.min.js",
+  "widget": {
+    "path": "/assets/simple-digital-clock-widget-0.7.1.min.js",
+    "bytes": 34042,
+    "gzipBytes": 11776,
+    "gzipMeasurement": {
+      "level": 9,
+      "node": "v26.8.2",
+      "zlib": "1.2.12"
+    },
+    "sha256": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6"
+  },
+  "cloudflare": {
+    "worker": "simple-digital-clock-widget",
+    "version_id": "2823c0cc-de27-46c8-89ff-46b4f3062214",
+    "deployment_id": "f80c4af9-29da-4873-84ab-da3e3f91c09f",
+    "created_on": "2026-10-30T07:39:06.445537Z",
+    "traffic_percent": 100
+  },
+  "rollback": {
+    "version_id": "a0c9cc26-b606-4dc3-acf2-eceef078a8de",
+    "deployment_id": "bdd267c2-8ae8-4c10-9dec-a419401e704a",
+    "executed": false
+  },
+  "http_checks": {
+    "public_version": true,
+    "sha256": true,
+    "exact_bytes": true,
+    "html_reference": true,
+    "cache_headers": true,
+    "legacy_asset_preserved": true,
+    "exact_source_link": true
+  },
+  "resources": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 44201,
+      "sha256": "b529ea566dfb31e5e4cf30b068d2dcd95b3e10b0cc462fa03e8b75e2950302a9",
+      "cache_control": "public, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/version.json",
+      "status": 200,
+      "bytes": 331,
+      "sha256": "f8703f35499e840a0494d4644df232661cd20eaba8d796c06785081b7d1eacfb",
+      "cache_control": "public, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/assets/simple-digital-clock-widget-0.7.1.min.js",
+      "status": 200,
+      "bytes": 34042,
+      "sha256": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6",
+      "cache_control": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/assets/simple-digital-clock-widget-0.7.0.min.js",
+      "status": 200,
+      "bytes": 32649,
+      "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+      "cache_control": "public, max-age=31536000, immutable"
+    }
+  ],
+  "browsers": [
+    {
+      "engine": "chromium",
+      "rendered_clocks": 11,
+      "browser_loaded_sha256": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6",
+      "ticking": true,
+      "builder_checks": [
+        "timezone",
+        "locale",
+        "caption",
+        "hundredths",
+        "width",
+        "reset",
+        "preset",
+        "embed-version"
+      ],
+      "viewport_widths": [
+        1440,
+        390
+      ],
+      "iframe_visits": 5,
+      "clocks_per_iframe_visit": 2,
+      "page_and_child_window_errors": 0
+    },
+    {
+      "engine": "webkit",
+      "rendered_clocks": 11,
+      "browser_loaded_sha256": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6",
+      "ticking": true,
+      "builder_checks": [
+        "timezone",
+        "locale",
+        "caption",
+        "hundredths",
+        "width",
+        "reset",
+        "preset",
+        "embed-version"
+      ],
+      "viewport_widths": [
+        1440,
+        390
+      ],
+      "iframe_visits": 5,
+      "clocks_per_iframe_visit": 2,
+      "page_and_child_window_errors": 0
+    }
+  ],
+  "deployment_manifest": {
+    "source_commit": "d3cfbbe1963b08cae24f1d865a2bd1964c03bc39",
+    "widget_version": "0.7.1",
+    "files": {
+      "_headers": {
+        "bytes": 513,
+        "sha256": "6ff30f1623e4207e47d38748a85ae956ba5526f5690891a62d7f59383cc29e36"
+      },
+      "assets/simple-digital-clock-widget-0.7.0.min.js": {
+        "bytes": 32649,
+        "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368"
+      },
+      "assets/simple-digital-clock-widget-0.7.1.min.js": {
+        "bytes": 34042,
+        "sha256": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6"
+      },
+      "index.html": {
+        "bytes": 42720,
+        "sha256": "b5c19a1202462b67a0ac960dc8b7282131b31f50da571bbdff09925dbaa16e36"
+      },
+      "robots.txt": {
+        "bytes": 23,
+        "sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95"
+      },
+      "version.json": {
+        "bytes": 331,
+        "sha256": "f8703f35499e840a0494d4644df232661cd20eaba8d796c06785081b7d1eacfb"
+      }
+    },
+    "deployment_overlay": [
+      "Preserve the public 0.7.0 asset byte-for-byte.",
+      "Retain immutable cache headers for its existing URL.",
+      "Point the version source link at the exact accepted commit while v0.7.1 has no published tag."
+    ]
+  },
+  "limitations": [
+    "Point-in-time check, not proof of global edge propagation",
+    "No fresh public-domain Firefox smoke",
+    "No external font-delivery guarantee",
+    "Future site builds must explicitly retain published historical assets"
+  ]
+}

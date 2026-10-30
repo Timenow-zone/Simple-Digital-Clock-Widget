@@ -185,7 +185,7 @@ function SDCW_caption_character_reference($match) {
 }
 
 /**
- * Convert only named references that KSES would turn into literal entity text.
+ * Preserve browser semantics for references KSES would change or reject.
  * A single pass leaves &amp;Name; and deeper literal layers distinct.
  */
 function SDCW_encode_clock_caption_entities($raw_attribute) {
@@ -193,10 +193,21 @@ function SDCW_encode_clock_caption_entities($raw_attribute) {
     $raw_attribute = str_replace(array("\r\n", "\r"), "\n", $raw_attribute);
     // KSES strips a literal backslash before a closing quote on the next save.
     $protected = str_replace('\\', '&#92;', $raw_attribute);
-    $updated = preg_replace_callback('/&amp;(?=(#[0-9]+;|#[xX][0-9a-fA-F]+;))|&[a-zA-Z][a-zA-Z0-9]*;/', function ($match) {
+    $updated = preg_replace_callback('/&amp;(?=(#[0-9]+;|#[xX][0-9a-fA-F]+;))|&#([xX][0-9a-fA-F]+|[0-9]+);?|&[a-zA-Z][a-zA-Z0-9]*;/', function ($match) {
         // Older KSES restores &amp; and then decodes the newly exposed numeric reference.
         if (isset($match[1]) && '' !== $match[1]) {
             return '&#38;';
+        }
+        if (isset($match[2]) && '' !== $match[2]) {
+            $number = $match[2];
+            $hex = 'x' === $number[0] || 'X' === $number[0];
+            $codepoint = $hex ? intval(substr($number, 1), 16) : intval($number, 10);
+            // HTML replaces null, surrogate and out-of-range references with U+FFFD.
+            if (0 === $codepoint || $codepoint > 0x10ffff || ($codepoint >= 0xd800 && $codepoint <= 0xdfff)) {
+                return '&#65533;';
+            }
+            // A missing semicolon still terminates a numeric reference in HTML.
+            return rtrim($match[0], ';') . ';';
         }
         if (wp_kses_normalize_entities($match[0]) === $match[0]) {
             return $match[0];

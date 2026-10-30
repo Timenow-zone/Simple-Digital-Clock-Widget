@@ -1,0 +1,37 @@
+{
+  "source_version": "1.1.1",
+  "source_zip_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+  "expected_dom_caption": "Numeric � <clock>",
+  "cases": [
+    {
+      "caseId": "caption-1139",
+      "caption": "Numeric &#0; <clock>",
+      "old_valid_markup": "<!-- wp:simple-digital-clock-block/widget-block {\"date\":true,\"caption\":\"Numeric \\u0026#0; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" date=\"true\" second=\"true\" caption=\"Numeric &#0; &lt;clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->"
+    },
+    {
+      "caseId": "caption-1154",
+      "caption": "Numeric &#55296; <clock>",
+      "old_valid_markup": "<!-- wp:simple-digital-clock-block/widget-block {\"date\":true,\"caption\":\"Numeric \\u0026#55296; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" date=\"true\" second=\"true\" caption=\"Numeric &#55296; &lt;clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->"
+    },
+    {
+      "caseId": "caption-1156",
+      "caption": "Numeric &#1114112; <clock>",
+      "old_valid_markup": "<!-- wp:simple-digital-clock-block/widget-block {\"date\":true,\"caption\":\"Numeric \\u0026#1114112; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" date=\"true\" second=\"true\" caption=\"Numeric &#1114112; &lt;clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->"
+    },
+    {
+      "caseId": "caption-1157",
+      "caption": "Numeric &#x0; <clock>",
+      "old_valid_markup": "<!-- wp:simple-digital-clock-block/widget-block {\"date\":true,\"caption\":\"Numeric \\u0026#x0; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" date=\"true\" second=\"true\" caption=\"Numeric &#x0; &lt;clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->"
+    },
+    {
+      "caseId": "caption-1164",
+      "caption": "Numeric &#xD800; <clock>",
+      "old_valid_markup": "<!-- wp:simple-digital-clock-block/widget-block {\"date\":true,\"caption\":\"Numeric \\u0026#xD800; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" date=\"true\" second=\"true\" caption=\"Numeric &#xD800; &lt;clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->"
+    },
+    {
+      "caseId": "caption-1166",
+      "caption": "Numeric &#x110000; <clock>",
+      "old_valid_markup": "<!-- wp:simple-digital-clock-block/widget-block {\"date\":true,\"caption\":\"Numeric \\u0026#x110000; \\u003cclock\\u003e\"} -->\n<timenow-zone-sdcw class=\"wp-block-simple-digital-clock-block-widget-block\" width=\"200\" locale=\"en-US\" rounded=\"0.5\" align=\"left\" date=\"true\" second=\"true\" caption=\"Numeric &#x110000; &lt;clock&gt;\" background=\"linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%)\" time-zone=\"UTC\" background-color=\"#1d4ed8\"></timenow-zone-sdcw>\n<!-- /wp:simple-digital-clock-block/widget-block -->"
+    }
+  ]
+}

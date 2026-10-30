@@ -4,9 +4,9 @@ Lightweight, framework-agnostic web component (built with Preact) to display a d
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.7.0`
-* **Tiny:** 11.2 KiB gzipped (`dist/0.7.0.min.js`; 32,649 bytes minified, 11,422 bytes gzip)
-* **Artifact SHA-256:** `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`
+* **Current version:** `0.7.1`
+* **Tiny:** 11.5 KiB gzipped (`dist/0.7.1.min.js`; 34,042 bytes minified, 11,776 bytes gzip)
+* **Artifact SHA-256:** `affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
@@ -282,7 +282,9 @@ The plugin source is maintained separately in [`wordpress/simple-digital-clock/`
 See [`wordpress/README.md`](wordpress/README.md) for provenance, licensing, packaging, and local testing.
 Widget and WordPress plugin versions are independent; the widget build does not update the plugin bundle automatically.
 
-The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [current patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. The standalone widget remains **0.7.0**.
+The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [1.1.2 patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. That published package bundles widget **0.7.0**.
+
+The local **1.1.3 candidate** bundles widget **0.7.1** and fixes invalid numeric caption references and automatic container sizing. See the [candidate acceptance and package manifest](docs/releases/1.1.3/README.md). The WordPress candidate remains unpublished. Widget **0.7.1** is available on the production demo site and CDN; see the [CDN publication and verification record](docs/releases/0.7.1/CDN-PUBLICATION.md). CDN delivery does not publish an npm package or Git tag.
 
 The later readme-only publication r3772710 is recorded [separately](docs/releases/1.1.2/README-PUBLICATION.md); the original release manifest and tag remain historical records.
 

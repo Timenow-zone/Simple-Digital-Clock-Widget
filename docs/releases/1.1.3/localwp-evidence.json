@@ -1,0 +1,139 @@
+{
+  "observed_at": "2026-10-29T20:18:59.722002+00:00",
+  "status": "PASS_LOCALWP_UNPUBLISHED_CANDIDATE",
+  "source_commit": "9265e8dde1655271638c1338bca63f3fc5ee8b84",
+  "plugin_version": "1.1.3",
+  "widget_version": "0.7.1",
+  "zip_sha256": "adea5677469b98d8c94373af64202bb1dce5b91d5e340273f0f0a86a4c4b5b17",
+  "local_version": "10.2.0+7022",
+  "sites": [
+    {
+      "key": "local111",
+      "id": "as9mMliAx",
+      "name": "SDCW-113-From111-20261029",
+      "url": "http://localhost:10018",
+      "baseline_version": "1.1.1",
+      "wordpress": "7.1.3",
+      "php": "8.2.29",
+      "mysql": "8.4.0",
+      "theme": "twentytwentyfive",
+      "predecessor_sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+      "nginx": "1.26.1",
+      "final_plugin_version": "1.1.3",
+      "all_post_rows_and_checked_options_unchanged_during_upgrade": true,
+      "post_rows_during_upgrade": 2506,
+      "numeric_assertions": 976,
+      "plugin_php_issues": 0
+    },
+    {
+      "key": "local112",
+      "id": "CBkiaIMgH",
+      "name": "SDCW-113-From112-20261029",
+      "url": "http://localhost:10023",
+      "baseline_version": "1.1.2",
+      "wordpress": "7.1.3",
+      "php": "8.2.29",
+      "mysql": "8.4.0",
+      "theme": "twentytwentyfive",
+      "predecessor_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+      "nginx": "1.26.1",
+      "final_plugin_version": "1.1.3",
+      "all_post_rows_and_checked_options_unchanged_during_upgrade": true,
+      "post_rows_during_upgrade": 2506,
+      "numeric_assertions": 976,
+      "plugin_php_issues": 0
+    }
+  ],
+  "pairs": [
+    {
+      "site": "local111",
+      "engine": "chromium",
+      "browser_version": "151.0.7922.34",
+      "blocks_per_matrix": 4897,
+      "visible_preservation_saves": 6,
+      "visible_caption_width_edits": 3,
+      "initial_size_samples": 6,
+      "container_change_samples": 6,
+      "final_frontend_pages": 72,
+      "final_clock_render_observations": 4482,
+      "expected_geometry_changes": 0,
+      "ticking": true,
+      "failed": 0
+    },
+    {
+      "site": "local111",
+      "engine": "webkit",
+      "browser_version": "26.5",
+      "blocks_per_matrix": 4897,
+      "visible_preservation_saves": 6,
+      "visible_caption_width_edits": 3,
+      "initial_size_samples": 6,
+      "container_change_samples": 6,
+      "final_frontend_pages": 72,
+      "final_clock_render_observations": 4482,
+      "expected_geometry_changes": 9,
+      "ticking": true,
+      "failed": 0
+    },
+    {
+      "site": "local112",
+      "engine": "chromium",
+      "browser_version": "151.0.7922.34",
+      "blocks_per_matrix": 4897,
+      "visible_preservation_saves": 6,
+      "visible_caption_width_edits": 3,
+      "initial_size_samples": 6,
+      "container_change_samples": 6,
+      "final_frontend_pages": 72,
+      "final_clock_render_observations": 4482,
+      "expected_geometry_changes": 0,
+      "ticking": true,
+      "failed": 0
+    },
+    {
+      "site": "local112",
+      "engine": "webkit",
+      "browser_version": "26.5",
+      "blocks_per_matrix": 4897,
+      "visible_preservation_saves": 6,
+      "visible_caption_width_edits": 3,
+      "initial_size_samples": 6,
+      "container_change_samples": 6,
+      "final_frontend_pages": 72,
+      "final_clock_render_observations": 4482,
+      "expected_geometry_changes": 9,
+      "ticking": true,
+      "failed": 0
+    }
+  ],
+  "published": false,
+  "plugin_code_modified_in_followup": false,
+  "anonymous_author_captions": 216,
+  "webkit_test_setup": {
+    "initial_container_pointer_timeout": true,
+    "initial_followup_container_missing": true,
+    "explicit_block_sidebar_setup": true,
+    "normal_pointer_recheck_passed": true,
+    "stable_position_samples": 10,
+    "plugin_modified": false,
+    "initial_cause_proven": false
+  },
+  "cleanup": {
+    "own_sites_stopped": true,
+    "sites": [
+      {
+        "site": "local111",
+        "port": 10018,
+        "connection_refused": true
+      },
+      {
+        "site": "local112",
+        "port": 10023,
+        "connection_refused": true
+      }
+    ],
+    "data_retained": true,
+    "other_sites_running_in_local_ui": 2,
+    "published": false
+  }
+}
