@@ -1,0 +1,498 @@
+{
+  "completed_at": "2026-10-30T15:37:38.688942+00:00",
+  "status": "passed_exact_081_candidate_local_compatibility_and_visual_gates",
+  "published": false,
+  "artifact": {
+    "plugin": "1.1.4",
+    "widget": "0.8.1",
+    "archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
+    "widget_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "widget_bytes": 36009,
+    "source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2"
+  },
+  "project": "sdcw-114-20261030",
+  "retained_fixture_databases_reused": true,
+  "database_restores": 0,
+  "reseeded": false,
+  "old_080_evidence_preserved": true,
+  "matrix": [
+    {
+      "key": "p70a",
+      "baseline_version": "1.1.1",
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "theme": "twentytwentyone",
+      "port": 19601
+    },
+    {
+      "key": "p70b",
+      "baseline_version": "1.1.2",
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "theme": "twentytwentyone",
+      "port": 19602
+    },
+    {
+      "key": "p82a",
+      "baseline_version": "1.1.1",
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "theme": "twentytwentyone",
+      "port": 19603
+    },
+    {
+      "key": "p82b",
+      "baseline_version": "1.1.2",
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "theme": "twentytwentyone",
+      "port": 19604
+    },
+    {
+      "key": "p83a",
+      "baseline_version": "1.1.1",
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "theme": "twentytwentyfive",
+      "port": 19605
+    },
+    {
+      "key": "p83b",
+      "baseline_version": "1.1.2",
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "theme": "twentytwentyfive",
+      "port": 19606
+    },
+    {
+      "key": "p83c",
+      "baseline_version": "1.1.3",
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "theme": "twentytwentyfive",
+      "port": 19607
+    },
+    {
+      "key": "p85a",
+      "baseline_version": "1.1.1",
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "port": 19608
+    },
+    {
+      "key": "p85b",
+      "baseline_version": "1.1.2",
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "port": 19609
+    },
+    {
+      "key": "p85c",
+      "baseline_version": "1.1.3",
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "port": 19610
+    },
+    {
+      "key": "p74b",
+      "baseline_version": "1.1.2",
+      "wordpress": "6.3.2",
+      "php": "7.4.33",
+      "theme": "twentytwentyone",
+      "port": 19611
+    }
+  ],
+  "corpus": {
+    "cases_per_role": 1423,
+    "roles": [
+      "administrator",
+      "editor",
+      "author"
+    ],
+    "native_block_checks_per_site_browser": 4897
+  },
+  "baseline": {
+    "passed": true,
+    "results": [
+      {
+        "mode": "parse",
+        "pairs": 33,
+        "blocks": 161601,
+        "renders": 0
+      },
+      {
+        "mode": "render",
+        "pairs": 33,
+        "blocks": 0,
+        "renders": 101310
+      },
+      {
+        "mode": "probe",
+        "pairs": 33,
+        "blocks": 0,
+        "renders": 46596
+      },
+      {
+        "mode": "live",
+        "pairs": 33,
+        "blocks": 0,
+        "renders": 0
+      }
+    ],
+    "reseeded": false,
+    "database_restored": false
+  },
+  "core_upgrade": {
+    "passed": 11,
+    "direct_112_configs": 5,
+    "real_core_http_ajax_updater": true,
+    "private_exact_zip_offer": true,
+    "posts_and_critical_options_unchanged": true,
+    "installed_files_exact": true
+  },
+  "role_resaves": {
+    "passed_pairs": 33,
+    "native_block_checks": 161601,
+    "failures": 0
+  },
+  "gutenberg_ui": {
+    "passed_pairs": 33,
+    "completed_visible_saves": 198,
+    "roles": [
+      "administrator",
+      "editor",
+      "author"
+    ],
+    "runtime_errors": 0
+  },
+  "rollback": {
+    "file_only_sites": 3,
+    "predecessors": [
+      "1.1.1",
+      "1.1.2",
+      "unpublished_frozen_local_1.1.3"
+    ],
+    "reader_pairs": 9,
+    "native_block_checks": 44073,
+    "real_core_reupgrades": 3,
+    "database_restored": false
+  },
+  "final_parser": {
+    "passed_pairs": 33,
+    "native_block_checks": 161601
+  },
+  "final_live": {
+    "passed_pairs": 33,
+    "page_errors": 0
+  },
+  "visual_matrix": {
+    "render-upgraded": {
+      "passed_pairs": 33,
+      "clock_checks": 101310,
+      "expected_geometry_changes": 1376
+    },
+    "probe-upgraded": {
+      "passed_pairs": 33,
+      "clock_checks": 46596,
+      "expected_geometry_changes": 372
+    },
+    "layout-upgraded": {
+      "passed_pairs": 33,
+      "clock_checks": 0,
+      "expected_geometry_changes": 0,
+      "cold_visits": 198
+    }
+  },
+  "original_late_local_font": {
+    "passed_cold_visits": 6,
+    "case_ids": [
+      "mixed-1413",
+      "mixed-1397"
+    ],
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "actual_unadjusted_tt25_fira_code": true,
+    "google_stylesheet_failed": true,
+    "initial_fit_equals_manual_resize": true,
+    "asset_intercept": false,
+    "size_adjust": false
+  },
+  "original_webkit_amharic": {
+    "frames_passed": 12,
+    "clock_width": 200,
+    "one_distinct_line_row": true,
+    "fits_width": true,
+    "forced_reflow": false,
+    "manual_resize": false,
+    "asset_intercept": false,
+    "original_080_red_retained": "evidence/am-080-original-timeline.json"
+  },
+  "anonymous_caption_checks": {
+    "sites": 11,
+    "attribute_and_rendered_text_matches": 1188,
+    "changed_captions": 0
+  },
+  "php_numeric": {
+    "assertions": 10736,
+    "failures": 0
+  },
+  "exhaustive_entity_dom_sweep": {
+    "repeated": false,
+    "reason": "KSES and serializer bytes unchanged; previous 080 results are not inherited as fresh081 evidence"
+  },
+  "plugin_check": {
+    "version": "2.1.0",
+    "errors": 0,
+    "warnings": 7,
+    "warnings_match_prior_080": true,
+    "runtime_proof": {
+      "command_detected": true,
+      "runtime_checks": 5,
+      "static_checks": 29,
+      "runtime_slugs": [
+        "enqueued_scripts_size",
+        "enqueued_styles_size",
+        "enqueued_styles_scope",
+        "enqueued_scripts_scope",
+        "non_blocking_scripts"
+      ],
+      "static_slugs": [
+        "i18n_usage",
+        "php_error_reporting",
+        "code_obfuscation",
+        "plugin_content",
+        "file_type",
+        "plugin_header_fields",
+        "late_escaping",
+        "safe_redirect",
+        "plugin_updater",
+        "plugin_uninstall",
+        "plugin_review_phpcs",
+        "direct_db_queries",
+        "performant_wp_query_params",
+        "enqueued_scripts_in_footer",
+        "enqueued_resources",
+        "plugin_readme",
+        "localhost",
+        "no_unfiltered_uploads",
+        "trademarks",
+        "offloading_files",
+        "write_file",
+        "setting_sanitization",
+        "prefixing",
+        "direct_db",
+        "minified_files",
+        "direct_file_access",
+        "external_admin_menu_links",
+        "wp_functions_compatibility",
+        "ai_provider"
+      ]
+    },
+    "cleanup": {
+      "posts_unchanged": true,
+      "critical_options_unchanged": true,
+      "tables_unchanged": true,
+      "checker_removed": true,
+      "temporary_object_cache_removed": true
+    }
+  },
+  "consumer_http": {
+    "contexts": 8,
+    "script_responses": 10,
+    "shadow_clocks": 512,
+    "all_http200_ver_0_8_1_sha_matches": true
+  },
+  "final_package_and_settings": {
+    "sites": 11,
+    "files_per_plugin": 15,
+    "all_installed_files_and_settings_match": true,
+    "plugin_php_issues": 0
+  },
+  "test_environment_attempts_retained": {
+    "browser_raw_failure_count": 1,
+    "harness_missing_optional_entity_fixture": {
+      "observed_at": "2026-10-30T15:30:22.364129+00:00",
+      "original_log": "logs/php-and-entities.log",
+      "failure": "Legacy out-of-scope HTML5 entity pipeline tried to load its intentionally unmounted8500-case fixture",
+      "source": "/lab/source/html5-entity-pipeline.php",
+      "plugin_error": false,
+      "frontend_error": false,
+      "preceding_fresh_numeric_assertions": 10736,
+      "preceding_numeric_failures": 0,
+      "action": "Retain fresh numeric results and remove unused exhaustive pipeline from081 scope as agreed; no rerun of completed writes or numeric checks",
+      "production_code_or_artifact_changed": false,
+      "archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088"
+    },
+    "bounded_final_reader_auth_retry": {
+      "site": "p70a",
+      "engine": "chromium",
+      "original_failure": "summary-parse-final-p70a-chromium.json",
+      "original_error": "Role authentication did not reach the editor",
+      "retry_summary": "summary-parse-final-retry-p70a-chromium.json",
+      "retry_data_checks": 4897,
+      "retry_failures": 0,
+      "fresh_context": true,
+      "database_restored": false,
+      "fixture_reset": false,
+      "original_failure_retained": true,
+      "cause": "Unconfirmed authentication/navigation attempt failure; no data assertion failed. One bounded fresh-context read-only retry completed all three roles.",
+      "archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088"
+    }
+  },
+  "teardown": {
+    "observed_at": "2026-10-30T15:37:38.580070+00:00",
+    "project": "sdcw-114-20261030",
+    "project_containers_stopped": 13,
+    "browser_helpers_stopped": 2,
+    "total_stopped": 15,
+    "states": [
+      {
+        "name": "sdcw-114-20261030-p83c-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p83a-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p85a-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p83b-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p85c-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p85b-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p82b-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p82a-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p70b-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p70a-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-p74b-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-db-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-20261030-packages-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-114-firefox-20261030",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "sdcw-081-webkit-20261030",
+        "running": false,
+        "status": "exited"
+      }
+    ],
+    "ports": [
+      {
+        "port": 19601,
+        "closed": true
+      },
+      {
+        "port": 19602,
+        "closed": true
+      },
+      {
+        "port": 19603,
+        "closed": true
+      },
+      {
+        "port": 19604,
+        "closed": true
+      },
+      {
+        "port": 19605,
+        "closed": true
+      },
+      {
+        "port": 19606,
+        "closed": true
+      },
+      {
+        "port": 19607,
+        "closed": true
+      },
+      {
+        "port": 19608,
+        "closed": true
+      },
+      {
+        "port": 19609,
+        "closed": true
+      },
+      {
+        "port": 19610,
+        "closed": true
+      },
+      {
+        "port": 19611,
+        "closed": true
+      },
+      {
+        "port": 19612,
+        "closed": true
+      },
+      {
+        "port": 19613,
+        "closed": true
+      },
+      {
+        "port": 19614,
+        "closed": true
+      },
+      {
+        "port": 19952,
+        "closed": true
+      }
+    ],
+    "databases_and_volumes_retained": true,
+    "containers_removed": false,
+    "other_projects_untouched": true,
+    "old_080_evidence_and_archives_preserved": true
+  }
+}

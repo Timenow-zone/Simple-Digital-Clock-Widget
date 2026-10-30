@@ -4,9 +4,9 @@ Lightweight, framework-agnostic web component (built with Preact) to display a d
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.8.0`
-* **Tiny:** 12.1 KiB gzipped (`dist/0.8.0.min.js`; 35,922 bytes minified, 12,439 bytes gzip)
-* **Artifact SHA-256:** `5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0`
+* **Current version:** `0.8.1`
+* **Tiny:** 12.2 KiB gzipped (`dist/0.8.1.min.js`; 36,009 bytes minified, 12,446 bytes gzip)
+* **Artifact SHA-256:** `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
@@ -14,7 +14,7 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 * **Timezone & locale aware:** uses `Intl.*` under the hood
 * **Accessible:** semantic, keyboard focusable link
 
-Widget **0.8.0** continues the Preact 11.1.0 migration and fixes ordinary AM/PM clock fitting and refitting after a Google Font loads. See the [regression and release record](docs/releases/0.8.0/README.md). The independently versioned WordPress 1.1.3 candidate retains its accepted widget 0.7.1 bundle.
+Widget **0.8.1** fixes refitting after a delayed local theme font loads when the Google stylesheet fails, and keeps localized time on one line after shrinking in WebKit. See the [regression and release record](docs/releases/0.8.1/README.md). The independently versioned WordPress 1.1.4 candidate bundles this exact artifact; the retained 1.1.3 ZIP keeps widget 0.7.1. The production demo/CDN remains on 0.8.0 until a separately authorized delivery.
 
 ---
 
@@ -287,6 +287,8 @@ Widget and WordPress plugin versions are independent; the widget build does not 
 The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [1.1.2 patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. That published package bundles widget **0.7.0**.
 
 The local **1.1.3 candidate** bundles widget **0.7.1** and fixes invalid numeric caption references and automatic container sizing. See the [candidate acceptance and package manifest](docs/releases/1.1.3/README.md). The WordPress candidate remains unpublished. The production demo/CDN now uses widget **0.8.0**, with earlier versioned URLs retained; see the [CDN publication record](docs/releases/0.8.0/PUBLICATION.md). CDN delivery does not publish an npm package or Git tag.
+
+The new **1.1.4 candidate** bundles the exact widget **0.8.0**, retains the 1.1.3 PHP fixes and preserves the block serializer. See the [1.1.4 package and upgrade acceptance](docs/releases/1.1.4/README.md). It is not published; the 1.1.3 ZIP and historical acceptance records remain unchanged.
 
 The later readme-only publication r3772710 is recorded [separately](docs/releases/1.1.2/README-PUBLICATION.md); the original release manifest and tag remain historical records.
 

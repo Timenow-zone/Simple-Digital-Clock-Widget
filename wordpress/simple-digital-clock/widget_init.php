@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @version 1.1.3
+ * @version 1.1.4
  */
 
 /*
 Plugin Name: Simple Digital Clock 🕒
 Plugin URI: https://utctime.info/
 Description: It is 🪄 a magical and easy-to-use digital clock with a beautiful UI, supporting multiple languages, locales, dates, captions, and time zones.
-Version: 1.1.3
+Version: 1.1.4
 Author: UTCTime.info
 Author URI: https://utctime.info/
 License: GPLv2 or later
@@ -171,7 +171,7 @@ function SDCW_enqueue_scripts() {
         'simple-digital-clock',
         plugins_url('assets/public/js/simple-digital-clock.min.js', __FILE__),
         [],
-        '0.7.1',
+        '0.8.1',
         [
             'strategy' => 'async',
             'in_footer' => true,

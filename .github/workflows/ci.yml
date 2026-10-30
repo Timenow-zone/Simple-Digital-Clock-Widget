@@ -62,6 +62,8 @@ jobs:
           php --version
           git ls-files -z -- 'wordpress/simple-digital-clock/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
+      - name: Verify WordPress package identity and release versions
+        run: node --test tests/wordpress-package.test.mjs
       - name: Verify that checks leave tracked files unchanged
         run: git diff --exit-code
 

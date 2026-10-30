@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-10-30T15:33:21.096953+00:00",
+  "status": "test_readiness_corrected_without_runtime_changes",
+  "failed_ci_run": 41079580008,
+  "failed_ci_job": 124145324464,
+  "ci_observation": "First ordinary localized AM/PM80px assertion: width102.3486328125 >80.5. The original CI log has no RAF timeline; the equivalent controlled reproduction below establishes the readiness-race mechanism.",
+  "controlled_original_helper": {
+    "engine": "Linux Playwright WebKit",
+    "raf_delivery_delay_ms": 150,
+    "first_assert_failed": true,
+    "font_px": 10,
+    "natural_width": 89.033203125,
+    "client_width": 80,
+    "raw_log": "original-helper-red-r2.log"
+  },
+  "causal_observation": {
+    "same_text_width_and_attributes": true,
+    "no_manual_resize": true,
+    "no_style_mutations_before_measurement": true,
+    "initial": {
+      "text": "9:41:14 ч. пр.об.",
+      "font_px": 10,
+      "width": 89.033203125,
+      "client_width": 80
+    },
+    "after_two_real_raf": {
+      "text": "9:41:14 ч. пр.об.",
+      "font_px": 8.777778,
+      "width": 78.04316711425781,
+      "client_width": 80
+    },
+    "hour_change_widths": [
+      81.65556335449219,
+      78.16227722167969
+    ],
+    "return_to_bg_widths": [
+      106.39967346191406,
+      78.16227722167969
+    ],
+    "raw_log": "frame-boundaries-green.log"
+  },
+  "test_only_fix": {
+    "path": "tests/hundredths.browser.spec.ts",
+    "sha256": "bec372a02f31cbd0add91979eed1e16a723f30082a0fa4a44d28dc6bf6f3e695",
+    "change": "Wait for the expected text and declared width, then two actual requestAnimationFrame boundaries. Remove the two 16 ms unchanged-font samples.",
+    "strict_geometry_assertions_unchanged": true,
+    "no_fit_polling": true,
+    "no_tolerance_widening": true,
+    "no_test_skips_added": true,
+    "throttled_target_all_six_assertions_passed": true,
+    "throttled_log": "fixed-helper-throttled.log",
+    "grep_runner_reporting_caveat": "The private grep-selected run reports fourteen unexecuted tests as failures; the selected target passes. The unfiltered run below executes all 37 tests and exits zero."
+  },
+  "full_linux_webkit": {
+    "files": 7,
+    "passed": 37,
+    "failed": 0,
+    "raw_log": "linux-webkit-full-green.log"
+  },
+  "source_matches_b44": true,
+  "widget_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+  "widget_bytes": 36009,
+  "new_portable_font_evidence": "acceptance.json",
+  "publication_performed": false
+}
