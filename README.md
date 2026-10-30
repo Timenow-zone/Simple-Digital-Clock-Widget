@@ -4,15 +4,17 @@ Lightweight, framework-agnostic web component (built with Preact) to display a d
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.7.1`
-* **Tiny:** 11.5 KiB gzipped (`dist/0.7.1.min.js`; 34,042 bytes minified, 11,776 bytes gzip)
-* **Artifact SHA-256:** `affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6`
+* **Current version:** `0.8.0`
+* **Tiny:** 12.1 KiB gzipped (`dist/0.8.0.min.js`; 35,922 bytes minified, 12,439 bytes gzip)
+* **Artifact SHA-256:** `5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
 * **Theme-aware:** auto light/dark, or force it
 * **Timezone & locale aware:** uses `Intl.*` under the hood
 * **Accessible:** semantic, keyboard focusable link
+
+Widget **0.8.0** continues the Preact 11.1.0 migration and fixes ordinary AM/PM clock fitting and refitting after a Google Font loads. See the [regression and release record](docs/releases/0.8.0/README.md). The independently versioned WordPress 1.1.3 candidate retains its accepted widget 0.7.1 bundle.
 
 ---
 
@@ -269,7 +271,7 @@ Testing stack:
 * **Browsers**: `@web/test-runner` + Playwright (Chromium/Firefox/WebKit)
 * **Coverage**: `c8`
 
-The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, and all three browsers. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [maintenance record](docs/maintenance/2026-10-29-repository-hygiene.md) for the current tooling exception.
+The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [maintenance record](docs/maintenance/2026-10-29-repository-hygiene.md) for the current tooling exception.
 
 Run `node scripts/check-build.mjs` for a build and minification smoke test in a temporary directory; it prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
 
@@ -284,7 +286,7 @@ Widget and WordPress plugin versions are independent; the widget build does not 
 
 The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [1.1.2 patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. That published package bundles widget **0.7.0**.
 
-The local **1.1.3 candidate** bundles widget **0.7.1** and fixes invalid numeric caption references and automatic container sizing. See the [candidate acceptance and package manifest](docs/releases/1.1.3/README.md). The WordPress candidate remains unpublished. Widget **0.7.1** is available on the production demo site and CDN; see the [CDN publication and verification record](docs/releases/0.7.1/CDN-PUBLICATION.md). CDN delivery does not publish an npm package or Git tag.
+The local **1.1.3 candidate** bundles widget **0.7.1** and fixes invalid numeric caption references and automatic container sizing. See the [candidate acceptance and package manifest](docs/releases/1.1.3/README.md). The WordPress candidate remains unpublished. The production demo/CDN now uses widget **0.8.0**, with earlier versioned URLs retained; see the [CDN publication record](docs/releases/0.8.0/PUBLICATION.md). CDN delivery does not publish an npm package or Git tag.
 
 The later readme-only publication r3772710 is recorded [separately](docs/releases/1.1.2/README-PUBLICATION.md); the original release manifest and tag remain historical records.
 

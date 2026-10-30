@@ -52,16 +52,16 @@ function waitForFixedTime(el: HTMLElement): Promise<void> {
   return waitForRenderedTime(el, (text) => text === expected);
 }
 
-function setFixedDate(timestamp: number): () => void {
+function setFixedDate(timestamp: number | (() => number)): () => void {
   const OriginalDate = window.Date;
-  const now = () => timestamp;
+  const now = typeof timestamp === "function" ? timestamp : () => timestamp;
 
   window.Date = new Proxy(OriginalDate, {
     construct(target, args, newTarget) {
-      return Reflect.construct(target, args.length ? args : [timestamp], newTarget);
+      return Reflect.construct(target, args.length ? args : [now()], newTarget);
     },
     apply() {
-      return new OriginalDate(timestamp).toString();
+      return new OriginalDate(now()).toString();
     },
     get(target, key, receiver) {
       return key === "now" ? now : Reflect.get(target, key, receiver);
@@ -79,6 +79,49 @@ function createWidget() {
   el.setAttribute("locale", "en-GB");
   return el;
 }
+
+function assertSingleLineTime(el: HTMLElement): void {
+  const time = el.shadowRoot!.querySelector("a")!;
+  const container = el.shadowRoot!.querySelector("div[data-version]") as HTMLElement;
+  const renderedHeight = time.getBoundingClientRect().height;
+  const previous = time.style.getPropertyValue("white-space");
+  const priority = time.style.getPropertyPriority("white-space");
+  time.style.setProperty("white-space", "nowrap", "important");
+  const natural = time.getBoundingClientRect();
+  if (previous) time.style.setProperty("white-space", previous, priority);
+  else time.style.removeProperty("white-space");
+  assert.approximately(renderedHeight, natural.height, 0.1, "ordinary time must stay on one line");
+  assert.isAtMost(natural.width, container.clientWidth + 0.5, "ordinary time must fit its container");
+}
+
+it("ordinary localized AM/PM clocks fit at 80px after locale and hour-length changes", async () => {
+  let timestamp = Date.UTC(2026, 9, 30, 9, 41, 14);
+  const restoreDate = setFixedDate(() => timestamp);
+  const el = createWidget();
+  el.setAttribute("width", "80");
+  el.setAttribute("period", "true");
+  el.setAttribute("second", "true");
+  el.setAttribute("locale", "bg-BG");
+  document.body.appendChild(el);
+  try {
+    const expected = () => new Intl.DateTimeFormat(el.getAttribute("locale")!, {
+      timeZone: "UTC", hour: "numeric", minute: "numeric", second: "numeric", hour12: true,
+    }).format(new Date());
+    await waitForRenderedTime(el, text => text === expected());
+    assertSingleLineTime(el);
+    timestamp = Date.UTC(2026, 9, 30, 12, 41, 14);
+    await waitForRenderedTime(el, text => text === expected());
+    assertSingleLineTime(el);
+    for (const locale of ["ko-KR", "ar-EG", "en-GB", "bg-BG"]) {
+      el.setAttribute("locale", locale);
+      await waitForRenderedTime(el, text => text === expected());
+      assertSingleLineTime(el);
+    }
+  } finally {
+    el.remove();
+    restoreDate();
+  }
+}).timeout(10000);
 
 it("hundredths shows seconds and exactly two fractional digits", async () => {
   const el = createWidget();

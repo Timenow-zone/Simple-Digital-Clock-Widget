@@ -1,0 +1,137 @@
+{
+  "verified_at": "2026-10-30T09:04:04.847126+00:00",
+  "version": "0.7.2",
+  "status": "local_candidate_accepted_ci_and_cdn_pending",
+  "dependencies": {
+    "preact": {
+      "before": "10.29.8",
+      "after": "11.1.0"
+    },
+    "preact-custom-element": {
+      "before": "4.6.0",
+      "after": "4.6.0"
+    },
+    "clsx": {
+      "before": "2.1.1",
+      "after": "2.1.1"
+    }
+  },
+  "removed_development_type_package": "@types/preact-custom-element@4.0.4",
+  "artifact": {
+    "file": "dist/0.7.2.min.js",
+    "bytes": 34460,
+    "sha256": "9068d236e2dcff33a01d1aac5de9b13eb9cf2c69837f4ed3b3f7a3089721a0af",
+    "gzip_bytes": 12026,
+    "gzip_level": 9,
+    "node": "v26.8.2",
+    "zlib": "1.2.12"
+  },
+  "typescript_configurations": 3,
+  "lint": "passed",
+  "node_tests": 22,
+  "release_and_prose_tests": 26,
+  "local_widget_tests": {
+    "chromium": {
+      "passed": 36,
+      "failed": 0
+    },
+    "webkit": {
+      "passed": 36,
+      "failed": 0
+    },
+    "firefox": {
+      "passed": 0,
+      "status": "could_not_start_test_pages_on_macos"
+    }
+  },
+  "local_iframe_tests": {
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "visits_per_engine": 5,
+    "clocks_per_visit": 2,
+    "errors": 0
+  },
+  "comparison": {
+    "cases_per_engine": 96,
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "151.0.7922.34",
+        "passed": 96
+      },
+      {
+        "engine": "webkit",
+        "version": "26.5",
+        "passed": 96
+      }
+    ],
+    "locales": [
+      "en-GB",
+      "en-US",
+      "bg-BG",
+      "ja-JP",
+      "ar-EG",
+      "uk-UA"
+    ],
+    "widths": [
+      80,
+      180,
+      320,
+      600
+    ],
+    "errors": 0
+  },
+  "red_before_css_units": {
+    "preact": "11.1.0",
+    "css_migration_applied": false,
+    "exit_code": 1,
+    "expected_failure": "Clock did not follow its container width"
+  },
+  "audit": {
+    "info": 0,
+    "low": 5,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 5
+  },
+  "production_audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "preserved_historical_widget_hashes": {
+    "dist/0.7.1.min.js": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6",
+    "dist/0.5.5.min.js": "35227d9343cce0c0af4d4ba9ac5ad3283801380d3e861d097f52a412eddac609",
+    "dist/0.7.0.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+    "dist/0.6.0.min.js": "dc793b84d0d13be3907648f21a69f2aa130f57c5fecb5626a03fd1e9ba777513",
+    "dist/0.5.3.min.js": "9d2f3ee0659e37f910db18b43b3dbe0065657dc9623301cb744adfaf2ca4ee24"
+  },
+  "preserved_wordpress_1_1_3_files": {
+    "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+    "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "widget_init.php": "140e2ec8d0de604828a9327f3c2543cb651525456b50ad43df73191c47eee80d",
+    "block.js": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
+    "readme.txt": "3e5d4bce799a981aacd320be820542b082793c558f2132b1787c92b962eb0979",
+    "includes/simple-digital-clock-admin-notices.php": "9ef6b522f3d5b97ed6f2dfc7e2c8cd5854d8ec30c4d9c05de39e9f9c0e4dba87",
+    "includes/simple-digital-clock-kses.php": "48cd5b6523fc373e02d062a63cd0f36bed29b0f4fd3db28be97f7e56dbe7e94b",
+    "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+    "languages/simple-digital-clock.pot": "c2ad2f5333cc8a96e0c18f2ae15fecf838498b75d1a390082b86bd9313663fa3",
+    "assets/public/css/simple-digital-clock.css": "7ea9971bb23d8ca7142927e0dde4e5155614051832a1f5e1819995c144191b4a",
+    "assets/public/js/simple-digital-clock.min.js": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6",
+    "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+    "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+    "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+  },
+  "preserved_wordpress_zip_sha256": "1f42bd43152501499212a06a19286fbb562e5e51338a87c0a533200b31b344b0",
+  "required_remaining": [
+    "Linux CI in all three browsers",
+    "Production CDN delivery and public verification"
+  ]
+}

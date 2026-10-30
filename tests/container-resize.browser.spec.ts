@@ -28,6 +28,31 @@ function fitted(clock: HTMLElement): boolean {
     Math.abs(Number.parseFloat(getComputedStyle(time).fontSize) - container.offsetWidth / 7) < 0.01;
 }
 
+it("preserves clock and label sizes with explicit, automatic and minimum widths", async () => {
+  const { parent, clock } = fixture(500);
+  clock.setAttribute("caption", "Clock <caption> & date");
+  clock.setAttribute("date", "true");
+  clock.setAttribute("width", "210");
+  document.body.appendChild(parent);
+  try {
+    for (const [attribute, expectedWidth] of [["210", 210], ["330", 330], ["20", 80], ["0", 500]] as const) {
+      clock.setAttribute("width", attribute);
+      await waitFor(() => fitted(clock) && (clock.shadowRoot!.querySelector("div[data-version]") as HTMLElement).offsetWidth === expectedWidth);
+      const labels = clock.shadowRoot!.querySelectorAll("div[data-version] > div > div");
+      assert.equal(labels.length, 3, "caption, date and timezone labels remain rendered");
+      for (const label of labels) {
+        assert.approximately(Number.parseFloat(getComputedStyle(label).fontSize), expectedWidth / 15, 0.01);
+      }
+      assert.equal(labels[0].textContent, "Clock <caption> & date");
+    }
+    clock.removeAttribute("width");
+    parent.style.width = "40px";
+    await waitFor(() => fitted(clock) && (clock.shadowRoot!.querySelector("div[data-version]") as HTMLElement).offsetWidth === 80);
+  } finally {
+    parent.remove();
+  }
+}).timeout(12000);
+
 it("auto width follows parent layout changes without a window resize", async () => {
   const { parent, clock } = fixture();
   document.body.appendChild(parent);
