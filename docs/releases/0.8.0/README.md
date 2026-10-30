@@ -17,6 +17,8 @@ The earlier 192 old/new comparisons were **96 configurations in each of Chromium
 
 The narrow absolute regression was first run against 0.7.2 and failed in Chromium: the rendered time occupied two lines. Controlled font tests also reproduced delayed-font overflow. These findings are not evidence of a new regression caused by Preact 11.
 
+Linux CI exposed quantized advances in the controlled 180% font: sizes 16.36 px and 15.66 px both produce 187 px of text in a 180 px clock. The fit now verifies the measured proportional result and, only if it still overflows, refines it with a bounded ten-step search. Existing cases that already fit retain their calculated sizes. Earlier candidate CI failures are retained as red evidence; production delivery remains gated on a passing final revision.
+
 ## Validation and artifact
 
 - Local Chromium and WebKit: **37/37 widget tests per engine**; production iframe regression passed five paired-frame visits per engine, without filtered errors.
@@ -28,7 +30,7 @@ The narrow absolute regression was first run against 0.7.2 and failed in Chromiu
 - [Local acceptance snapshot](acceptance.json); raw reports, red/green results and screenshots remain in ignored `.local/widget-080-20261030/`.
 - Production dependency audit has zero findings; the full audit retains five inherited low development findings and zero moderate/high/critical findings.
 
-Accepted candidate: `dist/0.8.0.min.js`, byte-identical to `dist/latest.min.js`; **35,726 bytes**, SHA-256 `591d5fef194600410bbb8354b71f029bb478e13cd6a824577b805ca4c7591364`. Gzip level 9: **12,389 bytes** with Node 26.8.2/zlib 1.2.12. Other encoders can produce different gzip sizes without changing JavaScript bytes.
+Accepted candidate: `dist/0.8.0.min.js`, byte-identical to `dist/latest.min.js`; **35,922 bytes**, SHA-256 `5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0`. Gzip level 9: **12,439 bytes** with Node 26.8.2/zlib 1.2.12. Other encoders can produce different gzip sizes without changing JavaScript bytes.
 
 The tests cover current Playwright browsers, deterministic locales and controlled font swaps. They do not certify historical browser minima, every real Google Fonts response, every host/theme, DST transitions, or a WordPress upgrade to this widget. The [Preact 11 browser minimums](https://preactjs.com/guide/v11/upgrade-guide/#supported-browser-versions) are upstream requirements, not results of this browser suite.
 

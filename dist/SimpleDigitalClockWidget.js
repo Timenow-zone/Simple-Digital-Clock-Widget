@@ -895,19 +895,33 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
                         const fontPriority = time.style.getPropertyPriority("font-size");
                         const whiteSpace = time.style.getPropertyValue("white-space");
                         const priority = time.style.getPropertyPriority("white-space");
-                        let naturalWidth = 0;
                         try {
                             time.style.setProperty("font-size", `${fontSize}px`, "important");
                             time.style.setProperty("white-space", "nowrap", "important");
                             // Match clientWidth's layout pixels even under ancestor transforms.
-                            naturalWidth = time.offsetWidth;
+                            const naturalWidth = time.offsetWidth;
+                            if (Number.isFinite(naturalWidth) && naturalWidth > availableWidth) {
+                                fontSize = fontSize * availableWidth / naturalWidth;
+                                time.style.setProperty("font-size", `${fontSize}px`, "important");
+                                // Hinted glyph widths can be quantized instead of scaling linearly.
+                                if (time.offsetWidth > availableWidth) {
+                                    let lower = 0;
+                                    let upper = fontSize;
+                                    for(let step = 0; step < 10; step += 1){
+                                        const candidate = (lower + upper) / 2;
+                                        time.style.setProperty("font-size", `${candidate}px`, "important");
+                                        if (time.offsetWidth <= availableWidth) lower = candidate;
+                                        else upper = candidate;
+                                    }
+                                    fontSize = lower;
+                                }
+                            }
                         } finally{
                             if (previousFontSize) time.style.setProperty("font-size", previousFontSize, fontPriority);
                             else time.style.removeProperty("font-size");
                             if (whiteSpace) time.style.setProperty("white-space", whiteSpace, priority);
                             else time.style.removeProperty("white-space");
                         }
-                        if (Number.isFinite(naturalWidth) && naturalWidth > 0) fontSize = Math.min(fontSize, fontSize * availableWidth / naturalWidth);
                     }
                 }
                 if (fontSize !== this.state.fontSize || fontSizeTitle !== this.state.fontSizeTitle) this.setState({

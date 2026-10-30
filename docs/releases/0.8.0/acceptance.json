@@ -4,9 +4,9 @@
   "status": "candidate_ci_and_cdn_pending",
   "artifact": {
     "file": "dist/0.8.0.min.js",
-    "bytes": 35726,
-    "sha256": "591d5fef194600410bbb8354b71f029bb478e13cd6a824577b805ca4c7591364",
-    "gzip_bytes": 12389,
+    "bytes": 35922,
+    "sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0",
+    "gzip_bytes": 12439,
     "gzip_level": 9,
     "node": "v26.8.2",
     "zlib": "1.2.12"
@@ -133,5 +133,11 @@
     ],
     "passed": 2,
     "additional_pending_unrelated_font_chromium": 1
+  },
+  "regression_red_evidence": {
+    "ordinary_wrap": "0.7.2 Chromium failure",
+    "late_font": "0.7.2 fails both local engines; Chromium hundredths exceeds 180px",
+    "unrelated_font_wait": "candidate 25ebb failed Chromium controlled pending-face probe",
+    "linux_quantized_font": "CI 41037526327: sizes 16.363636 and 15.6636 both measure 187px; size 15 measures 176px; 180px container"
   }
 }
