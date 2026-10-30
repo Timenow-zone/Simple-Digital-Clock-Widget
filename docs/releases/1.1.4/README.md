@@ -1,6 +1,6 @@
 # WordPress 1.1.4 candidate: explicit minimum requirements
 
-Status: **minimum-requirement header revision prepared; focused Core/upgrade checks and PR CI pending; not published**. Plugin version remains 1.1.4 and the bundled widget remains the already published 0.8.1. This preparation does not merge a PR, publish to WordPress.org or change production CDN delivery.
+Status: **candidate accepted; Core minimum-version checks, focused upgrades and source CI passed; not published**. Plugin version remains 1.1.4 and the bundled widget remains the already published 0.8.1. This preparation does not merge a PR, publish to WordPress.org or change production CDN delivery.
 
 ## Exact new package
 
@@ -25,9 +25,22 @@ The [minimum-version evidence](requirements-evidence.json) records three passing
 
 Those negative version decisions are controlled logic probes: WordPress uses Core's supported test-version override and PHP uses an isolated namespace constant. The actual interpreter is PHP 8.5.10, not PHP 5.6. Filesystem mapping, translations, filters and the no-plugin-dependency boundary use documented narrow doubles; this is not a complete WordPress activation/bootstrap. Separate real minimum/current Core updates supply the runtime acceptance below.
 
-The [revision evidence](acceptance-evidence.json) will record the bounded 1.1.2 update/save/rollback/reupdate cycle on the supported minimum and current WordPress/PHP stacks. That cycle and required PR CI are still in progress.
+The [focused upgrade evidence](requirements-upgrade-evidence.json) records the completed real cycle for this exact new ZIP:
 
-The focused cycle reuses only disposable fixture databases, with physical predecessor file restoration and no database resets. It checks actual Core HTTP AJAX updates, exact installed bytes/headers, post rows/options, editor validity, caption/width saves, live clocks and rollback readers in Chromium/WebKit. All own test services will be stopped with evidence/data retained. Public WordPress.org update offers are not supplied by this local package test.
+| Actual environment | Core 1.1.2 upgrade | Physical rollback and Core reupdate | Installed Core minimum checks |
+| --- | --- | --- | --- |
+| WordPress 6.3.2 / PHP 7.0.33 | Passed | Passed | WordPress 6.3 / PHP 7.0; compatible |
+| WordPress 7.1.3 / PHP 8.3.35 | Passed | Passed | WordPress 6.3 / PHP 7.0; compatible |
+
+Both initial Core HTTP AJAX upgrades and reupdates preserved complete post rows and critical options; all fifteen installed file hashes matched. Actual installed Core header parsing and requirement validation passed on both stacks after each update.
+
+Across Chromium/WebKit and the two sites, each baseline/updated/resave/rollback/final stage passed **19,588 native block checks over four pairs**. There were **24 visible preservation saves**, **12 Caption/Width field saves**, four ticking final clocks and eight frontend/editor HTTP contexts verifying exact 0.8.1 bytes/cache version. All-frame capture recorded zero unexpected page/iframe/ResizeObserver errors. Caption/width frontend checks used the logged-in role context and are not claimed as new anonymous coverage.
+
+One original baseline authentication/navigation attempt failed before installing this candidate. A single bounded fresh-context read-only retry passed its 4,897 checks; the other successful groups were not repeated. Concurrent session-token changes are suspected, not causally proven. A normal later iframe navigation used an existing bounded frame reacquisition with no runtime error; it was not a failed save.
+
+[Source CI run 41093506356](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/41093506356) passed Repository checks, Browser tests and the Cloudflare preview build. The final documentation commit must also pass the required PR checks; its final result is retained privately and visible on the PR. No merge or publication is implied by those checks.
+
+The focused cycle reuses only disposable fixture databases, with physical predecessor file restoration and no database resets. It checks actual Core HTTP AJAX updates, exact installed bytes/headers, post rows/options, editor validity, caption/width saves, live clocks and rollback readers in Chromium/WebKit. All four own test services are stopped, both site ports are closed and evidence/data are retained; the other nine project sites remained stopped. Public WordPress.org update offers are not supplied by this local package test.
 
 ## Preserved runtime acceptance
 
