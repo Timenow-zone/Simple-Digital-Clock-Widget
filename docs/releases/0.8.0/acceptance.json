@@ -1,7 +1,7 @@
 {
-  "verified_at": "2026-10-30T09:51:36.025425+00:00",
+  "verified_at": "2026-10-30T10:05:55.673090+00:00",
   "version": "0.8.0",
-  "status": "candidate_ci_and_cdn_pending",
+  "status": "local_candidate_accepted_ci_and_cdn_pending",
   "artifact": {
     "file": "dist/0.8.0.min.js",
     "bytes": 35922,

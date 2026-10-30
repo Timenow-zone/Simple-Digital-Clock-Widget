@@ -1,6 +1,6 @@
 # Widget 0.8.0: Preact 11 and clock fitting
 
-Status: **candidate; required CI and production CDN delivery pending**. PR #10 remains open. This standalone release preserves all six previously published versioned bundles and the frozen WordPress 1.1.3 package with widget 0.7.1.
+Status: **published to the production demo/CDN on 2026-10-30**; see the [publication record](PUBLICATION.md). PR #10 remains open. This standalone release preserves all six previously published versioned bundles and the frozen WordPress 1.1.3 package with widget 0.7.1.
 
 ## Version and dependency scope
 
@@ -27,7 +27,7 @@ Linux CI exposed quantized advances in the controlled 180% font: sizes 16.36 px 
 - Chromium additionally passes delayed Latin/Cyrillic subsets and runtime locale changes: only two `fonts.load` calls after the initial locale and five switches, with no manual resize. WebKit did not request the Cyrillic face in that probe, so its subset-specific result is not counted.
 - Three TypeScript configurations, ESLint, **22 Node tests**, **26 release/prose tests**, release metadata/identity checks, an independent temporary build, and site generation passed.
 - The required browser command also runs a delayed-font production-bundle regression in Chromium, Firefox, and WebKit. Local macOS Firefox cannot start test pages; only the required Linux CI can supply its acceptance result.
-- [Local acceptance snapshot](acceptance.json); raw reports, red/green results and screenshots remain in ignored `.local/widget-080-20261030/`.
+- The [local acceptance snapshot](acceptance.json) records the pre-delivery state. Subsequent CI and public checks are in the [publication record](PUBLICATION.md). Raw reports, red/green results and screenshots remain in ignored `.local/widget-080-20261030/`.
 - Production dependency audit has zero findings; the full audit retains five inherited low development findings and zero moderate/high/critical findings.
 
 Accepted candidate: `dist/0.8.0.min.js`, byte-identical to `dist/latest.min.js`; **35,922 bytes**, SHA-256 `5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0`. Gzip level 9: **12,439 bytes** with Node 26.8.2/zlib 1.2.12. Other encoders can produce different gzip sizes without changing JavaScript bytes.
