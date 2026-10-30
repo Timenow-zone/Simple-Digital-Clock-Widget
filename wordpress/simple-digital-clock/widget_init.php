@@ -9,6 +9,8 @@ Plugin Name: Simple Digital Clock 🕒
 Plugin URI: https://utctime.info/
 Description: It is 🪄 a magical and easy-to-use digital clock with a beautiful UI, supporting multiple languages, locales, dates, captions, and time zones.
 Version: 1.1.4
+Requires at least: 6.3
+Requires PHP: 7.0
 Author: UTCTime.info
 Author URI: https://utctime.info/
 License: GPLv2 or later
