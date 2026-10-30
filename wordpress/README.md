@@ -4,12 +4,14 @@ This repository contains two independently versioned components:
 
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
-| JavaScript widget | `../src/` | `../package.json` (`0.7.1`, published to the demo/CDN) | MIT, as declared in the widget package |
+| JavaScript widget | `../src/` | `../package.json` (`0.7.2`, standalone candidate) | MIT, as declared in the widget package |
 | WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.3`, local candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
 Do not move PHP files into the widget's `src/` or use the widget package version as the plugin version.
+
+The standalone [0.7.2 dependency refresh](../docs/releases/0.7.2/README.md) does not replace the widget 0.7.1 bundle in the accepted WordPress 1.1.3 ZIP. That package remains frozen for its separately authorized WordPress.org publication.
 
 ## Imported baseline
 

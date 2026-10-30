@@ -7,7 +7,7 @@
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.7.1
+ * Version: 0.7.2
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */
@@ -21,7 +21,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.7.1";
+const v = "0.7.2";
 
 const googleFontsMonospace: string[] = (data?.allowFonts ?? []) as string[];
 
@@ -512,6 +512,7 @@ class SimpleDigitalClockWidget extends Component<
 
     const showDate = date !== undefined;
     const showCaption = caption || false;
+    const parsedWidth = parseInt(width?.toString() || "80", 10) || undefined;
 
     const mainDivClasses = ["widget", "font-family"];
     if (shadow) {
@@ -552,19 +553,19 @@ class SimpleDigitalClockWidget extends Component<
             }),
             transition: "background 1s ease",
             position: "relative",
-            minWidth: 80,
+            minWidth: "80px",
             ...(width !== undefined && {
-              width: parseInt(width?.toString() || "80", 10) || undefined,
+              width: parsedWidth === undefined ? undefined : `${parsedWidth}px`,
             }),
           }}
         >
           <div className={clsx(`text-${align || "center"}`)}>
             {this.state.timeString ? (
               <Fragment>
-                {showCaption && <div style={{ fontSize: this.state.fontSizeTitle }}>{caption}</div>}
+                {showCaption && <div style={{ fontSize: `${this.state.fontSizeTitle}px` }}>{caption}</div>}
                 <a
                   title={this.state.timeZoneName}
-                  style={{ fontSize: this.state.fontSize, ...fontStyles }}
+                  style={{ fontSize: `${this.state.fontSize}px`, ...fontStyles }}
                   href="https://utctime.info/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -583,7 +584,7 @@ class SimpleDigitalClockWidget extends Component<
                         this.dateContainerRef?.style.setProperty("display", "none");
                       }}
                       style={{
-                        fontSize: this.state.fontSizeTitle,
+                        fontSize: `${this.state.fontSizeTitle}px`,
                         cursor: "pointer",
                       }}
                     >
@@ -599,7 +600,7 @@ class SimpleDigitalClockWidget extends Component<
                         this.zoneContainerRef = el;
                       }}
                       style={{
-                        fontSize: this.state.fontSizeTitle,
+                        fontSize: `${this.state.fontSizeTitle}px`,
                         display: "none",
                         cursor: "pointer",
                       }}

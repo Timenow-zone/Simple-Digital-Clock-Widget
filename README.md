@@ -4,15 +4,17 @@ Lightweight, framework-agnostic web component (built with Preact) to display a d
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.7.1`
-* **Tiny:** 11.5 KiB gzipped (`dist/0.7.1.min.js`; 34,042 bytes minified, 11,776 bytes gzip)
-* **Artifact SHA-256:** `affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6`
+* **Current version:** `0.7.2`
+* **Tiny:** 11.7 KiB gzipped (`dist/0.7.2.min.js`; 34,460 bytes minified, 12,026 bytes gzip)
+* **Artifact SHA-256:** `9068d236e2dcff33a01d1aac5de9b13eb9cf2c69837f4ed3b3f7a3089721a0af`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
 * **Theme-aware:** auto light/dark, or force it
 * **Timezone & locale aware:** uses `Intl.*` under the hood
 * **Accessible:** semantic, keyboard focusable link
+
+The **0.7.2 candidate** upgrades Preact to 11.1.0 while preserving clock sizing with explicit CSS units. See the [dependency migration and acceptance record](docs/releases/0.7.2/README.md). The independently versioned WordPress 1.1.3 candidate retains its accepted widget 0.7.1 bundle.
 
 ---
 

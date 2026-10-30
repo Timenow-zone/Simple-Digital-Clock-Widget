@@ -1,6 +1,6 @@
 {
   "name": "simple-digital-clock-widget",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Simple Digital Clock Widget – a lightweight HTML/JS digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.",
   "author": {
     "name": "dejurin",
@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "preact": "^10.29.8",
+    "preact": "11.1.0",
     "preact-custom-element": "^4.6.0"
   },
   "devDependencies": {
@@ -69,7 +69,6 @@
     "@parcel/transformer-yaml": "2.16.4",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.3.3",
-    "@types/preact-custom-element": "^4.0.4",
     "@typescript-eslint/eslint-plugin": "^8.67.0",
     "@typescript-eslint/parser": "^8.67.0",
     "@web/test-runner": "^1.0.0",
