@@ -19,6 +19,14 @@ Fresh isolated upgrades cover official 1.1.1 and 1.1.2, plus the retained **unpu
 
 The Docker matrix and direct native LocalWP runtime checks are in progress. Results will record real Core package replacement, unchanged stored rows/settings, role saves and reopened blocks, captions, labels, sizes, frontend behavior and rollback. External WordPress.org update delivery is outside this unpublished local acceptance.
 
+### Unresolved local theme font case
+
+Native Firefox exposed an existing fitting defect when Twenty Twenty-Five supplies a local Fira Code face after the clock's first measurement and the widget's own Google stylesheet request fails. At the same 645 px width and unchanged time text, the initial 0.8.0 clock uses 92.1429 px text and wraps; a manual resize fits it at 89.3591 px. The mismatch remains after 180 animation frames. The stored block and caption data remain valid.
+
+A private minimal HTML control reproduced the same late local-font wrapping in both 0.7.1 and 0.8.0. Manual resizing only corrects 0.8.0. Thus this is an existing limitation, rather than evidence of a new saved-content regression. The 0.8.0 font-load path depends on its own Google stylesheet succeeding and misses the independently loaded theme face when that request fails.
+
+This layout gate is not accepted. Published 0.8.0 bytes remain unchanged; fixing them requires a new widget version. The choice between including that fix and retaining 0.8.0 with this explicit limitation is pending. Raw native traces and old/new minimal controls are retained under ignored `.local/localwp-114-20261030/` and `.local/release-1.1.4/font-initial-probe/`.
+
 `tests/wordpress-package.test.mjs` additionally checks installed-source hashes against this manifest, exact widget byte identity, and agreement between plugin header, stable tag, POT, source commit and script cache version. Required Repository checks run it. It does not replace installation or upgrade testing.
 
 ## Isolation and rollback
