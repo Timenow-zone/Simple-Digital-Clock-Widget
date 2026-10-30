@@ -16,26 +16,23 @@ async function waitFor(predicate: () => boolean, actual: () => unknown): Promise
 }
 
 async function waitForRenderedTime(el: HTMLElement, ready: (text: string) => boolean): Promise<void> {
-  let previousFontSize = "";
-
   await waitFor(() => {
     const time = el.shadowRoot?.querySelector("a");
     const container = el.shadowRoot?.querySelector("div[data-version]") as HTMLDivElement | null;
     const width = el.getAttribute("width");
     if (!time || !container || !ready(time.textContent || "") ||
         (width !== null && container.offsetWidth !== Number(width))) {
-      previousFontSize = "";
       return false;
     }
-    const fontSize = getComputedStyle(time).fontSize;
-    const stable = fontSize === previousFontSize;
-    previousFontSize = fontSize;
-    return stable;
+    return true;
   }, () => ({
     text: el.shadowRoot?.querySelector("a")?.textContent,
     fontSize: el.shadowRoot?.querySelector("a")?.style.fontSize,
     width: el.getAttribute("width"),
   }));
+  // Fitting is scheduled in an animation frame; unchanged timer samples can precede it.
+  await new Promise(requestAnimationFrame);
+  await new Promise(requestAnimationFrame);
 }
 
 function waitForFixedTime(el: HTMLElement): Promise<void> {
