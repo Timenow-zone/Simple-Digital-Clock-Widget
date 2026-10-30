@@ -7,7 +7,7 @@
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.8.0
+ * Version: 0.8.1
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */
@@ -21,7 +21,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.8.0";
+const v = "0.8.1";
 
 const googleFontsMonospace: string[] = (data?.allowFonts ?? []) as string[];
 
@@ -84,7 +84,7 @@ class SimpleDigitalClockWidget extends Component<
   observedWidth?: number;
   fontLoadId = 0;
   fontStylesheet?: HTMLLinkElement;
-  fontStylesheetReady = false;
+  fontStylesheetSettled = false;
   fontRequestedText = "";
   hundredthsMetadataAt = 0;
   hundredthsFormatter?: Intl.DateTimeFormat;
@@ -279,7 +279,7 @@ class SimpleDigitalClockWidget extends Component<
 
   clearFontLoadHandlers() {
     this.fontLoadId += 1;
-    this.fontStylesheetReady = false;
+    this.fontStylesheetSettled = false;
     this.fontRequestedText = "";
     if (this.fontStylesheet) {
       this.fontStylesheet.onload = null;
@@ -290,7 +290,7 @@ class SimpleDigitalClockWidget extends Component<
 
   resizeAfterFontLoad = () => {
     const ownerDocument = this.containerRef?.ownerDocument;
-    if (!this.fontStylesheetReady || !ownerDocument) return;
+    if (!this.fontStylesheetSettled || !ownerDocument) return;
     if (!ownerDocument.fonts) {
       this.scheduleResize();
       return;
@@ -323,11 +323,15 @@ class SimpleDigitalClockWidget extends Component<
     link.rel = "stylesheet";
     link.onload = () => {
       if (!isCurrent()) return;
-      this.fontStylesheetReady = true;
+      this.fontStylesheetSettled = true;
       this.resizeAfterFontLoad();
     };
     link.onerror = () => {
-      if (isCurrent()) console.error("Unable to load clock font stylesheet:", fontFamily);
+      if (!isCurrent()) return;
+      // A theme can provide this face even when the Google stylesheet is unavailable.
+      this.fontStylesheetSettled = true;
+      this.resizeAfterFontLoad();
+      console.error("Unable to load clock font stylesheet:", fontFamily);
     };
     ownerDocument.head.appendChild(link);
   };
@@ -629,7 +633,7 @@ class SimpleDigitalClockWidget extends Component<
                 {showCaption && <div style={{ fontSize: `${this.state.fontSizeTitle}px` }}>{caption}</div>}
                 <a
                   title={this.state.timeZoneName}
-                  style={{ fontSize: `${this.state.fontSize}px`, ...fontStyles }}
+                  style={{ fontSize: `${this.state.fontSize}px`, whiteSpace: "nowrap", ...fontStyles }}
                   href="https://utctime.info/"
                   target="_blank"
                   rel="noopener noreferrer"
