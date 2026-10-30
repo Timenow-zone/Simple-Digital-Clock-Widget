@@ -2,6 +2,8 @@
 
 Status: **revised candidate; not published**. WordPress **1.1.3** still bundles widget **0.7.1**. The iframe follow-up fixes the WebKit observer warning found after the initial acceptance. [PR #9](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/9) remains separate from publication.
 
+Widget 0.7.1 was separately delivered to the production demo/CDN on 2026-10-30; see the [CDN publication record](../0.7.1/CDN-PUBLICATION.md). This does not publish the WordPress candidate or merge PR #9.
+
 ## Current package after the iframe fix
 
 - ZIP: `.local/packages/simple-digital-clock-1.1.3-candidate.zip`.
