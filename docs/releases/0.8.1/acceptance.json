@@ -1,0 +1,221 @@
+{
+  "checked_at": "2026-10-30T15:17:00.205699+00:00",
+  "status": "accepted_local_regressions",
+  "source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
+  "source_matches_commit": true,
+  "artifact": {
+    "version": "0.8.1",
+    "path": "dist/0.8.1.min.js",
+    "bytes": 36009,
+    "sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "latest_identical": true
+  },
+  "preserved_control": {
+    "version": "0.8.0",
+    "sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0"
+  },
+  "test_file": "tests/font-loading.integration.test.mjs",
+  "test_sha256": "273afad4fcb5caabb2c8b8da78edbc52a11982147a207340c9ff9569f42c30a0",
+  "fixture": {
+    "path": "tests/fixtures/fonts/FiraCode-VariableFont_wght.woff2",
+    "sha256": "b6e7adca884c51549c66384fec54747fa2967ac6ad5655ed02c5da5b682a9ba2",
+    "unmodified_tt25_font": true,
+    "license": "SIL OFL 1.1",
+    "weight": "300 700",
+    "rendered_weight": "300",
+    "test_only_size_adjust": "150%; deterministic metric stress across engine-specific en-CA period labels"
+  },
+  "engines": {
+    "chromium": "host macOS Playwright",
+    "firefox": "Linux Playwright remote helper; local requests bridged from Node",
+    "webkit": "host macOS Playwright; not native Safari UI"
+  },
+  "negative_control": {
+    "artifact": "immutable dist/0.8.0.min.js",
+    "same_final_test_source": true,
+    "private_runner_substitutions": "Only absolute original fixture path and immutable 0.8.0 bundle path; no runtime patch",
+    "results": {
+      "tests": 6,
+      "pass": 2,
+      "fail": 4
+    },
+    "expected_failures": [
+      "chromium late Fira Code",
+      "firefox late Fira Code",
+      "webkit late Fira Code",
+      "webkit untouched Amharic wrapping"
+    ],
+    "passing_controls": [
+      "chromium Amharic",
+      "firefox Amharic"
+    ],
+    "observed_failures": [
+      {
+        "engine": "chromium",
+        "clocks": [
+          {
+            "id": "theme",
+            "text": "9:59:59 a.m.",
+            "fontSize": 92.1429,
+            "width": 643,
+            "height": 320.203125,
+            "naturalHeight": 182,
+            "naturalWidth": 995.109375
+          }
+        ],
+        "sequence": [
+          {
+            "event": "stylesheet-error",
+            "elapsed": 181.72241599999998
+          },
+          {
+            "event": "theme-font-response",
+            "elapsed": 680.341125
+          }
+        ],
+        "page_errors": []
+      },
+      {
+        "engine": "firefox",
+        "clocks": [
+          {
+            "id": "theme",
+            "text": "9:59:59 a.m.",
+            "fontSize": 92.1429,
+            "width": 643,
+            "height": 320.2166748046875,
+            "naturalHeight": 182,
+            "naturalWidth": 995.2000122070312
+          }
+        ],
+        "sequence": [
+          {
+            "event": "stylesheet-error",
+            "elapsed": 193.70320900000002
+          },
+          {
+            "event": "theme-font-response",
+            "elapsed": 693.0375839999999
+          }
+        ],
+        "page_errors": []
+      },
+      {
+        "engine": "webkit",
+        "clocks": [
+          {
+            "id": "theme",
+            "text": "9:59:59 AM",
+            "fontSize": 92.14286,
+            "width": 643,
+            "height": 319.5418701171875,
+            "naturalHeight": 181.33876037597656,
+            "naturalWidth": 829.2731323242188
+          }
+        ],
+        "sequence": [
+          {
+            "event": "stylesheet-error",
+            "elapsed": 583.4338749999997
+          },
+          {
+            "event": "theme-font-response",
+            "elapsed": 1087.4905839999997
+          }
+        ],
+        "page_errors": []
+      },
+      {
+        "engine": "webkit",
+        "clocks": [
+          {
+            "id": "am",
+            "text": "ጥዋት 1:00:00",
+            "fontSize": 26.32275,
+            "width": 200,
+            "height": 70.11007690429688,
+            "naturalHeight": 30.641326904296875,
+            "naturalWidth": 198.14202880859375
+          }
+        ],
+        "sequence": [],
+        "page_errors": []
+      }
+    ],
+    "raw_log": "regressions-red080-accepted-final.log"
+  },
+  "positive_control": {
+    "artifact": "exact dist/latest.min.js identical to dist/0.8.1.min.js",
+    "results": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0
+    },
+    "raw_log": "fonts-green081-accepted-final.log",
+    "new_cases": 6,
+    "retained_font_cases": 4,
+    "assertions": [
+      "actual local variable FontFace finishes after explicit failed Google stylesheet",
+      "Node event sequence stylesheet-error before theme-font-response; HTTP font response delayed 500 ms",
+      "rendered font weight 300 and real font-size shrink",
+      "single-line untouched rendering and natural width fits client width",
+      "Amharic 200px snapshots across four animation frames before any width probe",
+      "Amharic width changes 80,320,200",
+      "only expected own stylesheet error and browser diagnostic scoped to deliberately aborted Google URL",
+      "no page or observer errors"
+    ]
+  },
+  "iframe_regression": {
+    "results": {
+      "tests": 3,
+      "pass": 3,
+      "fail": 0
+    },
+    "visits_per_engine": 5,
+    "raw_log": "iframes-green081.log",
+    "assertions": [
+      "outer/inner iframe resize",
+      "hidden to visible",
+      "unchanged observer error capture"
+    ]
+  },
+  "lifecycle_review": {
+    "font_generation_guard_retained": true,
+    "unmount_invalidation_retained": true,
+    "stale_family_completion_guard_retained": true,
+    "font_glyph_request_deduplication_retained": true,
+    "explicit_stylesheet_error_retained": true,
+    "resize_observer_raf_contract_unchanged": true,
+    "nowrap_scoped_to_time_anchor": true,
+    "natural_width_binary_fit_unchanged": true
+  },
+  "harness_attempts_retained": [
+    {
+      "logs": "regressions-red080.log and r2-r3 logs",
+      "classification": "Initial absolute clone had block line-height; environment-specific Intl label and remote Firefox transport preconditions; not accepted defect controls"
+    },
+    {
+      "logs": "am-red080-r4-r5 and style-diff traces",
+      "classification": "Minimal fixture lacked inherited font smoothing/lang; old pass is retained, exact one-clock typography later reproduces genuine untouched wrapping"
+    },
+    {
+      "logs": "fonts-green081.log and fonts-green081-r2-r3.log",
+      "classification": "Waiting RAF or FontFace status while WebKit stylesheet/request was held created a test dependency; first hung own test processes were terminated; no tracked runtime change made to obtain final passes"
+    },
+    {
+      "logs": "regressions-red080-final.log and final-r2.log",
+      "classification": "Holding Google CSS delayed old WebKit initial observer delivery; replaced with immediate stylesheet failure and independent Node font-response delay"
+    }
+  ],
+  "cleanup": {
+    "dynamic_http_test_servers_closed": true,
+    "private_style_probe_19783_closed": true,
+    "linux_firefox_helper_owned_by_docker_agent": true,
+    "no_source_edits_after_source_commit": true
+  },
+  "limitations": [
+    "Google transport deliberately aborted and font data served locally; real external Google Fonts transport not certified",
+    "Unadjusted real theme Fira Code acceptance is separately verified by isolated WordPress runtime agents",
+    "No production deployment, merge, tag, npm or WordPress.org publication"
+  ]
+}

@@ -4,14 +4,14 @@ This repository contains two independently versioned components:
 
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
-| JavaScript widget | `../src/` | `../package.json` (`0.8.0`, published to the demo/CDN) | MIT, as declared in the widget package |
+| JavaScript widget | `../src/` | `../package.json` (`0.8.1`, unpublished candidate) | MIT, as declared in the widget package |
 | WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.4`, local candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
 Do not move PHP files into the widget's `src/` or use the widget package version as the plugin version.
 
-The [1.1.4 candidate](../docs/releases/1.1.4/README.md) deliberately bundles the exact [widget 0.8.0 artifact](../docs/releases/0.8.0/PUBLICATION.md). The retained WordPress 1.1.3 ZIP remains unchanged with widget 0.7.1; its earlier publication preparation is separate from this candidate.
+The [1.1.4 candidate](../docs/releases/1.1.4/README.md) deliberately bundles the exact [widget 0.8.1 artifact](../docs/releases/0.8.1/README.md). The retained WordPress 1.1.3 ZIP remains unchanged with widget 0.7.1; its earlier publication preparation is separate from this candidate.
 
 ## Imported baseline
 
@@ -32,7 +32,7 @@ The [1.1.2 patch report](../docs/patches/1.1.2/README.md), [KSES/compatibility a
 
 ## Local development
 
-The retained [1.1.3 candidate](../docs/releases/1.1.3/README.md) introduced invalid numeric caption preservation and automatic container sizing with widget 0.7.1. The new [1.1.4 candidate](../docs/releases/1.1.4/README.md) retains those fixes and bundles widget 0.8.0: Preact 11 with explicit CSS units, ordinary AM/PM fitting, delayed-font refitting and quantized font-width correction. The block serializer and KSES implementation remain byte-identical to 1.1.3. No saved-block schema change or database migration is introduced. The candidate is not published.
+The retained [1.1.3 candidate](../docs/releases/1.1.3/README.md) introduced invalid numeric caption preservation and automatic container sizing with widget 0.7.1. The new [1.1.4 candidate](../docs/releases/1.1.4/README.md) retains those fixes and bundles widget 0.8.1: Preact 11 with explicit CSS units, ordinary AM/PM fitting, delayed-font refitting and quantized font-width correction, plus local-theme-font recovery after a failed Google stylesheet and stable single-line time layout. The block serializer and KSES implementation remain byte-identical to 1.1.3. No saved-block schema change or database migration is introduced. The candidate is not published.
 
 Earlier widget releases remain available at their versioned CDN URLs. The current production demo/CDN uses [widget 0.8.0](../docs/releases/0.8.0/PUBLICATION.md); this does not publish or update the WordPress plugin.
 
@@ -44,7 +44,7 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The prepared local ZIP is `.local/packages/simple-digital-clock-1.1.4-candidate.zip`; use the [1.1.4 release report](../docs/releases/1.1.4/README.md) to verify its SHA-256. The earlier 1.1.3 archive is retained separately. Repacking can change the archive hash because ZIP timestamps are included. A new development archive does not inherit the exact-artifact verification of the prepared candidate. The original 1.1.2 package hashes remain historical records in its publication report.
+The prepared local ZIP is `.local/packages/simple-digital-clock-1.1.4-widget-0.8.1-candidate.zip`; use the [1.1.4 release report](../docs/releases/1.1.4/README.md) to verify its SHA-256. The earlier 1.1.3 archive and the first 1.1.4 candidate with widget 0.8.0 are retained separately. Repacking can change the archive hash because ZIP timestamps are included. A new development archive does not inherit the exact-artifact verification of the prepared candidate. The original 1.1.2 package hashes remain historical records in its publication report.
 
 `node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, and the header/readme/POT/script-cache/source-reference versions. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
 

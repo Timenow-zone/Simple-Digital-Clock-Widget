@@ -18,7 +18,7 @@ Show your office's local time, the time in another city or UTC on your WordPress
 [Live demo](https://simple-digital-clock-widget.yuri.ws/)👀 | [CodePen playground](https://codepen.io/dejurin/pen/01a025ef-f466-7534-acd0-77bc3a368a47)👀
 
 = ⭐️ FEATURES ⭐️ =
-* 🚀 Lightweight (~12.1 KiB gzip)
+* 🚀 Lightweight (~12.2 KiB gzip)
 * 🗣 Locale support (BCP-47, e.g., `en-US`, `uk`, `de-DE`)
 * 🌐 IANA time zones (e.g., `Europe/Kyiv`, `UTC`)
 * 📝 Custom caption
@@ -73,7 +73,7 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-Yes. The bundled clock widget is about 12.1 KiB gzip and is served locally without a runtime JavaScript CDN dependency.
+Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency.
 
 == Screenshots ==
 
@@ -90,8 +90,8 @@ The plugin bundles its production JavaScript locally for performance. Human-read
 The production JavaScript bundled with this plugin is built from the public Simple Digital Clock Widget source.
 
 * Source repository: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
-* Bundled upstream version: 0.8.0
-* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/2dc1d0fd8e2cfe6100434561de3ffbd83003263f
+* Bundled upstream version: 0.8.1
+* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/b44f944b60babf45bf266e73ba12f7eba53cfef2
 
 To reproduce the production bundle:
 
@@ -101,11 +101,13 @@ To reproduce the production bundle:
 == Changelog ==
 
 = 1.1.4 =
-* Update the bundled widget to 0.8.0 with Preact 11.1.0.
+* Update the bundled widget to 0.8.1 with Preact 11.1.0.
 * Preserve clock, caption, date and time zone sizing with explicit CSS pixel units.
 * Keep ordinary localized AM/PM clocks on one line at narrow widths and after format or hour-length changes.
 * Refit clocks after Google Fonts and localized font subsets finish loading, without waiting for unrelated page fonts.
 * Prevent overflow when a browser rounds font metrics, including in Chromium on Linux.
+* Refit clocks when a local theme font finishes loading after the Google Fonts stylesheet fails.
+* Keep localized time on one line after shrinking, including Amharic in WebKit.
 
 = 1.1.3 =
 * Preserve captions containing null, surrogate or out-of-range numeric HTML references when users without unfiltered HTML save existing clock blocks.

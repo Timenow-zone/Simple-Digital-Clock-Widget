@@ -171,7 +171,7 @@ function SDCW_enqueue_scripts() {
         'simple-digital-clock',
         plugins_url('assets/public/js/simple-digital-clock.min.js', __FILE__),
         [],
-        '0.8.0',
+        '0.8.1',
         [
             'strategy' => 'async',
             'in_footer' => true,

@@ -12,7 +12,7 @@ function $parcel$interopDefault(a) {
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.8.0
+ * Version: 0.8.1
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */ var $a7a8e2c5ae553f9f$export$41c562ebe57d11e2, $a7a8e2c5ae553f9f$var$t, $a7a8e2c5ae553f9f$export$a8257692ac88316c, $a7a8e2c5ae553f9f$var$i, $a7a8e2c5ae553f9f$var$u, $a7a8e2c5ae553f9f$var$f, $a7a8e2c5ae553f9f$var$e, $a7a8e2c5ae553f9f$var$o, $a7a8e2c5ae553f9f$var$l, $a7a8e2c5ae553f9f$var$c, $a7a8e2c5ae553f9f$var$a, $a7a8e2c5ae553f9f$var$s, $a7a8e2c5ae553f9f$var$h = Symbol.for("pv"), $a7a8e2c5ae553f9f$var$p = {}, $a7a8e2c5ae553f9f$var$v = [], $a7a8e2c5ae553f9f$var$y = /^m(i|n|o|s|text|space)$/, $a7a8e2c5ae553f9f$var$w = Array.isArray, $a7a8e2c5ae553f9f$var$d = $a7a8e2c5ae553f9f$var$v.slice, $a7a8e2c5ae553f9f$var$_ = Object.assign;
@@ -716,11 +716,11 @@ $b2927e49b2707936$exports = {
 var $02a8a47a7fc1ea47$export$2e2bcd8739ae039 = $02a8a47a7fc1ea47$var$isDark;
 
 
-const $aa43cbaf8926a599$var$v = "0.8.0";
+const $aa43cbaf8926a599$var$v = "0.8.1";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f9f$export$16fa2f45be04daa8) {
     constructor(props){
-        super(props), this.fontLoadId = 0, this.fontStylesheetReady = false, this.fontRequestedText = "", this.hundredthsMetadataAt = 0, this.hundredthsFormatterFailed = false, this.containerRef = null, this.zoneContainerRef = null, this.dateContainerRef = null, this.isHundredthsEnabled = ()=>this.normalizeBool(this.props.hundredths) === true, this.resetHundredthsFormatter = ()=>{
+        super(props), this.fontLoadId = 0, this.fontStylesheetSettled = false, this.fontRequestedText = "", this.hundredthsMetadataAt = 0, this.hundredthsFormatterFailed = false, this.containerRef = null, this.zoneContainerRef = null, this.dateContainerRef = null, this.isHundredthsEnabled = ()=>this.normalizeBool(this.props.hundredths) === true, this.resetHundredthsFormatter = ()=>{
             this.hundredthsFormatter = undefined;
             this.hundredthsFormatterFailed = false;
         }, this.getHundredthsFormatter = ()=>{
@@ -827,7 +827,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
             this.animationFrame = requestAnimationFrame(this.updateHundredthsFrame);
         }, this.resizeAfterFontLoad = ()=>{
             const ownerDocument = this.containerRef?.ownerDocument;
-            if (!this.fontStylesheetReady || !ownerDocument) return;
+            if (!this.fontStylesheetSettled || !ownerDocument) return;
             if (!ownerDocument.fonts) {
                 this.scheduleResize();
                 return;
@@ -857,11 +857,15 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
             link.rel = "stylesheet";
             link.onload = ()=>{
                 if (!isCurrent()) return;
-                this.fontStylesheetReady = true;
+                this.fontStylesheetSettled = true;
                 this.resizeAfterFontLoad();
             };
             link.onerror = ()=>{
-                if (isCurrent()) console.error("Unable to load clock font stylesheet:", fontFamily);
+                if (!isCurrent()) return;
+                // A theme can provide this face even when the Google stylesheet is unavailable.
+                this.fontStylesheetSettled = true;
+                this.resizeAfterFontLoad();
+                console.error("Unable to load clock font stylesheet:", fontFamily);
             };
             ownerDocument.head.appendChild(link);
         }, this.scheduleResize = ()=>{
@@ -1032,7 +1036,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
     }
     clearFontLoadHandlers() {
         this.fontLoadId += 1;
-        this.fontStylesheetReady = false;
+        this.fontStylesheetSettled = false;
         this.fontRequestedText = "";
         if (this.fontStylesheet) {
             this.fontStylesheet.onload = null;
@@ -1138,6 +1142,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
             title: this.state.timeZoneName,
             style: {
                 fontSize: `${this.state.fontSize}px`,
+                whiteSpace: "nowrap",
                 ...fontStyles
             },
             href: "https://utctime.info/",

@@ -1,175 +1,208 @@
 {
-  "checked_at": "2026-10-30T11:28:50.769874+00:00",
-  "status": "original_080_cycle_completed_with_known_initial_font_fit_failure",
+  "checked_at": "2026-10-30T15:11:59.234345+00:00",
+  "status": "all_scoped_081_native_package_acceptance_gates_passed_with_retained_harness_attempts",
+  "candidate": {
+    "version": "1.1.4",
+    "widget": "0.8.1",
+    "archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
+    "widget_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "widget_bytes": 36009,
+    "files": 15,
+    "source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
+    "published": false
+  },
+  "environment": {
+    "scope": "Fresh isolated site using Local10.2 service binaries directly; not Local app UI automation",
+    "fresh_database": true,
+    "old_native_sites_or_databases_reused": false,
+    "wordpress": "7.1.3",
+    "php_fpm": "8.2.29",
+    "nginx": "1.26.1",
+    "mysql": "8.4.0",
+    "theme": "twentytwentyfive",
+    "http_port": 19952,
+    "database_networking": "disabled; dedicated Unix socket",
+    "shared_user_site_or_router_changes": false
+  },
   "engines": {
     "chromium": "host Playwright",
-    "webkit": "host Playwright; not a manual Safari run",
-    "firefox": "Linux Playwright via isolated Docker server, native HTTP backends"
+    "webkit": "host Playwright; not manual Safari",
+    "firefox": "isolated Linux Playwright via Docker server; native HTTP backend"
   },
-  "predecessors": [
-    {
-      "version": "1.1.1",
-      "origin": "official public ZIP",
-      "sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10"
-    },
-    {
-      "version": "1.1.2",
-      "origin": "official public ZIP",
-      "sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55"
-    },
-    {
-      "version": "1.1.3",
-      "origin": "retained local candidate",
-      "sha256": "1f42bd43152501499212a06a19286fbb562e5e51338a87c0a533200b31b344b0"
-    }
-  ],
+  "predecessor": {
+    "version": "1.1.2",
+    "origin": "pinned official public ZIP",
+    "sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+    "serializer": "actual installed1.1.2 generated1423cases per role; fresh database"
+  },
   "core_upgrades": {
-    "passed": 3,
-    "implementation": "Plugin_Upgrader::bulk_upgrade with WP_Ajax_Upgrader_Skin via native WP-CLI; pinned local ZIP, not HTTP AJAX or WordPress.org offer",
-    "all_post_rows_and_checked_options_unchanged": true,
+    "initial_passed": 1,
+    "reupgrades_passed": 1,
+    "implementation": "Plugin_Upgrader::bulk_upgrade with WP_Ajax_Upgrader_Skin through native WP-CLI; local pinned package, not HTTP AJAX or WordPress.org delivery",
+    "all_complete_post_rows_and_checked_options_unchanged": true,
     "all_15_installed_files_exact": true
   },
   "parser_and_resave": {
     "baseline_parse": {
-      "site_browser_pairs": 9,
-      "block_checks": 44073,
+      "site_browser_pairs": 3,
+      "block_checks": 14691,
       "failures": 0
     },
     "updated_parse": {
-      "site_browser_pairs": 9,
-      "block_checks": 44073,
+      "site_browser_pairs": 3,
+      "block_checks": 14691,
       "failures": 0
     },
     "resave": {
-      "site_browser_pairs": 9,
-      "block_checks": 44073,
+      "site_browser_pairs": 3,
+      "block_checks": 14691,
       "failures": 0
     },
     "final_parse": {
-      "site_browser_pairs": 9,
-      "block_checks": 44073,
+      "site_browser_pairs": 3,
+      "block_checks": 14691,
       "failures": 0
     },
     "rollback_reader": {
-      "site_browser_pairs": 9,
-      "block_checks": 44073,
+      "site_browser_pairs": 3,
+      "block_checks": 14691,
       "failures": 0
     },
     "restored_reader": {
-      "site_browser_pairs": 9,
-      "block_checks": 44073,
+      "site_browser_pairs": 3,
+      "block_checks": 14691,
       "failures": 0
     }
   },
   "visible_ui": {
-    "site_browser_pairs": 9,
-    "preservation_saves": 54,
-    "caption_width_field_saves": 27,
-    "failures": 0
+    "site_browser_pairs": 3,
+    "preservation_saves": 18,
+    "caption_width_field_saves": 9,
+    "failures": 0,
+    "actual_editor_preview_rendered": true,
+    "all_frame_window_error_and_rejection_bridge": true
   },
   "anonymous_author_captions": {
-    "engine": "chromium",
-    "sites": 3,
-    "clock_captions": 324,
+    "clock_captions": 108,
+    "attributes_and_rendered_text_preserved": true,
     "changed": 0
   },
-  "absolute_fit_passed": {
-    "site_browser_pairs": 6,
-    "engines": [
-      "chromium",
-      "webkit"
-    ],
-    "stored_clock_observations": 8538,
-    "focused_am_pm_width_visibility_checks": 72
-  },
   "numeric_php": {
-    "sites": 3,
-    "assertions": 2928,
+    "assertions": 976,
     "failed": 0,
-    "plugin_origin_php_issues": 0,
-    "core_blocked_external_update_warnings": "retained raw; not classified as plugin-origin issues"
+    "plugin_origin_php_issues": 0
+  },
+  "absolute_fit": {
+    "site_browser_pairs": 3,
+    "stored_clock_observations": 4269,
+    "focused_am_pm_amharic_width_visibility_checks": 45,
+    "failures": 0
+  },
+  "focused_real_package_fixes": {
+    "engines": 3,
+    "local_fira": {
+      "font": "unadjusted actual TwentyTwentyFive variable Fira Code300-700",
+      "font_weight": "300",
+      "case": "mixed-1413, en-ca, auto645, Asia/Khandyga09:59:59a.m. (WebKit Intl usesAM)",
+      "font_delay_ms": 1000,
+      "google_css_aborted": true,
+      "automatic_after_font_load": true,
+      "size_adjust_used": false,
+      "manual_resize": false
+    },
+    "amharic": {
+      "attrs": "exact retained original am200/date/caption/locale attributes",
+      "instant": "2026-10-25T01:00:00.020Z",
+      "text": "ጥዋት 1:00:00",
+      "parent_font_weight": "400",
+      "readiness_frames": 3,
+      "untouched_range_frames_per_engine": 8,
+      "single_line_and_no_overflow": true,
+      "whitespace_changed_before_timeline": false,
+      "old080_reproduced_in_native_dom": false,
+      "scope": "Exact081 installed-package acceptance; immutable080 controls also fit in this native DOM, so this is not claimed as the original minimum-theme RED reproduction"
+    }
+  },
+  "http_consumer": {
+    "actual_browser_response_contexts": 3,
+    "requests": 3,
+    "status": 200,
+    "script_cache_version": "0.8.1",
+    "all_sha256_exact": true,
+    "runtime_version": "0.8.1"
+  },
+  "frontend_semantics": {
+    "render_pairs": 3,
+    "render_pages": 156,
+    "render_clock_observations": 9210,
+    "responsive_calendar_probe_pairs": 3,
+    "probe_pages": 60,
+    "probe_clock_observations": 4236,
+    "semantic_differences": 0,
+    "geometry_policy": "Attributes, text, labels and checked styles compare exactly; geometry is judged by separate absolute fitting assertions because correcting old wrapping intentionally changes height. Exact predecessor geometry is not a pass criterion."
   },
   "rollback": {
-    "physical_predecessor_rollbacks": 3,
-    "predecessors": [
-      "1.1.1",
-      "1.1.2",
-      "1.1.3"
-    ],
-    "old_readers": "all three engines; 44073 checks",
-    "core_reupgrades": 3,
-    "post_rows_and_checked_options_unchanged": true,
+    "physical_predecessor_rollbacks": 1,
+    "predecessor": "1.1.2",
     "database_restores": 0,
-    "candidate_files_after_reupgrade_exact": 15
+    "complete_post_rows_and_checked_options_unchanged": true,
+    "old_reader_pairs": 3,
+    "restored_reader_pairs": 3,
+    "core_reupgrades": 1,
+    "candidate_files_exact_after_reupgrade": 15
   },
   "live_after_reupgrade": {
-    "passed": 9,
+    "passed": 3,
     "page_errors": 0
   },
-  "paired_height_classification": {
-    "recorded_differences": 108,
-    "precisely_confirmed_improvements": 107,
-    "not_accepted_as_expected": 1,
-    "proof_conditions": [
-      "same attributes, time, label text and sizes, styles, outer width and inner width",
-      "old natural width overflow or old multiline; new one line and fits",
-      "new time font size and total height do not increase"
-    ],
-    "unclassified": "Firefox Fira Code es-pe; both old0.7.0 and new0.8.0 cold output wrap until an additional fitting trigger",
-    "scope": "Paired immutable 0.7.0/0.8.0 JS response substitution on the same final native111 content; no manual resize; not physical rollback",
-    "evidence": "evidence/paired-fit-classification.json"
+  "runtime_errors": {
+    "recorded_files": 47,
+    "unfiltered_page_or_iframe_errors": 0,
+    "resize_observer_errors": 0
   },
-  "candidate": {
-    "version": "1.1.4",
-    "widget": "0.8.0",
-    "archive_sha256": "a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f",
-    "widget_sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0",
-    "widget_bytes": 35922,
-    "files": 15,
-    "published": false
-  },
-  "environment": {
-    "scope": "Direct isolated native Local runtime; no registration, clone, start or stop through Local app UI",
-    "local_runtime": "Local 10.2.0 service binaries",
-    "nginx": "1.26.1",
-    "php_fpm": "8.2.29",
-    "mysql": "8.4.0",
-    "wordpress": "7.1.3",
-    "theme": "twentytwentyfive",
-    "fresh_databases": true,
-    "database_networking": "disabled; dedicated Unix socket"
-  },
-  "known_failed_gate": {
-    "name": "Late local theme font after failed widget Google stylesheet",
-    "engines_observed_here": [
-      "firefox"
-    ],
-    "fixture": "mixed-1413; Asia/Khandyga; en-ca; Fira Code; auto width",
-    "initial_width": 645,
-    "initial_font_px": 92.1429,
-    "initial_height_px": 358.933349609375,
-    "resized_font_px": 89.3591,
-    "resized_height_px": 216.53334045410156,
-    "natural_width_before_local_font_px": 540,
-    "natural_width_after_local_font_px": 662,
-    "available_width_px": 642,
-    "persists_without_resize_frames": 180,
-    "existing_071_control_also_wraps": true,
-    "accepted": false
+  "retained_harness_attempts": [
+    {
+      "kind": "focused_amharic_webkit_initial_sample",
+      "outcome": "first attempt asserted overflow on frame0; full timeline was collected in memory but not written before assertion",
+      "frame": 0,
+      "raw_width": "not captured",
+      "stable_replay": "same assertions passed in a fresh WebKit-only replay; eight subsequent cold081 timelines had all8frames single-line+fitting",
+      "classification": "early readiness sampling suspected; not claimed as causally proven from the missing original snapshot",
+      "retained_script": "fixed-layout-attempt1.mjs"
+    },
+    {
+      "kind": "firefox_final_render_navigation",
+      "outcome": "DOMContentLoaded timeout at native112/?p=7 after26 UTC pages",
+      "stage": "final",
+      "source_log": "logs/render-final-firefox.log",
+      "bounded_retry": "only Firefox render group in fresh context at stagefinal-retry1; no DB or fixture reset"
+    }
+  ],
+  "cold_readiness_observations": {
+    "additional_081_cold_contexts": 8,
+    "untouched_frames_per_context": 8,
+    "all_observed_frames_single_line_and_fit": true,
+    "first_attempt_missing_original_frame_values": "No causal proof is claimed for its suspected pre-initial-fit sampling; the failure and bounded same-assertion replay remain retained"
   },
   "teardown": {
-    "own_processes_stopped": [
-      "mysql",
-      "native111",
-      "native112",
-      "native113",
-      "nginx"
-    ],
+    "own_processes_stopped": 3,
     "own_pids_inactive": true,
-    "shared_local_config_unchanged": true,
-    "data_and_logs_retained": true,
+    "ports_closed": [
+      19952
+    ],
+    "shared_local_config_hashes_unchanged": true,
+    "files_and_databases_retained": true,
+    "old_native_sites_untouched": true,
     "unrelated_processes_touched": false
   },
-  "raw_evidence": ".local/localwp-114-20261030/",
-  "interpretation": "Stored-data and save/read compatibility passed. Initial font fitting did not pass; this is not an all-green acceptance."
+  "limitations": [
+    "No Local app UI orchestration or manual Safari run",
+    "No multisite or native HTTPS",
+    "Google stylesheet transport deliberately aborted; real external Google transport not tested",
+    "No public WordPress.org update offer or publication",
+    "Native old080 Amharic controls did not reproduce the original minimum-theme wrapping defect"
+  ],
+  "publication": false,
+  "merge": false,
+  "raw_evidence": ".local/release-1.1.4-widget-0.8.1/native/evidence/"
 }
