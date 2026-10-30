@@ -1,0 +1,295 @@
+{
+  "completed_at": "2026-10-30T12:05:48.418034+00:00",
+  "status": "completed_data_compatibility_known_visual_gates_unpassed",
+  "published": false,
+  "artifact": {
+    "plugin_version": "1.1.4",
+    "widget_version": "0.8.0",
+    "zip": ".local/packages/simple-digital-clock-1.1.4-candidate.zip",
+    "archive_sha256": "a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f",
+    "widget_sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0",
+    "files": 15
+  },
+  "project": "sdcw-114-20261030",
+  "matrix": [
+    {
+      "key": "p70a",
+      "baseline_version": "1.1.1",
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "theme": "twentytwentyone",
+      "port": 19601
+    },
+    {
+      "key": "p70b",
+      "baseline_version": "1.1.2",
+      "wordpress": "6.3.2",
+      "php": "7.0.33",
+      "theme": "twentytwentyone",
+      "port": 19602
+    },
+    {
+      "key": "p82a",
+      "baseline_version": "1.1.1",
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "theme": "twentytwentyone",
+      "port": 19603
+    },
+    {
+      "key": "p82b",
+      "baseline_version": "1.1.2",
+      "wordpress": "6.3.2",
+      "php": "8.2.12",
+      "theme": "twentytwentyone",
+      "port": 19604
+    },
+    {
+      "key": "p83a",
+      "baseline_version": "1.1.1",
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "theme": "twentytwentyfive",
+      "port": 19605
+    },
+    {
+      "key": "p83b",
+      "baseline_version": "1.1.2",
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "theme": "twentytwentyfive",
+      "port": 19606
+    },
+    {
+      "key": "p83c",
+      "baseline_version": "1.1.3",
+      "wordpress": "7.1.3",
+      "php": "8.3.35",
+      "theme": "twentytwentyfive",
+      "port": 19607
+    },
+    {
+      "key": "p85a",
+      "baseline_version": "1.1.1",
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "port": 19608
+    },
+    {
+      "key": "p85b",
+      "baseline_version": "1.1.2",
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "port": 19609
+    },
+    {
+      "key": "p85c",
+      "baseline_version": "1.1.3",
+      "wordpress": "7.1.3",
+      "php": "8.5.12",
+      "theme": "twentytwentyfive",
+      "port": 19610
+    },
+    {
+      "key": "p74b",
+      "baseline_version": "1.1.2",
+      "wordpress": "6.3.2",
+      "php": "7.4.33",
+      "theme": "twentytwentyone",
+      "port": 19611
+    }
+  ],
+  "corpus": {
+    "cases_per_role": 1423,
+    "roles": [
+      "administrator",
+      "editor",
+      "author"
+    ],
+    "base_records_per_site": 79,
+    "active_and_inactive_block_widgets": 2,
+    "unrelated_text_widgets": 1,
+    "native_block_checks_per_parser_or_resave": 4897
+  },
+  "engines": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "baseline_completed_pairs": {
+    "parse": 33,
+    "render": 33,
+    "probe": 33,
+    "live": 33,
+    "control": 33
+  },
+  "core_upgrade": {
+    "passed": 11,
+    "real_core_ajax_updater": true,
+    "private_exact_zip_offer": true,
+    "posts_and_critical_options_unchanged": true,
+    "installed_files_exact": true
+  },
+  "role_resaves": {
+    "passed_pairs": 33,
+    "native_block_checks": 161601,
+    "failures": 0
+  },
+  "gutenberg_ui": {
+    "effective_passed_pairs": 33,
+    "completed_visible_saves": 198,
+    "roles": [
+      "administrator",
+      "editor",
+      "author"
+    ],
+    "initial_failed_attempts_retained": 2,
+    "isolated_successful_retry_resolutions": [
+      {
+        "artifact_sha256": "a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f",
+        "mode": "ui",
+        "site": "p83b",
+        "engine": "webkit",
+        "original_stage": "saved-webkit",
+        "original_failure": "summary-ui-saved-webkit-p83b-webkit.json",
+        "retry_summary": "summary-ui-saved-webkit-retry-p83b-webkit.json",
+        "retry_details": "ui-saved-webkit-retry-p83b-webkit.json",
+        "runtime_errors": 0,
+        "navigation_context_reacquisitions": 1,
+        "retry_visible_saves": 6,
+        "original_failure_retained": true
+      },
+      {
+        "artifact_sha256": "a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f",
+        "mode": "ui",
+        "site": "p83c",
+        "engine": "firefox",
+        "original_stage": "saved-firefox",
+        "original_failure": "summary-ui-saved-firefox-p83c-firefox.json",
+        "retry_summary": "summary-ui-saved-firefox-retry-p83c-firefox.json",
+        "retry_details": "ui-saved-firefox-retry-p83c-firefox.json",
+        "runtime_errors": 0,
+        "retry_visible_saves": 6,
+        "original_failure_retained": true,
+        "cause": "Original page.reload DOMContentLoaded navigation timeout; fresh context completed all six actual saves, all role runtime error arrays empty."
+      }
+    ],
+    "scope": "Actual visible Save/Update, reloaded validation, preview rendering and caption/DOM/attribute checks; visual font fitting is a separate failed gate."
+  },
+  "rollback": {
+    "file_only_sites": 3,
+    "predecessors": [
+      "1.1.1",
+      "1.1.2",
+      "frozen_local_1.1.3"
+    ],
+    "reader_pairs": 9,
+    "native_block_checks": 44073,
+    "database_restore": false,
+    "real_core_reupgrades": 3,
+    "post_and_settings_hashes_unchanged": true
+  },
+  "final_parser": {
+    "passed_pairs": 33,
+    "native_block_checks": 161601
+  },
+  "final_live": {
+    "passed_pairs": 33,
+    "page_errors": 0
+  },
+  "anonymous_caption_checks": {
+    "sites": 11,
+    "attribute_and_rendered_text_matches": 1188,
+    "changed_captions": 0,
+    "dialogs": 0
+  },
+  "php_numeric": {
+    "assertions": 10736,
+    "failures": 0
+  },
+  "entity_dom": {
+    "comparisons": 109104,
+    "engines": 3,
+    "php_versions": [
+      "7.0",
+      "8.5"
+    ],
+    "differences": 0
+  },
+  "plugin_check": {
+    "version": "2.1.0",
+    "static_checks": 29,
+    "runtime_checks": 5,
+    "errors": 0,
+    "warnings": 7,
+    "warnings_match_prior_113": true,
+    "cleanup": {
+      "posts_unchanged": true,
+      "critical_options_unchanged": true,
+      "tables_unchanged": true,
+      "checker_removed": true,
+      "temporary_object_cache_removed": true
+    }
+  },
+  "consumer_http": {
+    "contexts": 8,
+    "script_responses": 10,
+    "all_http200_ver_0_8_0_sha_matches": true,
+    "shadow_runtime_0_8_0": true,
+    "sites": [
+      "p70a PHP7.0/WP6.3.2",
+      "p83b PHP8.3/WP7.1.3"
+    ],
+    "surfaces": [
+      "frontend",
+      "editor"
+    ],
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "evidence": "evidence/consumer-proof.json"
+  },
+  "final_package_and_settings": {
+    "sites": 11,
+    "exact_files_each": 15,
+    "settings_preserved": true,
+    "plugin_php_issues": 0
+  },
+  "visual_gate": {
+    "status": "unpassed",
+    "raw_upgraded_render_passed_pairs": 15,
+    "raw_upgraded_render_failed_pairs": 18,
+    "raw_upgraded_probe_failed_pairs": 6,
+    "existing_late_fira_code_failcases": 13,
+    "all_13_also_overflow_in_captured_predecessor": true,
+    "guard_band_differences": 140,
+    "guard_band_source_formula_classified": 140,
+    "amharic_webkit_wrap_remains": true,
+    "firefox_hundredths_initial_snapshot_timing_classified": true,
+    "evidence": [
+      "late-font-existing-baseline-comparison.json",
+      "geometry-guard-band-classification.json",
+      "probe-difference-classification.json",
+      "probe-readiness-classification.json"
+    ],
+    "native_evidence": ".local/localwp-114-20261030/acceptance-summary.json",
+    "assertions_weakened": false,
+    "mass_final_render_repeated": false
+  },
+  "test_environment_attempts_retained": [
+    "Initial LinuxFirefox APIRequestContext loopback refusal fixed inside the private container with TCP proxies.",
+    "One baseline Firefox editor DOMContentLoaded timeout; retry only remaining four read sites passed.",
+    "One upgraded Firefox live page DOMContentLoaded timeout; same-site fresh-context retry passed.",
+    "One WebKit UI iframe execution-context replacement failure; fresh-context UI retry passed with persistent all-frame error capture.",
+    "One Firefox UI reload DOMContentLoaded timeout; same-site fresh-context UI retry passed and all role error arrays were empty."
+  ],
+  "teardown": {
+    "stopped_containers": 14,
+    "data_and_volumes_retained": true,
+    "other_projects_touched": false,
+    "evidence": "teardown-evidence.json"
+  }
+}

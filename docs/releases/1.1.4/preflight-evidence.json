@@ -1,0 +1,48 @@
+{
+  "status": "package_identity_passed; runtime_acceptance_has_known_failed_fitting_case",
+  "candidate_version": "1.1.4",
+  "widget_version": "0.8.0",
+  "archive_sha256": "a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f",
+  "installable_files": 15,
+  "changed_from_retained_1_1_3": [
+    "assets/public/js/simple-digital-clock.min.js",
+    "languages/simple-digital-clock.pot",
+    "readme.txt",
+    "widget_init.php"
+  ],
+  "unchanged_plugin_files": 11,
+  "unchanged_versioned_widget_artifacts": 7,
+  "frozen_1_1_3_zip_sha256": "1f42bd43152501499212a06a19286fbb562e5e51338a87c0a533200b31b344b0",
+  "fresh_official_predecessors": {
+    "1.1.1": {
+      "url": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.1.zip",
+      "sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10",
+      "files": 14
+    },
+    "1.1.2": {
+      "url": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip",
+      "sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+      "files": 15
+    }
+  },
+  "local_repository_checks": {
+    "typescript_configurations": 3,
+    "eslint": "passed",
+    "node_tests": 22,
+    "release_and_prose_tests": 26,
+    "package_guard_tests": 2,
+    "stale_cache_negative_control": "rejected_as_expected",
+    "release_metadata_and_versioned_artifact": "passed"
+  },
+  "source_ci": {
+    "run_id": 41047749506,
+    "head": "40599e564d68db325a63cbfb0cc98ccdd0a4ccb7",
+    "required_checks": "success",
+    "cloudflare_preview_build": "success"
+  },
+  "production_cdn_changed": false,
+  "wordpress_org_published": false,
+  "merge_performed": false,
+  "tag_created": false,
+  "draft_pr": 11
+}

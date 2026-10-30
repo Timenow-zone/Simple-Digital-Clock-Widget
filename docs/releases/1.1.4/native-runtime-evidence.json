@@ -1,0 +1,175 @@
+{
+  "checked_at": "2026-10-30T11:28:50.769874+00:00",
+  "status": "original_080_cycle_completed_with_known_initial_font_fit_failure",
+  "engines": {
+    "chromium": "host Playwright",
+    "webkit": "host Playwright; not a manual Safari run",
+    "firefox": "Linux Playwright via isolated Docker server, native HTTP backends"
+  },
+  "predecessors": [
+    {
+      "version": "1.1.1",
+      "origin": "official public ZIP",
+      "sha256": "b6afe710826e74370889773f0fb600a89614a18058b4f264ca12fc7df4f97c10"
+    },
+    {
+      "version": "1.1.2",
+      "origin": "official public ZIP",
+      "sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55"
+    },
+    {
+      "version": "1.1.3",
+      "origin": "retained local candidate",
+      "sha256": "1f42bd43152501499212a06a19286fbb562e5e51338a87c0a533200b31b344b0"
+    }
+  ],
+  "core_upgrades": {
+    "passed": 3,
+    "implementation": "Plugin_Upgrader::bulk_upgrade with WP_Ajax_Upgrader_Skin via native WP-CLI; pinned local ZIP, not HTTP AJAX or WordPress.org offer",
+    "all_post_rows_and_checked_options_unchanged": true,
+    "all_15_installed_files_exact": true
+  },
+  "parser_and_resave": {
+    "baseline_parse": {
+      "site_browser_pairs": 9,
+      "block_checks": 44073,
+      "failures": 0
+    },
+    "updated_parse": {
+      "site_browser_pairs": 9,
+      "block_checks": 44073,
+      "failures": 0
+    },
+    "resave": {
+      "site_browser_pairs": 9,
+      "block_checks": 44073,
+      "failures": 0
+    },
+    "final_parse": {
+      "site_browser_pairs": 9,
+      "block_checks": 44073,
+      "failures": 0
+    },
+    "rollback_reader": {
+      "site_browser_pairs": 9,
+      "block_checks": 44073,
+      "failures": 0
+    },
+    "restored_reader": {
+      "site_browser_pairs": 9,
+      "block_checks": 44073,
+      "failures": 0
+    }
+  },
+  "visible_ui": {
+    "site_browser_pairs": 9,
+    "preservation_saves": 54,
+    "caption_width_field_saves": 27,
+    "failures": 0
+  },
+  "anonymous_author_captions": {
+    "engine": "chromium",
+    "sites": 3,
+    "clock_captions": 324,
+    "changed": 0
+  },
+  "absolute_fit_passed": {
+    "site_browser_pairs": 6,
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "stored_clock_observations": 8538,
+    "focused_am_pm_width_visibility_checks": 72
+  },
+  "numeric_php": {
+    "sites": 3,
+    "assertions": 2928,
+    "failed": 0,
+    "plugin_origin_php_issues": 0,
+    "core_blocked_external_update_warnings": "retained raw; not classified as plugin-origin issues"
+  },
+  "rollback": {
+    "physical_predecessor_rollbacks": 3,
+    "predecessors": [
+      "1.1.1",
+      "1.1.2",
+      "1.1.3"
+    ],
+    "old_readers": "all three engines; 44073 checks",
+    "core_reupgrades": 3,
+    "post_rows_and_checked_options_unchanged": true,
+    "database_restores": 0,
+    "candidate_files_after_reupgrade_exact": 15
+  },
+  "live_after_reupgrade": {
+    "passed": 9,
+    "page_errors": 0
+  },
+  "paired_height_classification": {
+    "recorded_differences": 108,
+    "precisely_confirmed_improvements": 107,
+    "not_accepted_as_expected": 1,
+    "proof_conditions": [
+      "same attributes, time, label text and sizes, styles, outer width and inner width",
+      "old natural width overflow or old multiline; new one line and fits",
+      "new time font size and total height do not increase"
+    ],
+    "unclassified": "Firefox Fira Code es-pe; both old0.7.0 and new0.8.0 cold output wrap until an additional fitting trigger",
+    "scope": "Paired immutable 0.7.0/0.8.0 JS response substitution on the same final native111 content; no manual resize; not physical rollback",
+    "evidence": "evidence/paired-fit-classification.json"
+  },
+  "candidate": {
+    "version": "1.1.4",
+    "widget": "0.8.0",
+    "archive_sha256": "a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f",
+    "widget_sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0",
+    "widget_bytes": 35922,
+    "files": 15,
+    "published": false
+  },
+  "environment": {
+    "scope": "Direct isolated native Local runtime; no registration, clone, start or stop through Local app UI",
+    "local_runtime": "Local 10.2.0 service binaries",
+    "nginx": "1.26.1",
+    "php_fpm": "8.2.29",
+    "mysql": "8.4.0",
+    "wordpress": "7.1.3",
+    "theme": "twentytwentyfive",
+    "fresh_databases": true,
+    "database_networking": "disabled; dedicated Unix socket"
+  },
+  "known_failed_gate": {
+    "name": "Late local theme font after failed widget Google stylesheet",
+    "engines_observed_here": [
+      "firefox"
+    ],
+    "fixture": "mixed-1413; Asia/Khandyga; en-ca; Fira Code; auto width",
+    "initial_width": 645,
+    "initial_font_px": 92.1429,
+    "initial_height_px": 358.933349609375,
+    "resized_font_px": 89.3591,
+    "resized_height_px": 216.53334045410156,
+    "natural_width_before_local_font_px": 540,
+    "natural_width_after_local_font_px": 662,
+    "available_width_px": 642,
+    "persists_without_resize_frames": 180,
+    "existing_071_control_also_wraps": true,
+    "accepted": false
+  },
+  "teardown": {
+    "own_processes_stopped": [
+      "mysql",
+      "native111",
+      "native112",
+      "native113",
+      "nginx"
+    ],
+    "own_pids_inactive": true,
+    "shared_local_config_unchanged": true,
+    "data_and_logs_retained": true,
+    "unrelated_processes_touched": false
+  },
+  "raw_evidence": ".local/localwp-114-20261030/",
+  "interpretation": "Stored-data and save/read compatibility passed. Initial font fitting did not pass; this is not an all-green acceptance."
+}

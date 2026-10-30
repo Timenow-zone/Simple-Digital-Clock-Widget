@@ -1,0 +1,64 @@
+{
+  "version": "1.1.4",
+  "widget": "0.8.0",
+  "archive_sha256": "a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f",
+  "status": "draft_data_compatibility_passed_visual_acceptance_unpassed",
+  "data_and_ui": {
+    "initial_core_upgrades": 14,
+    "file_only_rollbacks": 6,
+    "core_reupgrades": 6,
+    "database_restores": 0,
+    "completed_visible_preservation_save_checks": 252,
+    "additional_native_caption_width_saves": 27,
+    "anonymous_caption_checks": 1512,
+    "numeric_php_assertions": 13664,
+    "entity_dom_comparisons": 109104
+  },
+  "known_visual_gates": [
+    {
+      "name": "Late local theme Fira Code after failed Google stylesheet",
+      "observed_engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "existing_predecessor_controls_also_fail": true,
+      "accepted": false
+    },
+    {
+      "name": "WebKit Amharic remains wrapped after width fitting until whitespace reflow",
+      "observed_engines": [
+        "webkit"
+      ],
+      "existing_predecessor_also_wraps": true,
+      "accepted": false
+    }
+  ],
+  "classified_observations": {
+    "linux_firefox_one_pixel_guard_band_differences": 140,
+    "pre_first_raf_hundredths_baseline_snapshot": "readiness artifact; candidate stable formatter output correct"
+  },
+  "reports": {
+    "package": "preflight-evidence.json",
+    "docker": "docker-evidence.json",
+    "native_runtime": "native-runtime-evidence.json"
+  },
+  "source_ci": {
+    "head": "40599e564d68db325a63cbfb0cc98ccdd0a4ccb7",
+    "run_id": 41047749506,
+    "repository_browser_and_preview_checks": "success",
+    "does_not_close_manual_visual_gates": true
+  },
+  "draft_pr": 11,
+  "new_widget_version_choice": "awaiting user reply; 0.8.1 not implemented or built",
+  "wordpress_org_published": false,
+  "pr_merged": false,
+  "production_cdn_changed": false,
+  "published_0_8_0_and_frozen_1_1_3_preserved": true,
+  "test_teardown": {
+    "docker_containers_stopped": 14,
+    "native_processes_stopped": 5,
+    "data_and_evidence_retained": true,
+    "user_sites_and_other_projects_touched": false
+  }
+}
