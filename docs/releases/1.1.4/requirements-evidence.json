@@ -1,0 +1,181 @@
+{
+  "status": "passed_exact_revised_archive_minimum_metadata_guards",
+  "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
+  "previous_archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
+  "previous_archive_retained": true,
+  "permanent_guard_file": "tests/wordpress-package.test.mjs",
+  "permanent_guard_file_sha256": "da446f1bec0a32915fbe4e53d6227942a1e2449c201c87b0b12dee93bb5f4da1",
+  "positive_package_guard_tests": 3,
+  "original_missing_header_test_reproduced": true,
+  "negative_guard_controls": [
+    {
+      "case": "missing-wp",
+      "rejected": true,
+      "exit_code": 1
+    },
+    {
+      "case": "missing-php",
+      "rejected": true,
+      "exit_code": 1
+    },
+    {
+      "case": "mismatched-wp",
+      "rejected": true,
+      "exit_code": 1
+    },
+    {
+      "case": "mismatched-php",
+      "rejected": true,
+      "exit_code": 1
+    },
+    {
+      "case": "nonnumeric-wp",
+      "rejected": true,
+      "exit_code": 1
+    },
+    {
+      "case": "nonnumeric-php",
+      "rejected": true,
+      "exit_code": 1
+    }
+  ],
+  "core_minimum_probe": {
+    "core_version": "7.1.3",
+    "actual_php_interpreter": "8.5.10",
+    "version_controls": "WordPress uses its supported Core-test override; PHP_VERSION is an isolated namespace constant. This is not an actual PHP 5.6 interpreter or full WordPress bootstrap.",
+    "unchanged_core_body_sha256": {
+      "_cleanup_header_comment": "554d325aefc90a20264f2323845d029c9595a7e1af540a82d919cc48756f26bc",
+      "get_file_data": "8d00549920ffcc8c7751f49194aceb4eb17a47f65fceb525d893c3f547fe58fd",
+      "is_wp_version_compatible": "923f21defdb470e61449451f20e328e35988b337b84d7b38a7a48c3f81ef55b9",
+      "is_php_version_compatible": "b52d5e756bcbaf3a062ea2e76332bda5da876e12ab60804d607c01e33fe218a4",
+      "get_plugin_data": "d1b668e81406c0f24eec1bd75d3e546724149b126034d37647857c15cc188833",
+      "validate_plugin_requirements": "6eaef88c7fbb4dd44607dbf3ff71728dc62dface07f2b700a3ea56667f9ded48",
+      "check_package": "7c2bf6e75568dd594a26a40279c98d921c6078673795efa12f9762a560d04e4c"
+    },
+    "boundary_doubles": [
+      "local filesystem content-directory and plugin-basename mapping",
+      "identity translations and plugin metadata markup",
+      "passthrough filters/noop error hooks",
+      "no unmet plugin dependencies (this plugin declares none)"
+    ],
+    "new_archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
+    "previous_archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
+    "scenarios": [
+      {
+        "case": "minimum-supported",
+        "controlled_wordpress_version": "6.3",
+        "controlled_php_version": "7.0",
+        "parsed_header": {
+          "Version": "1.1.4",
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "readme_declarations": {
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "zip_check_package_result": true,
+        "activation_requirements_result": true,
+        "passed": true
+      },
+      {
+        "case": "below-wordpress",
+        "controlled_wordpress_version": "6.2.9",
+        "controlled_php_version": "7.0",
+        "parsed_header": {
+          "Version": "1.1.4",
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "readme_declarations": {
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "zip_check_package_result": "incompatible_wp_required_version",
+        "activation_requirements_result": "plugin_wp_incompatible",
+        "passed": true
+      },
+      {
+        "case": "below-php",
+        "controlled_wordpress_version": "6.3",
+        "controlled_php_version": "5.6.40",
+        "parsed_header": {
+          "Version": "1.1.4",
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "readme_declarations": {
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "zip_check_package_result": "incompatible_php_required_version",
+        "activation_requirements_result": "plugin_php_incompatible",
+        "passed": true
+      },
+      {
+        "case": "below-both",
+        "controlled_wordpress_version": "6.2.9",
+        "controlled_php_version": "5.6.40",
+        "parsed_header": {
+          "Version": "1.1.4",
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "readme_declarations": {
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "zip_check_package_result": "incompatible_php_required_version",
+        "activation_requirements_result": "plugin_wp_php_incompatible",
+        "passed": true
+      },
+      {
+        "case": "current-supported",
+        "controlled_wordpress_version": "7.1.3",
+        "controlled_php_version": "8.5.10",
+        "parsed_header": {
+          "Version": "1.1.4",
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "readme_declarations": {
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "zip_check_package_result": true,
+        "activation_requirements_result": true,
+        "passed": true
+      },
+      {
+        "case": "old-blank-headers-control",
+        "controlled_wordpress_version": "6.2.9",
+        "controlled_php_version": "5.6.40",
+        "parsed_header": {
+          "Version": "1.1.4",
+          "RequiresWP": "",
+          "RequiresPHP": ""
+        },
+        "readme_declarations": {
+          "RequiresWP": "6.3",
+          "RequiresPHP": "7.0"
+        },
+        "zip_check_package_result": true,
+        "activation_requirements_result": true,
+        "passed": true
+      }
+    ],
+    "no_database_or_wordpress_services_started": true,
+    "core_source_file_sha256": {
+      "wp-includes/functions.php": "cac8a17e293df99f0683a88debd3ba5e5cce274183a4e9fd3c9f18375747f41c",
+      "wp-admin/includes/plugin.php": "8ce517bd2907759934c76663571d5c3ed52ca705c87ecc0063a11fc4c972d02e",
+      "wp-admin/includes/class-plugin-upgrader.php": "fd6d813719a3533b1f61ef872dd4a793c86fdaf691aa4556b88ec1b5af953ed7",
+      "wp-includes/class-wp-error.php": "a9e971548bf6a1d93c821f980f530efba985c25d5d0b13d9b63e63b378a81a94"
+    }
+  },
+  "actual_minimum_runtime_install_upgrade": "Owned by the separate Docker acceptance task, not claimed by this namespace probe",
+  "tracked_files_changed_by_this_agent": [
+    "tests/wordpress-package.test.mjs"
+  ],
+  "raw_logs_private": true,
+  "no_production_or_wordpress_org_actions": true
+}

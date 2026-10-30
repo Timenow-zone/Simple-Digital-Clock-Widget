@@ -1,0 +1,221 @@
+{
+  "checked_at": "2026-10-30T16:58:22.748565+00:00",
+  "status": "all_scoped_exact_requirements_revision_gates_passed_with_retained_baseline_auth_attempt",
+  "candidate": {
+    "plugin": "1.1.4",
+    "widget": "0.8.1",
+    "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
+    "widget_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "widget_bytes": 36009,
+    "only_payload_change": "Two minimum requirements fields in mainPHPheader",
+    "files": 15
+  },
+  "package_identity": {
+    "files": 15,
+    "all_installed_files_match": true,
+    "previous_archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
+    "previous_archive_preserved": true,
+    "changed_from_previous_archive": [
+      "widget_init.php"
+    ],
+    "unchanged_files": 14,
+    "widget_bytes_unchanged": true,
+    "version_still": "1.1.4"
+  },
+  "environment": {
+    "retained_disposable_databases_and_original_seeded_case_ids": true,
+    "fresh_databases": false,
+    "database_restores": 0,
+    "reseeded": false,
+    "sites": [
+      {
+        "key": "p70b",
+        "WordPress": "6.3.2",
+        "PHP": "7.0.33"
+      },
+      {
+        "key": "p83b",
+        "WordPress": "7.1.3",
+        "PHP": "8.3.35"
+      }
+    ],
+    "engines": [
+      "host Playwright Chromium",
+      "host Playwright WebKit"
+    ],
+    "no_original_user_site_or_other_project_changed": true
+  },
+  "core_update": {
+    "initial_upgrades_passed": 2,
+    "core_reupgrades_passed": 2,
+    "method": "Actual Core HTTP AJAX update-plugin with Core nonce and private pinned local ZIP offer; not WordPress.org delivery",
+    "all_complete_post_rows_and_critical_options_preserved": true,
+    "all15installed_files_exact": true,
+    "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00"
+  },
+  "actual_installed_minimum_requirements": {
+    "source": "Actual installed WordPress Core get_plugin_data and validate_plugin_requirements on both sites after initial update and reupdate",
+    "results": [
+      {
+        "site": "p70b",
+        "Version": "1.1.4",
+        "RequiresWP": "6.3",
+        "RequiresPHP": "7.0",
+        "validation": true,
+        "WordPress": "6.3.2",
+        "PHP": "7.0.33"
+      },
+      {
+        "site": "p83b",
+        "Version": "1.1.4",
+        "RequiresWP": "6.3",
+        "RequiresPHP": "7.0",
+        "validation": true,
+        "WordPress": "7.1.3",
+        "PHP": "8.3.35"
+      }
+    ],
+    "all_required_values": {
+      "Version": "1.1.4",
+      "RequiresWP": "6.3",
+      "RequiresPHP": "7.0",
+      "validation": true
+    },
+    "positive_minimum_environment": "WordPress6.3.2/PHP7.0.33",
+    "negative_version_checks": "Separate requirement-guard evidence; this real upgrade smoke does not claim execution on PHP<7.0"
+  },
+  "baseline": {
+    "effective_pairs": 4,
+    "block_checks": 19588,
+    "all_passed": true,
+    "retained_attempts": {
+      "original": "summary-parse-baseline-p83b-chromium.json",
+      "failure": "Role authentication did not reach editor; redirected to login with reauth=1 after302",
+      "cause": "Concurrent same-user session-token update race suspected; original request/tokenstore not instrumented, causal claim not made",
+      "bounded_retry": "summary-parse-baseline-retry1-p83b-chromium.json",
+      "retry_blocks": 4897,
+      "retry_failures": 0,
+      "database_restored": false,
+      "fixture_reset": false,
+      "other_completed_groups_repeated": false,
+      "scheduling_resolution": "Parallel work is partitioned by site; engines do not authenticate concurrently to the same site"
+    }
+  },
+  "updated_parse": {
+    "site_browser_pairs": 4,
+    "block_checks": 19588,
+    "visible_saves": 0,
+    "failures": 0
+  },
+  "role_resave": {
+    "site_browser_pairs": 4,
+    "block_checks": 19588,
+    "visible_saves": 0,
+    "failures": 0
+  },
+  "visible_preservation_ui": {
+    "site_browser_pairs": 4,
+    "block_checks": 0,
+    "visible_saves": 24,
+    "failures": 0
+  },
+  "actual_caption_width_ui": {
+    "site_browser_pairs": 4,
+    "block_checks": 0,
+    "visible_saves": 12,
+    "failures": 0
+  },
+  "rollback": {
+    "physical_official112_file_rollbacks": 2,
+    "database_restores": 0,
+    "old_reader": {
+      "site_browser_pairs": 4,
+      "block_checks": 19588,
+      "visible_saves": 0,
+      "failures": 0
+    },
+    "posts_and_options_unchanged": true,
+    "core_reupgrades": 2
+  },
+  "final_readers": {
+    "site_browser_pairs": 4,
+    "block_checks": 19588,
+    "visible_saves": 0,
+    "failures": 0
+  },
+  "final_live": {
+    "site_browser_pairs": 4,
+    "passed": 4,
+    "page_errors": 0
+  },
+  "captured_editor_runtime_errors": {
+    "all_frame_error_bridge_active": true,
+    "role_runtime_reports": 12,
+    "page_or_iframe_errors": 0,
+    "resize_observer_errors": 0
+  },
+  "actual_http_consumer": {
+    "frontend_editor_contexts": 8,
+    "responses": 10,
+    "observed_shadow_clocks": 512,
+    "all_status200_ver081_sha_exact": true
+  },
+  "retained_harness_attempts": [
+    {
+      "original": "summary-parse-baseline-p83b-chromium.json",
+      "failure": "Role authentication did not reach editor; redirected to login with reauth=1 after302",
+      "cause": "Concurrent same-user session-token update race suspected; original request/tokenstore not instrumented, causal claim not made",
+      "bounded_retry": "summary-parse-baseline-retry1-p83b-chromium.json",
+      "retry_blocks": 4897,
+      "retry_failures": 0,
+      "database_restored": false,
+      "fixture_reset": false,
+      "other_completed_groups_repeated": false,
+      "scheduling_resolution": "Parallel work is partitioned by site; engines do not authenticate concurrently to the same site"
+    }
+  ],
+  "normal_editor_frame_navigation": {
+    "observed_in": "settings/saved/p83b/webkit/author",
+    "bounded_context_reacquisition": true,
+    "captured_runtime_errors": 0,
+    "test_failure": false
+  },
+  "teardown": {
+    "checked_at": "2026-10-30T16:56:23.294702+00:00",
+    "own_services_stopped": 4,
+    "own_names": [
+      "sdcw-114-20261030-p70b-1",
+      "sdcw-114-20261030-p83b-1",
+      "sdcw-114-20261030-packages-1",
+      "sdcw-114-20261030-db-1"
+    ],
+    "all_own_previously_stopped": true,
+    "other_nine_project_sites_remain_stopped": true,
+    "ports": [
+      {
+        "port": 19602,
+        "closed": true
+      },
+      {
+        "port": 19606,
+        "closed": true
+      }
+    ],
+    "databases_and_volumes_retained": true,
+    "database_restored": false,
+    "fixture_reseeded": false,
+    "containers_removed_by_teardown": false,
+    "other_projects_changed": false
+  },
+  "limitations": [
+    "Retained two-site corpus rather than a fresh database; no fixtures reset or historical acceptance relabeled",
+    "Focused metadata-only revision acceptance, not a repeat of the large unchanged runtime/visual/entity matrix",
+    "Current host Chromium/WebKit; required CI independently covers all three engines",
+    "No new multisite/nativeHTTPS/realGoogletransport/publicWordPress.org update delivery test",
+    "The initial baseline authentication failure cause is unconfirmed; concurrency is suspected, not causally proven"
+  ],
+  "raw_evidence": ".local/release-1.1.4-requirements-20261030/upgrade/evidence/",
+  "wordpress_org_published": false,
+  "production_cdn_changed": false,
+  "merged": false
+}

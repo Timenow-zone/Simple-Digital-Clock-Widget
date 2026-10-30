@@ -1,0 +1,67 @@
+{
+  "version": "1.1.4",
+  "widget": "0.8.1",
+  "archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
+  "widget_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+  "source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
+  "status": "all_scoped_local_data_save_rollback_visual_and_source_ci_gates_passed",
+  "data_and_ui": {
+    "initial_core_upgrades": 12,
+    "direct_1_1_2_environments": 6,
+    "file_only_rollbacks": 4,
+    "core_reupgrades": 4,
+    "database_restores": 0,
+    "completed_visible_preservation_saves": 216,
+    "additional_native_caption_width_saves": 9,
+    "anonymous_caption_checks": 1296,
+    "numeric_php_assertions": 11712,
+    "unchanged_entity_dom_exhaustive_sweep_repeated": false
+  },
+  "visual_gates": {
+    "late_local_theme_fira_code_after_failed_google_stylesheet": "passed: permanentcontrolledfontfixture plus six actualunadjustedDocker coldvisits and threenativeengines",
+    "webkit_amharic_200px": "passed: immutable080REDcontrol and installed081untouchedtimelines",
+    "width_or_height_assertion_tolerances_widened": false
+  },
+  "regressions": {
+    "widget_tests_per_engine": 37,
+    "font_tests": 10,
+    "iframe_tests": 3,
+    "same_final_test_old_0_8_0_expected_failures": 4,
+    "ci_readiness_fix": "tests only; two actualRAFboundaries, nofitpolling",
+    "portable_amharic_expectation": "native browserIntl, unchangedgeometryassertions"
+  },
+  "reports": {
+    "package": "preflight-evidence.json",
+    "docker": "docker-evidence.json",
+    "native_runtime": "native-runtime-evidence.json",
+    "widget": "../0.8.1/acceptance.json",
+    "ci_readiness": "../0.8.1/ci-readiness-evidence.json",
+    "production": "production-unchanged.json",
+    "independent_teardown": "teardown-evidence.json"
+  },
+  "source_ci": {
+    "head": "f2b7f9251fe5401ea3f2139a54e28187694dd591",
+    "run_id": 41081939222,
+    "repository_checks": "success",
+    "browser_tests": "success",
+    "workers_preview_build": "success",
+    "final_documentation_head_checks": "verify on PR; final result retained privately to avoid recursive evidence commits"
+  },
+  "retained_attempts": {
+    "docker": "missing out-of-scope fixture and single final authentication/navigation attempt; see Docker evidence",
+    "native": "one navigation timeout and missing first frame-zero geometry; see native evidence",
+    "ci": "initial timer-based readiness assertion failed; equivalent Linux controlled reproduction and corrected complete suite retained",
+    "raw_failures_not_erased": true
+  },
+  "wordpress_org_published": false,
+  "production_cdn_delivered": false,
+  "pr_merged": false,
+  "production_version_verified": "0.8.0",
+  "previous_artifacts_preserved": true,
+  "test_teardown": {
+    "docker_containers_stopped": 15,
+    "native_processes_stopped": 3,
+    "data_and_evidence_retained": true,
+    "user_sites_and_other_projects_touched": false
+  }
+}

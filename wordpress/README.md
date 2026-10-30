@@ -4,7 +4,7 @@ This repository contains two independently versioned components:
 
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
-| JavaScript widget | `../src/` | `../package.json` (`0.8.1`, unpublished candidate) | MIT, as declared in the widget package |
+| JavaScript widget | `../src/` | `../package.json` (`0.8.1`, published to the demo/CDN) | MIT, as declared in the widget package |
 | WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.4`, local candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
@@ -32,9 +32,9 @@ The [1.1.2 patch report](../docs/patches/1.1.2/README.md), [KSES/compatibility a
 
 ## Local development
 
-The retained [1.1.3 candidate](../docs/releases/1.1.3/README.md) introduced invalid numeric caption preservation and automatic container sizing with widget 0.7.1. The new [1.1.4 candidate](../docs/releases/1.1.4/README.md) retains those fixes and bundles widget 0.8.1: Preact 11 with explicit CSS units, ordinary AM/PM fitting, delayed-font refitting and quantized font-width correction, plus local-theme-font recovery after a failed Google stylesheet and stable single-line time layout. The block serializer and KSES implementation remain byte-identical to 1.1.3. No saved-block schema change or database migration is introduced. The candidate is not published.
+The retained [1.1.3 candidate](../docs/releases/1.1.3/README.md) introduced invalid numeric caption preservation and automatic container sizing with widget 0.7.1. The new [1.1.4 candidate](../docs/releases/1.1.4/README.md) retains those fixes and bundles widget 0.8.1: Preact 11 with explicit CSS units, ordinary AM/PM fitting, delayed-font refitting and quantized font-width correction, plus local-theme-font recovery after a failed Google stylesheet and stable single-line time layout. The block serializer and KSES implementation remain byte-identical to 1.1.3. No saved-block schema change or database migration is introduced. The candidate declares WordPress 6.3 and PHP 7.0 minimum requirements in both the main PHP header and readme. The WordPress candidate is not published.
 
-Earlier widget releases remain available at their versioned CDN URLs. The current production demo/CDN uses [widget 0.8.0](../docs/releases/0.8.0/PUBLICATION.md); this does not publish or update the WordPress plugin.
+Earlier widget releases remain available at their versioned CDN URLs. The current production demo/CDN uses [widget 0.8.1](../docs/releases/0.8.1/PUBLICATION.md); this does not publish or update the WordPress plugin.
 
 Edit the WordPress wrapper here. Keep the bundled production JavaScript unchanged until an explicit widget update is tested.
 `npm run build` only builds the standalone widget; it does not replace files inside the plugin.
@@ -44,13 +44,13 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The prepared local ZIP is `.local/packages/simple-digital-clock-1.1.4-widget-0.8.1-candidate.zip`; use the [1.1.4 release report](../docs/releases/1.1.4/README.md) to verify its SHA-256. The earlier 1.1.3 archive and the first 1.1.4 candidate with widget 0.8.0 are retained separately. Repacking can change the archive hash because ZIP timestamps are included. A new development archive does not inherit the exact-artifact verification of the prepared candidate. The original 1.1.2 package hashes remain historical records in its publication report.
+The prepared local ZIP is `.local/packages/simple-digital-clock-1.1.4-requirements-candidate.zip`; use the [1.1.4 release report](../docs/releases/1.1.4/README.md) to verify its SHA-256. The earlier 1.1.3 archive, the first 1.1.4 candidate with widget 0.8.0, and the accepted 1.1.4/0.8.1 archive before minimum-requirement headers are retained separately. Repacking can change the archive hash because ZIP timestamps are included. A new development archive does not inherit the exact-artifact verification of the prepared candidate. The original 1.1.2 package hashes remain historical records in its publication report.
 
-`node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, and the header/readme/POT/script-cache/source-reference versions. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
+`node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, the header/readme/POT/script-cache/source-reference versions, and matching nonempty WordPress/PHP minimum requirements. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
 
 At the initial publication in SVN r3772502, the public [WordPress.org 1.1.2 ZIP](https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip) had a different archive SHA-256 from the local candidate; all 15 extracted files matched the original manifest. The historical hashes remain in the publication report.
 
-The later readme-only publication r3772710 is synchronized separately: [report](../docs/releases/1.1.2/README-PUBLICATION.md), [recorded file hashes](../docs/releases/1.1.2/readme-publication-evidence.json). The current source readme matches the approved published bytes; the other 14 plugin files still match the original manifest. Public-package results are a saved snapshot, not a fresh network check. The original manifest and Git release tag remain unchanged. Genuine WordPress.org Core update acceptance remains unconfirmed by this synchronization.
+The later readme-only publication r3772710 is synchronized separately: [report](../docs/releases/1.1.2/README-PUBLICATION.md), [recorded file hashes](../docs/releases/1.1.2/readme-publication-evidence.json). At that publication, the readme matched the approved bytes and the other 14 plugin files retained the original manifest hashes. These are historical 1.1.2 results; the current 1.1.4 source intentionally differs. Public-package results are a saved snapshot, not a fresh network check. The original manifest and Git release tag remain unchanged. Genuine WordPress.org Core update acceptance remains unconfirmed by this synchronization.
 
 To create a separate development ZIP from the repository root:
 

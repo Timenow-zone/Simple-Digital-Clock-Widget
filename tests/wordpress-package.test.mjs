@@ -50,3 +50,15 @@ test("WordPress header, stable tag, POT, source reference and script cache versi
   assert.match(manifest.widget_source_commit, /^[a-f0-9]{40}$/);
   assert.ok(readme.includes(`/tree/${manifest.widget_source_commit}`), "Source documentation must identify the accepted commit");
 });
+
+test("WordPress and PHP minimum versions are declared in the plugin header and match the readme", async () => {
+  const readme = await readFile(path.join(plugin, "readme.txt"), "utf8");
+  for (const field of ["Requires at least", "Requires PHP"]) {
+    const pattern = new RegExp(`^${field}:[\\t ]*([^\\r\\n]*)`, "m");
+    const headerMinimum = header.match(pattern)?.[1].trim() ?? "";
+    const readmeMinimum = readme.match(pattern)?.[1].trim() ?? "";
+    assert.match(headerMinimum, /^\d+\.\d+(?:\.\d+)?$/, `${field} must be a nonempty numeric version in the main PHP header`);
+    assert.match(readmeMinimum, /^\d+\.\d+(?:\.\d+)?$/, `${field} must be a nonempty numeric version in the readme`);
+    assert.equal(headerMinimum, readmeMinimum, `${field} must agree between the main PHP header and readme`);
+  }
+});

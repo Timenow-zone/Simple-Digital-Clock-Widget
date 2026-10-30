@@ -1,71 +1,55 @@
-# WordPress 1.1.4 candidate with widget 0.8.1
+# WordPress 1.1.4 candidate: explicit minimum requirements
 
-Status: **candidate accepted locally; source CI passed; not published**. [PR #11](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/11) prepares this exact package. No PR merge, WordPress.org publication, npm publication, tag or production CDN delivery is performed.
+Status: **candidate accepted; Core minimum-version checks, focused upgrades and source CI passed; not published**. Plugin version remains 1.1.4 and the bundled widget remains the already published 0.8.1. This preparation does not merge a PR, publish to WordPress.org or change production CDN delivery.
 
-## Exact package and preserved artifacts
+## Exact new package
 
-- ZIP: `.local/packages/simple-digital-clock-1.1.4-widget-0.8.1-candidate.zip`, **15 installable files**.
-- ZIP SHA-256: `5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088`.
-- Widget: **0.8.1**, **36,009 bytes**, SHA-256 `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`.
-- Widget source commit: `b44f944b60babf45bf266e73ba12f7eba53cfef2`. An independent snapshot rebuilt with the exact `npm run build` recipe produces identical JavaScript. The generic Parcel API smoke check is a different recipe and is not used as the byte-identity check.
-- [15-file manifest](manifest.json) and [package preflight](preflight-evidence.json). Acceptance belongs to this archive; a rebuilt ZIP needs its own identity and acceptance.
+- ZIP: `.local/packages/simple-digital-clock-1.1.4-requirements-candidate.zip`, **15 installable files**.
+- ZIP SHA-256: `fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00`.
+- [Current fifteen-file manifest](manifest.json) and [revision preflight](preflight-evidence.json).
+- Widget: 0.8.1, 36,009 bytes, SHA-256 `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`. It remains identical to `dist/0.8.1.min.js` and the accepted public CDN artifact. Runtime source commit remains `b44f944b60babf45bf266e73ba12f7eba53cfef2`.
 
-The first 1.1.4 candidate with widget 0.8.0 remains at `.local/packages/simple-digital-clock-1.1.4-candidate.zip`, SHA-256 `a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f`. Its [failed visual gates and original acceptance](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/blob/28a20cbfd78a24988a5f4e325581c40dd5d18da6/docs/releases/1.1.4/README.md) remain historical evidence. The frozen 1.1.3 ZIP and all seven previously published versioned widget bundles are also unchanged.
+Only `widget_init.php` differs from the accepted pre-requirement package: two lines in its existing PHP comment declare `Requires at least: 6.3` and `Requires PHP: 7.0`. All fourteen other files, including the readme/changelog, block serializer, KSES, POT and JavaScript, are byte-identical. The executable PHP body, dependencies and saved-block schema are unchanged. Readme values and both header requirements agree; no artificial version bump or runtime rebuild is needed.
 
-## Changes and fixed visual gates
+The previous accepted archive remains `.local/packages/simple-digital-clock-1.1.4-widget-0.8.1-candidate.zip`, SHA-256 `5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088`. Its [manifest](manifest-before-requirements.json), [acceptance](acceptance-before-requirements.json) and [preflight](preflight-before-requirements.json) are preserved separately. The earlier 0.8.0 candidate and frozen 1.1.3 archive also remain unchanged. A repacked archive must not inherit an old exact-ZIP result by relabeling its hash.
 
-Only four plugin files differ from frozen 1.1.3: bundled JavaScript, plugin/cache versions in `widget_init.php`, POT project version and readme metadata/changelog. All eleven other files, including `block.js` and KSES, are byte-identical. No saved-block schema or database migration is introduced. Relative to the first 1.1.4 candidate, only the JavaScript, cache version and readme change; the plugin version remains 1.1.4. Readme CRLF and existing prose are preserved; both gzip size claims are now approximately 12.2 KiB.
+## Why the header change is necessary
 
-Widget 0.8.1 retains the Preact 11.1.0 dependency set from 0.8.0 and makes two bounded fixes:
+The readme already declares WordPress 6.3 and PHP 7.0, but the earlier main PHP header left both fields empty. Core ZIP installation and activation read these fields from the main PHP file and accept empty requirements; catalogue API metadata is a separate source. The new declarations let Core reject an incompatible target before installation or activation.
 
-1. Treat the Google stylesheet as settled after failure, then await a matching theme-provided face and refit. The failure remains explicitly reported. Request identifiers and connected-state checks still prevent stale font callbacks after a font change or removal.
-2. Apply `white-space: nowrap` to the time anchor while retaining the natural-width clamp and bounded font-size refinement. Captions and dates retain their existing wrapping. This prevents WebKit from restoring a stale multiline layout after shrinking Amharic time.
+A permanent package guard requires nonempty numeric requirements in both PHP and readme and exact parity. It fails against the previous missing-header state. Existing identity/version guards continue to check all files, the independent widget version, source reference and script cache version. [Core header documentation](https://developer.wordpress.org/plugins/plugin-basics/header-requirements/) and [Core requirement validation](https://developer.wordpress.org/reference/functions/validate_plugin_requirements/) describe the enforced fields.
 
-The [0.8.1 regression record](../0.8.1/README.md) separates immutable 0.8.0 RED controls from the rebuilt package's GREEN results. Measurements record untouched Range geometry before any natural-width probe that could force a reflow. A licensed, test-only Fira Code fixture with explicit 150% size adjustment makes the font metric change deterministic; installed-package tests separately exercise the unadjusted theme font.
+## Current revision acceptance
 
-## Upgrade acceptance
+The [minimum-version evidence](requirements-evidence.json) records three passing permanent package guards and six isolated negative controls: each missing field, each README mismatch and each nonnumeric value is rejected. The exact new ZIP is also checked with unchanged retained Core 7.1.3 header-parser, ZIP-check and activation-requirement function bodies. Supported minima pass; WordPress 6.2.9, PHP 5.6.40 and combined incompatibility return the corresponding Core errors. The old blank-header ZIP accepts unsupported inputs despite its readme declarations, reproducing the defect.
 
-Official 1.1.2 is directly tested in **six environments**: five Docker configurations and a fresh independent site using native Local service binaries. The wider Docker matrix also checks official 1.1.1 and the frozen **unpublished** 1.1.3 candidate. Public 1.1.3 delivery must not be inferred from that local archive.
+Those negative version decisions are controlled logic probes: WordPress uses Core's supported test-version override and PHP uses an isolated namespace constant. The actual interpreter is PHP 8.5.10, not PHP 5.6. Filesystem mapping, translations, filters and the no-plugin-dependency boundary use documented narrow doubles; this is not a complete WordPress activation/bootstrap. Separate real minimum/current Core updates supply the runtime acceptance below.
 
-| WordPress | PHP | Docker predecessors |
-| --- | --- | --- |
-| 6.3.2 | 7.0.33 | 1.1.1, 1.1.2 |
-| 6.3.2 | 7.4.33 | 1.1.2 |
-| 6.3.2 | 8.2.12 | 1.1.1, 1.1.2 |
-| 7.1.3 | 8.3.35 | 1.1.1, 1.1.2, frozen 1.1.3 |
-| 7.1.3 | 8.5.12 | 1.1.1, 1.1.2, frozen 1.1.3 |
+The [focused upgrade evidence](requirements-upgrade-evidence.json) records the completed real cycle for this exact new ZIP:
 
-Each browser run uses Chromium, Firefox and WebKit. The corpus covers 1,423 selector/boundary/deterministic mixed cases per role, posts, nested containers, a synced pattern, Custom HTML, active/inactive block widgets and an unrelated Text widget. This is not an exhaustive Cartesian product.
+| Actual environment | Core 1.1.2 upgrade | Physical rollback and Core reupdate | Installed Core minimum checks |
+| --- | --- | --- | --- |
+| WordPress 6.3.2 / PHP 7.0.33 | Passed | Passed | WordPress 6.3 / PHP 7.0; compatible |
+| WordPress 7.1.3 / PHP 8.3.35 | Passed | Passed | WordPress 6.3 / PHP 7.0; compatible |
 
-### Docker
+Both initial Core HTTP AJAX upgrades and reupdates preserved complete post rows and critical options; all fifteen installed file hashes matched. Actual installed Core header parsing and requirement validation passed on both stacks after each update.
 
-All eleven real Core HTTP AJAX upgrades installed the pinned archive, preserved full post rows and checked settings, and matched all fifteen installed-file hashes. The retained disposable databases/corpus are reused after physical predecessor-file restoration, without database resets or reseeding. Fresh predecessor baselines and new candidate results are kept separately from the earlier 0.8.0 evidence. The [Docker evidence](docker-evidence.json) records the completed cycle:
+Across Chromium/WebKit and the two sites, each baseline/updated/resave/rollback/final stage passed **19,588 native block checks over four pairs**. There were **24 visible preservation saves**, **12 Caption/Width field saves**, four ticking final clocks and eight frontend/editor HTTP contexts verifying exact 0.8.1 bytes/cache version. All-frame capture recorded zero unexpected page/iframe/ResizeObserver errors. Caption/width frontend checks used the logged-in role context and are not claimed as new anonymous coverage.
 
-- All **33 role-resave matrices / 161,601 block checks** and **198 visible Save/Update actions** passed across Administrator, Editor and Author. Editor previews, reopening, valid blocks, attributes and captions were checked.
-- All **33 stored-render pairs / 101,310 clock observations** and **33 responsive/widget/calendar probe pairs / 46,596 observations** passed absolute one-line/width and semantic checks. Intentional fitting geometry changes and the precise inherited one-pixel guard rule are recorded separately; no tolerance was widened. Initial layout equaled later manual-resize geometry over **198 cold visits**, without observer errors.
-- Three physical predecessor rollbacks passed **44,073 old-reader checks** over nine pairs, followed by three Core reupgrades without a database restore. The effective final reader matrix passed **33 pairs / 161,601 checks**, live clocks passed 33 pairs and all **1,188 anonymous caption comparisons** preserved attributes and rendered text.
-- Fresh numeric-caption PHP checks passed **10,736 assertions**. Plugin Check 2.1.0 ran 29 static and five runtime checks: **zero errors and seven unchanged warnings**. Its temporary plugin/drop-in/tables were removed and checked state restored. The unchanged exhaustive offline entity sweep was intentionally not repeated; its old counts are not inherited.
-- Eight frontend/editor consumer contexts loaded ten actual HTTP-200 responses with `ver=0.8.1` and the accepted hash; all 512 observed shadow clocks reported 0.8.1. All eleven sites retained fifteen exact files and checked settings after the final cycle.
+One original baseline authentication/navigation attempt failed before installing this candidate. A single bounded fresh-context read-only retry passed its 4,897 checks; the other successful groups were not repeated. Concurrent session-token changes are suspected, not causally proven. A normal later iframe navigation used an existing bounded frame reacquisition with no runtime error; it was not a failed save.
 
-Two harness attempts remain recorded: a legacy out-of-scope HTML5 pipeline referenced its intentionally omitted fixture after numeric checks had passed, and one final Chromium authentication/navigation attempt required a single successful fresh-context read-only retry. The latter cause is unconfirmed; no data assertion failed. Successful save/numeric groups were not repeated or reset. All **15 Docker containers** (13 project services and two browser helpers) are stopped; databases, archives and evidence are retained.
+[Source CI run 41093506356](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/41093506356) passed Repository checks, Browser tests and the Cloudflare preview build. The final documentation commit must also pass the required PR checks; its final result is retained privately and visible on the PR. No merge or publication is implied by those checks.
 
-Actual installed-package probes already pass the original Amharic WebKit case across twelve untouched frames and two unadjusted local Fira Code cases in all three engines. In the longer `es-pe` case, every engine demonstrably shrinks the loaded font and reaches the same geometry as a subsequent manual resize. That manual event occurs only after the automatic-fit assertion.
+The focused cycle reuses only disposable fixture databases, with physical predecessor file restoration and no database resets. It checks actual Core HTTP AJAX updates, exact installed bytes/headers, post rows/options, editor validity, caption/width saves, live clocks and rollback readers in Chromium/WebKit. All four own test services are stopped, both site ports are closed and evidence/data are retained; the other nine project sites remained stopped. Public WordPress.org update offers are not supplied by this local package test.
 
-### Fresh native Local runtime
+## Preserved runtime acceptance
 
-A new independent 1.1.2 site used Local 10.2 service binaries directly: nginx 1.26.1, PHP-FPM 8.2.29, MySQL 8.4.0 and WordPress 7.1.3 with Twenty Twenty-Five. This was not Local app UI orchestration. Chromium/WebKit used host Playwright; Firefox used the isolated Linux browser server against the native HTTP backend.
+The [previous complete report at the accepted main merge](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/blob/bf6c4e6afc28236b2191a97f53046f295107a0d1/docs/releases/1.1.4/README.md), [Docker evidence](docker-evidence.json), [native evidence](native-runtime-evidence.json) and [original acceptance](acceptance-before-requirements.json) explicitly belong to archive `5963f947...6088`. They are not presented as a fresh full-matrix run of the new archive.
 
-- One Core update, one physical 1.1.2 rollback and one Core reupdate passed without restoring the database. Core `Plugin_Upgrader::bulk_upgrade` with AJAX skin ran through WP-CLI, rather than HTTP AJAX. Complete post rows/options stayed unchanged and all 15 installed files matched.
-- Six parser/save/reader stages each passed **14,691 block checks** across three engines. **18 visible preservation saves**, **nine Caption/Width saves**, **108 anonymous caption comparisons** and **976 numeric-caption PHP assertions** passed.
-- **4,269 stored-clock fitting observations**, **45 focused checks**, final rendering of 156 pages and responsive/calendar probes passed. All three post-reupdate clocks ticked. Actual browser JavaScript responses used `ver=0.8.1`, the accepted hash and runtime version. No unexpected runtime or ResizeObserver error was recorded.
-- The actual unadjusted delayed local Fira Code face fitted automatically with Google CSS blocked. Amharic passed eight untouched frames per engine after three readiness frames. The old Amharic defect did not reproduce in this native DOM; that RED control belongs to the separate permanent test and minimum-theme Docker case.
+That historical cycle covered eleven Docker sites and one fresh native Local-runtime site, direct 1.1.2 upgrades in six environments, four file rollbacks/reupdates, 216 visible preservation saves and nine caption/width saves. Both visual defects were closed with immutable 0.8.0 RED controls and exact 0.8.1 GREEN checks. The unchanged widget/block/KSES bytes preserve that runtime identity; this revision adds focused package and Core requirement checks instead of repeating the large visual/entity matrix. Retained harness retries and scope limits remain in the original reports.
 
-A Firefox navigation timeout passed a bounded retry of only its affected render group. One first WebKit frame-zero overflow lacked saved numeric values; the same assertions passed on replay and eight additional cold contexts passed every frame. Early sampling is suspected, not causally proven. These attempts remain in the [native evidence](native-runtime-evidence.json). The site's three processes are stopped, port 19952 is closed and shared Local configuration hashes are unchanged.
+## CDN state, publication boundaries and rollback
 
-## Repository checks, isolation and release boundaries
+Widget 0.8.1 was already [published and verified](../0.8.1/PUBLICATION.md) after PR #11 merged. Production deployment `e6229332-a27a-4595-8cf4-3a6d63a43f7e` uses Worker version `49773ac2-fd37-43b8-93fa-a2fa1bc879f0` at 100% traffic. This header/documentation revision does not rebuild, replace or redeploy immutable widget bytes. The earlier [production-unchanged snapshot](production-unchanged.json) records the pre-publication stage and remains historical.
 
-Three TypeScript configurations, ESLint, 22 Node tests, 26 release/prose tests, two package guards and release metadata/identity checks passed locally. The package guard also rejected a coherently updated manifest with an intentionally stale script-cache version. Production-bundle font/layout tests pass 10/10 and iframe tests pass 3/3 across three engines, with the same-file immutable 0.8.0 negative controls retained. Source CI run [41081939222](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/41081939222) passed Repository checks, Browser tests (37 widget tests per engine plus font/iframe suites) and the Cloudflare preview build. The final documentation commit must also pass the required PR checks; its result is retained privately and shown by PR status. The [Linux readiness investigation](../0.8.1/ci-readiness-evidence.json) records the earlier failed run, controlled reproduction and test-only correction; geometry assertions remain strict. The Amharic precondition uses native browser `Intl` to preserve platform-specific period placement. Green repository CI does not replace the disposable-site update cycle.
-
-`npm run site:build` generated the 0.8.1 Cloudflare asset locally; it matches `dist/0.8.1.min.js` byte-for-byte. **Production delivery is pending.** A read-only public metadata/asset check confirms [production remains on 0.8.0](production-unchanged.json); no current task action deploys it. A future authorized delivery must preserve the previous deployment and verify public HTTP status, SHA-256, version/cache metadata and live clocks.
-
-Only disposable sites are used; original user sites, shared Local routing, unrelated containers and historical evidence are preserved. An [independent final check](teardown-evidence.json) confirms all fifteen Docker containers stopped, sixteen checked ports closed and all nine retained artifacts unchanged. A rollback installs predecessor files without restoring the database. It does not repair old damaged captions or certify buggy 1.1.1 save paths. Multisite, native HTTPS, Local UI automation, historical browser minima, arbitrary hosts/themes, real external Google transport and a public WordPress.org update offer are outside this acceptance.
+WordPress 1.1.4 remains unpublished. Merging the new PR and publishing WordPress.org require later authorization; branch preview success does not authorize either. A repository rollback reverts the two PHP header lines and matching package metadata without resetting unrelated work. A test-site rollback restores the pinned official predecessor files without restoring its database. Preserve all old archives and evidence; do not overwrite accepted artifacts or run an older publication script against the new source tree.

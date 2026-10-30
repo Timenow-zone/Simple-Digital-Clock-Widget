@@ -1,0 +1,256 @@
+{
+  "version": "0.8.1",
+  "status": "published_and_verified_on_production_site_and_cdn",
+  "scope": "Standalone demo/CDN publication; WordPress.org, npm and Git tags were not published.",
+  "published_at": "2026-10-30T16:09:21.330845Z",
+  "final_checked_at": "2026-10-30T16:14:11.738020+00:00",
+  "source": {
+    "pr": 11,
+    "accepted_pr_head": "8457ac17790412b018f471aede37073cc64de30f",
+    "merge_commit": "bf6c4e6afc28236b2191a97f53046f295107a0d1",
+    "runtime_source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
+    "merged_at": "2026-10-30T16:05:16Z",
+    "merge_tree_identical_to_accepted_pr": true
+  },
+  "ci": {
+    "main_run": 41086672526,
+    "main_run_url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/41086672526",
+    "checks": {
+      "Repository checks": "success",
+      "Browser tests": "success",
+      "Workers Builds: simple-digital-clock-widget": "success"
+    },
+    "all_pr_checks_passed_before_sha_guarded_merge": true
+  },
+  "deployment": {
+    "id": "e6229332-a27a-4595-8cf4-3a6d63a43f7e",
+    "worker_version": "49773ac2-fd37-43b8-93fa-a2fa1bc879f0",
+    "percentage": 100,
+    "created_on": "2026-10-30T16:09:21.330845Z",
+    "merge_commit": "bf6c4e6afc28236b2191a97f53046f295107a0d1",
+    "cloudflare_build": "06198f57-e26c-4065-b62f-bce658353234"
+  },
+  "artifact": {
+    "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js",
+    "bytes": 36009,
+    "sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "byte_identical_to_dist_and_wordpress_bundle": true,
+    "public_gzip_measurement": {
+      "level": 9,
+      "node": "v24.22.1",
+      "zlib": "1.3.2.1-motley-285e94b"
+    },
+    "public_gzip_bytes": 12491,
+    "local_gzip_bytes": 12446,
+    "gzip_encoder_difference_does_not_change_javascript_bytes": true
+  },
+  "http": {
+    "checked_at": "2026-10-30T16:10:15.743165+00:00",
+    "all_8_versioned_assets_exact": true,
+    "homepage_source_ref_matches_merge": true,
+    "responses": [
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/",
+        "status": 200,
+        "bytes": 44201,
+        "sha256": "b943ae8ff006331af3b025fe545125b9820058bebbeda683cce857c125901c3d",
+        "cache_control": "public, max-age=0, must-revalidate",
+        "content_type": "text/html",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/version.json",
+        "status": 200,
+        "bytes": 348,
+        "sha256": "fa6823e11c9b0de68888fd766c12521e599ea0533518977caef56b181038e0a2",
+        "cache_control": "public, max-age=0, must-revalidate",
+        "content_type": "application/json",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.5.3.min.js",
+        "status": 200,
+        "bytes": 40218,
+        "sha256": "9d2f3ee0659e37f910db18b43b3dbe0065657dc9623301cb744adfaf2ca4ee24",
+        "cache_control": "public, max-age=31536000, immutable",
+        "content_type": "text/javascript",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.5.5.min.js",
+        "status": 200,
+        "bytes": 41174,
+        "sha256": "35227d9343cce0c0af4d4ba9ac5ad3283801380d3e861d097f52a412eddac609",
+        "cache_control": "public, max-age=31536000, immutable",
+        "content_type": "text/javascript",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.6.0.min.js",
+        "status": 200,
+        "bytes": 29819,
+        "sha256": "dc793b84d0d13be3907648f21a69f2aa130f57c5fecb5626a03fd1e9ba777513",
+        "cache_control": "public, max-age=31536000, immutable",
+        "content_type": "text/javascript",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.7.0.min.js",
+        "status": 200,
+        "bytes": 32649,
+        "sha256": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+        "cache_control": "public, max-age=31536000, immutable",
+        "content_type": "text/javascript",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.7.1.min.js",
+        "status": 200,
+        "bytes": 34042,
+        "sha256": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6",
+        "cache_control": "public, max-age=31536000, immutable",
+        "content_type": "text/javascript",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.7.2.min.js",
+        "status": 200,
+        "bytes": 34460,
+        "sha256": "9068d236e2dcff33a01d1aac5de9b13eb9cf2c69837f4ed3b3f7a3089721a0af",
+        "cache_control": "public, max-age=31536000, immutable",
+        "content_type": "text/javascript",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.0.min.js",
+        "status": 200,
+        "bytes": 35922,
+        "sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0",
+        "cache_control": "public, max-age=31536000, immutable",
+        "content_type": "text/javascript",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      },
+      {
+        "url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js",
+        "status": 200,
+        "bytes": 36009,
+        "sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+        "cache_control": "public, max-age=31536000, immutable",
+        "content_type": "text/javascript",
+        "nosniff": "nosniff",
+        "cf_cache_status": "HIT"
+      }
+    ]
+  },
+  "browser": {
+    "checked_at": "2026-10-30T16:10:03.815Z",
+    "status": "passed_public_production_browser_verification",
+    "browsers": [
+      {
+        "engine": "chromium",
+        "runtime_clocks": 11,
+        "ticked_clock_count": 11,
+        "asset_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+        "viewports": [
+          1440,
+          390
+        ],
+        "builder_controls": [
+          "timezone",
+          "locale",
+          "caption",
+          "hundredths",
+          "width",
+          "reset",
+          "preset",
+          "embed-version"
+        ],
+        "paired_iframe_visits": 5,
+        "page_or_child_window_errors": 0,
+        "console_errors": 0
+      },
+      {
+        "engine": "webkit",
+        "runtime_clocks": 11,
+        "ticked_clock_count": 11,
+        "asset_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+        "viewports": [
+          1440,
+          390
+        ],
+        "builder_controls": [
+          "timezone",
+          "locale",
+          "caption",
+          "hundredths",
+          "width",
+          "reset",
+          "preset",
+          "embed-version"
+        ],
+        "paired_iframe_visits": 5,
+        "page_or_child_window_errors": 0,
+        "console_errors": 0
+      }
+    ],
+    "supplemental_actual_public_asset_fixes": {
+      "cases": [
+        "Amharic at 200 px",
+        "Unadjusted Fira Code es-PE at 768 px"
+      ],
+      "engines": 2,
+      "untouched_frames_per_case_engine": 12,
+      "font": "Actual unmodified Twenty Twenty-Five Fira Code variable face, weight range 300–700; rendered weight 300",
+      "font_fixture_sha256": "b6e7adca884c51549c66384fec54747fa2967ac6ad5655ed02c5da5b682a9ba2",
+      "size_adjust": false,
+      "font_delay_ms": 1000,
+      "google_css_deliberately_aborted": true,
+      "asset_contexts_status200_sha256_exact": 4,
+      "page_errors": 0,
+      "intentional_font_console_errors_retained": true,
+      "theme_font_automatic_fit_equals_later_manual_resize": true
+    },
+    "limitations": [
+      "Current host Playwright Chromium/WebKit; not manual Safari UI or native Firefox",
+      "The public main page uses real external transport; the controlled theme-font regression deliberately aborts only Google CSS and serves a local font.",
+      "No WordPress installation or update test was repeated by this smoke test."
+    ],
+    "cleanup": {
+      "own_http_servers_closed": true,
+      "all_browser_contexts_closed": true
+    },
+    "retries": 0
+  },
+  "rollback": {
+    "deployment_id": "dd6a5615-1267-49d6-95d6-c1f2bfe39546",
+    "worker_version": "1df4534b-5203-47f1-a51d-9eaa3a02a2de",
+    "created_on": "2026-10-30T10:19:46.01998Z",
+    "percentage": 100,
+    "widget": "0.8.0",
+    "sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0"
+  },
+  "rollback_executed": false,
+  "wordpress_package_at_publication": {
+    "version": "1.1.4",
+    "archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
+    "published": false,
+    "scope": "Snapshot before the later minimum-requirement header revision; not the identity of a future rebuilt ZIP."
+  },
+  "boundaries": {
+    "wordpress_org_publication_performed": false,
+    "installed_wordpress_site_updated": false,
+    "npm_publication_performed": false,
+    "git_tag_created": false,
+    "historical_acceptance_snapshots_preserved": true
+  },
+  "raw_evidence_retained_locally": ".local/widget-081-publication-20261030/"
+}
