@@ -48,8 +48,35 @@ function assertClocksFit(clocks, stage) {
   }
 }
 
-for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit })) {
-  test(`${engine}: production clocks refit after a delayed font and locale changes`, { timeout: 60000 }, async () => {
+async function fontDiagnostics(page) {
+  return page.evaluate(() => ({
+    fontStatus: document.fonts.status,
+    faces: [...document.fonts].map(face => ({ family: face.family, status: face.status, sizeAdjust: face.sizeAdjust })),
+    samples: [...document.querySelectorAll("timenow-zone-sdcw")].map(host => {
+      const time = host.shadowRoot.querySelector("a");
+      if (!time) return { id: host.id };
+      const previous = time.getAttribute("style");
+      try {
+        time.style.setProperty("white-space", "nowrap", "important");
+        return {
+          id: host.id,
+          fontFamily: getComputedStyle(time).fontFamily,
+          widths: [parseFloat(getComputedStyle(time).fontSize), 16.363636, 15.6636, 15, 14.5, 14, 13].map(size => {
+            time.style.setProperty("font-size", `${size}px`, "important");
+            return { size, layoutWidth: time.offsetWidth, width: time.getBoundingClientRect().width };
+          }),
+        };
+      } finally {
+        if (previous === null) time.removeAttribute("style");
+        else time.setAttribute("style", previous);
+      }
+    }),
+  }));
+}
+
+function registerFontTest(engine, browserType, pendingUnrelatedFont = false) {
+  const scenario = pendingUnrelatedFont ? "independently of unrelated pending fonts" : "after a delayed font and locale changes";
+  test(`${engine}: production clocks refit ${scenario}`, { timeout: 60000 }, async () => {
     const bundle = await readFile(new URL("../dist/latest.min.js", import.meta.url));
     const html = `<!doctype html><html lang="en"><meta charset="utf-8">
       <style>body { margin: 20px; } timenow-zone-sdcw { display: block; margin-bottom: 20px; }</style>
@@ -65,6 +92,8 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
     await once(server, "listening");
     let releaseStylesheet;
     const stylesheetGate = new Promise(resolve => { releaseStylesheet = resolve; });
+    let releaseUnrelatedFont;
+    const unrelatedFontGate = new Promise(resolve => { releaseUnrelatedFont = resolve; });
     let browser;
     let page;
     const errors = [];
@@ -77,6 +106,10 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
       await page.route("https://fonts.googleapis.com/**", async route => {
         await stylesheetGate;
         await route.fulfill({ status: 200, contentType: "text/css", body: fontStylesheet });
+      });
+      await page.route("**/unrelated-font.ttf", async route => {
+        await unrelatedFontGate;
+        await route.abort();
       });
       await page.addInitScript(() => {
         const OriginalDate = Date;
@@ -95,12 +128,21 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
       }, undefined, { polling: 20 });
       const before = await measureClocks(page);
 
+      if (pendingUnrelatedFont) {
+        const unrelatedRequest = page.waitForRequest("**/unrelated-font.ttf");
+        await page.evaluate(() => {
+          window.unrelatedFontFace = new FontFace("Unrelated", `url("${location.origin}/unrelated-font.ttf")`);
+          document.fonts.add(window.unrelatedFontFace);
+          // The controlled request is aborted only after the assertions and cleanup.
+          void window.unrelatedFontFace.load().catch(() => {});
+        });
+        await unrelatedRequest;
+      }
       releaseStylesheet();
-      await page.waitForFunction(() => [...document.fonts].some(face => face.family.includes("Martian Mono") && face.status === "loaded"));
-      await page.evaluate(async () => {
-        await document.fonts.ready;
-        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-      });
+      await page.waitForFunction(() => [...document.fonts].some(face => face.family.includes("Martian Mono") && face.status === "loaded"), undefined, { polling: 20 });
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      if (pendingUnrelatedFont) assert.deepEqual(await page.evaluate(() => ({ face: window.unrelatedFontFace.status, set: document.fonts.status })),
+        { face: "loading", set: "loading" }, `${engine}: the unrelated font remains pending`);
       const after = await measureClocks(page);
       assertClocksFit(after, `${engine}, loaded font`);
       for (const clock of after) {
@@ -128,17 +170,19 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
         const clocks = [...document.querySelectorAll("timenow-zone-sdcw")];
         return clocks.length === 2 && clocks.every(host => host.shadowRoot?.querySelector("a")?.textContent?.includes("41"));
       });
-      await page.evaluate(async () => {
-        await document.fonts.ready;
-        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-      });
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       assertClocksFit(await measureClocks(page), `${engine}, reconnected`);
       assert.deepEqual(errors, [], `${engine}: no browser or font loading errors`);
     } catch (error) {
-      if (page && !page.isClosed()) console.error(JSON.stringify({ engine, errors, clocks: await measureClocks(page).catch(() => []) }));
+      if (page && !page.isClosed()) console.error(JSON.stringify({ engine, errors, clocks: await measureClocks(page).catch(() => []),
+        fonts: await fontDiagnostics(page).catch(() => null) }));
       throw error;
     } finally {
       releaseStylesheet();
+      if (page && !page.isClosed()) await page.evaluate(() => {
+        if (window.unrelatedFontFace) document.fonts.delete(window.unrelatedFontFace);
+      });
+      releaseUnrelatedFont();
       if (page) await page.unrouteAll({ behavior: "wait" });
       if (browser) await browser.close();
       server.closeAllConnections();
@@ -146,3 +190,7 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
     }
   });
 }
+
+for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit })) registerFontTest(engine, browserType);
+// This pending-face regression is reproduced in Chromium. The base font cases run in every engine.
+registerFontTest("chromium", chromium, true);

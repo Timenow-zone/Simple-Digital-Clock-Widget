@@ -13,7 +13,7 @@ Dependencies remain those accepted for 0.7.2: Preact **11.1.0**, preact-custom-e
 The earlier 192 old/new comparisons were **96 configurations in each of Chromium and WebKit**, checking parity between 0.7.1 and 0.7.2. They were not absolute no-wrapping assertions. Independent review found two existing sizing problems in both versions:
 
 1. An ordinary AM/PM clock at 80 px could wrap in Chromium, including `bg-BG`. Apply the natural-width clamp to ordinary clocks as well as hundredths, and refit after rendered formatting or hour-length changes. Resize work stays coalesced in an animation frame, outside ResizeObserver delivery.
-2. A delayed, wider Google Font could leave the fallback font's size in use until another resize. Wait for the stylesheet, then load the actual time glyphs and await font layout before fitting again. An event-only implementation was insufficient in the tested WebKit. Explicit glyph coverage also prevents fitting too early when Latin loads before a localized Unicode subset. Newly used glyphs are cached per instance; ordinary ticks do not repeatedly call `fonts.load`. Font changes and removal invalidate stale callbacks and clear stylesheet handlers.
+2. A delayed, wider Google Font could leave the fallback font's size in use until another resize. Wait for the stylesheet, then load the actual time glyphs and fit in the next animation frame. This does not wait for unrelated page fonts. An event-only implementation was insufficient in the tested WebKit. Explicit glyph coverage also prevents fitting too early when Latin loads before a localized Unicode subset. Newly used glyphs are cached per instance; ordinary ticks do not repeatedly call `fonts.load`. Font changes and removal invalidate stale callbacks and clear stylesheet handlers.
 
 The narrow absolute regression was first run against 0.7.2 and failed in Chromium: the rendered time occupied two lines. Controlled font tests also reproduced delayed-font overflow. These findings are not evidence of a new regression caused by Preact 11.
 
@@ -28,7 +28,7 @@ The narrow absolute regression was first run against 0.7.2 and failed in Chromiu
 - [Local acceptance snapshot](acceptance.json); raw reports, red/green results and screenshots remain in ignored `.local/widget-080-20261030/`.
 - Production dependency audit has zero findings; the full audit retains five inherited low development findings and zero moderate/high/critical findings.
 
-Accepted candidate: `dist/0.8.0.min.js`, byte-identical to `dist/latest.min.js`; **35,750 bytes**, SHA-256 `25ebb51f5300ab7ba00c98fc5e0015017291c9522618ddc2be361f5e710a0ab4`. Gzip level 9: **12,396 bytes** with Node 26.8.2/zlib 1.2.12. Other encoders can produce different gzip sizes without changing JavaScript bytes.
+Accepted candidate: `dist/0.8.0.min.js`, byte-identical to `dist/latest.min.js`; **35,726 bytes**, SHA-256 `591d5fef194600410bbb8354b71f029bb478e13cd6a824577b805ca4c7591364`. Gzip level 9: **12,389 bytes** with Node 26.8.2/zlib 1.2.12. Other encoders can produce different gzip sizes without changing JavaScript bytes.
 
 The tests cover current Playwright browsers, deterministic locales and controlled font swaps. They do not certify historical browser minima, every real Google Fonts response, every host/theme, DST transitions, or a WordPress upgrade to this widget. The [Preact 11 browser minimums](https://preactjs.com/guide/v11/upgrade-guide/#supported-browser-versions) are upstream requirements, not results of this browser suite.
 

@@ -839,8 +839,8 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
             const requestId = this.fontLoadId;
             const fontFamily = this.props.fontFamily;
             const isCurrent = ()=>requestId === this.fontLoadId && this.containerRef?.isConnected;
-            // WebKit may omit loadingdone; wait for the concrete load and its layout instead.
-            ownerDocument.fonts.load(`700 16px "${fontFamily}"`, text).then(()=>ownerDocument.fonts.ready).then(()=>{
+            // WebKit may omit loadingdone; await this font, then measure in the next frame.
+            ownerDocument.fonts.load(`700 16px "${fontFamily}"`, text).then(()=>{
                 if (isCurrent()) this.scheduleResize();
             }).catch((error)=>{
                 if (isCurrent()) console.error("Unable to load clock font:", fontFamily, error);

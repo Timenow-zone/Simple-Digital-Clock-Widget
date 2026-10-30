@@ -4,9 +4,9 @@
   "status": "candidate_ci_and_cdn_pending",
   "artifact": {
     "file": "dist/0.8.0.min.js",
-    "bytes": 35750,
-    "sha256": "25ebb51f5300ab7ba00c98fc5e0015017291c9522618ddc2be361f5e710a0ab4",
-    "gzip_bytes": 12396,
+    "bytes": 35726,
+    "sha256": "591d5fef194600410bbb8354b71f029bb478e13cd6a824577b805ca4c7591364",
+    "gzip_bytes": 12389,
     "gzip_level": 9,
     "node": "v26.8.2",
     "zlib": "1.2.12"
@@ -110,6 +110,11 @@
       "fonts_load_calls_after_initial_and_five_locale_changes": 2,
       "manual_resize": false,
       "webkit": "not_counted; engine did not request Cyrillic face"
+    },
+    "unrelated_pending_font": {
+      "engine": "chromium",
+      "passed": true,
+      "clock_fits_before_unrelated_font_finishes": true
     }
   },
   "dependency_audit": {
@@ -120,5 +125,13 @@
       "high": 0,
       "critical": 0
     }
+  },
+  "local_delayed_font_tests": {
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "passed": 2,
+    "additional_pending_unrelated_font_chromium": 1
   }
 }
