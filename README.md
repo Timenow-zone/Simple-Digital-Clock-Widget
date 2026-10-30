@@ -14,7 +14,7 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 * **Timezone & locale aware:** uses `Intl.*` under the hood
 * **Accessible:** semantic, keyboard focusable link
 
-Widget **0.8.0** continues the Preact 11.1.0 migration and fixes ordinary AM/PM clock fitting and refitting after a Google Font loads. See the [regression and release record](docs/releases/0.8.0/README.md). The independently versioned WordPress 1.1.3 candidate retains its accepted widget 0.7.1 bundle.
+Widget **0.8.0** continues the Preact 11.1.0 migration and fixes ordinary AM/PM clock fitting and refitting after a Google Font loads. See the [regression and release record](docs/releases/0.8.0/README.md). The independently versioned WordPress 1.1.4 candidate bundles this exact artifact; the retained 1.1.3 ZIP keeps widget 0.7.1.
 
 ---
 
@@ -287,6 +287,8 @@ Widget and WordPress plugin versions are independent; the widget build does not 
 The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [1.1.2 patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. That published package bundles widget **0.7.0**.
 
 The local **1.1.3 candidate** bundles widget **0.7.1** and fixes invalid numeric caption references and automatic container sizing. See the [candidate acceptance and package manifest](docs/releases/1.1.3/README.md). The WordPress candidate remains unpublished. The production demo/CDN now uses widget **0.8.0**, with earlier versioned URLs retained; see the [CDN publication record](docs/releases/0.8.0/PUBLICATION.md). CDN delivery does not publish an npm package or Git tag.
+
+The new **1.1.4 candidate** bundles the exact widget **0.8.0**, retains the 1.1.3 PHP fixes and preserves the block serializer. See the [1.1.4 package and upgrade acceptance](docs/releases/1.1.4/README.md). It is not published; the 1.1.3 ZIP and historical acceptance records remain unchanged.
 
 The later readme-only publication r3772710 is recorded [separately](docs/releases/1.1.2/README-PUBLICATION.md); the original release manifest and tag remain historical records.
 
