@@ -22,6 +22,60 @@ async function fixture(t) {
   return directory;
 }
 
+function git(directory, args) {
+  const result = spawnSync("git", args, {
+    cwd: directory, encoding: "utf8", timeout: 10000,
+    env: { ...process.env, GIT_CONFIG_GLOBAL: "/dev/null", GIT_CONFIG_NOSYSTEM: "1" },
+  });
+  if (result.error) throw result.error;
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  return result.stdout.trim();
+}
+
+async function productFixture(t) {
+  const directory = await fixture(t);
+  await mkdir(path.join(directory, "product-site"));
+  await copyFile(path.join(root, "product-site/index.template.html"), path.join(directory, "product-site/index.template.html"));
+  return directory;
+}
+
+function buildSite(directory) {
+  const result = spawnSync(process.execPath, [path.join(root, "scripts/build-product-site.mjs"), "--build"], {
+    cwd: directory, encoding: "utf8", timeout: 10000,
+  });
+  if (result.error) throw result.error;
+  return { status: result.status, output: result.stdout + result.stderr };
+}
+
+test("product build preserves legacy CDN bytes and cache headers and links an existing source commit", async (t) => {
+  const directory = await productFixture(t);
+  const legacy = await readFile(path.join(root, "dist/0.7.0.min.js"));
+  await writeFile(path.join(directory, "dist/0.7.0.min.js"), legacy);
+  await writeFile(path.join(directory, "dist/latest.min.js"), "unversioned alias");
+  git(directory, ["init", "--quiet"]);
+  git(directory, ["-c", "user.name=Test", "-c", "user.email=test@example.invalid", "-c", "commit.gpgsign=false", "commit", "--allow-empty", "-qm", "Product site fixture"]);
+  const commit = git(directory, ["rev-parse", "HEAD"]);
+  const result = buildSite(directory);
+  assert.equal(result.status, 0, result.output);
+  const output = path.join(directory, "product-dist");
+  assert.deepEqual(await readFile(path.join(output, "assets/simple-digital-clock-widget-0.7.0.min.js")), legacy);
+  assert.deepEqual(await readFile(path.join(output, `assets/simple-digital-clock-widget-${pkg.version}.min.js`)), await readFile(path.join(directory, artifactPath)));
+  await assert.rejects(readFile(path.join(output, "assets/simple-digital-clock-widget-latest.min.js")), { code: "ENOENT" });
+  const headers = await readFile(path.join(output, "_headers"), "utf8");
+  for (const version of ["0.7.0", pkg.version]) {
+    assert.ok(headers.includes(`/assets/simple-digital-clock-widget-${version}.min.js\n  Cache-Control: public, max-age=31536000, immutable\n  X-Content-Type-Options: nosniff`));
+  }
+  const html = await readFile(path.join(output, "index.html"), "utf8");
+  assert.ok(html.includes(`/tree/${commit}`));
+  assert.ok(!html.includes(`/tree/v${pkg.version}`));
+});
+
+test("product build rejects a missing source commit instead of inventing a tag link", async (t) => {
+  const result = buildSite(await productFixture(t));
+  assert.equal(result.status, 1, result.output);
+  assert.match(result.output, /Git checkout with a commit is required/);
+});
+
 function run(directory, mode = "--check") {
   const result = spawnSync(process.execPath, [path.join(root, "scripts/sync-release-metadata.mjs"), mode], {
     cwd: directory,

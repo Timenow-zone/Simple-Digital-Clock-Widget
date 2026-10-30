@@ -20,7 +20,7 @@ The deployment adds two explicit packaging adjustments to the generated site:
 1. Preserve the already public 0.7.0 script and its immutable cache headers. Its SHA-256 remains `1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368`. Existing embeds using that URL continue to work.
 2. Point the header's version source link at the accepted commit because `v0.7.1` has no published Git tag. The label remains 0.7.1.
 
-Future deployments must retain these historical asset bytes and URLs. The current site builder emits only the selected widget version; running it alone does not preserve the complete published CDN asset set. The deploy manifest records the assembled files and both adjustments.
+At publication, the site builder emitted only the selected widget version, so the deploy manifest records the assembled files and both manual adjustments. The merge-preparation follow-up now copies all versioned `dist/` bundles, retains their immutable cache headers, and resolves the source link from Git HEAD. A regression verifies legacy bytes and headers survive the build and no unpublished tag is required. These packaging changes do not alter widget bytes or the WordPress ZIP.
 
 ## Public verification
 

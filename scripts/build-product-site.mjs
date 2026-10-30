@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -19,6 +20,7 @@ const TOKENS = [
   "__SDCW_VERSION__",
   "__SDCW_WIDGET_ASSET__",
   "__SDCW_GZIP_KIB__",
+  "__SDCW_SOURCE_REF__",
 ];
 
 function usage(exitCode = 0) {
@@ -39,7 +41,7 @@ Usage:
 --build
     Generates product-dist/ for Cloudflare Pages:
       - product-dist/index.html
-      - product-dist/assets/simple-digital-clock-widget-<version>.min.js
+      - product-dist/assets/simple-digital-clock-widget-<version>.min.js (all versioned dist bundles)
       - product-dist/version.json
       - product-dist/_headers
       - product-dist/robots.txt
@@ -47,6 +49,7 @@ Usage:
 Source of truth:
     package.json -> current release version
     dist/<version>.min.js -> deployed widget artifact and size/hash metadata
+    Git HEAD -> source link; published tags are not required
 
 The generated product-dist/ directory is disposable and must not be committed.
 `.trim());
@@ -113,6 +116,19 @@ async function releaseState() {
   }
 
   const artifact = await fs.readFile(artifactFile);
+  const versionedFiles = (await fs.readdir(path.join(ROOT, "dist"), { withFileTypes: true }))
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".min.js") && VERSION_RE.test(entry.name.slice(0, -7)))
+    .map((entry) => entry.name)
+    .sort();
+  let sourceRef;
+  try {
+    sourceRef = execFileSync("git", ["rev-parse", "HEAD"], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  } catch {
+    throw new Error("A Git checkout with a commit is required to resolve the product site's source link.");
+  }
+  if (!/^[a-f0-9]{40}$/.test(sourceRef)) {
+    throw new Error("Git HEAD must resolve to a full commit SHA for the product site's source link.");
+  }
   const gzipBytes = gzipSync(artifact, { level: 9 }).length;
   const artifactName = `simple-digital-clock-widget-${version}.min.js`;
   const assetPath = `/assets/${artifactName}`;
@@ -128,6 +144,8 @@ async function releaseState() {
     gzipKiB: (gzipBytes / 1024).toFixed(1),
     gzipMeasurement: { level: 9, node: process.version, zlib: process.versions.zlib },
     sha256: sha256(artifact),
+    versionedFiles,
+    sourceRef,
   };
 }
 
@@ -143,6 +161,7 @@ async function render(state) {
   }
 
   template = replaceToken(template, "__SDCW_VERSION__", state.version);
+  template = replaceToken(template, "__SDCW_SOURCE_REF__", state.sourceRef);
   template = replaceToken(
     template,
     "__SDCW_WIDGET_ASSET__",
@@ -168,6 +187,7 @@ async function render(state) {
 function printState(state) {
   console.log(`Product site release: ${state.version}`);
   console.log(`Widget artifact: dist/${state.version}.min.js`);
+  console.log(`Source commit: ${state.sourceRef}; versioned CDN assets: ${state.versionedFiles.length}`);
   console.log(`  bytes:      ${state.bytes}`);
   console.log(`  gzip bytes: ${state.gzipBytes}`);
   console.log(`  gzip encoder: level ${state.gzipMeasurement.level}; Node ${state.gzipMeasurement.node}; zlib ${state.gzipMeasurement.zlib}`);
@@ -189,10 +209,9 @@ async function buildMode() {
   await fs.mkdir(ASSETS_DIR, { recursive: true });
 
   await fs.writeFile(path.join(OUTPUT_DIR, "index.html"), html, "utf8");
-  await fs.copyFile(
-    state.artifactFile,
-    path.join(ASSETS_DIR, state.artifactName),
-  );
+  for (const file of state.versionedFiles) {
+    await fs.copyFile(path.join(ROOT, "dist", file), path.join(ASSETS_DIR, `simple-digital-clock-widget-${file}`));
+  }
 
   const versionJson = {
     version: state.version,
@@ -211,15 +230,16 @@ async function buildMode() {
     "utf8",
   );
 
+  const assetHeaders = state.versionedFiles.map((file) => `/assets/simple-digital-clock-widget-${file}
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff`).join("\n\n");
   const headers = `/
   Cache-Control: public, max-age=0, must-revalidate
 
 /version.json
   Cache-Control: public, max-age=0, must-revalidate
 
-${state.assetPath}
-  Cache-Control: public, max-age=31536000, immutable
-  X-Content-Type-Options: nosniff
+${assetHeaders}
 
 /*
   Referrer-Policy: strict-origin-when-cross-origin
