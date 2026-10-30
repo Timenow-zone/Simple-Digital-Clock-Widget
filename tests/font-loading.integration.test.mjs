@@ -320,7 +320,14 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
       page.on("console", message => { if (message.type() === "error") consoleErrors.push(message.text()); });
       await freezeDate(page, Date.UTC(2026, 9, 25, 1, 0, 0, 20));
       await page.goto(`http://127.0.0.1:${server.address().port}/`);
-      await page.waitForFunction(() => [...document.querySelectorAll("timenow-zone-sdcw")].every(host => host.shadowRoot?.querySelector("a")?.textContent === "ጥዋት 1:00:00"));
+      await page.waitForFunction(() => {
+        // ICU versions place the Amharic day period before or after the numeric time.
+        const expected = new Intl.DateTimeFormat("am", {
+          timeZone: "UTC", hour: "numeric", minute: "numeric", second: "numeric",
+        }).format(new Date());
+        return expected.includes("ጥዋት") && [...document.querySelectorAll("timenow-zone-sdcw")]
+          .every(host => host.shadowRoot?.querySelector("a")?.textContent === expected);
+      });
       // Preserve the original inline layout across frames before any natural-width probe.
       const original = await page.evaluate(async () => {
         const time = document.querySelector("timenow-zone-sdcw").shadowRoot.querySelector("a");

@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30T15:17:00.205699+00:00",
+  "checked_at": "2026-10-30T15:33:21.096953+00:00",
   "status": "accepted_local_regressions",
   "source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
   "source_matches_commit": true,
@@ -15,7 +15,7 @@
     "sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0"
   },
   "test_file": "tests/font-loading.integration.test.mjs",
-  "test_sha256": "273afad4fcb5caabb2c8b8da78edbc52a11982147a207340c9ff9569f42c30a0",
+  "test_sha256": "9c253f8b4bc8826ba4bc3592b27e0f55cdca6589abb985ac9d199cb9e839707e",
   "fixture": {
     "path": "tests/fixtures/fonts/FiraCode-VariableFont_wght.woff2",
     "sha256": "b6e7adca884c51549c66384fec54747fa2967ac6ad5655ed02c5da5b682a9ba2",
@@ -66,11 +66,11 @@
         "sequence": [
           {
             "event": "stylesheet-error",
-            "elapsed": 181.72241599999998
+            "elapsed": 186.90716700000002
           },
           {
             "event": "theme-font-response",
-            "elapsed": 680.341125
+            "elapsed": 686.911375
           }
         ],
         "page_errors": []
@@ -91,11 +91,11 @@
         "sequence": [
           {
             "event": "stylesheet-error",
-            "elapsed": 193.70320900000002
+            "elapsed": 210.95954099999994
           },
           {
             "event": "theme-font-response",
-            "elapsed": 693.0375839999999
+            "elapsed": 715.8268330000001
           }
         ],
         "page_errors": []
@@ -116,11 +116,11 @@
         "sequence": [
           {
             "event": "stylesheet-error",
-            "elapsed": 583.4338749999997
+            "elapsed": 580.2578750000002
           },
           {
             "event": "theme-font-response",
-            "elapsed": 1087.4905839999997
+            "elapsed": 1084.0710410000002
           }
         ],
         "page_errors": []
@@ -142,7 +142,7 @@
         "page_errors": []
       }
     ],
-    "raw_log": "regressions-red080-accepted-final.log"
+    "raw_log": "ci-readiness/mac-fonts-red080-final.log"
   },
   "positive_control": {
     "artifact": "exact dist/latest.min.js identical to dist/0.8.1.min.js",
@@ -151,7 +151,7 @@
       "pass": 10,
       "fail": 0
     },
-    "raw_log": "fonts-green081-accepted-final.log",
+    "raw_log": "ci-readiness/mac-fonts-final-green.log",
     "new_cases": 6,
     "retained_font_cases": 4,
     "assertions": [
@@ -217,5 +217,35 @@
     "Google transport deliberately aborted and font data served locally; real external Google Fonts transport not certified",
     "Unadjusted real theme Fira Code acceptance is separately verified by isolated WordPress runtime agents",
     "No production deployment, merge, tag, npm or WordPress.org publication"
-  ]
+  ],
+  "previous_test_evidence_preserved": "widget-browser-regressions.json; test SHA 273afad4fcb5caabb2c8b8da78edbc52a11982147a207340c9ff9569f42c30a0",
+  "portable_additional_positive_control": {
+    "results": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0
+    },
+    "engines": {
+      "chromium": "host macOS Playwright",
+      "firefox": "Linux remote Playwright",
+      "webkit": "Linux remote Playwright"
+    },
+    "raw_log": "ci-readiness/linux-fonts-final-green.log"
+  },
+  "icu_portability": {
+    "prior_hardcoded_string": "ጥዋት 1:00:00",
+    "valid_linux_webkit_string": "1:00:00 ጥዋት",
+    "fix": "Use browser-native Intl DateTimeFormat with the same frozen instant, locale and public options; require the Amharic day period. Preserve all untouched-frame and width assertions.",
+    "original_mac_negative_control_retained": true,
+    "prior_timeout_log": "ci-readiness/linux-fonts-green.log",
+    "prior_timeout_classification": "Test fixture platform assumption; time was already single-line with natural width 174.91687 <= 200."
+  },
+  "additional_linux_iframe_regression": {
+    "results": {
+      "tests": 3,
+      "pass": 3,
+      "fail": 0
+    },
+    "raw_log": "ci-readiness/linux-iframes-green.log"
+  }
 }
