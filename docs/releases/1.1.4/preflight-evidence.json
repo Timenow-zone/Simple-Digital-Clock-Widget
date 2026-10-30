@@ -1,23 +1,24 @@
 {
   "version": "1.1.4",
+  "revision": "compatibility-r2",
   "widget": "0.8.1",
-  "archive": ".local/packages/simple-digital-clock-1.1.4-compatibility-candidate.zip",
-  "archive_sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
-  "bytes": 64020,
+  "archive": ".local/packages/simple-digital-clock-1.1.4-compatibility-r2-candidate.zip",
+  "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
+  "bytes": 65374,
   "file_count": 16,
   "crc_pass": true,
   "unique_safe_paths": true,
   "files_match_source_and_manifest": true,
-  "changed_paths_vs_requirements_candidate": [
-    "THIRD-PARTY-NOTICES.txt",
+  "changed_paths_vs_rejected_r1": [
     "block.js",
-    "includes/simple-digital-clock-kses.php",
-    "readme.txt"
+    "includes/simple-digital-clock-kses.php"
   ],
-  "previous_archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
+  "rejected_r1_archive_sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
+  "requirements_candidate_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
   "previous_artifacts_preserved": true,
-  "preserved_artifact_count": 13,
+  "preserved_artifact_count": 14,
   "widget_unchanged": true,
   "gpl_license_unchanged": true,
+  "json_caption_schema_and_native_save_markup_retained": true,
   "published": false
 }

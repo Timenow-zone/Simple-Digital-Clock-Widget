@@ -83,6 +83,111 @@ function SDCW_serialize_clock_block_attributes($attributes) {
 }
 
 /**
+ * Reproduce Core 6.3's native caption token for a strict recovery preimage check.
+ * Untouched unknown values need not share PHP's number serialization spelling.
+ */
+function SDCW_matches_legacy_clock_caption($caption, $json) {
+    $encoded = wp_json_encode($caption, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    if (!is_string($encoded)) {
+        return false;
+    }
+    // JSON.stringify emits literal line separators; PHP 7.0 encodes them.
+    // Decode only unescaped JSON line separators, leaving literal \u2028 text.
+    $javascript = preg_replace_callback('/(?<!\\\\)((?:\\\\\\\\)*)\\\\u202([89])/', function ($match) {
+        return $match[1] . ('8' === $match[2] ? "\xe2\x80\xa8" : "\xe2\x80\xa9");
+    }, $encoded);
+    foreach (array($encoded, $javascript) as $candidate) {
+        if (!is_string($candidate)) {
+            continue;
+        }
+        $candidate = str_replace(array('--', '<', '>', '&', '\\"'), array('\\u002d\\u002d', '\\u003c', '\\u003e', '\\u0026', '\\u0022'), $candidate);
+        if ($candidate === $json) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * Locate one top-level caption string in already validated JSON.
+ * Duplicate keys or nested names cannot supply the repaired closing quote.
+ */
+function SDCW_clock_caption_json_span($json) {
+    if (!preg_match_all('/"(?:[^"\\\\]|\\\\.)*"|[{}\[\]:,]/s', $json, $matches, PREG_OFFSET_CAPTURE)) {
+        return null;
+    }
+    $depth = 0;
+    $span = null;
+    foreach ($matches[0] as $index => $token) {
+        if ('{' === $token[0] || '[' === $token[0]) {
+            $depth++;
+        } elseif ('}' === $token[0] || ']' === $token[0]) {
+            $depth--;
+        } elseif (1 === $depth && '"' === $token[0][0] && isset($matches[0][$index + 1], $matches[0][$index + 2]) && ':' === $matches[0][$index + 1][0] && 'caption' === json_decode($token[0])) {
+            if (null !== $span || '"' !== $matches[0][$index + 2][0][0]) {
+                return null;
+            }
+            $span = array($matches[0][$index + 2][1], strlen($matches[0][$index + 2][0]));
+        }
+    }
+    return $span;
+}
+
+/**
+ * Recognize Core 6.3's lost closing quote on a terminal JSON caption backslash.
+ * Exactly one strict caption preimage must match the saved HTML; no generic repair.
+ */
+function SDCW_recover_clock_caption_json($json, $html) {
+    $count = preg_match_all('/u0022(?=\s*(?:,\s*"|}\s*$))/', $json, $matches, PREG_OFFSET_CAPTURE);
+    if (!$count) {
+        return null;
+    }
+    // Malformed untrusted input must not cause unbounded repeated JSON decoding.
+    if ($count > 32) {
+        error_log('Simple Digital Clock: ambiguous legacy caption metadata; original content retained.');
+        return null;
+    }
+    $recovered = array();
+    foreach ($matches[0] as $match) {
+        $offset = $match[1];
+        $backslashes = 0;
+        for ($index = $offset - 1; $index >= 0 && '\\' === $json[$index]; $index--) {
+            $backslashes++;
+        }
+        if ($backslashes < 2 || 0 !== $backslashes % 2) {
+            continue;
+        }
+        $candidate = substr($json, 0, $offset) . '"' . substr($json, $offset + 5);
+        $attributes = json_decode($candidate);
+        if (!is_object($attributes) || !isset($attributes->caption) || !is_string($attributes->caption) || '\\' !== substr($attributes->caption, -1)) {
+            continue;
+        }
+        $span = SDCW_clock_caption_json_span($candidate);
+        if (null === $span || $span[0] + $span[1] - 1 !== $offset || !SDCW_matches_legacy_clock_caption($attributes->caption, substr($json, $span[0], $span[1] + 4))) {
+            continue;
+        }
+        // Core's static HTML escaping leaves entity-shaped strings unchanged.
+        $caption = preg_replace('/&(?!([a-z0-9]+|#[0-9]+|#x[a-f0-9]+);)/i', '&amp;', $attributes->caption);
+        if (null === $caption) {
+            continue;
+        }
+        $caption = str_replace(array('"', '>'), array('&quot;', '&gt;'), $caption);
+        // The slashed save pipeline may already have normalized HTML5 references.
+        // Apply that same single raw-HTML pass to both sides before comparison.
+        $expected = new WP_HTML_Tag_Processor(SDCW_prepare_clock_caption_html('<timenow-zone-sdcw caption="' . $caption . '"></timenow-zone-sdcw>'));
+        $actual = new WP_HTML_Tag_Processor(SDCW_prepare_clock_caption_html($html));
+        if ($expected->next_tag('TIMENOW-ZONE-SDCW') && $actual->next_tag('TIMENOW-ZONE-SDCW') && $expected->get_attribute('caption') === $actual->get_attribute('caption')) {
+            $recovered[] = $attributes;
+        }
+    }
+    if (1 === count($recovered)) {
+        return $recovered[0];
+    }
+    error_log('Simple Digital Clock: unrecognized legacy caption metadata; original content retained.');
+    return null;
+}
+
+/**
  * Edit only complete clock blocks. Foreign comments and HTML remain untouched.
  * Decode objects as objects, including unknown attributes with numeric keys.
  */
@@ -94,9 +199,19 @@ function SDCW_map_clock_blocks($content, $callback) {
     $updated = preg_replace_callback($pattern, function ($match) use ($callback) {
         $json = trim($match[2]);
         $attributes = '' === $json ? new stdClass() : json_decode($json);
-        // Static clock blocks have no child blocks. Leave malformed input alone.
-        if (!is_object($attributes) || preg_match('~<!--\s+/?wp:~', $match[4])) {
+        // Static clock blocks have no child blocks. Do not repair foreign markup.
+        // Native static captions can contain a literal comment prefix, but their
+        // closing angle bracket is escaped. Reject complete child block comments.
+        if (preg_match('~<!--\s+/?wp:.*?-->~s', $match[4])) {
             return $match[0];
+        }
+        $recovered = false;
+        if (!is_object($attributes)) {
+            $attributes = SDCW_recover_clock_caption_json($json, $match[4]);
+            if (!is_object($attributes)) {
+                return $match[0];
+            }
+            $recovered = true;
         }
         $before = SDCW_serialize_clock_block_attributes($attributes);
         $callback($attributes, $match[4]);
@@ -104,7 +219,7 @@ function SDCW_map_clock_blocks($content, $callback) {
         if (null === $before || null === $after) {
             return $match[0];
         }
-        if ($before === $after) {
+        if (!$recovered && $before === $after) {
             return $match[0];
         }
         return $match[1] . $after . ' -->' . $match[4] . $match[5];
@@ -504,11 +619,14 @@ function SDCW_preserve_clock_post_metadata($data) {
         $html = wp_unslash($data[$field]);
         $data[$field] = wp_slash(SDCW_encode_clock_caption_html($html));
     }
-    if (isset($data['post_content']) && is_string($data['post_content'])) {
-        $content = wp_unslash($data['post_content']);
-        $updated = SDCW_sync_clock_content_metadata($content);
+    foreach (array('post_content', 'post_excerpt', 'post_content_filtered') as $field) {
+        if (!isset($data[$field]) || !is_string($data[$field])) {
+            continue;
+        }
+        $content = wp_unslash($data[$field]);
+        $updated = 'post_content' === $field ? SDCW_sync_clock_content_metadata($content) : SDCW_map_clock_blocks($content, function () {});
         if ($updated !== $content) {
-            $data['post_content'] = wp_slash($updated);
+            $data[$field] = wp_slash($updated);
         }
     }
     return $data;

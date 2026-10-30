@@ -1,0 +1,41 @@
+{
+  "wordpress": "6.3.14",
+  "react": "18.2.0",
+  "source_archive": "https://wordpress.org/wordpress-6.3.14.zip",
+  "purpose": "Pinned native static HTML serializer for WordPress caption regression contracts; test-only, never part of the plugin ZIP.",
+  "files": [
+    {
+      "file": "react.min.js",
+      "source_path": "wp-includes/js/dist/vendor/react.min.js",
+      "bytes": 10609,
+      "sha256": "38f8206d84ed8658e4f4fee5a71d757d475b03767e5e7eb1e7cb770f6ab2cd3e"
+    },
+    {
+      "file": "escape-html.min.js",
+      "source_path": "wp-includes/js/dist/escape-html.min.js",
+      "bytes": 1139,
+      "sha256": "cfb6ea70d464c88b03728fe77f38a7400f7a3b1b5b0eaaae5817844d730e8cbd"
+    },
+    {
+      "file": "element.min.js",
+      "source_path": "wp-includes/js/dist/element.min.js",
+      "bytes": 12649,
+      "sha256": "21826e531e656e94ed03199882cdc37f4af9946aeed1a3f63c1e9218ae8142f5"
+    }
+  ],
+  "legacy_clock": {
+    "version": "1.1.2",
+    "source_archive": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip",
+    "archive_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+    "source_path": "simple-digital-clock/block.js",
+    "source_sha256": "42d89e4c70d9976f753048178c4898d1fb732ba39a66f71ad986b38e026896ae",
+    "extracted_sections": [
+      "blocks.getBlockAttributes filter",
+      "attributes schema",
+      "save callback"
+    ],
+    "file": "legacy-clock-1.1.2.js",
+    "bytes": 4423,
+    "sha256": "86209618c9d138265bda09bbee9bdd283158a4aae2f1938135c94e234058fe5f"
+  }
+}

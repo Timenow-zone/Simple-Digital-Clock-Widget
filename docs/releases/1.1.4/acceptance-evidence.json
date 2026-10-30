@@ -1,16 +1,31 @@
 {
   "version": "1.1.4",
-  "archive_sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
-  "status": "prepared; author native verification, required CI and independent reacceptance pending",
-  "prior_independent_verdict": "NO-GO",
-  "prior_archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
+  "revision": "compatibility-r2",
+  "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
+  "status": "prepared; native author verification, required PR CI and independent reacceptance pending",
+  "previous_artifact_verdict": "NO-GO for literal-entity caption regression",
+  "previous_archive_sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
   "unit_contracts": {
-    "javascript_node_tests_passed": 4,
-    "php_assertions": 48,
-    "old_source_tests_failed": 4,
-    "old_php_assertions_failed": 19
+    "tests_passed": 7,
+    "native_malformed_positive_rows": 23,
+    "negative_guard_rows": 8,
+    "php_encoding_assertions": 48,
+    "r1_red_behavioral_tests_failed": 2,
+    "r1_native_chromium_red_failed": 1
   },
-  "new_plugin_check": "pending; previous warning counts not reused",
+  "native_dom_contracts": {
+    "chromium": "PASS",
+    "webkit": "PASS",
+    "local_macos_firefox": "launch timeout; NOT PASS",
+    "required_linux_firefox": "pending",
+    "captions": 11,
+    "cycles": 2,
+    "readers": [
+      "new candidate",
+      "public 1.1.2 excerpt"
+    ]
+  },
+  "new_plugin_check": "pending; prior warning counts not reused",
   "author_native_upgrade": "pending",
   "required_ci": "pending",
   "independent_acceptance": "pending",

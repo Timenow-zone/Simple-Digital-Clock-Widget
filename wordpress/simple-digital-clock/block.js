@@ -2301,9 +2301,6 @@
       },
       caption: {
         type: "string",
-        source: "attribute",
-        selector: "timenow-zone-sdcw",
-        attribute: "caption",
         default: "",
       },
     },

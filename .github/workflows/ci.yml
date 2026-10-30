@@ -85,5 +85,7 @@ jobs:
       - name: Install the locked Playwright browsers and system dependencies
         run: npx --no-install playwright install --with-deps chromium firefox webkit
       - run: npm run test:browsers
+      - name: Check native WordPress caption serialization and legacy readers
+        run: node --test tests/wordpress-serialization.integration.test.mjs
       - name: Verify that browser tests leave tracked files unchanged
         run: git diff --exit-code
