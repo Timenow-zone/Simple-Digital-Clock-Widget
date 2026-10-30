@@ -1,0 +1,9 @@
+{
+  "production_version": "0.8.0",
+  "widget_sha256": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0",
+  "production_asset_matches_retained_0_8_0": true,
+  "version_url": "https://simple-digital-clock-widget.yuri.ws/version.json",
+  "asset_url": "https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.0.min.js",
+  "read_only_verification": true,
+  "deployment_performed": false
+}

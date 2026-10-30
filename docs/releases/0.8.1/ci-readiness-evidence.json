@@ -3,7 +3,7 @@
   "status": "test_readiness_corrected_without_runtime_changes",
   "failed_ci_run": 41079580008,
   "failed_ci_job": 124145324464,
-  "ci_observation": "First ordinary localized AM/PM 80px assertion: width 102.3486328125 > 80.5 while initial queued fit frame had not completed.",
+  "ci_observation": "First ordinary localized AM/PM80px assertion: width102.3486328125 >80.5. The original CI log has no RAF timeline; the equivalent controlled reproduction below establishes the readiness-race mechanism.",
   "controlled_original_helper": {
     "engine": "Linux Playwright WebKit",
     "raf_delivery_delay_ms": 150,
@@ -60,6 +60,6 @@
   "source_matches_b44": true,
   "widget_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
   "widget_bytes": 36009,
-  "new_portable_font_evidence": "../widget-browser-regressions-portable.json",
+  "new_portable_font_evidence": "acceptance.json",
   "publication_performed": false
 }

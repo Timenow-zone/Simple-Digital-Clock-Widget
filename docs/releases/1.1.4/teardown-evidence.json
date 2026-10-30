@@ -1,0 +1,72 @@
+{
+  "test_ports": [
+    {
+      "port": 19601,
+      "closed": true
+    },
+    {
+      "port": 19602,
+      "closed": true
+    },
+    {
+      "port": 19603,
+      "closed": true
+    },
+    {
+      "port": 19604,
+      "closed": true
+    },
+    {
+      "port": 19605,
+      "closed": true
+    },
+    {
+      "port": 19606,
+      "closed": true
+    },
+    {
+      "port": 19607,
+      "closed": true
+    },
+    {
+      "port": 19608,
+      "closed": true
+    },
+    {
+      "port": 19609,
+      "closed": true
+    },
+    {
+      "port": 19610,
+      "closed": true
+    },
+    {
+      "port": 19611,
+      "closed": true
+    },
+    {
+      "port": 19612,
+      "closed": true
+    },
+    {
+      "port": 19613,
+      "closed": true
+    },
+    {
+      "port": 19614,
+      "closed": true
+    },
+    {
+      "port": 19783,
+      "closed": true
+    },
+    {
+      "port": 19952,
+      "closed": true
+    }
+  ],
+  "all_closed": true,
+  "own_docker_containers_stopped": 15,
+  "historical_artifacts_unchanged": true,
+  "checked_artifacts": 9
+}
