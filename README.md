@@ -14,7 +14,7 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 * **Timezone & locale aware:** uses `Intl.*` under the hood
 * **Accessible:** semantic, keyboard focusable link
 
-The **0.7.2 candidate** upgrades Preact to 11.1.0 while preserving clock sizing with explicit CSS units. See the [dependency migration and acceptance record](docs/releases/0.7.2/README.md). The independently versioned WordPress 1.1.3 candidate retains its accepted widget 0.7.1 bundle.
+Widget **0.7.2** upgrades Preact to 11.1.0 while preserving clock sizing with explicit CSS units. See the [dependency migration and acceptance record](docs/releases/0.7.2/README.md). The independently versioned WordPress 1.1.3 candidate retains its accepted widget 0.7.1 bundle.
 
 ---
 
@@ -286,7 +286,7 @@ Widget and WordPress plugin versions are independent; the widget build does not 
 
 The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [1.1.2 patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. That published package bundles widget **0.7.0**.
 
-The local **1.1.3 candidate** bundles widget **0.7.1** and fixes invalid numeric caption references and automatic container sizing. See the [candidate acceptance and package manifest](docs/releases/1.1.3/README.md). The WordPress candidate remains unpublished. Widget **0.7.1** is available on the production demo site and CDN; see the [CDN publication and verification record](docs/releases/0.7.1/CDN-PUBLICATION.md). CDN delivery does not publish an npm package or Git tag.
+The local **1.1.3 candidate** bundles widget **0.7.1** and fixes invalid numeric caption references and automatic container sizing. See the [candidate acceptance and package manifest](docs/releases/1.1.3/README.md). The WordPress candidate remains unpublished. The production demo/CDN now uses widget **0.7.2**, with earlier versioned URLs retained; see the [CDN publication record](docs/releases/0.7.2/PUBLICATION.md). CDN delivery does not publish an npm package or Git tag.
 
 The later readme-only publication r3772710 is recorded [separately](docs/releases/1.1.2/README-PUBLICATION.md); the original release manifest and tag remain historical records.
 

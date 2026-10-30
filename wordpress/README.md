@@ -4,7 +4,7 @@ This repository contains two independently versioned components:
 
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
-| JavaScript widget | `../src/` | `../package.json` (`0.7.2`, standalone candidate) | MIT, as declared in the widget package |
+| JavaScript widget | `../src/` | `../package.json` (`0.7.2`, published to the demo/CDN) | MIT, as declared in the widget package |
 | WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.3`, local candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
@@ -34,7 +34,7 @@ The [1.1.2 patch report](../docs/patches/1.1.2/README.md), [KSES/compatibility a
 
 The [1.1.3 candidate](../docs/releases/1.1.3/README.md) preserves browser replacement semantics for invalid numeric caption references and updates automatic sizing when a container changes width or becomes visible. It deliberately bundles widget 0.7.1, including the responsive hundredths fitting already present in `main`. The saved-block JSON format is unchanged; no database migration is introduced. The candidate is not published.
 
-Widget 0.7.1 is separately available on the production demo/CDN. Its [publication record](../docs/releases/0.7.1/CDN-PUBLICATION.md) does not publish or update the WordPress plugin.
+Widget 0.7.1 remains available at its versioned CDN URL. The current production demo/CDN uses [widget 0.7.2](../docs/releases/0.7.2/PUBLICATION.md); this does not publish or update the WordPress plugin.
 
 Edit the WordPress wrapper here. Keep the bundled production JavaScript unchanged until an explicit widget update is tested.
 `npm run build` only builds the standalone widget; it does not replace files inside the plugin.
