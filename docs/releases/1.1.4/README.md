@@ -1,6 +1,6 @@
 # WordPress 1.1.4 candidate: safe legacy caption serialization
 
-Status: **compatibility revision 2 prepared; fresh native author verification, required PR CI and independent reacceptance pending; not published**. Plugin version remains **1.1.4**, minimum requirements remain **WordPress 6.3 / PHP 7.0**, and the shared widget remains **0.8.1**.
+Status: **independent GO for compatibility revision 2; focused author verification passed with explicit predecessor failures; not merged or published**. Plugin version remains **1.1.4**, minimum requirements remain **WordPress 6.3 / PHP 7.0**, and the shared widget remains **0.8.1**.
 
 ## Exact candidate
 
@@ -38,14 +38,37 @@ An old public 1.1.2 writer on Core 6.3 can still reproduce its own defect after 
 
 Root README, WordPress README and the plugin changelog consistently identify plugin **1.1.4**, widget **0.8.1**, the compatibility correction and dependency notices. Historical versions and acceptance snapshots remain separated from current claims.
 
-## Verification and pending gates
+## Verification and acceptance
 
 - `node --test tests/wordpress-serialization.test.mjs`: **7/7 PASS**, including **23 native malformed-serialization rows**, **8 negative guard rows** and **48 PHP encoding assertions**. A provenance guard verifies pinned native fixtures. The preceding R1 source fails two behavioral contracts and the Chromium literal-caption regression; original failures remain in the raw evidence.
-- `node --test tests/wordpress-serialization.integration.test.mjs`: locally **Chromium/WebKit PASS**, **11 captions × 2 cycles × both current and public-predecessor readers**, with actual DOM decoding and equivalent native static markup. macOS Firefox launch timed out and is **not credited**; all three engines are mandatory in Linux Browser tests and the fresh WordPress cycle.
+- `node --test tests/wordpress-serialization.integration.test.mjs`: locally **Chromium/WebKit PASS**, **11 captions × 2 cycles × both current and public-predecessor readers**, with actual DOM decoding and equivalent native static markup. macOS Firefox launch timed out and is **not credited**. The required Linux Browser tests subsequently passed all three native integration contracts, and independent real WordPress acceptance separately exercised all three engines.
 - Native fixture code is unchanged, pinned Core 6.3.14 React/element/escape-html plus exact public 1.1.2 reader excerpts. Their provenance and licenses live under `tests/fixtures/wordpress-6.3.14/`; none is shipped in the plugin ZIP. Registration/query/PHP doubles are narrowly documented and do not replace actual Gutenberg, persistence, KSES or Core updating.
 - The sixteen-file preflight passes CRC, safe unique paths, exact source/manifest hashes and unchanged widget/GPL checks. Fourteen previous artifact snapshots remain unchanged.
 
-Fresh full WordPress save/update/rollback/reupdate, Plugin Check static/runtime with a new warning assessment, required PR CI and independent exact-ZIP acceptance remain **pending** for this artifact. Prior passing counts, the source CI of R1 and its warning totals are not transferred to this ZIP. A green CI alone does not authorize publication.
+The [independent report](INDEPENDENT-ACCEPTANCE.md) and [exact result](independent-evidence.json) return **GO** for this ZIP at runtime source commit `369f6bde90591e40ac8f59544297a2bae3e6a91f`. Every mandatory section was executed independently on fresh WP 6.3.14 / PHP 7.0.33 and WP 7.1.4 / PHP 8.3.35 environments. Findings and original failures remain explicit; this is not an all-green claim for predecessor behavior.
+
+- **276 exact and valid candidate Caption observations**, plus **378 old-reader observations**, cover three roles, literal entities, slashes, Unicode, className and lock metadata.
+- **538 actual restricted KSES/security assertions per environment**, plus ten native recovery-guard cases per environment, pass. Capabilities, nonces, direct access, all three post fields, widgets, stricter callbacks and unrelated sanitization were checked.
+- Two Core upgrades, two physical file rollbacks and two Core reupdates preserve complete post rows and critical options at all six file transitions, with exact installed files and no database restore/reset. Role saves on posts/pages and active/inactive widgets pass in Chromium, WebKit and real Linux Firefox.
+- Patterns, HTML/shortcode consumers, Auto/Reset, ticking, iframe/resize/hidden-reveal, delayed Fira Code after Google failure and Amharic geometry pass. Old 0.8.0 RED controls remain separate. **312 native Intl comparisons** pass.
+- Official **Plugin Check 2.1.0: 29 static + 5 individually run runtime checks, 0 errors / 10 reviewed nonblocking warnings**. Eight fixed diagnostics, one bounded argument-free backtrace and existing global script loading are individually assessed in the preserved result. Earlier warning totals were not reused.
+- The independent isolated build reproduces exact widget 0.8.1; read-only public checks match its immutable CDN bytes. Public WordPress 1.1.4 remains absent. No publication is inferred from those reads.
+
+The separate [focused author report](AUTHOR-VERIFICATION.md) and [curated result](author-evidence.json) cover Chromium only: **120/120 fresh candidate saves**, **60 observed native malformed Core/REST inputs repaired to exact stored JSON**, a 240-clock corpus over four phases with 20 visible preservation saves, **60/60 public-1.1.2 reader checks**, and six Advanced saves/old reads/reupdated saves each. Its six file transitions also preserve all rows/options. Author WebKit/Firefox were not executed or credited for this artifact; independent three-engine evidence supplies that coverage.
+
+The [runtime-source CI run 41118373200](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/41118373200) passed Repository checks and Browser tests, including all three new native DOM contracts; Workers Builds passed. Required checks must also pass on the final documentation/test-only PR head. The latest result is visible on [PR #13](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/13) and retained in local final CI evidence before handoff.
+
+### Minimum-PHP unit comparison correction
+
+The reviewer retained an authored unit-harness false failure on PHP 7: a constructed numeric-key `stdClass` and an equivalent JSON-decoded object have different internal key representations. Their JSON is identical. The test now compares JSON encodings, retaining object/array and number/string distinctions; [diagnostic evidence](php70-unit-evidence.json) preserves the original nine failures and negative controls. The corrected tracked test passes **48/48 assertions on actual PHP 7.0.33 and PHP 8.3.35** in read-only, network-none CLI containers. This one-line test change and the final evidence documentation change no installable file, manifest or accepted ZIP byte. The reviewer's original 6/7 PHP 7 test snapshot remains unmodified in its report.
+
+### Explicit boundaries
+
+The public 1.1.2 writer still corrupts some terminal-backslash metadata on Core 6.3. Both independent and author cycles retain its failures, lost literal captions and Advanced metadata. One already-damaged Author numeric-entity block remains invalid after reupdate. The author cycle does not run a new writer on that inherited invalid markup; its other **59/59 final writes** pass. The independent strict failed collector remains retained. No automatic reconstruction of erased values or blanket successful old-writer claim is made.
+
+Unknown metadata follows native Core filtering: a numeric-key-only object can become an array for restricted Author identically under native KSES and both plugin versions. Mixed structures and actual recovery cases retain their tested semantics; there is no universal type-preservation promise after Core policy.
+
+HTTPS/TLS, multisite, native Safari/VoiceOver, successful real Google stylesheet transport, installed owner sites and public delivery/updating of unpublished WordPress 1.1.4 remain outside this acceptance. All eight independent and five author services are stopped, their ports are closed, and databases/raw evidence are retained. Prior rejected archives, failed attempts and their separate databases are preserved. A GO or green CI does not authorize merging or publication.
 
 ## Preserved artifacts and publication boundaries
 

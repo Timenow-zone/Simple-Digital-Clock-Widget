@@ -65,7 +65,7 @@ $cases = array('Terminal \\', 'Terminal \\\\', 'Terminal \\\\\\', 'Quote \\" and
 foreach ($cases as $caption) {
     $attributes = (object) array('caption' => $caption, 'width' => 180, 'rounded' => 0, 'date' => true, 'border' => true, 'unknown' => (object) array('0' => 'nested \\'));
     $encoded = $serialize($attributes);
-    $assert(json_decode($encoded) == $attributes, 'JSON roundtrip: ' . $caption);
+    $assert(wp_json_encode(json_decode($encoded)) === wp_json_encode($attributes), 'JSON roundtrip: ' . $caption);
     $assert(false === strpos($encoded, '--') && false === strpos($encoded, '<') && false === strpos($encoded, '>') && false === strpos($encoded, '&'), 'Comment delimiter safety');
     $html = '<timenow-zone-sdcw width="180"></timenow-zone-sdcw>';
     $original = '<!-- wp:simple-digital-clock-block/widget-block ' . $encoded . ' -->' . $html . '<!-- /wp:simple-digital-clock-block/widget-block -->';

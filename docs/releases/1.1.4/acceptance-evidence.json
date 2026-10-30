@@ -2,7 +2,7 @@
   "version": "1.1.4",
   "revision": "compatibility-r2",
   "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
-  "status": "prepared; native author verification, required PR CI and independent reacceptance pending",
+  "status": "Independent GO; focused author scope passed; explicit predecessor failures retained; not merged or published",
   "previous_artifact_verdict": "NO-GO for literal-entity caption regression",
   "previous_archive_sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
   "unit_contracts": {
@@ -17,7 +17,7 @@
     "chromium": "PASS",
     "webkit": "PASS",
     "local_macos_firefox": "launch timeout; NOT PASS",
-    "required_linux_firefox": "pending",
+    "required_linux_firefox": "PASS in source CI41118373200; independent actual Linux Firefox also passed",
     "captions": 11,
     "cycles": 2,
     "readers": [
@@ -25,11 +25,53 @@
       "public 1.1.2 excerpt"
     ]
   },
-  "new_plugin_check": "pending; prior warning counts not reused",
-  "author_native_upgrade": "pending",
-  "required_ci": "pending",
-  "independent_acceptance": "pending",
+  "new_plugin_check": {
+    "version": "2.1.0",
+    "static": 29,
+    "runtime_individually_executed": 5,
+    "errors": 0,
+    "warnings": 10,
+    "warnings_reviewed": "NON_BLOCKING"
+  },
+  "author_native_upgrade": {
+    "status": "PASS_FOCUSED_AUTHOR_SCOPE_WITH_EXPLICIT_INHERITED_FAILURES",
+    "engine": "chromium",
+    "fresh_ui_passed": 120,
+    "ordinary_clock_blocks": 240,
+    "core_updates": 2,
+    "file_rollbacks": 2,
+    "core_reupdates": 2,
+    "old_reader_passed": 60,
+    "advanced_contexts": 6,
+    "final_new_writer_passed": 59,
+    "inherited_invalid_not_written": 1,
+    "database_restores": 0,
+    "evidence": "author-evidence.json"
+  },
+  "required_ci": {
+    "runtime_source_commit": "369f6bde90591e40ac8f59544297a2bae3e6a91f",
+    "source_run": 41118373200,
+    "repository": "PASS",
+    "browsers": "PASS",
+    "final_head_gate": "Required Repository checks and Browser tests must pass on final PR head; inspect PR13 and retained final CI evidence"
+  },
+  "independent_acceptance": {
+    "verdict": "GO",
+    "runtime_source_commit": "369f6bde90591e40ac8f59544297a2bae3e6a91f",
+    "report": "INDEPENDENT-ACCEPTANCE.md",
+    "evidence": "independent-evidence.json",
+    "all_tests_green": false,
+    "candidate_blockers": []
+  },
   "source_changed": true,
   "shared_widget_changed": false,
-  "published": false
+  "published": false,
+  "test_only_php70_correction": {
+    "evidence": "php70-unit-evidence.json",
+    "actual_php70_assertions_passed": 48,
+    "actual_php83_assertions_passed": 48,
+    "plugin_files_changed": false,
+    "archive_changed": false
+  },
+  "merged": false
 }
