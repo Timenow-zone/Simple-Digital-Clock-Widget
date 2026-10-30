@@ -7,7 +7,7 @@
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.7.2
+ * Version: 0.8.0
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */
@@ -21,7 +21,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.7.2";
+const v = "0.8.0";
 
 const googleFontsMonospace: string[] = (data?.allowFonts ?? []) as string[];
 
@@ -82,6 +82,10 @@ class SimpleDigitalClockWidget extends Component<
   resizeObserver?: ResizeObserver;
   resizeFrame?: number;
   observedWidth?: number;
+  fontLoadId = 0;
+  fontStylesheet?: HTMLLinkElement;
+  fontStylesheetReady = false;
+  fontRequestedText = "";
   hundredthsMetadataAt = 0;
   hundredthsFormatter?: Intl.DateTimeFormat;
   hundredthsFormatterFailed = false;
@@ -273,15 +277,68 @@ class SimpleDigitalClockWidget extends Component<
     this.animationFrame = requestAnimationFrame(this.updateHundredthsFrame);
   };
 
+  clearFontLoadHandlers() {
+    this.fontLoadId += 1;
+    this.fontStylesheetReady = false;
+    this.fontRequestedText = "";
+    if (this.fontStylesheet) {
+      this.fontStylesheet.onload = null;
+      this.fontStylesheet.onerror = null;
+      this.fontStylesheet = undefined;
+    }
+  }
+
+  resizeAfterFontLoad = () => {
+    const ownerDocument = this.containerRef?.ownerDocument;
+    if (!this.fontStylesheetReady || !ownerDocument) return;
+    if (!ownerDocument.fonts) {
+      this.scheduleResize();
+      return;
+    }
+    // Include actual localized glyphs; the default space only loads the Latin subset.
+    const text = Array.from(new Set(`0123456789${this.fontRequestedText}${this.state.timeString}`)).join("");
+    if (text === this.fontRequestedText) return;
+    this.fontRequestedText = text;
+    const requestId = this.fontLoadId;
+    const fontFamily = this.props.fontFamily as string;
+    const isCurrent = () => requestId === this.fontLoadId && this.containerRef?.isConnected;
+    // WebKit may omit loadingdone; wait for the concrete load and its layout instead.
+    void ownerDocument.fonts.load(`700 16px "${fontFamily}"`, text)
+      .then(() => ownerDocument.fonts.ready)
+      .then(() => {
+        if (isCurrent()) this.scheduleResize();
+      }).catch((error: unknown) => {
+        if (isCurrent()) console.error("Unable to load clock font:", fontFamily, error);
+      });
+  };
+
   loadGoogleFont = (fontFamily: string) => {
-    if (fontFamily) {
-      const link = document.createElement("link");
-      link.href = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(
-        /\s/g,
-        "+"
-      )}:wght@700&display=swap`;
-      link.rel = "stylesheet";
-      document.head.appendChild(link);
+    this.clearFontLoadHandlers();
+    const ownerDocument = this.containerRef?.ownerDocument;
+    if (!ownerDocument || !googleFontsMonospace.includes(fontFamily)) return;
+    const requestId = this.fontLoadId;
+    const isCurrent = () => requestId === this.fontLoadId && this.containerRef?.isConnected;
+    const link = ownerDocument.createElement("link");
+    this.fontStylesheet = link;
+    link.href = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/\s/g, "+")}:wght@700&display=swap`;
+    link.rel = "stylesheet";
+    link.onload = () => {
+      if (!isCurrent()) return;
+      this.fontStylesheetReady = true;
+      this.resizeAfterFontLoad();
+    };
+    link.onerror = () => {
+      if (isCurrent()) console.error("Unable to load clock font stylesheet:", fontFamily);
+    };
+    ownerDocument.head.appendChild(link);
+  };
+
+  scheduleResize = () => {
+    if (this.resizeFrame === undefined) {
+      this.resizeFrame = requestAnimationFrame(() => {
+        this.resizeFrame = undefined;
+        this.handleResize();
+      });
     }
   };
 
@@ -319,7 +376,7 @@ class SimpleDigitalClockWidget extends Component<
       const fontSizeTitle = (width || 1) / 15;
       const time = this.containerRef.querySelector("a");
 
-      if (this.isHundredthsEnabled() && time) {
+      if (time) {
         const availableWidth = this.containerRef.clientWidth - 1;
 
         if (fontSize > 0 && availableWidth > 0) {
@@ -427,12 +484,7 @@ class SimpleDigitalClockWidget extends Component<
         if (width === this.observedWidth) return;
         this.observedWidth = width;
         // Fit outside observer delivery so height changes cannot cause a resize loop.
-        if (this.resizeFrame === undefined) {
-          this.resizeFrame = requestAnimationFrame(() => {
-            this.resizeFrame = undefined;
-            this.handleResize();
-          });
-        }
+        this.scheduleResize();
       });
       this.resizeObserver.observe(this.containerRef);
     }
@@ -446,27 +498,29 @@ class SimpleDigitalClockWidget extends Component<
     prevState: SimpleDigitalClockWidgetState,
   ) {
     const hundredthsChanged = prevProps.hundredths !== this.props.hundredths;
-    const hundredthsFormatChanged =
+    const formatChanged =
       prevProps.locale !== this.props.locale ||
       prevProps.timeZone !== this.props.timeZone ||
       prevProps.period !== this.props.period;
 
-    if (hundredthsFormatChanged) {
+    if (formatChanged) {
       this.resetHundredthsFormatter();
     }
 
     if (prevProps.fontFamily !== this.props.fontFamily) {
       this.loadGoogleFont(this.props.fontFamily as string);
     }
+    if (prevState.timeString !== this.state.timeString) {
+      this.resizeAfterFontLoad();
+    }
     if (
       prevProps.width !== this.props.width ||
       hundredthsChanged ||
-      (this.isHundredthsEnabled() &&
-        (hundredthsFormatChanged ||
-          prevProps.fontFamily !== this.props.fontFamily ||
-          prevState.timeString.length !== this.state.timeString.length))
+      formatChanged ||
+      prevProps.fontFamily !== this.props.fontFamily ||
+      prevState.timeString.length !== this.state.timeString.length
     ) {
-      this.handleResize();
+      this.scheduleResize();
     }
     if (prevProps.prefers !== this.props.prefers) {
       this.handlePrefers();
@@ -491,6 +545,7 @@ class SimpleDigitalClockWidget extends Component<
   componentWillUnmount() {
     // console.log("componentWillUnmount");
     this.stopClock();
+    this.clearFontLoadHandlers();
     window.removeEventListener("resize", this.handleResize);
     this.resizeObserver?.disconnect();
     if (this.resizeFrame !== undefined) cancelAnimationFrame(this.resizeFrame);

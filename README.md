@@ -4,9 +4,9 @@ Lightweight, framework-agnostic web component (built with Preact) to display a d
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.7.2`
-* **Tiny:** 11.7 KiB gzipped (`dist/0.7.2.min.js`; 34,460 bytes minified, 12,026 bytes gzip)
-* **Artifact SHA-256:** `9068d236e2dcff33a01d1aac5de9b13eb9cf2c69837f4ed3b3f7a3089721a0af`
+* **Current version:** `0.8.0`
+* **Tiny:** 12.1 KiB gzipped (`dist/0.8.0.min.js`; 35,750 bytes minified, 12,396 bytes gzip)
+* **Artifact SHA-256:** `25ebb51f5300ab7ba00c98fc5e0015017291c9522618ddc2be361f5e710a0ab4`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
@@ -14,7 +14,7 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 * **Timezone & locale aware:** uses `Intl.*` under the hood
 * **Accessible:** semantic, keyboard focusable link
 
-Widget **0.7.2** upgrades Preact to 11.1.0 while preserving clock sizing with explicit CSS units. See the [dependency migration and acceptance record](docs/releases/0.7.2/README.md). The independently versioned WordPress 1.1.3 candidate retains its accepted widget 0.7.1 bundle.
+Widget **0.8.0** continues the Preact 11.1.0 migration and fixes ordinary AM/PM clock fitting and refitting after a Google Font loads. See the [regression and release record](docs/releases/0.8.0/README.md). The independently versioned WordPress 1.1.3 candidate retains its accepted widget 0.7.1 bundle.
 
 ---
 
@@ -271,7 +271,7 @@ Testing stack:
 * **Browsers**: `@web/test-runner` + Playwright (Chromium/Firefox/WebKit)
 * **Coverage**: `c8`
 
-The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, and all three browsers. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [maintenance record](docs/maintenance/2026-10-29-repository-hygiene.md) for the current tooling exception.
+The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [maintenance record](docs/maintenance/2026-10-29-repository-hygiene.md) for the current tooling exception.
 
 Run `node scripts/check-build.mjs` for a build and minification smoke test in a temporary directory; it prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
 

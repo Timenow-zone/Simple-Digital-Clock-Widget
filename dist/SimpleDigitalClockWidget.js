@@ -12,7 +12,7 @@ function $parcel$interopDefault(a) {
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.7.2
+ * Version: 0.8.0
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */ var $a7a8e2c5ae553f9f$export$41c562ebe57d11e2, $a7a8e2c5ae553f9f$var$t, $a7a8e2c5ae553f9f$export$a8257692ac88316c, $a7a8e2c5ae553f9f$var$i, $a7a8e2c5ae553f9f$var$u, $a7a8e2c5ae553f9f$var$f, $a7a8e2c5ae553f9f$var$e, $a7a8e2c5ae553f9f$var$o, $a7a8e2c5ae553f9f$var$l, $a7a8e2c5ae553f9f$var$c, $a7a8e2c5ae553f9f$var$a, $a7a8e2c5ae553f9f$var$s, $a7a8e2c5ae553f9f$var$h = Symbol.for("pv"), $a7a8e2c5ae553f9f$var$p = {}, $a7a8e2c5ae553f9f$var$v = [], $a7a8e2c5ae553f9f$var$y = /^m(i|n|o|s|text|space)$/, $a7a8e2c5ae553f9f$var$w = Array.isArray, $a7a8e2c5ae553f9f$var$d = $a7a8e2c5ae553f9f$var$v.slice, $a7a8e2c5ae553f9f$var$_ = Object.assign;
@@ -716,11 +716,11 @@ $b2927e49b2707936$exports = {
 var $02a8a47a7fc1ea47$export$2e2bcd8739ae039 = $02a8a47a7fc1ea47$var$isDark;
 
 
-const $aa43cbaf8926a599$var$v = "0.7.2";
+const $aa43cbaf8926a599$var$v = "0.8.0";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f9f$export$16fa2f45be04daa8) {
     constructor(props){
-        super(props), this.hundredthsMetadataAt = 0, this.hundredthsFormatterFailed = false, this.containerRef = null, this.zoneContainerRef = null, this.dateContainerRef = null, this.isHundredthsEnabled = ()=>this.normalizeBool(this.props.hundredths) === true, this.resetHundredthsFormatter = ()=>{
+        super(props), this.fontLoadId = 0, this.fontStylesheetReady = false, this.fontRequestedText = "", this.hundredthsMetadataAt = 0, this.hundredthsFormatterFailed = false, this.containerRef = null, this.zoneContainerRef = null, this.dateContainerRef = null, this.isHundredthsEnabled = ()=>this.normalizeBool(this.props.hundredths) === true, this.resetHundredthsFormatter = ()=>{
             this.hundredthsFormatter = undefined;
             this.hundredthsFormatterFailed = false;
         }, this.getHundredthsFormatter = ()=>{
@@ -825,13 +825,50 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
                 this.hundredthsMetadataAt = now;
             }
             this.animationFrame = requestAnimationFrame(this.updateHundredthsFrame);
-        }, this.loadGoogleFont = (fontFamily)=>{
-            if (fontFamily) {
-                const link = document.createElement("link");
-                link.href = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/\s/g, "+")}:wght@700&display=swap`;
-                link.rel = "stylesheet";
-                document.head.appendChild(link);
+        }, this.resizeAfterFontLoad = ()=>{
+            const ownerDocument = this.containerRef?.ownerDocument;
+            if (!this.fontStylesheetReady || !ownerDocument) return;
+            if (!ownerDocument.fonts) {
+                this.scheduleResize();
+                return;
             }
+            // Include actual localized glyphs; the default space only loads the Latin subset.
+            const text = Array.from(new Set(`0123456789${this.fontRequestedText}${this.state.timeString}`)).join("");
+            if (text === this.fontRequestedText) return;
+            this.fontRequestedText = text;
+            const requestId = this.fontLoadId;
+            const fontFamily = this.props.fontFamily;
+            const isCurrent = ()=>requestId === this.fontLoadId && this.containerRef?.isConnected;
+            // WebKit may omit loadingdone; wait for the concrete load and its layout instead.
+            ownerDocument.fonts.load(`700 16px "${fontFamily}"`, text).then(()=>ownerDocument.fonts.ready).then(()=>{
+                if (isCurrent()) this.scheduleResize();
+            }).catch((error)=>{
+                if (isCurrent()) console.error("Unable to load clock font:", fontFamily, error);
+            });
+        }, this.loadGoogleFont = (fontFamily)=>{
+            this.clearFontLoadHandlers();
+            const ownerDocument = this.containerRef?.ownerDocument;
+            if (!ownerDocument || !$aa43cbaf8926a599$var$googleFontsMonospace.includes(fontFamily)) return;
+            const requestId = this.fontLoadId;
+            const isCurrent = ()=>requestId === this.fontLoadId && this.containerRef?.isConnected;
+            const link = ownerDocument.createElement("link");
+            this.fontStylesheet = link;
+            link.href = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/\s/g, "+")}:wght@700&display=swap`;
+            link.rel = "stylesheet";
+            link.onload = ()=>{
+                if (!isCurrent()) return;
+                this.fontStylesheetReady = true;
+                this.resizeAfterFontLoad();
+            };
+            link.onerror = ()=>{
+                if (isCurrent()) console.error("Unable to load clock font stylesheet:", fontFamily);
+            };
+            ownerDocument.head.appendChild(link);
+        }, this.scheduleResize = ()=>{
+            if (this.resizeFrame === undefined) this.resizeFrame = requestAnimationFrame(()=>{
+                this.resizeFrame = undefined;
+                this.handleResize();
+            });
         }, this.handlePrefers = ()=>{
             const backgroundColor = this.props.prefers === undefined || this.props.prefers === null || this.props.prefers === "" || this.props.prefers === "system" || this.props.prefers === "auto" ? (0, $02a8a47a7fc1ea47$export$2e2bcd8739ae039)() ? "#000000" : "#ffffff" : this.props.prefers === "dark" ? "#000000" : "#ffffff";
             this.setState({
@@ -851,7 +888,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
                 let fontSize = (width || 1) / fontSizeByLocale;
                 const fontSizeTitle = (width || 1) / 15;
                 const time = this.containerRef.querySelector("a");
-                if (this.isHundredthsEnabled() && time) {
+                if (time) {
                     const availableWidth = this.containerRef.clientWidth - 1;
                     if (fontSize > 0 && availableWidth > 0) {
                         const previousFontSize = time.style.getPropertyValue("font-size");
@@ -979,6 +1016,16 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
         }
         return undefined; // unknown -> treat as "not provided"
     }
+    clearFontLoadHandlers() {
+        this.fontLoadId += 1;
+        this.fontStylesheetReady = false;
+        this.fontRequestedText = "";
+        if (this.fontStylesheet) {
+            this.fontStylesheet.onload = null;
+            this.fontStylesheet.onerror = null;
+            this.fontStylesheet = undefined;
+        }
+    }
     // componentDidMount replaces useEffect for post-mount actions
     componentDidMount() {
         // console.log("componentDidMount");
@@ -997,10 +1044,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
                 if (width === this.observedWidth) return;
                 this.observedWidth = width;
                 // Fit outside observer delivery so height changes cannot cause a resize loop.
-                if (this.resizeFrame === undefined) this.resizeFrame = requestAnimationFrame(()=>{
-                    this.resizeFrame = undefined;
-                    this.handleResize();
-                });
+                this.scheduleResize();
             });
             this.resizeObserver.observe(this.containerRef);
         }
@@ -1009,10 +1053,11 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
     }
     componentDidUpdate(prevProps, prevState) {
         const hundredthsChanged = prevProps.hundredths !== this.props.hundredths;
-        const hundredthsFormatChanged = prevProps.locale !== this.props.locale || prevProps.timeZone !== this.props.timeZone || prevProps.period !== this.props.period;
-        if (hundredthsFormatChanged) this.resetHundredthsFormatter();
+        const formatChanged = prevProps.locale !== this.props.locale || prevProps.timeZone !== this.props.timeZone || prevProps.period !== this.props.period;
+        if (formatChanged) this.resetHundredthsFormatter();
         if (prevProps.fontFamily !== this.props.fontFamily) this.loadGoogleFont(this.props.fontFamily);
-        if (prevProps.width !== this.props.width || hundredthsChanged || this.isHundredthsEnabled() && (hundredthsFormatChanged || prevProps.fontFamily !== this.props.fontFamily || prevState.timeString.length !== this.state.timeString.length)) this.handleResize();
+        if (prevState.timeString !== this.state.timeString) this.resizeAfterFontLoad();
+        if (prevProps.width !== this.props.width || hundredthsChanged || formatChanged || prevProps.fontFamily !== this.props.fontFamily || prevState.timeString.length !== this.state.timeString.length) this.scheduleResize();
         if (prevProps.prefers !== this.props.prefers) this.handlePrefers();
         // Recalc time immediately when formatting-related props change
         if (prevProps.locale !== this.props.locale || prevProps.timeZone !== this.props.timeZone || prevProps.second !== this.props.second || prevProps.hundredths !== this.props.hundredths || prevProps.period !== this.props.period || prevProps.timeZoneName !== this.props.timeZoneName) this.updateTimeAndDateString();
@@ -1021,6 +1066,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
     componentWillUnmount() {
         // console.log("componentWillUnmount");
         this.stopClock();
+        this.clearFontLoadHandlers();
         window.removeEventListener("resize", this.handleResize);
         this.resizeObserver?.disconnect();
         if (this.resizeFrame !== undefined) cancelAnimationFrame(this.resizeFrame);

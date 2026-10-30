@@ -1,0 +1,124 @@
+{
+  "verified_at": "2026-10-30T09:51:36.025425+00:00",
+  "version": "0.8.0",
+  "status": "candidate_ci_and_cdn_pending",
+  "artifact": {
+    "file": "dist/0.8.0.min.js",
+    "bytes": 35750,
+    "sha256": "25ebb51f5300ab7ba00c98fc5e0015017291c9522618ddc2be361f5e710a0ab4",
+    "gzip_bytes": 12396,
+    "gzip_level": 9,
+    "node": "v26.8.2",
+    "zlib": "1.2.12"
+  },
+  "runtime_dependencies": {
+    "preact": "11.1.0",
+    "preact-custom-element": "4.6.0",
+    "clsx": "2.1.1"
+  },
+  "local_widget_tests": {
+    "chromium": 37,
+    "webkit": 37,
+    "firefox": "not_counted_locally; required_in_linux_ci"
+  },
+  "local_iframe_tests": {
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "visits_per_engine": 5,
+    "clocks_per_visit": 2,
+    "errors": 0
+  },
+  "node_tests": 22,
+  "release_and_prose_tests": 26,
+  "historical_bundles_unchanged": {
+    "dist/0.7.1.min.js": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6",
+    "dist/0.5.5.min.js": "35227d9343cce0c0af4d4ba9ac5ad3283801380d3e861d097f52a412eddac609",
+    "dist/0.7.2.min.js": "9068d236e2dcff33a01d1aac5de9b13eb9cf2c69837f4ed3b3f7a3089721a0af",
+    "dist/0.7.0.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
+    "dist/0.6.0.min.js": "dc793b84d0d13be3907648f21a69f2aa130f57c5fecb5626a03fd1e9ba777513",
+    "dist/0.5.3.min.js": "9d2f3ee0659e37f910db18b43b3dbe0065657dc9623301cb744adfaf2ca4ee24"
+  },
+  "wordpress_files_unchanged": 15,
+  "wordpress_zip_sha256": "1f42bd43152501499212a06a19286fbb562e5e51338a87c0a533200b31b344b0",
+  "raw_evidence": ".local/widget-080-20261030/",
+  "independent_audit": {
+    "comparison": {
+      "old_version": "0.7.1",
+      "new_version": "0.8.0",
+      "cases_per_engine": 96,
+      "engines": [
+        "chromium",
+        "webkit"
+      ],
+      "absolute_single_line_and_width_checks": 192,
+      "preserved": [
+        "time_text",
+        "caption_date_timezone_text",
+        "label_visibility",
+        "colors",
+        "container_width"
+      ],
+      "geometry_changes": {
+        "chromium": {
+          "count": 4,
+          "locale": "bg-BG",
+          "mode": "ordinary_12h",
+          "widths": [
+            80,
+            180,
+            320,
+            600
+          ],
+          "reason": "natural-width clamp removes old wrapping"
+        },
+        "webkit": 0
+      }
+    },
+    "mutations": {
+      "stages_per_engine": 12,
+      "detach_reconnect_cycles_per_engine": 5,
+      "engines": [
+        "chromium",
+        "webkit"
+      ],
+      "active_resources_after_removal": 0
+    },
+    "delayed_http_font": {
+      "cases": 4,
+      "engines": [
+        "chromium",
+        "webkit"
+      ],
+      "stress_size_adjust_percent": 180,
+      "manual_resize": false,
+      "passed": 4
+    },
+    "pending_font_cleanup": {
+      "engines": [
+        "chromium",
+        "webkit"
+      ],
+      "passed": 2,
+      "detached_late_animation_frames": 0
+    },
+    "unicode_subsets": {
+      "engine": "chromium",
+      "initial_load": "passed",
+      "runtime_locale_cache": "passed",
+      "fonts_load_calls_after_initial_and_five_locale_changes": 2,
+      "manual_resize": false,
+      "webkit": "not_counted; engine did not request Cyrillic face"
+    }
+  },
+  "dependency_audit": {
+    "production_findings": 0,
+    "full": {
+      "low": 5,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    }
+  }
+}
