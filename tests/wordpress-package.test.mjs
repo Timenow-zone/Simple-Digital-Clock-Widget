@@ -54,9 +54,11 @@ test("WordPress source matches its release manifest and immutable widget bundle"
   const readme = await readFile(path.join(root, "README.md"), "utf8");
   const pkg = JSON.parse(await readFile(path.join(root, "package.json"), "utf8"));
   for (const [component, currentVersion] of [["Widget runtime", pkg.version], ["WordPress source", version]]) {
-    const row = readme.split("\n").find((line) => line.startsWith(`| ${component} |`));
+    const row = readme.split("\n")
+      .map((line) => line.split("|").map((cell) => cell.trim()))
+      .find((cells) => cells[1] === component);
     assert.ok(row, `README must identify ${component} separately`);
-    assert.equal(row.split("|")[2].trim(), `**${currentVersion}**`, `${component} documentation must match current source`);
+    assert.equal(row[2], `**${currentVersion}**`, `${component} documentation must match current source`);
   }
   assert.ok(readme.includes(`https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-${pkg.version}.min.js`), "README installation must use the current versioned CDN asset");
 });
