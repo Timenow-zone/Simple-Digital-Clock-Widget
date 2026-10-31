@@ -3,6 +3,16 @@
 Lightweight, framework-agnostic web component (built with Preact) to display a digital clock with timezone and locale support.
 Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, React/Preact, etc).
 
+Widget and WordPress plugin versions are independent:
+
+| Component | Version | Delivery status |
+| --- | --- | --- |
+| Widget runtime | **0.8.1** | Published demo/CDN |
+| WordPress source | **1.1.4** | Accepted release candidate; not published to WordPress.org |
+| WordPress.org stable | **1.1.2** | Published plugin; bundles widget **0.7.0** |
+
+The metadata below describes the JavaScript widget artifact.
+
 <!-- SDCW_RELEASE_METADATA_START -->
 * **Current version:** `0.8.1`
 * **Tiny:** 12.2 KiB gzipped (`dist/0.8.1.min.js`; 36,009 bytes minified, 12,446 bytes gzip)
@@ -32,11 +42,14 @@ Widget **0.8.1** fixes refitting after a delayed local theme font loads when the
 
 ### Via `<script>` (no build tools)
 
-Copy the file from `dist/` to your site and include it:
+Load the immutable, versioned production asset:
 
 ```html
-<script type="module" src="/dist/SimpleDigitalClockWidget.js"></script>
+<script src="https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js"></script>
 ```
+
+For self-hosting, copy `dist/0.8.1.min.js` to your site and use its URL instead.
+The unminified `dist/SimpleDigitalClockWidget.js` entry is also retained.
 
 Now use the custom element:
 
@@ -84,23 +97,26 @@ Pass options as **kebab-case attributes**. Internally they map to the following 
 | `second`           | `boolean`                                                                                     | `false`          | Show seconds. Attribute present ⇒ `true`. Use `second="false"` to force off.                                                                |
 | `hundredths`       | `boolean`                                                                                     | `false`          | Show hundredths of a second. Implies seconds while enabled. Attribute present ⇒ `true`; use `hundredths="false"` to force off.             |
 | `period`           | `boolean`                                                                                     | follow locale    | **12/24-hour override**. If set, forces 12h (`period`) or 24h (`period="false"`), ignoring locale. If not set, uses locale default.         |
-| `date`             | `boolean`                                                                                     | `false`          | Show the date line below the time. Clicking it toggles **date** ↔ **timezone name**.                                                        |
+| `date`             | presence attribute                                                                            | omitted          | Show the date line below the time. Clicking it toggles **date** ↔ **timezone name**. Omit to disable; `date="false"` still enables it.       |
 | `caption`          | `string`                                                                                      | —                | Optional label displayed above the time.                                                                                                    |
 | `align`            | `"left" \| "center" \| "right"`                                                               | `"center"`       | Text alignment inside the widget.                                                                                                           |
 | `width`            | `number` (px)                                                                                 | auto (min 80)    | Fixed width of the widget box.                                                                                                              |
 | `rounded`          | `number` (rem)                                                                                | —                | Corner radius in rem, e.g. `0.25`.                                                                                                          |
 | `shadow`           | `"shadow" \| "shadow-sm" \| "shadow-md" \| "shadow-lg" \| "shadow-xl" \| "shadow-2xl"`        | —                | Box shadow presets.                                                                                                                         |
-| `border`           | `boolean`                                                                                     | `false`          | Adds a 1px border. Color is auto-darkened from background.                                                                                  |
+| `border`           | presence attribute                                                                            | omitted          | Adds a 1px border. Color is auto-darkened from background. Omit to disable; `border="false"` still enables it.                               |
 | `background`       | `string` (CSS)                                                                                | —                | Any CSS background (e.g. gradient).                                                                                                         |
 | `background-color` | `string` (color)                                                                              | auto (theme)     | Solid background color (e.g. `#00416A`, `rgb(255,0,0)`). If `background` is set, this is ignored for painting but used for contrast/border. |
 | `font-family`      | `string`                                                                                      | monospace        | Family name. If the value is on the internal allow-list, Google Fonts is auto-loaded.                                                       |
 | `prefers`          | `"" \| "auto" \| "system" \| "light" \| "dark"`                                               | `system`         | Theme source for background when `background-color` is not provided.                                                                        |
 
-**Boolean attributes:**
+**Boolean attributes in the standalone web component:**
 
-* Present without value (`<tag second>`) ⇒ `true`.
-* Explicit `"false"`, `"0"`, `"no"` ⇒ `false`.
-* Omitted ⇒ “not provided”.
+* `second`, `hundredths` and `period` normalize boolean-like values. Present without a value, `"true"`, `"1"` or `"yes"` means true; `"false"`, `"0"` or `"no"` means false.
+* Omitted means “not provided”; `period` then follows the locale.
+* `date` and `border` use presence semantics in the current runtime. Any supplied value enables them, including `"false"`. Omit or remove the attribute to disable them.
+
+WordPress controls serialize the wrapper's own settings into these HTML attributes;
+the raw attribute rules above are not labels for its sidebar switches.
 
 ---
 
@@ -277,25 +293,37 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 
 ## WordPress
 
-This widget powers the **Simple Digital Clock** WordPress plugin.
-The plugin source is maintained separately in [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
-See [`wordpress/README.md`](wordpress/README.md) for provenance, licensing, packaging, and local testing.
-Widget and WordPress plugin versions are independent; the widget build does not update the plugin bundle automatically.
+The **Simple Digital Clock** WordPress plugin source in this repository is
+**1.1.4**, with the exact widget **0.8.1** bundled under
+[`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
+It requires **WordPress 6.3+ / PHP 7.0+**. The accepted release candidate includes
+Core 6.3 caption serialization compatibility and complete bundled dependency
+notices. Its exact ZIP, manifest, independent GO and known rollback/data-loss
+boundaries are recorded in the [1.1.4 release report](docs/releases/1.1.4/README.md).
+Repository integration is complete; WordPress.org publication remains deferred.
 
-The WordPress plugin **1.1.2** is published on WordPress.org (SVN r3772502; Git tag `wordpress-v1.1.2`). Its fixes, upgrade/resave/rollback checks and WP 7.2 Beta 2 coverage are documented in the [1.1.2 patch report](docs/patches/1.1.2/README.md). The [publication report](docs/releases/1.1.2/PUBLICATION.md) and [release manifest](docs/releases/1.1.2/manifest.json) distinguish the accepted local ZIP from the public package. That published package bundles widget **0.7.0**.
+**WordPress.org currently distributes 1.1.2**, which bundles widget **0.7.0**.
+Install that public stable version from the
+[official plugin directory](https://wordpress.org/plugins/simple-digital-clock/),
+or try its [guided Live Preview](https://wordpress.org/plugins/simple-digital-clock/?preview=1).
+The public directory does not yet provide the repository's 1.1.4 candidate.
 
-The retained **1.1.3 candidate** bundles widget **0.7.1** and fixes invalid numeric caption references and automatic container sizing. See the [candidate acceptance and package manifest](docs/releases/1.1.3/README.md). The WordPress candidate remains unpublished. The production demo/CDN uses widget **0.8.1**, with earlier versioned URLs retained; see the [CDN publication record](docs/releases/0.8.1/PUBLICATION.md). CDN delivery does not publish an npm package or Git tag.
+See [`wordpress/README.md`](wordpress/README.md) for source provenance, licensing,
+packaging and local testing. Widget builds and CDN deployments do not update the
+plugin bundle automatically or publish a WordPress release.
 
-The **1.1.4 candidate** bundles the exact widget **0.8.1**, retains the 1.1.3 fixes, and adds WordPress 6.3 caption serialization compatibility and bundled dependency notices. See the [1.1.4 package and upgrade acceptance](docs/releases/1.1.4/README.md) for the exact candidate and its acceptance status. It is not published; earlier ZIPs and historical acceptance records remain unchanged.
+Historical records remain separate:
 
-The later readme-only publication r3772710 is recorded [separately](docs/releases/1.1.2/README-PUBLICATION.md); the original release manifest and tag remain historical records.
-
-If you’re using WordPress, install the plugin from the directory:
-[https://wordpress.org/plugins/simple-digital-clock/](https://wordpress.org/plugins/simple-digital-clock/)
+* [WordPress 1.1.2 publication](docs/releases/1.1.2/PUBLICATION.md): SVN r3772502, tag `wordpress-v1.1.2`, original package/acceptance provenance. The later [readme-only r3772710 publication](docs/releases/1.1.2/README-PUBLICATION.md) is recorded independently.
+* [Retained WordPress 1.1.3 candidate](docs/releases/1.1.3/README.md): unpublished, with widget 0.7.1.
+* [Widget 0.8.1 CDN publication](docs/releases/0.8.1/PUBLICATION.md): public standalone delivery, independent of WordPress.org.
 
 ---
 
 ## FAQ
+
+**Q:** Where does the clock get its time?
+**A:** It reads the visitor's device clock and formats it for the selected time zone. It does not synchronize with a time server; an incorrect device clock affects the displayed time.
 
 **Q:** Why both `background` and `background-color`?
 **A:** `background` lets you supply any CSS (e.g. gradients). `background-color` is a solid color used for painting when `background` is not set — and always used for contrast/border heuristics.
@@ -321,4 +349,9 @@ npm run lint && npm run test:node && npm run test:browsers
 
 ## License
 
-**MIT** © [dejurin](https://github.com/Timenow-zone)
+The shared JavaScript widget is **MIT** © [dejurin](https://github.com/Timenow-zone); see [LICENSE](LICENSE).
+The WordPress wrapper is **GPLv2 or later**; see its
+[license](wordpress/simple-digital-clock/LICENSE). Bundled third-party JavaScript
+retains its [MIT notices](wordpress/simple-digital-clock/THIRD-PARTY-NOTICES.txt).
+Fixtures and font assets retain their accompanying licenses; see [NOTICE](NOTICE)
+for repository scope.
