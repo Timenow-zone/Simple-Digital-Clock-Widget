@@ -24,7 +24,7 @@ The Digital Clock Widget – the perfect addition to your website! This sleek an
 * 📝 Custom caption
 * 🎨 Styling: color/gradient, radius, shadows
 * 🔢 24-hour or AM/PM, ⏱ seconds, ⏱️ optional hundredths of a second, 📅 date
-* 🔒 SSL-friendly, 📱 responsive, 🔍 SEO-friendly
+* 🔒 SSL-friendly, 📱 responsive
 * 💯 Free, no ads
 
 = How it works =
@@ -54,6 +54,9 @@ The Digital Clock Widget – the perfect addition to your website! This sleek an
 = Can I set a custom locale (e.g., `uk` or `en-GB`)? =
 Yes. Use the **Locale** field and enter any valid BCP-47 tag.
 
+= Where does the clock get its time? =
+The clock uses the date and time reported by the visitor's device and formats it for the selected time zone. It does not synchronize with a time server, so an incorrect device clock will affect the displayed time.
+
 = How do I pick the time zone? =
 Use the **Time Zone** field and select any valid IANA ID (e.g., `Europe/Kyiv`, `UTC`).
 
@@ -61,10 +64,10 @@ Use the **Time Zone** field and select any valid IANA ID (e.g., `Europe/Kyiv`, `
 Yes. Enable **“Hundredths of a second”** in the block settings. It shows two fractional digits and automatically includes seconds while enabled.
 
 = Can I use my own fonts? =
-You can choose from built-in mono fonts (Google Fonts) or keep the system font.
+You can choose from the available mono fonts (Google Fonts) or select **System** to use a local monospace font. Selecting a Google Font loads it from Google's servers.
 
 = 24-hour format =
-Yes. You can enable 24-hour time for any locale. Toggle **24-Hour** in the block settings. For 12-hour time with AM/PM, turn it off.
+Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock follows the selected locale. For AM/PM, choose a locale such as `en-US` and leave **24-Hour** disabled.
 
 = Can I show different locales and time zones on the same page? =
 Yes. Each block is independent—set its own locale and time zone.
