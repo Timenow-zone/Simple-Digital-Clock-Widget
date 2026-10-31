@@ -177,6 +177,7 @@ npx --no-install playwright install chromium firefox webkit
 npm run start
 
 # build production bundle to /dist (and copy versioned files)
+# requires a new widget version; existing versioned artifacts are immutable
 npm run build
 
 # lint & format

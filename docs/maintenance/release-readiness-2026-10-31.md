@@ -73,6 +73,13 @@ No npm package is published. Five obsolete linked demo outputs containing HMR ar
 removed; the source playground, documented `dist/SimpleDigitalClockWidget.js`, maps
 for that entry and every versioned immutable bundle remain.
 
+Formatting is restricted to owned source/test/script/site directories, with exact
+fixtures, published artifacts and ignored evidence excluded by `.prettierignore`.
+The release build prehook refuses an already existing versioned artifact before
+Parcel can write to dist; use the isolated check for reproduction or bump to a new
+widget version first. Three negative/positive guard tests cover preservation, new
+versions and unsafe version paths.
+
 The product site retains 0.8.1 in every generated asset/example, adds its canonical
 URL and a guided WordPress Preview link, and clarifies that hundredths follow the
 visitor's device clock. The site builder uses exact retained bundles, not a new
@@ -140,7 +147,7 @@ projects untouched. Preserve existing tags, failed ZIP histories and raw failure
 ## Validation and remaining boundaries
 
 Fresh checks include typechecking all three configurations, lint, 22 Node tests,
-coverage, 44 focused package/serialization/tooling/prose/release tests, an isolated
+coverage, 47 focused package/serialization/tooling/prose/release tests, an isolated
 production build and preview generator/PHP/JavaScript syntax checks. Local Chromium
 and WebKit each pass 37 unit/browser checks. macOS Firefox fails to launch with
 `sandbox_extension_issue_file_to_process` and a framebuffer error; it is not

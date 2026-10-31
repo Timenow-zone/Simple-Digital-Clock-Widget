@@ -37,10 +37,11 @@
   ],
   "scripts": {
     "postinstall": "patch-package --error-on-fail",
+    "prebuild": "node scripts/check-new-widget-version.mjs",
     "build": "parcel build src/SimpleDigitalClockWidget.tsx --no-optimize && terser dist/SimpleDigitalClockWidget.js -c -m -o dist/latest.min.js && cp dist/latest.min.js dist/$npm_package_version.min.js",
     "build:prod": "parcel build src/SimpleDigitalClockWidget.tsx",
     "start": "parcel src/index.html --open",
-    "fmt": "prettier --write **/*.{ts,tsx,js,json,css,html}",
+    "fmt": "prettier --write src tests scripts product-site",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
     "test:manual": "python3 -m http.server 4173",

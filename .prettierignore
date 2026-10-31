@@ -1,0 +1,8 @@
+# Published artifacts, generated outputs and exact historical fixtures
+dist/
+product-dist/
+.local/
+.wrangler/
+node_modules/
+tests/fixtures/
+wordpress/wporg-assets/blueprints/
