@@ -1,0 +1,20 @@
+{
+  "version": "1.1.4",
+  "archive_sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
+  "status": "prepared; author native verification, required CI and independent reacceptance pending",
+  "prior_independent_verdict": "NO-GO",
+  "prior_archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
+  "unit_contracts": {
+    "javascript_node_tests_passed": 4,
+    "php_assertions": 48,
+    "old_source_tests_failed": 4,
+    "old_php_assertions_failed": 19
+  },
+  "new_plugin_check": "pending; previous warning counts not reused",
+  "author_native_upgrade": "pending",
+  "required_ci": "pending",
+  "independent_acceptance": "pending",
+  "source_changed": true,
+  "shared_widget_changed": false,
+  "published": false
+}

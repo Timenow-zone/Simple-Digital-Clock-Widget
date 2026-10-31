@@ -1,120 +1,77 @@
 {
-  "status": "all_scoped_requirements_revision_checks_and_source_ci_passed",
   "version": "1.1.4",
-  "widget": "0.8.1",
-  "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
-  "previous_archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
-  "changed_plugin_files": [
-    "widget_init.php"
-  ],
-  "fourteen_other_files_identical": true,
-  "requirements": {
-    "wordpress": "6.3",
-    "php": "7.0"
+  "revision": "compatibility-r2",
+  "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
+  "status": "Independent GO; focused author scope passed; explicit predecessor failures retained; not merged or published",
+  "previous_artifact_verdict": "NO-GO for literal-entity caption regression",
+  "previous_archive_sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
+  "unit_contracts": {
+    "tests_passed": 7,
+    "native_malformed_positive_rows": 23,
+    "negative_guard_rows": 8,
+    "php_encoding_assertions": 48,
+    "r1_red_behavioral_tests_failed": 2,
+    "r1_native_chromium_red_failed": 1
   },
-  "minimum_metadata_tests": {
-    "permanent_package_guards": 3,
-    "isolated_negative_guards": 6,
-    "controlled_core_scenarios": 6,
-    "actual_controlled_probe_php_interpreter": "8.5.10",
-    "below_php7_case_simulated": true
+  "native_dom_contracts": {
+    "chromium": "PASS",
+    "webkit": "PASS",
+    "local_macos_firefox": "launch timeout; NOT PASS",
+    "required_linux_firefox": "PASS in source CI41118373200; independent actual Linux Firefox also passed",
+    "captions": 11,
+    "cycles": 2,
+    "readers": [
+      "new candidate",
+      "public 1.1.2 excerpt"
+    ]
   },
-  "focused_core_cycle": {
-    "environments": [
-      {
-        "key": "p70b",
-        "WordPress": "6.3.2",
-        "PHP": "7.0.33"
-      },
-      {
-        "key": "p83b",
-        "WordPress": "7.1.3",
-        "PHP": "8.3.35"
-      }
-    ],
-    "initial_112_upgrades": 2,
-    "physical_112_rollbacks": 2,
-    "core_reupgrades": 2,
+  "new_plugin_check": {
+    "version": "2.1.0",
+    "static": 29,
+    "runtime_individually_executed": 5,
+    "errors": 0,
+    "warnings": 10,
+    "warnings_reviewed": "NON_BLOCKING"
+  },
+  "author_native_upgrade": {
+    "status": "PASS_FOCUSED_AUTHOR_SCOPE_WITH_EXPLICIT_INHERITED_FAILURES",
+    "engine": "chromium",
+    "fresh_ui_passed": 120,
+    "ordinary_clock_blocks": 240,
+    "core_updates": 2,
+    "file_rollbacks": 2,
+    "core_reupdates": 2,
+    "old_reader_passed": 60,
+    "advanced_contexts": 6,
+    "final_new_writer_passed": 59,
+    "inherited_invalid_not_written": 1,
     "database_restores": 0,
-    "baseline_updated_resave_rollback_final_blocks_per_stage": 19588,
-    "site_browser_pairs_per_stage": 4,
-    "visible_preservation_saves": 24,
-    "caption_width_saves": 12,
-    "final_live_clocks": 4,
-    "frontend_editor_http_contexts": 8,
-    "unexpected_runtime_errors": 0
+    "evidence": "author-evidence.json"
   },
-  "actual_installed_core_headers": [
-    {
-      "site": "p70b",
-      "Version": "1.1.4",
-      "RequiresWP": "6.3",
-      "RequiresPHP": "7.0",
-      "validation": true,
-      "WordPress": "6.3.2",
-      "PHP": "7.0.33"
-    },
-    {
-      "site": "p83b",
-      "Version": "1.1.4",
-      "RequiresWP": "6.3",
-      "RequiresPHP": "7.0",
-      "validation": true,
-      "WordPress": "7.1.3",
-      "PHP": "8.3.35"
-    }
-  ],
-  "historical_full_runtime_evidence": "acceptance-before-requirements.json",
-  "old_results_not_relabelled_as_fresh_package_acceptance": true,
-  "retained_baseline_auth_attempt": {
-    "occurred_before_candidate_install": true,
-    "bounded_readonly_retry": 1,
-    "original_cause": "unconfirmed; concurrent session-token update suspected",
-    "data_reset": false
+  "required_ci": {
+    "runtime_source_commit": "369f6bde90591e40ac8f59544297a2bae3e6a91f",
+    "source_run": 41118373200,
+    "repository": "PASS",
+    "browsers": "PASS",
+    "final_head_gate": "Required Repository checks and Browser tests must pass on final PR head; inspect PR13 and retained final CI evidence"
   },
-  "source_ci": {
-    "head": "1e169888a0688d3e635ee1d53359317789c4e959",
-    "run": 41093506356,
-    "Repository checks": "success",
-    "Browser tests": "success",
-    "Workers Builds: simple-digital-clock-widget": "success",
-    "final_documentation_head_checks": "verifyonPR; finalresultretainedprivatelywithoutrecursiveevidencecommits"
+  "independent_acceptance": {
+    "verdict": "GO",
+    "runtime_source_commit": "369f6bde90591e40ac8f59544297a2bae3e6a91f",
+    "report": "INDEPENDENT-ACCEPTANCE.md",
+    "evidence": "independent-evidence.json",
+    "all_tests_green": false,
+    "candidate_blockers": []
   },
-  "reports": {
-    "minimums": "requirements-evidence.json",
-    "focused_upgrade": "requirements-upgrade-evidence.json",
-    "preflight": "preflight-evidence.json",
-    "historical_manifest": "manifest-before-requirements.json",
-    "widget_publication": "../0.8.1/PUBLICATION.md"
+  "source_changed": true,
+  "shared_widget_changed": false,
+  "published": false,
+  "test_only_php70_correction": {
+    "evidence": "php70-unit-evidence.json",
+    "actual_php70_assertions_passed": 48,
+    "actual_php83_assertions_passed": 48,
+    "plugin_files_changed": false,
+    "archive_changed": false
   },
-  "teardown": {
-    "checked_at": "2026-10-30T16:56:23.294702+00:00",
-    "own_services_stopped": 4,
-    "own_names": [
-      "sdcw-114-20261030-p70b-1",
-      "sdcw-114-20261030-p83b-1",
-      "sdcw-114-20261030-packages-1",
-      "sdcw-114-20261030-db-1"
-    ],
-    "all_own_previously_stopped": true,
-    "other_nine_project_sites_remain_stopped": true,
-    "ports": [
-      {
-        "port": 19602,
-        "closed": true
-      },
-      {
-        "port": 19606,
-        "closed": true
-      }
-    ],
-    "databases_and_volumes_retained": true,
-    "database_restored": false,
-    "fixture_reseeded": false,
-    "containers_removed_by_teardown": false,
-    "other_projects_changed": false
-  },
-  "merge_performed": false,
-  "wordpress_org_published": false,
-  "production_cdn_changed": false
+  "merged": false
 }

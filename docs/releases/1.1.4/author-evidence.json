@@ -1,0 +1,399 @@
+{
+  "status": "PASS_FOCUSED_AUTHOR_SCOPE_WITH_EXPLICIT_INHERITED_FAILURES",
+  "release_verdict": "Not an independent release GO; independent acceptance is separate",
+  "author_verification_only": true,
+  "artifact": {
+    "sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
+    "bytes": 65374,
+    "files": 16,
+    "crc_pass": true,
+    "manifest_files_match": true,
+    "source_files_match": true,
+    "widget_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "widget_bytes": 36009
+  },
+  "engine": {
+    "executed": [
+      "chromium"
+    ],
+    "version": "151.0.7922.34",
+    "not_executed": [
+      "webkit",
+      "firefox"
+    ],
+    "scope_reason": "Focused author verification; independent three-engine acceptance remains separate"
+  },
+  "fresh_candidate_ui": {
+    "cases": 120,
+    "passes": 120,
+    "minimum_native_malformed_json_inputs": 60,
+    "all_actual_rest_payloads_match_native": true,
+    "all_stored_json_valid_literal_caption_exact": true
+  },
+  "ordinary_preservation": {
+    "baseline": {
+      "evidence": "baseline-chromium.json",
+      "records": 10,
+      "clock_blocks": 240,
+      "already_invalid_blocks": 6,
+      "ui_saves": 0
+    },
+    "updated": {
+      "evidence": "updated-chromium.json",
+      "records": 10,
+      "clock_blocks": 240,
+      "already_invalid_blocks": 6,
+      "ui_saves": 10
+    },
+    "rollback": {
+      "evidence": "rollback-chromium.json",
+      "records": 10,
+      "clock_blocks": 240,
+      "already_invalid_blocks": 6,
+      "ui_saves": 0
+    },
+    "final": {
+      "evidence": "final-chromium.json",
+      "records": 10,
+      "clock_blocks": 240,
+      "already_invalid_blocks": 6,
+      "ui_saves": 10
+    }
+  },
+  "file_transitions": [
+    {
+      "site": "minupgrade",
+      "phase": "update",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+    },
+    {
+      "site": "currentupgrade",
+      "phase": "update",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+    },
+    {
+      "site": "minupgrade",
+      "phase": "rollback",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55"
+    },
+    {
+      "site": "currentupgrade",
+      "phase": "rollback",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55"
+    },
+    {
+      "site": "minupgrade",
+      "phase": "reupdate",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+    },
+    {
+      "site": "currentupgrade",
+      "phase": "reupdate",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "all_installed_files_match": true,
+      "version_matches": true,
+      "requirements_pass": true,
+      "active": true,
+      "database_restored": false,
+      "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+    }
+  ],
+  "advanced": {
+    "writes": 6,
+    "old_reads": 6,
+    "reupdated_saves": 6,
+    "className_supported": 6,
+    "anchor_supported": 0,
+    "actual_incoming_className_after_caption_cases": 6
+  },
+  "final_new_writer": {
+    "executed": 59,
+    "passed": 59,
+    "inherited_invalid_markup_not_written": 1,
+    "all_executed_stored_json_valid": true
+  },
+  "unhandled_page_errors": 0,
+  "database_restores": 0,
+  "fixture_resets": 0,
+  "candidate_source_edits": 0,
+  "publication_actions": 0,
+  "teardown": {
+    "owned": [
+      "sdcw-author-114-fixes-a964a2cf-db-1",
+      "sdcw-author-114-fixes-a964a2cf-minclean-1",
+      "sdcw-author-114-fixes-a964a2cf-minupgrade-1",
+      "sdcw-author-114-fixes-a964a2cf-currentclean-1",
+      "sdcw-author-114-fixes-a964a2cf-currentupgrade-1"
+    ],
+    "states": [
+      {
+        "name": "/sdcw-author-114-fixes-a964a2cf-db-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "/sdcw-author-114-fixes-a964a2cf-minclean-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "/sdcw-author-114-fixes-a964a2cf-minupgrade-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "/sdcw-author-114-fixes-a964a2cf-currentclean-1",
+        "running": false,
+        "status": "exited"
+      },
+      {
+        "name": "/sdcw-author-114-fixes-a964a2cf-currentupgrade-1",
+        "running": false,
+        "status": "exited"
+      }
+    ],
+    "all_stopped": true,
+    "ports": [
+      {
+        "port": 52656,
+        "closed": true
+      },
+      {
+        "port": 52659,
+        "closed": true
+      },
+      {
+        "port": 52660,
+        "closed": true
+      },
+      {
+        "port": 52663,
+        "closed": true
+      }
+    ],
+    "all_ports_closed": true,
+    "data_retained": true,
+    "containers_removed": false,
+    "volumes_removed": false
+  },
+  "original_failures_retained": [
+    "RUN-SUMMARY.json",
+    "RUN-SUMMARY-oldnumeric-continuation.json"
+  ],
+  "completed_continuation": "RUN-SUMMARY-advanced-order-continuation.json",
+  "coverage_limits": [
+    "Author WebKit/Firefox not executed for this artifact",
+    "No new full security or Plugin Check acceptance in this author harness",
+    "No HTTPS/multisite/LocalWP/Google transport/CDN certification",
+    "No public WordPress.org delivery test",
+    "No automatic repair promise for inherited invalid numeric HTML or literal metadata already lost by old112"
+  ],
+  "target": {
+    "archive": "/Users/yy/.codex/worktrees/simple-digital-clock-113/Simple-Digital-Clock-Widget/.local/packages/simple-digital-clock-1.1.4-compatibility-r2-candidate.zip",
+    "sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
+    "commit": "369f6bde90591e40ac8f59544297a2bae3e6a91f",
+    "manifest": "/Users/yy/.codex/worktrees/simple-digital-clock-113/Simple-Digital-Clock-Widget/docs/releases/1.1.4/manifest.json"
+  },
+  "raw_evidence_directory": "/Users/yy/.codex/worktrees/simple-digital-clock-113/Simple-Digital-Clock-Widget/.local/release-1.1.4-acceptance-fixes-20261030/author-r2",
+  "phases": {
+    "public112_controls": {
+      "evidence": "old-control-slashes-chromium-continued.json",
+      "rows": 60,
+      "valid_pass_rows": 29,
+      "fail_inherited_rows": 31,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "candidate_clean": {
+      "evidence": "candidate-clean-slashes-chromium.json",
+      "rows": 60,
+      "valid_pass_rows": 60,
+      "fail_inherited_rows": 0,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "upgraded_old_controls_read": {
+      "evidence": "upgraded-old-reader-slashes-chromium.json",
+      "rows": 60,
+      "valid_pass_rows": 58,
+      "fail_inherited_rows": 2,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "candidate_upgraded": {
+      "evidence": "candidate-upgraded-slashes-chromium.json",
+      "rows": 60,
+      "valid_pass_rows": 60,
+      "fail_inherited_rows": 0,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "advanced_write": {
+      "evidence": "advanced-write-chromium-continued.json",
+      "rows": 6,
+      "valid_pass_rows": 6,
+      "fail_inherited_rows": 0,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "rollback_candidate_read": {
+      "evidence": "rollback-reader-slashes-chromium.json",
+      "rows": 60,
+      "valid_pass_rows": 60,
+      "fail_inherited_rows": 0,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "advanced_old_read": {
+      "evidence": "advanced-old-read-chromium.json",
+      "rows": 6,
+      "valid_pass_rows": 6,
+      "fail_inherited_rows": 0,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "explicit_public112_writer": {
+      "evidence": "rollback-writer-slashes-chromium.json",
+      "rows": 60,
+      "valid_pass_rows": 30,
+      "fail_inherited_rows": 30,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 30,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "reupdated_read": {
+      "evidence": "reupdated-reader-slashes-chromium.json",
+      "rows": 60,
+      "valid_pass_rows": 59,
+      "fail_inherited_rows": 1,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    },
+    "reupdated_write": {
+      "evidence": "reupdated-writer-slashes-chromium.json",
+      "rows": 60,
+      "valid_pass_rows": 59,
+      "fail_inherited_rows": 1,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 59,
+      "writer_not_executed_inherited_invalid": 1,
+      "failure": null
+    },
+    "advanced_reupdated": {
+      "evidence": "advanced-reupdated-chromium.json",
+      "rows": 6,
+      "valid_pass_rows": 6,
+      "fail_inherited_rows": 0,
+      "unhandled_page_errors": 0,
+      "writer_valid_rows": 0,
+      "writer_not_executed_inherited_invalid": 0,
+      "failure": null
+    }
+  },
+  "old_writer_literal_loss_boundaries": [
+    {
+      "key": "minupgrade",
+      "role": "administrator",
+      "id": 112,
+      "inheritedCaptionBoundary": {
+        "reason": "The measured old112 writer lost the previously valid literal JSON caption during rollback",
+        "oldRepresentation": {
+          "rawJson": "{\"width\":180,\"timeZone\":\"UTC\",\"backgroundColor\":\"#ffffff\",\"background\":\"\",\"rounded\":0,\"date\":true,\"border\":true,\"caption\":\"\\u0026copy; \\u0026NotEqualTilde; \\u0026apos; \\u0026#0; \\u0026#xD800; \\u0026#1114112; \\\\u0022}",
+          "jsonValid": false,
+          "jsonError": "SyntaxError: Unterminated string in JSON at position 216 (line 1 column 217)",
+          "jsonCaptionPresent": false,
+          "htmlCaptionDecoded": "\u00a9 \u2242\u0338 ' \ufffd \ufffd \ufffd \\"
+        },
+        "originalInput": "&copy; &NotEqualTilde; &apos; &#0; &#xD800; &#1114112; \\",
+        "expectedCaption": "\u00a9 \u2242\u0338 ' \ufffd \ufffd \ufffd \\"
+      }
+    },
+    {
+      "key": "minupgrade",
+      "role": "editor",
+      "id": 133,
+      "inheritedCaptionBoundary": {
+        "reason": "The measured old112 writer lost the previously valid literal JSON caption during rollback",
+        "oldRepresentation": {
+          "rawJson": "{\"width\":180,\"timeZone\":\"UTC\",\"backgroundColor\":\"#ffffff\",\"background\":\"\",\"rounded\":0,\"date\":true,\"border\":true,\"caption\":\"\\u0026copy; \\u0026NotEqualTilde; \\u0026apos; \\u0026#0; \\u0026#xD800; \\u0026#1114112; \\\\u0022}",
+          "jsonValid": false,
+          "jsonError": "SyntaxError: Unterminated string in JSON at position 216 (line 1 column 217)",
+          "jsonCaptionPresent": false,
+          "htmlCaptionDecoded": "\u00a9 \u2242\u0338 ' \ufffd \ufffd \ufffd \\"
+        },
+        "originalInput": "&copy; &NotEqualTilde; &apos; &#0; &#xD800; &#1114112; \\",
+        "expectedCaption": "\u00a9 \u2242\u0338 ' \ufffd \ufffd \ufffd \\"
+      }
+    },
+    {
+      "key": "minupgrade",
+      "role": "author",
+      "id": 154,
+      "inheritedCaptionBoundary": {
+        "reason": "The measured old112 writer lost the previously valid literal JSON caption during rollback",
+        "oldRepresentation": {
+          "rawJson": "{\"timeZone\":\"UTC\"}",
+          "jsonValid": true,
+          "jsonError": null,
+          "jsonCaptionPresent": false,
+          "htmlCaptionDecoded": "\u00a9 \u2242\u0338 ' &#0; &#xD800; &#1114112; \\"
+        },
+        "originalInput": "&copy; &NotEqualTilde; &apos; &#0; &#xD800; &#1114112; \\",
+        "expectedCaption": "\u00a9 \u2242\u0338 ' &#0; &#xD800; &#1114112; \\"
+      }
+    }
+  ]
+}

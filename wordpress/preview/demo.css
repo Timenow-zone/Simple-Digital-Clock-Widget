@@ -1,0 +1,119 @@
+/* Guided Playground demo only; the installed plugin and shadow DOM stay native. */
+body { margin: 0; background: #f7f9fd; color: #101828; font-family: system-ui, sans-serif; }
+.wp-site-blocks { padding: 0 !important; }
+.wp-block-post-content { max-width: 1160px !important; margin: 0 auto !important; padding: 0 28px 28px; }
+.wp-block-post-content * { box-sizing: border-box; }
+.sdc-demo-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; }
+.sdc-brand { display: inline-flex; align-items: center; gap: 10px; color: #101828; text-decoration: none; font-size: 14px; font-weight: 750; }
+.sdc-brand-icon { padding: 6px 7px; border-radius: 6px; background: #2335a9; color: #fff; font: 700 12px/1.2 monospace; }
+.sdc-header-note { color: #475467; font-size: 12px; }
+.sdc-demo-intro { margin: 4px auto 20px; text-align: center; }
+.sdc-eyebrow { margin: 0 0 8px; color: #3448aa; font-size: 10px; font-weight: 750; letter-spacing: .12em; }
+.sdc-demo-intro h1 { margin: 0 0 8px; font: 800 clamp(30px, 4vw, 44px)/1.15 system-ui, sans-serif; letter-spacing: -.04em; }
+.sdc-demo-intro > p:last-child { margin: 0; color: #475467; font-size: 16px; line-height: 1.5; }
+.sdc-steps { display: flex; justify-content: center; gap: 30px; margin: 0 auto 22px; padding: 0; list-style: none; }
+.sdc-steps li { display: flex; align-items: center; gap: 8px; color: #667085; font-size: 12px; font-weight: 600; line-height: 1.4; }
+.sdc-steps li > span { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; flex-shrink: 0; border: 1px solid #cbd5e1; border-radius: 50%; font-size: 11px; }
+.sdc-steps li[data-state="current"], .sdc-steps li[data-state="done"] { color: #2335a9; }
+.sdc-steps li[data-state="current"] > span { border-color: #2335a9; background: #2335a9; color: #fff; }
+.sdc-steps li[data-state="done"] > span { border-color: #b7c2f2; background: #e8edff; }
+.sdc-preview-workspace { margin: 0 !important; overflow: hidden; border: 1px solid #dce2ee; border-radius: 18px; background: #fff; box-shadow: 0 12px 40px #1f2f6706; }
+.sdc-builder-columns { display: grid !important; grid-template-columns: minmax(0, .95fr) minmax(0, 1.3fr); gap: 0 !important; margin: 0 !important; }
+.sdc-preview-controls, .sdc-preview-result { min-width: 0; margin: 0; padding: 26px 28px; }
+.sdc-preview-controls { border-right: 1px solid #e5e9f2; }
+.sdc-preview-result { background: #fcfdff; }
+#sdc-preview-form { margin: 0; }
+#sdc-builder-fields { min-width: 0; margin: 0; padding: 0; border: 0; }
+.sdc-control-heading { display: flex; align-items: center; gap: 9px; margin: 0 0 12px; font-size: 15px; font-weight: 700; }
+.sdc-control-heading h2 { margin: 0; color: #101828; font: 700 15px/1.4 system-ui, sans-serif; }
+.sdc-step-number { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #edf1ff; color: #3448aa; font-size: 11px; }
+.sdc-style-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sdc-style-options button { display: flex; min-width: 0; flex-direction: column; align-items: stretch; gap: 8px; margin: 0; padding: 6px 6px 9px; border: 1px solid #dce2ee; border-radius: 10px; background: #fff; color: #475467; font: 600 12px/1.3 system-ui, sans-serif; cursor: pointer; }
+.sdc-style-options button[aria-pressed="true"] { border-color: #3448aa; box-shadow: 0 0 0 1px #3448aa; color: #2335a9; background: #f7f9ff; }
+.sdc-style-swatch { display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 6px; font: 500 21px/1 monospace; }
+.sdc-swatch-classic { color: #fff; background: linear-gradient(135deg, #6a11cb, #1d4ed8); }
+.sdc-swatch-minimal { color: #fff; background: linear-gradient(135deg, #111827, #374151); }
+.sdc-swatch-bold { color: #101010; background: linear-gradient(135deg, #f43f5e, #f97316); }
+.sdc-city-heading { margin-top: 25px; }
+#sdc-city { display: block; width: 100%; min-width: 0; height: 44px; padding: 10px 12px; border: 1px solid #bdc6d7; border-radius: 8px; background: #fff; color: #101828; font: 400 15px/1.4 system-ui, sans-serif; }
+#sdc-city[aria-invalid="true"] { border-color: #b42318; }
+.sdc-field-hint { margin: 7px 0 0; color: #667085; font-size: 11px; line-height: 1.5; }
+.sdc-display-options { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 18px 0; }
+.sdc-display-options label { display: inline-flex; align-items: center; gap: 7px; min-height: 24px; color: #344054; font-size: 12px; cursor: pointer; }
+.sdc-display-options input { width: 16px; height: 16px; margin: 0; accent-color: #3448aa; }
+.sdc-primary-button, .sdc-install-button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 46px; padding: 12px 18px; border: 1px solid #2335a9; border-radius: 8px; background: #2335a9; color: #fff; font: 650 14px/1.4 system-ui, sans-serif; text-decoration: none; cursor: pointer; }
+#sdc-show-clock { width: 100%; }
+.sdc-primary-button:disabled { opacity: .55; cursor: wait; }
+.sdc-result-heading { display: flex; align-items: center; justify-content: space-between; }
+.sdc-live-indicator { display: inline-flex; align-items: center; gap: 7px; color: #475467; font-size: 10px; font-weight: 750; letter-spacing: .08em; }
+.sdc-live-indicator > span { width: 6px; height: 6px; border-radius: 50%; background: #14804a; }
+#sdc-preview-reset { min-height: 28px; margin: -4px 0; padding: 4px 0 4px 12px; border: 0; background: transparent; color: #475467; font: 500 11px/1.4 system-ui, sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.sdc-result-stage-title { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin: 20px 0 14px; }
+.sdc-result-stage-title h2 { margin: 0; font: 750 22px/1.2 system-ui, sans-serif; letter-spacing: -.025em; }
+#sdc-result-timezone { color: #667085; font-size: 11px; overflow-wrap: anywhere; }
+.sdc-live-result { width: 100%; max-width: 430px; margin: 0 auto !important; }
+.sdc-live-result timenow-zone-sdcw { display: block; width: 100%; max-width: 100%; margin: 0; }
+.sdc-result-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; max-width: 430px; margin: 12px auto 0; color: #667085; font-size: 10px; }
+#sdc-result-style { color: #344054; font-weight: 650; }
+.sdc-result-status { min-height: 32px; margin: 14px 0 12px; color: #475467; font-size: 12px; line-height: 1.5; }
+.sdc-install-button { width: 100%; background: #fff; color: #2335a9; }
+.sdc-primary-button:hover { background: #1d2b8a; }
+.sdc-install-button:hover { background: #edf1ff; }
+.sdc-editor-link { display: block; margin-top: 12px; color: #475467; font-size: 11px; line-height: 1.5; text-align: center; text-underline-offset: 3px; }
+.sdc-error { margin: 8px 0; color: #b42318; font-size: 12px; line-height: 1.5; }
+.sdc-error[hidden], #sdc-install[hidden] { display: none !important; }
+.sdc-install-panel { margin: 24px 0 0; padding: 28px; border-left: 3px solid #3448aa; border-radius: 0 12px 12px 0; background: #edf1ff; scroll-margin-top: 20px; }
+.sdc-install-panel h2 { margin: 0 0 10px; font: 750 clamp(22px, 3vw, 30px)/1.25 system-ui, sans-serif; letter-spacing: -.025em; }
+.sdc-install-panel p { max-width: 680px; color: #475467; font-size: 14px; line-height: 1.6; }
+.sdc-install-panel ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 24px 0; padding-left: 20px; }
+.sdc-install-panel li { padding-left: 2px; color: #344054; font-size: 13px; line-height: 1.6; }
+.sdc-install-panel li strong, .sdc-install-panel li span { display: block; }
+.sdc-install-panel li strong { margin-bottom: 5px; color: #101828; }
+.sdc-install-panel p.sdc-install-note { margin-bottom: 0; font-size: 11px; }
+.sdc-proof-points { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px 28px; margin: 22px 0 12px; padding: 0; color: #475467; font-size: 11px; list-style: none; }
+.sdc-proof-points li::before { content: '✓'; padding-right: 6px; color: #14804a; }
+.sdc-demo-footnote { max-width: 750px; margin: 0 auto; color: #667085; font-size: 10px; line-height: 1.6; text-align: center; }
+.sdc-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+#sdc-preview-builder :focus-visible, .sdc-install-panel :focus-visible, .sdc-brand:focus-visible { outline: 3px solid #2335a9; outline-offset: 3px; }
+/* Keep the advanced editor focused on the native clock block. */
+.editor-styles-wrapper .sdc-demo-header,
+.editor-styles-wrapper .sdc-demo-intro,
+.editor-styles-wrapper .sdc-steps,
+.editor-styles-wrapper .sdc-preview-controls,
+.editor-styles-wrapper .sdc-result-heading,
+.editor-styles-wrapper .sdc-result-stage-title,
+.editor-styles-wrapper .sdc-result-meta,
+.editor-styles-wrapper .sdc-result-status,
+.editor-styles-wrapper .sdc-install-button,
+.editor-styles-wrapper .sdc-editor-link,
+.editor-styles-wrapper .sdc-error,
+.editor-styles-wrapper .sdc-install-panel,
+.editor-styles-wrapper .sdc-proof-points,
+.editor-styles-wrapper .sdc-demo-footnote { display: none !important; }
+.editor-styles-wrapper .sdc-builder-columns { grid-template-columns: minmax(0, 1fr); }
+.editor-styles-wrapper .sdc-preview-result { background: #fff; }
+@media (max-width: 781px) {
+  .wp-block-post-content { padding: 0 18px 24px; }
+  .sdc-demo-header { padding: 16px 0; }
+  .sdc-header-note { display: none; }
+  .sdc-demo-intro { margin-top: 10px; }
+  .sdc-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; max-width: 340px; margin-bottom: 18px; }
+  .sdc-steps li { font-size: 11px; }
+  .sdc-builder-columns { grid-template-columns: minmax(0, 1fr); }
+  .sdc-preview-controls, .sdc-preview-result { padding: 22px; }
+  .sdc-preview-controls { border-right: 0; border-bottom: 1px solid #e5e9f2; }
+  .sdc-result-stage-title { margin-top: 18px; }
+  .sdc-result-stage-title h2 { font-size: 21px; }
+  .sdc-result-status { min-height: 0; }
+  .sdc-install-panel { padding: 22px; }
+  .sdc-install-panel ol { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+@media (max-width: 380px) {
+  .wp-block-post-content { padding-right: 12px; padding-left: 12px; }
+  .sdc-preview-controls, .sdc-preview-result { padding: 18px; }
+  .sdc-style-options { gap: 8px; }
+  .sdc-style-swatch { font-size: 18px; }
+  .sdc-style-options button { padding-right: 4px; padding-left: 4px; }
+  .sdc-demo-intro h1 { font-size: 29px; }
+  .sdc-result-meta { font-size: 9px; }
+}

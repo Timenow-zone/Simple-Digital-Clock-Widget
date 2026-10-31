@@ -1,0 +1,106 @@
+{
+  "diagnostic_snapshot": {
+    "runs": [
+      {
+        "runtime": "php70",
+        "mode": "control",
+        "exit_code": 0,
+        "failed": null,
+        "assertions": null,
+        "details": {
+          "php": "7.0.33",
+          "original_json": "{\"caption\":\"Terminal \\\\\",\"unknown\":{\"0\":\"nested \\\\\"}}",
+          "decoded_json": "{\"caption\":\"Terminal \\\\\",\"unknown\":{\"0\":\"nested \\\\\"}}",
+          "original_keys": [
+            0
+          ],
+          "decoded_keys": [
+            0
+          ],
+          "native_object_equality": false,
+          "canonical_json_equality": true,
+          "array_control_is_array": true,
+          "array_control_rejected": true,
+          "scalar_type_change_rejected": true
+        }
+      },
+      {
+        "runtime": "php70",
+        "mode": "original",
+        "exit_code": 1,
+        "failed": 9,
+        "assertions": 48
+      },
+      {
+        "runtime": "php70",
+        "mode": "corrected",
+        "exit_code": 0,
+        "failed": 0,
+        "assertions": 48
+      },
+      {
+        "runtime": "php83",
+        "mode": "control",
+        "exit_code": 0,
+        "failed": null,
+        "assertions": null,
+        "details": {
+          "php": "8.3.35",
+          "original_json": "{\"caption\":\"Terminal \\\\\",\"unknown\":{\"0\":\"nested \\\\\"}}",
+          "decoded_json": "{\"caption\":\"Terminal \\\\\",\"unknown\":{\"0\":\"nested \\\\\"}}",
+          "original_keys": [
+            0
+          ],
+          "decoded_keys": [
+            0
+          ],
+          "native_object_equality": true,
+          "canonical_json_equality": true,
+          "array_control_is_array": true,
+          "array_control_rejected": true,
+          "scalar_type_change_rejected": true
+        }
+      },
+      {
+        "runtime": "php83",
+        "mode": "original",
+        "exit_code": 0,
+        "failed": 0,
+        "assertions": 48
+      },
+      {
+        "runtime": "php83",
+        "mode": "corrected",
+        "exit_code": 0,
+        "failed": 0,
+        "assertions": 48
+      }
+    ],
+    "after": {
+      "tracked_test_sha256": "a1e04003463339ba597b6ed05eaddbb4f9db5b176f145b88ab077c77330fda0e",
+      "head": "369f6bde90591e40ac8f59544297a2bae3e6a91f",
+      "git_status": ""
+    },
+    "source_test_unchanged": true
+  },
+  "applied_test_only_correction": "Compare JSON encodings of the decoded result and original object; preserve JSON object/array and number/string distinctions rather than PHP7 internal numeric-key object representation.",
+  "tracked_test_verification": [
+    {
+      "runtime": "php70",
+      "assertions": 48,
+      "failed": 0,
+      "network": "none",
+      "mount": "read-only"
+    },
+    {
+      "runtime": "php83",
+      "assertions": 48,
+      "failed": 0,
+      "network": "none",
+      "mount": "read-only"
+    }
+  ],
+  "plugin_files_changed": false,
+  "accepted_archive_changed": false,
+  "accepted_archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+}

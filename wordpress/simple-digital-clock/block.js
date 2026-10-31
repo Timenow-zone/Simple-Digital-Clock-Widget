@@ -1,5 +1,5 @@
 /**
- * @version 1.1.2
+ * @version 1.1.4
  */
 
 (function (blocks, editor, element, components, hooks) {
@@ -2157,7 +2157,31 @@
     );
   }
 
-  // Recover omitted legacy defaults without changing the JSON storage format.
+  const storedClockAttributeNames = {
+    width: "width",
+    timeZone: "time-zone",
+    fontFamily: "font-family",
+    backgroundColor: "background-color",
+    background: "background",
+    rounded: "rounded",
+    second: "second",
+    hundredths: "hundredths",
+    period: "period",
+    date: "date",
+    border: "border",
+    shadow: "shadow",
+    align: "align",
+    caption: "caption",
+  };
+  const storedClockAttributeQuery = Object.fromEntries(
+    Object.entries(storedClockAttributeNames).map(([name, attribute]) => [
+      name,
+      { source: "attribute", attribute },
+    ])
+  );
+
+  // Recover HTML-only defaults and settings from malformed legacy JSON comments.
+  // Explicit valid JSON stays authoritative, including older caption semantics.
   hooks.addFilter(
     "blocks.getBlockAttributes",
     "simple-digital-clock/stored-attributes",
@@ -2166,23 +2190,32 @@
         return attributes;
       }
 
+      const [stored] = blocks.parseWithAttributeSchema(innerHTML, {
+        source: "query",
+        selector: "timenow-zone-sdcw",
+        query: storedClockAttributeQuery,
+      });
+      if (!stored) return attributes;
+
       const savedAttributes = { ...attributes };
-      if (!Object.prototype.hasOwnProperty.call(commentAttributes, "timeZone")) {
-        const timeZone = blocks.parseWithAttributeSchema(innerHTML, {
-          source: "attribute",
-          selector: "timenow-zone-sdcw",
-          attribute: "time-zone",
-        });
-        savedAttributes.timeZone = timeZone === undefined ? "" : timeZone;
-      }
-      if (!Object.prototype.hasOwnProperty.call(commentAttributes, "caption")) {
-        const caption = blocks.parseWithAttributeSchema(innerHTML, {
-          source: "attribute",
-          selector: "timenow-zone-sdcw",
-          attribute: "caption",
-        });
-        if (caption !== undefined) {
-          savedAttributes.caption = caption;
+      for (const name of Object.keys(storedClockAttributeNames)) {
+        if (Object.prototype.hasOwnProperty.call(commentAttributes, name)) {
+          if (name === "caption" && typeof commentAttributes.caption === "string") {
+            savedAttributes.caption = commentAttributes.caption;
+          }
+          continue;
+        }
+        const value = stored[name];
+        if (name === "width" || name === "rounded") {
+          if (value !== undefined && value.trim() !== "" && Number.isFinite(Number(value))) {
+            savedAttributes[name] = Number(value);
+          }
+        } else if (typeof blockType.attributes[name].default === "boolean") {
+          if (value === undefined || value === (name === "period" ? "false" : "true")) {
+            savedAttributes[name] = value !== undefined;
+          }
+        } else {
+          savedAttributes[name] = value === undefined ? "" : value;
         }
       }
       return savedAttributes;

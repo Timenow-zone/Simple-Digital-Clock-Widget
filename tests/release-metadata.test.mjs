@@ -22,6 +22,37 @@ async function fixture(t) {
   return directory;
 }
 
+function buildGuard(directory) {
+  const result = spawnSync(process.execPath, [path.join(root, "scripts/check-new-widget-version.mjs")], {
+    cwd: directory, encoding: "utf8", timeout: 10000,
+  });
+  if (result.error) throw result.error;
+  return result;
+}
+
+test("release build refuses an existing immutable version without changing it", async (t) => {
+  const directory = await fixture(t);
+  const before = await readFile(path.join(directory, artifactPath));
+  const result = buildGuard(directory);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /already exists and is immutable/);
+  assert.deepEqual(await readFile(path.join(directory, artifactPath)), before);
+});
+
+test("release build allows a new version without an existing artifact", async (t) => {
+  const directory = await fixture(t);
+  await rm(path.join(directory, artifactPath));
+  assert.equal(buildGuard(directory).status, 0);
+});
+
+test("release build rejects unsafe version paths", async (t) => {
+  const directory = await fixture(t);
+  await writeFile(path.join(directory, "package.json"), JSON.stringify({ version: "../existing" }));
+  const result = buildGuard(directory);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /valid widget version is required/);
+});
+
 function git(directory, args) {
   const result = spawnSync("git", args, {
     cwd: directory, encoding: "utf8", timeout: 10000,
