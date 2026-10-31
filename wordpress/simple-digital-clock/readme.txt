@@ -93,6 +93,8 @@ The production JavaScript bundled with this plugin is built from the public Simp
 * Bundled upstream version: 0.8.1
 * Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/b44f944b60babf45bf266e73ba12f7eba53cfef2
 
+Third-party copyright and MIT license notices for the bundled dependencies are included in THIRD-PARTY-NOTICES.txt. The WordPress wrapper remains GPLv2 or later.
+
 To reproduce the production bundle:
 
 * `npm ci`
@@ -101,6 +103,8 @@ To reproduce the production bundle:
 == Changelog ==
 
 = 1.1.4 =
+* Preserve captions ending in a backslash and nondefault clock settings when saving on WordPress 6.3.
+* Include third-party copyright and license notices for bundled dependencies.
 * Update the bundled widget to 0.8.1 with Preact 11.1.0.
 * Preserve clock, caption, date and time zone sizing with explicit CSS pixel units.
 * Keep ordinary localized AM/PM clocks on one line at narrow widths and after format or hour-length changes.

@@ -12,6 +12,21 @@ const version = header.match(/^Version:\s*(\d+\.\d+\.\d+)\s*$/m)?.[1];
 assert.ok(version, "The plugin must declare a release version");
 const manifest = JSON.parse(await readFile(path.join(root, `docs/releases/${version}/manifest.json`), "utf8"));
 
+test("WordPress ships complete MIT notices for its bundled dependencies", async () => {
+  const notices = await readFile(path.join(plugin, "THIRD-PARTY-NOTICES.txt"), "utf8");
+  const lock = JSON.parse(await readFile(path.join(root, "package-lock.json"), "utf8"));
+  for (const [name, licenseFile] of [["preact", "LICENSE"], ["preact-custom-element", "LICENSE"], ["clsx", "license"]]) {
+    const directory = path.join(root, "node_modules", name);
+    const installed = JSON.parse(await readFile(path.join(directory, "package.json"), "utf8"));
+    const locked = lock.packages[`node_modules/${name}`];
+    assert.equal(installed.version, locked.version, `${name} must match the lockfile`);
+    assert.equal(installed.license, "MIT", `${name} license must be reviewed if it changes`);
+    assert.ok(notices.includes(`${name} ${locked.version}\n`), `${name} notices must identify the bundled version`);
+    const license = await readFile(path.join(directory, licenseFile), "utf8");
+    assert.ok(notices.includes(license.trimEnd()), `${name} must retain its complete upstream license`);
+  }
+});
+
 async function installedFiles(directory, prefix = "") {
   const files = {};
   for (const entry of await readdir(directory, { withFileTypes: true })) {

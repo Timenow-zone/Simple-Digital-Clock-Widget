@@ -1,42 +1,24 @@
 {
   "version": "1.1.4",
+  "revision": "compatibility-r2",
   "widget": "0.8.1",
-  "archive": ".local/packages/simple-digital-clock-1.1.4-requirements-candidate.zip",
-  "archive_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
-  "files": 15,
-  "changed_plugin_files": [
-    "widget_init.php"
+  "archive": ".local/packages/simple-digital-clock-1.1.4-compatibility-r2-candidate.zip",
+  "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
+  "bytes": 65374,
+  "file_count": 16,
+  "crc_pass": true,
+  "unique_safe_paths": true,
+  "files_match_source_and_manifest": true,
+  "changed_paths_vs_rejected_r1": [
+    "block.js",
+    "includes/simple-digital-clock-kses.php"
   ],
-  "header_bytes_changed_only_by_two_metadata_lines": true,
-  "fourteen_other_files_identical": true,
-  "old_archive_sha256": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088",
-  "old_archive_preserved": true,
-  "all_published_bundles_and_older_archives_preserved": true,
-  "status": "passed",
-  "main_php_headers": {
-    "Requires at least": "6.3",
-    "Requires PHP": "7.0"
-  },
-  "package_readme_unchanged": true,
-  "widget_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
-  "widget_runtime_version": "0.8.1",
-  "widget_source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
-  "runtime_or_dependencies_changed": false,
-  "all_original_artifacts": {
-    "dist/0.5.3.min.js": "9d2f3ee0659e37f910db18b43b3dbe0065657dc9623301cb744adfaf2ca4ee24",
-    "dist/0.5.5.min.js": "35227d9343cce0c0af4d4ba9ac5ad3283801380d3e861d097f52a412eddac609",
-    "dist/0.6.0.min.js": "dc793b84d0d13be3907648f21a69f2aa130f57c5fecb5626a03fd1e9ba777513",
-    "dist/0.7.0.min.js": "1ac6a8d90de417b73afa8e9c93de9603313f7c423c93ad051b87f820f891d368",
-    "dist/0.7.1.min.js": "affc4417099de256553267060e056e296023781ec8a1ef1382370143de080bb6",
-    "dist/0.7.2.min.js": "9068d236e2dcff33a01d1aac5de9b13eb9cf2c69837f4ed3b3f7a3089721a0af",
-    "dist/0.8.0.min.js": "5661f6c054aad7c2f77f7ecd8912d6e41fca0c6079c8a4be498ab1847de939d0",
-    "dist/0.8.1.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
-    "dist/latest.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
-    ".local/packages/simple-digital-clock-1.1.3-candidate.zip": "1f42bd43152501499212a06a19286fbb562e5e51338a87c0a533200b31b344b0",
-    ".local/packages/simple-digital-clock-1.1.4-candidate.zip": "a2464553084ec244dbd3b77b87a3bb49f3da7b5f0e4586ab32311e35362a112f",
-    ".local/packages/simple-digital-clock-1.1.4-widget-0.8.1-candidate.zip": "5963f94742828d8d91de77bf58d13a630de8d712d4e3af18709055de777d6088"
-  },
-  "historical_manifest": "manifest-before-requirements.json",
-  "wordpress_org_published": false,
-  "production_cdn_changed": false
+  "rejected_r1_archive_sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
+  "requirements_candidate_sha256": "fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00",
+  "previous_artifacts_preserved": true,
+  "preserved_artifact_count": 14,
+  "widget_unchanged": true,
+  "gpl_license_unchanged": true,
+  "json_caption_schema_and_native_save_markup_retained": true,
+  "published": false
 }

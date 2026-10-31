@@ -1,0 +1,362 @@
+{
+  "presets": [
+    {
+      "id": "classic",
+      "label": "Classic",
+      "clock": {
+        "width": 0,
+        "locale": "en-GB",
+        "timeZone": "Europe/Kyiv",
+        "fontFamily": "",
+        "backgroundColor": "#6a11cb",
+        "background": "linear-gradient(135deg, rgb(106, 17, 203) 0%, rgb(29, 78, 216) 100%)",
+        "rounded": 0.9,
+        "align": "center",
+        "second": true,
+        "date": true,
+        "period": true,
+        "border": false,
+        "shadow": "shadow-md",
+        "hundredths": false,
+        "caption": "Kyiv"
+      }
+    },
+    {
+      "id": "minimal",
+      "label": "Minimal",
+      "clock": {
+        "width": 0,
+        "locale": "en-GB",
+        "timeZone": "Europe/Kyiv",
+        "fontFamily": "",
+        "backgroundColor": "#111827",
+        "background": "linear-gradient(135deg, rgb(17, 24, 39) 0%, rgb(55, 65, 81) 100%)",
+        "rounded": 0.5,
+        "align": "center",
+        "second": true,
+        "date": true,
+        "period": true,
+        "border": true,
+        "shadow": "",
+        "hundredths": false,
+        "caption": "Kyiv"
+      }
+    },
+    {
+      "id": "bold",
+      "label": "Bold",
+      "clock": {
+        "width": 0,
+        "locale": "en-GB",
+        "timeZone": "Europe/Kyiv",
+        "fontFamily": "",
+        "backgroundColor": "#f43f5e",
+        "background": "linear-gradient(135deg, rgb(244, 63, 94) 0%, rgb(249, 115, 22) 100%)",
+        "rounded": 1.2,
+        "align": "center",
+        "second": true,
+        "date": true,
+        "period": true,
+        "border": false,
+        "shadow": "shadow-lg",
+        "hundredths": false,
+        "caption": "Kyiv"
+      }
+    }
+  ],
+  "cities": [
+    {
+      "name": "Kyiv",
+      "timeZone": "Europe/Kyiv",
+      "locale": "uk",
+      "aliases": [
+        "Київ",
+        "Киев",
+        "Kiev"
+      ]
+    },
+    {
+      "name": "Lviv",
+      "timeZone": "Europe/Kyiv",
+      "locale": "uk",
+      "aliases": [
+        "Львів",
+        "Львов"
+      ]
+    },
+    {
+      "name": "Odesa",
+      "timeZone": "Europe/Kyiv",
+      "locale": "uk",
+      "aliases": [
+        "Одеса",
+        "Одесса",
+        "Odessa"
+      ]
+    },
+    {
+      "name": "Kharkiv",
+      "timeZone": "Europe/Kyiv",
+      "locale": "uk",
+      "aliases": [
+        "Харків",
+        "Харьков",
+        "Kharkov"
+      ]
+    },
+    {
+      "name": "London",
+      "timeZone": "Europe/London",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "New York",
+      "timeZone": "America/New_York",
+      "locale": "en-GB",
+      "aliases": [
+        "NYC"
+      ]
+    },
+    {
+      "name": "Tokyo",
+      "timeZone": "Asia/Tokyo",
+      "locale": "ja-JP",
+      "aliases": [
+        "東京"
+      ]
+    },
+    {
+      "name": "Paris",
+      "timeZone": "Europe/Paris",
+      "locale": "fr-FR",
+      "aliases": []
+    },
+    {
+      "name": "Berlin",
+      "timeZone": "Europe/Berlin",
+      "locale": "de-DE",
+      "aliases": []
+    },
+    {
+      "name": "Warsaw",
+      "timeZone": "Europe/Warsaw",
+      "locale": "pl-PL",
+      "aliases": [
+        "Warszawa"
+      ]
+    },
+    {
+      "name": "Prague",
+      "timeZone": "Europe/Prague",
+      "locale": "cs-CZ",
+      "aliases": [
+        "Praha"
+      ]
+    },
+    {
+      "name": "Madrid",
+      "timeZone": "Europe/Madrid",
+      "locale": "es-ES",
+      "aliases": []
+    },
+    {
+      "name": "Rome",
+      "timeZone": "Europe/Rome",
+      "locale": "it-IT",
+      "aliases": [
+        "Roma"
+      ]
+    },
+    {
+      "name": "Lisbon",
+      "timeZone": "Europe/Lisbon",
+      "locale": "pt-PT",
+      "aliases": [
+        "Lisboa"
+      ]
+    },
+    {
+      "name": "Athens",
+      "timeZone": "Europe/Athens",
+      "locale": "el-GR",
+      "aliases": []
+    },
+    {
+      "name": "Istanbul",
+      "timeZone": "Europe/Istanbul",
+      "locale": "tr-TR",
+      "aliases": []
+    },
+    {
+      "name": "Amsterdam",
+      "timeZone": "Europe/Amsterdam",
+      "locale": "nl-NL",
+      "aliases": []
+    },
+    {
+      "name": "Stockholm",
+      "timeZone": "Europe/Stockholm",
+      "locale": "sv-SE",
+      "aliases": []
+    },
+    {
+      "name": "Helsinki",
+      "timeZone": "Europe/Helsinki",
+      "locale": "fi-FI",
+      "aliases": []
+    },
+    {
+      "name": "Zurich",
+      "timeZone": "Europe/Zurich",
+      "locale": "de-CH",
+      "aliases": []
+    },
+    {
+      "name": "Los Angeles",
+      "timeZone": "America/Los_Angeles",
+      "locale": "en-GB",
+      "aliases": [
+        "LA"
+      ]
+    },
+    {
+      "name": "Chicago",
+      "timeZone": "America/Chicago",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Toronto",
+      "timeZone": "America/Toronto",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Vancouver",
+      "timeZone": "America/Vancouver",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Mexico City",
+      "timeZone": "America/Mexico_City",
+      "locale": "es-MX",
+      "aliases": [
+        "Ciudad de México"
+      ]
+    },
+    {
+      "name": "São Paulo",
+      "timeZone": "America/Sao_Paulo",
+      "locale": "pt-BR",
+      "aliases": [
+        "Sao Paulo"
+      ]
+    },
+    {
+      "name": "Buenos Aires",
+      "timeZone": "America/Argentina/Buenos_Aires",
+      "locale": "es-AR",
+      "aliases": []
+    },
+    {
+      "name": "Dubai",
+      "timeZone": "Asia/Dubai",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Jerusalem",
+      "timeZone": "Asia/Jerusalem",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Cairo",
+      "timeZone": "Africa/Cairo",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Johannesburg",
+      "timeZone": "Africa/Johannesburg",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Nairobi",
+      "timeZone": "Africa/Nairobi",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Mumbai",
+      "timeZone": "Asia/Kolkata",
+      "locale": "en-IN",
+      "aliases": [
+        "Bombay"
+      ]
+    },
+    {
+      "name": "Delhi",
+      "timeZone": "Asia/Kolkata",
+      "locale": "en-IN",
+      "aliases": [
+        "New Delhi"
+      ]
+    },
+    {
+      "name": "Singapore",
+      "timeZone": "Asia/Singapore",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Hong Kong",
+      "timeZone": "Asia/Hong_Kong",
+      "locale": "en-GB",
+      "aliases": []
+    },
+    {
+      "name": "Shanghai",
+      "timeZone": "Asia/Shanghai",
+      "locale": "zh-CN",
+      "aliases": []
+    },
+    {
+      "name": "Seoul",
+      "timeZone": "Asia/Seoul",
+      "locale": "ko-KR",
+      "aliases": []
+    },
+    {
+      "name": "Sydney",
+      "timeZone": "Australia/Sydney",
+      "locale": "en-AU",
+      "aliases": []
+    },
+    {
+      "name": "Melbourne",
+      "timeZone": "Australia/Melbourne",
+      "locale": "en-AU",
+      "aliases": []
+    },
+    {
+      "name": "Auckland",
+      "timeZone": "Pacific/Auckland",
+      "locale": "en-NZ",
+      "aliases": []
+    },
+    {
+      "name": "UTC",
+      "timeZone": "UTC",
+      "locale": "en-GB",
+      "aliases": []
+    }
+  ],
+  "initial": {
+    "preset": "classic",
+    "city": "Kyiv"
+  }
+}

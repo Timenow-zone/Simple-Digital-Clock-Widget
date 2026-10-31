@@ -1,0 +1,225 @@
+{
+  "verdict": "NO-GO",
+  "target": {
+    "commit": "4bc261ee9c8841f122e0206c7358175e98a460fd",
+    "pr": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/13",
+    "checkout": "/Users/yy/.codex/worktrees/simple-digital-clock-113/Simple-Digital-Clock-Widget",
+    "archive_name": "simple-digital-clock-1.1.4-compatibility-candidate.zip",
+    "sha256": "9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1",
+    "bytes": 64020,
+    "files": 16
+  },
+  "independent": true,
+  "source_edits": false,
+  "published": false,
+  "matrix_complete": false,
+  "suspended_reason": "New independent P2 caption data regression; implementation owner requested a fresh corrected frozen candidate before remaining expensive checks.",
+  "original_B1_notices": "PASS",
+  "original_B2_terminal_backslash": "PASS for clean real GUI save/reopen, 1/2/3 terminal slashes, all three roles on both versions; full upgrade/rollback not accepted",
+  "D1_readme": "PASS pinned commit",
+  "security": {
+    "minclean": {
+      "wordpress": "6.3.14",
+      "php": "7.0.33",
+      "checks": 538,
+      "failed": 0
+    },
+    "currentclean": {
+      "wordpress": "7.1.4",
+      "php": "8.3.35",
+      "checks": 538,
+      "failed": 0
+    }
+  },
+  "plugin_check": {
+    "version": "2.1.0",
+    "static_checks": 29,
+    "runtime_checks": 5,
+    "errors": 0,
+    "warnings": 8
+  },
+  "blockers": [
+    {
+      "id": "R2-B1",
+      "priority": "P2",
+      "description": "Title-only save changes literal entity caption values of otherwise valid public-1.1.2 blocks after upgrade.",
+      "site": "WP 6.3.14 / PHP 7.0.33",
+      "post_id": 7,
+      "role": "administrator",
+      "changed_indices": [
+        4,
+        13,
+        22
+      ],
+      "valid_before": 24,
+      "valid_after": 24,
+      "raw_clock_html_unchanged": true,
+      "public_112_control_preserves_caption": true
+    }
+  ],
+  "teardown": {
+    "completed_at": "2026-10-30T19:34:25.191208+00:00",
+    "names": [
+      "sdcw-independent-114-r2-190930-db-1",
+      "sdcw-independent-114-r2-190930-minclean-1",
+      "sdcw-independent-114-r2-190930-minupgrade-1",
+      "sdcw-independent-114-r2-190930-currentclean-1",
+      "sdcw-independent-114-r2-190930-currentupgrade-1",
+      "sdcw-independent-114-r2-190930-belowwp-1",
+      "sdcw-independent-114-r2-190930-firefox",
+      "sdcw-independent-114-r2-190930-proxy"
+    ],
+    "before": [
+      {
+        "name": "/sdcw-independent-114-r2-190930-db-1",
+        "image_id": "sha256:bc474f00629f0123c10f9e1bca193a45d18af15a274cf0656acda64f1086c3b6",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-minclean-1",
+        "image_id": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-minupgrade-1",
+        "image_id": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-currentclean-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-currentupgrade-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-belowwp-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-firefox",
+        "image_id": "sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-proxy",
+        "image_id": "sha256:0e5f906573693feaa1e21057ebdcfdb5bd5021f050b2dc7c9deceb629c7da2a8",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      }
+    ],
+    "after": [
+      {
+        "name": "/sdcw-independent-114-r2-190930-db-1",
+        "image_id": "sha256:bc474f00629f0123c10f9e1bca193a45d18af15a274cf0656acda64f1086c3b6",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-minclean-1",
+        "image_id": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-minupgrade-1",
+        "image_id": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-currentclean-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-currentupgrade-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-belowwp-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-firefox",
+        "image_id": "sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r2-190930-proxy",
+        "image_id": "sha256:0e5f906573693feaa1e21057ebdcfdb5bd5021f050b2dc7c9deceb629c7da2a8",
+        "status": "exited",
+        "running": false,
+        "exit_code": 137
+      }
+    ],
+    "ports": [
+      {
+        "port": 59798,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 59802,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 59803,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 59805,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 59806,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 62435,
+        "closed": true,
+        "connect_error": 61
+      }
+    ],
+    "removed_containers": false,
+    "removed_volumes": false,
+    "databases_restored": false,
+    "published": false
+  }
+}

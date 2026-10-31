@@ -1,0 +1,11 @@
+# Native WordPress 6.3 static serializer fixtures
+
+The three JavaScript files are unchanged bytes from the official [WordPress 6.3.14 archive](https://wordpress.org/wordpress-6.3.14.zip). `provenance.json` records their paths, sizes and SHA-256 hashes. WordPress files are GPLv2 or later; see `WORDPRESS-LICENSE.txt`. The vendored React 18.2.0 production runtime retains its upstream banner and [MIT license](https://github.com/facebook/react/blob/v18.2.0/LICENSE), reproduced in `REACT-LICENSE.txt`.
+
+These test-only files execute the actual native `wp.element.renderToString` and `wp.escapeHtml.escapeAttribute` path. `ReactDOM` is an empty host stub because DOM mounting is outside these static serialization contracts. The tests provide block registration and decoded HTML-query inputs; they do not emulate the full Gutenberg parser, KSES, persistence or migration state machine. Browser contracts independently check the actual DOM decoding; real isolated WordPress acceptance covers the complete UI/save/update pipeline.
+
+The small `serializeCore63` function in the tests preserves the native escaping order from `wp-includes/js/dist/blocks.js` in this same archive. It intentionally reproduces Core's malformed terminal-backslash output as a negative control. These fixtures and licenses are not shipped in the WordPress plugin ZIP.
+
+`legacy-clock-1.1.2.js` wraps exact attribute-recovery, attribute-schema and static-save excerpts from the independently downloaded official Simple Digital Clock 1.1.2 package. Its archive/source/excerpt hashes are recorded separately in `provenance.json`. The wrapper excludes the editor UI and supplies a fixed test site locale. The original plugin is GPLv2; the same GPL text is retained here.
+
+The browser contract uses actual DOM decoding and compares the current and predecessor native static output after two metadata roundtrips. Its PHP bridge uses explicitly bounded test doubles for the HTML caption-consistency boundary; it does not claim to run full Core sanitization. Literal entity text is preserved by JSON metadata, while the unchanged legacy HTML retains its existing browser interpretation. This distinction prevents the HTML-source regression from being hidden by a save-props-only assertion.

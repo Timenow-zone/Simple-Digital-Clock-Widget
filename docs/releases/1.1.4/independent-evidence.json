@@ -1,0 +1,644 @@
+{
+  "verdict": "GO",
+  "decision_scope": "Independent prepublication acceptance of the exact frozen candidate; known predecessor writer/data-recovery and unit-harness limits explicitly retained.",
+  "target": {
+    "commit": "369f6bde90591e40ac8f59544297a2bae3e6a91f",
+    "pr": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/13",
+    "checkout": "/Users/yy/.codex/worktrees/simple-digital-clock-113/Simple-Digital-Clock-Widget",
+    "archive_name": "simple-digital-clock-1.1.4-compatibility-r2-candidate.zip",
+    "sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
+    "bytes": 65374,
+    "files": 16
+  },
+  "completed_at": "2026-10-30T20:13:10.356745+00:00",
+  "mandatory_matrix_executed": true,
+  "all_tests_green": false,
+  "candidate_blockers": [],
+  "source_patches_written": false,
+  "published": false,
+  "merged": false,
+  "minimum_environment": "WordPress 6.3.14 / PHP 7.0.33",
+  "current_environment": "WordPress 7.1.4 / PHP 8.3.35",
+  "widget": {
+    "version": "0.8.1",
+    "bytes": 36009,
+    "sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "unchanged": true,
+    "source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
+    "independent_build_matches": true
+  },
+  "clean_caption_gui": {
+    "candidate": {
+      "role_version_contexts": 6,
+      "observations": 126,
+      "all_exact_and_valid": true
+    },
+    "additional": {
+      "role_version_contexts": 6,
+      "observations": 24,
+      "all_exact_and_valid": true
+    },
+    "upgrade": {
+      "role_version_contexts": 6,
+      "observations": 126,
+      "all_exact_and_valid": true
+    }
+  },
+  "security": {
+    "minclean": {
+      "wordpress": "6.3.14",
+      "php": "7.0.33",
+      "assertions": 538,
+      "failed": 0
+    },
+    "currentclean": {
+      "wordpress": "7.1.4",
+      "php": "8.3.35",
+      "assertions": 538,
+      "failed": 0
+    }
+  },
+  "recovery_guard_cases_per_environment": 10,
+  "plugin_check": {
+    "version": "2.1.0",
+    "static_checks": 29,
+    "individually_run_runtime_checks": 5,
+    "errors": 0,
+    "warnings": 10,
+    "findings": [
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 72,
+        "column": 9,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Fixed diagnostic for rejected/failed encoding or malformed input; no user data or secrets interpolated; original data retained or recovery rejected."
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 147,
+        "column": 9,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Fixed diagnostic for rejected/failed encoding or malformed input; no user data or secrets interpolated; original data retained or recovery rejected."
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 186,
+        "column": 5,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Fixed diagnostic for rejected/failed encoding or malformed input; no user data or secrets interpolated; original data retained or recovery rejected."
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 228,
+        "column": 9,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Fixed diagnostic for rejected/failed encoding or malformed input; no user data or secrets interpolated; original data retained or recovery rejected."
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 281,
+        "column": 17,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Fixed diagnostic for rejected/failed encoding or malformed input; no user data or secrets interpolated; original data retained or recovery rejected."
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 294,
+        "column": 13,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Fixed diagnostic for rejected/failed encoding or malformed input; no user data or secrets interpolated; original data retained or recovery rejected."
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 360,
+        "column": 13,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Fixed diagnostic for rejected/failed encoding or malformed input; no user data or secrets interpolated; original data retained or recovery rejected."
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 366,
+        "column": 9,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_error_log",
+        "message": "error_log() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Fixed diagnostic for rejected/failed encoding or malformed input; no user data or secrets interpolated; original data retained or recovery rejected."
+      },
+      {
+        "file": "includes/simple-digital-clock-kses.php",
+        "line": 456,
+        "column": 14,
+        "type": "WARNING",
+        "code": "WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace",
+        "message": "debug_backtrace() found. Debug code should not normally be used in production.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Bounded depth 12 and DEBUG_BACKTRACE_IGNORE_ARGS; identifies owned KSES callback without inspecting arguments."
+      },
+      {
+        "file": "assets/public/js/simple-digital-clock.min.js",
+        "line": 0,
+        "column": 0,
+        "type": "WARNING",
+        "code": "EnqueuedScriptsScope",
+        "message": "This script is being loaded in all frontend contexts.",
+        "docs": "",
+        "assessment": "NON_BLOCKING",
+        "reason": "Existing immutable frontend script enqueued globally for dynamic/legacy consumers; size checks pass; no new delivery behavior."
+      }
+    ]
+  },
+  "file_transitions": {
+    "update": [
+      {
+        "site": "minupgrade",
+        "phase": "update",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "requirements_pass": true,
+        "active": true,
+        "database_restored": false,
+        "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+      },
+      {
+        "site": "currentupgrade",
+        "phase": "update",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "requirements_pass": true,
+        "active": true,
+        "database_restored": false,
+        "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+      }
+    ],
+    "rollback": [
+      {
+        "site": "minupgrade",
+        "phase": "rollback",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "requirements_pass": true,
+        "active": true,
+        "database_restored": false,
+        "archive_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55"
+      },
+      {
+        "site": "currentupgrade",
+        "phase": "rollback",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "requirements_pass": true,
+        "active": true,
+        "database_restored": false,
+        "archive_sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55"
+      }
+    ],
+    "reupdate": [
+      {
+        "site": "minupgrade",
+        "phase": "reupdate",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "requirements_pass": true,
+        "active": true,
+        "database_restored": false,
+        "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+      },
+      {
+        "site": "currentupgrade",
+        "phase": "reupdate",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "requirements_pass": true,
+        "active": true,
+        "database_restored": false,
+        "archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f"
+      }
+    ]
+  },
+  "browsers": {
+    "chromium": "151.0.7922.34",
+    "webkit": "26.5",
+    "firefox": "153.0"
+  },
+  "role_saves": {
+    "updated": {
+      "chromium": {
+        "post_page_records": 10,
+        "new_semantic_failures": 0
+      },
+      "webkit": {
+        "post_page_records": 10,
+        "new_semantic_failures": 0
+      },
+      "firefox": {
+        "post_page_records": 10,
+        "new_semantic_failures": 0
+      }
+    },
+    "reupdated": {
+      "chromium": {
+        "post_page_records": 10,
+        "new_semantic_failures": 0
+      },
+      "webkit": {
+        "post_page_records": 10,
+        "new_semantic_failures": 0
+      },
+      "firefox": {
+        "post_page_records": 10,
+        "new_semantic_failures": 0
+      }
+    }
+  },
+  "old_writer_boundary": {
+    "classification": "KNOWN_PREDECESSOR_DATA_LOSS; not a successful rollback writer test and not full automatic repair",
+    "raw_failed_collector": "caption-transition-reupdated-recovery-chromium.json",
+    "collector_exit_code": 1,
+    "databases_restored": false,
+    "rows": [
+      {
+        "site": "minupgrade",
+        "role": "administrator",
+        "post": 77,
+        "old_writer_invalid": 8,
+        "original_caption_values_lost_by_old_writer": [
+          4,
+          5,
+          7
+        ],
+        "lock_lost_by_old_writer": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          17
+        ],
+        "available_clock_setting_failures": [],
+        "new_save_attribute_changes": [],
+        "still_invalid_after_new_save": []
+      },
+      {
+        "site": "minupgrade",
+        "role": "editor",
+        "post": 80,
+        "old_writer_invalid": 8,
+        "original_caption_values_lost_by_old_writer": [
+          4,
+          5,
+          7
+        ],
+        "lock_lost_by_old_writer": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          17
+        ],
+        "available_clock_setting_failures": [],
+        "new_save_attribute_changes": [],
+        "still_invalid_after_new_save": []
+      },
+      {
+        "site": "minupgrade",
+        "role": "author",
+        "post": 83,
+        "old_writer_invalid": 8,
+        "original_caption_values_lost_by_old_writer": [
+          4,
+          5,
+          7,
+          14,
+          15
+        ],
+        "lock_lost_by_old_writer": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          17
+        ],
+        "available_clock_setting_failures": [],
+        "new_save_attribute_changes": [],
+        "still_invalid_after_new_save": [
+          4
+        ]
+      },
+      {
+        "site": "currentupgrade",
+        "role": "administrator",
+        "post": 76,
+        "old_writer_invalid": 0,
+        "original_caption_values_lost_by_old_writer": [],
+        "lock_lost_by_old_writer": [],
+        "available_clock_setting_failures": [],
+        "new_save_attribute_changes": [],
+        "still_invalid_after_new_save": []
+      },
+      {
+        "site": "currentupgrade",
+        "role": "editor",
+        "post": 79,
+        "old_writer_invalid": 0,
+        "original_caption_values_lost_by_old_writer": [],
+        "lock_lost_by_old_writer": [],
+        "available_clock_setting_failures": [],
+        "new_save_attribute_changes": [],
+        "still_invalid_after_new_save": []
+      },
+      {
+        "site": "currentupgrade",
+        "role": "author",
+        "post": 82,
+        "old_writer_invalid": 0,
+        "original_caption_values_lost_by_old_writer": [],
+        "lock_lost_by_old_writer": [],
+        "available_clock_setting_failures": [],
+        "new_save_attribute_changes": [],
+        "still_invalid_after_new_save": []
+      }
+    ],
+    "continued_scope": "Complete remaining exact-candidate acceptance without changing failed assertions or damaged records. Original literal captions and lost Advanced lock cannot be claimed recovered; one already-invalid Author block remains invalid with identical available values."
+  },
+  "known_failures": [
+    {
+      "id": "OLD112-WRITER",
+      "classification": "Pre-existing predecessor defect, reproduced independently",
+      "detail": "WP6.3 old writer invalidates 8 of 21 vectors per role and loses original entity captions and Advanced lock. File rollback and old readers pass; old writer is not certified safe."
+    },
+    {
+      "id": "OLD112-DAMAGED-AUTHOR",
+      "classification": "Known already-corrupted HTML-only boundary",
+      "detail": "After reupdate one Author numeric-reference block stays invalid, with all currently available values unchanged. Its failed collector exit 1 remains preserved."
+    },
+    {
+      "id": "PHP70-UNIT-COMPARISON",
+      "classification": "Unmodified author unit-harness issue; actual JSON roundtrip preserved",
+      "detail": "6/7 unit tests pass on PHP7; 9 of 48 subassertions use a PHP7 object comparison involving numeric keys. Isolated before/after JSON identical; real Core recovery/persistence checks pass. Unmodified suite passes 7/7 on PHP8.3."
+    }
+  ],
+  "native_unknown_policy": "Author-only numeric-key-only JSON object becomes an array identically for clock and native foreign controls on both versions; no universal unknown-type preservation claim after native KSES. Mixed numeric/associative values preserve structure.",
+  "native_intl_observations": 312,
+  "fresh_results_only": true,
+  "php_fatal_parse_warning_lines": 0,
+  "final_installations": [
+    {
+      "site": "minclean",
+      "version": "1.1.4",
+      "all_16_files_match": true,
+      "requirements_pass": true,
+      "active": true
+    },
+    {
+      "site": "minupgrade",
+      "version": "1.1.4",
+      "all_16_files_match": true,
+      "requirements_pass": true,
+      "active": true
+    },
+    {
+      "site": "currentclean",
+      "version": "1.1.4",
+      "all_16_files_match": true,
+      "requirements_pass": true,
+      "active": true
+    },
+    {
+      "site": "currentupgrade",
+      "version": "1.1.4",
+      "all_16_files_match": true,
+      "requirements_pass": true,
+      "active": true
+    }
+  ],
+  "ci": {
+    "run_id": 41118373200,
+    "repository_checks": "success",
+    "browser_tests": "success",
+    "verified_via": "read-only GitHub connector; complementary to own acceptance"
+  },
+  "not_tested": [
+    "HTTPS/TLS installation",
+    "multisite",
+    "native Safari/VoiceOver",
+    "successful Google stylesheet transport",
+    "production WordPress installation/publication",
+    "actual PHP 5.6 runtime (function-level simulation only)"
+  ],
+  "teardown": {
+    "completed_at": "2026-10-30T20:09:22.751564+00:00",
+    "names": [
+      "sdcw-independent-114-r3-194336-db-1",
+      "sdcw-independent-114-r3-194336-minclean-1",
+      "sdcw-independent-114-r3-194336-minupgrade-1",
+      "sdcw-independent-114-r3-194336-currentclean-1",
+      "sdcw-independent-114-r3-194336-currentupgrade-1",
+      "sdcw-independent-114-r3-194336-belowwp-1",
+      "sdcw-independent-114-r3-194336-firefox",
+      "sdcw-independent-114-r3-194336-proxy"
+    ],
+    "before": [
+      {
+        "name": "/sdcw-independent-114-r3-194336-db-1",
+        "image_id": "sha256:bc474f00629f0123c10f9e1bca193a45d18af15a274cf0656acda64f1086c3b6",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-minclean-1",
+        "image_id": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-minupgrade-1",
+        "image_id": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-currentclean-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-currentupgrade-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-belowwp-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-firefox",
+        "image_id": "sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-proxy",
+        "image_id": "sha256:0e5f906573693feaa1e21057ebdcfdb5bd5021f050b2dc7c9deceb629c7da2a8",
+        "status": "running",
+        "running": true,
+        "exit_code": 0
+      }
+    ],
+    "after": [
+      {
+        "name": "/sdcw-independent-114-r3-194336-db-1",
+        "image_id": "sha256:bc474f00629f0123c10f9e1bca193a45d18af15a274cf0656acda64f1086c3b6",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-minclean-1",
+        "image_id": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-minupgrade-1",
+        "image_id": "sha256:b16fe79ee003e88430da90574700f49ac55f7df2f5047792ac7404e71ccfdfa0",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-currentclean-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-currentupgrade-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-belowwp-1",
+        "image_id": "sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-firefox",
+        "image_id": "sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e",
+        "status": "exited",
+        "running": false,
+        "exit_code": 0
+      },
+      {
+        "name": "/sdcw-independent-114-r3-194336-proxy",
+        "image_id": "sha256:0e5f906573693feaa1e21057ebdcfdb5bd5021f050b2dc7c9deceb629c7da2a8",
+        "status": "exited",
+        "running": false,
+        "exit_code": 137
+      }
+    ],
+    "ports": [
+      {
+        "port": 51857,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 51860,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 51863,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 51865,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 51867,
+        "closed": true,
+        "connect_error": 61
+      },
+      {
+        "port": 51952,
+        "closed": true,
+        "connect_error": 61
+      }
+    ],
+    "removed_containers": false,
+    "removed_volumes": false,
+    "databases_restored": false,
+    "published": false
+  }
+}

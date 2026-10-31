@@ -26,6 +26,7 @@ async function main() {
     targets: { default: { ...pkg.targets.default, distDir: output } },
     shouldAutoInstall: false,
     shouldDisableCache: true,
+    defaultTargetOptions: { shouldOptimize: false, shouldScopeHoist: true },
   });
   const { bundleGraph } = await parcel.run();
   const bundles = bundleGraph.getBundles();
@@ -34,8 +35,8 @@ async function main() {
   }
 
   const scripts = bundles.filter((bundle) => bundle.type === "js");
-  if (!scripts.length) {
-    throw new Error("Parcel did not emit a JavaScript bundle.");
+  if (scripts.length !== 1) {
+    throw new Error("The versioned widget release must contain one JavaScript bundle.");
   }
   for (const bundle of scripts) {
     const result = await minify(await readFile(bundle.filePath, "utf8"), { compress: true, mangle: true });
@@ -43,8 +44,12 @@ async function main() {
       throw new Error(`Terser emitted an empty result for ${bundle.filePath}.`);
     }
     await writeFile(`${bundle.filePath}.min.js`, result.code);
+    const accepted = await readFile(path.join(root, "dist", `${pkg.version}.min.js`));
+    if (!Buffer.from(result.code).equals(accepted)) {
+      throw new Error(`Fresh production bytes differ from dist/${pkg.version}.min.js. Prepare a separately versioned artifact; never overwrite an immutable release.`);
+    }
   }
-  console.log(`PASS production build and minification: ${scripts.length} JavaScript bundle(s); output ${output}`);
+  console.log(`PASS production build exactly matches dist/${pkg.version}.min.js; output ${output}`);
 }
 
 main().catch((error) => {
