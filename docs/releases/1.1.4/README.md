@@ -1,6 +1,8 @@
 # WordPress 1.1.4 candidate: safe legacy caption serialization
 
-Status: **independent GO for compatibility revision 2; focused author verification passed with explicit predecessor failures; not merged or published**. Plugin version remains **1.1.4**, minimum requirements remain **WordPress 6.3 / PHP 7.0**, and the shared widget remains **0.8.1**.
+Status: **independent GO for compatibility revision 2; focused author verification passed with explicit predecessor failures; WordPress.org publication deferred**. Plugin version remains **1.1.4**, minimum requirements remain **WordPress 6.3 / PHP 7.0**, and the shared widget remains **0.8.1**.
+
+The [31 October readiness record](../../maintenance/release-readiness-2026-10-31.md) tracks subsequent repository/tooling/preview/site integration and current release gates. Those changes preserve this exact package and do not extend the historical independent acceptance scope.
 
 ## Exact candidate
 

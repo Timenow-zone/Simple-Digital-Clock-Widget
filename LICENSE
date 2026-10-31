@@ -1,0 +1,33 @@
+License scope
+=============
+
+The shared JavaScript widget and its original supporting code are licensed under
+the MIT License below, consistent with the existing package metadata.
+
+The WordPress wrapper under wordpress/simple-digital-clock/ is GPLv2 or later;
+see wordpress/simple-digital-clock/LICENSE. Its bundled third-party JavaScript
+retains the notices in wordpress/simple-digital-clock/THIRD-PARTY-NOTICES.txt.
+Third-party fixtures and font assets retain their own accompanying licenses.
+This file does not relicense third-party material or historical captured data.
+
+MIT License
+
+Copyright (c) Simple Digital Clock Widget contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.

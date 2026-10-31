@@ -1,0 +1,10 @@
+Simple Digital Clock Widget
+
+The root package is a private development workspace, not a published npm package.
+Widget and WordPress plugin versions are independent. The installable WordPress
+package has its own complete license and third-party notices; this root notice
+must not be substituted for them.
+
+Third-party licenses are retained alongside WordPress fixtures, font fixtures and
+the bundled WordPress JavaScript. Published versioned widget artifacts and
+historical release evidence must retain their exact original bytes.

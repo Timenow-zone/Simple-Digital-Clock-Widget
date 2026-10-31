@@ -32,6 +32,11 @@ The [1.1.2 patch report](../docs/patches/1.1.2/README.md), [KSES/compatibility a
 
 ## Local development
 
+The published WordPress.org Live Preview is maintained separately in `preview/`
+and generated into `wporg-assets/blueprints/blueprint.json`. See the
+[preview workflow](../docs/preview/README.md). Preview assets and their development
+tools are excluded from the installable plugin ZIP.
+
 The retained [1.1.3 candidate](../docs/releases/1.1.3/README.md) introduced invalid numeric caption preservation and automatic container sizing with widget 0.7.1. The new [1.1.4 candidate](../docs/releases/1.1.4/README.md) retains those fixes and bundles widget 0.8.1: Preact 11 with explicit CSS units, ordinary AM/PM fitting, delayed-font refitting and quantized font-width correction, plus local-theme-font recovery after a failed Google stylesheet and stable single-line time layout. The corrective candidate also preserves terminal-backslash captions and nondefault settings on WordPress 6.3. The original JSON caption schema and static save markup remain unchanged; narrowly recognized malformed Core 6.3 caption tokens and clock-specific metadata handling are corrected without a database migration. Full MIT dependency notices ship in `THIRD-PARTY-NOTICES.txt`; the WordPress wrapper retains its GPL license. The candidate declares WordPress 6.3 and PHP 7.0 minimum requirements in both the main PHP header and readme. The WordPress candidate is not published.
 
 Earlier widget releases remain available at their versioned CDN URLs. The current production demo/CDN uses [widget 0.8.1](../docs/releases/0.8.1/PUBLICATION.md); this does not publish or update the WordPress plugin.

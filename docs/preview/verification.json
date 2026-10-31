@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-29",
+  "scenario": "choose-style -> set-city -> live-result -> installation",
+  "blueprintSha256": "fc8d270ed0b2116688ec68203e7e8742d31016f08357c41da71bfcb9aea71d74",
+  "blueprintBytes": 62422,
+  "publiclyPublished": true,
+  "runtime": "Official Playground CLI 3.1.61 / PHP 8.3 / WordPress 7.1.4",
+  "tests": [
+    {
+      "engine": "chromium",
+      "passed": 78,
+      "failed": 0,
+      "elapsedSeconds": 11.615,
+      "widths": [
+        320,
+        390,
+        768,
+        1280
+      ],
+      "evidence": ".local/wordpress-preview-evidence/guided-acceptance-03-chromium/results.json"
+    },
+    {
+      "engine": "webkit",
+      "passed": 78,
+      "failed": 0,
+      "elapsedSeconds": 12.494,
+      "widths": [
+        320,
+        390,
+        768,
+        1280
+      ],
+      "evidence": ".local/wordpress-preview-evidence/guided-acceptance-03-webkit/results.json"
+    }
+  ],
+  "nativeGutenbergBlocks": 11,
+  "nativeClockBlocks": 1,
+  "publicBrowserWasmVerifiedForThisRevision": true,
+  "rollbackPublic": "docs/preview/blueprint-before.json",
+  "rollbackPreviousLocal": "docs/preview/blueprint-gallery.json",
+  "publicBrowserWasm": {
+    "passed": 36,
+    "failed": 0,
+    "elapsedSeconds": 25.531,
+    "evidence": ".local/wordpress-preview-evidence/public-guided-candidate-01/results.json"
+  },
+  "publication": {
+    "state": "verified",
+    "published": true,
+    "revision": 3773659,
+    "author": "falselight",
+    "date": "2026-10-29T17:47:03.155572Z",
+    "changedPaths": [
+      "/simple-digital-clock/assets/blueprints/blueprint.json"
+    ],
+    "pluginCodeAndVersionUnchanged": true,
+    "publicZipArchiveUnchanged": true,
+    "ordinaryPreviewAccepted": true,
+    "postImportEvidence": ".local/wordpress-preview-publication/post-import-final-20261029T180334Z/summary.json",
+    "postImportChecks": {
+      "passed": 19,
+      "failed": 0
+    },
+    "zipSha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+    "zipBytes": 61476
+  },
+  "publishedPublicBrowserWasm": {
+    "url": "https://wordpress.org/plugins/simple-digital-clock/?preview=1",
+    "passed": 37,
+    "failed": 0,
+    "elapsedSeconds": 16.527,
+    "referenceBlueprintSha256": "fc8d270ed0b2116688ec68203e7e8742d31016f08357c41da71bfcb9aea71d74",
+    "actualPlaygroundUrl": "https://playground.wordpress.net/?plugin=simple-digital-clock&blueprint-url=https%3A%2F%2Fwordpress.org%2Fplugins%2Fwp-json%2Fplugins%2Fv1%2Fplugin%2Fsimple-digital-clock%2Fblueprint.json%3Frev%3D3773708%26lang%3Den_US",
+    "evidence": ".local/wordpress-preview-evidence/public-guided-published-02/results.json"
+  }
+}

@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, edited, ready_for_review]
   push:
-    branches: [main]
+    branches: [main, dev]
   workflow_dispatch:
 
 permissions:
@@ -47,6 +47,8 @@ jobs:
           npx --no-install tsc --noEmit -p tsconfig.test.json
           npx --no-install tsc --noEmit -p tsconfig.wtr.json
       - run: npm run lint
+      - name: Verify patched development-tooling behavior
+        run: node --test tests/dev-tooling.test.mjs
       - run: npm run test:node
       - name: Check release metadata validation
         run: node --test tests/release-metadata.test.mjs
@@ -64,6 +66,11 @@ jobs:
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
       - name: Verify WordPress package identity and release versions
         run: node --test tests/wordpress-package.test.mjs
+      - name: Verify the published preview matches its sources
+        run: |
+          node scripts/build-wordpress-preview.mjs --check
+          node --check wordpress/preview/demo.js
+          git ls-files -z -- 'wordpress/preview/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
       - name: Check WordPress 6.3 serialization compatibility
         run: node --test tests/wordpress-serialization.test.mjs
       - name: Verify that checks leave tracked files unchanged
@@ -87,5 +94,7 @@ jobs:
       - run: npm run test:browsers
       - name: Check native WordPress caption serialization and legacy readers
         run: node --test tests/wordpress-serialization.integration.test.mjs
+      - name: Check generated product demo examples and controls
+        run: node --test tests/product-site.integration.test.mjs
       - name: Verify that browser tests leave tracked files unchanged
         run: git diff --exit-code

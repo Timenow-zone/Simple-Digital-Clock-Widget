@@ -14,6 +14,8 @@ Ships as a single JS file, easy to drop into any site (plain HTML, WordPress, Re
 * **Timezone & locale aware:** uses `Intl.*` under the hood
 * **Accessible:** semantic, keyboard focusable link
 
+Current preparation and branch workflow: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
+
 Widget **0.8.1** fixes refitting after a delayed local theme font loads when the Google stylesheet fails, and keeps localized time on one line after shrinking in WebKit. See the [regression and release record](docs/releases/0.8.1/README.md). The independently versioned WordPress 1.1.4 candidate bundles this exact artifact; the retained 1.1.3 ZIP keeps widget 0.7.1. The production demo/CDN serves this [published 0.8.1 artifact](docs/releases/0.8.1/PUBLICATION.md).
 
 ---
@@ -57,21 +59,16 @@ Now use the custom element:
 
 > The component registers itself as `<timenow-zone-sdcw>`.
 
-### With npm (build tools)
+### Source integration
 
-```bash
-npm i simple-digital-clock-widget
-```
+An npm package is not published under `simple-digital-clock-widget`. Use the
+versioned CDN script above, or clone this repository and follow the development
+instructions below. This private root package also contains the separately
+licensed WordPress wrapper and release tooling; it is not an npm distribution.
 
-Then import it **once** at app start:
-
-```ts
-import "simple-digital-clock-widget/dist/SimpleDigitalClockWidget.js";
-// or if bundling TS/Preact directly:
-// import "./src/SimpleDigitalClockWidget";
-```
-
-Use the tag in your HTML/JSX as shown above.
+Import the widget source once from your own checked-out source integration, then
+use the tag in your HTML/JSX as shown above. A future npm distribution requires a
+separate package allowlist, license review and release acceptance.
 
 ---
 
@@ -164,7 +161,7 @@ Uses Web Components and `Intl.*`. For very old browsers you may need polyfills.
 
 ### Prerequisites
 
-* Node.js 22+ required; Node.js 24 LTS recommended and used by CI.
+* Node.js 22.12+ required; Node.js 24 LTS is selected by `.nvmrc` and used by CI.
 
 Install dependencies and the browser binaries before running tests:
 
@@ -271,9 +268,9 @@ Testing stack:
 * **Browsers**: `@web/test-runner` + Playwright (Chromium/Firefox/WebKit)
 * **Coverage**: `c8`
 
-The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [maintenance record](docs/maintenance/2026-10-29-repository-hygiene.md) for the current tooling exception.
+The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main` and `dev`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [current readiness record](docs/maintenance/release-readiness-2026-10-31.md) for the pinned tooling correction and remaining scope. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
 
-Run `node scripts/check-build.mjs` for a build and minification smoke test in a temporary directory; it prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
+Run `node scripts/check-build.mjs` to build and minify in a temporary directory with the production CLI flags and require exact equality with the current versioned widget. It prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
 
 ---
 
