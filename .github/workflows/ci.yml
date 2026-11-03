@@ -74,6 +74,12 @@ jobs:
           php -l tools/wordpress-lab/repro/install.php
           php -l tools/wordpress-lab/repro/checker.php
           node --check tools/wordpress-lab/repro/smoke.mjs
+      - name: Verify the immutable editable rollback build and safety guards
+        run: |
+          python3 tests/wordpress-rollback.test.py
+          python3 -m py_compile tools/wordpress-lab/rollback/build.py tools/wordpress-lab/rollback/run.py
+          php -l tools/wordpress-lab/rollback/update.php
+          node --check tools/wordpress-lab/rollback/browser.mjs
       - name: Verify the published preview matches its sources
         run: |
           node scripts/build-wordpress-preview.mjs --check

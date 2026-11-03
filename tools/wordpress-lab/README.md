@@ -1,5 +1,17 @@
 # WordPress lab and compatibility acceptance
 
+## Editable rollback build and CI
+
+Use the [editable rollback workflow](rollback/README.md) for the separately
+versioned 1.1.2.1 reserve and real native editor save cycles. Required Repository
+checks run `python3 tests/wordpress-rollback.test.py` against two
+[immutable offline ZIP fixtures](../../tests/fixtures/wordpress-rollback/README.md).
+They rebuild the reserve in a temporary directory, compare the complete accepted
+manifest and ZIP hash, and exercise metadata, archive and lab safety failures.
+The same job checks both Python modules, the PHP update harness and browser-script
+syntax. It does not start Docker or substitute for the recorded native WordPress
+acceptance. Accepted ZIPs and the accepted builder remain unchanged.
+
 ## Fresh 1.1.4 upgrade/rollback bootstrap
 
 Use the [pinned disposable bootstrap](repro/README.md) for a new minimum/current
