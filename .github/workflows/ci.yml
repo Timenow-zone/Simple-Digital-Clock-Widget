@@ -48,7 +48,7 @@ jobs:
           npx --no-install tsc --noEmit -p tsconfig.wtr.json
       - run: npm run lint
       - name: Verify patched development-tooling behavior
-        run: node --test tests/dev-tooling.test.mjs
+        run: node --test tests/dev-tooling.test.mjs tests/deepmerge-security.test.mjs
       - run: npm run test:node
       - name: Check release metadata validation
         run: node --test tests/release-metadata.test.mjs
@@ -65,7 +65,15 @@ jobs:
           git ls-files -z -- 'wordpress/simple-digital-clock/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
       - name: Verify WordPress package identity and release versions
-        run: node --test tests/wordpress-package.test.mjs
+        run: node --test tests/wordpress-package.test.mjs tests/wordpress-assets.test.mjs
+      - name: Check disposable WordPress lab safety boundaries
+        run: |
+          python3 tests/wordpress-lab.test.py
+          python3 -m py_compile tools/wordpress-lab/repro/run.py
+          php -l tools/wordpress-lab/repro/site.php
+          php -l tools/wordpress-lab/repro/install.php
+          php -l tools/wordpress-lab/repro/checker.php
+          node --check tools/wordpress-lab/repro/smoke.mjs
       - name: Verify the published preview matches its sources
         run: |
           node scripts/build-wordpress-preview.mjs --check

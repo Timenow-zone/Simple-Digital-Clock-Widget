@@ -69,7 +69,7 @@ add_filter('wp_kses_allowed_html', 'SDCW_allow_clock_post_html', 10, 2);
 function SDCW_serialize_clock_block_attributes($attributes) {
     $encoded = wp_json_encode($attributes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     if (!is_string($encoded)) {
-        error_log('Simple Digital Clock: unable to encode block metadata; original content retained.');
+        do_action('sdcw_metadata_diagnostic', 'metadata_encoding_failed');
         return null;
     }
     return strtr($encoded, array(
@@ -144,7 +144,7 @@ function SDCW_recover_clock_caption_json($json, $html) {
     }
     // Malformed untrusted input must not cause unbounded repeated JSON decoding.
     if ($count > 32) {
-        error_log('Simple Digital Clock: ambiguous legacy caption metadata; original content retained.');
+        do_action('sdcw_metadata_diagnostic', 'legacy_caption_ambiguous');
         return null;
     }
     $recovered = array();
@@ -183,7 +183,7 @@ function SDCW_recover_clock_caption_json($json, $html) {
     if (1 === count($recovered)) {
         return $recovered[0];
     }
-    error_log('Simple Digital Clock: unrecognized legacy caption metadata; original content retained.');
+    do_action('sdcw_metadata_diagnostic', 'legacy_caption_unrecognized');
     return null;
 }
 
@@ -225,7 +225,7 @@ function SDCW_map_clock_blocks($content, $callback) {
         return $match[1] . $after . ' -->' . $match[4] . $match[5];
     }, $content);
     if (null === $updated) {
-        error_log('Simple Digital Clock: unable to parse block metadata; original content retained.');
+        do_action('sdcw_metadata_diagnostic', 'metadata_parse_failed');
         return $content;
     }
     return $updated;
@@ -278,7 +278,7 @@ class SDCW_Clock_HTML_Tag_Processor extends WP_HTML_Tag_Processor {
         $this->rewrite_caption_source(function ($raw_attribute) {
             $encoded = preg_replace_callback('/[\r\x{a0}-\x{10ffff}]/u', 'SDCW_caption_character_reference', $raw_attribute);
             if (null === $encoded) {
-                error_log('Simple Digital Clock: unable to encode caption Unicode; original attribute retained.');
+                do_action('sdcw_metadata_diagnostic', 'caption_unicode_encoding_failed');
                 return $raw_attribute;
             }
             return $encoded;
@@ -291,7 +291,7 @@ class SDCW_Clock_HTML_Tag_Processor extends WP_HTML_Tag_Processor {
         }
         // Let the native lexer locate the current attribute's exact source span.
         if (!parent::set_attribute('caption', '')) {
-            error_log('Simple Digital Clock: unable to locate caption attribute.');
+            do_action('sdcw_metadata_diagnostic', 'caption_attribute_not_found');
             return;
         }
         $update = $this->lexical_updates['caption'];
@@ -357,13 +357,13 @@ function SDCW_encode_clock_caption_entities($raw_attribute) {
         // Numeric references preserve old database charsets and unquoted syntax.
         $numeric = preg_replace_callback('/./us', 'SDCW_caption_character_reference', $decoded);
         if (null === $numeric) {
-            error_log('Simple Digital Clock: unable to encode a caption character reference.');
+            do_action('sdcw_metadata_diagnostic', 'caption_reference_encoding_failed');
             return $match[0];
         }
         return $numeric;
     }, $protected);
     if (null === $updated) {
-        error_log('Simple Digital Clock: unable to normalize caption entities; original attribute retained.');
+        do_action('sdcw_metadata_diagnostic', 'caption_entities_normalization_failed');
         return $raw_attribute;
     }
     return $updated;
@@ -453,6 +453,8 @@ function SDCW_is_owned_clock_kses_pass($filter) {
     if ('sdcw-sanitize' !== $filter && !isset($GLOBALS['wp_filter'][$filter])) {
         return false;
     }
+    // Production caller identity is required to leave unrelated KSES passes untouched.
+    // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace -- Bounded argument-free security boundary, not debug output.
     $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT, 12);
     foreach ($trace as $index => $call) {
         if (isset($call['function']) && 'wp_kses' === $call['function']) {

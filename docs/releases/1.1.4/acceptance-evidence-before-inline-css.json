@@ -1,0 +1,100 @@
+{
+  "version": "1.1.4",
+  "revision": "asset-contract-r3",
+  "archive_sha256": "217807d2c79018c2d1861884e1f8e5e151c86cbf4154b0889d09db0f4eb84772",
+  "archive_bytes": 67111,
+  "installable_files": 17,
+  "status": "AUTHOR_LOCAL_PASS_PENDING_INDEPENDENT_REACCEPTANCE",
+  "independent_go_transferred": false,
+  "source_uncommitted": true,
+  "previous_independent_go_archive_sha256": "d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f",
+  "publication_performed": false,
+  "push_performed": false,
+  "new_github_ci_executed": false,
+  "upgrade_rollback_reupdate": {
+    "passed": true,
+    "transitions": 6,
+    "database_restores": 0,
+    "references": {
+      "minimum": "WordPress 6.3.14 / PHP 7.0.33",
+      "current": "WordPress 7.1.4 / PHP 8.3.35"
+    }
+  },
+  "plugin_check": {
+    "version": "2.1.0",
+    "static": 29,
+    "runtime": 5,
+    "errors": 0,
+    "warnings": 0,
+    "php": "8.3.35",
+    "result_filtering": false,
+    "documented_production_backtrace_exception": true
+  },
+  "frontend_assets": {
+    "fixture_cases_per_site": 20,
+    "block_theme_browser_cases": 120,
+    "engines": [
+      "chromium",
+      "webkit",
+      "firefox-linux"
+    ],
+    "classic_theme": "Twenty Twenty-One",
+    "classic_theme_browser_cases": 20,
+    "unused_page_runtime_requests": 0,
+    "used_page_runtime_requests": 1,
+    "used_page_stylesheet_requests": 1
+  },
+  "admin_editor_cases": 4,
+  "native_security": {
+    "minimum": {
+      "security": {
+        "checks": 538,
+        "failed": 0
+      },
+      "recovery": {
+        "checks": 8,
+        "failed": 0
+      },
+      "unknown": {
+        "checks": 6,
+        "failed": 0
+      }
+    },
+    "current": {
+      "security": {
+        "checks": 538,
+        "failed": 0
+      },
+      "recovery": {
+        "checks": 8,
+        "failed": 0
+      },
+      "unknown": {
+        "checks": 6,
+        "failed": 0
+      }
+    }
+  },
+  "ci_routing_contract_assertions": 20,
+  "local_evidence": ".local/asset-contract-20261101/",
+  "exact_zip_run": ".local/wordpress-repro/assets-r3-20261101-complete/",
+  "preview": {
+    "zip_sha256": "217807d2c79018c2d1861884e1f8e5e151c86cbf4154b0889d09db0f4eb84772",
+    "installed_files": 17,
+    "posts_unchanged": true,
+    "selected_options_unchanged": true,
+    "active": true,
+    "plugin_check_errors": 0,
+    "plugin_check_warnings": 0,
+    "unused_page_runtime_tags": 0,
+    "admin_url": "http://127.0.0.1:55900/wp-admin/tools.php?page=plugin-check&plugin=simple-digital-clock%2Fwidget_init.php",
+    "backup": ".local/asset-contract-20261101/preview-backup-simple-digital-clock",
+    "original_summary_is_historical": true
+  },
+  "retained_attempts": "Earlier archives and failed/partial harness runs remain separate; a parallel probe was interrupted by successful automatic teardown and repeated after an explicit project restart.",
+  "scope_limits": [
+    "Independent exact-candidate GO and required CI remain pending",
+    "Old 1.1.2 writer/Core 6.3 data-loss boundary unchanged",
+    "TLS/multisite/native Safari/VoiceOver/external Google transport/owner sites/cache-optimizer matrix not certified"
+  ]
+}

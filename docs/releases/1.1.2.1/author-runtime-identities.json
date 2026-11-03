@@ -1,0 +1,14 @@
+[
+  {
+    "site": "minimum",
+    "wordpress": "6.3.14",
+    "php": "7.0.33",
+    "all_four_phases_match": true
+  },
+  {
+    "site": "current",
+    "wordpress": "7.1.4",
+    "php": "8.3.35",
+    "all_four_phases_match": true
+  }
+]

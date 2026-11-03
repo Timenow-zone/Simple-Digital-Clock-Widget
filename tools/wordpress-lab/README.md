@@ -1,5 +1,14 @@
 # WordPress lab and compatibility acceptance
 
+## Fresh 1.1.4 upgrade/rollback bootstrap
+
+Use the [pinned disposable bootstrap](repro/README.md) for a new minimum/current
+Core and PHP lab. It creates fresh databases/accounts, verifies official downloads
+and the exact manifest-bound ZIP, runs Core update/rollback/reupdate, role save filters,
+Plugin Check and installed frontend smoke, then stops its own project. It does
+not depend on the historical prepared environments described below or publish to
+WordPress.org. Its bounded scope and retained historical limitations are explicit.
+
 ## WordPress 1.1.3 regressions
 
 The [1.1.3 candidate report](../../docs/releases/1.1.3/README.md) records the fresh upgrade matrix from both published predecessors. The exact package, private lab orchestration and full raw evidence are retained under `.local/release-1.1.3/`; that prepared environment is not a clean-checkout CI bootstrap.
@@ -321,3 +330,12 @@ Stop only this lab when finished; its data and logs remain in `.local/wordpress-
 ```bash
 docker compose --env-file .local/wordpress-lab/env -f tools/wordpress-lab/compose.yaml down
 ```
+
+## Local response performance measurements
+
+The [performance harness](performance/README.md) compares exact public/candidate
+ZIPs on fresh, owned WordPress/PHP environments with matched page content, warmed
+OPcache, rotating variant order, TTFB and PHP peak-memory observations after buffer
+flush. A separate diagnostic r6 control and synthetic late-footer probe distinguish
+processing overhead from delayed response delivery. These are local measurements;
+they do not replace functional acceptance or certify production capacity.

@@ -1,0 +1,302 @@
+[
+  {
+    "php": "7.0.33",
+    "bootstrap": false,
+    "length": 33554432,
+    "before": {
+      "used": 350000,
+      "allocated": 2097152,
+      "peak_used": 495896,
+      "peak_allocated": 2097152
+    },
+    "after": {
+      "used": 33908928,
+      "allocated": 35655680,
+      "peak_used": 33909304,
+      "peak_allocated": 35655680
+    },
+    "released": {
+      "used": 350752,
+      "allocated": 2097152,
+      "peak_used": 33909304,
+      "peak_allocated": 35655680
+    },
+    "site": "minimum",
+    "repetition": 0
+  },
+  {
+    "php": "7.0.33",
+    "bootstrap": false,
+    "length": 33554432,
+    "before": {
+      "used": 348560,
+      "allocated": 2097152,
+      "peak_used": 348936,
+      "peak_allocated": 2097152
+    },
+    "after": {
+      "used": 33907488,
+      "allocated": 35655680,
+      "peak_used": 33907864,
+      "peak_allocated": 35655680
+    },
+    "released": {
+      "used": 349312,
+      "allocated": 2097152,
+      "peak_used": 33907864,
+      "peak_allocated": 35655680
+    },
+    "site": "minimum",
+    "repetition": 1
+  },
+  {
+    "php": "7.0.33",
+    "bootstrap": false,
+    "length": 33554432,
+    "before": {
+      "used": 348560,
+      "allocated": 2097152,
+      "peak_used": 348936,
+      "peak_allocated": 2097152
+    },
+    "after": {
+      "used": 33907488,
+      "allocated": 35655680,
+      "peak_used": 33907864,
+      "peak_allocated": 35655680
+    },
+    "released": {
+      "used": 349312,
+      "allocated": 2097152,
+      "peak_used": 33907864,
+      "peak_allocated": 35655680
+    },
+    "site": "minimum",
+    "repetition": 2
+  },
+  {
+    "php": "7.0.33",
+    "bootstrap": true,
+    "length": 33554432,
+    "before": {
+      "used": 6645112,
+      "allocated": 8388608,
+      "peak_used": 6914176,
+      "peak_allocated": 8388608
+    },
+    "after": {
+      "used": 40204040,
+      "allocated": 41947136,
+      "peak_used": 40204416,
+      "peak_allocated": 41947136
+    },
+    "released": {
+      "used": 6645864,
+      "allocated": 8388608,
+      "peak_used": 40204416,
+      "peak_allocated": 41947136
+    },
+    "site": "minimum",
+    "repetition": 0
+  },
+  {
+    "php": "7.0.33",
+    "bootstrap": true,
+    "length": 33554432,
+    "before": {
+      "used": 4800688,
+      "allocated": 4194304,
+      "peak_used": 5069752,
+      "peak_allocated": 4194304
+    },
+    "after": {
+      "used": 38359616,
+      "allocated": 37752832,
+      "peak_used": 38359992,
+      "peak_allocated": 37752832
+    },
+    "released": {
+      "used": 4801440,
+      "allocated": 4194304,
+      "peak_used": 38359992,
+      "peak_allocated": 37752832
+    },
+    "site": "minimum",
+    "repetition": 1
+  },
+  {
+    "php": "7.0.33",
+    "bootstrap": true,
+    "length": 33554432,
+    "before": {
+      "used": 4800688,
+      "allocated": 4194304,
+      "peak_used": 5069752,
+      "peak_allocated": 4194304
+    },
+    "after": {
+      "used": 38359616,
+      "allocated": 37752832,
+      "peak_used": 38359992,
+      "peak_allocated": 37752832
+    },
+    "released": {
+      "used": 4801440,
+      "allocated": 4194304,
+      "peak_used": 38359992,
+      "peak_allocated": 37752832
+    },
+    "site": "minimum",
+    "repetition": 2
+  },
+  {
+    "php": "8.3.35",
+    "bootstrap": false,
+    "length": 33554432,
+    "before": {
+      "used": 351448,
+      "allocated": 2097152,
+      "peak_used": 423000,
+      "peak_allocated": 2097152
+    },
+    "after": {
+      "used": 33910376,
+      "allocated": 35655680,
+      "peak_used": 33910752,
+      "peak_allocated": 35655680
+    },
+    "released": {
+      "used": 352200,
+      "allocated": 2097152,
+      "peak_used": 33910752,
+      "peak_allocated": 35655680
+    },
+    "site": "current",
+    "repetition": 0
+  },
+  {
+    "php": "8.3.35",
+    "bootstrap": false,
+    "length": 33554432,
+    "before": {
+      "used": 348856,
+      "allocated": 2097152,
+      "peak_used": 349232,
+      "peak_allocated": 2097152
+    },
+    "after": {
+      "used": 33907784,
+      "allocated": 35655680,
+      "peak_used": 33908160,
+      "peak_allocated": 35655680
+    },
+    "released": {
+      "used": 349608,
+      "allocated": 2097152,
+      "peak_used": 33908160,
+      "peak_allocated": 35655680
+    },
+    "site": "current",
+    "repetition": 1
+  },
+  {
+    "php": "8.3.35",
+    "bootstrap": false,
+    "length": 33554432,
+    "before": {
+      "used": 348856,
+      "allocated": 2097152,
+      "peak_used": 349232,
+      "peak_allocated": 2097152
+    },
+    "after": {
+      "used": 33907784,
+      "allocated": 35655680,
+      "peak_used": 33908160,
+      "peak_allocated": 35655680
+    },
+    "released": {
+      "used": 349608,
+      "allocated": 2097152,
+      "peak_used": 33908160,
+      "peak_allocated": 35655680
+    },
+    "site": "current",
+    "repetition": 2
+  },
+  {
+    "php": "8.3.35",
+    "bootstrap": true,
+    "length": 33554432,
+    "before": {
+      "used": 5198232,
+      "allocated": 8388608,
+      "peak_used": 6439320,
+      "peak_allocated": 8388608
+    },
+    "after": {
+      "used": 38757160,
+      "allocated": 41947136,
+      "peak_used": 38757536,
+      "peak_allocated": 41947136
+    },
+    "released": {
+      "used": 5198984,
+      "allocated": 8388608,
+      "peak_used": 38757536,
+      "peak_allocated": 41947136
+    },
+    "site": "current",
+    "repetition": 0
+  },
+  {
+    "php": "8.3.35",
+    "bootstrap": true,
+    "length": 33554432,
+    "before": {
+      "used": 3055576,
+      "allocated": 4194304,
+      "peak_used": 3126096,
+      "peak_allocated": 4194304
+    },
+    "after": {
+      "used": 36614504,
+      "allocated": 37752832,
+      "peak_used": 36614880,
+      "peak_allocated": 37752832
+    },
+    "released": {
+      "used": 3056328,
+      "allocated": 4194304,
+      "peak_used": 36614880,
+      "peak_allocated": 37752832
+    },
+    "site": "current",
+    "repetition": 1
+  },
+  {
+    "php": "8.3.35",
+    "bootstrap": true,
+    "length": 33554432,
+    "before": {
+      "used": 3055576,
+      "allocated": 4194304,
+      "peak_used": 3126096,
+      "peak_allocated": 4194304
+    },
+    "after": {
+      "used": 36614504,
+      "allocated": 37752832,
+      "peak_used": 36614880,
+      "peak_allocated": 37752832
+    },
+    "released": {
+      "used": 3056328,
+      "allocated": 4194304,
+      "peak_used": 36614880,
+      "peak_allocated": 37752832
+    },
+    "site": "current",
+    "repetition": 2
+  }
+]

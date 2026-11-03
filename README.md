@@ -8,7 +8,7 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.4** | Accepted release candidate; not published to WordPress.org |
+| WordPress source | **1.1.4** | Streaming r8; independent local GO for the exact ZIP; unpublished |
 | WordPress.org stable | **1.1.2** | Published plugin; bundles widget **0.7.0** |
 
 The metadata below describes the JavaScript widget artifact.
@@ -25,6 +25,8 @@ The metadata below describes the JavaScript widget artifact.
 * **Accessible:** semantic, keyboard focusable link
 
 Current preparation and branch workflow: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
+Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
+Current WordPress source: [local streaming candidate and acceptance boundaries](docs/releases/1.1.4/README.md).
 
 Widget **0.8.1** fixes refitting after a delayed local theme font loads when the Google stylesheet fails, and keeps localized time on one line after shrinking in WebKit. See the [regression and release record](docs/releases/0.8.1/README.md). The independently versioned WordPress 1.1.4 candidate bundles this exact artifact; the retained 1.1.3 ZIP keeps widget 0.7.1. The production demo/CDN serves this [published 0.8.1 artifact](docs/releases/0.8.1/PUBLICATION.md).
 
@@ -33,7 +35,7 @@ Widget **0.8.1** fixes refitting after a delayed local theme font loads when the
 ## Demo & Plugin
 
 * **Live demo:** [https://simple-digital-clock-widget.yuri.ws/](https://simple-digital-clock-widget.yuri.ws/)
-* **CodePen playground:** [https://codepen.io/dejurin/pen/01a025ef-f466-7534-acd0-77bc3a368a47](https://codepen.io/dejurin/pen/01a025ef-f466-7534-acd0-77bc3a368a47)
+* **Historical CodePen playground (widget 0.7.0):** [Open CodePen](https://codepen.io/dejurin/pen/01a025ef-f466-7534-acd0-77bc3a368a47). Use the live demo above for the current widget and embed code.
 * **WordPress plugin:** [https://wordpress.org/plugins/simple-digital-clock/](https://wordpress.org/plugins/simple-digital-clock/)
 
 ---
@@ -296,11 +298,12 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 The **Simple Digital Clock** WordPress plugin source in this repository is
 **1.1.4**, with the exact widget **0.8.1** bundled under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
-It requires **WordPress 6.3+ / PHP 7.0+**. The accepted release candidate includes
+It requires **WordPress 6.3+ / PHP 7.0+**. The local release candidate includes
 Core 6.3 caption serialization compatibility and complete bundled dependency
-notices. Its exact ZIP, manifest, independent GO and known rollback/data-loss
+notices and [conditional frontend assets](docs/WORDPRESS-ASSET-CONTRACT.md).
+Its exact ZIP, manifest, independent GO and known rollback/data-loss
 boundaries are recorded in the [1.1.4 release report](docs/releases/1.1.4/README.md).
-Repository integration is complete; WordPress.org publication remains deferred.
+The streaming r8 revision replaces whole-response buffering and has independent GO for its exact local ZIP. The release report records 344 functional cases, 5,520 performance requests and retained compatibility limits. The r6 history remains preserved separately. WordPress.org publication remains deferred.
 
 **WordPress.org currently distributes 1.1.2**, which bundles widget **0.7.0**.
 Install that public stable version from the

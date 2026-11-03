@@ -1,0 +1,41 @@
+{
+  "zip_sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+  "manifest_sha256": "5e250260b65e2980a1704698e2f537af06da5ef8fe536c498400cfe8b2921deb",
+  "installable_files": 17,
+  "post_freeze_changed_existing_files": [
+    "README.md",
+    "docs/releases/1.1.4/README.md",
+    "docs/releases/1.1.4/acceptance-evidence.json",
+    "tools/wordpress-lab/asset-contract.php",
+    "tools/wordpress-lab/repro/README.md",
+    "wordpress/README.md"
+  ],
+  "changed_installable_files": [],
+  "new_docs_only": true,
+  "source_base_commit": "f75c98776b6b1860e916123915bed8084c879153",
+  "post_acceptance_checks": {
+    "package_metadata_tests": 4,
+    "harness_native_stored_source_checks": 6,
+    "harness_targeted_browsers": 12,
+    "preview_browsers": 4,
+    "preview_plugin_check_findings": 0
+  },
+  "published": false,
+  "new_documentation_files": [
+    "docs/releases/1.1.4/INDEPENDENT-STREAMING-R8.md",
+    "docs/releases/1.1.4/PERFORMANCE-STREAMING-R8.md",
+    "docs/releases/1.1.4/author-streaming-r8-evidence.json",
+    "docs/releases/1.1.4/independent-streaming-r8-evidence.json",
+    "docs/releases/1.1.4/independent-streaming-r8-integrity.json",
+    "docs/releases/1.1.4/performance-streaming-r8-conditions.csv",
+    "docs/releases/1.1.4/performance-streaming-r8-independent-audit.json",
+    "docs/releases/1.1.4/performance-streaming-r8-memory-calibration.json",
+    "docs/releases/1.1.4/performance-streaming-r8-paired-deltas.csv",
+    "docs/releases/1.1.4/performance-streaming-r8-query-sensitivity.json",
+    "docs/releases/1.1.4/performance-streaming-r8-summary.json",
+    "docs/releases/1.1.4/post-acceptance-streaming-r8-close.json",
+    "docs/releases/1.1.4/post-acceptance-streaming-r8-harness.json",
+    "docs/releases/1.1.4/post-acceptance-streaming-r8-preview.json"
+  ],
+  "git_head": "f75c98776b6b1860e916123915bed8084c879153"
+}

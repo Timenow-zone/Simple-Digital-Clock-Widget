@@ -30,6 +30,7 @@ define('SDCW_NAME', 'Simple Digital Clock 🕒');
 define('SDCW_PLUGIN_SLUG', 'simple-digital-clock');
 
 require_once SDCW_PATH . 'includes/simple-digital-clock-kses.php';
+require_once SDCW_PATH . 'includes/simple-digital-clock-assets.php';
 
 class SDCW_digital_clock_widget
 {
@@ -145,22 +146,17 @@ function SDCW_block_register_block() {
         ],
     ]);
 
-    wp_register_style(
-        'simple-digital-clock-block-style',
-        plugins_url('assets/public/css/simple-digital-clock.css', __FILE__),
-        [],
-        filemtime(plugin_dir_path(__FILE__) . 'assets/public/css/simple-digital-clock.css')
-    );
-
     register_block_type('simple-digital-clock-block/widget-block', [
         'api_version' => 3,
         'editor_script' => 'simple-digital-clock-block-editor-script',
-        'script' => 'simple-digital-clock',
-        'style' => 'simple-digital-clock-block-style',
+        'editor_style' => 'simple-digital-clock-block-style',
     ]);
 }
 
-function SDCW_admin_scripts() {
+function SDCW_admin_scripts($hook) {
+    if ('settings_page_simple-digital-clock' !== $hook || !SDCW_Admin_Notices::should_show_notice()) {
+        return;
+    }
     $script_path = plugin_dir_path(__FILE__) . 'assets/admin/js/simple-digital-clock-notify.js';
     $version = filemtime($script_path); // Gets the file modification time for cache-busting
 
@@ -168,25 +164,6 @@ function SDCW_admin_scripts() {
     wp_localize_script('simple-digital-clock-script', 'simpleDigitalClockAjax', array('ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('simple-digital-clock-nonce')));
 }
 
-function SDCW_enqueue_scripts() {
-    wp_register_script(
-        'simple-digital-clock',
-        plugins_url('assets/public/js/simple-digital-clock.min.js', __FILE__),
-        [],
-        '0.8.1',
-        [
-            'strategy' => 'async',
-            'in_footer' => true,
-        ]
-    );
-    wp_enqueue_script('simple-digital-clock');
-}
-
-add_action('wp_enqueue_scripts', 'SDCW_enqueue_scripts');
-add_action('admin_enqueue_scripts', 'SDCW_enqueue_scripts');
-// Load the clock runtime inside the iframed block editor canvas as well:
-// the iframe collects frontend-context assets via the `enqueue_block_assets` hook.
-add_action('enqueue_block_assets', 'SDCW_enqueue_scripts');
 add_action('admin_enqueue_scripts', 'SDCW_admin_scripts');
 add_action('init', 'SDCW_block_register_block');
 

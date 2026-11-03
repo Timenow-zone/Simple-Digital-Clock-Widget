@@ -73,7 +73,7 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency.
+Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. Frontend JavaScript and the inline layout rule load only when the final HTML response contains a clock. A streaming HTML observer skips hidden or escaped child clocks without retaining the complete page or delaying output until rendering completes. Text-only HTML examples and noscript fallbacks do not load the runtime. Multiple clocks share one runtime script and one inline layout rule per page; no external plugin stylesheet is loaded.
 
 == Screenshots ==
 
@@ -103,6 +103,9 @@ To reproduce the production bundle:
 == Changelog ==
 
 = 1.1.4 =
+* Observe streamed HTML before delivering clock assets, including suppressed or escaped nested blocks; multiple clocks share one script and one inline layout rule without an external CSS request.
+* Keep editor preview assets scoped to block editors and rating-notice assets scoped to the plugin settings screen.
+* Expose metadata failure diagnostics through a fixed-code action without unconditional PHP logging.
 * Preserve captions ending in a backslash and nondefault clock settings when saving on WordPress 6.3.
 * Include third-party copyright and license notices for bundled dependencies.
 * Update the bundled widget to 0.8.1 with Preact 11.1.0.

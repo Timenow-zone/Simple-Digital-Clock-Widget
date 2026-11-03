@@ -1,0 +1,59 @@
+{
+  "status": "INDEPENDENT_GO",
+  "scope": "Exact local ZIP; no push, new GitHub CI or publication",
+  "revision": "final-output-r6",
+  "version": "1.1.4",
+  "zip": ".local/packages/simple-digital-clock-1.1.4-final-output-r6-candidate.zip",
+  "zip_sha256": "f11d33c03be25bdd90ae14198c9b4d7bc9039ddbb89253d39e9b1e5843987989",
+  "zip_bytes": 67979,
+  "files": 16,
+  "manifest_sha256": "b96fad397aaf4164ba4a54b253087befc36d4d0ef94ea74a962c80c56f6d0e49",
+  "independent_report": "INDEPENDENT-FINAL-OUTPUT-R6.md",
+  "independent_evidence": "independent-final-output-r6-evidence.json",
+  "author_evidence": "author-final-output-r6-evidence.json",
+  "gates": {
+    "pass": 17,
+    "fail": 0,
+    "not_run": 1,
+    "not_run_scope": "New GitHub CI before a later authorized merge/publication"
+  },
+  "frontend_resource_observations": {
+    "total": 372,
+    "pass": 372
+  },
+  "plugin_check": {
+    "static": 29,
+    "runtime": 5,
+    "errors": 0,
+    "warnings": 0,
+    "php": "8.3.35"
+  },
+  "source_uncommitted": true,
+  "frozen_files_unchanged_at_close": 344,
+  "previous_no_go_reports": [
+    "INDEPENDENT-INLINE-CSS.md",
+    "INDEPENDENT-FINAL-OUTPUT-R5.md"
+  ],
+  "preserved_editor_timeout": {
+    "first_attempt": "FAIL/PARTIAL; transient cause unconfirmed",
+    "targeted_complete_repeats_passed": 2,
+    "last_live_preview_ms": 327
+  },
+  "published": false,
+  "pushed": false,
+  "new_github_ci": false,
+  "report_integration_after_freeze_close": true,
+  "post_acceptance_local_preview": {
+    "independent_review_scope": false,
+    "zip_sha256": "f11d33c03be25bdd90ae14198c9b4d7bc9039ddbb89253d39e9b1e5843987989",
+    "installed_files": 16,
+    "posts_unchanged": true,
+    "selected_options_unchanged": true,
+    "plugin_check_errors": 0,
+    "plugin_check_warnings": 0,
+    "chromium_webkit_http_cases": 4,
+    "served_runtime_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "evidence": ".local/final-output-r6-20261101/preview-update.json",
+    "backup": ".local/final-output-r6-20261101/preview-r4b-backup"
+  }
+}
