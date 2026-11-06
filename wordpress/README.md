@@ -49,7 +49,7 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The new local candidate is `.local/packages/simple-digital-clock-1.1.4-streaming-r8-candidate.zip`; use the [1.1.4 release report](../docs/releases/1.1.4/README.md) to verify its SHA-256 and the [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md). The independently accepted compatibility-r2 archive and all earlier candidates remain preserved separately. The exact r8 ZIP has its own independent local GO and repeat performance evidence. The r6 GO remains bound to its preserved archive. Repacking can change the archive hash because ZIP timestamps are included. The original 1.1.2 package hashes remain historical records in its publication report.
+The current local candidate uses owned-block render events without global HTML analysis. Its [6 November independent acceptance](../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) passes all 13 mandatory local gates for the exact ZIP. See the [1.1.4 release report](../docs/releases/1.1.4/README.md) for identity and evidence, and the [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) for raw-HTML integration and post-render suppression boundaries. Previously accepted r8/r6/r2 ZIPs remain immutable historical artifacts; their independent verdicts do not transfer to new package bytes. Hosted required checks and publication remain pending. The public 1.1.2 hashes remain historical records in its publication report.
 
 `node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, the header/readme/POT/script-cache/source-reference versions, matching nonempty WordPress/PHP minimum requirements, and complete MIT notices for the exact bundled dependency versions. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
 
@@ -77,10 +77,12 @@ For the current 1.1.4 candidate, the separately versioned local
 writer/reader and conditional asset wrapper while retaining widget 0.7.0. Its
 report records the exact archive and acceptance status. Original public 1.1.2
 remains unchanged and can still damage terminal-backslash metadata when saved
-through Core 6.3; it is not the editable rollback target. The main 1.1.4 r8
-archive remains unchanged. Neither package is published by this local work.
+through Core 6.3; it is not the editable rollback target. The historical 1.1.4 r8
+archive remains unchanged. Both earlier archives retain their streaming HTML
+observer; the current render-r9 candidate removes it. No package is published by
+this local work.
 
-The accepted cycle replaces only plugin files: official 1.1.1 → candidate 1.1.2 → resave → official 1.1.1 → candidate again. Existing records, widget/sidebar settings and rendering remain compatible in the tested matrix; no database restore was used. A rollback does not repair content already damaged before the fix, and editing with 1.1.1 reintroduces its known defects.
+The historical 1.1.2 acceptance cycle replaced only plugin files: official 1.1.1 → candidate 1.1.2 → resave → official 1.1.1 → candidate again. Existing records, widget/sidebar settings and rendering remain compatible in the tested matrix; no database restore was used. A rollback does not repair content already damaged before the fix, and editing with 1.1.1 reintroduces its known defects.
 
 To undo a repository change, inspect the relevant commit and restore or revert only its intended files. Preserve lab evidence, source snapshots and unrelated work; do not delete the imported WordPress directory or reset the entire checkout. The [release preparation report](../docs/releases/1.1.2/README.md) identifies saved payloads and the local SVN preparation.
 

@@ -11,9 +11,11 @@ Use Python 3.9+, Docker with Compose v2, Node 22.12+ (Node 24 recommended), and 
 repository's locked npm installation. Provide the current exact ZIP identified by
 the [release report](../../../docs/releases/1.1.4/README.md) and `manifest.json`.
 The verifier also checks every source/ZIP file hash against that tracked manifest.
-The historical accepted 16-file r2 ZIP remains separate; current streaming-r8 has 17 files
-and its own independent local acceptance. Changed package bytes require a new review. A successful bootstrap is local evidence.
-The ZIP is intentionally not committed; copy it from the preserved release inputs.
+The historical accepted 16-file r2 ZIP remains separate. Historical streaming-r8
+has 17 files and its own independent local acceptance. The current render-r9 ZIP
+has 16 files and its own [independent local acceptance](../../../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md); the r8 verdict does not transfer.
+Changed package bytes require a new review. A successful bootstrap is local evidence.
+Generated candidates remain local. The exact public 1.1.2 and accepted r8 ZIPs are tracked only as frozen rollback-test fixtures.
 
 `lock.json` pins official download URLs, byte counts and SHA-256 values for Core
 6.3.14/7.1.4, public predecessor 1.1.2, Plugin Check 2.1.0 and WP-CLI. Docker bases
@@ -31,7 +33,7 @@ npm ci
 npx --no-install playwright install chromium webkit
 python3 tools/wordpress-lab/repro/run.py run \
   --id release-114-check-01 \
-  --candidate .local/packages/simple-digital-clock-1.1.4-streaming-r8-candidate.zip
+  --candidate .local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip
 ```
 
 For offline reuse, add `--cache /absolute/path/to/downloads`. All five expected

@@ -19,6 +19,7 @@ try {
       for (const site of sites) {
         assert.match(site.url, /^http:\/\/127\.0\.0\.1:\d+$/);
         for (const [fixture, row] of Object.entries(site.cases)) {
+          const resources = row.resources ?? Number(row.clocks > 0);
           const context = await browser.newContext();
           try {
             const page = await context.newPage();
@@ -43,26 +44,29 @@ try {
             const response = await page.goto(row.url, { waitUntil: "networkidle" });
             assert.equal(response.status(), fixture === "draft" ? 404 : 200, fixture);
             assert.equal(await page.locator("timenow-zone-sdcw").count(), row.clocks, fixture);
-            if (row.clocks) {
+            if (row.clocks && resources) {
               await page.waitForFunction(count => [...document.querySelectorAll("timenow-zone-sdcw")].filter(clock => clock.shadowRoot?.querySelector("a")?.textContent?.match(/\d{1,2}:\d{2}/)).length === count, row.clocks);
               const initial = await page.locator("timenow-zone-sdcw").evaluateAll(nodes => nodes.map(node => node.shadowRoot.querySelector("a").textContent));
               await page.waitForFunction(before => [...document.querySelectorAll("timenow-zone-sdcw")].every((clock, index) => clock.shadowRoot.querySelector("a").textContent !== before[index]), initial);
             }
             const scripts = requests.filter(url => url.includes("/assets/public/js/simple-digital-clock.min.js"));
             const styles = requests.filter(url => url.includes("/assets/public/css/simple-digital-clock.css"));
-            assert.equal(scripts.length, row.clocks ? 1 : 0, `${fixture}: actual runtime network requests`);
+            assert.equal(scripts.length, resources, `${fixture}: actual runtime network requests`);
             assert.equal(styles.length, 0, `${fixture}: no external integration CSS request`);
             assert.equal(requests.length, scripts.length + styles.length, `${fixture}: no admin/editor resources on frontend`);
-            assert.equal(await page.locator('script[src*="/plugins/simple-digital-clock/assets/public/js/"]').count(), row.clocks ? 1 : 0, `${fixture}: script tags`);
+            assert.equal(await page.locator('script[src*="/plugins/simple-digital-clock/assets/public/js/"]').count(), resources, `${fixture}: script tags`);
             const inline = page.locator('#simple-digital-clock-block-style-inline-css');
-            assert.equal(await inline.count(), row.clocks ? 1 : 0, `${fixture}: inline integration rule appears once`);
-            if (row.clocks) {
+            assert.equal(await inline.count(), resources, `${fixture}: inline integration rule appears once`);
+            if (row.clocks && resources) {
               assert.match(await inline.textContent(), /display\s*:\s*block/);
               const displays = await page.locator('timenow-zone-sdcw').evaluateAll(nodes => nodes.map(node => getComputedStyle(node).display));
               assert(displays.every(display => display === 'block'), `${fixture}: host layout rule applies`);
             }
+            if (row.clocks && !resources) {
+              assert.equal(await page.evaluate(() => customElements.get('timenow-zone-sdcw') === undefined), true, 'Unmanaged raw HTML requires explicit enqueue');
+            }
             assert.deepEqual(errors, [], fixture);
-            results.push({ engine: name, site: site.name, fixture, clocks: row.clocks, scripts: scripts.length, styles: styles.length, inline_styles: await inline.count(), passed: true });
+            results.push({ engine: name, site: site.name, fixture, clocks: row.clocks, scripts: scripts.length, styles: styles.length, expected_resources: resources, inline_styles: await inline.count(), passed: true });
           } finally {
             await context.close();
           }

@@ -8,7 +8,7 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.4** | Streaming r8; independent local GO for the exact ZIP; unpublished |
+| WordPress source | **1.1.4** | Render r9; independent local acceptance GO; unpublished |
 | WordPress.org stable | **1.1.2** | Published plugin; bundles widget **0.7.0** |
 
 The metadata below describes the JavaScript widget artifact.
@@ -27,7 +27,7 @@ The metadata below describes the JavaScript widget artifact.
 Current preparation and branch workflow: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
 Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
 Local integration: [rollback CI checks and repository hygiene, 3 November 2026](docs/maintenance/local-ci-hygiene-2026-11-03.md).
-Current WordPress source: [local streaming candidate and acceptance boundaries](docs/releases/1.1.4/README.md).
+Current WordPress source: [local render candidate and compatibility boundaries](docs/releases/1.1.4/README.md).
 
 Widget **0.8.1** fixes refitting after a delayed local theme font loads when the Google stylesheet fails, and keeps localized time on one line after shrinking in WebKit. See the [regression and release record](docs/releases/0.8.1/README.md). The independently versioned WordPress 1.1.4 candidate bundles this exact artifact; the retained 1.1.3 ZIP keeps widget 0.7.1. The production demo/CDN serves this [published 0.8.1 artifact](docs/releases/0.8.1/PUBLICATION.md).
 
@@ -288,7 +288,7 @@ Testing stack:
 * **Browsers**: `@web/test-runner` + Playwright (Chromium/Firefox/WebKit)
 * **Coverage**: `c8`
 
-The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main` and `dev`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [current readiness record](docs/maintenance/release-readiness-2026-10-31.md) for the pinned tooling correction and remaining scope. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
+The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main` and `dev`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [historical tooling preparation record](docs/maintenance/release-readiness-2026-10-31.md) for the original correction, and the [current WordPress candidate report](docs/releases/1.1.4/README.md) for artifact identity and acceptance status. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
 
 Run `node scripts/check-build.mjs` to build and minify in a temporary directory with the production CLI flags and require exact equality with the current versioned widget. It prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
 
@@ -302,9 +302,9 @@ The **Simple Digital Clock** WordPress plugin source in this repository is
 It requires **WordPress 6.3+ / PHP 7.0+**. The local release candidate includes
 Core 6.3 caption serialization compatibility and complete bundled dependency
 notices and [conditional frontend assets](docs/WORDPRESS-ASSET-CONTRACT.md).
-Its exact ZIP, manifest, independent GO and known rollback/data-loss
+Its exact ZIP, manifest, independent local acceptance and known rollback/data-loss
 boundaries are recorded in the [1.1.4 release report](docs/releases/1.1.4/README.md).
-The streaming r8 revision replaces whole-response buffering and has independent GO for its exact local ZIP. The release report records 344 functional cases, 5,520 performance requests and retained compatibility limits. The r6 history remains preserved separately. WordPress.org publication remains deferred.
+The render r9 revision removes global PHP HTML analysis and enqueues resources only through the owned block render event or explicit integrations. Its [6 November independent acceptance](docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) passes all 13 mandatory local gates for the exact archive. Earlier accepted archives and their independent reports remain preserved separately; their verdicts do not transfer to new bytes. Hosted required checks and WordPress.org publication remain separate pending steps.
 
 **WordPress.org currently distributes 1.1.2**, which bundles widget **0.7.0**.
 Install that public stable version from the

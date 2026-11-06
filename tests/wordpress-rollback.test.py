@@ -48,7 +48,7 @@ class RollbackTests(unittest.TestCase):
         cls.files = builder.read_archive(cls.archive, cls.expected['archive_sha256'])
 
     def test_exact_inputs_and_recipe_match_accepted_manifests(self):
-        main = json.loads((ROOT / 'docs/releases/1.1.4/manifest.json').read_text())
+        main = json.loads((ROOT / 'docs/releases/1.1.4/manifest-streaming-r8.json').read_text())
         self.assertEqual(builder.sha(ACCEPTED.read_bytes()), main['archive_sha256'])
         self.assertEqual(builder.ACCEPTED_SHA, main['archive_sha256'])
         self.assertEqual(builder.sha(PREDECESSOR.read_bytes()), self.expected['inputs']['public_1_1_2'])

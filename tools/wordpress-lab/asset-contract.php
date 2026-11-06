@@ -20,6 +20,9 @@ if ($mode === 'seed') {
         'nested' => array('<!-- wp:group --><div class="wp-block-group">' . $block . '</div><!-- /wp:group -->', 1),
         'pattern' => array('<!-- wp:block {"ref":' . $pattern . '} /-->', 1),
         'raw' => array($clock, 1),
+        'raw-unmanaged' => array($clock, 1, 0),
+        'own-suppressed' => array($block, 0, 0),
+        'head-clock' => array('<p>Clock rendered before the head.</p>', 1),
         'custom-html' => array('<!-- wp:html -->' . $clock . '<!-- /wp:html -->', 1),
         'shortcode' => array('[sdcw_contract_clock]', 1),
         'dynamic' => array('<!-- wp:sdcw-contract/clock /-->', 1),
@@ -34,11 +37,11 @@ if ($mode === 'seed') {
         'excerpt' => array('[sdcw_contract_excerpt]', 0),
         'excerpt-rendered' => array('<p>A manually rendered clock excerpt follows.</p>', 1),
         'draft' => array($block, 0),
-        'parent-suppressed' => array('<!-- wp:sdcw-contract/suppress -->' . $block . '<!-- /wp:sdcw-contract/suppress -->', 0),
-        'parent-escaped' => array('<!-- wp:sdcw-contract/escape -->' . $block . '<!-- /wp:sdcw-contract/escape -->', 0),
+        'parent-suppressed' => array('<!-- wp:sdcw-contract/suppress -->' . $block . '<!-- /wp:sdcw-contract/suppress -->', 0, 1),
+        'parent-escaped' => array('<!-- wp:sdcw-contract/escape -->' . $block . '<!-- /wp:sdcw-contract/escape -->', 0, 1),
         'parent-kept' => array('<!-- wp:sdcw-contract/keep -->' . $block . '<!-- /wp:sdcw-contract/keep -->', 1),
         'parent-mixed' => array('<!-- wp:sdcw-contract/suppress -->' . $block . '<!-- /wp:sdcw-contract/suppress -->' . $block, 1),
-        'content-suppressed' => array($block, 0),
+        'content-suppressed' => array($block, 0, 1),
         'inert-template' => array('<template>' . $clock . '</template><p>Inert clock.</p>', 0),
         'script-example' => array('<script type="application/json">' . wp_json_encode(array('example' => $clock)) . '</script><p>Script example.</p>', 0),
         'textarea-example' => array('<textarea>' . $clock . '</textarea>', 0),
@@ -68,7 +71,7 @@ if ($mode === 'seed') {
             get_post_field('post_content', $id, 'raw') !== $case[0]) {
             throw new RuntimeException('Stored fixture source differs: ' . $name);
         }
-        $rows[$name] = array('id' => $id, 'url' => home_url('/?page_id=' . $id), 'clocks' => $case[1]);
+        $rows[$name] = array('id' => $id, 'url' => home_url('/?page_id=' . $id), 'clocks' => $case[1], 'resources' => isset($case[2]) ? $case[2] : (int) ($case[1] > 0));
     }
     $excerpt_source = wp_insert_post(array('post_type' => 'page', 'post_status' => 'publish',
         'post_title' => 'Asset contract manual excerpt source', 'post_content' => '<p>No body clock.</p>', 'post_excerpt' => $clock), true);
@@ -89,23 +92,35 @@ if ($mode === 'seed') {
     };
     $assert(!wp_script_is('simple-digital-clock', 'enqueued'), 'Registration alone adds no frontend runtime');
     $assert(!wp_style_is('simple-digital-clock-block-style', 'enqueued'), 'Registration alone adds no frontend stylesheet');
+    $assert(!wp_script_is('simple-digital-clock', 'registered'), 'Unused frontend does not register runtime');
+    $assert(!function_exists('SDCW_start_frontend_output'), 'No global output handler');
+    $assert(!class_exists('SDCW_Clock_Output_Observer'), 'No HTML stream parser');
+    $assert(false !== has_filter('render_block_simple-digital-clock-block/widget-block', 'SDCW_enqueue_rendered_clock_assets'), 'Owned block filter is registered');
+    $assert(false === has_filter('render_block', 'SDCW_enqueue_rendered_clock_assets'), 'No general block filter');
+    $level = ob_get_level();
+    $paragraph = array('blockName' => 'core/paragraph', 'attrs' => array(), 'innerBlocks' => array(), 'innerHTML' => '<p>Other block.</p>', 'innerContent' => array('<p>Other block.</p>'));
+    $with_hook = render_block($paragraph);
+    remove_filter('render_block_simple-digital-clock-block/widget-block', 'SDCW_enqueue_rendered_clock_assets');
+    $without_hook = render_block($paragraph);
+    add_filter('render_block_simple-digital-clock-block/widget-block', 'SDCW_enqueue_rendered_clock_assets');
+    $assert($with_hook === $without_hook, 'Unrelated Core output is identical with and without the owned hook');
+    $assert(!wp_script_is('simple-digital-clock', 'registered'), 'Unrelated block does not register runtime');
+    $rendered = do_blocks($block);
+    $assert($rendered === $clock, 'Owned saved markup remains byte-identical');
+    do_blocks($block . $block);
+    $assert(ob_get_level() === $level, 'Rendering does not add a PHP output buffer');
+    $assert(wp_script_is('simple-digital-clock', 'enqueued'), 'Owned rendering queues runtime');
+    $assert(count(array_keys(wp_scripts()->queue, 'simple-digital-clock', true)) === 1, 'Three renders share one runtime queue entry');
     $style = wp_styles()->registered['simple-digital-clock-block-style'];
     $assert($style->src === false, 'Inline integration style has no external URL');
     $assert(count($style->extra['after']) === 1, 'Integration rule is registered once');
-    foreach (array('plain text', '<!-- ' . $clock . ' -->', '&lt;timenow-zone-sdcw&gt;', '<div data-x="&lt;timenow-zone-sdcw&gt;"></div>', '<template>' . $clock . '</template>', '<script>var example = ' . wp_json_encode($clock) . ';</script>', '<textarea>' . $clock . '</textarea>') as $html) {
-        $assert(!SDCW_output_has_clock($html), 'Inert or example HTML has no live clock');
-        $assert(!wp_script_is('simple-digital-clock', 'enqueued'), 'Detection does not enqueue resources');
-    }
-    $assert(SDCW_output_has_clock($clock), 'A live clock is detected');
-    $assert(SDCW_output_has_clock('<template>' . $clock . '</template>' . $clock), 'A live clock after a template is detected');
-    $assert(!has_filter('render_block', 'SDCW_enqueue_rendered_clock_assets'), 'No intermediate render enqueue hook remains');
     $events = array();
     add_action('sdcw_metadata_diagnostic', function ($code) use (&$events) { $events[] = func_get_args(); });
     $unsupported = fopen('php://memory', 'r');
     $assert(SDCW_serialize_clock_block_attributes(array('caption' => $unsupported)) === null, 'Unsupported JSON value fails closed');
     fclose($unsupported);
     $assert($events === array(array('metadata_encoding_failed')), 'Diagnostic event contains one fixed code and no user content');
-    echo wp_json_encode(array('checks' => $checks, 'failed' => count(array_filter($checks, function ($row) { return !$row['passed']; })))), "\n";
+    echo wp_json_encode(array('core_paragraph_with_hook' => $with_hook, 'core_paragraph_without_hook' => $without_hook, 'checks' => $checks, 'failed' => count(array_filter($checks, function ($row) { return !$row['passed']; })))), "\n";
     WP_CLI::halt(count(array_filter($checks, function ($row) { return !$row['passed']; })) ? 1 : 0);
 } else {
     throw new RuntimeException('Unknown contract mode');

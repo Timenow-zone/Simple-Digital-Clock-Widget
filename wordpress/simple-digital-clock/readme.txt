@@ -73,7 +73,7 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. Frontend JavaScript and the inline layout rule load only when the final HTML response contains a clock. A streaming HTML observer skips hidden or escaped child clocks without retaining the complete page or delaying output until rendering completes. Text-only HTML examples and noscript fallbacks do not load the runtime. Multiple clocks share one runtime script and one inline layout rule per page; no external plugin stylesheet is loaded.
+Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. Frontend JavaScript and the inline layout rule are queued when WordPress renders the Simple Digital Clock block, including block-based widget areas. The plugin does not scan or buffer page HTML. Custom templates, shortcodes or raw HTML integrations must call SDCW_enqueue_scripts() when they output a clock. If another plugin removes an already rendered clock later, its queued assets may remain. Multiple clocks share one runtime script and one inline layout rule per page; no external plugin stylesheet is loaded.
 
 == Screenshots ==
 
@@ -103,7 +103,7 @@ To reproduce the production bundle:
 == Changelog ==
 
 = 1.1.4 =
-* Observe streamed HTML before delivering clock assets, including suppressed or escaped nested blocks; multiple clocks share one script and one inline layout rule without an external CSS request.
+* Load assets when the owned clock block renders, without scanning or buffering page HTML; multiple clocks share one script and one inline layout rule without an external CSS request.
 * Keep editor preview assets scoped to block editors and rating-notice assets scoped to the plugin settings screen.
 * Expose metadata failure diagnostics through a fixed-code action without unconditional PHP logging.
 * Preserve captions ending in a backslash and nondefault clock settings when saving on WordPress 6.3.
