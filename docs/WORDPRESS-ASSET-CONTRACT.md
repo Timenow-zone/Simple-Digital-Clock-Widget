@@ -111,5 +111,5 @@ must never enter the release ZIP or an owner site.
 Use `tools/wordpress-lab/verify-assets.py` only with a successfully bootstrapped
 fresh lab bound to the current manifest. Retain the exact ZIP, manifest, test
 source identity and raw results. Old independent GO/performance measurements do
-not transfer to these new bytes. All work is local; publication requires separate
-authorization and the normal repository checks.
+not transfer to these new bytes. This contract does not authorize publication; it requires
+separate authorization and the required repository checks.

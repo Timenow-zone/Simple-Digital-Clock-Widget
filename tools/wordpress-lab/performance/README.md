@@ -1,7 +1,10 @@
 # Local WordPress response performance comparison
 
 This harness compares exact public 1.1.2, accepted buffered 1.1.4 r6 and the
-new streaming 1.1.4 candidate in the same measurement series. It measures anonymous HTML requests, not browser rendering, JavaScript
+current manifest-bound 1.1.4 candidate in the same measurement series. Recorded
+[streaming-r8 measurements](../../../docs/releases/1.1.4/PERFORMANCE-STREAMING-R8.md)
+remain historical. Render-r9 has no new accepted TTFB or PHP-memory result.
+The harness measures anonymous HTML requests, not browser rendering, JavaScript
 execution, Core Web Vitals or production network latency. It creates fresh,
 owned Docker projects/databases and stops only those projects. Existing preview
 sites, release ZIPs and installable source files are never changed.
@@ -20,7 +23,7 @@ The three variants are:
 
 - `legacy`: exact public 1.1.2 files.
 - `buffered`: exact accepted r6 files, with its normal whole-response buffer.
-- `candidate`: exact manifest-bound streaming candidate, with its normal observer.
+- `candidate`: exact current manifest-bound render-r9 candidate, with its normal owned-block render hooks and no global observer.
 
 There is no request-time override of any delivery hook. The earlier r6-versus-
 oracle benchmark remains preserved with its executed harness under
@@ -29,7 +32,7 @@ historical variant list as well. Fresh runs use three real plugin archives.
 
 Nine stored pages combine 0, 1 or 5 clocks with approximately 64, 512 or 2,048 KiB
 of body HTML. Complete clock blocks follow the same paragraph content, exercising
-late detection. Actual HTTP response bytes are recorded separately. The page
+late clock rendering. Actual HTTP response bytes are recorded separately. The page
 hashes and IDs are retained. No content is saved through the old plugin writer.
 
 OPcache is enabled, JIT and timestamp validation disabled, and all plugin/theme
@@ -47,8 +50,9 @@ size and status are retained. The PHP observer records execution time and both
 `memory_get_peak_usage(false)` (used Zend heap) and `memory_get_peak_usage(true)`
 (allocated heap pages). These are per-request PHP heap measurements, not process
 RSS, container memory or shared OPcache usage. Peaks are sampled **after** native
-Core's shutdown buffer flush, so the candidate's final tokenizer and replacement
-are included. Before-flush peaks and buffer handler lists verify this timing.
+Core's shutdown buffer flush, including any variant-specific shutdown work.
+Render-r9 has no plugin tokenizer or replacement pass. Before-flush peaks and
+buffer handler lists verify this timing.
 The small observer is identical across variants; its log serialization/write occurs
 after the samples. Every request must have exactly one matching server observation.
 
@@ -65,10 +69,16 @@ and [PHP peak memory](https://www.php.net/manual/en/function.memory-get-peak-usa
 set -euo pipefail
 python3 tools/wordpress-lab/performance/run.py \
   --id perf-YYYYMMDD-a \
-  --candidate .local/packages/simple-digital-clock-1.1.4-streaming-r8-candidate.zip \
+  --candidate .local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip \
   --buffered .local/packages/simple-digital-clock-1.1.4-final-output-r6-candidate.zip \
   --cache .local/wordpress-repro/final-output-r6-20261101-a/downloads
 ```
+
+The current bootstrap verifies the current release manifest and rejects r8 as a
+substitute. Reproducing the historical r8 series requires the matching frozen
+harness, source and manifest from commit `1a60f9f`; do not overwrite current files
+or reuse an old run directory. Updating this example is not a new benchmark run
+and does not transfer historical timing results to r9.
 
 The default is 5 warmup and 45 measured requests per condition, plus 10 streaming
 probe requests per condition. New IDs are mandatory; old evidence is never

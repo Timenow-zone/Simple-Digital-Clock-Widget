@@ -49,7 +49,7 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The current local candidate uses owned-block render events without global HTML analysis. Its [6 November independent acceptance](../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) passes all 13 mandatory local gates for the exact ZIP. See the [1.1.4 release report](../docs/releases/1.1.4/README.md) for identity and evidence, and the [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) for raw-HTML integration and post-render suppression boundaries. Previously accepted r8/r6/r2 ZIPs remain immutable historical artifacts; their independent verdicts do not transfer to new package bytes. Hosted required checks and publication remain pending. The public 1.1.2 hashes remain historical records in its publication report.
+The current local candidate uses owned-block render events without global HTML analysis. Its [6 November independent acceptance](../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) passes all 13 mandatory local gates for the exact ZIP. See the [1.1.4 release report](../docs/releases/1.1.4/README.md) for identity and evidence, and the [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) for raw-HTML integration and post-render suppression boundaries. Previously accepted r8/r6/r2 ZIPs remain immutable historical artifacts; their independent verdicts do not transfer to new package bytes. Both [hosted required checks](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/42349694349) passed for `cc08df6`; [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18/checks) tracks later heads. Merge and publication remain deferred. The [7 November review](../docs/maintenance/repository-sync-2026-11-07.md) records remaining WordPress admin translation gaps. The public 1.1.2 hashes remain historical records in its publication report.
 
 `node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, the header/readme/POT/script-cache/source-reference versions, matching nonempty WordPress/PHP minimum requirements, and complete MIT notices for the exact bundled dependency versions. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
 
@@ -68,7 +68,7 @@ printf 'Local package: %s\n' "$archive_path"
 ```
 
 Install the ZIP only in the isolated test site. A local ZIP is not a WordPress.org release.
-This local integration does not publish to GitHub, WordPress.org, or Cloudflare. Publishing belongs to a separate release workflow.
+Packaging does not publish a WordPress.org release or change CDN delivery. GitHub review is tracked separately in [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18); release publication still requires separate authorization.
 
 ## Rollback
 
@@ -78,8 +78,8 @@ writer/reader and conditional asset wrapper while retaining widget 0.7.0. Its
 report records the exact archive and acceptance status. Original public 1.1.2
 remains unchanged and can still damage terminal-backslash metadata when saved
 through Core 6.3; it is not the editable rollback target. The historical 1.1.4 r8
-archive remains unchanged. Both earlier archives retain their streaming HTML
-observer; the current render-r9 candidate removes it. No package is published by
+archive remains unchanged. The editable 1.1.2.1 reserve and historical 1.1.4 r8
+archive retain their streaming HTML observer; render-r9 removes it. No package is published by
 this local work.
 
 The historical 1.1.2 acceptance cycle replaced only plugin files: official 1.1.1 → candidate 1.1.2 → resave → official 1.1.1 → candidate again. Existing records, widget/sidebar settings and rendering remain compatible in the tested matrix; no database restore was used. A rollback does not repair content already damaged before the fix, and editing with 1.1.1 reintroduces its known defects.

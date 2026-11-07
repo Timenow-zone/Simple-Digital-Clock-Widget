@@ -27,35 +27,51 @@ Preact 10.29.8, preact-custom-element 4.6.0 and clsx 2.1.1.
 On supported HTML pages, frontend resources are emitted only for a live clock
 in delivered output, with one runtime and one inline host-layout rule per
 document. The block editor loads preview resources before insertion. The
-[streaming HTML contract](../../../docs/WORDPRESS-ASSET-CONTRACT.md), including
-its explicit parsing/integration limits, also applies to this wrapper.
+[frozen streaming HTML contract](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/blob/1a60f9fe1bed3afa56f45bdac5c485a1ec4e7b06/docs/WORDPRESS-ASSET-CONTRACT.md),
+including its explicit parsing/integration limits, applies to the reserve and r8.
+The [current render-r9 contract](../../../docs/WORDPRESS-ASSET-CONTRACT.md) removes
+that observer; it does not retroactively change either immutable archive.
 
-## Build and run
+## Build the accepted reserve
 
-Requirements are those of the [pinned local lab](../repro/README.md): Python 3.9+,
-Docker Compose, Node and Playwright with Chromium. Both immutable ZIP inputs must
+The deterministic builder needs Python 3.9+. Native testing additionally needs
+the [pinned local lab](../repro/README.md), Docker Compose, Node and Playwright
+with Chromium. Both immutable ZIP inputs must
 be available locally; the builder verifies their exact hashes and refuses an
 existing output directory. The test runner also refuses existing run IDs.
 
 ```sh
 set -euo pipefail
 python3 tools/wordpress-lab/rollback/build.py \
-  --predecessor .local/wordpress-repro/final-output-r6-20261101-a/downloads/predecessor.zip \
-  --accepted .local/packages/simple-digital-clock-1.1.4-streaming-r8-candidate.zip \
+  --predecessor tests/fixtures/wordpress-rollback/public-1.1.2.zip \
+  --accepted tests/fixtures/wordpress-rollback/accepted-1.1.4-r8.zip \
   --output .local/rollback-1121-check/package
-
-python3 tools/wordpress-lab/rollback/run.py \
-  --id rollback-1121-check \
-  --accepted .local/packages/simple-digital-clock-1.1.4-streaming-r8-candidate.zip \
-  --rollback .local/rollback-1121-check/package/simple-digital-clock-1.1.2.1-rollback-r2.zip \
-  --cache .local/wordpress-repro/final-output-r6-20261101-a/downloads
 ```
 
-Change example output paths and run IDs for every new execution. The cache
+Change the output path for every new build; existing output is never overwritten.
+Required CI uses these same tracked, immutable inputs and verifies the exact result.
+
+## Historical native r8 writer cycle
+
+`run.py` preserves the original r8/editable-reserve/r8 cycle. Its final identity
+check is pinned to r8, while the shared bootstrap now verifies the current r9
+manifest. Do not run that historical cycle unchanged in the current checkout:
+neither substituting r9 nor passing r8 satisfies both checks. Reproducing it
+requires the matching frozen source, manifest and runner at commit `1a60f9f` in
+an isolated checkout, with new output paths and run IDs. Do not replace the
+current manifest or weaken its verification to make an old command run.
+
+The separate [render-r9 independent acceptance](../../../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md)
+records its actual r9/reserve/r9 cycle and retained reviewer adapters. The current
+[reproducible bootstrap](../repro/README.md) supports the manifest-bound r9
+original-file upgrade/rollback cycle; it does not claim to reproduce every
+editor acceptance gate with this historical runner.
+
+For the historical run, the cache
 contains the five hash-pinned inputs listed in `repro/lock.json`; missing inputs
 are downloaded from their pinned official URLs. No version substitution occurs.
 
-The runner creates new minimum/current databases, installs actual public 1.1.2,
+The historical runner creates new minimum/current databases, installs actual public 1.1.2,
 and records safe native baseline saves plus separate old-writer negative controls.
 It then performs a private Core update to r8, a physical file rollback to 1.1.2.1
 and a private Core reupdate to r8. Full post rows and eight critical options are

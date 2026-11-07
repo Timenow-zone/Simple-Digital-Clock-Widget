@@ -126,13 +126,13 @@ For the current exact 1.1.4 archive, use the read-only manifest verifier first:
 ```bash
 set -euo pipefail
 python3 tools/wordpress-lab/verify-package.py \
-  --zip .local/release-readiness-20261031/accepted/simple-digital-clock-1.1.4-compatibility-r2-candidate.zip
+  --zip .local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip
 ```
 
 It requires the complete current 16-file allowlist and exact hashes. The older
 1.1.1→1.1.2 lab commands below remain historical investigation workflows; they do
 not reproduce or publish the full 1.1.4 acceptance matrix. See the
-[current readiness and boundaries](../../docs/maintenance/release-readiness-2026-10-31.md).
+[current release identity and boundaries](../../docs/releases/1.1.4/README.md).
 
 `package.py` overwrites only the generated `.local/wordpress-lab/packages/candidate.zip` with the current plugin source.
 The public 1.1.1 ZIP is retained separately as `baseline.zip`; its SHA-256 is recorded in `wordpress/upstream-1.1.1.json`.

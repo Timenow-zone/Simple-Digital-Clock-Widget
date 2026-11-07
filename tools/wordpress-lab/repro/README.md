@@ -16,6 +16,11 @@ has 17 files and its own independent local acceptance. The current render-r9 ZIP
 has 16 files and its own [independent local acceptance](../../../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md); the r8 verdict does not transfer.
 Changed package bytes require a new review. A successful bootstrap is local evidence.
 Generated candidates remain local. The exact public 1.1.2 and accepted r8 ZIPs are tracked only as frozen rollback-test fixtures.
+The accepted r9 source is committed as `cc08df6` and reviewed in
+[PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).
+Hosted CI and remaining translation limits are recorded in the
+[7 November repository review](../../../docs/maintenance/repository-sync-2026-11-07.md).
+These later repository steps do not rebuild or publish the accepted ZIP.
 
 `lock.json` pins official download URLs, byte counts and SHA-256 values for Core
 6.3.14/7.1.4, public predecessor 1.1.2, Plugin Check 2.1.0 and WP-CLI. Docker bases
