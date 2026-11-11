@@ -5,13 +5,13 @@ This repository contains two independently versioned components:
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
 | JavaScript widget | `../src/` | `../package.json` (`0.8.1`, published to the demo/CDN) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.5`, local/unpublished; existing server-r2 anchor) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.5`, published in SVN r3797104; exact server-r2 payload) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
 Do not move PHP files into the widget's `src/` or use the widget package version as the plugin version.
 
-The [local 1.1.5 source](../docs/releases/1.1.5/README.md) retains the exact [widget 0.8.1 artifact](../docs/releases/0.8.1/README.md) shipped by published 1.1.4. The last verified WordPress.org version remains 1.1.4. The retained WordPress 1.1.3 ZIP remains unchanged with widget 0.7.1; its earlier publication preparation remains a separate historical record.
+The [published 1.1.5 source](../docs/releases/1.1.5/README.md) retains the exact [widget 0.8.1 artifact](../docs/releases/0.8.1/README.md) shipped by published 1.1.4. The last verified WordPress.org version is 1.1.5; see its [publication record](../docs/releases/1.1.5/PUBLICATION-2026-11-11.md). The retained WordPress 1.1.3 ZIP remains unchanged with widget 0.7.1; its earlier publication preparation remains a separate historical record.
 
 ## Imported baseline
 
@@ -49,18 +49,19 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The local 1.1.5 synchronization transfers the exact five-file delta from the existing accepted server-r2 package: the assets adapter, its added historical r8 observer, plugin header, readme and POT metadata. The other 12 files retain r14 bytes, including block serialization, the KSES/REST/default-parser protections, editor translations and notices. The runtime remains widget 0.8.1. There is no database migration, new widget build or replacement ZIP in this phase. The [1.1.5 report and manifest](../docs/releases/1.1.5/README.md) distinguish the frozen package acceptance from source verification, the prepared final package and pending hosted checks.
+The local 1.1.5 synchronization transfers the exact five-file delta from the existing accepted server-r2 package: the assets adapter, its added historical r8 observer, plugin header, readme and POT metadata. The other 12 files retain r14 bytes, including block serialization, the KSES/REST/default-parser protections, editor translations and notices. The runtime remains widget 0.8.1. There is no database migration, new widget build or replacement ZIP in this phase. The [1.1.5 report and manifest](../docs/releases/1.1.5/README.md) distinguish the frozen package acceptance from source verification, the exact final package, hosted checks and publication.
 
 The [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) restores the tested server-rendered raw integrations while requiring zero plugin JavaScript on supported clock-free HTML pages. Layout CSS remains scoped to owned blocks or explicit helper calls; it may remain after later suppression. A first clock created solely by client JavaScript needs separate runtime loading, even if PHP called `SDCW_enqueue_scripts()` without emitting a clock. A constructed browser counterexample confirms this difference from public 1.1.2's global loader; universal backwards compatibility is not claimed.
 
-`Tested up to: 7.1` remains unchanged; fresh 7.2 Beta 5 observations do not certify the final release. The r9/r14 ZIPs, their historical reports and rejected r10/r11/r12/r13 evidence remain preserved. The [r14 finalization record](../docs/releases/1.1.4/FINALIZATION-2026-11-11.md) and its hosted checks certify that earlier source only. Required Repository checks and Browser tests must pass for the current 1.1.5 head of [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18); the preceding local synchronization is recorded separately. Merge, GitHub Release, WordPress.org publication, new CDN deployment and owner-site installation remain deferred. Actual language-pack completeness is separate from gettext/POT coverage.
+`Tested up to: 7.1` remains unchanged; fresh 7.2 Beta 5 observations do not certify the final release. The r9/r14 ZIPs, their historical reports and rejected r10/r11/r12/r13 evidence remain preserved. The [r14 finalization record](../docs/releases/1.1.4/FINALIZATION-2026-11-11.md) and its hosted checks certify that earlier source only. Required Repository checks and Browser tests must pass for the current 1.1.5 head of [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18); the preceding local synchronization is recorded separately. WordPress.org publication of 1.1.5 is complete. Merge, GitHub Release, new CDN deployment and owner-site installation remain separate actions. Actual language-pack completeness is separate from gettext/POT coverage.
 
-The last verified public release is **1.1.4**, published in **SVN r3796553**.
-At **2026-11-11 18:38:48–18:38:50 UTC**, plugin information and its public ZIP
-reported 1.1.4, with all 16 payload files matching r14. Ten anonymous update
-checks for installed 1.1.2 returned `no_update: 1.1.2`. This dated snapshot does
-not prove the state of every installation or guarantee subsequent availability.
-See the [historical publication record](../docs/releases/1.1.4/PUBLICATION-2026-11-11.md).
+The last verified public release is **1.1.5**, published in **SVN r3797104**
+at 2026-11-11 21:17:24 UTC. Pinned trunk/tag exports and both official ZIPs
+match all 17 accepted files; plugin information reports 1.1.5. At 21:20 UTC,
+twelve anonymous update checks still described 1.1.4: installed 1.1.2 received
+a 1.1.4 offer, while installed 1.1.4/1.1.5 received no offer. Target 1.1.5 offers
+were 0/8. File publication is confirmed; update distribution remains pending
+in this dated sample. See the [publication record](../docs/releases/1.1.5/PUBLICATION-2026-11-11.md).
 
 `node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, the header/readme/POT/script-cache/source-reference versions, matching nonempty WordPress/PHP minimum requirements, and complete MIT notices for the exact bundled dependency versions. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
 

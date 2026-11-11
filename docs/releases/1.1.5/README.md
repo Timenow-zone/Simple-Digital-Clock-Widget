@@ -1,7 +1,9 @@
-# WordPress 1.1.5: final local package
+# WordPress 1.1.5: published release
 
-Status: **final local package prepared with the exact accepted server-r2 bytes;
-unpublished**. The [prepublication snapshot](PREPUBLICATION-2026-11-11.md)
+Status: **published in SVN r3797104; all 17 public payload files verified**.
+The [publication record](PUBLICATION-2026-11-11.md) separately records pending
+update distribution in the observed API sample.
+The [prepublication snapshot](PREPUBLICATION-2026-11-11.md)
 records final file identity, local checks and the owner-confirmed release scope.
 The [manifest](manifest.json) binds canonical source, retained r2 and its
 byte-identical final copy. The snapshot records the completed local preparation
@@ -150,11 +152,15 @@ selected-options scope.
 
 ## Public status and retained evidence
 
-The last verified public version is **1.1.4**, SVN r3796553. At
-**2026-11-11 18:38:48–18:38:50 UTC**, plugin information and its ZIP advertised
-1.1.4; all 16 files matched r14. Ten anonymous update checks for installed 1.1.2
-returned `no_update: 1.1.2`. This snapshot proves neither universal absence of
-offers/installations nor any future rollout deadline.
+The last verified public version is **1.1.5**, SVN r3797104, committed at
+**2026-11-11 21:17:24 UTC / 23:17:24 Europe/Kyiv**. Both public ZIPs and pinned
+trunk/tag exports match all 17 accepted files. Plugin information reports 1.1.5.
+At 21:20 UTC, twelve anonymous update checks still advertised 1.1.4: four
+installed-1.1.2 cases received a 1.1.4 offer, and installed 1.1.4/1.1.5 cases
+received no offer. Target 1.1.5 offers were 0/8. No downgrade was offered in the
+four current-version controls, but their metadata remained stale. This does
+not establish universal rollout or a deadline. See the publication record for
+the raw evidence and public ZIP container hash.
 
 Local evidence remains outside the installable package and is not a public
 download dependency:
@@ -166,5 +172,6 @@ download dependency:
 
 Historical r9/r14 and failed candidates, published tags, release records and
 payload hashes remain unchanged. Existing r14 hosted checks do not certify this
-1.1.5 source. Merge, tags, GitHub Release, WordPress.org publication, a new CDN
-deployment and owner-site installation require their separate authorized steps.
+1.1.5 source. The 1.1.5 payload source has its own successful hosted checks and
+WordPress.org publication record. Merge, tags, GitHub Release, a new CDN
+deployment and owner-site installation remain separate actions.

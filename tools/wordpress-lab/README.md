@@ -1,6 +1,6 @@
 # WordPress lab and compatibility acceptance
 
-The current source is the unpublished **1.1.5** correction, synchronized with the
+The current source is the published **1.1.5** correction, synchronized with the
 existing server-r2 artifact. See the [1.1.5 evidence and boundaries](../../docs/releases/1.1.5/README.md).
 The historical bootstrap and integration drivers below retain their pinned
 release contracts; they do not automatically become 1.1.5 acceptance tools when

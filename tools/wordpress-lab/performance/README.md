@@ -6,7 +6,7 @@ the manifest-bound 1.1.4 rest-r14 payload in the same measurement series. Record
 remain historical. This runner's original r9/i18n/REST preparation did not itself
 produce a new accepted TTFB or PHP-memory result.
 
-The unpublished [1.1.5 correction](../../../docs/releases/1.1.5/README.md) has a
+The published [1.1.5 correction](../../../docs/releases/1.1.5/README.md) has a
 separate retained two-run comparison against public r14: 840 requests, unstable
 local latency tails and a repeatable PHP peak-memory increase for 2 MiB payloads.
 Those measurements do not come from this older three-variant harness. Run the

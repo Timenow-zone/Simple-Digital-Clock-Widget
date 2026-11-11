@@ -6,7 +6,7 @@ orchestration script. The exact manifest-bound ZIP is an explicit release input,
 repacked substitute. Nothing is pushed, deployed or published by these commands.
 
 Execute the commands below only from matching frozen 1.1.4 source and manifest.
-The repository now contains unpublished 1.1.5 source; this runner still pins the
+The repository now contains published 1.1.5 source; this runner still pins the
 1.1.4 manifest and predecessor contract. Do not weaken its verification or replace
 historical manifests to run it against a different release. The separate
 [1.1.5 evidence](../../../docs/releases/1.1.5/README.md) records that correction's

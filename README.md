@@ -8,7 +8,7 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.5** | Final package preserves accepted server-r2 bytes; unpublished; hosted checks tracked in PR #18 |
+| WordPress source | **1.1.5** | Published in SVN r3797104; exact server-r2 payload verified; update distribution pending in the recorded sample |
 | WordPress.org stable | **1.1.4** | Last verified public version at 2026-11-11 18:38:50 UTC; sampled update checks still returned 1.1.2 |
 
 The metadata below describes the JavaScript widget artifact.
@@ -27,7 +27,7 @@ The metadata below describes the JavaScript widget artifact.
 Historical preparation and branch policy: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
 Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
 Local integration: [rollback CI checks and repository hygiene, 3 November 2026](docs/maintenance/local-ci-hygiene-2026-11-03.md).
-Current WordPress source: [local 1.1.5 synchronization and evidence](docs/releases/1.1.5/README.md).
+Current WordPress source: [1.1.5 release and publication evidence](docs/releases/1.1.5/README.md).
 Last verified WordPress publication: [1.1.4 publication and verification record](docs/releases/1.1.4/PUBLICATION-2026-11-11.md).
 Prior accepted render-r9 review: [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) targets `dev`; the [7 November synchronization review](docs/maintenance/repository-sync-2026-11-07.md) records hosted CI, examples, package identity and remaining translation limits.
 
@@ -299,7 +299,7 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 ## WordPress
 
 The **Simple Digital Clock** WordPress plugin source in this repository is
-**1.1.5**, locally synchronized to the existing accepted server-r2 package, with
+**1.1.5**, published with the exact accepted server-r2 payload, with
 the exact widget **0.8.1** bundled under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
@@ -308,7 +308,7 @@ The [1.1.5 report](docs/releases/1.1.5/README.md) binds the source to the existi
 and [final prepublication snapshot](docs/releases/1.1.5/PREPUBLICATION-2026-11-11.md).
 The final package is a byte-identical copy of r2. Required hosted checks are
 tracked for the current head of [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).
-WordPress.org publication and Git release operations are separate steps.
+WordPress.org publication is recorded separately from Git release operations.
 
 The correction restores the tested server-rendered raw HTML, widget, template,
 custom PHP shortcode and cached-fragment integrations. Runtime delivery follows observed
@@ -319,14 +319,15 @@ normal footer requirements and server cost. Compatibility is bounded: a first
 clock created only by client JavaScript needs its own runtime integration, and
 data already discarded by an old writer cannot be reconstructed automatically.
 
-**The last verified public version is 1.1.4**, published in SVN r3796553.
-At **2026-11-11 18:38:48–18:38:50 UTC**, plugin information and the public ZIP
-still advertised 1.1.4; all 16 downloaded files matched r14. Ten anonymous update
-checks for installed 1.1.2 returned `no_update: 1.1.2`. This is a dated sample,
-not a guarantee of current rollout state or proof that nobody installed 1.1.4.
-The [historical publication record](docs/releases/1.1.4/PUBLICATION-2026-11-11.md)
-and original r9/r14 acceptance remain unchanged. The public package has the raw
-integration regressions addressed by the unpublished 1.1.5 work.
+**The last verified public version is 1.1.5**, published in SVN r3797104 at
+2026-11-11 21:17:24 UTC. Pinned trunk/tag exports and both official ZIPs match
+all 17 accepted files; plugin information also reports 1.1.5. The
+[publication record](docs/releases/1.1.5/PUBLICATION-2026-11-11.md) keeps file
+delivery separate from update availability. At 21:20 UTC, twelve anonymous
+update checks still described 1.1.4: installed 1.1.2 received a 1.1.4 offer,
+while installed 1.1.4/1.1.5 received no offer. Target 1.1.5 offers were 0/8.
+This is a dated distribution snapshot, not a global adoption claim or deadline.
+The historical r14 publication and original r9/r14 acceptance remain unchanged.
 
 See [`wordpress/README.md`](wordpress/README.md) for source provenance, licensing,
 packaging and local testing. Widget builds and CDN deployments do not update the
