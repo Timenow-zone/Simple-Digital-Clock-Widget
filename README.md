@@ -8,7 +8,7 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.4** | REST r14; local acceptance passed; unpublished |
+| WordPress source | **1.1.4** | Final r14 package; acceptance and hosted CI passed; unpublished |
 | WordPress.org stable | **1.1.2** | Published plugin; bundles widget **0.7.0** |
 
 The metadata below describes the JavaScript widget artifact.
@@ -300,18 +300,18 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 The **Simple Digital Clock** WordPress plugin source in this repository is
 **1.1.4**, with the exact widget **0.8.1** bundled under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
-It requires **WordPress 6.3+ / PHP 7.0+**. The local release candidate includes
+It requires **WordPress 6.3+ / PHP 7.0+**. The final prepared package includes
 Core 6.3 caption serialization compatibility and complete bundled dependency
 notices and [conditional frontend assets](docs/WORDPRESS-ASSET-CONTRACT.md).
 Its exact ZIP, manifest, independent local acceptance and known rollback/data-loss
 boundaries are recorded in the [1.1.4 release report](docs/releases/1.1.4/README.md).
-The rest-r14 candidate retains the i18n corrections and protects clock metadata before REST Block Hooks processing and after raw-response serialization, including older editor payloads on modern Core. It also normalizes recognized old stored JSON before the default Core block parser consumes it, preserving native Block Hooks and sanitization. The [1.1.4 release report](docs/releases/1.1.4/README.md) records its exact identity and current acceptance status. `Tested up to` remains `7.1`; Beta testing alone does not permit a `7.2` declaration. The render-r9 frontend resource contract and shared widget 0.8.1 bytes remain unchanged. The retained [r9 acceptance](docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) and hosted checks cover their original revision. Merge, deployment and WordPress.org publication remain deferred.
+The final rest-r14 package retains the i18n corrections and protects clock metadata before REST Block Hooks processing and after raw-response serialization, including older editor payloads on modern Core. It also normalizes recognized old stored JSON before the default Core block parser consumes it, preserving native Block Hooks and sanitization. The [finalization record](docs/releases/1.1.4/FINALIZATION-2026-11-11.md) binds the accepted ZIP to its source commit and successful required hosted checks. `Tested up to` remains `7.1`; Beta testing alone does not permit a `7.2` declaration. The render-r9 frontend resource contract and shared widget 0.8.1 bytes remain unchanged. The retained [r9 acceptance](docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) covers its original revision. Merge, deployment and WordPress.org publication remain deferred.
 
 **WordPress.org currently distributes 1.1.2**, which bundles widget **0.7.0**.
 Install that public stable version from the
 [official plugin directory](https://wordpress.org/plugins/simple-digital-clock/),
 or try its [guided Live Preview](https://wordpress.org/plugins/simple-digital-clock/?preview=1).
-The public directory does not yet provide the repository's 1.1.4 candidate.
+The public directory does not yet provide the prepared 1.1.4 package.
 
 See [`wordpress/README.md`](wordpress/README.md) for source provenance, licensing,
 packaging and local testing. Widget builds and CDN deployments do not update the

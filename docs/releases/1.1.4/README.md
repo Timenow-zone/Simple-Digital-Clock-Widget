@@ -1,14 +1,17 @@
-# WordPress 1.1.4: rest-r14 local candidate
+# WordPress 1.1.4: final rest-r14 package, unpublished
 
-Status: **accepted local candidate; unpublished**. Check the
+Status: **ready for later authorized publication; unpublished**. Check the
 [current machine-readable status](acceptance-evidence.json) before using this
-candidate. Previous verdicts do not certify these changed bytes.
+package. The [finalization record](FINALIZATION-2026-11-11.md) binds the exact
+accepted artifact to its source commit and required hosted CI. Previous
+candidate verdicts do not certify these changed bytes.
 
 - ZIP: `.local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip`.
 - SHA-256: `57cb0689860a0c4faa6cfbe522b021c3652d36a37120366368b82bd44c52f780`.
 - 67,703 bytes / 16 installable files; [current manifest](manifest.json) and
   [revision manifest](manifest-rest-r14.json).
-- Base commit: `361b11c8270fa14c524562a9f9b885a0af36b1a0`; changes remain uncommitted.
+- Source commit: `d5b69e9df3ab038eb782fbb7f8f4d18565dd3b20`.
+- Previous commit: `361b11c8270fa14c524562a9f9b885a0af36b1a0`.
 - WordPress 6.3 / PHP 7.0 minima; shared widget 0.8.1 remains byte-identical.
 
 ## Corrections
@@ -105,12 +108,16 @@ versioned [1.1.2.1 reserve](../1.1.2.1/README.md) also remain unchanged.
 
 ## Release boundary
 
-[PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) and its
-hosted checks cover committed r9. The changed revision still needs required
-Repository checks and Browser tests before any future merge. Local acceptance
+[PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) now
+contains committed r14. Required Repository checks and Browser tests passed on
+the exact source commit, including fresh dependency installation; see the
+[finalization record](FINALIZATION-2026-11-11.md). Every later PR HEAD must pass
+both checks independently before any future merge. This preparation
 does not establish public update delivery, new performance measurements, arbitrary
 optimizer/multisite support, native Safari/VoiceOver, or complete language packs.
 Stored-legacy recovery is verified with the default Core parser; independently
 selected custom parser implementations are respected, not certified.
-No push, merge, deployment, owner-site installation or WordPress.org publication
-is performed. Existing widget 0.8.1 CDN delivery remains independent and unchanged.
+GitHub branch/PR updates and CI are authorized and completed for the source
+revision. Merge, release tags, GitHub Release, deployment, owner-site installation
+and WordPress.org publication remain deferred. Existing widget 0.8.1 CDN delivery
+remains independent and unchanged.

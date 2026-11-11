@@ -1,6 +1,6 @@
 {
-  "status": "ACCEPTED_LOCAL",
-  "release_readiness": "GO_LOCAL_CANDIDATE",
+  "status": "READY_UNPUBLISHED",
+  "release_readiness": "GO_UNPUBLISHED",
   "revision": "rest-r14",
   "archive_sha256": "57cb0689860a0c4faa6cfbe522b021c3652d36a37120366368b82bd44c52f780",
   "archive_bytes": 67703,
@@ -12,8 +12,33 @@
   "acceptance_evidence_sha256": "9efaab0642438ae0b9ac605fa188676e5a1c9c5739ca355b83451d31fad3c77a",
   "report": "INDEPENDENT-ACCEPTANCE-REST-R14-2026-11-11.md",
   "report_sha256": "5c67aa2085f6fccdefc65724437a29ba5ababf60d7f8a310063a0b843be9da2a",
-  "scope": "Fresh exact-package local acceptance of r14 on the listed default-Core-parser matrix; not publication or a replay of every historical r9 gate.",
+  "scope": "Exact accepted r14 package with independently verified committed source and successful required hosted CI; publication and merge remain deferred.",
   "published": false,
-  "publication": "Deferred by user; local work only",
-  "hosted_required_checks": "NOT RUN for uncommitted r14; existing hosted checks cover r9"
+  "publication": "Deferred until a later explicit user instruction",
+  "hosted_required_checks": {
+    "head_sha": "d5b69e9df3ab038eb782fbb7f8f4d18565dd3b20",
+    "run_id": 43026063278,
+    "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43026063278",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 130541071537,
+        "name": "Browser tests",
+        "conclusion": "success",
+        "fresh_npm_ci": "success",
+        "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43026063278/job/130541071537"
+      },
+      {
+        "id": 130541072808,
+        "name": "Repository checks",
+        "conclusion": "success",
+        "fresh_npm_ci": "success",
+        "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43026063278/job/130541072808"
+      }
+    ]
+  },
+  "local_acceptance": "acceptance-rest-r14.json",
+  "finalization": "finalization-20261111.json",
+  "source_commit": "d5b69e9df3ab038eb782fbb7f8f4d18565dd3b20",
+  "merge": "Deferred; PR remains open"
 }
