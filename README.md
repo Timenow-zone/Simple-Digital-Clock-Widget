@@ -9,7 +9,7 @@ Widget and WordPress plugin versions are independent:
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
 | WordPress source | **1.1.5** | Published in SVN r3797104; exact server-r2 payload verified; update distribution pending in the recorded sample |
-| WordPress.org stable | **1.1.4** | Last verified public version at 2026-11-11 18:38:50 UTC; sampled update checks still returned 1.1.2 |
+| WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
 The metadata below describes the JavaScript widget artifact.
 
@@ -28,7 +28,7 @@ Historical preparation and branch policy: [release readiness, 31 October 2026](d
 Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
 Local integration: [rollback CI checks and repository hygiene, 3 November 2026](docs/maintenance/local-ci-hygiene-2026-11-03.md).
 Current WordPress source: [1.1.5 release and publication evidence](docs/releases/1.1.5/README.md).
-Last verified WordPress publication: [1.1.4 publication and verification record](docs/releases/1.1.4/PUBLICATION-2026-11-11.md).
+Last verified WordPress publication: [1.1.5 publication and verification record](docs/releases/1.1.5/PUBLICATION-2026-11-11.md).
 Prior accepted render-r9 review: [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) targets `dev`; the [7 November synchronization review](docs/maintenance/repository-sync-2026-11-07.md) records hosted CI, examples, package identity and remaining translation limits.
 
 Widget **0.8.1** fixes refitting after a delayed local theme font loads when the Google stylesheet fails, and keeps localized time on one line after shrinking in WebKit. See the [regression and release record](docs/releases/0.8.1/README.md). The independently versioned WordPress 1.1.4 release bundles this exact artifact; the retained 1.1.3 ZIP keeps widget 0.7.1. The production demo/CDN serves this [published 0.8.1 artifact](docs/releases/0.8.1/PUBLICATION.md).
