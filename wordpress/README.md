@@ -5,13 +5,13 @@ This repository contains two independently versioned components:
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
 | JavaScript widget | `../src/` | `../package.json` (`0.8.1`, published to the demo/CDN) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.4`, local candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.4`, published in SVN r3796553) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
 Do not move PHP files into the widget's `src/` or use the widget package version as the plugin version.
 
-The [1.1.4 candidate](../docs/releases/1.1.4/README.md) deliberately bundles the exact [widget 0.8.1 artifact](../docs/releases/0.8.1/README.md). The retained WordPress 1.1.3 ZIP remains unchanged with widget 0.7.1; its earlier publication preparation is separate from this candidate.
+The [1.1.4 release](../docs/releases/1.1.4/README.md) deliberately bundles the exact [widget 0.8.1 artifact](../docs/releases/0.8.1/README.md). The retained WordPress 1.1.3 ZIP remains unchanged with widget 0.7.1; its earlier publication preparation remains a separate historical record.
 
 ## Imported baseline
 
@@ -37,7 +37,7 @@ and generated into `wporg-assets/blueprints/blueprint.json`. See the
 [preview workflow](../docs/preview/README.md). Preview assets and their development
 tools are excluded from the installable plugin ZIP.
 
-The retained [1.1.3 candidate](../docs/releases/1.1.3/README.md) introduced invalid numeric caption preservation and automatic container sizing with widget 0.7.1. The new [1.1.4 candidate](../docs/releases/1.1.4/README.md) retains those fixes and bundles widget 0.8.1: Preact 11 with explicit CSS units, ordinary AM/PM fitting, delayed-font refitting and quantized font-width correction, plus local-theme-font recovery after a failed Google stylesheet and stable single-line time layout. The corrective candidate also preserves terminal-backslash captions and nondefault settings on WordPress 6.3. The original JSON caption schema and static save markup remain unchanged; narrowly recognized malformed Core 6.3 caption tokens and clock-specific metadata handling are corrected without a database migration. Full MIT dependency notices ship in `THIRD-PARTY-NOTICES.txt`; the WordPress wrapper retains its GPL license. The candidate declares WordPress 6.3 and PHP 7.0 minimum requirements in both the main PHP header and readme. The WordPress candidate is not published.
+The retained [1.1.3 candidate](../docs/releases/1.1.3/README.md) introduced invalid numeric caption preservation and automatic container sizing with widget 0.7.1. The published [1.1.4 release](../docs/releases/1.1.4/README.md) retains those fixes and bundles widget 0.8.1: Preact 11 with explicit CSS units, ordinary AM/PM fitting, delayed-font refitting and quantized font-width correction, plus local-theme-font recovery after a failed Google stylesheet and stable single-line time layout. The release also preserves terminal-backslash captions and nondefault settings on WordPress 6.3. The original JSON caption schema and static save markup remain unchanged; narrowly recognized malformed Core 6.3 caption tokens and clock-specific metadata handling are corrected without a database migration. Full MIT dependency notices ship in `THIRD-PARTY-NOTICES.txt`; the WordPress wrapper retains its GPL license. The package declares WordPress 6.3 and PHP 7.0 minimum requirements in both the main PHP header and readme.
 
 Earlier widget releases remain available at their versioned CDN URLs. The current production demo/CDN uses [widget 0.8.1](../docs/releases/0.8.1/PUBLICATION.md); this does not publish or update the WordPress plugin.
 
@@ -49,7 +49,13 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The final rest-r14 package retains owned-block render events and the i18n corrections: missing editor translations, the shadow-help key, settings titles and rating notices, with literal gettext values carried through safe JSON and text rendering. It also protects recognized clock metadata at the older and modern Core REST input boundaries and in existing raw response fields. A bounded default-parser adapter also protects recoverable old stored metadata before native parsing; custom parser choices remain unchanged. See the [finalization record](../docs/releases/1.1.4/FINALIZATION-2026-11-11.md) for the exact artifact/source binding and successful required hosted checks, and the [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) for integration boundaries. `Tested up to: 7.1` remains unchanged pending an actual tested 7.2 RC. The accepted r9 ZIP, its [independent report](../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md), and the rejected r10/r11/r12/r13 compatibility findings remain preserved. Any later [PR #18 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18/checks) must pass both required checks independently. Merge and publication remain deferred; actual WordPress.org language-pack coverage is separate.
+The published rest-r14 package retains owned-block render events and the i18n corrections: missing editor translations, the shadow-help key, settings titles and rating notices, with literal gettext values carried through safe JSON and text rendering. It also protects recognized clock metadata at the older and modern Core REST input boundaries and in existing raw response fields. A bounded default-parser adapter also protects recoverable old stored metadata before native parsing; custom parser choices remain unchanged. See the [finalization record](../docs/releases/1.1.4/FINALIZATION-2026-11-11.md) for the exact artifact/source binding and successful required hosted checks, and the [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) for integration boundaries. `Tested up to: 7.1` remains unchanged pending an actual tested 7.2 RC. The accepted r9 ZIP, its [independent report](../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md), and the rejected r10/r11/r12/r13 compatibility findings remain preserved. Any later [PR #18 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18/checks) must pass both required checks independently. GitHub merge, GitHub Release, a new production CDN deployment and owner-site installation remain deferred; actual WordPress.org language-pack coverage is separate.
+
+WordPress.org publication completed in **SVN r3796553**. The public catalog and
+both versioned/stable ZIPs are verified; all 16 extracted files match accepted
+r14. The official update API returned **0/20 target offers** at
+**2026-11-11 15:06:24 UTC**, so update distribution remains pending.
+See the [publication record](../docs/releases/1.1.4/PUBLICATION-2026-11-11.md).
 
 `node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, the header/readme/POT/script-cache/source-reference versions, matching nonempty WordPress/PHP minimum requirements, and complete MIT notices for the exact bundled dependency versions. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
 
@@ -74,7 +80,7 @@ Packaging does not publish a WordPress.org release or change CDN delivery. GitHu
 
 ## Rollback
 
-For the current 1.1.4 candidate, the separately versioned local
+For the published 1.1.4 release, the separately versioned local
 [1.1.2.1 rollback package](../docs/releases/1.1.2.1/README.md) backports the safe
 writer/reader and conditional asset wrapper while retaining widget 0.7.0. Its
 report records the exact archive and acceptance status. Original public 1.1.2
@@ -83,8 +89,8 @@ through Core 6.3 and the newly tested 6.4.14 through 6.8.12 references; it is no
 the editable rollback target. The reserve's existing acceptance does not establish
 a remedy for the REST metadata failures fixed by r14. The historical 1.1.4 r8
 archive remains unchanged. The editable 1.1.2.1 reserve and historical 1.1.4 r8
-archive retain their streaming HTML observer; render-r9 removes it. No package is published by
-this local work.
+archive retain their streaming HTML observer; render-r9 removes it. These rollback
+archives remain unpublished.
 
 The historical 1.1.2 acceptance cycle replaced only plugin files: official 1.1.1 → candidate 1.1.2 → resave → official 1.1.1 → candidate again. Existing records, widget/sidebar settings and rendering remain compatible in the tested matrix; no database restore was used. A rollback does not repair content already damaged before the fix, and editing with 1.1.1 reintroduces its known defects.
 

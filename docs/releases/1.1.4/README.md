@@ -1,6 +1,7 @@
-# WordPress 1.1.4: final rest-r14 package, unpublished
+# WordPress 1.1.4: published rest-r14 package
 
-Status: **ready for later authorized publication; unpublished**. Check the
+Status: **published in SVN r3796553; public files verified; update offer pending**.
+See the [publication snapshot](PUBLICATION-2026-11-11.md). Check the
 [current machine-readable status](acceptance-evidence.json) before using this
 package. The [finalization record](FINALIZATION-2026-11-11.md) binds the exact
 accepted artifact to its source commit and required hosted CI. Previous
@@ -16,7 +17,7 @@ candidate verdicts do not certify these changed bytes.
 
 ## Corrections
 
-The candidate retains the r10 i18n changes: three missing editor messages,
+The release retains the r10 i18n changes: three missing editor messages,
 the corrected `shadowHelp` key and description, translatable settings titles and
 rating notices, and 48 plain-gettext editor dictionary values. JSON transport and
 text components provide output-context safety; PHP HTML keeps escaped gettext.
@@ -118,6 +119,9 @@ optimizer/multisite support, native Safari/VoiceOver, or complete language packs
 Stored-legacy recovery is verified with the default Core parser; independently
 selected custom parser implementations are respected, not certified.
 GitHub branch/PR updates and CI are authorized and completed for the source
-revision. Merge, release tags, GitHub Release, deployment, owner-site installation
-and WordPress.org publication remain deferred. Existing widget 0.8.1 CDN delivery
-remains independent and unchanged.
+revision. Merge, Git release tags, GitHub Release, deployment and owner-site installation
+remain deferred. WordPress.org publication was explicitly authorized and completed
+in SVN r3796553. Both public ZIPs match all 16 accepted files; the update API still
+returned 1.1.2 at 15:06 UTC on 11 November. The [publication snapshot](PUBLICATION-2026-11-11.md)
+keeps these outcomes separate. Existing widget 0.8.1 CDN delivery remains
+independent and unchanged.

@@ -21,6 +21,7 @@
     "readme.txt": "011fdcbbc86df222a7b480a1536b579c7bccf192d8019bd9102ba2bcde06546c",
     "widget_init.php": "4654eb0cb5b3dad62566e7fc0c9f34fbc2c79e74301ee852006194969fa15037"
   },
-  "published": false,
-  "revision": "rest-r14"
+  "published": true,
+  "revision": "rest-r14",
+  "publication_evidence": "publication-20261111.json"
 }
