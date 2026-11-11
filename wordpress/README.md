@@ -49,9 +49,11 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The current local candidate uses owned-block render events without global HTML analysis. Its [6 November independent acceptance](../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) passes all 13 mandatory local gates for the exact ZIP. See the [1.1.4 release report](../docs/releases/1.1.4/README.md) for identity and evidence, and the [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) for raw-HTML integration and post-render suppression boundaries. Previously accepted r8/r6/r2 ZIPs remain immutable historical artifacts; their independent verdicts do not transfer to new package bytes. Both [hosted required checks](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/42349694349) passed for `cc08df6`; [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18/checks) tracks later heads. Merge and publication remain deferred. The [7 November review](../docs/maintenance/repository-sync-2026-11-07.md) records remaining WordPress admin translation gaps. The public 1.1.2 hashes remain historical records in its publication report.
+The current rest-r14 candidate retains owned-block render events and the i18n corrections: missing editor translations, the shadow-help key, settings titles and rating notices, with literal gettext values carried through safe JSON and text rendering. It also protects recognized clock metadata at the older and modern Core REST input boundaries and in existing raw response fields. A bounded default-parser adapter also protects recoverable old stored metadata before native parsing; custom parser choices remain unchanged. See the [1.1.4 release report](../docs/releases/1.1.4/README.md) for exact identity and current acceptance status, and the [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) for integration boundaries. `Tested up to: 7.1` remains unchanged pending an actual tested 7.2 RC. The accepted r9 ZIP, its [independent report](../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md), and the rejected r10/r11/r12/r13 compatibility findings remain preserved. Existing [PR #18 checks](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18/checks) cover r9. Merge and publication remain deferred; actual WordPress.org language-pack coverage is separate.
 
 `node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, the header/readme/POT/script-cache/source-reference versions, matching nonempty WordPress/PHP minimum requirements, and complete MIT notices for the exact bundled dependency versions. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
+
+`node --test tests/wordpress-i18n.test.mjs` checks editor dictionary parity, gettext/POT coverage and text/attribute output contexts. Repository checks run this guard too. It uses PHP registration doubles; actual inline JSON transport, translated controls and save/reopen behavior require the separate disposable WordPress browser acceptance.
 
 At the initial publication in SVN r3772502, the public [WordPress.org 1.1.2 ZIP](https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip) had a different archive SHA-256 from the local candidate; all 15 extracted files matched the original manifest. The historical hashes remain in the publication report.
 
@@ -77,7 +79,9 @@ For the current 1.1.4 candidate, the separately versioned local
 writer/reader and conditional asset wrapper while retaining widget 0.7.0. Its
 report records the exact archive and acceptance status. Original public 1.1.2
 remains unchanged and can still damage terminal-backslash metadata when saved
-through Core 6.3; it is not the editable rollback target. The historical 1.1.4 r8
+through Core 6.3 and the newly tested 6.4.14 through 6.8.12 references; it is not
+the editable rollback target. The reserve's existing acceptance does not establish
+a remedy for the REST metadata failures fixed by r14. The historical 1.1.4 r8
 archive remains unchanged. The editable 1.1.2.1 reserve and historical 1.1.4 r8
 archive retain their streaming HTML observer; render-r9 removes it. No package is published by
 this local work.

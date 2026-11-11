@@ -103,6 +103,8 @@ To reproduce the production bundle:
 == Changelog ==
 
 = 1.1.4 =
+* Preserve clock JSON metadata when reading legacy blocks and across REST saves and responses, including captions ending in a backslash and block locks.
+* Make missing editor controls, settings titles and rating notices translatable; preserve literal translated text without double HTML escaping.
 * Load assets when the owned clock block renders, without scanning or buffering page HTML; multiple clocks share one script and one inline layout rule without an external CSS request.
 * Keep editor preview assets scoped to block editors and rating-notice assets scoped to the plugin settings screen.
 * Expose metadata failure diagnostics through a fixed-code action without unconditional PHP logging.

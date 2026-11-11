@@ -2471,7 +2471,7 @@
                 ...nextUI,
                 label: i18n["shadow"] || "Shadow",
                 help:
-                  i18n["shdowHelp"] || "Select the shadow of the container.",
+                  i18n["shadowHelp"] || "Select the shadow of the container.",
                 onChange: onChangeShadow,
                 value: props.attributes.shadow,
                 children: [

@@ -1,0 +1,457 @@
+{
+  "status": "NO_GO",
+  "recorded_at_utc": "2026-11-10T21:00:09.111427+00:00",
+  "scope": "Expanded compatibility of immutable i18n-r10. Earlier scoped i18n acceptance is preserved; the new stable-Core failure blocks release.",
+  "candidate": {
+    "path": ".local/packages/simple-digital-clock-1.1.4-i18n-r10-candidate.zip",
+    "sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+    "bytes": 66859,
+    "revision": "i18n-r10",
+    "plugin_version": "1.1.4",
+    "widget_version": "0.8.1",
+    "installable_files": 16
+  },
+  "preserved_r9": {
+    "path": ".local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip",
+    "sha256": "5f334f9496c0c064ab4e182fdda7fa3d4493da7c99baada899cd3392d6d124e7",
+    "bytes": 66815
+  },
+  "manifest": {
+    "path": "docs/releases/1.1.4/manifest-i18n-r10.json",
+    "sha256": "61396bfd46e30e605b99439239aeec41a051b99170456450d46f708e22ff4860",
+    "bytes": 1930
+  },
+  "original_scoped_acceptance": {
+    "path": "docs/releases/1.1.4/acceptance-i18n-r10.json",
+    "sha256": "68df4d171f03789f3635f8f68a45e13e8e122932ef2dfd1278f810f9d9a1b904",
+    "bytes": 1853
+  },
+  "reused_minimum_endpoint": {
+    "wordpress": "6.3.14",
+    "php": "7.0.33",
+    "status": "PASS within original scope",
+    "receipt": {
+      "path": "docs/releases/1.1.4/independent-i18n-r10-20261110.json",
+      "sha256": "8cbf0d8471ff6b176020354918fd9d77238478850f62a23f4b31be67bad924b0",
+      "bytes": 17200
+    },
+    "fresh_direct_1_1_1_upgrade": "PASS; see separate native legacy receipt"
+  },
+  "stable_matrix": [
+    {
+      "wordpress": "6.4.14",
+      "php": "8.3.35",
+      "status": "PASS",
+      "original_plugin": "1.1.2",
+      "candidate": "1.1.4 i18n-r10",
+      "file_transitions": 3,
+      "completed_candidate_native_saves": 36,
+      "completed_strict_raw_json_blocks": 252,
+      "frontend_resource_cases": 30,
+      "admin_editor_pairs": 2,
+      "translated_ui_pairs": 2,
+      "original_writer_negative_controls": {
+        "cases": 33,
+        "invalid_or_changed": 30,
+        "separate_from_r10_verdict": true
+      },
+      "original_baseline_passed": true,
+      "installed_files_exact": true,
+      "temporary_fixtures_absent": true,
+      "lab": ".local/wordpress-repro/compat-stable-20261110-a"
+    },
+    {
+      "wordpress": "6.5.14",
+      "php": "8.3.35",
+      "status": "PASS",
+      "original_plugin": "1.1.2",
+      "candidate": "1.1.4 i18n-r10",
+      "file_transitions": 3,
+      "completed_candidate_native_saves": 36,
+      "completed_strict_raw_json_blocks": 252,
+      "frontend_resource_cases": 30,
+      "admin_editor_pairs": 2,
+      "translated_ui_pairs": 2,
+      "original_writer_negative_controls": {
+        "cases": 33,
+        "invalid_or_changed": 30,
+        "separate_from_r10_verdict": true
+      },
+      "original_baseline_passed": true,
+      "installed_files_exact": true,
+      "temporary_fixtures_absent": true,
+      "lab": ".local/wordpress-repro/compat-stable-20261110-a"
+    },
+    {
+      "wordpress": "6.6.11",
+      "php": "8.3.35",
+      "status": "PASS",
+      "original_plugin": "1.1.2",
+      "candidate": "1.1.4 i18n-r10",
+      "file_transitions": 3,
+      "completed_candidate_native_saves": 36,
+      "completed_strict_raw_json_blocks": 252,
+      "frontend_resource_cases": 30,
+      "admin_editor_pairs": 2,
+      "translated_ui_pairs": 2,
+      "original_writer_negative_controls": {
+        "cases": 33,
+        "invalid_or_changed": 30,
+        "separate_from_r10_verdict": true
+      },
+      "original_baseline_passed": true,
+      "installed_files_exact": true,
+      "temporary_fixtures_absent": true,
+      "lab": ".local/wordpress-repro/compat-stable-20261110-b"
+    },
+    {
+      "wordpress": "6.7.11",
+      "php": "8.3.35",
+      "status": "PASS",
+      "original_plugin": "1.1.2",
+      "candidate": "1.1.4 i18n-r10",
+      "file_transitions": 3,
+      "completed_candidate_native_saves": 36,
+      "completed_strict_raw_json_blocks": 252,
+      "frontend_resource_cases": 30,
+      "admin_editor_pairs": 2,
+      "translated_ui_pairs": 2,
+      "original_writer_negative_controls": {
+        "cases": 33,
+        "invalid_or_changed": 30,
+        "separate_from_r10_verdict": true
+      },
+      "original_baseline_passed": true,
+      "installed_files_exact": true,
+      "temporary_fixtures_absent": true,
+      "lab": ".local/wordpress-repro/compat-stable-20261110-b"
+    },
+    {
+      "wordpress": "6.8.12",
+      "php": "8.3.35",
+      "status": "FAIL",
+      "original_plugin": "1.1.2",
+      "candidate": "1.1.4 i18n-r10",
+      "file_transitions": 1,
+      "completed_candidate_native_saves": 0,
+      "completed_strict_raw_json_blocks": 0,
+      "frontend_resource_cases": 0,
+      "admin_editor_pairs": 0,
+      "translated_ui_pairs": 0,
+      "original_writer_negative_controls": {
+        "cases": 33,
+        "invalid_or_changed": 30,
+        "separate_from_r10_verdict": true
+      },
+      "original_baseline_passed": true,
+      "installed_files_exact": true,
+      "temporary_fixtures_absent": true,
+      "lab": ".local/wordpress-repro/compat-stable-20261110-c",
+      "failure": "First fixed candidate corpus save leaves only timeZone in ten terminal-backslash block comments and loses all other JSON metadata; HTML fallback keeps visible caption and valid block, while lock is absent. The complete native suite aborts and no partial saves are counted as passed coverage.",
+      "raw_evidence": "candidate-failure-native-capture.json"
+    },
+    {
+      "wordpress": "6.9.11",
+      "php": "8.3.35",
+      "status": "PASS",
+      "original_plugin": "1.1.2",
+      "candidate": "1.1.4 i18n-r10",
+      "file_transitions": 3,
+      "completed_candidate_native_saves": 36,
+      "completed_strict_raw_json_blocks": 252,
+      "frontend_resource_cases": 30,
+      "admin_editor_pairs": 2,
+      "translated_ui_pairs": 2,
+      "original_writer_negative_controls": {
+        "cases": 33,
+        "invalid_or_changed": 0,
+        "separate_from_r10_verdict": true
+      },
+      "original_baseline_passed": true,
+      "installed_files_exact": true,
+      "temporary_fixtures_absent": true,
+      "lab": ".local/wordpress-repro/compat-stable-20261110-c"
+    },
+    {
+      "wordpress": "7.0.8",
+      "php": "8.3.35",
+      "status": "PASS",
+      "original_plugin": "1.1.2",
+      "candidate": "1.1.4 i18n-r10",
+      "file_transitions": 3,
+      "completed_candidate_native_saves": 36,
+      "completed_strict_raw_json_blocks": 252,
+      "frontend_resource_cases": 30,
+      "admin_editor_pairs": 2,
+      "translated_ui_pairs": 2,
+      "original_writer_negative_controls": {
+        "cases": 33,
+        "invalid_or_changed": 0,
+        "separate_from_r10_verdict": true
+      },
+      "original_baseline_passed": true,
+      "installed_files_exact": true,
+      "temporary_fixtures_absent": true,
+      "lab": ".local/wordpress-repro/compat-stable-20261110-d"
+    },
+    {
+      "wordpress": "7.1.4",
+      "php": "8.3.35",
+      "status": "PASS",
+      "original_plugin": "1.1.2",
+      "candidate": "1.1.4 i18n-r10",
+      "file_transitions": 3,
+      "completed_candidate_native_saves": 36,
+      "completed_strict_raw_json_blocks": 252,
+      "frontend_resource_cases": 30,
+      "admin_editor_pairs": 2,
+      "translated_ui_pairs": 2,
+      "original_writer_negative_controls": {
+        "cases": 33,
+        "invalid_or_changed": 0,
+        "separate_from_r10_verdict": true
+      },
+      "original_baseline_passed": true,
+      "installed_files_exact": true,
+      "temporary_fixtures_absent": true,
+      "lab": ".local/wordpress-repro/compat-stable-20261110-d"
+    }
+  ],
+  "stable_counts": {
+    "core_references": 8,
+    "passed_references": 7,
+    "failed_references": 1,
+    "physical_transitions_with_equal_saved_state": 22,
+    "complete_native_candidate_saves": 252,
+    "complete_strict_raw_json_blocks": 1764,
+    "frontend_resource_cases": 210,
+    "admin_editor_pairs": 14,
+    "targeted_i18n_pairs": 14,
+    "installed_exact_copies": 8,
+    "candidate_backup_copies": 7
+  },
+  "beta_matrix": [
+    {
+      "wordpress": "7.2-beta5",
+      "php": "8.3.35",
+      "image": "wordpress:7.1.3-php8.3-apache@sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5"
+    },
+    {
+      "wordpress": "7.2-beta5",
+      "php": "8.5.12",
+      "image": "wordpress:7.1.3-php8.5-apache@sha256:69ae07c7644201fc3af59bafef8cece591399020964b4d4f998c8ed907205e1b"
+    }
+  ],
+  "beta_verdict": "PASS within the stated prerelease scope; Core-specific observations retained",
+  "beta_gates": {
+    "clean_installs": 2,
+    "public_1_1_2_update_rollback_reupdate_transitions": 6,
+    "editable_reserve_1_1_2_1_transitions": 6,
+    "strict_native_saves": 108,
+    "strict_json_blocks": 756,
+    "native_roles": [
+      "administrator",
+      "editor",
+      "author"
+    ],
+    "clean_and_updated_frontend_smoke_pairs": 8,
+    "asset_php_assertions": 34,
+    "asset_browser_cases_after_bootstrap": 180,
+    "admin_editor_browser_pairs": 4,
+    "real_gettext_i18n_browser_pairs": 4,
+    "plugin_check_each_php": {
+      "static": 29,
+      "runtime": 5,
+      "findings": 0
+    }
+  },
+  "beta_caveats": [
+    {
+      "id": "core-attribute-order",
+      "description": "Core KSES sorts the single custom-element opening-tag attributes on restricted-role save. Independent lexical proof confirms only order changed, with no duplicates, exact values, exact bytes outside the tag and exact JSON comments on both PHP versions. Repeated save is byte-idempotent; strict hard-caption corpus guards were not relaxed.",
+      "evidence": ".local/compatibility-20261110/review/beta5-final-role-save-proof.json"
+    },
+    {
+      "id": "core-webkit-prefetch",
+      "description": "Fast navigation away from Core login/dashboard triggers WebKit access-control page errors in the new Core asset-prefetch fallback even with the plugin deactivated. A/B: plugin OFF fast 19 / settled 0; ON fast 20 / settled 0. Waiting for load, scheduled idle and networkidle before leaving resolves the observed cancellation race. Full i18n rerun retains pageerror=[] and all original content/security assertions; no errors were filtered. This is a documented Core/WebKit fast-navigation limitation.",
+      "evidence": ".local/compatibility-20261110/wp72/diagnostics/webkit-editor-ready-results.json"
+    },
+    {
+      "id": "core-navigation-bootstrap",
+      "description": "First block-theme frontend requests create one Core wp_navigation fallback post on each PHP. Existing posts, options and plugin files remain byte-exact. The complete 180-case browser suite was repeated after bootstrap with strict whole-posts/options equality.",
+      "evidence": ".local/compatibility-20261110/wp72/diagnostics/core-navigation-bootstrap.json"
+    },
+    {
+      "id": "inherited-pcp-label",
+      "description": "The baseline raw summary retains a stale minimum skip label referencing PHP7.0.33. Actual minimum is PHP8.3.35; a separate actual Plugin Check execution covers all 29 static and 5 runtime checks with zero findings. The raw receipt was not rewritten.",
+      "evidence": ".local/wordpress-repro/compat-wp72-20261110-baseline-b/php83-plugin-check.json"
+    },
+    {
+      "id": "lab-diagnostics",
+      "description": "Restricted external WordPress.org update checks emit Core warnings. Pinned WP-CLI Colors.php emits a PHP8.5 null-array-offset deprecation. These raw diagnostics are retained and are not plugin findings."
+    }
+  ],
+  "legacy_1_1_1_matrix": [
+    {
+      "wordpress": "6.3.14",
+      "php": "7.0.33",
+      "transitions": 3,
+      "native_role_saves": 3,
+      "native_blocks_reopened": 6,
+      "native_roles": [
+        "admin",
+        "editor",
+        "author"
+      ]
+    },
+    {
+      "wordpress": "7.1.4",
+      "php": "8.3.35",
+      "transitions": 3,
+      "native_role_saves": 3,
+      "native_blocks_reopened": 6,
+      "native_roles": [
+        "admin",
+        "editor",
+        "author"
+      ]
+    }
+  ],
+  "legacy_synthetic_scope": "Existing stored snapshot, not pre-insertion intended escape bytes. Only missing timeZone empty sentinel may be added on candidate save; exact all other raw JSON/HTML and repeated-save idempotence.",
+  "blocking_findings": [
+    {
+      "id": "WP68-REST-METADATA-LOSS",
+      "priority": "P1",
+      "wordpress": "6.8.12",
+      "php": "8.3.35",
+      "role_observed": "administrator",
+      "affected_caption_cases": 10,
+      "caption_cases_total": 11,
+      "symptom": "Native save drops every serialized clock attribute except the subsequently recovered timeZone. HTML fallback conceals loss of lock and other JSON metadata.",
+      "cause": "Core REST pre-insert Block Hooks process malformed legacy caption JSON before the existing plugin repair.",
+      "independently_reproduced_byte_exact": true,
+      "diagnostic_database_unchanged": true,
+      "fix_applied": false,
+      "required_next_step": "Narrow early metadata repair before Core REST Block Hooks, retain existing late repair and security boundaries, build a new immutable candidate and repeat regression/acceptance including Core 6.8.12 all three roles.",
+      "proof": {
+        "path": ".local/compatibility-20261110/review/wp68-rest-pipeline-conclusion.json",
+        "sha256": "c91ddf70220b8d0a6938546b483183330f0b3cd68506f151304145239b34af70",
+        "bytes": 799
+      },
+      "raw_capture": {
+        "path": ".local/wordpress-repro/compat-stable-20261110-c/candidate-failure-native-capture.json",
+        "sha256": "4b72bd359b38cef8772d296f36933873a3fc396a8b8cae2e8f77137de01d56b6",
+        "bytes": 35281
+      }
+    }
+  ],
+  "receipts": {
+    "stable": {
+      "path": ".local/compatibility-20261110/stable/RESULT.json",
+      "sha256": "d0a5dae25017b3ffe82b4a64b50d5fe3268ee6860f570453a0eb73e53654f30b",
+      "bytes": 10232
+    },
+    "beta": {
+      "path": ".local/compatibility-20261110/wp72/RESULT.json",
+      "sha256": "c829bb2a2383d0327c38868e286e1aae85e32598458b509e2992ee94d5e5916f",
+      "bytes": 5570
+    },
+    "legacy": {
+      "path": ".local/compatibility-20261110/legacy-111/receipt.json",
+      "sha256": "91ce458a7c215758f04adb010c70a2e47c7a7f25154cc4b194b236f5fa223409",
+      "bytes": 1985
+    },
+    "independent_legacy_readback": {
+      "path": ".local/compatibility-20261110/review/legacy111-readback.json",
+      "sha256": "04ab1aee1a5090de8c25ce305e9ce13614dd952a8da0cf5fdb11cd461e0e03ba",
+      "bytes": 1189
+    },
+    "independent_core_archive_readback": {
+      "path": ".local/compatibility-20261110/review/core-archive-readback.json",
+      "sha256": "72b47830de11e487a7597dd86b46eba0b3fbb5f8990bc45f12682ad8c7490099",
+      "bytes": 1402
+    },
+    "independent_beta_role_save_proof": {
+      "path": ".local/compatibility-20261110/review/beta5-final-role-save-proof.json",
+      "sha256": "a5c05d2b69bf3c3e319eae0e8d5313998819055898c1febf8f286ac2bae4c8e0",
+      "bytes": 1741
+    },
+    "independent_final_review": {
+      "path": ".local/compatibility-20261110/review/REVIEW.md",
+      "sha256": "411d1ec19396b7bfdfccf68aee8b8a62a726aba98dc92cd2e71b66e1cbd86874",
+      "bytes": 4598
+    },
+    "independent_final_verdict": {
+      "path": ".local/compatibility-20261110/review/verdict.json",
+      "sha256": "0e61a2c449afee045ef7ad1089a3519fa844d6d85a7d9ad7937959f02568cd70",
+      "bytes": 2395
+    }
+  },
+  "raw_evidence_verification": {
+    "stable": {
+      "verified_records": 577,
+      "index": {
+        "path": ".local/compatibility-20261110/stable/evidence-hashes.json",
+        "sha256": "340fdfac8530d1e0bc4a932722beae7aab04aa8b73d36e746cd3c20c75f629c0",
+        "bytes": 91318
+      }
+    },
+    "wp72": {
+      "verified_records": 464,
+      "index": {
+        "path": ".local/compatibility-20261110/wp72/raw-evidence-sha256.json",
+        "sha256": "a34c676ffcb26ea618ae53933951b50bc1e4285dbd6338a2cd114f9f8da1d7b8",
+        "bytes": 103516
+      }
+    },
+    "legacy-111": {
+      "verified_records": 74,
+      "index": {
+        "path": ".local/compatibility-20261110/legacy-111/evidence-hashes.json",
+        "sha256": "21c4fe2f3728417a979f67a938c3dd6959c97015d45997a0aaa7d0024de40117",
+        "bytes": 14617
+      }
+    }
+  },
+  "tested_up_to": {
+    "value": "7.1",
+    "changed": false,
+    "current_prerelease": "7.2-beta5",
+    "actual_rc_available": false,
+    "rc1_scheduled": "2026-11-17",
+    "policy_url": "https://developer.wordpress.org/plugins/wordpress-org/plugin-developer-faq/#what-version-of-wordpress-should-the-tested-up-to-value-be",
+    "schedule_url": "https://make.wordpress.org/core/7-2/",
+    "future_requirement": "Actual 7.2 RC plus passing checks; numeric 7.2 header, new frozen ZIP/hash and acceptance. Readme-only changes do not require a plugin-version bump."
+  },
+  "preservation": {
+    "initial_inputs": {
+      "path": ".local/compatibility-20261110/preserved-inputs.json",
+      "sha256": "6daee7febd31e39f2139181ab25ebe1c382f0df43285a6755376791a45b60ec7",
+      "bytes": 4891
+    },
+    "plugin_runtime_archives_manifests_exact": true,
+    "active_status_change_only": "Former acceptance-evidence.json is preserved exactly as acceptance-i18n-r10.json; active status changes to COMPATIBILITY_BLOCKED.",
+    "frozen_original_i18n_report": {
+      "path": "docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-I18N-R10-2026-11-10.md",
+      "sha256": "bab589a8e7ed7846bb17ff0117f69eab9c16f25281babf4c4f173276faf77671",
+      "bytes": 8319
+    }
+  },
+  "all_new_labs_stopped": {
+    "path": ".local/compatibility-20261110/all-labs-stopped.json",
+    "sha256": "03d9ebf669cb71c6a572df8e1b27ed91d21692ba046e4770d3ee14d044d4bb28",
+    "bytes": 1908
+  },
+  "limitations": [
+    "Latest selected maintenance patches, not every patch or all Core/PHP combinations.",
+    "6.8.12 suite stops at actual loss; remaining cases are not represented as passing.",
+    "Stable resource matrix selects 15 of 45 fixtures; Beta uses 45.",
+    "Legacy 1.1.1 native fixtures use plain/Unicode captions and admin-created role-owned posts; candidate saves authenticate each role.",
+    "File rollback does not establish safe editing with old public writers or a remedy for the new 6.8 failure.",
+    "No public update delivery, arbitrary optimizer, multisite, native Safari/VoiceOver, language-pack completeness or final 7.2 claim."
+  ],
+  "push_performed": false,
+  "merge_performed": false,
+  "publication_performed": false,
+  "plugin_code_or_zip_changed": false
+}

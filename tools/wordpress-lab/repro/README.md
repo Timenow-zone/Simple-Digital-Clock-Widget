@@ -11,16 +11,7 @@ Use Python 3.9+, Docker with Compose v2, Node 22.12+ (Node 24 recommended), and 
 repository's locked npm installation. Provide the current exact ZIP identified by
 the [release report](../../../docs/releases/1.1.4/README.md) and `manifest.json`.
 The verifier also checks every source/ZIP file hash against that tracked manifest.
-The historical accepted 16-file r2 ZIP remains separate. Historical streaming-r8
-has 17 files and its own independent local acceptance. The current render-r9 ZIP
-has 16 files and its own [independent local acceptance](../../../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md); the r8 verdict does not transfer.
-Changed package bytes require a new review. A successful bootstrap is local evidence.
-Generated candidates remain local. The exact public 1.1.2 and accepted r8 ZIPs are tracked only as frozen rollback-test fixtures.
-The accepted r9 source is committed as `cc08df6` and reviewed in
-[PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).
-Hosted CI and remaining translation limits are recorded in the
-[7 November repository review](../../../docs/maintenance/repository-sync-2026-11-07.md).
-These later repository steps do not rebuild or publish the accepted ZIP.
+Historical r2/r8/r9 archives and their independent acceptance remain separate. The current rest-r14 ZIP has 16 files and its own release status; the [r9 verdict](../../../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) does not transfer. Generated candidates remain local. The exact public 1.1.2 and accepted r8 ZIPs are tracked only as frozen rollback-test fixtures. PR #18 and its hosted checks cover the prior committed r9 source, not these local changes. A successful bootstrap is local evidence, not publication.
 
 `lock.json` pins official download URLs, byte counts and SHA-256 values for Core
 6.3.14/7.1.4, public predecessor 1.1.2, Plugin Check 2.1.0 and WP-CLI. Docker bases
@@ -38,7 +29,7 @@ npm ci
 npx --no-install playwright install chromium webkit
 python3 tools/wordpress-lab/repro/run.py run \
   --id release-114-check-01 \
-  --candidate .local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip
+  --candidate .local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip
 ```
 
 For offline reuse, add `--cache /absolute/path/to/downloads`. All five expected

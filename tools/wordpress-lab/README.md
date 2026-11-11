@@ -126,7 +126,7 @@ For the current exact 1.1.4 archive, use the read-only manifest verifier first:
 ```bash
 set -euo pipefail
 python3 tools/wordpress-lab/verify-package.py \
-  --zip .local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip
+  --zip .local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip
 ```
 
 It requires the complete current 16-file allowlist and exact hashes. The older

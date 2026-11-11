@@ -66,6 +66,10 @@ jobs:
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
       - name: Verify WordPress package identity and release versions
         run: node --test tests/wordpress-package.test.mjs tests/wordpress-assets.test.mjs
+      - name: Verify WordPress translation coverage and output contexts
+        run: |
+          php -l tests/wordpress-i18n.php
+          node --test tests/wordpress-i18n.test.mjs
       - name: Check disposable WordPress lab safety boundaries
         run: |
           python3 tests/wordpress-lab.test.py
@@ -87,6 +91,10 @@ jobs:
           git ls-files -z -- 'wordpress/preview/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
       - name: Check WordPress 6.3 serialization compatibility
         run: node --test tests/wordpress-serialization.test.mjs
+      - name: Check WordPress REST metadata ordering and boundaries
+        run: |
+          php -l tests/wordpress-rest-metadata.php
+          node --test tests/wordpress-rest-metadata.test.mjs
       - name: Verify that checks leave tracked files unchanged
         run: git diff --exit-code
 

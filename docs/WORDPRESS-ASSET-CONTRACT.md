@@ -1,6 +1,6 @@
 # WordPress frontend asset contract
 
-Applies to the local WordPress 1.1.4 render-r9 candidate. It supersedes the
+Applies to WordPress 1.1.4 render-r9 and the rest-r14 candidate. It supersedes the
 streaming-r8 final-response discovery contract at the owner's explicit request.
 Historical r8 and rollback archives retain their original behavior and evidence.
 Shared widget 0.8.1 bytes are unchanged.
@@ -25,8 +25,12 @@ inline `display:block` host rule is printed in the head when available, otherwis
 at footer priority 19. Explicit rendering after Core's footer script action prints
 only pending resources immediately. Themes must call `wp_footer()` normally.
 
-There is no output buffer, stream lexer, global `render_block`, content/excerpt
-scanner, database lookup, response rewrite or client-side discovery loader.
+Automatic resource discovery uses no output buffer, stream lexer, global
+`render_block`, content/excerpt scanner, database lookup, frontend HTML response
+rewrite or client-side discovery loader. Separate compatibility code normalizes
+recognized legacy clock JSON when the default Core block parser consumes
+serialized content. Custom parsers are left unchanged; normalization does not
+enqueue frontend resources.
 Pages without an owned render get no clock runtime/layout handle registration or
 clock footer hook. The editor-script handle is still registered on `init`; this
 registration does not enqueue it or create a frontend request.
@@ -35,10 +39,15 @@ plugins; this is not a claim of zero PHP execution.
 
 ## Compatibility and explicit integrations
 
-Existing Simple Digital Clock blocks from 1.1.2 retain their name, saved markup,
-settings, captions and serialization. Block-based widget areas remain automatic.
-The reader/writer fixes and runtime are byte-identical to accepted r8. No database
-migration or automatic content rewrite is performed.
+Healthy saved blocks from 1.1.2 retain their block name, static markup and settings.
+Recognized malformed clock comments are normalized before default Core parsing;
+attributes already discarded by an earlier writer require a pre-loss backup or
+revision. Block-based widget areas remain automatic.
+The runtime remains byte-identical to accepted r8. The rest-r14 candidate adds
+bounded default-parser and REST metadata correction before Core parses legacy
+clock JSON and after raw-response serialization; that compatibility behavior is
+separate from frontend resource discovery. No database migration or background
+content rewrite is performed.
 
 Raw custom elements in Custom HTML/Text widgets, classic content, custom templates
 or third-party shortcode/dynamic output cannot be automatically discovered under

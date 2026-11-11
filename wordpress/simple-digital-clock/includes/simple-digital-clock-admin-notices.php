@@ -63,13 +63,13 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
             echo '<div class="notice notice-info is-dismissible" id="simple-digital-clock-notice">
             <div style="display:flex;padding:10px 0;">
                 <div style="margin-right:15px;">
-                    <img alt="',esc_attr('Simple Digital Clock 🕒', 'simple-digital-clock'),'" src="', esc_url(SDCW_URL.'assets/admin/img/icon.svg'),'" style="width:96px">
+                    <img alt="',esc_attr__('Simple Digital Clock 🕒', 'simple-digital-clock'),'" src="', esc_url(SDCW_URL.'assets/admin/img/icon.svg'),'" style="width:96px">
                 </div>
                 <div>
-                    <h2 style="margin:0;">🥰 ',esc_html('Please rate our free', 'simple-digital-clock'),' &laquo; ',esc_html('Simple Digital Clock 🕒', 'simple-digital-clock'),'&raquo;</h2>
+                    <h2 style="margin:0;">🥰 ',esc_html__('Please rate our free', 'simple-digital-clock'),' &laquo; ',esc_html__('Simple Digital Clock 🕒', 'simple-digital-clock'),'&raquo;</h2>
                     <hr>
-                    <p style="padding:0;margin:0;">',esc_html('Your valuable feedback will help us improve.', 'simple-digital-clock'),'<br>',esc_html('It will only take a few minutes', 'simple-digital-clock'),': <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank">',esc_html('Rate it now', 'simple-digital-clock'),'</a> 👍</p>
-                    <p style="padding:0;margin:0;"><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="',esc_url(SDCW_URL.'assets/admin/img/stars.png'),'" alt="',esc_attr('Rating', 'simple-digital-clock'),'"></a></p>
+                    <p style="padding:0;margin:0;">',esc_html__('Your valuable feedback will help us improve.', 'simple-digital-clock'),'<br>',esc_html__('It will only take a few minutes', 'simple-digital-clock'),': <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank">',esc_html__('Rate it now', 'simple-digital-clock'),'</a> 👍</p>
+                    <p style="padding:0;margin:0;"><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="',esc_url(SDCW_URL.'assets/admin/img/stars.png'),'" alt="',esc_attr__('Rating', 'simple-digital-clock'),'"></a></p>
                 </div>
             </div>
         </div>';

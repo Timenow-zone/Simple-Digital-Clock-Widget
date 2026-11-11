@@ -8,7 +8,7 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.4** | Render r9; independent local acceptance GO; unpublished |
+| WordPress source | **1.1.4** | REST r14; local acceptance passed; unpublished |
 | WordPress.org stable | **1.1.2** | Published plugin; bundles widget **0.7.0** |
 
 The metadata below describes the JavaScript widget artifact.
@@ -27,8 +27,8 @@ The metadata below describes the JavaScript widget artifact.
 Historical preparation and branch policy: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
 Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
 Local integration: [rollback CI checks and repository hygiene, 3 November 2026](docs/maintenance/local-ci-hygiene-2026-11-03.md).
-Current WordPress source: [local render candidate and compatibility boundaries](docs/releases/1.1.4/README.md).
-Current repository review: [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) targets `dev`; the [7 November synchronization review](docs/maintenance/repository-sync-2026-11-07.md) records hosted CI, examples, package identity and remaining translation limits.
+Current WordPress source: [local candidate and compatibility boundaries](docs/releases/1.1.4/README.md).
+Prior accepted render-r9 review: [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) targets `dev`; the [7 November synchronization review](docs/maintenance/repository-sync-2026-11-07.md) records hosted CI, examples, package identity and remaining translation limits.
 
 Widget **0.8.1** fixes refitting after a delayed local theme font loads when the Google stylesheet fails, and keeps localized time on one line after shrinking in WebKit. See the [regression and release record](docs/releases/0.8.1/README.md). The independently versioned WordPress 1.1.4 candidate bundles this exact artifact; the retained 1.1.3 ZIP keeps widget 0.7.1. The production demo/CDN serves this [published 0.8.1 artifact](docs/releases/0.8.1/PUBLICATION.md).
 
@@ -305,7 +305,7 @@ Core 6.3 caption serialization compatibility and complete bundled dependency
 notices and [conditional frontend assets](docs/WORDPRESS-ASSET-CONTRACT.md).
 Its exact ZIP, manifest, independent local acceptance and known rollback/data-loss
 boundaries are recorded in the [1.1.4 release report](docs/releases/1.1.4/README.md).
-The render r9 revision removes global PHP HTML analysis and enqueues resources only through the owned block render event or explicit integrations. Its [6 November independent acceptance](docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) passes all 13 mandatory local gates for the exact archive. Earlier accepted archives and their independent reports remain preserved separately; their verdicts do not transfer to new bytes. [Hosted Repository checks and Browser tests](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/42349694349) passed for accepted source commit `cc08df6`; [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18/checks) tracks later heads. Merge and WordPress.org publication remain deferred.
+The rest-r14 candidate retains the i18n corrections and protects clock metadata before REST Block Hooks processing and after raw-response serialization, including older editor payloads on modern Core. It also normalizes recognized old stored JSON before the default Core block parser consumes it, preserving native Block Hooks and sanitization. The [1.1.4 release report](docs/releases/1.1.4/README.md) records its exact identity and current acceptance status. `Tested up to` remains `7.1`; Beta testing alone does not permit a `7.2` declaration. The render-r9 frontend resource contract and shared widget 0.8.1 bytes remain unchanged. The retained [r9 acceptance](docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) and hosted checks cover their original revision. Merge, deployment and WordPress.org publication remain deferred.
 
 **WordPress.org currently distributes 1.1.2**, which bundles widget **0.7.0**.
 Install that public stable version from the

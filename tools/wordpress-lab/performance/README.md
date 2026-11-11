@@ -3,7 +3,7 @@
 This harness compares exact public 1.1.2, accepted buffered 1.1.4 r6 and the
 current manifest-bound 1.1.4 candidate in the same measurement series. Recorded
 [streaming-r8 measurements](../../../docs/releases/1.1.4/PERFORMANCE-STREAMING-R8.md)
-remain historical. Render-r9 has no new accepted TTFB or PHP-memory result.
+remain historical. Render-r9 and the subsequent i18n/REST candidates have no new accepted TTFB or PHP-memory result.
 The harness measures anonymous HTML requests, not browser rendering, JavaScript
 execution, Core Web Vitals or production network latency. It creates fresh,
 owned Docker projects/databases and stops only those projects. Existing preview
@@ -23,7 +23,7 @@ The three variants are:
 
 - `legacy`: exact public 1.1.2 files.
 - `buffered`: exact accepted r6 files, with its normal whole-response buffer.
-- `candidate`: exact current manifest-bound render-r9 candidate, with its normal owned-block render hooks and no global observer.
+- `candidate`: exact current manifest-bound rest-r14 candidate, with its normal owned-block render hooks and no global observer.
 
 There is no request-time override of any delivery hook. The earlier r6-versus-
 oracle benchmark remains preserved with its executed harness under
@@ -69,7 +69,7 @@ and [PHP peak memory](https://www.php.net/manual/en/function.memory-get-peak-usa
 set -euo pipefail
 python3 tools/wordpress-lab/performance/run.py \
   --id perf-YYYYMMDD-a \
-  --candidate .local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip \
+  --candidate .local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip \
   --buffered .local/packages/simple-digital-clock-1.1.4-final-output-r6-candidate.zip \
   --cache .local/wordpress-repro/final-output-r6-20261101-a/downloads
 ```
@@ -78,7 +78,7 @@ The current bootstrap verifies the current release manifest and rejects r8 as a
 substitute. Reproducing the historical r8 series requires the matching frozen
 harness, source and manifest from commit `1a60f9f`; do not overwrite current files
 or reuse an old run directory. Updating this example is not a new benchmark run
-and does not transfer historical timing results to r9.
+and does not transfer historical timing results to r9 or any later candidate.
 
 The default is 5 warmup and 45 measured requests per condition, plus 10 streaming
 probe requests per condition. New IDs are mandatory; old evidence is never

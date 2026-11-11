@@ -231,6 +231,89 @@ function SDCW_map_clock_blocks($content, $callback) {
     return $updated;
 }
 
+/**
+ * Normalize recognized legacy clock JSON before Core consumes block attributes.
+ * Core still performs parsing, Block Hooks processing and native sanitization.
+ */
+class SDCW_Clock_Block_Parser extends WP_Block_Parser {
+    public function parse($document) {
+        if (is_string($document)) {
+            $document = SDCW_map_clock_blocks($document, function () {});
+        }
+        return parent::parse($document);
+    }
+}
+
+function SDCW_clock_block_parser_class($parser_class) {
+    return 'WP_Block_Parser' === $parser_class ? 'SDCW_Clock_Block_Parser' : $parser_class;
+}
+add_filter('block_parser_class', 'SDCW_clock_block_parser_class', PHP_INT_MAX);
+
+/**
+ * Repair recognized clock JSON before Core's REST Block Hooks parse it.
+ * Prepared REST content is unslashed; leave HTML and native sanitization intact.
+ */
+function SDCW_preserve_rest_clock_post_metadata($prepared_post) {
+    if (!is_object($prepared_post) || is_wp_error($prepared_post) || !isset($prepared_post->post_content) || !is_string($prepared_post->post_content)) {
+        return $prepared_post;
+    }
+    $prepared_post->post_content = SDCW_map_clock_blocks($prepared_post->post_content, function () {});
+    return $prepared_post;
+}
+
+/**
+ * Protect prepared input before Core 7.0+ invokes Block Hooks directly.
+ * This hook also receives cached WP_Post response objects; leave those intact.
+ */
+function SDCW_preserve_rest_clock_block_hooks_metadata($post_types, $post_type, $prepared_post) {
+    if ($prepared_post instanceof stdClass) {
+        SDCW_preserve_rest_clock_post_metadata($prepared_post);
+    }
+    return $post_types;
+}
+add_filter('rest_block_hooks_post_types', 'SDCW_preserve_rest_clock_block_hooks_metadata', 9, 3);
+
+/**
+ * Repair clock JSON reserialized by Core's REST response Block Hooks.
+ * Only an existing raw field is eligible; Core controls its access and rendering.
+ */
+function SDCW_preserve_rest_clock_response_metadata($response) {
+    if (!($response instanceof WP_REST_Response)) {
+        return $response;
+    }
+    $data = $response->get_data();
+    if (!is_array($data) || !isset($data['content']) || !is_array($data['content']) || !isset($data['content']['raw']) || !is_string($data['content']['raw'])) {
+        return $response;
+    }
+    $updated = SDCW_map_clock_blocks($data['content']['raw'], function () {});
+    if ($updated !== $data['content']['raw']) {
+        $data['content']['raw'] = $updated;
+        $response->set_data($data);
+    }
+    return $response;
+}
+
+/**
+ * Include REST post types registered after the REST server has initialized.
+ */
+function SDCW_register_rest_clock_post_type($post_type, $post_type_object) {
+    if ($post_type_object->show_in_rest) {
+        add_filter('rest_pre_insert_' . $post_type, 'SDCW_preserve_rest_clock_post_metadata', 9);
+        add_filter('rest_prepare_' . $post_type, 'SDCW_preserve_rest_clock_response_metadata', 11);
+    }
+}
+add_action('registered_post_type', 'SDCW_register_rest_clock_post_type', 10, 2);
+
+/**
+ * Cover existing types, including Core types registered before plugin loading.
+ */
+function SDCW_register_rest_clock_post_types() {
+    foreach (get_post_types(array('show_in_rest' => true), 'objects') as $post_type => $post_type_object) {
+        SDCW_register_rest_clock_post_type($post_type, $post_type_object);
+    }
+}
+add_action('rest_api_init', 'SDCW_register_rest_clock_post_types');
+
 function SDCW_sync_clock_content_metadata($content) {
     return SDCW_map_clock_blocks($content, function ($attributes, $html) {
         $processor = new WP_HTML_Tag_Processor($html);
