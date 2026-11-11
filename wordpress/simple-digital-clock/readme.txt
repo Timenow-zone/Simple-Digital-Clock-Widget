@@ -199,5 +199,8 @@ To reproduce the production bundle:
 
 == Upgrade Notice ==
 
+= 1.1.6 =
+Improves conditional clock loading and supports dynamically inserted clocks without changing saved content. Regenerate full-page caches after updating.
+
 = 1.1.5 =
 Restores clocks in existing HTML, widget and template integrations. No content migration is required.

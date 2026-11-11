@@ -5,7 +5,7 @@ This repository contains two independently versioned components:
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
 | JavaScript widget | `../src/` | `../package.json` (`0.8.1`, published to the demo/CDN) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, local unpublished browser-loader candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, local unpublished RC1) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
@@ -49,7 +49,7 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The [local 1.1.6 candidate](../docs/releases/1.1.6/README.md) replaces the PHP
+The [local 1.1.6 RC1](../docs/releases/1.1.6/RC1.md) replaces the PHP
 output observer with an inline browser loader and inert JSON containing Core script markup.
 The main runtime is requested only after a clock appears in the document DOM.
 Clock-free pages retain the inline loader and an event-driven DOM observer;
@@ -61,8 +61,10 @@ The runtime remains the exact published 0.8.1. No database migration, shared
 widget build or CDN deployment is involved. The published 1.1.5 artifacts and
 historical acceptance records remain unchanged. The
 [final acceptance report](../docs/releases/1.1.6/FINAL-ACCEPTANCE-2026-11-12.md)
-records successful required Repository checks and Browser tests for the candidate
-payload source. The latest [draft PR #19 checks](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks)
+records successful required Repository checks and Browser tests for the r3 code.
+RC1 separately synchronizes the upgrade notice and regenerated POT, preserving
+all executable bytes; its exact ZIP and checks are in the RC1 record.
+The latest [draft PR #19 checks](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks)
 remain required for each new HEAD. Acceptance does not authorize publication.
 
 The last verified public release is **1.1.5**, published in **SVN r3797104**

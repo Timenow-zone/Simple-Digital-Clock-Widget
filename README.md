@@ -8,7 +8,7 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.6** | Browser-loader candidate; final checks pass; unpublished |
+| WordPress source | **1.1.6** | RC1; synchronized release metadata; unpublished |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
 The metadata below describes the JavaScript widget artifact.
@@ -27,7 +27,7 @@ The metadata below describes the JavaScript widget artifact.
 Historical preparation and branch policy: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
 Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
 Local integration: [rollback CI checks and repository hygiene, 3 November 2026](docs/maintenance/local-ci-hygiene-2026-11-03.md).
-Current WordPress source: [1.1.6 local candidate](docs/releases/1.1.6/README.md).
+Current WordPress source: [1.1.6 RC1](docs/releases/1.1.6/RC1.md).
 Last verified WordPress publication: [1.1.5 publication and verification record](docs/releases/1.1.5/PUBLICATION-2026-11-11.md).
 Prior accepted render-r9 review: [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) targets `dev`; the [7 November synchronization review](docs/maintenance/repository-sync-2026-11-07.md) records hosted CI, examples, package identity and remaining translation limits.
 
@@ -298,11 +298,12 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 
 ## WordPress
 
-The **Simple Digital Clock** WordPress source is **1.1.6**, an unpublished local
+The **Simple Digital Clock** WordPress source is **1.1.6 RC1**, an unpublished local
 candidate with the unchanged widget **0.8.1** under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
-The [candidate record](docs/releases/1.1.6/README.md) binds the package and tests.
+The [RC1 record](docs/releases/1.1.6/RC1.md) binds the package, synchronized release
+metadata and checks; prior r3 functional evidence is identified separately.
 
 A small inline browser loader activates Core-generated scripts held in inert JSON when a
 clock appears in the document DOM. Clock-free pages do not request the main

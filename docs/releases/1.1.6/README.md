@@ -1,4 +1,15 @@
-# WordPress 1.1.6 browser-loader candidate
+# WordPress 1.1.6 release candidate
+
+Current package: **RC1**, unpublished. See the [RC1 packaging record](RC1.md)
+and [current manifest](manifest.json). The ZIP is
+[`simple-digital-clock-1.1.6-rc1.zip`](../../../.local/packages/simple-digital-clock-1.1.6-rc1.zip),
+SHA-256 `1b29a26dc28431a40c475c9db6e7cee6056ef9731f298c6f672da7d200af1ecf`,
+71,397 bytes / 17 files. RC1 adds the missing 1.1.6 upgrade notice and refreshes
+the POT extraction timestamp; all 15 other files, including executable PHP/JS,
+are identical to the accepted r3 below. Prior r3 checks remain evidence for those
+unchanged files, not a claim that the new ZIP had already been tested.
+
+## Retained browser-r3 acceptance
 
 Status: **final candidate checks PASS**, revision `browser-r3`, 2026-11-12.
 Unpublished. No owner-site installation, WordPress.org publication, CDN deployment,
@@ -16,7 +27,7 @@ is retained separately from the expanded final checks.
 - SHA-256: `9c853236e957119a8aac4588d8565308f10fa0d430799ac4e3d1917ca6789137`.
 - Size: 71,358 bytes; 17 installable files.
 - Source base: `5b580f86fa5dacf886d6520b1ed9cd6594cc8cdb`, with candidate changes
-  identified by the containing Git revision. This is not a published release. The [manifest](manifest.json)
+  identified by the containing Git revision. This is not a published release. The [frozen r3 manifest](manifest-browser-r3.json)
   identifies every installed file independently of the working branch.
 - Shared widget: unchanged `0.8.1`, SHA-256
   `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`.
@@ -117,14 +128,14 @@ save/roles matrix, owner-site compatibility, production latency or concurrent
 load acceptance. There is a waiting DOM observer on clock-free pages, plus inline
 loader/JSON bytes, despite zero main-runtime downloads.
 
-## Reproduction and rollback
+## Current RC1 verification and rollback
 
 From the repository root, with the existing local dependencies:
 
 ```sh
 set -euo pipefail
 python3 tools/wordpress-lab/verify-package.py \
-  --zip .local/packages/simple-digital-clock-1.1.6-browser-r3-candidate.zip
+  --zip .local/packages/simple-digital-clock-1.1.6-rc1.zip
 node --test tests/wordpress-assets.test.mjs tests/wordpress-package.test.mjs \
   tests/wordpress-i18n.test.mjs tests/wordpress-rest-metadata.test.mjs \
   tests/wordpress-serialization.test.mjs

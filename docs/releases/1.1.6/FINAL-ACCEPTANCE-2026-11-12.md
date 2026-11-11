@@ -13,8 +13,8 @@ The PR is stacked on the unmerged 1.1.5 branch, PR #18. No history was rewritten
 
 - Archive: `simple-digital-clock-1.1.6-browser-r3-candidate.zip`.
 - SHA-256: `9c853236e957119a8aac4588d8565308f10fa0d430799ac4e3d1917ca6789137`.
-- Size: **71,358 bytes / 17 files**, all matching the ZIP, current package source,
-  source commit and [manifest](manifest.json).
+- Size: **71,358 bytes / 17 files**, all matching the ZIP, package source at the tested commit,
+  source commit and [frozen r3 manifest](manifest-browser-r3.json).
 - Unchanged runtime: **0.8.1**, SHA-256
   `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`.
 
