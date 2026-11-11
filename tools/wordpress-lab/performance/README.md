@@ -1,9 +1,17 @@
 # Local WordPress response performance comparison
 
-This harness compares exact public 1.1.2, accepted buffered 1.1.4 r6 and the
-current manifest-bound 1.1.4 candidate in the same measurement series. Recorded
+This historical harness compares exact public 1.1.2, accepted buffered 1.1.4 r6 and
+the manifest-bound 1.1.4 rest-r14 payload in the same measurement series. Recorded
 [streaming-r8 measurements](../../../docs/releases/1.1.4/PERFORMANCE-STREAMING-R8.md)
-remain historical. Render-r9 and the subsequent i18n/REST candidates have no new accepted TTFB or PHP-memory result.
+remain historical. This runner's original r9/i18n/REST preparation did not itself
+produce a new accepted TTFB or PHP-memory result.
+
+The unpublished [1.1.5 correction](../../../docs/releases/1.1.5/README.md) has a
+separate retained two-run comparison against public r14: 840 requests, unstable
+local latency tails and a repeatable PHP peak-memory increase for 2 MiB payloads.
+Those measurements do not come from this older three-variant harness. Run the
+commands below only with their matching frozen 1.1.4 source, manifest and tools;
+the current 1.1.5 source does not satisfy that historical bootstrap contract.
 The harness measures anonymous HTML requests, not browser rendering, JavaScript
 execution, Core Web Vitals or production network latency. It creates fresh,
 owned Docker projects/databases and stops only those projects. Existing preview
@@ -23,7 +31,7 @@ The three variants are:
 
 - `legacy`: exact public 1.1.2 files.
 - `buffered`: exact accepted r6 files, with its normal whole-response buffer.
-- `candidate`: exact current manifest-bound rest-r14 candidate, with its normal owned-block render hooks and no global observer.
+- `candidate`: exact historical manifest-bound rest-r14 payload, with its owned-block render hooks and no global observer.
 
 There is no request-time override of any delivery hook. The earlier r6-versus-
 oracle benchmark remains preserved with its executed harness under
@@ -74,7 +82,7 @@ python3 tools/wordpress-lab/performance/run.py \
   --cache .local/wordpress-repro/final-output-r6-20261101-a/downloads
 ```
 
-The current bootstrap verifies the current release manifest and rejects r8 as a
+The historical bootstrap verifies its matching 1.1.4 manifest and rejects r8 as a
 substitute. Reproducing the historical r8 series requires the matching frozen
 harness, source and manifest from commit `1a60f9f`; do not overwrite current files
 or reuse an old run directory. Updating this example is not a new benchmark run

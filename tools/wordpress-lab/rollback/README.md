@@ -29,8 +29,10 @@ in delivered output, with one runtime and one inline host-layout rule per
 document. The block editor loads preview resources before insertion. The
 [frozen streaming HTML contract](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/blob/1a60f9fe1bed3afa56f45bdac5c485a1ec4e7b06/docs/WORDPRESS-ASSET-CONTRACT.md),
 including its explicit parsing/integration limits, applies to the reserve and r8.
-The [current render-r9 contract](../../../docs/WORDPRESS-ASSET-CONTRACT.md) removes
-that observer; it does not retroactively change either immutable archive.
+The historical [1.1.4 render-r9/rest-r14 contract](../../../docs/releases/1.1.4/README.md)
+removed that observer. The [current 1.1.5 contract](../../../docs/WORDPRESS-ASSET-CONTRACT.md)
+restores server-side discovery with different runtime/layout scope. Neither
+contract retroactively changes these immutable rollback inputs or their verdicts.
 
 ## Build the accepted reserve
 
@@ -54,17 +56,17 @@ Required CI uses these same tracked, immutable inputs and verifies the exact res
 ## Historical native r8 writer cycle
 
 `run.py` preserves the original r8/editable-reserve/r8 cycle. Its final identity
-check is pinned to r8, while the shared bootstrap now verifies the current r9
-manifest. Do not run that historical cycle unchanged in the current checkout:
-neither substituting r9 nor passing r8 satisfies both checks. Reproducing it
+check is pinned to r8, while the shared bootstrap pins the later 1.1.4 manifest
+and the current source is 1.1.5. Do not run that historical cycle unchanged in the
+current checkout: substituting a newer artifact does not satisfy both checks. Reproducing it
 requires the matching frozen source, manifest and runner at commit `1a60f9f` in
 an isolated checkout, with new output paths and run IDs. Do not replace the
 current manifest or weaken its verification to make an old command run.
 
 The separate [render-r9 independent acceptance](../../../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md)
-records its actual r9/reserve/r9 cycle and retained reviewer adapters. The current
-[reproducible bootstrap](../repro/README.md) supports the manifest-bound r9
-original-file upgrade/rollback cycle; it does not claim to reproduce every
+records its actual r9/reserve/r9 cycle and retained reviewer adapters. The later
+[pinned bootstrap](../repro/README.md) documents its matching 1.1.4 original-file
+upgrade/rollback cycle; it does not provide the 1.1.5 matrix or reproduce every
 editor acceptance gate with this historical runner.
 
 For the historical run, the cache

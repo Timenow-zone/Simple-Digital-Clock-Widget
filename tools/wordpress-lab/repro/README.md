@@ -1,17 +1,24 @@
 # Reproducible local release lab
 
-This is a fresh, disposable bootstrap for the frozen WordPress **1.1.4** candidate.
+This is a historical disposable bootstrap for the frozen WordPress **1.1.4** payload.
 It needs no historical worktree, database, container, generated account or private
 orchestration script. The exact manifest-bound ZIP is an explicit release input, not a newly
 repacked substitute. Nothing is pushed, deployed or published by these commands.
 
+Execute the commands below only from matching frozen 1.1.4 source and manifest.
+The repository now contains unpublished 1.1.5 source; this runner still pins the
+1.1.4 manifest and predecessor contract. Do not weaken its verification or replace
+historical manifests to run it against a different release. The separate
+[1.1.5 evidence](../../../docs/releases/1.1.5/README.md) records that correction's
+actual native upgrade matrix and retained local harnesses.
+
 ## Inputs and setup
 
 Use Python 3.9+, Docker with Compose v2, Node 22.12+ (Node 24 recommended), and the
-repository's locked npm installation. Provide the current exact ZIP identified by
+repository's locked npm installation. Provide the frozen 1.1.4 ZIP identified by
 the [release report](../../../docs/releases/1.1.4/README.md) and `manifest.json`.
 The verifier also checks every source/ZIP file hash against that tracked manifest.
-Historical r2/r8/r9 archives and their independent acceptance remain separate. The current rest-r14 ZIP has 16 files and its own release status; the [r9 verdict](../../../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) does not transfer. Generated candidates remain local. The exact public 1.1.2 and accepted r8 ZIPs are tracked only as frozen rollback-test fixtures. PR #18 and its hosted checks cover the prior committed r9 source, not these local changes. A successful bootstrap is local evidence, not publication.
+Historical r2/r8/r9 archives and their independent acceptance remain separate. The published rest-r14 payload has 16 files and its own release record; the [r9 verdict](../../../docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) does not transfer. The exact public 1.1.2 and accepted r8 ZIPs are tracked only as frozen rollback-test fixtures. Hosted checks and publication status belong to their matching release records. A successful bootstrap is local evidence, not publication.
 
 `lock.json` pins official download URLs, byte counts and SHA-256 values for Core
 6.3.14/7.1.4, public predecessor 1.1.2, Plugin Check 2.1.0 and WP-CLI. Docker bases

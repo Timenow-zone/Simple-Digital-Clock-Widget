@@ -1,5 +1,12 @@
 # WordPress lab and compatibility acceptance
 
+The current source is the unpublished **1.1.5** correction, synchronized with the
+existing server-r2 artifact. See the [1.1.5 evidence and boundaries](../../docs/releases/1.1.5/README.md).
+The historical bootstrap and integration drivers below retain their pinned
+release contracts; they do not automatically become 1.1.5 acceptance tools when
+the plugin header changes. The [final prepublication snapshot](../../docs/releases/1.1.5/PREPUBLICATION-2026-11-11.md)
+records the prepared package separately.
+
 ## Editable rollback build and CI
 
 Use the [editable rollback workflow](rollback/README.md) for the separately
@@ -12,7 +19,7 @@ The same job checks both Python modules, the PHP update harness and browser-scri
 syntax. It does not start Docker or substitute for the recorded native WordPress
 acceptance. Accepted ZIPs and the accepted builder remain unchanged.
 
-## Fresh 1.1.4 upgrade/rollback bootstrap
+## Historical 1.1.4 upgrade/rollback bootstrap
 
 Use the [pinned disposable bootstrap](repro/README.md) for a new minimum/current
 Core and PHP lab. It creates fresh databases/accounts, verifies official downloads
@@ -20,6 +27,8 @@ and the exact manifest-bound ZIP, runs Core update/rollback/reupdate, role save 
 Plugin Check and installed frontend smoke, then stops its own project. It does
 not depend on the historical prepared environments described below or publish to
 WordPress.org. Its bounded scope and retained historical limitations are explicit.
+Run it with its matching frozen 1.1.4 source and manifest, not the current 1.1.5
+tree. Its hardcoded 1.1.4 inputs and older asset expectations remain unchanged.
 
 ## WordPress 1.1.3 regressions
 
@@ -121,18 +130,19 @@ It does not modify the source fixture or change the plugin's HTML allow-list.
 
 ## Patch and upgrade acceptance
 
-For the current exact 1.1.4 archive, use the read-only manifest verifier first:
+For the existing exact 1.1.5 server-r2 archive, use the read-only manifest verifier:
 
 ```bash
 set -euo pipefail
 python3 tools/wordpress-lab/verify-package.py \
-  --zip .local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip
+  --zip .local/compatibility-hotfix-20261111/candidate-r2/simple-digital-clock-1.1.5-server-r2.zip
 ```
 
-It requires the complete current 16-file allowlist and exact hashes. The older
+It requires the complete current 17-file allowlist and exact hashes. This command
+verifies the retained r2 archive; it does not build a new candidate. The older
 1.1.1→1.1.2 lab commands below remain historical investigation workflows; they do
-not reproduce or publish the full 1.1.4 acceptance matrix. See the
-[current release identity and boundaries](../../docs/releases/1.1.4/README.md).
+not reproduce or publish the 1.1.5 acceptance matrix. See the
+[current source identity and boundaries](../../docs/releases/1.1.5/README.md).
 
 `package.py` overwrites only the generated `.local/wordpress-lab/packages/candidate.zip` with the current plugin source.
 The public 1.1.1 ZIP is retained separately as `baseline.zip`; its SHA-256 is recorded in `wordpress/upstream-1.1.1.json`.

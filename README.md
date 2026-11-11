@@ -8,8 +8,8 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.4** | Accepted r14 files published in SVN r3796553 |
-| WordPress.org stable | **1.1.4** | Public downloads verified; bundles widget **0.8.1**; update API distribution pending |
+| WordPress source | **1.1.5** | Final package preserves accepted server-r2 bytes; unpublished; hosted checks tracked in PR #18 |
+| WordPress.org stable | **1.1.4** | Last verified public version at 2026-11-11 18:38:50 UTC; sampled update checks still returned 1.1.2 |
 
 The metadata below describes the JavaScript widget artifact.
 
@@ -27,7 +27,8 @@ The metadata below describes the JavaScript widget artifact.
 Historical preparation and branch policy: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
 Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
 Local integration: [rollback CI checks and repository hygiene, 3 November 2026](docs/maintenance/local-ci-hygiene-2026-11-03.md).
-Current WordPress release: [publication and verification record](docs/releases/1.1.4/PUBLICATION-2026-11-11.md).
+Current WordPress source: [local 1.1.5 synchronization and evidence](docs/releases/1.1.5/README.md).
+Last verified WordPress publication: [1.1.4 publication and verification record](docs/releases/1.1.4/PUBLICATION-2026-11-11.md).
 Prior accepted render-r9 review: [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) targets `dev`; the [7 November synchronization review](docs/maintenance/repository-sync-2026-11-07.md) records hosted CI, examples, package identity and remaining translation limits.
 
 Widget **0.8.1** fixes refitting after a delayed local theme font loads when the Google stylesheet fails, and keeps localized time on one line after shrinking in WebKit. See the [regression and release record](docs/releases/0.8.1/README.md). The independently versioned WordPress 1.1.4 release bundles this exact artifact; the retained 1.1.3 ZIP keeps widget 0.7.1. The production demo/CDN serves this [published 0.8.1 artifact](docs/releases/0.8.1/PUBLICATION.md).
@@ -289,7 +290,7 @@ Testing stack:
 * **Browsers**: `@web/test-runner` + Playwright (Chromium/Firefox/WebKit)
 * **Coverage**: `c8`
 
-The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main` and `dev`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [historical tooling preparation record](docs/maintenance/release-readiness-2026-10-31.md) for the original correction, and the [current WordPress release report](docs/releases/1.1.4/README.md) for artifact identity and acceptance status. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
+The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main` and `dev`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [historical tooling preparation record](docs/maintenance/release-readiness-2026-10-31.md) for the original correction, and the [local WordPress 1.1.5 report](docs/releases/1.1.5/README.md) for artifact identity and acceptance boundaries. Hosted validation for the new source is tracked on [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18), separately from local synchronization. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
 
 Run `node scripts/check-build.mjs` to build and minify in a temporary directory with the production CLI flags and require exact equality with the current versioned widget. It prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
 
@@ -298,23 +299,34 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 ## WordPress
 
 The **Simple Digital Clock** WordPress plugin source in this repository is
-**1.1.4**, with the exact widget **0.8.1** bundled under
+**1.1.5**, locally synchronized to the existing accepted server-r2 package, with
+the exact widget **0.8.1** bundled under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
-It requires **WordPress 6.3+ / PHP 7.0+**. The published package includes
-Core 6.3 caption serialization compatibility and complete bundled dependency
-notices and [conditional frontend assets](docs/WORDPRESS-ASSET-CONTRACT.md).
-Its exact ZIP, manifest, independent local acceptance and known rollback/data-loss
-boundaries are recorded in the [1.1.4 release report](docs/releases/1.1.4/README.md).
-The published rest-r14 package retains the i18n corrections and protects clock metadata before REST Block Hooks processing and after raw-response serialization, including older editor payloads on modern Core. It also normalizes recognized old stored JSON before the default Core block parser consumes it, preserving native Block Hooks and sanitization. The [finalization record](docs/releases/1.1.4/FINALIZATION-2026-11-11.md) binds the accepted ZIP to its source commit and successful required hosted checks. `Tested up to` remains `7.1`; Beta testing alone does not permit a `7.2` declaration. The render-r9 frontend resource contract and shared widget 0.8.1 bytes remain unchanged. The retained [r9 acceptance](docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) covers its original revision. GitHub merge, GitHub Release, a new production CDN deployment and owner-site installation remain deferred.
+It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
+The [1.1.5 report](docs/releases/1.1.5/README.md) binds the source to the existing
+17-file r2 ZIP and separates its local acceptance from the [source verification](docs/releases/1.1.5/SYNCHRONIZATION.md)
+and [final prepublication snapshot](docs/releases/1.1.5/PREPUBLICATION-2026-11-11.md).
+The final package is a byte-identical copy of r2. Required hosted checks are
+tracked for the current head of [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).
+WordPress.org publication and Git release operations are separate steps.
 
-**WordPress.org now provides 1.1.4**, which bundles widget **0.8.1**.
-Install that public stable version from the
-[official plugin directory](https://wordpress.org/plugins/simple-digital-clock/),
-or try its [guided Live Preview](https://wordpress.org/plugins/simple-digital-clock/?preview=1).
-The [publication record](docs/releases/1.1.4/PUBLICATION-2026-11-11.md) confirms SVN
-r3796553, the public catalog and both download ZIPs: all 16 files match accepted
-r14. The official update API returned **0/20 target offers** at
-**2026-11-11 15:06:24 UTC**; update availability is not yet confirmed.
+The correction restores the tested server-rendered raw HTML, widget, template,
+custom PHP shortcode and cached-fragment integrations. Runtime delivery follows observed
+server HTML; clock-free pages receive no plugin JavaScript. The r14 Gutenberg,
+legacy JSON, REST/KSES and i18n fixes remain. See the
+[frontend asset contract](docs/WORDPRESS-ASSET-CONTRACT.md) for owned-layout CSS,
+normal footer requirements and server cost. Compatibility is bounded: a first
+clock created only by client JavaScript needs its own runtime integration, and
+data already discarded by an old writer cannot be reconstructed automatically.
+
+**The last verified public version is 1.1.4**, published in SVN r3796553.
+At **2026-11-11 18:38:48–18:38:50 UTC**, plugin information and the public ZIP
+still advertised 1.1.4; all 16 downloaded files matched r14. Ten anonymous update
+checks for installed 1.1.2 returned `no_update: 1.1.2`. This is a dated sample,
+not a guarantee of current rollout state or proof that nobody installed 1.1.4.
+The [historical publication record](docs/releases/1.1.4/PUBLICATION-2026-11-11.md)
+and original r9/r14 acceptance remain unchanged. The public package has the raw
+integration regressions addressed by the unpublished 1.1.5 work.
 
 See [`wordpress/README.md`](wordpress/README.md) for source provenance, licensing,
 packaging and local testing. Widget builds and CDN deployments do not update the

@@ -5,7 +5,7 @@ Donate link: https://utctime.info/
 Tested up to: 7.1
 Requires at least: 6.3
 Requires PHP: 7.0
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Blocks: simple-digital-clock-block/widget-block
@@ -73,8 +73,13 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. Frontend JavaScript and the inline layout rule are queued when WordPress renders the Simple Digital Clock block, including block-based widget areas. The plugin does not scan or buffer page HTML. Custom templates, shortcodes or raw HTML integrations must call SDCW_enqueue_scripts() when they output a clock. If another plugin removes an already rendered clock later, its queued assets may remain. Multiple clocks share one runtime script and one inline layout rule per page; no external plugin stylesheet is loaded.
+Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. On the frontend, the runtime is delivered only when a clock is present in the server-rendered page HTML; clock-free pages receive no plugin script or browser loader. Multiple clocks share one runtime script. The inline layout rule remains scoped to rendered Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. No external plugin stylesheet is loaded. Server-side HTML observation adds PHP work, including on clock-free pages.
 
+= What about clocks created later by custom JavaScript? =
+Automatic delivery detects server-rendered clocks. An integration that creates its first clock only after page load must load the widget runtime itself. Calling SDCW_enqueue_scripts() without rendering a clock on the server does not bypass the zero-script rule.
+
+= What if my site caches complete HTML pages? =
+Regenerate full-page caches after updating so visitors receive the corrected HTML. Cached pages served without WordPress running are not rewritten by the plugin.
 == Screenshots ==
 
 1. screenshot-1.png – Front-end examples: multiple Simple Digital Clock blocks on one page, each with different locales, time zones, colors, and formats (AM/PM or 24-hour).
@@ -101,6 +106,11 @@ To reproduce the production bundle:
 * `npm run build`
 
 == Changelog ==
+
+= 1.1.5 =
+* Restore automatic clock rendering in existing raw HTML, Custom HTML/Text widgets, templates and shortcode integrations after updating from 1.1.2 or 1.1.4.
+* Load the runtime only for actual server-rendered clocks, including raw HTML and cached fragments, while preserving raw HTML layout.
+* Retain the Gutenberg, legacy metadata and localization fixes from 1.1.4 without changing stored content.
 
 = 1.1.4 =
 * Preserve clock JSON metadata when reading legacy blocks and across REST saves and responses, including captions ending in a backslash and block locks.
@@ -181,3 +191,8 @@ To reproduce the production bundle:
 == 🍩 Donations ==
 🕒 Sync Time: [UTC](https://utctime.info/)
 🗓️ Today's Date: [TodaysDateNow](https://todaysdatenow.com/)
+
+== Upgrade Notice ==
+
+= 1.1.5 =
+Restores clocks in existing HTML, widget and template integrations. No content migration is required.
