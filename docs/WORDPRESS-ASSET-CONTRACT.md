@@ -1,145 +1,83 @@
 # WordPress frontend asset contract
 
-This contract applies to the local WordPress 1.1.5 source synchronized to the
-existing server-r2 package. The [1.1.5 record](releases/1.1.5/README.md) identifies
-that exact artifact and its prepared final copy. Published 1.1.4 r14, the
-retained render-r9 candidate, historical streaming-r8 and rollback packages
-retain their original bytes and evidence. Shared widget 0.8.1 is unchanged.
+This contract describes the unpublished [1.1.6 candidate](releases/1.1.6/README.md).
+Published 1.1.5 and earlier ZIPs keep their original bytes and historical
+acceptance. Shared widget 0.8.1 remains byte-identical.
 
-## Server-rendered HTML and layout
+## Delivery and WordPress integration
 
-On supported ordinary server-rendered HTML, runtime delivery follows clock markup
-that reaches the PHP output observer. Rendering a block into a discarded string
-does not by itself trigger JavaScript delivery. Registration and server-side
-observation still execute on clock-free pages; zero scripts is not zero PHP cost.
+PHP registers the existing runtime handle early and retains normal editor loading.
+On ordinary frontend HTML, the footer emits non-executable JSON containing
+Core-generated script markup and a small inline browser loader. There is no global
+output buffer, HTML response parser or Content-Length rewriting. A private,
+short-lived buffer captures only the runtime's script markup from an isolated
+copy of WP_Scripts; it never consumes the page response or the live script queue.
+Registered dependency objects are cloned, pending items are reset and Core
+concatenation is disabled in that copy. Existing done dependencies stay done.
+Core still generates source URLs, loader filters, nonce attributes, translations
+and attached before/after/localized data. Arbitrary filters with global side
+effects are not promised to be isolated.
 
-| Delivered output / integration | Runtime requests/tags | External plugin CSS | Inline layout rules |
-| --- | --- | --- | --- |
-| No clock and no owned/explicit layout request | 0 | 0 | 0 |
-| One or more owned clock blocks | 1 | 0 | 1 |
-| Raw server-rendered clocks without the helper | 1 | 0 | 0 |
-| Explicit helper plus server-rendered clock markup | 1 | 0 | 1 |
-| Owned clock later suppressed or escaped; no remaining clock | 0 | 0 | May remain |
-| Clock appears only in another page, draft, inactive sidebar or inert example | 0 | 0 | 0 unless separately requested |
-| Helper called without server-rendered clock markup | 0 | 0 | 1 |
+The loader checks for connected HTML `timenow-zone-sdcw` elements in the ordinary
+document DOM. It observes added nodes for late inserts without polling, attribute
+observation or repeatedly scanning the whole document. One activation serially
+parses the small captured markup in a detached template and recreates the scripts, waits for each external script, and preserves
+attributes and attached-data order. Existing registered or recognizable pending
+runtime scripts are not duplicated. Detection stops when activation begins;
+completion or failure clears the load timeout and temporary listeners.
 
-The inline rule targets only
-`timenow-zone-sdcw.wp-block-simple-digital-clock-block-widget-block`. Owned block
-rendering or an explicit `SDCW_enqueue_scripts()` call requests it. Raw HTML keeps
-its existing inline/adjacent layout; runtime discovery does not add host-layout
-CSS to every raw clock. Repeated clocks share one runtime per document.
+| Frontend case | Main runtime requests | Other plugin work |
+| --- | ---: | --- |
+| No clocks, including inert/escaped examples | 0 | Inline loader and a waiting child-list observer |
+| One or multiple ordinary DOM clocks | 1 | Inline loader; observer stops on activation |
+| First clock inserted later into the document | 1 after insertion | No polling before insertion |
+| Owned render later discarded; no remaining clock | 0 | Loader; owned layout CSS may remain |
+| Explicit Core enqueue or dependency requesting the runtime | Core-owned | Browser loader is omitted |
+| Admin/feed/JSON/robots/trackback | No frontend loader | Editor preview remains separately scoped |
 
-Handles register on `init` at priority 9, allowing earlier Core inline/localized
-data attachment before footer delivery. Registration alone emits no scripts.
-The frontend helper requests registration/layout; it does not directly enqueue
-or print the runtime. Empty block editors remain an explicit preview exception.
+An explicit enqueue is an integration's request to use the runtime even before
+it creates a clock. Standard queued/done Core handles and dependency owners keep
+normal execution, including a late enqueue after the default footer printer; the loader does not attempt to delay them.
+`SDCW_enqueue_scripts()` continues to request frontend layout and registration,
+not an unconditional runtime download. To explicitly request registration before
+creating an element, an integration can enqueue the `simple-digital-clock` handle
+using standard WordPress hooks. No built-in shortcode is introduced.
 
-The output handler starts at the end of `template_redirect` for ordinary HTML.
-At footer priority 19, a private capture obtains the runtime markup generated by
-Core, including loader filters, nonces and attached data. The observer releases
-that markup once after an observed clock at a supported insertion point. Late
-chunks and repeated footers use the same state. Core's handle is marked done at
-capture even if a clock-free response never emits the capture; this is not a
-promise that every third-party dependency mutation or optimizer is compatible.
-Normal `wp_footer()` execution remains required.
+Inline layout remains limited to the owned block class. Raw inserts keep their
+original layout. Neither saved block markup nor stored metadata is rewritten.
 
-The observer retains lexical state rather than the entire response. Cleaned
-writes do not advance that state. It distinguishes the tested comments,
-attributes, templates, raw-text and SELECT/SCRIPT cases. It is not a browser HTML
-tree builder or sanitizer. Foreign SVG/MathML, arbitrary malformed-HTML repair,
-outer response transforms, removed handlers and unclosed raw text through EOF
-are outside a general compatibility guarantee.
+## Browser cost, failures and limits
 
-Non-HTML MIME types are excluded, including normal feed, robots, trackback and
-JSON paths. Unsent Content-Length is removed because insertion changes response
-length. An already-sent fixed length prevents insertion; this boundary does not
-claim to restore clocks in such a response. Previously delivered bytes and later
-outer transformations cannot be undone by this mechanism.
+A clock-free page contains inline JavaScript and inert JSON script metadata. Zero main
+runtime requests does not mean zero bytes, zero PHP work or zero browser work.
+The observer waits for DOM additions until the first clock or page destruction.
+The only timeout is a bounded 15-second load deadline after activation; failures
+emit a console error and `sdcw:load-error`, without automatic retries. A failed
+request may require a page reload after its cause is corrected.
 
-## Compatibility boundaries
+The supported capture format is direct executable script tags and whitespace or
+comments. Non-executable consent types, delayed `data-src` rewrites, nomodule
+scripts and arbitrary wrappers are rejected rather than bypassed. A strict CSP
+must authorize both the inline loader and runtime; Core nonce filters are retained.
+Existing runtime ownership is recognized by its Core ID or configured source URL.
+An unrelated differently named/versioned CDN loader or arbitrary optimizer may
+not be discoverable before it executes; this is not universal duplicate-loader
+coordination. Avoid independently loading multiple widget versions in one document.
 
-The tested server-rendered integrations include raw HTML, Core Custom HTML,
-HTML/Text widgets, template parts, theme hooks, dynamic blocks, cached fragments
-and custom PHP shortcode fixtures (the plugin provides no shortcode), plus
-owned-block and explicit-helper counterparts. This
-corrects the demonstrated raw-integration regression in published r14. Generated
-widget/template fixtures are distinct from native Gutenberg workflow evidence.
+The first clock created only after `customElements.whenDefined()` resolves needs
+explicit runtime loading. First clocks inside open or closed shadow roots are
+outside document-subtree discovery. Existing standalone script/CDN URLs retain
+their original registration behavior; this candidate does not rewrite them.
+These are declared limits, not a claim of universal legacy JavaScript compatibility.
 
-An explicit helper can still request the owned layout rule in a PHP integration:
+Normal theme footer execution is required. Full-page caches need regeneration
+after installation. Core tag filters and tested nonce/data cases do not certify
+all cache, consent or optimization plugins. Native Safari/assistive technology,
+multisite, production latency and concurrent load need separate acceptance.
 
-```php
-if ($show_clock) {
-    SDCW_enqueue_scripts();
-    echo '<timenow-zone-sdcw class="wp-block-simple-digital-clock-block-widget-block" second="true"></timenow-zone-sdcw>';
-}
-```
+## Evidence and release boundary
 
-**A first clock created only by client JavaScript needs separate runtime loading.**
-Calling the PHP helper without emitting a server clock does not override the
-zero-script rule. A constructed local browser counterexample loads the exact
-archived 1.1.2 runtime before adding a clock and confirms that it ticks; with no
-initial runtime, the late clock stays unregistered until the explicit runtime
-control is loaded. This proof uses injected archived bytes, not a WordPress HTTP
-update test. Universal compatibility with 1.1.2's former global runtime is false.
-
-Full-page caches served without executing PHP must be regenerated after updating.
-Fragment fixtures do not certify every cache or optimization plugin. Separate
-CDN/runtime insertion remains an integration responsibility; automatic delivery
-does not promise coordination with an independently inserted duplicate runtime.
-
-Healthy saved blocks retain their name, schema, markup and settings. The r14
-KSES/REST and default-parser corrections remain unchanged and do not trigger
-runtime discovery. Custom block parsers retain their existing handling. Metadata
-already discarded by an old writer requires a backup or revision; there is no
-database migration or background content rewrite.
-
-## Admin, editor and sanitization scope
-
-Ordinary admin pages receive no clock runtime/layout. Empty block editors retain
-first-insert previews, including iframe canvases; an iframe is a separate
-document. Notice resources remain scoped to a visible settings-page notice.
-The owned render hook excludes admin, feed, robots, trackback, JSON and automatic
-excerpt contexts. Normal KSES, REST authorization and unrelated blocks retain
-the existing r14 protections.
-
-Metadata failures retain fail-closed returns and the `sdcw_metadata_diagnostic`
-action with one fixed code, without caption text, post content or stack arguments.
-The plugin writes no unconditional PHP error log. Existing codes are
-`metadata_encoding_failed`, `legacy_caption_ambiguous`,
-`legacy_caption_unrecognized`, `metadata_parse_failed`,
-`caption_unicode_encoding_failed`, `caption_attribute_not_found`,
-`caption_reference_encoding_failed` and `caption_entities_normalization_failed`.
-
-The bounded argument-free `debug_backtrace` remains production security logic
-that separates the owned KSES callback from unrelated/nested sanitization. Its
-exact-line PHPCS exception remains; no broader check or severity is disabled.
-
-## Evidence and server cost
-
-The existing exact r2 acceptance includes 600 integration observations, 816 HTML
-resource/streaming checks and 80 non-HTML checks. The HTML set contains 352
-clock-free checks with zero runtime requests/tags and plugin inline scripts,
-and 464 clock-bearing checks with one runtime request/tag. Core nonce, loader,
-before/after/localized-data, late/split/CLEAN/final-output and deduplication cases
-are included. Frontend checks use Chromium and WebKit; native Gutenberg save
-workflows use Chromium, with frontend rechecks in both engines. The separate
-empty-editor gate uses both. See the release record for the four exact Core/PHP
-references, the narrower rollback scope and retained data-loss controls.
-
-Two preserved local performance runs compare r14 and r2 on Core 7.1.4/PHP 8.3.35.
-The p95 difference changes direction between runs and does not establish a
-stable production latency regression or guarantee. The memory increase repeats:
-2 MiB of text padding raises PHP peak used memory from 7.384 to 13.400 MiB
-(+6,308,240 bytes). Temporary chunk/string copies are a possible explanation,
-not separately profiled causation. Bounded observer state does not mean bounded
-request peak memory, zero buffering cost or zero server overhead.
-
-Routing/unit checks must test this contract, including strict JavaScript
-suppression separately from CSS. Historical tests that require no observer,
-lazy registration or nonworking unmanaged raw clocks describe r9/r14, not r2.
-Source/manifest and local checks are a separate phase from the existing ZIP's
-native acceptance. The final package preserves the exact accepted r2 bytes.
-Required hosted Repository checks/Browser tests are tracked on
-[PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18);
-the [prepublication snapshot](releases/1.1.5/PREPUBLICATION-2026-11-11.md)
-records the earlier local preparation.
+See the candidate record for exact ZIP identity, fresh PHP/browser/native checks
+and known limits. Historical 1.1.5 performance numbers do not characterize this
+new loader. Hosted Repository checks and Browser tests must pass for the eventual
+PR HEAD before release. Publication and owner-site installation are deferred.

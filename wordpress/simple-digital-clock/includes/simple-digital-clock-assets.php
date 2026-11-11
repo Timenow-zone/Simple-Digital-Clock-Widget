@@ -16,7 +16,7 @@ function SDCW_register_assets() {
         );
     }
     if (!wp_style_is('simple-digital-clock-block-style', 'registered')) {
-        wp_register_style('simple-digital-clock-block-style', false, array(), '1.1.5');
+        wp_register_style('simple-digital-clock-block-style', false, array(), '1.1.6');
         wp_add_inline_style(
             'simple-digital-clock-block-style',
             'timenow-zone-sdcw.wp-block-simple-digital-clock-block-widget-block{display:block;}'
@@ -25,7 +25,7 @@ function SDCW_register_assets() {
 }
 add_action('init', 'SDCW_register_assets', 9);
 
-/** Editors enqueue normally; frontend runtime delivery follows actual HTML. */
+/** Editors enqueue normally; frontend clocks are discovered in the browser. */
 function SDCW_enqueue_scripts() {
     SDCW_register_assets();
     if (is_admin()) {
@@ -58,10 +58,11 @@ function SDCW_print_clock_styles() {
     }
 }
 
-require_once SDCW_PATH . 'includes/simple-digital-clock-output.php';
-
-/** Only ordinary HTML may receive generated script tags. */
+/** Only ordinary frontend HTML may receive the compatibility loader. */
 function SDCW_is_frontend_html() {
+    if (is_admin() || is_feed() || is_robots() || is_trackback() || wp_is_json_request()) {
+        return false;
+    }
     foreach (headers_list() as $header) {
         if (0 === stripos($header, 'Content-Type:') && !preg_match('~^Content-Type:\s*text/html(?:\s*;|\s*$)~i', $header)) {
             return false;
@@ -70,66 +71,56 @@ function SDCW_is_frontend_html() {
     return true;
 }
 
-/** Insertion changes response length; never retain a stale fixed length. */
-function SDCW_prepare_frontend_length() {
-    foreach (headers_list() as $header) {
-        if (0 === stripos($header, 'Content-Length:')) {
-            if (headers_sent()) {
-                $GLOBALS['SDCW_frontend_output_blocker'] = 'content_length_already_sent';
-                return false;
-            }
-            header_remove('Content-Length');
-            break;
-        }
+/** Render only the requested Core handles, without consuming the live queue. */
+function SDCW_get_runtime_markup() {
+    $scripts = clone wp_scripts();
+    foreach ($scripts->registered as $handle => $dependency) {
+        $scripts->registered[$handle] = clone $dependency;
     }
-    return true;
+    $scripts->queue = array('simple-digital-clock');
+    $scripts->to_do = array();
+    $scripts->in_footer = array();
+    // Concatenation can invoke the global printer; this capture must stay local.
+    $scripts->do_concat = false;
+    ob_start();
+    try {
+        $scripts->do_items(array('simple-digital-clock'), 1);
+        return ob_get_contents();
+    } finally {
+        ob_end_clean();
+    }
 }
 
-/** Observe delivered chunks; cleaned writes never change lexical history. */
-function SDCW_filter_frontend_output($html, $phase) {
-    if (($phase & PHP_OUTPUT_HANDLER_CLEAN) || !empty($GLOBALS['SDCW_frontend_assets_delivered'])) {
-        return $html;
-    }
-    if (!SDCW_is_frontend_html() || !SDCW_prepare_frontend_length()) {
-        return $html;
-    }
-    $ready = isset($GLOBALS['SDCW_frontend_asset_markup']);
-    $position = $GLOBALS['SDCW_frontend_observer']->feed($html, $ready);
-    if ($ready && null !== $position) {
-        $GLOBALS['SDCW_frontend_assets_delivered'] = true;
-        return substr($html, 0, $position) . $GLOBALS['SDCW_frontend_asset_markup'] . substr($html, $position);
-    }
-    return $html;
-}
-
-function SDCW_start_frontend_output() {
-    if (is_admin() || is_feed() || is_robots() || is_trackback() || wp_is_json_request() ||
-        isset($GLOBALS['SDCW_frontend_observer']) || !SDCW_is_frontend_html()) {
-        return;
-    }
-    if (!SDCW_prepare_frontend_length()) {
-        return;
-    }
-    $GLOBALS['SDCW_frontend_observer'] = new SDCW_Clock_Output_Observer();
-    ob_start('SDCW_filter_frontend_output', 1);
-    add_action('wp_footer', 'SDCW_capture_frontend_assets', 19);
-}
-add_action('template_redirect', 'SDCW_start_frontend_output', PHP_INT_MAX);
-
-/** Capture only Core-generated runtime tags, not page content or layout CSS. */
-function SDCW_capture_frontend_assets() {
-    if (isset($GLOBALS['SDCW_frontend_asset_markup']) || !SDCW_is_frontend_html() ||
-        !SDCW_prepare_frontend_length()) {
+/** Emit inert JSON and one small loader; never buffer the page response. */
+function SDCW_print_frontend_loader() {
+    if (!empty($GLOBALS['SDCW_frontend_loader_printed']) || !SDCW_is_frontend_html()) {
         return;
     }
     SDCW_register_assets();
-    ob_start();
-    wp_scripts()->do_items(array('simple-digital-clock'), 1);
-    $GLOBALS['SDCW_frontend_asset_markup'] = ob_get_clean();
-    // A late owned render must still print its layout after footer priority 19.
-    add_action('wp_footer', 'SDCW_print_clock_styles', PHP_INT_MAX);
-    echo '<!-- -->';
+    // Explicit enqueues and dependencies retain normal Core execution semantics.
+    if (wp_script_is('simple-digital-clock', 'done')) {
+        return;
+    }
+    if (wp_script_is('simple-digital-clock', 'enqueued')) {
+        // A late integration may enqueue after Core's usual footer printer.
+        wp_print_scripts(array('simple-digital-clock'));
+        return;
+    }
+    $GLOBALS['SDCW_frontend_loader_printed'] = true;
+    $loader_path = SDCW_PATH . 'assets/public/js/simple-digital-clock-loader.js';
+    $loader = is_readable($loader_path) ? file_get_contents($loader_path) : false;
+    $markup = SDCW_get_runtime_markup();
+    $payload = wp_json_encode(array('markup' => $markup), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+    if (false === $loader || '' === trim($loader) || '' === trim($markup) || false === $payload) {
+        do_action('sdcw_asset_diagnostic', 'loader_unavailable');
+        wp_print_inline_script_tag('console.error("[Simple Digital Clock] Loader unavailable.");');
+        return;
+    }
+    // JSON keeps source attributes away from speculative HTML preload scanners.
+    wp_print_inline_script_tag($payload, array('id' => 'simple-digital-clock-runtime', 'type' => 'application/json'));
+    wp_print_inline_script_tag($loader, array('id' => 'simple-digital-clock-loader'));
 }
+add_action('wp_footer', 'SDCW_print_frontend_loader', PHP_INT_MAX);
 
 function SDCW_enqueue_editor_clock_assets() {
     $screen = function_exists('get_current_screen') ? get_current_screen() : null;

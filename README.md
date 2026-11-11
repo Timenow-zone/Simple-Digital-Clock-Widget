@@ -8,7 +8,7 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.5** | Published in SVN r3797104; exact server-r2 payload verified; update distribution pending in the recorded sample |
+| WordPress source | **1.1.6** | Local browser-loader candidate; unpublished; hosted checks pending |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
 The metadata below describes the JavaScript widget artifact.
@@ -27,7 +27,7 @@ The metadata below describes the JavaScript widget artifact.
 Historical preparation and branch policy: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
 Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
 Local integration: [rollback CI checks and repository hygiene, 3 November 2026](docs/maintenance/local-ci-hygiene-2026-11-03.md).
-Current WordPress source: [1.1.5 release and publication evidence](docs/releases/1.1.5/README.md).
+Current WordPress source: [1.1.6 local candidate](docs/releases/1.1.6/README.md).
 Last verified WordPress publication: [1.1.5 publication and verification record](docs/releases/1.1.5/PUBLICATION-2026-11-11.md).
 Prior accepted render-r9 review: [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) targets `dev`; the [7 November synchronization review](docs/maintenance/repository-sync-2026-11-07.md) records hosted CI, examples, package identity and remaining translation limits.
 
@@ -290,7 +290,7 @@ Testing stack:
 * **Browsers**: `@web/test-runner` + Playwright (Chromium/Firefox/WebKit)
 * **Coverage**: `c8`
 
-The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main` and `dev`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [historical tooling preparation record](docs/maintenance/release-readiness-2026-10-31.md) for the original correction, and the [local WordPress 1.1.5 report](docs/releases/1.1.5/README.md) for artifact identity and acceptance boundaries. Hosted validation for the new source is tracked on [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18), separately from local synchronization. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
+The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main` and `dev`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [historical tooling preparation record](docs/maintenance/release-readiness-2026-10-31.md) for the original correction, and the [local WordPress 1.1.6 report](docs/releases/1.1.6/README.md) for candidate identity and acceptance boundaries. Historical [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) checks do not certify this unpublished source. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
 
 Run `node scripts/check-build.mjs` to build and minify in a temporary directory with the production CLI flags and require exact equality with the current versioned widget. It prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
 
@@ -298,26 +298,22 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 
 ## WordPress
 
-The **Simple Digital Clock** WordPress plugin source in this repository is
-**1.1.5**, published with the exact accepted server-r2 payload, with
-the exact widget **0.8.1** bundled under
+The **Simple Digital Clock** WordPress source is **1.1.6**, an unpublished local
+candidate with the unchanged widget **0.8.1** under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
-The [1.1.5 report](docs/releases/1.1.5/README.md) binds the source to the existing
-17-file r2 ZIP and separates its local acceptance from the [source verification](docs/releases/1.1.5/SYNCHRONIZATION.md)
-and [final prepublication snapshot](docs/releases/1.1.5/PREPUBLICATION-2026-11-11.md).
-The final package is a byte-identical copy of r2. Required hosted checks are
-tracked for the current head of [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).
-WordPress.org publication is recorded separately from Git release operations.
+The [candidate record](docs/releases/1.1.6/README.md) binds the package and tests.
 
-The correction restores the tested server-rendered raw HTML, widget, template,
-custom PHP shortcode and cached-fragment integrations. Runtime delivery follows observed
-server HTML; clock-free pages receive no plugin JavaScript. The r14 Gutenberg,
-legacy JSON, REST/KSES and i18n fixes remain. See the
-[frontend asset contract](docs/WORDPRESS-ASSET-CONTRACT.md) for owned-layout CSS,
-normal footer requirements and server cost. Compatibility is bounded: a first
-clock created only by client JavaScript needs its own runtime integration, and
-data already discarded by an old writer cannot be reconstructed automatically.
+A small inline browser loader activates Core-generated scripts held in inert JSON when a
+clock appears in the document DOM. Clock-free pages do not request the main
+runtime. PHP no longer observes or parses the page response. Saved blocks, raw
+HTML and later DOM insertions retain the existing element name and settings.
+The Gutenberg, legacy JSON, REST/KSES and i18n behavior is unchanged.
+See the [asset contract](docs/WORDPRESS-ASSET-CONTRACT.md) for explicit Core
+loading, CSP, dynamic integration limits and the remaining browser overhead.
+Required hosted Repository checks and Browser tests must pass before release;
+local candidate checks do not certify a new GitHub HEAD. No publication,
+merge, site installation or CDN deployment is part of this preparation.
 
 **The last verified public version is 1.1.5**, published in SVN r3797104 at
 2026-11-11 21:17:24 UTC. Pinned trunk/tag exports and both official ZIPs match

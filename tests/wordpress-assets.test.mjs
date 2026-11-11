@@ -11,10 +11,10 @@ const result = spawnSync("php", ["tests/wordpress-assets.php", source], {
 const groups = {
   registration: "WordPress registers guarded handles before integration data without queueing resources",
   scope: "WordPress preserves excluded render bytes and skips non-frontend request contexts",
-  clockless: "Final clock-free output emits no plugin JavaScript, including discarded owned renders",
-  delivery: "Raw and owned clocks receive one Core runtime with separate CSS policies",
-  "core-data": "Core-generated nonce, inline data and localization survive capture only for emitted clocks",
-  streaming: "Late, split, cleaned and final output retain conditional delivery and deduplication",
+  capture: "Private Core capture isolates live queues and dependencies, including failure cleanup",
+  "core-data": "Core-generated nonce, inline data and localization survive inert JSON serialization",
+  loader: "Frontend pages receive one compatibility loader and no active external runtime tag",
+  explicit: "Explicit Core enqueues and dependencies print once without a competing loader",
   editor: "Empty block-editor preview retains assets without widening ordinary admin scope",
 };
 let report;

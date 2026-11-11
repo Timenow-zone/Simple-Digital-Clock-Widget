@@ -5,7 +5,7 @@ Donate link: https://utctime.info/
 Tested up to: 7.1
 Requires at least: 6.3
 Requires PHP: 7.0
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Blocks: simple-digital-clock-block/widget-block
@@ -73,10 +73,10 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. On the frontend, the runtime is delivered only when a clock is present in the server-rendered page HTML; clock-free pages receive no plugin script or browser loader. Multiple clocks share one runtime script. The inline layout rule remains scoped to rendered Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. No external plugin stylesheet is loaded. Server-side HTML observation adds PHP work, including on clock-free pages.
+Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. On the frontend, a small inline loader detects clocks in the browser. Pages without clocks do not request the main widget runtime. Multiple clocks share one runtime script. The inline layout rule remains scoped to rendered Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. No external plugin stylesheet is loaded. The plugin does not buffer or parse the page response. The loader observes added DOM elements until clocks need the runtime; it does not poll.
 
 = What about clocks created later by custom JavaScript? =
-Automatic delivery detects server-rendered clocks. An integration that creates its first clock only after page load must load the widget runtime itself. Calling SDCW_enqueue_scripts() without rendering a clock on the server does not bypass the zero-script rule.
+The loader also detects clocks added later to the ordinary document DOM. Integrations that wait for customElements.whenDefined() before creating their first clock, or put their first clock inside a shadow root, must explicitly enqueue the simple-digital-clock script handle. Calling SDCW_enqueue_scripts() on the frontend requests layout, not an unconditional runtime download.
 
 = What if my site caches complete HTML pages? =
 Regenerate full-page caches after updating so visitors receive the corrected HTML. Cached pages served without WordPress running are not rewritten by the plugin.
@@ -106,6 +106,11 @@ To reproduce the production bundle:
 * `npm run build`
 
 == Changelog ==
+
+= 1.1.6 =
+* Replace server-side HTML observation with a small inline loader that requests the unchanged widget 0.8.1 only when clocks appear in the document DOM.
+* Preserve saved blocks and raw HTML inserts, and detect clocks added dynamically after page load.
+* Preserve Core-generated script attributes and attached data; report failed or unsupported script activation without automatic retry loops.
 
 = 1.1.5 =
 * Restore automatic clock rendering in existing raw HTML, Custom HTML/Text widgets, templates and shortcode integrations after updating from 1.1.2 or 1.1.4.

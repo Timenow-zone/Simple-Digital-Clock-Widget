@@ -5,7 +5,7 @@ This repository contains two independently versioned components:
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
 | JavaScript widget | `../src/` | `../package.json` (`0.8.1`, published to the demo/CDN) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.5`, published in SVN r3797104; exact server-r2 payload) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, local unpublished browser-loader candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
@@ -49,11 +49,19 @@ An isolated Docker investigation lives in [`../tools/wordpress-lab/`](../tools/w
 Its runtime files, database data, logs, ZIPs, and credentials belong under ignored `.local/`.
 Do not run experiments against existing WordPress containers or user sites.
 
-The local 1.1.5 synchronization transfers the exact five-file delta from the existing accepted server-r2 package: the assets adapter, its added historical r8 observer, plugin header, readme and POT metadata. The other 12 files retain r14 bytes, including block serialization, the KSES/REST/default-parser protections, editor translations and notices. The runtime remains widget 0.8.1. There is no database migration, new widget build or replacement ZIP in this phase. The [1.1.5 report and manifest](../docs/releases/1.1.5/README.md) distinguish the frozen package acceptance from source verification, the exact final package, hosted checks and publication.
+The [local 1.1.6 candidate](../docs/releases/1.1.6/README.md) replaces the PHP
+output observer with an inline browser loader and inert JSON containing Core script markup.
+The main runtime is requested only after a clock appears in the document DOM.
+Clock-free pages retain the inline loader and an event-driven DOM observer;
+there is no polling or full-response PHP parsing. Existing saved blocks and raw
+HTML keep their settings and markup. See the
+[frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md).
 
-The [frontend asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md) restores the tested server-rendered raw integrations while requiring zero plugin JavaScript on supported clock-free HTML pages. Layout CSS remains scoped to owned blocks or explicit helper calls; it may remain after later suppression. A first clock created solely by client JavaScript needs separate runtime loading, even if PHP called `SDCW_enqueue_scripts()` without emitting a clock. A constructed browser counterexample confirms this difference from public 1.1.2's global loader; universal backwards compatibility is not claimed.
-
-`Tested up to: 7.1` remains unchanged; fresh 7.2 Beta 5 observations do not certify the final release. The r9/r14 ZIPs, their historical reports and rejected r10/r11/r12/r13 evidence remain preserved. The [r14 finalization record](../docs/releases/1.1.4/FINALIZATION-2026-11-11.md) and its hosted checks certify that earlier source only. Required Repository checks and Browser tests must pass for the current 1.1.5 head of [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18); the preceding local synchronization is recorded separately. WordPress.org publication of 1.1.5 is complete. Merge, GitHub Release, new CDN deployment and owner-site installation remain separate actions. Actual language-pack completeness is separate from gettext/POT coverage.
+The runtime remains the exact published 0.8.1. No database migration, shared
+widget build or CDN deployment is involved. The published 1.1.5 artifacts and
+historical acceptance records remain unchanged. Required Repository checks and
+Browser tests must pass on the eventual candidate PR; prior hosted runs do not
+certify these new bytes. Local preparation does not authorize publication.
 
 The last verified public release is **1.1.5**, published in **SVN r3797104**
 at 2026-11-11 21:17:24 UTC. Pinned trunk/tag exports and both official ZIPs
@@ -69,7 +77,7 @@ in this dated sample. See the [publication record](../docs/releases/1.1.5/PUBLIC
 
 At the initial publication in SVN r3772502, the public [WordPress.org 1.1.2 ZIP](https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip) had a different archive SHA-256 from the local candidate; all 15 extracted files matched the original manifest. The historical hashes remain in the publication report.
 
-The later readme-only publication r3772710 is synchronized separately: [report](../docs/releases/1.1.2/README-PUBLICATION.md), [recorded file hashes](../docs/releases/1.1.2/readme-publication-evidence.json). At that publication, the readme matched the approved bytes and the other 14 plugin files retained the original manifest hashes. These are historical 1.1.2 results; the current 1.1.5 source intentionally differs. Public-package results are saved snapshots, not fresh network checks. Original manifests and Git release tags remain unchanged. The r2 acceptance uses genuine Core upgrades with forced local package offers; it does not establish public update-API delivery of 1.1.5.
+The later readme-only publication r3772710 is synchronized separately: [report](../docs/releases/1.1.2/README-PUBLICATION.md), [recorded file hashes](../docs/releases/1.1.2/readme-publication-evidence.json). At that publication, the readme matched the approved bytes and the other 14 plugin files retained the original manifest hashes. These are historical 1.1.2 results; the current 1.1.6 source intentionally differs. Public-package results are saved snapshots, not fresh network checks. Original manifests and Git release tags remain unchanged. The r2 acceptance uses genuine Core upgrades with forced local package offers; it does not establish public update-API delivery of 1.1.5.
 
 The [final prepublication snapshot](../docs/releases/1.1.5/PREPUBLICATION-2026-11-11.md)
 uses `.local/packages/simple-digital-clock-1.1.5-final.zip`, a byte-identical copy
