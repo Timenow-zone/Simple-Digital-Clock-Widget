@@ -46,20 +46,56 @@
   ],
   "rollback_archive": ".local/packages/simple-digital-clock-1.1.5-final.zip",
   "rollback_archive_sha256": "2b6b2ed361115aec5dbddad058bf38411534c53705ccc5315b1fd6e756386aa2",
-  "acceptance": "LOCAL_TARGETED_ACCEPTANCE_PASS",
-  "acceptance_date": "2026-11-11",
+  "acceptance": "FINAL_CANDIDATE_CHECKS_PASS_WITH_DOCUMENTED_LIMITS",
+  "acceptance_date": "2026-11-12",
   "verification": {
-    "focused_repository_tests": { "passed": 44, "failed": 0, "skipped": 0, "included_php_assertions": 94 },
-    "loader_browser_tests": { "passed": 63, "failed": 0, "skipped": 0, "engines": ["Chromium", "Firefox", "WebKit"] },
-    "native_core_upgrades_from_115": { "passed": 2, "failed": 0 },
-    "native_browser_cases": { "passed": 40, "failed": 0, "engines": ["Chromium", "WebKit"] },
-    "native_core_checks": { "passed": 22, "failed": 0 },
+    "focused_repository_tests": {
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "included_php_assertions": 94
+    },
+    "loader_browser_tests": {
+      "passed": 63,
+      "failed": 0,
+      "skipped": 0,
+      "engines": [
+        "Chromium",
+        "Firefox",
+        "WebKit"
+      ]
+    },
+    "native_core_upgrades_from_115": {
+      "passed": 2,
+      "failed": 0
+    },
+    "native_browser_cases": {
+      "passed": 40,
+      "failed": 0,
+      "engines": [
+        "Chromium",
+        "WebKit"
+      ]
+    },
+    "native_core_checks": {
+      "passed": 22,
+      "failed": 0
+    },
     "native_pairs": [
-      { "wordpress": "6.3.14", "php": "7.0.33" },
-      { "wordpress": "7.1.4", "php": "8.3.35" }
+      {
+        "wordpress": "6.3.14",
+        "php": "7.0.33"
+      },
+      {
+        "wordpress": "7.1.4",
+        "php": "8.3.35"
+      }
     ],
     "installed_files_match_manifest": true,
-    "posts_and_postmeta_preserved_per_site": { "posts": 211, "postmeta": 42 },
+    "posts_and_postmeta_preserved_per_site": {
+      "posts": 211,
+      "postmeta": 42
+    },
     "stable_options_preserved": true,
     "test_containers_stopped": true,
     "owner_site_modified": false,
@@ -70,7 +106,7 @@
       "preservation": ".local/candidate-116-20261111/checks/preservation.json"
     }
   },
-  "hosted_checks": "NOT_RUN_FOR_THIS_CANDIDATE",
+  "hosted_checks": "PASS_FOR_PAYLOAD_SOURCE_COMMIT",
   "known_integration_limits": [
     "First clock created only after customElements.whenDefined requires explicit runtime enqueue",
     "First clocks inside shadow roots require explicit runtime enqueue",
@@ -87,5 +123,30 @@
       "sha256": "945e9e15c8470f814a84ebacd0d80b0614587c86460d571e8dfff5fb96d2ce80",
       "reason": "Unrelated malformed script URL aborted deduplication; r3 ignores unrelated invalid URLs and explicitly rejects invalid captured URLs"
     }
-  ]
+  ],
+  "source_commit": "289f32ed6ebd9b0ecf4165ca1b1ea5679b8ae3eb",
+  "hosted_source_run": {
+    "source_commit": "289f32ed6ebd9b0ecf4165ca1b1ea5679b8ae3eb",
+    "run_id": 43108850632,
+    "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43108850632",
+    "jobs": [
+      {
+        "name": "Browser tests",
+        "id": 130819211152,
+        "conclusion": "success"
+      },
+      {
+        "name": "Repository checks",
+        "id": 130819211741,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "final_acceptance": "docs/releases/1.1.6/acceptance-final.json",
+  "candidate_pull_request": {
+    "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19",
+    "draft": true,
+    "base": "codex/local-release-ci-hygiene",
+    "require_latest_head_checks": true
+  }
 }

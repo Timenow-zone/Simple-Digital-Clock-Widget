@@ -1,11 +1,14 @@
 # WordPress 1.1.6 browser-loader candidate
 
-Status: **local targeted acceptance PASS**, revision `browser-r3`, 2026-11-11.
+Status: **final candidate checks PASS**, revision `browser-r3`, 2026-11-12.
 Unpublished. No owner-site installation, WordPress.org publication, CDN deployment,
-GitHub release or merge was performed. The candidate is being prepared on a
-separate branch for a draft PR. Required hosted **Repository checks**
-and **Browser tests** remain pending for that PR HEAD; local acceptance does
-not replace those gates or authorize publication.
+GitHub release or merge was performed. The [final acceptance report](FINAL-ACCEPTANCE-2026-11-12.md)
+records complete repository/browser checks, fresh native editor/Plugin Check/POT
+results and successful required hosted checks for the payload source commit.
+[Draft PR #19](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19)
+must retain successful **Repository checks** and **Browser tests** on its latest
+HEAD. Acceptance does not authorize publication. The preparation evidence below
+is retained separately from the expanded final checks.
 
 ## Artifact identity
 
@@ -109,7 +112,7 @@ must permit both the loader and runtime. The native CSP fixture grants a hash to
 Core 6.3 legacy localized inline data and removes an unrelated nonce-less theme
 skip-link script; those accommodations are not plugin changes.
 
-This work does not establish native Safari, multisite, a fresh Gutenberg
+This work does not establish native Safari, multisite, a complete Gutenberg
 save/roles matrix, owner-site compatibility, production latency or concurrent
 load acceptance. There is a waiting DOM observer on clock-free pages, plus inline
 loader/JSON bytes, despite zero main-runtime downloads.

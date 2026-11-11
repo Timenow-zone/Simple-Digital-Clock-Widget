@@ -59,9 +59,11 @@ HTML keep their settings and markup. See the
 
 The runtime remains the exact published 0.8.1. No database migration, shared
 widget build or CDN deployment is involved. The published 1.1.5 artifacts and
-historical acceptance records remain unchanged. Required Repository checks and
-Browser tests must pass on the eventual candidate PR; prior hosted runs do not
-certify these new bytes. Local preparation does not authorize publication.
+historical acceptance records remain unchanged. The
+[final acceptance report](../docs/releases/1.1.6/FINAL-ACCEPTANCE-2026-11-12.md)
+records successful required Repository checks and Browser tests for the candidate
+payload source. The latest [draft PR #19 checks](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks)
+remain required for each new HEAD. Acceptance does not authorize publication.
 
 The last verified public release is **1.1.5**, published in **SVN r3797104**
 at 2026-11-11 21:17:24 UTC. Pinned trunk/tag exports and both official ZIPs

@@ -79,5 +79,7 @@ multisite, production latency and concurrent load need separate acceptance.
 
 See the candidate record for exact ZIP identity, fresh PHP/browser/native checks
 and known limits. Historical 1.1.5 performance numbers do not characterize this
-new loader. Hosted Repository checks and Browser tests must pass for the eventual
-PR HEAD before release. Publication and owner-site installation are deferred.
+new loader. The final candidate record links successful hosted checks for the
+payload source. Repository checks and Browser tests must also pass for the latest
+[candidate PR HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks)
+before release. Publication and owner-site installation are deferred.
