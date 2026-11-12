@@ -95,7 +95,11 @@ async function dismissGuides(page) {
   const guide = page.locator(".components-guide");
   await guide.waitFor({ state: "visible", timeout: 1500 }).catch(() => {});
   if (await guide.isVisible()) {
-    await guide.getByRole("button", { name: /^Close(?: dialog| modal)?$/ }).click();
+    await guide
+      .getByRole("button", {
+        name: /^(?:Close(?: dialog| modal)?|Get started|Dismiss this guide)$/,
+      })
+      .click();
     await guide.waitFor({ state: "hidden" });
     return;
   }
