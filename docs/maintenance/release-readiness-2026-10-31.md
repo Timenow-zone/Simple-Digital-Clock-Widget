@@ -1,5 +1,13 @@
 # Release readiness — 31 October 2026
 
+> Historical snapshot from 31 October 2026. The status, hashes, findings and
+> commands below describe that preparation run, not the current candidate. See
+> the [current release report](../releases/1.1.4/README.md) for the active exact ZIP.
+> The relative `manifest.json` link below now resolves to a newer candidate;
+> the historical compatibility-r2 hash remains the identifier for this record.
+> Do not run the old archive-verification example against the current manifest.
+> Earlier independent GO and benchmark results do not transfer to render-r9.
+
 This is the current preparation record. Earlier maintenance, release and preview
 reports are historical snapshots, not claims that they were all rerun today.
 WordPress.org publication remains deferred. Widget **0.8.1** and WordPress

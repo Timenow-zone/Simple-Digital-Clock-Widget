@@ -68,9 +68,11 @@ test("WordPress header, stable tag, POT, source reference and script cache versi
   const pot = await readFile(path.join(plugin, "languages/simple-digital-clock.pot"), "utf8");
   assert.equal(readme.match(/^Stable tag:\s*(\S+)/m)?.[1], version);
   assert.ok(pot.includes(`Project-Id-Version: Simple Digital Clock 🕒 ${version}\\n`));
-  const enqueue = header.match(/function SDCW_enqueue_scripts\(\)\s*\{([\s\S]*?)\n\}/)?.[1];
+  const assets = await readFile(path.join(plugin, 'includes/simple-digital-clock-assets.php'), 'utf8');
+  const enqueue = assets.match(/function SDCW_register_assets\(\)\s*\{([\s\S]*?)\n\}/)?.[1];
   assert.ok(enqueue, "The widget script registration must be identifiable");
-  assert.equal(enqueue.match(/wp_register_script\(\s*'simple-digital-clock'\s*,[\s\S]*?\[\]\s*,\s*'([^']+)'/)?.[1], manifest.widget);
+  assert.equal(enqueue.match(/wp_register_script\(\s*'simple-digital-clock'\s*,[\s\S]*?array\(\)\s*,\s*'([^']+)'/)?.[1], manifest.widget);
+  assert.equal(assets.match(/wp_register_style\('simple-digital-clock-block-style', false, array\(\), '([^']+)'\)/)?.[1], version, 'Inline-only style handle retains the explicit plugin version');
   assert.ok(readme.includes(`Bundled upstream version: ${manifest.widget}`));
   assert.match(manifest.widget_source_commit, /^[a-f0-9]{40}$/);
   assert.ok(readme.includes(`/tree/${manifest.widget_source_commit}`), "Source documentation must identify the accepted commit");

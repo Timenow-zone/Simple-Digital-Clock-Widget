@@ -2,6 +2,9 @@
 // Controlled metadata contracts; actual Core/KSES behavior is tested in WordPress.
 define('ABSPATH', __DIR__);
 function add_filter() {}
+function add_action() {}
+function do_action() {}
+class WP_Block_Parser {}
 function wp_json_encode($value, $flags = 0) { return json_encode($value, $flags); }
 function wp_kses_normalize_entities($value) {
     return preg_match('/^&(?:amp|lt|gt|quot|copy);$/', $value) ? $value : '&amp;' . substr($value, 1);

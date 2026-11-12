@@ -69,7 +69,7 @@ add_filter('wp_kses_allowed_html', 'SDCW_allow_clock_post_html', 10, 2);
 function SDCW_serialize_clock_block_attributes($attributes) {
     $encoded = wp_json_encode($attributes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     if (!is_string($encoded)) {
-        error_log('Simple Digital Clock: unable to encode block metadata; original content retained.');
+        do_action('sdcw_metadata_diagnostic', 'metadata_encoding_failed');
         return null;
     }
     return strtr($encoded, array(
@@ -144,7 +144,7 @@ function SDCW_recover_clock_caption_json($json, $html) {
     }
     // Malformed untrusted input must not cause unbounded repeated JSON decoding.
     if ($count > 32) {
-        error_log('Simple Digital Clock: ambiguous legacy caption metadata; original content retained.');
+        do_action('sdcw_metadata_diagnostic', 'legacy_caption_ambiguous');
         return null;
     }
     $recovered = array();
@@ -183,7 +183,7 @@ function SDCW_recover_clock_caption_json($json, $html) {
     if (1 === count($recovered)) {
         return $recovered[0];
     }
-    error_log('Simple Digital Clock: unrecognized legacy caption metadata; original content retained.');
+    do_action('sdcw_metadata_diagnostic', 'legacy_caption_unrecognized');
     return null;
 }
 
@@ -225,11 +225,94 @@ function SDCW_map_clock_blocks($content, $callback) {
         return $match[1] . $after . ' -->' . $match[4] . $match[5];
     }, $content);
     if (null === $updated) {
-        error_log('Simple Digital Clock: unable to parse block metadata; original content retained.');
+        do_action('sdcw_metadata_diagnostic', 'metadata_parse_failed');
         return $content;
     }
     return $updated;
 }
+
+/**
+ * Normalize recognized legacy clock JSON before Core consumes block attributes.
+ * Core still performs parsing, Block Hooks processing and native sanitization.
+ */
+class SDCW_Clock_Block_Parser extends WP_Block_Parser {
+    public function parse($document) {
+        if (is_string($document)) {
+            $document = SDCW_map_clock_blocks($document, function () {});
+        }
+        return parent::parse($document);
+    }
+}
+
+function SDCW_clock_block_parser_class($parser_class) {
+    return 'WP_Block_Parser' === $parser_class ? 'SDCW_Clock_Block_Parser' : $parser_class;
+}
+add_filter('block_parser_class', 'SDCW_clock_block_parser_class', PHP_INT_MAX);
+
+/**
+ * Repair recognized clock JSON before Core's REST Block Hooks parse it.
+ * Prepared REST content is unslashed; leave HTML and native sanitization intact.
+ */
+function SDCW_preserve_rest_clock_post_metadata($prepared_post) {
+    if (!is_object($prepared_post) || is_wp_error($prepared_post) || !isset($prepared_post->post_content) || !is_string($prepared_post->post_content)) {
+        return $prepared_post;
+    }
+    $prepared_post->post_content = SDCW_map_clock_blocks($prepared_post->post_content, function () {});
+    return $prepared_post;
+}
+
+/**
+ * Protect prepared input before Core 7.0+ invokes Block Hooks directly.
+ * This hook also receives cached WP_Post response objects; leave those intact.
+ */
+function SDCW_preserve_rest_clock_block_hooks_metadata($post_types, $post_type, $prepared_post) {
+    if ($prepared_post instanceof stdClass) {
+        SDCW_preserve_rest_clock_post_metadata($prepared_post);
+    }
+    return $post_types;
+}
+add_filter('rest_block_hooks_post_types', 'SDCW_preserve_rest_clock_block_hooks_metadata', 9, 3);
+
+/**
+ * Repair clock JSON reserialized by Core's REST response Block Hooks.
+ * Only an existing raw field is eligible; Core controls its access and rendering.
+ */
+function SDCW_preserve_rest_clock_response_metadata($response) {
+    if (!($response instanceof WP_REST_Response)) {
+        return $response;
+    }
+    $data = $response->get_data();
+    if (!is_array($data) || !isset($data['content']) || !is_array($data['content']) || !isset($data['content']['raw']) || !is_string($data['content']['raw'])) {
+        return $response;
+    }
+    $updated = SDCW_map_clock_blocks($data['content']['raw'], function () {});
+    if ($updated !== $data['content']['raw']) {
+        $data['content']['raw'] = $updated;
+        $response->set_data($data);
+    }
+    return $response;
+}
+
+/**
+ * Include REST post types registered after the REST server has initialized.
+ */
+function SDCW_register_rest_clock_post_type($post_type, $post_type_object) {
+    if ($post_type_object->show_in_rest) {
+        add_filter('rest_pre_insert_' . $post_type, 'SDCW_preserve_rest_clock_post_metadata', 9);
+        add_filter('rest_prepare_' . $post_type, 'SDCW_preserve_rest_clock_response_metadata', 11);
+    }
+}
+add_action('registered_post_type', 'SDCW_register_rest_clock_post_type', 10, 2);
+
+/**
+ * Cover existing types, including Core types registered before plugin loading.
+ */
+function SDCW_register_rest_clock_post_types() {
+    foreach (get_post_types(array('show_in_rest' => true), 'objects') as $post_type => $post_type_object) {
+        SDCW_register_rest_clock_post_type($post_type, $post_type_object);
+    }
+}
+add_action('rest_api_init', 'SDCW_register_rest_clock_post_types');
 
 function SDCW_sync_clock_content_metadata($content) {
     return SDCW_map_clock_blocks($content, function ($attributes, $html) {
@@ -278,7 +361,7 @@ class SDCW_Clock_HTML_Tag_Processor extends WP_HTML_Tag_Processor {
         $this->rewrite_caption_source(function ($raw_attribute) {
             $encoded = preg_replace_callback('/[\r\x{a0}-\x{10ffff}]/u', 'SDCW_caption_character_reference', $raw_attribute);
             if (null === $encoded) {
-                error_log('Simple Digital Clock: unable to encode caption Unicode; original attribute retained.');
+                do_action('sdcw_metadata_diagnostic', 'caption_unicode_encoding_failed');
                 return $raw_attribute;
             }
             return $encoded;
@@ -291,7 +374,7 @@ class SDCW_Clock_HTML_Tag_Processor extends WP_HTML_Tag_Processor {
         }
         // Let the native lexer locate the current attribute's exact source span.
         if (!parent::set_attribute('caption', '')) {
-            error_log('Simple Digital Clock: unable to locate caption attribute.');
+            do_action('sdcw_metadata_diagnostic', 'caption_attribute_not_found');
             return;
         }
         $update = $this->lexical_updates['caption'];
@@ -357,13 +440,13 @@ function SDCW_encode_clock_caption_entities($raw_attribute) {
         // Numeric references preserve old database charsets and unquoted syntax.
         $numeric = preg_replace_callback('/./us', 'SDCW_caption_character_reference', $decoded);
         if (null === $numeric) {
-            error_log('Simple Digital Clock: unable to encode a caption character reference.');
+            do_action('sdcw_metadata_diagnostic', 'caption_reference_encoding_failed');
             return $match[0];
         }
         return $numeric;
     }, $protected);
     if (null === $updated) {
-        error_log('Simple Digital Clock: unable to normalize caption entities; original attribute retained.');
+        do_action('sdcw_metadata_diagnostic', 'caption_entities_normalization_failed');
         return $raw_attribute;
     }
     return $updated;
@@ -453,6 +536,8 @@ function SDCW_is_owned_clock_kses_pass($filter) {
     if ('sdcw-sanitize' !== $filter && !isset($GLOBALS['wp_filter'][$filter])) {
         return false;
     }
+    // Production caller identity is required to leave unrelated KSES passes untouched.
+    // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace -- Bounded argument-free security boundary, not debug output.
     $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT, 12);
     foreach ($trace as $index => $call) {
         if (isset($call['function']) && 'wp_kses' === $call['function']) {

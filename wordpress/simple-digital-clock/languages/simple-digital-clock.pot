@@ -2,20 +2,22 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Simple Digital Clock 🕒 1.1.4\n"
+"Project-Id-Version: Simple Digital Clock 🕒 1.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-digital-clock\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-28T22:34:24+00:00\n"
+"POT-Creation-Date: 2026-11-10T20:12:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: Manual sync (original WP-CLI 2.12.0; xgettext 1.0 audit)\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: simple-digital-clock\n"
 
 #. Plugin Name of the plugin
 #: widget_init.php
+#: includes/simple-digital-clock-admin-notices.php:66
+#: includes/simple-digital-clock-admin-notices.php:69
 #: includes/simple-digital-clock-admin-settings.php:12
 msgid "Simple Digital Clock 🕒"
 msgstr ""
@@ -36,6 +38,26 @@ msgstr ""
 msgid "UTCTime.info"
 msgstr ""
 
+#: includes/simple-digital-clock-admin-notices.php:69
+msgid "Please rate our free"
+msgstr ""
+
+#: includes/simple-digital-clock-admin-notices.php:71
+msgid "Your valuable feedback will help us improve."
+msgstr ""
+
+#: includes/simple-digital-clock-admin-notices.php:71
+msgid "It will only take a few minutes"
+msgstr ""
+
+#: includes/simple-digital-clock-admin-notices.php:71
+msgid "Rate it now"
+msgstr ""
+
+#: includes/simple-digital-clock-admin-notices.php:72
+msgid "Rating"
+msgstr ""
+
 #: includes/simple-digital-clock-admin-settings.php:14
 #: includes/simple-digital-clock-admin-settings.php:18
 msgid "Help"
@@ -53,186 +75,203 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: widget_init.php:59
+#: widget_init.php:62
 msgid "Settings"
 msgstr ""
 
-#: widget_init.php:98
+#: widget_init.php:74
+msgid "Settings Admin"
+msgstr ""
+
+#: widget_init.php:75
+#: widget_init.php:102
 msgid "Simple Digital Clock"
 msgstr ""
 
-#: widget_init.php:99
+#: widget_init.php:103
 msgid "A simple block for displaying Digital Clock."
 msgstr ""
 
-#: widget_init.php:100
+#: widget_init.php:104
 msgid "Container"
 msgstr ""
 
-#: widget_init.php:101
+#: widget_init.php:105
 msgid "Caption"
 msgstr ""
 
-#: widget_init.php:102
+#: widget_init.php:106
 msgid "Width"
 msgstr ""
 
-#: widget_init.php:103
+#: widget_init.php:107
 msgid "Full Size"
 msgstr ""
 
-#: widget_init.php:104
+#: widget_init.php:108
 msgid "Rounded"
 msgstr ""
 
-#: widget_init.php:105
+#: widget_init.php:109
 msgid "Border"
 msgstr ""
 
-#: widget_init.php:106
+#: widget_init.php:110
 msgid "Text Align"
 msgstr ""
 
-#: widget_init.php:107
+#: widget_init.php:111
 msgid "Select the alignment of the text within the container."
 msgstr ""
 
-#: widget_init.php:108
+#: widget_init.php:112
 msgid "Shadow"
 msgstr ""
 
-#: widget_init.php:109
+#: widget_init.php:113
 msgid "Background Color"
 msgstr ""
 
-#: widget_init.php:110
+#: widget_init.php:114
 msgid "Color"
 msgstr ""
 
-#: widget_init.php:111
+#: widget_init.php:115
 msgid "Gradient"
 msgstr ""
 
-#: widget_init.php:112
+#: widget_init.php:116
 msgid "Options"
 msgstr ""
 
-#: widget_init.php:113
+#: widget_init.php:117
 msgid "Time Zone"
 msgstr ""
 
-#: widget_init.php:114
-msgid "Display"
-msgstr ""
-
-#: widget_init.php:115
-msgid "Google Fonts"
-msgstr ""
-
-#: widget_init.php:116
-msgid "Google fonts are loading from the CDN, they are not included in the plugin."
-msgstr ""
-
-#: widget_init.php:117
-msgid "Locale"
-msgstr ""
-
 #: widget_init.php:118
-msgid "Language of date and including the time display format."
+msgid "Auto Timezone"
 msgstr ""
 
 #: widget_init.php:119
-msgid "About"
+msgid "Display"
 msgstr ""
 
 #: widget_init.php:120
-msgid "❤️ Rate plugin ★★★★★"
+msgid "Google Fonts"
 msgstr ""
 
 #: widget_init.php:121
-msgid "Second"
+msgid "Google fonts are loading from the CDN, they are not included in the plugin."
 msgstr ""
 
 #: widget_init.php:122
-msgid "Hundredths of a second"
+msgid "Locale"
 msgstr ""
 
 #: widget_init.php:123
-msgid "Show two digits after seconds."
+msgid "Invalid BCP-47 locale tag."
 msgstr ""
 
 #: widget_init.php:124
-msgid "Date"
+msgid "Auto language"
 msgstr ""
 
 #: widget_init.php:125
-msgid "24-Hour"
+msgid "Language of date and including the time display format."
 msgstr ""
 
 #: widget_init.php:126
-msgid "Time Now"
+msgid "About"
 msgstr ""
 
 #: widget_init.php:127
-msgid "Todays Date"
+msgid "❤️ Rate plugin ★★★★★"
 msgstr ""
 
 #: widget_init.php:128
-msgid "Left"
+msgid "Second"
 msgstr ""
 
 #: widget_init.php:129
-msgid "Center"
+msgid "Hundredths of a second"
 msgstr ""
 
 #: widget_init.php:130
-msgid "Right"
+msgid "Show two digits after seconds."
 msgstr ""
 
 #: widget_init.php:131
-msgid "Select the Shadow of the text within the container."
+msgid "Date"
 msgstr ""
 
 #: widget_init.php:132
-msgid "Select a gradient (font color is automatically inverted based on background color). Note: the gradient is used on top of the background color."
+msgid "24-Hour"
 msgstr ""
 
 #: widget_init.php:133
-msgid "Time"
+msgid "Time Now"
 msgstr ""
 
 #: widget_init.php:134
-msgid "Clock"
+msgid "Todays Date"
 msgstr ""
 
 #: widget_init.php:135
-msgid "Digital"
+msgid "Left"
 msgstr ""
 
 #: widget_init.php:136
-msgid "Simple"
+msgid "Center"
 msgstr ""
 
 #: widget_init.php:137
-msgid "Widget"
+msgid "Right"
 msgstr ""
 
 #: widget_init.php:138
-msgid "DEMO 👀"
+msgid "Select the shadow of the container."
 msgstr ""
 
 #: widget_init.php:139
-msgid "None"
+msgid "Select a gradient (font color is automatically inverted based on background color). Note: the gradient is used on top of the background color."
 msgstr ""
 
 #: widget_init.php:140
-msgid "Clear All Colors"
+msgid "Time"
 msgstr ""
 
 #: widget_init.php:141
-msgid "Clear Gradient"
+msgid "Clock"
 msgstr ""
 
 #: widget_init.php:142
+msgid "Digital"
+msgstr ""
+
+#: widget_init.php:143
+msgid "Simple"
+msgstr ""
+
+#: widget_init.php:144
+msgid "Widget"
+msgstr ""
+
+#: widget_init.php:145
+msgid "DEMO 👀"
+msgstr ""
+
+#: widget_init.php:146
+msgid "None"
+msgstr ""
+
+#: widget_init.php:147
+msgid "Clear All Colors"
+msgstr ""
+
+#: widget_init.php:148
+msgid "Clear Gradient"
+msgstr ""
+
+#: widget_init.php:149
 msgid "Select the time zone for the clock display."
 msgstr ""

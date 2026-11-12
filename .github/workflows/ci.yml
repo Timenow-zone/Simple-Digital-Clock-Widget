@@ -48,7 +48,7 @@ jobs:
           npx --no-install tsc --noEmit -p tsconfig.wtr.json
       - run: npm run lint
       - name: Verify patched development-tooling behavior
-        run: node --test tests/dev-tooling.test.mjs
+        run: node --test tests/dev-tooling.test.mjs tests/deepmerge-security.test.mjs
       - run: npm run test:node
       - name: Check release metadata validation
         run: node --test tests/release-metadata.test.mjs
@@ -65,7 +65,25 @@ jobs:
           git ls-files -z -- 'wordpress/simple-digital-clock/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
       - name: Verify WordPress package identity and release versions
-        run: node --test tests/wordpress-package.test.mjs
+        run: node --test tests/wordpress-package.test.mjs tests/wordpress-assets.test.mjs
+      - name: Verify WordPress translation coverage and output contexts
+        run: |
+          php -l tests/wordpress-i18n.php
+          node --test tests/wordpress-i18n.test.mjs
+      - name: Check disposable WordPress lab safety boundaries
+        run: |
+          python3 tests/wordpress-lab.test.py
+          python3 -m py_compile tools/wordpress-lab/repro/run.py
+          php -l tools/wordpress-lab/repro/site.php
+          php -l tools/wordpress-lab/repro/install.php
+          php -l tools/wordpress-lab/repro/checker.php
+          node --check tools/wordpress-lab/repro/smoke.mjs
+      - name: Verify the immutable editable rollback build and safety guards
+        run: |
+          python3 tests/wordpress-rollback.test.py
+          python3 -m py_compile tools/wordpress-lab/rollback/build.py tools/wordpress-lab/rollback/run.py
+          php -l tools/wordpress-lab/rollback/update.php
+          node --check tools/wordpress-lab/rollback/browser.mjs
       - name: Verify the published preview matches its sources
         run: |
           node scripts/build-wordpress-preview.mjs --check
@@ -73,6 +91,10 @@ jobs:
           git ls-files -z -- 'wordpress/preview/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
       - name: Check WordPress 6.3 serialization compatibility
         run: node --test tests/wordpress-serialization.test.mjs
+      - name: Check WordPress REST metadata ordering and boundaries
+        run: |
+          php -l tests/wordpress-rest-metadata.php
+          node --test tests/wordpress-rest-metadata.test.mjs
       - name: Verify that checks leave tracked files unchanged
         run: git diff --exit-code
 

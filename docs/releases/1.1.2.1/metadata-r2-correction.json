@@ -1,0 +1,14 @@
+{
+  "r1_verdict": "NO_GO_METADATA",
+  "r1_sha256": "19e2f93c308d770b54a51dc0eafb4137420d4d367060c1dadcfbf5b837e5f5f2",
+  "r2_sha256": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b",
+  "changed_files": [
+    "languages/simple-digital-clock.pot",
+    "readme.txt"
+  ],
+  "all_executable_files_identical": true,
+  "r1_metadata_guard_rejected": "POT project version must match the rollback version",
+  "r2_metadata_guard_passed": true,
+  "r2_deterministic_rebuild": true,
+  "r1_functional_checks_not_transferred": true
+}

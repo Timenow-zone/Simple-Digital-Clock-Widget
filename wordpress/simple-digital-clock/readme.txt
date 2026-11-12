@@ -5,7 +5,7 @@ Donate link: https://utctime.info/
 Tested up to: 7.1
 Requires at least: 6.3
 Requires PHP: 7.0
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Blocks: simple-digital-clock-block/widget-block
@@ -73,8 +73,13 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency.
+Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. On the frontend, the runtime is delivered only when a clock is present in the server-rendered page HTML; clock-free pages receive no plugin script or browser loader. Multiple clocks share one runtime script. The inline layout rule remains scoped to rendered Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. No external plugin stylesheet is loaded. Server-side HTML observation adds PHP work, including on clock-free pages.
 
+= What about clocks created later by custom JavaScript? =
+Automatic delivery detects server-rendered clocks. An integration that creates its first clock only after page load must load the widget runtime itself. Calling SDCW_enqueue_scripts() without rendering a clock on the server does not bypass the zero-script rule.
+
+= What if my site caches complete HTML pages? =
+Regenerate full-page caches after updating so visitors receive the corrected HTML. Cached pages served without WordPress running are not rewritten by the plugin.
 == Screenshots ==
 
 1. screenshot-1.png – Front-end examples: multiple Simple Digital Clock blocks on one page, each with different locales, time zones, colors, and formats (AM/PM or 24-hour).
@@ -102,7 +107,17 @@ To reproduce the production bundle:
 
 == Changelog ==
 
+= 1.1.5 =
+* Restore automatic clock rendering in existing raw HTML, Custom HTML/Text widgets, templates and shortcode integrations after updating from 1.1.2 or 1.1.4.
+* Load the runtime only for actual server-rendered clocks, including raw HTML and cached fragments, while preserving raw HTML layout.
+* Retain the Gutenberg, legacy metadata and localization fixes from 1.1.4 without changing stored content.
+
 = 1.1.4 =
+* Preserve clock JSON metadata when reading legacy blocks and across REST saves and responses, including captions ending in a backslash and block locks.
+* Make missing editor controls, settings titles and rating notices translatable; preserve literal translated text without double HTML escaping.
+* Load assets when the owned clock block renders, without scanning or buffering page HTML; multiple clocks share one script and one inline layout rule without an external CSS request.
+* Keep editor preview assets scoped to block editors and rating-notice assets scoped to the plugin settings screen.
+* Expose metadata failure diagnostics through a fixed-code action without unconditional PHP logging.
 * Preserve captions ending in a backslash and nondefault clock settings when saving on WordPress 6.3.
 * Include third-party copyright and license notices for bundled dependencies.
 * Update the bundled widget to 0.8.1 with Preact 11.1.0.
@@ -176,3 +191,8 @@ To reproduce the production bundle:
 == 🍩 Donations ==
 🕒 Sync Time: [UTC](https://utctime.info/)
 🗓️ Today's Date: [TodaysDateNow](https://todaysdatenow.com/)
+
+== Upgrade Notice ==
+
+= 1.1.5 =
+Restores clocks in existing HTML, widget and template integrations. No content migration is required.
