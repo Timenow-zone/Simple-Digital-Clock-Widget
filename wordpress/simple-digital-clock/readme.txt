@@ -73,10 +73,10 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency. On the frontend, a small inline loader detects clocks in the browser. Pages without clocks do not request the main widget runtime. Multiple clocks share one runtime script. The inline layout rule remains scoped to rendered Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. No external plugin stylesheet is loaded. The plugin does not buffer or parse the page response. The loader observes added DOM elements until clocks need the runtime; it does not poll.
+The main clock runtime is served locally and is requested only after a WordPress render/use signal or a connected clock element. Clock-free pages receive a small cacheable external bootstrap and inert JSON configuration, but do not download Preact or the clock renderer. Multiple clocks share one runtime. Layout remains scoped to Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. The plugin does not buffer or parse the complete page response, poll the DOM, or patch browser APIs.
 
 = What about clocks created later by custom JavaScript? =
-The loader also detects clocks added later to the ordinary document DOM. Integrations that wait for customElements.whenDefined() before creating their first clock, or put their first clock inside a shadow root, must explicitly enqueue the simple-digital-clock script handle. Calling SDCW_enqueue_scripts() on the frontend requests layout, not an unconditional runtime download.
+The external bootstrap defines a lightweight custom-element shell. Existing customElements.whenDefined() integrations can create their first clock, including inside open or closed shadow roots; connecting the clock requests its renderer. Calling SDCW_enqueue_scripts() or enqueuing the simple-digital-clock handle explicitly requests the normal runtime through WordPress. Gutenberg and native legacy-widget preview documents load their own runtime.
 
 = What if my site caches complete HTML pages? =
 Regenerate full-page caches after updating so visitors receive the corrected HTML. Cached pages served without WordPress running are not rewritten by the plugin.
@@ -95,21 +95,24 @@ The plugin bundles its production JavaScript locally for performance. Human-read
 The production JavaScript bundled with this plugin is built from the public Simple Digital Clock Widget source.
 
 * Source repository: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
-* Bundled upstream version: 0.8.1
-* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/b44f944b60babf45bf266e73ba12f7eba53cfef2
+* Bundled upstream version: 0.8.2
+* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/d3fcef80c8921d1d7ef72c69dc8fad66a499ab8f
 
 Third-party copyright and MIT license notices for the bundled dependencies are included in THIRD-PARTY-NOTICES.txt. The WordPress wrapper remains GPLv2 or later.
 
 To reproduce the production bundle:
 
 * `npm ci`
-* `npm run build`
+* `node scripts/check-build.mjs` (verify the retained immutable runtime)
+* `node scripts/build-wordpress-loader.mjs --check` (verify the external bootstrap)
 
 == Changelog ==
 
 = 1.1.6 =
-* Replace server-side HTML observation with a small inline loader that requests the unchanged widget 0.8.1 only when clocks appear in the document DOM.
-* Preserve saved blocks and raw HTML inserts, and detect clocks added dynamically after page load.
+* Request the runtime through native WordPress render signals and a cacheable external bootstrap; clock-free public pages do not download the main runtime.
+* Bundle widget 0.8.2 with a lightweight registration shell for first-clock whenDefined and shadow-root integrations.
+* Restore explicit helper loading and native Text/Custom HTML preview iframe assets; support external-only CSP without inline bootstrap code.
+* Preserve saved blocks, raw HTML, settings and the editor schema without a database migration.
 * Preserve Core-generated script attributes and attached data; report failed or unsupported script activation without automatic retry loops.
 
 = 1.1.5 =

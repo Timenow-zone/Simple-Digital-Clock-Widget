@@ -65,7 +65,10 @@ jobs:
           git ls-files -z -- 'wordpress/simple-digital-clock/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
       - name: Verify WordPress package identity and release versions
-        run: node --test tests/wordpress-package.test.mjs tests/wordpress-assets.test.mjs
+        run: |
+          node --test tests/wordpress-package.test.mjs tests/wordpress-assets.test.mjs
+          node --check src/wordpress-loader.js
+          node scripts/build-wordpress-loader.mjs --check
       - name: Verify WordPress translation coverage and output contexts
         run: |
           php -l tests/wordpress-i18n.php
@@ -73,6 +76,8 @@ jobs:
       - name: Check disposable WordPress lab safety boundaries
         run: |
           python3 tests/wordpress-lab.test.py
+          python3 tests/wordpress-candidate-lab.test.py
+          python3 -m py_compile scripts/build-wordpress-candidate.py tools/wordpress-lab/candidate/run.py
           python3 -m py_compile tools/wordpress-lab/repro/run.py
           php -l tools/wordpress-lab/repro/site.php
           php -l tools/wordpress-lab/repro/install.php

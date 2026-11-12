@@ -7,16 +7,16 @@ Widget and WordPress plugin versions are independent:
 
 | Component | Version | Delivery status |
 | --- | --- | --- |
-| Widget runtime | **0.8.1** | Published demo/CDN |
-| WordPress source | **1.1.6** | RC1; synchronized release metadata; unpublished |
+| Widget runtime | **0.8.2** | Candidate built; CDN delivery pending; production remains 0.8.1 |
+| WordPress source | **1.1.6** | Remediation candidate in acceptance; unpublished |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
 The metadata below describes the JavaScript widget artifact.
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.8.1`
-* **Tiny:** 12.2 KiB gzipped (`dist/0.8.1.min.js`; 36,009 bytes minified, 12,446 bytes gzip)
-* **Artifact SHA-256:** `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`
+* **Current version:** `0.8.2`
+* **Tiny:** 12.2 KiB gzipped (`dist/0.8.2.min.js`; 36,033 bytes minified, 12,471 bytes gzip)
+* **Artifact SHA-256:** `47126e2f4515b1c88992a9d217e3a97838837a34d8a42011379bbce6f151f506`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
@@ -27,7 +27,7 @@ The metadata below describes the JavaScript widget artifact.
 Historical preparation and branch policy: [release readiness, 31 October 2026](docs/maintenance/release-readiness-2026-10-31.md).
 Local unpublished follow-up: [dependency mitigation and fresh WordPress lab, 1 November 2026](docs/maintenance/local-debt-closure-2026-11-01.md).
 Local integration: [rollback CI checks and repository hygiene, 3 November 2026](docs/maintenance/local-ci-hygiene-2026-11-03.md).
-Current WordPress source: [1.1.6 RC1](docs/releases/1.1.6/RC1.md).
+Current WordPress source: [1.1.6 remediation](docs/releases/1.1.6/README.md).
 Last verified WordPress publication: [1.1.5 publication and verification record](docs/releases/1.1.5/PUBLICATION-2026-11-11.md).
 Prior accepted render-r9 review: [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) targets `dev`; the [7 November synchronization review](docs/maintenance/repository-sync-2026-11-07.md) records hosted CI, examples, package identity and remaining translation limits.
 
@@ -53,7 +53,9 @@ Load the immutable, versioned production asset:
 <script src="https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js"></script>
 ```
 
-For self-hosting, copy `dist/0.8.1.min.js` to your site and use its URL instead.
+The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.2.min.js`; delivery is pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.2.min.js`.
+
+For self-hosting the current production release, copy `dist/0.8.1.min.js` to your site and use its URL instead.
 The unminified `dist/SimpleDigitalClockWidget.js` entry is also retained.
 
 Now use the custom element:
@@ -298,23 +300,22 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 
 ## WordPress
 
-The **Simple Digital Clock** WordPress source is **1.1.6 RC1**, an unpublished local
-candidate with the unchanged widget **0.8.1** under
+The **Simple Digital Clock** WordPress source is **1.1.6**, an unpublished
+remediation candidate with widget **0.8.2** under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
-The [RC1 record](docs/releases/1.1.6/RC1.md) binds the package, synchronized release
-metadata and checks; prior r3 functional evidence is identified separately.
+The [release record](docs/releases/1.1.6/README.md) tracks exact candidates and
+independent acceptance; RC1's subsequent NO-GO remains historical evidence.
 
-A small inline browser loader activates Core-generated scripts held in inert JSON when a
-clock appears in the document DOM. Clock-free pages do not request the main
-runtime. PHP no longer observes or parses the page response. Saved blocks, raw
-HTML and later DOM insertions retain the existing element name and settings.
-The Gutenberg, legacy JSON, REST/KSES and i18n behavior is unchanged.
-See the [asset contract](docs/WORDPRESS-ASSET-CONTRACT.md) for explicit Core
-loading, CSP, dynamic integration limits and the remaining browser overhead.
-Required hosted Repository checks and Browser tests must pass before release;
-local candidate checks do not certify a new GitHub HEAD. No publication,
-merge, site installation or CDN deployment is part of this preparation.
+Native render signals and explicit requests use normal Core enqueue. An external
+bootstrap defines a lightweight shell for raw/dynamic clocks, including first
+clocks after `whenDefined()` or inside shadow roots. Clock-free public pages do
+not download the main runtime. Editor and legacy preview documents receive their
+own runtime. Saved markup, settings and the block schema remain unchanged.
+See the [asset contract](docs/WORDPRESS-ASSET-CONTRACT.md) for lifecycle, CSP,
+readiness, cache and ownership boundaries. Required hosted checks and exact-ZIP
+acceptance remain mandatory. The shared 0.8.2 artifact also needs verified CDN
+delivery; WordPress.org publication requires a separate owner instruction.
 
 **The last verified public version is 1.1.5**, published in SVN r3797104 at
 2026-11-11 21:17:24 UTC. Pinned trunk/tag exports and both official ZIPs match

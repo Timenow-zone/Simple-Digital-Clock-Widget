@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "versions": {
+    "minimum_core": "6.3.14",
+    "current_core": "7.1.4",
+    "predecessor": "1.1.2",
+    "plugin_check": "2.1.0",
+    "minimum_php": "7.0.33",
+    "current_php": "8.3.35"
+  },
+  "images": {
+    "php70": "php:7.0.33-apache@sha256:1d34b2e491a02ba7a8d26478132015e197a5ffea37f0a93b42621d11cfe042cc",
+    "current": "wordpress:7.1.3-php8.3-apache@sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+    "db": "mariadb:11.4.8@sha256:bc474f00629f0123c10f9e1bca193a45d18af15a274cf0656acda64f1086c3b6",
+    "minimum": "sha256:d6a4ab57bf07de052cf29a2a23405b524ca4bcb08ba9ff1ed5846c0401f944f8"
+  },
+  "downloads": {
+    "plugin-check.zip": {
+      "url": "https://downloads.wordpress.org/plugin/plugin-check.2.1.0.zip",
+      "sha256": "6ff4bd2145f3befcf907df158cc466b1649dafed5686de8369907403c3013fc4",
+      "bytes": 4458043
+    },
+    "wordpress-current.zip": {
+      "url": "https://downloads.wordpress.org/release/wordpress-7.1.4.zip",
+      "sha256": "a147146c159362778ecbbbfb07bb20ddf4e85b130f971c824e656a8f938c5f87",
+      "bytes": 37239942
+    },
+    "wordpress-minimum.zip": {
+      "url": "https://downloads.w.org/release/wordpress-6.3.14.zip",
+      "sha256": "69b565ab064b6cb4187f51018d6e12726eaf76f637a722d703aa8a50e97588f6",
+      "bytes": 24861179
+    },
+    "wp-cli.phar": {
+      "url": "https://raw.githubusercontent.com/wp-cli/builds/05989a431e982caf17cd94508ff9b4c5fb12ae44/phar/wp-cli.phar",
+      "sha256": "ce34ddd838f7351d6759068d09793f26755463b4a4610a5a5c0a97b68220d85c",
+      "bytes": 7142777
+    },
+    "public-1.1.2.zip": {
+      "url": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.2.zip",
+      "sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+      "bytes": 61476
+    },
+    "public-1.1.5.zip": {
+      "url": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.5.zip",
+      "sha256": "246c91091fa0feda5e4546b0373b7bd310c6b49d491082114cd17d143c4be882",
+      "bytes": 72537
+    }
+  }
+}

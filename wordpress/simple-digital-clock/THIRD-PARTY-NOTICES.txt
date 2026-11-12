@@ -36,6 +36,7 @@ SOFTWARE.
 preact-custom-element 4.6.0
 ---------------------------
 Source package: https://registry.npmjs.org/preact-custom-element/-/preact-custom-element-4.6.0.tgz
+The clock element lifecycle and DOM conversion are adapted from this version.
 
 The MIT License (MIT)
 

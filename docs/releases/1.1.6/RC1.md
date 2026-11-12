@@ -1,9 +1,11 @@
 # WordPress 1.1.6 RC1 packaging record
 
-Date: 2026-11-12, Europe/Kyiv. Status: **RC1 assembled; scoped package and
-installed checks PASS**. Required hosted checks are recorded on the current
-[PR HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks).
-This is candidate
+Date: 2026-11-12, Europe/Kyiv. Historical status: **RC1 assembled; scoped package
+and installed checks PASS**, subsequently superseded by independent **NO-GO**
+for three compatibility regressions. See the [current release disposition](README.md).
+The historical source was `558460c80fe317e6d0327c79c8a4478e7430e8cf`; both required
+checks passed in [run 43112671573](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43112671573).
+Later PR heads and their checks do not change this RC1 record. This is candidate
 preparation only. No WordPress.org publication, GitHub Release, tag, merge,
 production CDN deployment or owner-site installation is included.
 
@@ -18,7 +20,7 @@ production CDN deployment or owner-site installation is included.
 - Bundled widget: unchanged **0.8.1**, SHA-256
   `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`.
 - Source base: `e4c753aaef2cc92c52ba517579c17bf358a0b2c2`; the containing Git
-  revision and [manifest](manifest.json) identify the RC1 metadata changes.
+  revision and [frozen RC1 manifest](manifest-rc1.json) identify the RC1 metadata changes.
 
 The previous r3 ZIP, SHA-256
 `9c853236e957119a8aac4588d8565308f10fa0d430799ac4e3d1917ca6789137`,

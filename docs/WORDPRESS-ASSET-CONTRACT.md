@@ -1,85 +1,90 @@
-# WordPress frontend asset contract
+# WordPress asset delivery contract
 
-This contract describes the unpublished [1.1.6 candidate](releases/1.1.6/README.md).
-Published 1.1.5 and earlier ZIPs keep their original bytes and historical
-acceptance. Shared widget 0.8.1 remains byte-identical.
+This describes the in-progress 1.1.6 remediation with shared widget 0.8.2.
+It is an implementation contract, not an acceptance or publication record.
+Published 0.8.1 and earlier versioned artifacts retain their original bytes.
 
-## Delivery and WordPress integration
+## WordPress ownership
 
-PHP registers the existing runtime handle early and retains normal editor loading.
-On ordinary frontend HTML, the footer emits non-executable JSON containing
-Core-generated script markup and a small inline browser loader. There is no global
-output buffer, HTML response parser or Content-Length rewriting. A private,
-short-lived buffer captures only the runtime's script markup from an isolated
-copy of WP_Scripts; it never consumes the page response or the live script queue.
-Registered dependency objects are cloned, pending items are reset and Core
-concatenation is disabled in that copy. Existing done dependencies stay done.
-Core still generates source URLs, loader filters, nonce attributes, translations
-and attached before/after/localized data. Arbitrary filters with global side
-effects are not promised to be isolated.
+PHP registers stable handles early. A nonempty owned block render requests the
+runtime through Core; explicit `SDCW_enqueue_scripts()` calls and ordinary
+`wp_enqueue_script('simple-digital-clock')` requests retain that meaning. Existing
+registrations, dependencies, localized data, before/after scripts and Core tag
+filters remain owned by Core. Late requests are printed through Core when its
+normal footer pass has already run. No global dequeue cancels another owner.
 
-The loader checks for connected HTML `timenow-zone-sdcw` elements in the ordinary
-document DOM. It observes added nodes for late inserts without polling, attribute
-observation or repeatedly scanning the whole document. One activation serially
-parses the small captured markup in a detached template and recreates the scripts, waits for each external script, and preserves
-attributes and attached-data order. Existing registered or recognizable pending
-runtime scripts are not duplicated. Detection stops when activation begins;
-completion or failure clears the load timeout and temporary listeners.
+Bounded checks inspect only content already passing through `the_content`,
+`widget_text_content` or `widget_custom_html_content`. Core's tag tokenizer skips
+comments and raw script text; inert templates, noscript and foreign subtrees are
+excluded. This conservative detector may defer unusual HTML to the browser
+bootstrap. It does not scan stored placements or the complete response and does
+not change content bytes. Empty owned output requests nothing. A later filter
+can remove output after a real render/use signal has already requested assets;
+that is normal enqueue ownership, not a promise of final-DOM absence.
 
-| Frontend case | Main runtime requests | Other plugin work |
-| --- | ---: | --- |
-| No clocks, including inert/escaped examples | 0 | Inline loader and a waiting child-list observer |
-| One or multiple ordinary DOM clocks | 1 | Inline loader; observer stops on activation |
-| First clock inserted later into the document | 1 after insertion | No polling before insertion |
-| Owned render later discarded; no remaining clock | 0 | Loader; owned layout CSS may remain |
-| Explicit Core enqueue or dependency requesting the runtime | Core-owned | Browser loader is omitted |
-| Admin/feed/JSON/robots/trackback | No frontend loader | Editor preview remains separately scoped |
+Block-editor content hooks enqueue separately in each Core script registry,
+including the iframe registry. Ordinary admin pages remain unaffected. Core's
+legacy-widget REST preview calls `wp_head()` inside a complete HTML iframe; its
+`REST_REQUEST` plus `IFRAME_REQUEST` path explicitly enqueues the runtime during
+`wp_enqueue_scripts`. Ordinary JSON/feed/XML output remains excluded.
 
-An explicit enqueue is an integration's request to use the runtime even before
-it creates a clock. Standard queued/done Core handles and dependency owners keep
-normal execution, including a late enqueue after the default footer printer; the loader does not attempt to delay them.
-`SDCW_enqueue_scripts()` continues to request frontend layout and registration,
-not an unconditional runtime download. To explicitly request registration before
-creating an element, an integration can enqueue the `simple-digital-clock` handle
-using standard WordPress hooks. No built-in shortcode is introduced.
+## External fallback and registration shell
 
-Inline layout remains limited to the owned block class. Raw inserts keep their
-original layout. Neither saved block markup nor stored metadata is rewritten.
+When no native runtime owner exists, the footer prints inert JSON and the
+cacheable external `simple-digital-clock-loader` handle. There is no executable
+inline bootstrap. The JSON carries Core-generated runtime markup captured from
+a private registry clone. Dependency objects are cloned, pending queues are reset
+and concatenation is disabled. The live registry and output-buffer depth remain
+unchanged; filters with arbitrary global side effects are outside that isolation.
+Native requests skip this capture entirely.
 
-## Browser cost, failures and limits
+After parsing completes, the bootstrap checks for existing runtime owners before
+registering the existing custom-element name with a lightweight
+shell, without Preact or a renderer. `customElements.whenDefined()` resolves, so
+existing code can create its first clock. A connected callback supplies the use
+signal even from a closed shadow root. A microtask checks that the host remains
+connected before requesting the main runtime; an immediately removed host does
+not start a download. Activation waits for document parsing to finish before
+choosing an owner, so a late Core script tag can retain ownership. No polling or
+browser API replacement is used.
 
-A clock-free page contains inline JavaScript and inert JSON script metadata. Zero main
-runtime requests does not mean zero bytes, zero PHP work or zero browser work.
-The observer waits for DOM additions until the first clock or page destruction.
-The only timeout is a bounded 15-second load deadline after activation; failures
-emit a console error and `sdcw:load-error`, without automatic retries. A failed
-request may require a page reload after its cause is corrected.
+Widget 0.8.2 installs the Preact adapter into the same shell and host shadow root.
+Standalone CDN loading registers and initializes the same component eagerly.
+The adapter retains the existing observed attributes, property reflection,
+context, slots, hydration and disconnect lifecycle. Element definition and
+renderer readiness are distinct; acceptance requires actual rendered clock
+content and ticking, never only `customElements.get()`.
 
-The supported capture format is direct executable script tags and whitespace or
-comments. Non-executable consent types, delayed `data-src` rewrites, nomodule
-scripts and arbitrary wrappers are rejected rather than bypassed. A strict CSP
-must authorize both the inline loader and runtime; Core nonce filters are retained.
-Existing runtime ownership is recognized by its Core ID or configured source URL.
-An unrelated differently named/versioned CDN loader or arbitrary optimizer may
-not be discoverable before it executes; this is not universal duplicate-loader
-coordination. Avoid independently loading multiple widget versions in one document.
+| Case | Main runtime | Other work |
+| --- | --- | --- |
+| No clock use, inert examples | Zero requests | External bootstrap, inert JSON, lightweight definition |
+| Nonempty owned block / explicit request | Normal Core enqueue | Scoped layout, no fallback capture |
+| Existing raw clock / later insertion / shadow-first clock | One request on connection | Same host receives renderer |
+| First clock after `whenDefined()` | One request when callback connects its clock | No integration changes required |
+| Empty output at owned hook | No native request | Fallback remains available |
+| Output removed after actual render signal | May remain queued | Recorded as prior use, never globally dequeued |
+| Editor / legacy preview iframe | Runtime per document | Parent registry does not substitute for iframe |
 
-The first clock created only after `customElements.whenDefined()` resolves needs
-explicit runtime loading. First clocks inside open or closed shadow roots are
-outside document-subtree discovery. Existing standalone script/CDN URLs retain
-their original registration behavior; this candidate does not rewrite them.
-These are declared limits, not a claim of universal legacy JavaScript compatibility.
+## Errors, CSP and deployment boundaries
 
-Normal theme footer execution is required. Full-page caches need regeneration
-after installation. Core tag filters and tested nonce/data cases do not certify
-all cache, consent or optimization plugins. Native Safari/assistive technology,
-multisite, production latency and concurrent load need separate acceptance.
+Initialization parses captured script tags in a detached template to recognize
+existing owners even on a clock-free page. Configuration errors remain deferred
+until actual use. Activation preserves attributes and attached-data order and
+waits for each external script. An
+already loaded or recognizable pending runtime keeps its existing owner. Nonce
+and SRI attributes are retained; an external-only policy works when the runtime
+has no separately attached inline code requiring its own authorization. Consent
+types, `data-src`, nomodule and arbitrary wrapper transformations fail explicitly
+rather than bypassing the policy.
 
-## Evidence and release boundary
+Activation has a 15-second deadline and emits one `sdcw:load-error` diagnostic on
+failure without retry loops. A shell definition is not successful initialization.
+Unrelated independently injected widget versions are not universal cooperative
+owners; avoid loading multiple versions in one document.
 
-See the candidate record for exact ZIP identity, fresh PHP/browser/native checks
-and known limits. Historical 1.1.5 performance numbers do not characterize this
-new loader. The final candidate record links successful hosted checks for the
-payload source. Repository checks and Browser tests must also pass for the latest
-[candidate PR HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks)
-before release. Publication and owner-site installation are deferred.
+Normal theme footer execution is required for the fallback. Regenerate full-page
+caches after updating, and verify served runtime hashes after optimizer/cache
+purges. The 0.8.2 shared change requires the separate build and verified CDN
+delivery contract in `AGENTS.md`. WordPress.org publication remains deferred
+until an explicit owner command. Current evidence and exact candidate status
+belong in the [release record](releases/1.1.6/README.md).

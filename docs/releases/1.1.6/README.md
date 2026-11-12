@@ -1,13 +1,25 @@
 # WordPress 1.1.6 release candidate
 
-Current package: **RC1**, unpublished. See the [RC1 packaging record](RC1.md)
-and [current manifest](manifest.json). The ZIP is
-[`simple-digital-clock-1.1.6-rc1.zip`](../../../.local/packages/simple-digital-clock-1.1.6-rc1.zip),
+## Current disposition: remediation implementation and acceptance
+
+The new implementation restores Core-owned native loading, explicit helper
+semantics and native legacy preview iframes. It moves bootstrap execution to an
+external cacheable file. Shared widget **0.8.2** adds a lightweight registration
+shell so the original signal-free `whenDefined()` and shadow-first integrations
+can request a renderer without changing their code. Published 0.8.1 stays intact.
+See the [design decision](REMEDIATION-PLAN.md) and [41-gate matrix](ACCEPTANCE-MATRIX.md).
+Development tests are passing. [RC2](RC2.md) is frozen and independent acceptance
+is in progress. CDN delivery and WordPress.org publication
+are not implied by these development results. WordPress publication requires a
+separate explicit owner command.
+
+RC1 remains unpublished and **NO-GO** after
+[independent acceptance](../../../.local/independent-116-rc1-20261112/reports/REPORT.md).
+Its [packaging record](RC1.md), [frozen manifest](manifest-rc1.json), and
+[exact ZIP](../../../.local/packages/simple-digital-clock-1.1.6-rc1.zip) are retained:
 SHA-256 `1b29a26dc28431a40c475c9db6e7cee6056ef9731f298c6f672da7d200af1ecf`,
-71,397 bytes / 17 files. RC1 adds the missing 1.1.6 upgrade notice and refreshes
-the POT extraction timestamp; all 15 other files, including executable PHP/JS,
-are identical to the accepted r3 below. Prior r3 checks remain evidence for those
-unchanged files, not a claim that the new ZIP had already been tested.
+71,397 bytes / 17 files. Historical scoped PASS records below do not override
+its three independently reproduced compatibility regressions.
 
 ## Retained browser-r3 acceptance
 
@@ -128,14 +140,14 @@ save/roles matrix, owner-site compatibility, production latency or concurrent
 load acceptance. There is a waiting DOM observer on clock-free pages, plus inline
 loader/JSON bytes, despite zero main-runtime downloads.
 
-## Current RC1 verification and rollback
+## Current RC2 verification and rollback
 
 From the repository root, with the existing local dependencies:
 
 ```sh
 set -euo pipefail
 python3 tools/wordpress-lab/verify-package.py \
-  --zip .local/packages/simple-digital-clock-1.1.6-rc1.zip
+  --zip .local/packages/simple-digital-clock-1.1.6-rc2.zip
 node --test tests/wordpress-assets.test.mjs tests/wordpress-package.test.mjs \
   tests/wordpress-i18n.test.mjs tests/wordpress-rest-metadata.test.mjs \
   tests/wordpress-serialization.test.mjs
