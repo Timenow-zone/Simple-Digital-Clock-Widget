@@ -109,6 +109,8 @@ To reproduce the production bundle:
 == Changelog ==
 
 = 1.1.6 =
+* Fix the built-in gradient Clear action and preserve explicitly cleared backgrounds for older block readers.
+* Keep the selected time zone when Enter follows an unmatched search or a closed suggestion list; display a translatable no-match message for unmatched searches.
 * Request the runtime through native WordPress render signals and a cacheable external bootstrap; clock-free public pages do not download the main runtime.
 * Bundle widget 0.8.4 with a lightweight registration shell for first-clock whenDefined and shadow-root integrations.
 * Isolate errors in individual clocks so other clocks initialize and keep ticking in ordinary HTML and WordPress.
@@ -206,7 +208,7 @@ To reproduce the production bundle:
 == Upgrade Notice ==
 
 = 1.1.6 =
-Improves conditional clock loading and supports dynamically inserted clocks without changing saved content. Regenerate full-page caches after updating.
+Improves conditional clock loading and fixes Gutenberg gradient clearing and unmatched time zone searches. No database migration is required. Regenerate full-page caches after updating.
 
 = 1.1.5 =
 Restores clocks in existing HTML, widget and template integrations. No content migration is required.

@@ -147,6 +147,7 @@ function SDCW_block_register_block() {
             'clearColors' => __('Clear All Colors', 'simple-digital-clock'),
             'clearGradient' => __('Clear Gradient', 'simple-digital-clock'),
             'timeZoneHelp' => __('Select the time zone for the clock display.', 'simple-digital-clock'),
+            'timeZoneNoMatch' => __('No matching time zone. Select a zone from the list.', 'simple-digital-clock'),
         ],
     ]);
 

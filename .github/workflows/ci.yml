@@ -94,8 +94,8 @@ jobs:
           node scripts/build-wordpress-preview.mjs --check
           node --check wordpress/preview/demo.js
           git ls-files -z -- 'wordpress/preview/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
-      - name: Check WordPress 6.3 serialization compatibility
-        run: node --test tests/wordpress-serialization.test.mjs
+      - name: Check WordPress serialization and inspector contracts
+        run: node --test tests/wordpress-serialization.test.mjs tests/wordpress-inspector.test.mjs
       - name: Check WordPress REST metadata ordering and boundaries
         run: |
           php -l tests/wordpress-rest-metadata.php

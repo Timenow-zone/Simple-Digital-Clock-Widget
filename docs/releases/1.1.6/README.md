@@ -1,5 +1,20 @@
 # WordPress 1.1.6 release preparation
 
+## Current RC9 readiness
+
+Current local candidate: **RC9; LOCAL EVIDENCE BLOCKERS CLOSED WITH INHERITED
+LIMITATIONS; FULL RELEASE NOT READY; NOT PUBLISHED**.
+The [readiness addendum](RC9-READINESS.md) and [receipt](readiness-rc9.json)
+record the owner-requested inherited classification of the WebKit
+`template-parts` diagnostic, the exact 1.1.2/RC9 comparison, confirmed coverage
+and remaining release gates. The [local closure](RC9-LOCAL-GATES.md) records
+fresh Plugin Check, multisite, cache and package checks plus all 42 matrix rows;
+final hosted CI and production CDN delivery remain pending. The [original RC9 acceptance](FINAL-ACCEPTANCE-RC9.md)
+remains a preserved execution snapshot. No package or frozen manifest is changed
+by this status update.
+
+## Historical RC5 preparation snapshot
+
 Status: **RC5 FROZEN; SCOPED ALIGNMENT ACCEPTANCE PASS; DELIVERY PENDING**.
 Selected [RC5](RC5.md) contains [widget 0.8.4](../0.8.4/README.md). The
 [two-phase defect record](../../defects/MULTI-ALIGN-P2-01.md) preserves the red
