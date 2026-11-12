@@ -27,7 +27,11 @@ assert(
   "Fresh run directory and label are required"
 );
 assert(["legacy-preview", "site-editor", "post-editor"].includes(args.mode), "Unknown native mode");
-assert(["chromium", "firefox", "webkit"].includes(args.engine), "Unknown browser");
+assert(["chrome", "chromium", "firefox", "webkit"].includes(args.engine), "Unknown browser");
+assert(
+  !(args.engine === "chrome" && args["browser-endpoint"]),
+  "Google Chrome verification requires a local channel launch, not an unverified remote endpoint"
+);
 const root = path.resolve(args["run-dir"]);
 const run = JSON.parse(await fs.readFile(path.join(root, "run.json"), "utf8"));
 assert.equal(run.run_dir, root);
@@ -59,10 +63,11 @@ await fs.writeFile(
   JSON.stringify({ argv: process.argv, platform: process.platform }, null, 2)
 );
 const credentials = JSON.parse(await fs.readFile(path.join(root, "lab/credentials.json"), "utf8"));
-const browserType = { chromium, firefox, webkit }[args.engine];
+const browserType = { chrome: chromium, chromium, firefox, webkit }[args.engine];
+const launchChannel = args.engine === "chrome" ? "chrome" : undefined;
 const browser = args["browser-endpoint"]
   ? await browserType.connect(args["browser-endpoint"])
-  : await browserType.launch({ timeout: 30_000 });
+  : await browserType.launch({ timeout: 30_000, channel: launchChannel });
 const blockName = "simple-digital-clock-block/widget-block";
 const rows = [];
 const started = Date.now();
@@ -612,6 +617,9 @@ try {
           JSON.stringify(
             {
               engine: args.engine,
+              channel: launchChannel ?? null,
+              platform: process.platform,
+              architecture: process.arch,
               browser: browser.version(),
               mode: args.mode,
               candidateInputSha256: candidate.archive_sha256,

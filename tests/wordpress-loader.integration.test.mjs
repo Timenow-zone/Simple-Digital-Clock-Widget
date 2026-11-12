@@ -132,6 +132,26 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
         } finally { await context.page.close(); }
       });
 
+      await t.test("a failed initial clock does not fail the loader or block healthy clocks", async () => {
+        const invalid = clock.replace("time-zone=", 'background-color="invalid-color" time-zone=');
+        const healthy = clock.replace("time-zone=", 'id="healthy-clock" time-zone=');
+        const context = await observePage(browser, origin, bootstrap({ markup: invalid + healthy }));
+        try {
+          await context.page.waitForFunction(() => {
+            const clock = document.getElementById("healthy-clock");
+            return /\d{2}:\d{2}:\d{2}/.test(clock.shadowRoot?.querySelector("a")?.textContent ?? "") &&
+              document.getElementById("simple-digital-clock-runtime").dataset.sdcwLoader === "ready";
+          });
+          assert.equal(await context.page.evaluate(() => customElements.get("timenow-zone-sdcw").runtimeReady), true);
+          const before = await context.page.locator("#healthy-clock").evaluate(host => host.shadowRoot.querySelector("a").textContent);
+          await context.page.waitForFunction(before => document.getElementById("healthy-clock").shadowRoot.querySelector("a").textContent !== before, before);
+          assert.equal(context.requests.length, 1);
+          assert.equal(context.bootstrapRequests.length, 1);
+          assert.deepEqual(context.errors, ["Color format not recognized. Use HEX (#RRGGBB, #RGB, with optional alpha) or rgb()/rgba()."]);
+          assert.deepEqual(await context.page.evaluate(() => window.clockLoadErrors), []);
+        } finally { await context.page.close(); }
+      });
+
       await t.test("external-only CSP permits raw and dynamic clocks without inline initialization", async () => {
         for (const markup of [clock, ""]) {
           const captured = '<script id="simple-digital-clock-js" src="/runtime.js"></script>';

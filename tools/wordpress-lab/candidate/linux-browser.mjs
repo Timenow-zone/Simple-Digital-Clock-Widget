@@ -13,7 +13,9 @@ if (entryOffset !== -1) {
   entry = arguments_[entryOffset + 1];
   arguments_.splice(entryOffset, 2);
 }
-if (!["browser", "corpus-editor", "frontend", "widgets-ui"].includes(entry))
+if (
+  !["browser", "corpus-editor", "frontend", "widgets-ui", "runtime-compatibility"].includes(entry)
+)
   throw new Error("Unknown browser entry point");
 const offset = arguments_.indexOf("--run-dir");
 if (offset < 0 || !arguments_[offset + 1]) throw new Error("--run-dir is required");

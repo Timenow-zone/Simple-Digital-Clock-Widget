@@ -14,12 +14,16 @@ const { values: args } = parseArgs({
 });
 const root = path.resolve(args["run-dir"]);
 assert(/^[a-z0-9][a-z0-9-]+$/.test(args.label));
+assert(["chrome", "chromium", "firefox", "webkit"].includes(args.engine), "Unknown browser");
 const run = JSON.parse(await fs.readFile(path.join(root, "run.json"), "utf8"));
 assert.equal(run.run_dir, root);
 const out = path.join(root, "evidence", args.label + "-" + args.engine);
 await fs.mkdir(out);
 const creds = JSON.parse(await fs.readFile(path.join(root, "lab/credentials.json")));
-const browser = await { chromium, firefox, webkit }[args.engine].launch();
+const launchChannel = args.engine === "chrome" ? "chrome" : undefined;
+const browser = await { chrome: chromium, chromium, firefox, webkit }[args.engine].launch({
+  channel: launchChannel,
+});
 await fs.copyFile(fileURLToPath(import.meta.url), path.join(out, "harness-widgets-ui.mjs"));
 const rows = [];
 const name = "simple-digital-clock-block/widget-block";
@@ -157,7 +161,18 @@ try {
     rows.push(row);
     await fs.writeFile(
       path.join(out, "results.json"),
-      JSON.stringify({ browser: browser.version(), rows }, null, 2)
+      JSON.stringify(
+        {
+          engine: args.engine,
+          channel: launchChannel ?? null,
+          platform: process.platform,
+          architecture: process.arch,
+          browser: browser.version(),
+          rows,
+        },
+        null,
+        2
+      )
     );
     console.log(site, row.pass ? "PASS" : "FAIL", row.error || "");
   }

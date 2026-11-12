@@ -1,8 +1,9 @@
 # WordPress delivery remediation acceptance matrix
 
 Acceptance specification, 2026-11-12. This table defines required gates;
-it does not itself mark their execution as passed. Selected [RC3](RC3.md) is
-NO-GO due to the shared standalone regression. Phase 2 expanded the shared runtime
+it does not itself mark their execution as passed. Selected [RC4](RC4.md) bundles
+the 0.8.3 correction and requires fresh acceptance. Rejected RC3 remains NO-GO.
+Phase 2 originally expanded the shared runtime
 to 0.8.2 with a lightweight registration shell; see the design decision in the plan. See the
 [remediation plan](REMEDIATION-PLAN.md) for architecture, authorization and scope.
 
@@ -42,7 +43,7 @@ acceptance timer.
 | ID | Scenario | PASS criterion | Required execution |
 | --- | --- | --- | --- |
 | ID-01 | Source, ZIP, manifest, installed files | Exact candidate SHA/CRC/full allowlist; no extra files/symlinks; source and installed maps agree | Both primary sites, every transition |
-| ID-02 | Shared artifact preservation and delivery | Published 0.8.1 and older versioned artifacts unchanged; new 0.8.2 build, CDN bytes, version references and rollback verified | Before/after implementation, production delivery and final review |
+| ID-02 | Shared artifact preservation and delivery | Published 0.8.1 and older versioned artifacts plus rejected 0.8.2 unchanged; new 0.8.3 build, CDN bytes, version references and rollback verified | Before/after implementation, production delivery and final review |
 | LOAD-01 | Public page without clock use, default bundled runtime | Zero main-runtime requests and executable runtime tags; no renderer initialization; lightweight shell definition and external bootstrap cost documented; owner-approved opaque overrides are counted separately under CORE-01 | Both themes/sites, three engines |
 | LOAD-02 | Escaped/comment/script-text/template examples | No false activation; zero runtime | Both sites, three engines |
 | LOAD-03 | Owned block, one/many/nested | Runtime once; all clocks render/tick with correct attributes | Both themes/sites, three engines |

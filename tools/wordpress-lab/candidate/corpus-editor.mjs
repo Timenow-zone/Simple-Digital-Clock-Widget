@@ -25,7 +25,7 @@ const mode = args.mode,
   engine = args.engine;
 assert(["seed", "read", "save"].includes(mode));
 assert(/^[a-z0-9][a-z0-9-]+$/.test(phase));
-assert(["chromium", "firefox", "webkit"].includes(engine));
+assert(["chrome", "chromium", "firefox", "webkit"].includes(engine));
 const run = JSON.parse(await fs.readFile(path.join(root, "run.json"), "utf8"));
 assert.equal(run.run_dir, root);
 if (mode === "seed")
@@ -49,7 +49,11 @@ const sites = Object.fromEntries(
 await fs.copyFile(fileURLToPath(import.meta.url), path.join(output, "harness-corpus-editor.mjs"));
 const name = "simple-digital-clock-block/widget-block";
 const hash = (s) => createHash("sha256").update(s).digest("hex");
-const browser = await { chromium, firefox, webkit }[engine].launch({ headless: true });
+const launchChannel = engine === "chrome" ? "chrome" : undefined;
+const browser = await { chrome: chromium, chromium, firefox, webkit }[engine].launch({
+  headless: true,
+  channel: launchChannel,
+});
 const rows = [];
 const started = Date.now();
 const groups = {
@@ -230,6 +234,9 @@ async function persist() {
         mode,
         phase,
         engine,
+        channel: launchChannel ?? null,
+        platform: process.platform,
+        architecture: process.arch,
         browserVersion: browser.version(),
         elapsedSeconds: (Date.now() - started) / 1000,
         rows,

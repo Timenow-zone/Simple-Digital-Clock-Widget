@@ -1,114 +1,81 @@
 # WordPress 1.1.6 release preparation
 
-Status: **RC3 NO-GO — STANDALONE-P2-01 OPEN**.
-The [standalone review](../0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md) confirmed a
-shared-runtime regression: an invalid initial clock can prevent a healthy sibling
-from rendering outside WordPress. Production CDN delivery and WordPress
-publication are blocked for this candidate.
-The [final acceptance snapshot](FINAL-ACCEPTANCE-RC3.md) and
-[42-gate evidence index](acceptance-rc3.json) separate fresh RC3 and inherited RC2
-results. Those passing results retain their recorded scopes and do not close the
-new blocker. Required checks still bind to the final containing PR commit.
-This is not `READY_FOR_WP_PUBLICATION`.
-WordPress.org publication requires a separate explicit owner command.
+Status: **RC4 FROZEN; EXACT-ARTIFACT ACCEPTANCE IN PROGRESS**.
+Selected [RC4](RC4.md) contains [widget 0.8.3](../0.8.3/README.md), which corrects
+the initial-host exception isolation regression found in RC3. Current acceptance
+must satisfy the permanent HTML/WordPress browser contract. Historical passing
+checks do not establish acceptance of the changed runtime or bootstrap.
 
 ## Selected artifact
 
 | Item | Identity |
 | --- | --- |
-| Candidate | [RC3](RC3.md), internal plugin version 1.1.6 |
-| ZIP | `.local/packages/simple-digital-clock-1.1.6-rc3.zip` |
-| SHA-256 | `eb85f4f0d526b32288a1180a14241150eb3a3ebd250c6fe95b6e19bf9b3785c4` |
-| Layout | 72,320 bytes; 17 regular files |
-| Manifest | [Frozen RC3](manifest-rc3.json); [current pointer](manifest.json) |
-| Executable source | `2c9f8aacabe2b5b3b69bb224dcff32e63c3a851b` |
-| Shared widget | 0.8.2; 36,033 bytes; SHA-256 `47126e2f4515b1c88992a9d217e3a97838837a34d8a42011379bbce6f151f506` |
+| Candidate | RC4, internal plugin version 1.1.6 |
+| ZIP | `.local/packages/simple-digital-clock-1.1.6-rc4.zip` |
+| SHA-256 | `20ba3c0ebdaa5ff9f99639d59a004f471767a7f20e5e13518b1864403b68c1ea` |
+| Layout | 72,469 bytes; 17 regular files |
+| Manifest | [Frozen RC4](manifest-rc4.json); [current pointer](manifest.json) |
+| Executable source | `85b0943789e174dea84ea0993eb5777e98138213` |
+| Shared widget | 0.8.3; 36,245 bytes; SHA-256 `c877005699bdb81df6a9280f3367981947db8575a1f00c6e234edb8f1e400b6b` |
 
-The readme additionally records the source commit and approved compatibility
-policy. Exact ZIP/source verification includes all 17 files. The final containing
-commit and latest hosted checks are separate from the executable source identity.
+The executable commit contains 16 of the 17 package files. The readme's exact
+source reference was finalized afterward. Final review must bind every file to
+the containing commit; the archive and full manifest identify the exact candidate.
+The frozen manifest retains its original pre-acceptance status.
 
-## Resulting behavior
+## Scope and acceptance
 
-Native clock renders and the existing public helper use ordinary Core enqueue.
-An external bootstrap and inert configuration support raw/client-inserted clocks.
-The shared 0.8.2 lightweight host also supports the original first-clock
-`whenDefined()` and closed-shadow integrations without changing their code.
-Default bundled pages with no use signal make zero main-runtime requests;
-bootstrap/configuration bytes and a shell definition remain. No full-page PHP
-buffer, waiting document observer, polling or browser API replacement is used.
+The shared host isolates each initial mount error, preserves its browser
+diagnostic and continues connecting other clocks. Renderer readiness completes
+independently of whether every user configuration renders. Main runtime and
+bootstrap are rebuilt together, and both PHP version references select 0.8.3.
+Exactly four files differ from RC3; the remaining 13 files are identical.
 
-Opaque runtime URL overrides load eagerly, including on empty pages, to preserve
-legacy runtime compatibility. The owner explicitly approved this bounded
-[exception](OVERRIDE-POLICY.md) on 2026-11-12. Attribute-only nonce/SRI filters
-that retain the default ID/source keep conditional delivery. Core ownership,
-dependencies, before/after data and policy failures remain observable.
-Editor content and native legacy preview iframes receive their own assets.
-The block schema, editor script, KSES rules and saved markup remain unchanged.
+Native render signals and explicit requests retain ordinary Core enqueue.
+Default empty pages retain zero main-runtime requests. The external bootstrap
+supports raw/client-inserted clocks, first-clock `whenDefined()` and shadow roots.
+Opaque runtime URL overrides retain the owner-approved eager compatibility
+[exception](OVERRIDE-POLICY.md), including loading on empty pages. Core ownership,
+CSP/nonce/SRI errors and editor/preview document boundaries remain unchanged.
 
-The [asset contract](../../WORDPRESS-ASSET-CONTRACT.md), [implementation plan](REMEDIATION-PLAN.md)
-and [42-gate specification](ACCEPTANCE-MATRIX.md) define scope and acceptance.
-RC3 changes only bootstrap, assets PHP and readme relative to RC2. Results for the
-other 14 identical files may be inherited only with that scope stated. Unchanged
-RC2 results are never counted as fresh RC3 executions.
+The [asset contract](../../WORDPRESS-ASSET-CONTRACT.md),
+[implementation plan](REMEDIATION-PLAN.md) and
+[acceptance matrix](ACCEPTANCE-MATRIX.md) define requirements. In addition to the
+historical 42-gate matrix, every candidate must pass the exact main artifact in
+ordinary HTML and installed WordPress with Google Chrome, Firefox and WebKit.
+Actual rendering and ticking, per-host fault isolation, source identity and
+response hashes are required. Chromium-only runs do not satisfy Chrome cells.
 
-## Verification and release boundaries
+## Historical evidence
 
-Exact-RC3 package verification passes: deterministic ZIP/full allowlist,
-minimum/current PHP and JS syntax, fresh POT parity, exact runtime/bootstrap
-reproduction and 167 asset assertions. Prepared source passed 96 Linux loader
-runner tests and independent 84-case actual-Core override checks. Installed Plugin Check (29 static + 5 runtime checks), native Core probes,
-frontend/editors, direct updates/rollback, cache, multisite and independent final
-review pass within their recorded scopes. All owned labs are stopped; data and
-sealed evidence are retained.
+- [RC3](RC3.md) remains frozen and **NO-GO** for `STANDALONE-P2-01`. Its
+  [acceptance snapshot](FINAL-ACCEPTANCE-RC3.md), [42-gate index](acceptance-rc3.json),
+  [manifest](manifest-rc3.json), archive and raw evidence remain unchanged.
+- [RC2](RC2.md) remains frozen and **NO-GO** for its configured old-runtime
+  conflict; RC3's approved policy resolved that separate finding.
+- [RC1](RC1.md) remains **NO-GO** for its native preview, CSP and hidden-integration
+  failures. Its 2,566 sealed evidence files and frozen archive remain preserved.
+- [Browser-r3 acceptance](FINAL-ACCEPTANCE-2026-11-12.md) records earlier scoped
+  results. No historical PASS is relabeled as a fresh RC4 execution.
 
-The subsequent standalone failure supersedes the earlier overall release
-disposition. Frozen acceptance reports, JSON, manifests and package bytes remain
-unchanged. The approved eager-override exception remains valid.
+## Release boundary and rollback
 
 [Draft PR #19](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19)
-is stacked on [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).
-Both **Repository checks** and **Browser tests** must pass on its final HEAD;
-older successful runs do not certify RC3. No merge or branch-protection bypass
-has occurred. The [shared runtime release](../0.8.2/README.md) requires separately
-authorized production CDN delivery and exact public SHA/cache/smoke verification.
-The WordPress package uses its own bundled runtime; its successful tests do not
-prove CDN delivery. No owner-site installation or WordPress publication occurred.
+remains stacked on [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).
+Required **Repository checks** and **Browser tests** must pass on final HEAD.
+No merge or branch-protection bypass is authorized by this preparation.
 
-Raw evidence and ZIPs live under ignored `.local/` paths in this workspace, not
-in a remote checkout. Final release evidence must retain the exact archive.
+Production CDN delivery remains pending and requires separate authorization,
+exact public SHA/cache/reference/smoke proof and retained rollback. The old
+0.8.2 Cloudflare promotion proposal is withdrawn. WordPress.org publication also
+requires a separate explicit owner instruction. This is not
+`READY_FOR_WP_PUBLICATION` or evidence of production 0.8.3 delivery.
 
-## Retained candidates and historical evidence
-
-- [RC2](RC2.md) is frozen and **NO-GO** after independent review reproduced the
-  configured old-runtime conflict. Its [manifest](manifest-rc2.json), ZIP and
-  original reports remain unchanged; the approved RC3 policy resolves that case.
-- [RC1](RC1.md) is unpublished and **NO-GO** after independent acceptance found
-  native legacy-preview, external-only CSP and hidden-integration regressions.
-  Its [manifest](manifest-rc1.json), archive and 2,566 sealed evidence files remain.
-- [Browser-r3 acceptance](FINAL-ACCEPTANCE-2026-11-12.md) and its
-  [manifest](manifest-browser-r3.json) record earlier scoped results. Subsequent
-  independent findings supersede those results for full release disposition.
-  Historical PASS records do not override a later NO-GO or certify RC3.
-
-## Exact verification and rollback
-
-```sh
-set -euo pipefail
-python3 tools/wordpress-lab/verify-package.py \
-  --zip .local/packages/simple-digital-clock-1.1.6-rc3.zip
-node --test tests/wordpress-assets.test.mjs tests/wordpress-package.test.mjs \
-  tests/wordpress-i18n.test.mjs tests/wordpress-rest-metadata.test.mjs \
-  tests/wordpress-serialization.test.mjs
-node scripts/build-wordpress-loader.mjs --check
-npm run release:check
-npm run release:verify
-```
-
-The accepted local 1.1.5 rollback archive remains
+The accepted local 1.1.5 rollback archive is
 `.local/packages/simple-digital-clock-1.1.5-final.zip`, SHA-256
 `2b6b2ed361115aec5dbddad058bf38411534c53705ccc5315b1fd6e756386aa2`.
-The official 1.1.5 ZIP has a different container hash and identical installed
-files; the native lab records that provenance explicitly. Rollback changes plugin
-files without restoring the database. A future installation or rollback requires
-purging full-page/optimizer caches and checking a clock page and an empty page.
+The public 1.1.5 ZIP has a different container hash and identical installed files.
+Rollback changes plugin files without restoring the database. After any future
+installation or rollback, purge relevant caches and verify exact runtime and
+bootstrap responses on both clock and empty pages. Raw candidate archives and
+acceptance receipts are under ignored `.local/` paths and must be retained.

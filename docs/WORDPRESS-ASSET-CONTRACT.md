@@ -1,12 +1,12 @@
 # WordPress asset delivery contract
 
-This describes selected WordPress 1.1.6 RC3 with shared widget 0.8.2.
-Current status is **NO-GO**: the [standalone review](releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
-confirmed `STANDALONE-P2-01` in shared-runtime initialization. Earlier passing
-checks retain their recorded scope and do not close this blocker. Production
-CDN delivery and WordPress publication are blocked for this candidate.
+This describes selected WordPress 1.1.6 RC4 with shared widget 0.8.3.
+Current status is **EXACT-ARTIFACT ACCEPTANCE IN PROGRESS**. RC4 corrects
+`STANDALONE-P2-01` in shared-runtime initialization. The rejected 0.8.2/RC3
+artifacts and their [standalone review](releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
+remain historical evidence. Final acceptance and production delivery are separate.
 It is an implementation contract, not an acceptance or publication record.
-All eight retained older versioned minified artifacts, including 0.8.1, match
+All nine retained older versioned minified artifacts, including 0.8.1 and 0.8.2, match
 their reviewed baseline bytes.
 The owner approved the [opaque override policy](releases/1.1.6/OVERRIDE-POLICY.md)
 on 2026-11-12; its exception is separate from default conditional loading.
@@ -50,8 +50,8 @@ compensate for a standalone failure, nor can one browser compensate for another.
 After a main-script change, rerun this gate on the new exact artifact and retain
 previous results as historical evidence. Existing supported embed behavior must
 remain compatible; unchanged API names or preserved old files alone are not proof.
-This requirement records an obligation, not a claim that the current candidate
-passes it. The current standalone NO-GO remains open.
+This requirement records an obligation; actual results belong in the candidate's
+acceptance record. The rejected 0.8.2 artifact remains NO-GO.
 
 ## WordPress ownership
 
@@ -97,14 +97,15 @@ not start a download. Activation waits for document parsing to finish before
 choosing an owner, so a late Core script tag can retain ownership. No polling or
 browser API replacement is used.
 
-Widget 0.8.2 installs the Preact adapter into the same shell and host shadow root.
+Widget 0.8.3 installs the Preact adapter into the same shell and host shadow root.
 Standalone CDN loading registers and initializes the same component eagerly.
 The adapter retains the existing observed attributes, property reflection,
 context, slots, hydration and disconnect lifecycle. Element definition and
 renderer readiness are distinct; acceptance requires actual rendered clock
-content and ticking, never only `customElements.get()`. The current candidate
-does not isolate an initial host's rendering error from later pending hosts;
-this is the standalone blocker identified above.
+content and ticking, never only `customElements.get()`. Initial mount errors are
+reported individually without preventing independent healthy hosts from rendering.
+Readiness describes the installed renderer, including when all initial hosts fail;
+an invalid adapter shape is rejected before installation changes state.
 
 | Case | Main runtime | Other work |
 | --- | --- | --- |
@@ -117,7 +118,7 @@ this is the standalone blocker identified above.
 | Editor / legacy preview iframe | Runtime per document | Parent registry does not substitute for iframe |
 | Opaque configured runtime URL/version override | One request even without a clock | Captured runtime executes eagerly without a shell, preserving legacy registration |
 
-Only the final Core main ID and exact bundled 0.8.2 source are known to support
+Only the final Core main ID and exact bundled 0.8.3 source are selected for
 deferred renderer installation. Opaque source/version/tag-URL rewrites use eager
 compatibility delivery; this includes same-byte CDN mirrors or query rewrites.
 Registration ordinarily is not enqueue: this is an explicitly approved loading
@@ -143,7 +144,7 @@ owners; avoid loading multiple versions in one document.
 
 Normal theme footer execution is required for the fallback. Regenerate full-page
 caches after updating, and verify served runtime hashes after optimizer/cache
-purges. The 0.8.2 shared change requires the separate build and verified CDN
+purges. The 0.8.3 shared change requires the separate build and verified CDN
 delivery contract in `AGENTS.md`. WordPress.org publication remains deferred
 until an explicit owner command. Current evidence and exact candidate status
 belong in the [release record](releases/1.1.6/README.md).

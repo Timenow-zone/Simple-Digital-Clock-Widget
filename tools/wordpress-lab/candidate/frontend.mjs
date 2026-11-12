@@ -21,11 +21,16 @@ const phase = args.label,
   engine = args.engine;
 assert(/^[a-z0-9][a-z0-9-]+$/.test(phase));
 assert(["block", "classic"].includes(args.theme));
+assert(["chrome", "chromium", "firefox", "webkit"].includes(engine), "Unknown browser");
 const run = JSON.parse(await fs.readFile(path.join(root, "run.json"), "utf8"));
 assert.equal(run.run_dir, root);
 const output = path.join(root, "evidence", `${phase}-frontend-${engine}`);
 await fs.mkdir(output);
-const browser = await { chromium, firefox, webkit }[engine].launch({ headless: true });
+const launchChannel = engine === "chrome" ? "chrome" : undefined;
+const browser = await { chrome: chromium, chromium, firefox, webkit }[engine].launch({
+  headless: true,
+  channel: launchChannel,
+});
 const rows = [];
 const started = Date.now();
 await fs.copyFile(fileURLToPath(import.meta.url), path.join(output, "harness-frontend.mjs"));
@@ -208,7 +213,19 @@ try {
       rows.push(row);
       await fs.writeFile(
         path.join(output, "results.json"),
-        JSON.stringify({ phase, engine, browserVersion: browser.version(), rows }, null, 2) + "\n"
+        JSON.stringify(
+          {
+            phase,
+            engine,
+            channel: launchChannel ?? null,
+            platform: process.platform,
+            architecture: process.arch,
+            browserVersion: browser.version(),
+            rows,
+          },
+          null,
+          2
+        ) + "\n"
       );
       console.log(
         `[${rows.length}] ${site}/${c.name} ${row.pass ? "PASS" : "FAIL"} requests=${row.requests.length} elapsed=${((Date.now() - started) / 1000).toFixed(1)}s`
@@ -274,7 +291,19 @@ try {
 }
 await fs.writeFile(
   path.join(output, "results.json"),
-  JSON.stringify({ phase, engine, browserVersion: browser.version(), rows }, null, 2) + "\n"
+  JSON.stringify(
+    {
+      phase,
+      engine,
+      channel: launchChannel ?? null,
+      platform: process.platform,
+      architecture: process.arch,
+      browserVersion: browser.version(),
+      rows,
+    },
+    null,
+    2
+  ) + "\n"
 );
 console.log(
   JSON.stringify({ cases: rows.length, failed: rows.filter((r) => !r.pass).length, output })

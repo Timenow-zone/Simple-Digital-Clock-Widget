@@ -95,8 +95,8 @@ The plugin bundles its production JavaScript locally for performance. Human-read
 The production JavaScript bundled with this plugin is built from the public Simple Digital Clock Widget source.
 
 * Source repository: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
-* Bundled upstream version: 0.8.2
-* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/2c9f8aacabe2b5b3b69bb224dcff32e63c3a851b
+* Bundled upstream version: 0.8.3
+* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/85b0943789e174dea84ea0993eb5777e98138213
 
 Third-party copyright and MIT license notices for the bundled dependencies are included in THIRD-PARTY-NOTICES.txt. The WordPress wrapper remains GPLv2 or later.
 
@@ -110,7 +110,8 @@ To reproduce the production bundle:
 
 = 1.1.6 =
 * Request the runtime through native WordPress render signals and a cacheable external bootstrap; clock-free public pages do not download the main runtime.
-* Bundle widget 0.8.2 with a lightweight registration shell for first-clock whenDefined and shadow-root integrations.
+* Bundle widget 0.8.3 with a lightweight registration shell for first-clock whenDefined and shadow-root integrations.
+* Isolate errors in individual clocks so other clocks initialize and keep ticking in ordinary HTML and WordPress.
 * Restore explicit helper loading and native Text/Custom HTML preview iframe assets; support external-only CSP without inline bootstrap code.
 * Preserve saved blocks, raw HTML, settings and the editor schema without a database migration.
 * Preserve Core-generated script attributes and attached data; report failed or unsupported script activation without automatic retry loops.

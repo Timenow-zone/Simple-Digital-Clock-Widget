@@ -46,7 +46,14 @@ Ordinary Author roles receive no extra capabilities during installation.
 `browser.mjs` implements native Text/Custom HTML preview checks, Post Editor
 insertion/settings/save/reopen for Admin/Author, and Site Editor
 insertion/settings/save/confirmation/reopen. Select `--mode legacy-preview`,
-`post-editor`, or `site-editor`; use `--engine chromium`, `firefox`, or `webkit`.
+`post-editor`, or `site-editor`; use `--engine chrome`, `firefox`, or `webkit`
+for the required compatibility browsers. `chrome` explicitly launches branded
+Google Chrome through Playwright `channel: "chrome"`; missing Chrome is an error,
+with no Chromium fallback. Optional `--engine chromium` remains a separate engine
+and does not satisfy the Google Chrome gate. All native runners record the engine,
+channel, actual browser version, platform and architecture. An arbitrary remote
+browser endpoint cannot prove a Chrome channel, so `browser.mjs` rejects the
+combination `--engine chrome --browser-endpoint ...`.
 Post Editor inserts two clocks and completes two visible saves and reopens.
 Optional `--lifecycle` adds native removal, observed Core Undo levels and reinsertion.
 `--legacy-editor` uses a real guarded metabox: minimum Core supports a parent
@@ -63,9 +70,10 @@ clock document, errors, screenshots and the exact browser harness source.
 corpus using its actual block serializer and native REST endpoints. Subsequent
 `read` and `save` modes compare old settings and foreign blocks; save performs
 two visible native saves. `--ui-dir evidence/FOLDER` adds successful new-post
-controls from a native browser report. `--group slashes` isolates known old
-writer negative controls; `--exclude-group slashes` selects the healthy rollback
-controls without erasing the negative report. An exclusion must be disclosed.
+controls from a native browser report. `--group slashes` selects saved backslash
+content; this healthy corpus is not the separate single-terminal-backslash writer
+negative control. `browser.mjs --terminal-control` creates that explicit native
+input. `--exclude-group slashes` is an explicit corpus exclusion and must be disclosed.
 
 The complete placement fixture uses `integration-mu.php`, `seed-integration.php`,
 `frontend.mjs`, `widgets-ui.mjs` and `theme.php`. Copy the integration MU file
@@ -112,6 +120,39 @@ the default entry point is `browser.mjs`. Serialize writers that share posts or
 templates. Read-only browser engines may run concurrently inside one snapshot
 bracket. Core transient changes must be listed, not silently dropped from an
 all-options invariant.
+
+## Exact installed runtime compatibility
+
+Install `runtime-fixture.php` as an MU fixture only in a new owned lab, after its
+candidate ZIP and frozen manifest have been verified. `runtime-compatibility.mjs`
+checks the complete installed plugin map before and after execution and the
+browser-captured runtime and bootstrap SHA-256 against that manifest.
+
+The seven scenarios per Core version cover an owned block, healthy raw HTML,
+invalid first/middle hosts, an all-invalid initial batch followed by a healthy
+host, an empty page's first dynamic insertion, and a dynamic mixed batch with
+an invalid first host. Invalid hosts retain distinct observable original errors;
+healthy neighbors and a later host must render with expected settings and tick.
+Renderer readiness must resolve once, the default loader must finish ready,
+and individual configuration errors must not become global load failures. The
+initial empty document must request no main runtime. These are real installed
+WordPress routes using Core `wp_head()`/`wp_footer()`, not mocked asset queues.
+
+```sh
+set -euo pipefail
+node tools/wordpress-lab/candidate/runtime-compatibility.mjs \
+  --run-dir .local/candidate-116-rc4-20261112-a \
+  --label rc4-runtime --engine chrome
+```
+
+Use `linux-browser.mjs --entry runtime-compatibility` for the same runner inside
+the owned Compose network. The proxy passes the explicit engine unchanged. A
+stock Playwright image contains Chromium, not necessarily branded Google Chrome;
+use verified native Chrome when available instead of relabeling that image's
+Chromium. Record the container image and architecture for Linux Firefox/WebKit.
+The normal frontend and Post/Site/legacy-preview runners remain required in
+addition to these fault-isolation scenarios. Browser launch preflight on
+`about:blank` establishes availability only; it is not artifact acceptance.
 
 ## Subsequent frozen candidate stage
 

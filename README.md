@@ -7,23 +7,22 @@ Widget and WordPress plugin versions are independent:
 
 | Component | Version | Delivery status |
 | --- | --- | --- |
-| Widget runtime | **0.8.2** | **NO-GO**: standalone compatibility blocker; production remains 0.8.1 |
-| WordPress source | **1.1.6** | RC3 **NO-GO**; shared runtime blocker; unpublished |
+| Widget runtime | **0.8.3** | Candidate built; compatibility acceptance pending; production remains 0.8.1 |
+| WordPress source | **1.1.6** | RC4 acceptance pending; unpublished |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
-The [standalone review](docs/releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
-records `STANDALONE-P2-01`: an invalid initial clock can prevent a healthy sibling
-from rendering in ordinary HTML. Earlier passing checks retain their recorded
-scope but do not close this shared-runtime blocker. Production CDN delivery and
-WordPress publication are blocked for this candidate. All eight retained older
-versioned minified assets remain byte-identical to the reviewed baseline.
+The [0.8.3 candidate](docs/releases/0.8.3/README.md) isolates initial clock errors
+and completes renderer readiness independently of individual settings. The
+[0.8.2 standalone review](docs/releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
+and rejected RC3 remain preserved. Fresh exact-artifact acceptance is required
+for 0.8.3/RC4. All nine retained older versioned minified assets remain unchanged.
 
 The metadata below describes the JavaScript widget artifact.
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.8.2`
-* **Tiny:** 12.2 KiB gzipped (`dist/0.8.2.min.js`; 36,033 bytes minified, 12,471 bytes gzip)
-* **Artifact SHA-256:** `47126e2f4515b1c88992a9d217e3a97838837a34d8a42011379bbce6f151f506`
+* **Current version:** `0.8.3`
+* **Tiny:** 12.2 KiB gzipped (`dist/0.8.3.min.js`; 36,245 bytes minified, 12,516 bytes gzip)
+* **Artifact SHA-256:** `c877005699bdb81df6a9280f3367981947db8575a1f00c6e234edb8f1e400b6b`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag
@@ -60,7 +59,7 @@ Load the immutable, versioned production asset:
 <script src="https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js"></script>
 ```
 
-The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.2.min.js`; delivery is blocked by `STANDALONE-P2-01`, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.2.min.js`.
+The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.3.min.js`; acceptance and delivery are pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.3.min.js`.
 
 For self-hosting the current production release, copy `dist/0.8.1.min.js` to your site and use its URL instead.
 The unminified `dist/SimpleDigitalClockWidget.js` entry is also retained.
@@ -308,12 +307,12 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 ## WordPress
 
 The **Simple Digital Clock** WordPress source is **1.1.6**, an unpublished
-remediation candidate with widget **0.8.2** under
+remediation candidate with widget **0.8.3** under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
 The [release record](docs/releases/1.1.6/README.md) tracks exact candidates and
-independent acceptance; RC3 is now **NO-GO** due to `STANDALONE-P2-01`.
-Earlier candidate reports remain historical evidence.
+independent acceptance; selected RC4 corrects `STANDALONE-P2-01` and is undergoing
+fresh acceptance. RC3 remains **NO-GO**; its reports remain historical evidence.
 
 Native render signals and explicit requests use normal Core enqueue. An external
 bootstrap defines a lightweight shell for raw/dynamic clocks, including first
@@ -325,8 +324,8 @@ Editor and legacy preview documents receive their
 own runtime. Saved markup, settings and the block schema remain unchanged.
 See the [asset contract](docs/WORDPRESS-ASSET-CONTRACT.md) for lifecycle, CSP,
 readiness, cache and ownership boundaries. Required hosted checks and exact-ZIP
-acceptance remain mandatory and do not close the standalone blocker. Production
-CDN delivery and WordPress.org publication remain blocked for this candidate;
+acceptance remain mandatory. Production CDN delivery and WordPress.org
+publication remain pending;
 WordPress publication also requires a separate owner instruction.
 
 **The last verified public version is 1.1.5**, published in SVN r3797104 at
