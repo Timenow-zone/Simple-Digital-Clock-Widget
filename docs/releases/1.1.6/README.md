@@ -13,6 +13,10 @@ final hosted CI and production CDN delivery remain pending. The [original RC9 ac
 remains a preserved execution snapshot. No package or frozen manifest is changed
 by this status update.
 
+The [final PR preparation record](FINAL-PR-RC9.md) binds the accepted package to
+its containing commit and identifies the exact-HEAD hosted CI receipt. Earlier
+readiness snapshots retain their recorded pre-push state.
+
 ## Historical RC5 preparation snapshot
 
 Status: **RC5 FROZEN; SCOPED ALIGNMENT ACCEPTANCE PASS; DELIVERY PENDING**.
