@@ -1,8 +1,18 @@
 # WordPress 1.1.6 RC2 candidate
 
-Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; INDEPENDENT ACCEPTANCE IN PROGRESS**.
+Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; NO-GO AFTER FINAL CODE REVIEW**.
 WordPress.org publication requires a separate owner command. Shared 0.8.2 CDN
 delivery remains pending; no deployment is claimed by the local build.
+
+Final independent review found a configured legacy-runtime conflict: if Core
+registration or a source filter selects immutable 0.8.1 before any script tag is
+printed, RC2 reserves the custom-element name and that legacy runtime cannot
+register it. Actual Core 6.3.14/7.1.4 reproductions from the frozen ZIP fail all
+16 affected static/`whenDefined()` cases; eight default-runtime controls pass.
+Other successful gates below do not override this P2. A concrete
+successor is tested; its [override loading policy](OVERRIDE-POLICY.md) was
+explicitly approved by the owner on 2026-11-12. See [RC3](RC3.md) for the new
+artifact and its separate acceptance. RC2 bytes and all evidence remain unchanged.
 
 ## Exact identity
 

@@ -51,14 +51,16 @@ Do not run experiments against existing WordPress containers or user sites.
 
 The [1.1.6 remediation](../docs/releases/1.1.6/README.md) restores native Core
 enqueue, explicit helper semantics and legacy preview iframe assets. Its external
-bootstrap defines a lightweight custom-element shell; the main 0.8.2 renderer
-loads only on actual use, including first clocks after `whenDefined()` and inside
-closed shadow roots. No polling, browser API replacement or full-response buffer
+bootstrap defines a lightweight custom-element shell; the default bundled 0.8.2
+renderer loads on actual use, including first clocks after `whenDefined()` and
+inside closed shadow roots. Opaque URL overrides load eagerly, including on empty
+pages, under the [approved compatibility policy](../docs/releases/1.1.6/OVERRIDE-POLICY.md).
+No polling, browser API replacement or full-response buffer
 is used. Saved blocks and raw HTML retain their settings and schema. See the
 [asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md).
 
-RC1 remains NO-GO after independent acceptance; its ZIP and frozen manifest are
-preserved. The new candidate requires fresh exact-artifact acceptance and both
+RC1 and RC2 remain NO-GO; their ZIPs and frozen manifests are preserved.
+Selected RC3 requires fresh affected exact-artifact acceptance and both
 required checks on the latest [draft PR #19 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks).
 The new shared runtime requires verified CDN delivery. WordPress.org publication
 requires a separate owner command. The

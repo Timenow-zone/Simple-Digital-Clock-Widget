@@ -3,6 +3,8 @@
 This describes the in-progress 1.1.6 remediation with shared widget 0.8.2.
 It is an implementation contract, not an acceptance or publication record.
 Published 0.8.1 and earlier versioned artifacts retain their original bytes.
+The owner approved the [opaque override policy](releases/1.1.6/OVERRIDE-POLICY.md)
+on 2026-11-12; its exception is separate from default conditional loading.
 
 ## WordPress ownership
 
@@ -64,6 +66,14 @@ content and ticking, never only `customElements.get()`.
 | Empty output at owned hook | No native request | Fallback remains available |
 | Output removed after actual render signal | May remain queued | Recorded as prior use, never globally dequeued |
 | Editor / legacy preview iframe | Runtime per document | Parent registry does not substitute for iframe |
+| Opaque configured runtime URL/version override | One request even without a clock | Captured runtime executes eagerly without a shell, preserving legacy registration |
+
+Only the final Core main ID and exact bundled 0.8.2 source are known to support
+deferred renderer installation. Opaque source/version/tag-URL rewrites use eager
+compatibility delivery; this includes same-byte CDN mirrors or query rewrites.
+Registration ordinarily is not enqueue: this is an explicitly approved loading
+exception, not an assertion that every registration is a use signal. Nonce/SRI
+filters that preserve the main ID/source keep default conditional delivery.
 
 ## Errors, CSP and deployment boundaries
 

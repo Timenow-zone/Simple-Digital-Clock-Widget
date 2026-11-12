@@ -309,8 +309,11 @@ independent acceptance; RC1's subsequent NO-GO remains historical evidence.
 
 Native render signals and explicit requests use normal Core enqueue. An external
 bootstrap defines a lightweight shell for raw/dynamic clocks, including first
-clocks after `whenDefined()` or inside shadow roots. Clock-free public pages do
-not download the main runtime. Editor and legacy preview documents receive their
+clocks after `whenDefined()` or inside shadow roots. Clock-free public pages using
+the default bundled URL do not download the main runtime. Opaque runtime URL
+overrides load eagerly to preserve legacy compatibility, including on empty pages;
+this is an [owner-approved exception](docs/releases/1.1.6/OVERRIDE-POLICY.md).
+Editor and legacy preview documents receive their
 own runtime. Saved markup, settings and the block schema remain unchanged.
 See the [asset contract](docs/WORDPRESS-ASSET-CONTRACT.md) for lifecycle, CSP,
 readiness, cache and ownership boundaries. Required hosted checks and exact-ZIP

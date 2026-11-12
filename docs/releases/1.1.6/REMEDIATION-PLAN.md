@@ -2,8 +2,13 @@
 
 Date: 2026-11-12. **Phase 1 complete: plan and acceptance matrix prepared.**
 Baseline source: `558460c80fe317e6d0327c79c8a4478e7430e8cf`.
-Phase 2 is in progress. RC1 remains **NO-GO** after independent acceptance;
-its manifest is preserved verbatim as `manifest-rc1.json`.
+Phase 2 implementation is complete. Exact-artifact acceptance and final release
+preparation continue against frozen [RC3](RC3.md). RC1 and RC2 remain **NO-GO**;
+their manifests, archives and evidence are retained. On 2026-11-12, the owner
+explicitly approved eager compatibility loading for opaque runtime overrides;
+see the bounded [exception](OVERRIDE-POLICY.md). The default bundled runtime
+still requires a use signal. Merge, CDN delivery and WordPress.org publication
+have not been authorized by this policy decision.
 
 ## Phase 2 design decision: lightweight registration, deferred renderer
 
@@ -61,7 +66,8 @@ After phase 1, the owner explicitly instructed continuation into implementation
 and acceptance without another phase-start approval; WordPress publication still
 requires a separate command. This also carries the previously requested phase 4
 review, hygiene, regression and release preparation. No compatibility exception
-is implied by this authorization. A separate implementation chat may be used,
+was implied by that authorization; the later override exception was explicitly
+approved and recorded separately. A separate implementation chat may be used,
 as the owner expressly permits, with this plan and the matrix as its handoff;
 creating a chat must not result in simultaneous implementation in two checkouts.
 

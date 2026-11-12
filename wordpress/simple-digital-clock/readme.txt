@@ -73,10 +73,10 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-The main clock runtime is served locally and is requested only after a WordPress render/use signal or a connected clock element. Clock-free pages receive a small cacheable external bootstrap and inert JSON configuration, but do not download Preact or the clock renderer. Multiple clocks share one runtime. Layout remains scoped to Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. The plugin does not buffer or parse the complete page response, poll the DOM, or patch browser APIs.
+The main clock runtime is served locally and is requested only after a WordPress render/use signal or a connected clock element. With the default bundled runtime, clock-free pages receive a small cacheable external bootstrap and inert JSON configuration, but do not download Preact or the clock renderer. Multiple clocks share one runtime. Layout remains scoped to Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. The plugin does not buffer or parse the complete page response, poll the DOM, or patch browser APIs.
 
 = What about clocks created later by custom JavaScript? =
-The external bootstrap defines a lightweight custom-element shell. Existing customElements.whenDefined() integrations can create their first clock, including inside open or closed shadow roots; connecting the clock requests its renderer. Calling SDCW_enqueue_scripts() or enqueuing the simple-digital-clock handle explicitly requests the normal runtime through WordPress. Gutenberg and native legacy-widget preview documents load their own runtime.
+The external bootstrap defines a lightweight custom-element shell. Existing customElements.whenDefined() integrations can create their first clock, including inside open or closed shadow roots; connecting the clock requests its renderer. Calling SDCW_enqueue_scripts() or enqueuing the simple-digital-clock handle explicitly requests the normal runtime through WordPress. Gutenberg and native legacy-widget preview documents load their own runtime. If an integration replaces the runtime URL or version, the plugin loads that opaque override eagerly without reserving the element name, preserving older runtimes. This includes CDN mirrors and URL query rewrites: such pages can request the overridden runtime before a clock exists. Nonce and SRI attributes alone do not disable conditional loading.
 
 = What if my site caches complete HTML pages? =
 Regenerate full-page caches after updating so visitors receive the corrected HTML. Cached pages served without WordPress running are not rewritten by the plugin.
@@ -96,7 +96,7 @@ The production JavaScript bundled with this plugin is built from the public Simp
 
 * Source repository: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
 * Bundled upstream version: 0.8.2
-* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/d3fcef80c8921d1d7ef72c69dc8fad66a499ab8f
+* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/2c9f8aacabe2b5b3b69bb224dcff32e63c3a851b
 
 Third-party copyright and MIT license notices for the bundled dependencies are included in THIRD-PARTY-NOTICES.txt. The WordPress wrapper remains GPLv2 or later.
 
@@ -114,6 +114,7 @@ To reproduce the production bundle:
 * Restore explicit helper loading and native Text/Custom HTML preview iframe assets; support external-only CSP without inline bootstrap code.
 * Preserve saved blocks, raw HTML, settings and the editor schema without a database migration.
 * Preserve Core-generated script attributes and attached data; report failed or unsupported script activation without automatic retry loops.
+* Preserve explicitly overridden legacy runtime sources through eager compatibility loading; default bundled pages retain conditional loading.
 
 = 1.1.5 =
 * Restore automatic clock rendering in existing raw HTML, Custom HTML/Text widgets, templates and shortcode integrations after updating from 1.1.2 or 1.1.4.

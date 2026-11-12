@@ -1,9 +1,9 @@
 # WordPress delivery remediation acceptance matrix
 
-Phase 1 specification, 2026-11-12. All new-candidate execution statuses are
-**PLANNED / NOT RUN**. Phase 2 expanded the shared runtime to 0.8.2 with a
-lightweight registration shell; see the design decision in the plan. This is
-not an acceptance report. See the
+Acceptance specification, 2026-11-12. This table defines required gates;
+it does not itself mark their execution as passed. Selected [RC3](RC3.md) is in
+affected acceptance. Phase 2 expanded the shared runtime to 0.8.2 with a
+lightweight registration shell; see the design decision in the plan. See the
 [remediation plan](REMEDIATION-PLAN.md) for architecture, authorization and scope.
 
 ## Environments and measurement
@@ -36,7 +36,7 @@ acceptance timer.
 | --- | --- | --- | --- |
 | ID-01 | Source, ZIP, manifest, installed files | Exact candidate SHA/CRC/full allowlist; no extra files/symlinks; source and installed maps agree | Both primary sites, every transition |
 | ID-02 | Shared artifact preservation and delivery | Published 0.8.1 and older versioned artifacts unchanged; new 0.8.2 build, CDN bytes, version references and rollback verified | Before/after implementation, production delivery and final review |
-| LOAD-01 | Public page without clock use | Zero main-runtime requests and executable runtime tags; no renderer initialization; lightweight shell definition and external bootstrap cost documented | Both themes/sites, three engines |
+| LOAD-01 | Public page without clock use, default bundled runtime | Zero main-runtime requests and executable runtime tags; no renderer initialization; lightweight shell definition and external bootstrap cost documented; owner-approved opaque overrides are counted separately under CORE-01 | Both themes/sites, three engines |
 | LOAD-02 | Escaped/comment/script-text/template examples | No false activation; zero runtime | Both sites, three engines |
 | LOAD-03 | Owned block, one/many/nested | Runtime once; all clocks render/tick with correct attributes | Both themes/sites, three engines |
 | LOAD-04 | Template part, synced/reusable block, pattern, sidebar placement | Actual native resolution renders clocks; absent/unrendered placement does not load runtime | Applicable native surfaces, both Core versions |
@@ -45,7 +45,7 @@ acceptance timer.
 | LOAD-07 | Empty owned output and later suppression | Empty output at the owned hook does not enqueue; later suppression after a real use signal is recorded under the new render contract | PHP plus native controls |
 | LOAD-08 | Existing/pending/printed/defined runtime, duplicate bootstrap | Owner retained; no duplicate request, definition or before/after side effects | Three engines and actual Core |
 | LOAD-09 | Native path without fallback | Owned block/helper still work when fallback is disabled; native path does not call private markup capture; disabling native enqueue fails this control | Both sites, three engines |
-| CORE-01 | Explicit helper/enqueue/dependency, including late footer request | Legacy helper requests runtime; native Core behavior and output order preserved | Both Core versions, three engines |
+| CORE-01 | Explicit helper/enqueue/dependency, late footer request, and configured opaque overrides | Legacy helper requests runtime; native Core behavior and output order preserved; opaque overrides keep eager legacy behavior per the explicitly approved override policy, including one request on empty pages | Both Core versions, three engines |
 | CORE-02 | Runtime markup capture | Original full registry/queue and buffer level unchanged; filters, localized data, dependencies and before/after retained | Actual Core, both versions |
 | MIME-01 | Ordinary REST/feed/robots/trackback/JSON/XML/excerpts/admin | No plugin bootstrap/runtime output leaks; response parses; no unintended global admin load | Both sites; body scan includes escaped JSON markup |
 | CSP-01 | External-only script-src self | Static, raw and dynamic clocks render through allowed external assets; no plugin inline-code dependency | Both sites, three engines |
@@ -150,9 +150,9 @@ Verify the fresh candidate after its current manifest is synchronized:
 set -euo pipefail
 cd /Users/yy/dev2/Simple-Digital-Clock-Widget
 python3 tools/wordpress-lab/verify-package.py \
-  --zip .local/packages/simple-digital-clock-1.1.6-rc2.zip
+  --zip .local/packages/simple-digital-clock-1.1.6-rc3.zip
 ```
 
-Use the actual new revision path if RC2 already exists. A repacked archive is not
+Use the selected frozen revision path. A repacked archive is not
 silently substituted for the independently accepted ZIP. No command above
 publishes to WordPress.org.
