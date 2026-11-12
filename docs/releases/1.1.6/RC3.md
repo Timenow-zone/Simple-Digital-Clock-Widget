@@ -1,9 +1,15 @@
 # WordPress 1.1.6 RC3 candidate
 
-Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; TECHNICAL ACCEPTANCE PASS; FINAL CI AND CDN PENDING**.
+Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; NO-GO — STANDALONE-P2-01 OPEN**.
+The [standalone review](../0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md) found that the
+shared runtime can suppress healthy initial clocks after another clock's render
+error. Earlier passing acceptance results remain true within their recorded
+scopes, but do not close this blocker. Frozen reports, manifests and package
+bytes are preserved. Production CDN delivery and WordPress publication are
+blocked for this candidate.
 The owner explicitly approved eager compatibility loading for opaque runtime
 overrides. Default bundled pages retain zero main-runtime requests without use.
-CDN delivery remains pending. WordPress.org publication requires a separate
+That approval remains valid. WordPress.org publication also requires a separate
 owner command.
 
 ## Exact identity and delta

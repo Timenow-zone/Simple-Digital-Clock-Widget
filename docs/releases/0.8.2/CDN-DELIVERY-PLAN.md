@@ -1,12 +1,16 @@
 # Widget 0.8.2 production delivery proposal
 
-Status: **PREVIEW VERIFIED; PRODUCTION AUTHORIZATION PENDING**.
-No merge, production traffic change, owner-site installation or WordPress.org
-publication has been performed. This proposal promotes an existing version built
-by the configured Cloudflare workflow; it does not require merging PR #18 or #19.
-Required checks must also pass on the final reviewed PR #19 HEAD before delivery.
+Status: **WITHDRAWN — NO-GO FOR STANDALONE COMPATIBILITY**.
+The [standalone review](STANDALONE-COMPATIBILITY-REVIEW.md) found a shared-runtime
+regression in these exact preview bytes. Do not promote Cloudflare version
+`f7c0276a-9f5f-414f-bdca-0c1420c9292c`. The earlier preview checks below remain
+historical evidence and do not establish release readiness.
 
-## Concrete prepared version
+No merge, production traffic change, owner-site installation or WordPress.org
+publication has been performed. A corrected exact artifact and a new reviewed
+delivery proposal are required before requesting production authorization.
+
+## Withdrawn prepared version
 
 - Source: `eb23578965312679df4450522c7381236676c708`; all 17 RC3 package files
   match this containing commit. Later acceptance/harness documentation does not
@@ -39,12 +43,14 @@ Its bytes, headers, metadata and deployment list are preserved under
 `.local/remediation-116-rc2/cdn-before/`. Recheck for intervening deployments
 immediately before an authorized change.
 
-## Authorized delivery procedure
+## Requirements for a replacement proposal
 
-After the owner explicitly authorizes production CDN delivery and final PR
-checks are green, promote the exact verified Cloudflare version above to
-100 percent. Do not rebuild or substitute another version silently. Record the
-new deployment ID, source, version and artifact hash. Verify the public 0.8.2 URL,
+First resolve STANDALONE-P2-01 and accept the newly built exact artifact with
+standalone and WordPress regression coverage. Preserve this rejected preview
+identity; a replacement must identify its own source, hashes, Cloudflare build
+and version. Required final PR checks and separate owner production authorization
+remain mandatory. Record the new deployment ID, source, version and artifact
+hash. Verify the new public versioned URL,
 `/version.json`, HTML references/source link, cache headers, previous versioned
 assets and a clock using the public asset. A preview result is not a production
 result.

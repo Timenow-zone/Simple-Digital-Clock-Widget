@@ -1,10 +1,15 @@
 # WordPress 1.1.6 release preparation
 
-Status: **RC3 TECHNICAL ACCEPTANCE PASS; FINAL PR CHECKS AND CDN DELIVERY PENDING**.
-Implementation and independent native/data acceptance are complete.
+Status: **RC3 NO-GO — STANDALONE-P2-01 OPEN**.
+The [standalone review](../0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md) confirmed a
+shared-runtime regression: an invalid initial clock can prevent a healthy sibling
+from rendering outside WordPress. Production CDN delivery and WordPress
+publication are blocked for this candidate.
 The [final acceptance snapshot](FINAL-ACCEPTANCE-RC3.md) and
 [42-gate evidence index](acceptance-rc3.json) separate fresh RC3 and inherited RC2
-results. Required checks still bind to the final containing PR commit. This is not `READY_FOR_WP_PUBLICATION`.
+results. Those passing results retain their recorded scopes and do not close the
+new blocker. Required checks still bind to the final containing PR commit.
+This is not `READY_FOR_WP_PUBLICATION`.
 WordPress.org publication requires a separate explicit owner command.
 
 ## Selected artifact
@@ -56,6 +61,10 @@ runner tests and independent 84-case actual-Core override checks. Installed Plug
 frontend/editors, direct updates/rollback, cache, multisite and independent final
 review pass within their recorded scopes. All owned labs are stopped; data and
 sealed evidence are retained.
+
+The subsequent standalone failure supersedes the earlier overall release
+disposition. Frozen acceptance reports, JSON, manifests and package bytes remain
+unchanged. The approved eager-override exception remains valid.
 
 [Draft PR #19](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19)
 is stacked on [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).

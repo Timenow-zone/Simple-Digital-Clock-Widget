@@ -1,10 +1,13 @@
 # WordPress asset delivery contract
 
 This describes selected WordPress 1.1.6 RC3 with shared widget 0.8.2.
-Technical acceptance passed; final PR checks and production CDN delivery remain
-separate gates in the release record.
+Current status is **NO-GO**: the [standalone review](releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
+confirmed `STANDALONE-P2-01` in shared-runtime initialization. Earlier passing
+checks retain their recorded scope and do not close this blocker. Production
+CDN delivery and WordPress publication are blocked for this candidate.
 It is an implementation contract, not an acceptance or publication record.
-Published 0.8.1 and earlier versioned artifacts retain their original bytes.
+All eight retained older versioned minified artifacts, including 0.8.1, match
+their reviewed baseline bytes.
 The owner approved the [opaque override policy](releases/1.1.6/OVERRIDE-POLICY.md)
 on 2026-11-12; its exception is separate from default conditional loading.
 
@@ -57,7 +60,9 @@ Standalone CDN loading registers and initializes the same component eagerly.
 The adapter retains the existing observed attributes, property reflection,
 context, slots, hydration and disconnect lifecycle. Element definition and
 renderer readiness are distinct; acceptance requires actual rendered clock
-content and ticking, never only `customElements.get()`.
+content and ticking, never only `customElements.get()`. The current candidate
+does not isolate an initial host's rendering error from later pending hosts;
+this is the standalone blocker identified above.
 
 | Case | Main runtime | Other work |
 | --- | --- | --- |

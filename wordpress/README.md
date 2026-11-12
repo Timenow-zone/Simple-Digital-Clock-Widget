@@ -4,8 +4,8 @@ This repository contains two independently versioned components:
 
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
-| JavaScript widget | `../src/` | `../package.json` (`0.8.2`, candidate; production remains 0.8.1) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, unpublished remediation candidate) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| JavaScript widget | `../src/` | `../package.json` (`0.8.2`, NO-GO candidate; production remains 0.8.1) | MIT, as declared in the widget package |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, RC3 NO-GO; unpublished) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
@@ -59,11 +59,15 @@ No polling, browser API replacement or full-response buffer
 is used. Saved blocks and raw HTML retain their settings and schema. See the
 [asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md).
 
-RC1 and RC2 remain NO-GO; their ZIPs and frozen manifests are preserved.
-Selected RC3 passed affected exact-artifact acceptance. Both required checks
-must also pass on the latest [draft PR #19 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks).
-The new shared runtime requires verified CDN delivery. WordPress.org publication
-requires a separate owner command. The
+RC3 is now **NO-GO** after the
+[standalone review](../docs/releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
+confirmed `STANDALONE-P2-01` in the shared runtime. Earlier affected exact-artifact
+checks remain passing within their recorded scope, but do not close this blocker.
+RC1/RC2 records, all frozen manifests and ZIPs remain preserved. Both required
+checks must still pass on the latest [draft PR #19 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks).
+Production CDN delivery and WordPress.org publication are blocked for this
+candidate. The approved eager-override policy remains valid; WordPress
+publication also requires a separate owner command. The
 [candidate lab](../tools/wordpress-lab/candidate/README.md) takes an explicit ZIP,
 frozen manifest and SHA and never repurposes old pinned lab entry points.
 

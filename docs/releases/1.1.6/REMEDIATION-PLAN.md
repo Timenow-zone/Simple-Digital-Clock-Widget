@@ -1,10 +1,13 @@
 # WordPress runtime delivery remediation plan
 
-Date: 2026-11-12. **Phase 1 complete: plan and acceptance matrix prepared.**
+Date: 2026-11-12. **Current status: RC3 NO-GO — STANDALONE-P2-01 OPEN.**
 Baseline source: `558460c80fe317e6d0327c79c8a4478e7430e8cf`.
-Implementation and scoped independent acceptance are complete for frozen
-[RC3](RC3.md); see the [final snapshot](FINAL-ACCEPTANCE-RC3.md). Phase 4 release
-preparation requires final-HEAD CI and separately authorized CDN delivery. RC1 and RC2 remain **NO-GO**;
+The [standalone review](../0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md) confirmed a
+shared-runtime failure outside WordPress. Earlier scoped results for frozen
+[RC3](RC3.md) remain recorded in the [final snapshot](FINAL-ACCEPTANCE-RC3.md),
+but do not close this new blocker. Production CDN delivery and WordPress
+publication are blocked for this candidate; final-HEAD CI remains required.
+RC1 and RC2 remain **NO-GO**;
 their manifests, archives and evidence are retained. On 2026-11-12, the owner
 explicitly approved eager compatibility loading for opaque runtime overrides;
 see the bounded [exception](OVERRIDE-POLICY.md). The default bundled runtime

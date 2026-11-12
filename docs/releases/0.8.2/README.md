@@ -1,10 +1,11 @@
 # Widget 0.8.2 release preparation
 
-Status: **BUILT AND REGRESSION-TESTED; PRODUCTION CDN DELIVERY PENDING**.
-This shared runtime supports the separate WordPress 1.1.6 remediation. Neither
-this record nor the WordPress ZIP proves public CDN delivery.
-The [concrete delivery proposal](CDN-DELIVERY-PLAN.md) identifies the verified
-Cloudflare preview, all nine immutable asset checks and preserved rollback.
+Status: **NO-GO — STANDALONE COMPATIBILITY REGRESSION**.
+The [standalone review](STANDALONE-COMPATIBILITY-REVIEW.md) reproduced an initial
+host failure that prevents a following healthy clock from rendering in all three
+browser engines. The same artifact is bundled in WordPress 1.1.6 RC3; its prior
+scoped acceptance does not close this defect. The [CDN delivery proposal](CDN-DELIVERY-PLAN.md)
+is withdrawn. Preserve the artifact and prior evidence; do not promote it.
 
 - Source commit: `d3fcef80c8921d1d7ef72c69dc8fad66a499ab8f`.
 - Artifact: `dist/0.8.2.min.js`, 36,033 bytes.
@@ -30,7 +31,7 @@ does not promise synchronous rendering before the runtime download. Acceptance
 uses rendered shadow content and ticking. The WordPress package includes the
 exact artifact above, with no CDN dependency for its runtime.
 
-## Verification and delivery gates
+## Historical verification and remaining gates
 
 Production build with `--no-cache`, isolated exact-byte reproduction,
 `release:check`, `release:verify` and generated `site:build` asset parity passed.
@@ -42,6 +43,11 @@ lifecycle/parity cases per engine; 19 iframe/font/serialization/product-site
 runner tests also passed. The external WordPress loader passed 87 runner tests.
 Fresh exact-ZIP, native, cache and multisite acceptance is tracked separately in
 [WordPress 1.1.6](../1.1.6/README.md).
+
+Those tests did not cover an invalid initial host followed by a healthy host.
+The later standalone differential disproves full compatibility of these bytes.
+Correct the shared lifecycle, add the missing regression and accept a new exact
+candidate before preparing another production delivery proposal.
 
 Before production delivery, preserve the actual current deployment reference,
 require successful checks on the final reviewed PR HEAD, and use the configured

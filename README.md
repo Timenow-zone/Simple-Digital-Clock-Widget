@@ -7,9 +7,16 @@ Widget and WordPress plugin versions are independent:
 
 | Component | Version | Delivery status |
 | --- | --- | --- |
-| Widget runtime | **0.8.2** | Candidate built; CDN delivery pending; production remains 0.8.1 |
-| WordPress source | **1.1.6** | RC3 technical acceptance passed; unpublished |
+| Widget runtime | **0.8.2** | **NO-GO**: standalone compatibility blocker; production remains 0.8.1 |
+| WordPress source | **1.1.6** | RC3 **NO-GO**; shared runtime blocker; unpublished |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
+
+The [standalone review](docs/releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
+records `STANDALONE-P2-01`: an invalid initial clock can prevent a healthy sibling
+from rendering in ordinary HTML. Earlier passing checks retain their recorded
+scope but do not close this shared-runtime blocker. Production CDN delivery and
+WordPress publication are blocked for this candidate. All eight retained older
+versioned minified assets remain byte-identical to the reviewed baseline.
 
 The metadata below describes the JavaScript widget artifact.
 
@@ -53,7 +60,7 @@ Load the immutable, versioned production asset:
 <script src="https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js"></script>
 ```
 
-The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.2.min.js`; delivery is pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.2.min.js`.
+The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.2.min.js`; delivery is blocked by `STANDALONE-P2-01`, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.2.min.js`.
 
 For self-hosting the current production release, copy `dist/0.8.1.min.js` to your site and use its URL instead.
 The unminified `dist/SimpleDigitalClockWidget.js` entry is also retained.
@@ -305,7 +312,8 @@ remediation candidate with widget **0.8.2** under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
 The [release record](docs/releases/1.1.6/README.md) tracks exact candidates and
-independent acceptance; RC1's subsequent NO-GO remains historical evidence.
+independent acceptance; RC3 is now **NO-GO** due to `STANDALONE-P2-01`.
+Earlier candidate reports remain historical evidence.
 
 Native render signals and explicit requests use normal Core enqueue. An external
 bootstrap defines a lightweight shell for raw/dynamic clocks, including first
@@ -317,8 +325,9 @@ Editor and legacy preview documents receive their
 own runtime. Saved markup, settings and the block schema remain unchanged.
 See the [asset contract](docs/WORDPRESS-ASSET-CONTRACT.md) for lifecycle, CSP,
 readiness, cache and ownership boundaries. Required hosted checks and exact-ZIP
-acceptance remain mandatory. The shared 0.8.2 artifact also needs verified CDN
-delivery; WordPress.org publication requires a separate owner instruction.
+acceptance remain mandatory and do not close the standalone blocker. Production
+CDN delivery and WordPress.org publication remain blocked for this candidate;
+WordPress publication also requires a separate owner instruction.
 
 **The last verified public version is 1.1.5**, published in SVN r3797104 at
 2026-11-11 21:17:24 UTC. Pinned trunk/tag exports and both official ZIPs match
