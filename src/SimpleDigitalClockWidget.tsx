@@ -7,7 +7,7 @@
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.8.2
+ * Version: 0.8.3
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */
@@ -22,7 +22,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.8.2";
+const v = "0.8.3";
 
 const googleFontsMonospace: string[] = (data?.allowFonts ?? []) as string[];
 

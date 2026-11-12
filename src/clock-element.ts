@@ -84,16 +84,24 @@ export function registerClockElement(load?: () => void): ClockElementConstructor
 
     static installRuntime(implementation: ClockElementRuntime) {
       if (runtime) throw new Error("Simple Digital Clock: the runtime is already installed.");
-      runtime = implementation;
-      try {
-        for (const element of pending) {
-          if (element.isConnected) runtime.connect(element);
-        }
-        installed = true;
-        resolveReady();
-      } finally {
-        pending.clear();
+      if (!implementation || typeof implementation.connect !== "function" ||
+          typeof implementation.disconnect !== "function" || typeof implementation.attributeChanged !== "function") {
+        throw new TypeError("Simple Digital Clock: invalid runtime adapter.");
       }
+      runtime = implementation;
+      for (const element of pending) {
+        pending.delete(element);
+        if (!element.isConnected) continue;
+        try {
+          runtime.connect(element);
+        } catch (error) {
+          // Match native custom-element reactions: report each error without blocking siblings.
+          queueMicrotask(() => { throw error; });
+        }
+      }
+      // Readiness describes the renderer, not the validity of every clock's settings.
+      installed = true;
+      resolveReady();
     }
 
     connectedCallback() {

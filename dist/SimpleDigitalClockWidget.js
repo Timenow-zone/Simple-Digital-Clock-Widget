@@ -12,7 +12,7 @@ function $parcel$interopDefault(a) {
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.8.2
+ * Version: 0.8.3
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */ var $a7a8e2c5ae553f9f$export$41c562ebe57d11e2, $a7a8e2c5ae553f9f$var$t, $a7a8e2c5ae553f9f$export$a8257692ac88316c, $a7a8e2c5ae553f9f$var$i, $a7a8e2c5ae553f9f$var$u, $a7a8e2c5ae553f9f$var$f, $a7a8e2c5ae553f9f$var$e, $a7a8e2c5ae553f9f$var$o, $a7a8e2c5ae553f9f$var$l, $a7a8e2c5ae553f9f$var$c, $a7a8e2c5ae553f9f$var$a, $a7a8e2c5ae553f9f$var$s, $a7a8e2c5ae553f9f$var$h = Symbol.for("pv"), $a7a8e2c5ae553f9f$var$p = {}, $a7a8e2c5ae553f9f$var$v = [], $a7a8e2c5ae553f9f$var$y = /^m(i|n|o|s|text|space)$/, $a7a8e2c5ae553f9f$var$w = Array.isArray, $a7a8e2c5ae553f9f$var$d = $a7a8e2c5ae553f9f$var$v.slice, $a7a8e2c5ae553f9f$var$_ = Object.assign;
@@ -414,14 +414,23 @@ function $02a31b7ecbf712b5$export$bf482fdedaa267a1(load) {
         }
         static installRuntime(implementation) {
             if (runtime) throw new Error("Simple Digital Clock: the runtime is already installed.");
+            if (!implementation || typeof implementation.connect !== "function" || typeof implementation.disconnect !== "function" || typeof implementation.attributeChanged !== "function") throw new TypeError("Simple Digital Clock: invalid runtime adapter.");
             runtime = implementation;
-            try {
-                for (const element of pending)if (element.isConnected) runtime.connect(element);
-                installed = true;
-                resolveReady();
-            } finally{
-                pending.clear();
+            for (const element of pending){
+                pending.delete(element);
+                if (!element.isConnected) continue;
+                try {
+                    runtime.connect(element);
+                } catch (error) {
+                    // Match native custom-element reactions: report each error without blocking siblings.
+                    queueMicrotask(()=>{
+                        throw error;
+                    });
+                }
             }
+            // Readiness describes the renderer, not the validity of every clock's settings.
+            installed = true;
+            resolveReady();
         }
         connectedCallback() {
             if (runtime) runtime.connect(this);
@@ -480,7 +489,7 @@ function $02a31b7ecbf712b5$export$bf482fdedaa267a1(load) {
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- */
+ */ 
 function $bc2aa61eef49c8f4$var$ContextProvider(props) {
     const { context: context, children: children, ...rest } = props;
     this.getChildContext = ()=>context;
@@ -837,7 +846,7 @@ $b2927e49b2707936$exports = {
 var $02a8a47a7fc1ea47$export$2e2bcd8739ae039 = $02a8a47a7fc1ea47$var$isDark;
 
 
-const $aa43cbaf8926a599$var$v = "0.8.2";
+const $aa43cbaf8926a599$var$v = "0.8.3";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f9f$export$16fa2f45be04daa8) {
     constructor(props){

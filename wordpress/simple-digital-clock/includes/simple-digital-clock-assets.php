@@ -11,7 +11,7 @@ function SDCW_register_assets() {
             'simple-digital-clock',
             SDCW_URL . 'assets/public/js/simple-digital-clock.min.js',
             array(),
-            '0.8.2',
+            '0.8.3',
             array('strategy' => 'async', 'in_footer' => true)
         );
     }
@@ -131,7 +131,7 @@ function SDCW_get_runtime_markup() {
 /** Only the bundled runtime is known to implement the deferred renderer ABI. */
 function SDCW_runtime_supports_deferred_loading($markup) {
     $processor = new WP_HTML_Tag_Processor($markup);
-    $expected = SDCW_URL . 'assets/public/js/simple-digital-clock.min.js?ver=0.8.2';
+    $expected = SDCW_URL . 'assets/public/js/simple-digital-clock.min.js?ver=0.8.3';
     while ($processor->next_tag('SCRIPT')) {
         if ('simple-digital-clock-js' === $processor->get_attribute('id')) {
             return $expected === $processor->get_attribute('src');

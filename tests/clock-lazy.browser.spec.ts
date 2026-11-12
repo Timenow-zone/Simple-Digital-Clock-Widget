@@ -3,7 +3,7 @@ import { Component, h, type ComponentChildren } from "preact";
 import register from "preact-custom-element";
 import { registerClockElement } from "../src/clock-element";
 import { createClockRuntime } from "../src/clock-element-runtime";
-import type { ClockElementConstructor } from "../src/clock-element";
+import type { ClockElementConstructor, ClockElementRuntime } from "../src/clock-element";
 
 type ClockWindow = Window & { bridge: ClockElementConstructor; requests: number };
 const shellUrl = new URL("../src/clock-element.js", import.meta.url).href;
@@ -56,6 +56,15 @@ function clock(doc: Document) {
 
 function rendered(element: HTMLElement) {
   return /\d{2}:\d{2}/.test(element.shadowRoot?.querySelector("a")?.textContent ?? "");
+}
+
+function observeErrors(win: Window) {
+  const errors: unknown[] = [];
+  win.addEventListener("error", (event) => {
+    errors.push(event.error);
+    event.preventDefault();
+  });
+  return errors;
 }
 
 it("defines the lightweight host without loading a runtime until a connected clock exists", async () => {
@@ -138,21 +147,137 @@ it("preserves pending properties, attribute updates, host identity and reconnect
   } finally { f.frame.remove(); }
 }).timeout(10000);
 
-it("does not report runtime readiness when adapter installation fails", async () => {
+it("isolates pending mount errors and completes renderer readiness", async () => {
   const f = await fixture();
   try {
     await f.shell();
-    f.doc.body.append(clock(f.doc));
-    assert.throws(() => f.win.bridge.installRuntime({
-      connect() { throw new Error("negative-control mount failure"); },
+    const errors = observeErrors(f.win);
+    const hosts = Array.from({ length: 4 }, () => clock(f.doc));
+    f.doc.body.append(...hosts);
+    const failures = [new Error("first mount failure"), new Error("third mount failure")];
+    const calls: HTMLElement[] = [];
+    const runtime: ClockElementRuntime = {
+      connect(element) {
+        calls.push(element);
+        if (element === hosts[0]) throw failures[0];
+        if (element === hosts[2]) throw failures[1];
+      },
       disconnect() {},
       attributeChanged() {},
-    }), "negative-control mount failure");
-    assert.isFalse(f.win.bridge.runtimeReady);
+    };
+    f.win.bridge.installRuntime(runtime);
+    assert.deepEqual(calls, hosts, "every independent host is attempted");
+    assert.isTrue(f.win.bridge.runtimeReady);
+    await f.win.bridge.whenRuntimeReady;
+    await waitFor(() => errors.length === 2);
+    assert.strictEqual(errors[0], failures[0], "preserve the original error");
+    assert.strictEqual(errors[1], failures[1]);
+    assert.throws(() => f.win.bridge.installRuntime(runtime), "already installed");
+    const late = clock(f.doc);
+    f.doc.body.append(late);
+    assert.deepEqual(calls, [...hosts, late], "late connections remain independent");
+    assert.isTrue(f.win.bridge.runtimeReady);
+  } finally { f.frame.remove(); }
+}).timeout(10000);
+
+it("rejects an incomplete adapter before changing readiness or consuming pending hosts", async () => {
+  const f = await fixture();
+  try {
+    await f.shell();
+    const host = clock(f.doc);
+    f.doc.body.append(host);
     let resolved = false;
     void f.win.bridge.whenRuntimeReady.then(() => { resolved = true; });
+    for (const method of ["connect", "disconnect", "attributeChanged"] as const) {
+      const incomplete = { connect() {}, disconnect() {}, attributeChanged() {}, [method]: null };
+      assert.throws(() => f.win.bridge.installRuntime(incomplete as unknown as ClockElementRuntime), "invalid runtime adapter");
+      assert.isFalse(f.win.bridge.runtimeReady);
+    }
     await Promise.resolve();
     assert.isFalse(resolved);
+    const calls: HTMLElement[] = [];
+    f.win.bridge.installRuntime({ connect(element) { calls.push(element); }, disconnect() {}, attributeChanged() {} });
+    await f.win.bridge.whenRuntimeReady;
+    assert.deepEqual(calls, [host]);
+    assert.isTrue(resolved);
+  } finally { f.frame.remove(); }
+}).timeout(10000);
+
+for (const count of [1, 2]) {
+  it(`completes readiness when all ${count} initial hosts fail and accepts a later healthy host`, async () => {
+    const f = await fixture();
+    try {
+      await f.shell();
+      const errors = observeErrors(f.win);
+      const invalid = Array.from({ length: count }, () => clock(f.doc));
+      f.doc.body.append(...invalid);
+      const connected: HTMLElement[] = [];
+      f.win.bridge.installRuntime({
+        connect(element) {
+          if (invalid.includes(element)) throw new Error("invalid initial host");
+          connected.push(element);
+        },
+        disconnect() {},
+        attributeChanged() {},
+      });
+      assert.isTrue(f.win.bridge.runtimeReady);
+      await f.win.bridge.whenRuntimeReady;
+      await waitFor(() => errors.length === count);
+      assert.deepEqual(errors.map(String), Array.from({ length: count }, () => "Error: invalid initial host"));
+      const healthy = clock(f.doc);
+      f.doc.body.append(healthy);
+      assert.deepEqual(connected, [healthy]);
+    } finally { f.frame.remove(); }
+  }).timeout(10000);
+}
+
+it("does not reconnect pending hosts twice when a mount changes the document", async () => {
+  const f = await fixture();
+  try {
+    await f.shell();
+    const errors = observeErrors(f.win);
+    const [first, reinserted, removed, last, added] = Array.from({ length: 5 }, () => clock(f.doc));
+    f.doc.body.append(first, reinserted, removed, last);
+    const calls: HTMLElement[] = [];
+    const failure = new Error("mount failure after document changes");
+    f.win.bridge.installRuntime({
+      connect(element) {
+        calls.push(element);
+        if (element === first) {
+          removed.remove();
+          reinserted.remove();
+          f.doc.body.append(reinserted, added);
+          throw failure;
+        }
+      },
+      disconnect() {},
+      attributeChanged() {},
+    });
+    await f.win.bridge.whenRuntimeReady;
+    await waitFor(() => errors.length === 1);
+    assert.strictEqual(errors[0], failure);
+    assert.deepEqual(calls, [first, reinserted, added, last]);
+    assert.isFalse(removed.isConnected);
+    assert.isTrue(f.win.bridge.runtimeReady);
+  } finally { f.frame.remove(); }
+}).timeout(10000);
+
+it("renders and ticks a healthy clock after an invalid initial clock", async () => {
+  const f = await fixture();
+  try {
+    await f.shell();
+    const errors = observeErrors(f.win);
+    const invalid = clock(f.doc);
+    invalid.setAttribute("background-color", "invalid-color");
+    const healthy = clock(f.doc);
+    f.doc.body.append(invalid, healthy);
+    await f.runtime();
+    await waitFor(() => rendered(healthy) && errors.length === 1);
+    assert.match(String(errors[0]), /Color format not recognized/);
+    await f.win.bridge.whenRuntimeReady;
+    assert.isTrue(f.win.bridge.runtimeReady);
+    const before = healthy.shadowRoot!.querySelector("a")!.textContent;
+    await waitFor(() => healthy.shadowRoot!.querySelector("a")!.textContent !== before);
   } finally { f.frame.remove(); }
 }).timeout(10000);
 
