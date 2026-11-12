@@ -13,6 +13,10 @@ const { values: args } = parseArgs({
     engine: { type: "string", default: "chromium" },
     "catalog-dir": { type: "string", default: "evidence/baseline112-seed-chromium" },
     "ui-dir": { type: "string", multiple: true, default: [] },
+    site: { type: "string" },
+    id: { type: "string" },
+    group: { type: "string" },
+    "exclude-group": { type: "string" },
   },
 });
 const root = path.resolve(args["run-dir"]);
@@ -153,12 +157,16 @@ async function open(page, url, id) {
   }
 }
 async function fillNativeTitle(page, value) {
-  for (const frame of page.frames()) {
-    const field = frame.locator('[aria-label="Add title"],[aria-label="Title"]');
-    if ((await field.count()) === 1 && (await field.isVisible())) {
-      await field.fill(value);
-      return;
+  const deadline = Date.now() + 30_000;
+  while (Date.now() < deadline) {
+    for (const frame of page.frames()) {
+      const field = frame.locator('[aria-label="Add title"],[aria-label="Title"]');
+      if ((await field.count()) === 1 && (await field.isVisible())) {
+        await field.fill(value);
+        return;
+      }
     }
+    await page.waitForTimeout(100);
   }
   throw new Error("Native title control missing in actual editor realm");
 }
@@ -233,6 +241,7 @@ async function persist() {
 }
 try {
   for (const [site, url] of Object.entries(sites)) {
+    if (args.site && args.site !== site) continue;
     const catalog =
       mode === "seed"
         ? []
@@ -365,7 +374,12 @@ try {
           catalog.push(...created);
         }
         for (const item of catalog.filter(
-          (i) => i.role === role && ["posts", "pages"].includes(i.type)
+          (i) =>
+            i.role === role &&
+            ["posts", "pages"].includes(i.type) &&
+            (!args.group || i.group === args.group) &&
+            (!args["exclude-group"] || i.group !== args["exclude-group"]) &&
+            (!args.id || String(i.id) === args.id)
         )) {
           const row = { site, role, id: item.id, group: item.group, pass: false };
           const errorOffset = errors.length;
@@ -398,7 +412,7 @@ try {
             if (mode === "save" && item.baselineHealthy) {
               await fillNativeTitle(p, original.title.raw + " acceptance edit");
               await p.waitForFunction(() => wp.data.select("core/editor").isEditedPostDirty());
-              const buttons = p.getByRole("button", { name: /^(Save|Update)$/ });
+              const buttons = p.getByRole("button", { name: /^(Save draft|Save|Update)$/i });
               await buttons.first().waitFor();
               let clicked = false;
               for (let j = 0; j < (await buttons.count()); j++) {
@@ -423,7 +437,7 @@ try {
               row.saveMethod = "Native visible Save/Update button after title edit";
               await fillNativeTitle(p, original.title.raw + " acceptance repeated");
               await p.waitForFunction(() => wp.data.select("core/editor").isEditedPostDirty());
-              const again = p.getByRole("button", { name: /^(Save|Update)$/ });
+              const again = p.getByRole("button", { name: /^(Save draft|Save|Update)$/i });
               await again.first().waitFor();
               for (let j = 0; j < (await again.count()); j++) {
                 if (await again.nth(j).isVisible()) {
@@ -464,6 +478,7 @@ try {
               .catch(() => {});
           }
           row.pageErrors = errors.slice(errorOffset);
+          row.uncaughtErrorFree = row.pageErrors.length === 0;
           rows.push(row);
           await persist();
           console.log(

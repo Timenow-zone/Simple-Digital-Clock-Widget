@@ -1,6 +1,6 @@
 # WordPress 1.1.6 RC3 candidate
 
-Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; AFFECTED ACCEPTANCE IN PROGRESS**.
+Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; TECHNICAL ACCEPTANCE PASS; FINAL CI AND CDN PENDING**.
 The owner explicitly approved eager compatibility loading for opaque runtime
 overrides. Default bundled pages retain zero main-runtime requests without use.
 CDN delivery remains pending. WordPress.org publication requires a separate
@@ -42,8 +42,10 @@ Prepared source passed 96 Linux loader runner tests, 167 PHP assertions with
 real minimum/current Core tokenizers, and independent 84-case actual-Core/browser
 override checks. Default/attribute-only empty pages request no runtime; opaque
 override empty pages request one, and all positive clocks render without errors.
-The exact new ZIP must still complete affected package, native delivery and
-optimization checks. Unchanged editor/schema/runtime results may be inherited
-from exact RC2 only with their file-hash scope identified; they are never counted
-as new RC3 executions. Final required hosted checks remain tied to the latest PR
-HEAD. This preparation record does not claim production delivery or publication.
+The exact new ZIP completed affected package, native delivery, editor, data,
+cache and network checks. See the [final acceptance snapshot](FINAL-ACCEPTANCE-RC3.md)
+and [42-gate index](acceptance-rc3.json). Inherited exact-RC2 results are explicitly
+scoped to the 14 unchanged files and never counted as fresh RC3 executions.
+All owned labs are stopped and evidence preserved. Final required hosted checks
+remain tied to the latest PR HEAD. Production CDN delivery and WordPress.org
+publication have not occurred; the latter still needs its separate owner command.

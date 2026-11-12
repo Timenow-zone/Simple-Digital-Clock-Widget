@@ -1,6 +1,6 @@
 # Configured runtime override compatibility policy
 
-Status: **OWNER APPROVED ON 2026-11-12; EXACT RC3 ACCEPTANCE IN PROGRESS**.
+Status: **OWNER APPROVED ON 2026-11-12; EXACT RC3 TECHNICAL ACCEPTANCE PASS**.
 The owner explicitly selected preservation of compatibility for overridden
 runtimes, including the documented eager-loading cost on clock-free pages.
 This decision does not authorize merge, CDN delivery or WordPress.org publication.
@@ -52,7 +52,8 @@ rewrites and attribute-only filters. Expected override-empty requests are one;
 default-empty requests are zero. No success is inferred from definition alone.
 
 The shared 0.8.2 artifact remains byte-identical. The selected policy is bound
-to frozen RC3. Before acceptance, rerun affected exact-package and delivery
-gates and require current PR checks.
+to frozen RC3. Affected exact-package and local delivery gates have passed; see the
+[acceptance snapshot](FINAL-ACCEPTANCE-RC3.md). Current final-HEAD PR checks remain
+required before release.
 Existing RC2 results remain exact-RC2 evidence. Production CDN delivery and
 WordPress.org publication retain their separate authorization boundaries.

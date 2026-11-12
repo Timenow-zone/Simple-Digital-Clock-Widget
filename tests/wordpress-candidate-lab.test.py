@@ -72,6 +72,37 @@ class CandidateLabSafetyTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 lab.verify_candidate(archive, manifest, sha)
 
+    def test_stage_preserves_original_inputs_and_refuses_reuse(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            archive, manifest_path, sha = candidate(root)
+            manifest = json.loads(manifest_path.read_text())
+            runner = lab.Lab.__new__(lab.Lab)
+            runner.directory = root / 'run'
+            (runner.directory / 'evidence').mkdir(parents=True)
+            (runner.directory / 'inputs').mkdir()
+            original = runner.directory / 'inputs/candidate.zip'
+            original.write_bytes(b'original frozen input')
+            runner.receipt = {'archive_sha256': '0' * 64}
+            runner.assert_owned = Mock()
+            before = {'plugin': '1.1.6', 'files': {}, 'active': True, 'options': {}, 'tables': {}}
+            after = dict(before, files=manifest['files'])
+            runner.snapshot = Mock(side_effect=[before, after, before, after])
+            runner.wp = Mock()
+            runner.stage('rc3-test', archive, manifest_path, sha)
+            self.assertEqual(original.read_bytes(), b'original frozen input')
+            frozen = runner.directory / 'stages/rc3-test/candidate.zip'
+            self.assertEqual(lab.digest(frozen), sha)
+            receipt = json.loads((frozen.parent / 'stage.json').read_text())
+            self.assertEqual(receipt['initial_archive_sha256'], '0' * 64)
+            self.assertEqual(runner.wp.call_count, 2)
+            with self.assertRaises(ValueError):
+                runner.stage('rc3-test', archive, manifest_path, sha)
+            self.assertEqual(runner.wp.call_count, 2)
+            for label in ('../escape', 'Bad', 'x/y'):
+                with self.assertRaises(ValueError):
+                    runner.stage(label, archive, manifest_path, sha)
+
     def test_duplicate_traversal_symlink_and_nonregular_archives_fail(self):
         cases = [('simple-digital-clock/../../escape', 0), ('/simple-digital-clock/file', 0), ('simple-digital-clock/file\\escape', 0), ('simple-digital-clock/.secret', 0), ('simple-digital-clock/link', stat.S_IFLNK | 0o777), ('simple-digital-clock/device', stat.S_IFCHR | 0o600)]
         for name, mode in cases:

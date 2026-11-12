@@ -8,7 +8,7 @@ Widget and WordPress plugin versions are independent:
 | Component | Version | Delivery status |
 | --- | --- | --- |
 | Widget runtime | **0.8.2** | Candidate built; CDN delivery pending; production remains 0.8.1 |
-| WordPress source | **1.1.6** | Remediation candidate in acceptance; unpublished |
+| WordPress source | **1.1.6** | RC3 technical acceptance passed; unpublished |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
 The metadata below describes the JavaScript widget artifact.

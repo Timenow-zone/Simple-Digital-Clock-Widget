@@ -60,8 +60,8 @@ is used. Saved blocks and raw HTML retain their settings and schema. See the
 [asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md).
 
 RC1 and RC2 remain NO-GO; their ZIPs and frozen manifests are preserved.
-Selected RC3 requires fresh affected exact-artifact acceptance and both
-required checks on the latest [draft PR #19 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks).
+Selected RC3 passed affected exact-artifact acceptance. Both required checks
+must also pass on the latest [draft PR #19 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks).
 The new shared runtime requires verified CDN delivery. WordPress.org publication
 requires a separate owner command. The
 [candidate lab](../tools/wordpress-lab/candidate/README.md) takes an explicit ZIP,

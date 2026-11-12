@@ -3,6 +3,8 @@
 Status: **BUILT AND REGRESSION-TESTED; PRODUCTION CDN DELIVERY PENDING**.
 This shared runtime supports the separate WordPress 1.1.6 remediation. Neither
 this record nor the WordPress ZIP proves public CDN delivery.
+The [concrete delivery proposal](CDN-DELIVERY-PLAN.md) identifies the verified
+Cloudflare preview, all nine immutable asset checks and preserved rollback.
 
 - Source commit: `d3fcef80c8921d1d7ef72c69dc8fad66a499ab8f`.
 - Artifact: `dist/0.8.2.min.js`, 36,033 bytes.

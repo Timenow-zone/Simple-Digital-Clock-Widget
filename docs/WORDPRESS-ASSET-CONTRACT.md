@@ -1,6 +1,8 @@
 # WordPress asset delivery contract
 
-This describes the in-progress 1.1.6 remediation with shared widget 0.8.2.
+This describes selected WordPress 1.1.6 RC3 with shared widget 0.8.2.
+Technical acceptance passed; final PR checks and production CDN delivery remain
+separate gates in the release record.
 It is an implementation contract, not an acceptance or publication record.
 Published 0.8.1 and earlier versioned artifacts retain their original bytes.
 The owner approved the [opaque override policy](releases/1.1.6/OVERRIDE-POLICY.md)

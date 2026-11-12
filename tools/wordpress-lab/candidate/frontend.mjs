@@ -12,6 +12,8 @@ const { values: args } = parseArgs({
     label: { type: "string" },
     engine: { type: "string", default: "chromium" },
     theme: { type: "string", default: "block" },
+    "only-mime": { type: "boolean", default: false },
+    "live-tick": { type: "boolean", default: false },
   },
 });
 const root = path.resolve(args["run-dir"]);
@@ -63,7 +65,11 @@ try {
         escaped: 0,
       }).map(([name, count]) => ({ name, url: url + "/?audit_case=" + name, count })),
     ];
-    for (const c of cases) {
+    for (const c of args["only-mime"]
+      ? []
+      : args["live-tick"]
+        ? cases.filter((item) => item.name === "admin-normal")
+        : cases) {
       const row = { site, case: c.name, pass: false };
       const ctx = await browser.newContext({
         viewport: { width: 1440, height: 1000 },
@@ -99,18 +105,19 @@ try {
           );
       });
       try {
-        await page.addInitScript(() => {
-          const OriginalDate = Date;
-          const fixed = Date.parse("2026-11-12T12:34:56.780Z");
-          window.Date = class extends OriginalDate {
-            constructor(...args) {
-              super(...(args.length ? args : [fixed]));
-            }
-            static now() {
-              return fixed;
-            }
-          };
-        });
+        if (!args["live-tick"])
+          await page.addInitScript(() => {
+            const OriginalDate = Date;
+            const fixed = Date.parse("2026-11-12T12:34:56.780Z");
+            window.Date = class extends OriginalDate {
+              constructor(...args) {
+                super(...(args.length ? args : [fixed]));
+              }
+              static now() {
+                return fixed;
+              }
+            };
+          });
         const res = await page.goto(c.url, { waitUntil: "load" });
         row.status = res.status();
         await fs.writeFile(path.join(output, `${site}-${c.name}.html`), await res.text());
@@ -153,6 +160,27 @@ try {
           assert(clock.width > 0 && clock.height > 0);
           if (clock.attributes.caption) assert.equal(clock.caption, clock.attributes.caption);
         }
+        if (args["live-tick"]) {
+          const initial = row.clocks[0].time;
+          const startedTick = Date.now();
+          await page.waitForFunction(
+            (before) =>
+              document.querySelector("timenow-zone-sdcw")?.shadowRoot?.querySelector("a")
+                ?.textContent !== before,
+            initial,
+            { timeout: 5000, polling: 100 }
+          );
+          row.tick = {
+            before: initial,
+            after: await page
+              .locator("timenow-zone-sdcw")
+              .first()
+              .evaluate((clock) => clock.shadowRoot.querySelector("a").textContent),
+            elapsedMilliseconds: Date.now() - startedTick,
+            clockOverridden: false,
+          };
+          assert.notEqual(row.tick.before, row.tick.after);
+        }
         if (!phase.startsWith("baseline112")) {
           assert.equal(row.requests.length, c.count ? 1 : 0);
           assert.equal(row.errors.length, 0);
@@ -186,15 +214,18 @@ try {
         `[${rows.length}] ${site}/${c.name} ${row.pass ? "PASS" : "FAIL"} requests=${row.requests.length} elapsed=${((Date.now() - started) / 1000).toFixed(1)}s`
       );
     }
-    const nonhtml = [
-      ["rest", "/?rest_route=/wp/v2/posts"],
-      ["feed", "/?feed=rss2"],
-      ["robots", "/?robots=1"],
-      ["trackback", "/wp-trackback.php"],
-      ["json", "/?audit_case=json"],
-      ["xml", "/?audit_case=xml"],
-    ];
+    const nonhtml = args["live-tick"]
+      ? []
+      : [
+          ["rest", "/?rest_route=/wp/v2/posts"],
+          ["feed", "/?feed=rss2"],
+          ["robots", "/?robots=1"],
+          ["trackback", "/wp-trackback.php"],
+          ["json", "/?audit_case=json"],
+          ["xml", "/?audit_case=xml"],
+        ];
     const ctx = await browser.newContext();
+    const parser = await ctx.newPage();
     for (const [name, suffix] of nonhtml) {
       const response = await ctx.request.get(url + suffix);
       const body = await response.text();
@@ -206,12 +237,34 @@ try {
         status: response.status(),
         contentType: response.headers()["content-type"],
         loaderLeaked:
-          body.includes("simple-digital-clock-loader.js") ||
-          body.includes('id="simple-digital-clock-runtime"') ||
-          body.includes('id=\"simple-digital-clock-runtime\"'),
+          /simple-digital-clock-(?:loader\.js|runtime)|simple-digital-clock\.min\.js/.test(body),
         pass: true,
       };
-      row.pass = !row.loaderLeaked;
+      try {
+        if (["rest", "json"].includes(name)) {
+          const decoded = JSON.parse(body);
+          row.loaderLeaked ||=
+            /simple-digital-clock-(?:loader\.js|runtime)|simple-digital-clock\.min\.js/.test(
+              JSON.stringify(decoded)
+            );
+          row.formatParsed = "json";
+        } else if (["feed", "trackback", "xml"].includes(name)) {
+          assert(
+            await parser.evaluate(
+              (text) =>
+                !new DOMParser()
+                  .parseFromString(text, "application/xml")
+                  .querySelector("parsererror"),
+              body
+            ),
+            "Invalid XML response"
+          );
+          row.formatParsed = "xml";
+        }
+      } catch (error) {
+        row.parseError = error.message;
+      }
+      row.pass = !row.loaderLeaked && !row.parseError;
       rows.push(row);
     }
     await ctx.close();

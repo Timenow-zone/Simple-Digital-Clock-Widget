@@ -1,8 +1,10 @@
 # WordPress 1.1.6 release preparation
 
-Status: **RC3 FROZEN; AFFECTED ACCEPTANCE IN PROGRESS; CDN DELIVERY PENDING**.
-The implementation is complete. Independent native/data acceptance and final
-release preparation continue. This is not `READY_FOR_WP_PUBLICATION`.
+Status: **RC3 TECHNICAL ACCEPTANCE PASS; FINAL PR CHECKS AND CDN DELIVERY PENDING**.
+Implementation and independent native/data acceptance are complete.
+The [final acceptance snapshot](FINAL-ACCEPTANCE-RC3.md) and
+[42-gate evidence index](acceptance-rc3.json) separate fresh RC3 and inherited RC2
+results. Required checks still bind to the final containing PR commit. This is not `READY_FOR_WP_PUBLICATION`.
 WordPress.org publication requires a separate explicit owner command.
 
 ## Selected artifact
@@ -40,18 +42,20 @@ Editor content and native legacy preview iframes receive their own assets.
 The block schema, editor script, KSES rules and saved markup remain unchanged.
 
 The [asset contract](../../WORDPRESS-ASSET-CONTRACT.md), [implementation plan](REMEDIATION-PLAN.md)
-and [41-gate specification](ACCEPTANCE-MATRIX.md) define scope and acceptance.
+and [42-gate specification](ACCEPTANCE-MATRIX.md) define scope and acceptance.
 RC3 changes only bootstrap, assets PHP and readme relative to RC2. Results for the
 other 14 identical files may be inherited only with that scope stated. Unchanged
 RC2 results are never counted as fresh RC3 executions.
 
 ## Verification and release boundaries
 
-Static exact-RC3 package verification passes: deterministic ZIP/full allowlist,
+Exact-RC3 package verification passes: deterministic ZIP/full allowlist,
 minimum/current PHP and JS syntax, fresh POT parity, exact runtime/bootstrap
 reproduction and 167 asset assertions. Prepared source passed 96 Linux loader
-runner tests and independent 84-case actual-Core override checks. Installed RC3,
-optimization, native/data and final review receipts are still being completed.
+runner tests and independent 84-case actual-Core override checks. Installed Plugin Check (29 static + 5 runtime checks), native Core probes,
+frontend/editors, direct updates/rollback, cache, multisite and independent final
+review pass within their recorded scopes. All owned labs are stopped; data and
+sealed evidence are retained.
 
 [Draft PR #19](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19)
 is stacked on [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).

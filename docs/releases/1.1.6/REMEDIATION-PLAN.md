@@ -2,8 +2,9 @@
 
 Date: 2026-11-12. **Phase 1 complete: plan and acceptance matrix prepared.**
 Baseline source: `558460c80fe317e6d0327c79c8a4478e7430e8cf`.
-Phase 2 implementation is complete. Exact-artifact acceptance and final release
-preparation continue against frozen [RC3](RC3.md). RC1 and RC2 remain **NO-GO**;
+Implementation and scoped independent acceptance are complete for frozen
+[RC3](RC3.md); see the [final snapshot](FINAL-ACCEPTANCE-RC3.md). Phase 4 release
+preparation requires final-HEAD CI and separately authorized CDN delivery. RC1 and RC2 remain **NO-GO**;
 their manifests, archives and evidence are retained. On 2026-11-12, the owner
 explicitly approved eager compatibility loading for opaque runtime overrides;
 see the bounded [exception](OVERRIDE-POLICY.md). The default bundled runtime
@@ -43,7 +44,7 @@ inputs. WordPress.org publication still requires a separate owner command.
 The architecture, packaging and regression boundaries received three separate
 read-only reviews. Documentation prose, whitespace and local links were checked;
 RC1/runtime hashes and all 2,566 sealed evidence files remain unchanged. The
-matrix contains 41 planned gates. These checks validate the planning artifacts,
+matrix contains 42 required gates. These checks validate the planning artifacts,
 not the future implementation. No product code, package, service or publication
 state was changed in phase 1.
 

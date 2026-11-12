@@ -13,6 +13,13 @@ const { values: args } = parseArgs({
     engine: { type: "string", default: "chromium" },
     mode: { type: "string" },
     "browser-endpoint": { type: "string" },
+    "legacy-editor": { type: "boolean", default: false },
+    "unsaved-lifecycle": { type: "boolean", default: false },
+    lifecycle: { type: "boolean", default: false },
+    site: { type: "string" },
+    role: { type: "string" },
+    stage: { type: "string" },
+    "terminal-control": { type: "boolean", default: false },
   },
 });
 assert(
@@ -24,9 +31,33 @@ assert(["chromium", "firefox", "webkit"].includes(args.engine), "Unknown browser
 const root = path.resolve(args["run-dir"]);
 const run = JSON.parse(await fs.readFile(path.join(root, "run.json"), "utf8"));
 assert.equal(run.run_dir, root);
+let candidate = run;
+let stageManifest;
+if (args.stage) {
+  assert(/^[a-z0-9][a-z0-9-]{1,60}$/.test(args.stage), "Invalid frozen stage label");
+  const directory = path.join(root, "stages", args.stage);
+  candidate = JSON.parse(await fs.readFile(path.join(directory, "stage.json"), "utf8"));
+  assert.equal(candidate.run_dir, root);
+  assert.equal(candidate.initial_archive_sha256, run.archive_sha256);
+  for (const [file, expected] of [
+    ["manifest.json", candidate.manifest_sha256],
+    ["candidate.zip", candidate.archive_sha256],
+  ])
+    assert.equal(
+      createHash("sha256")
+        .update(await fs.readFile(path.join(directory, file)))
+        .digest("hex"),
+      expected
+    );
+  stageManifest = JSON.parse(await fs.readFile(path.join(directory, "manifest.json"), "utf8"));
+}
 const out = path.join(root, "evidence", `${args.label}-${args.engine}`);
 await fs.mkdir(out);
 await fs.copyFile(fileURLToPath(import.meta.url), path.join(out, "harness-browser.mjs"));
+await fs.writeFile(
+  path.join(out, "INVOCATION.json"),
+  JSON.stringify({ argv: process.argv, platform: process.platform }, null, 2)
+);
 const credentials = JSON.parse(await fs.readFile(path.join(root, "lab/credentials.json"), "utf8"));
 const browserType = { chromium, firefox, webkit }[args.engine];
 const browser = args["browser-endpoint"]
@@ -56,11 +87,13 @@ async function installedIdentity(site) {
 }
 
 async function dismissGuides(page) {
-  await page
-    .getByRole("dialog")
-    .first()
-    .waitFor({ state: "visible", timeout: 1500 })
-    .catch(() => {});
+  const guide = page.locator(".components-guide");
+  await guide.waitFor({ state: "visible", timeout: 1500 }).catch(() => {});
+  if (await guide.isVisible()) {
+    await guide.getByRole("button", { name: /^Close(?: dialog| modal)?$/ }).click();
+    await guide.waitFor({ state: "hidden" });
+    return;
+  }
   for (const label of [
     "Close",
     "Close dialog",
@@ -114,29 +147,38 @@ async function waitForClock(page, caption, expected = 1) {
 }
 
 async function insertClock(page, row) {
+  const countBefore = (await blockState(page)).length;
+  const selectedBefore = await page.evaluate(() =>
+    wp.data.select("core/block-editor").getSelectedBlockClientId()
+  );
   const toggle = page.getByRole("button", { name: /^(Toggle block inserter|Block Inserter)$/ });
   await toggle.click();
   await page.getByRole("searchbox", { name: /Search/i }).fill("clock");
+  // Core debounces inserter search before wiring the native result action.
+  await page.waitForTimeout(600);
   const option = page.getByRole("option", { name: "Simple Digital Clock", exact: true });
   if (await option.count()) {
     await option.waitFor({ state: "visible" });
-    await page.waitForFunction(
-      (name) => wp.data.select("core/block-editor").canInsertBlockType(name),
-      blockName
-    );
     await option.click();
   } else {
     await page
       .locator('button[class*="editor-block-list-item-simple-digital-clock-block-widget-block"]')
       .click();
   }
-  await page.waitForFunction((name) => {
-    const flatten = (blocks) =>
-      blocks.flatMap((block) => [block, ...flatten(block.innerBlocks ?? [])]);
-    return flatten(wp.data.select("core/block-editor").getBlocks()).some(
-      (block) => block.name === name
-    );
-  }, blockName);
+  await page.waitForFunction(
+    ({ name, count, previous }) => {
+      const flatten = (blocks) =>
+        blocks.flatMap((block) => [block, ...flatten(block.innerBlocks ?? [])]);
+      const store = wp.data.select("core/block-editor");
+      const selected = store.getSelectedBlockClientId();
+      return (
+        selected !== previous &&
+        store.getBlock(selected)?.name === name &&
+        flatten(store.getBlocks()).filter((block) => block.name === name).length === count + 1
+      );
+    },
+    { name: blockName, count: countBefore, previous: selectedBefore }
+  );
   row.actions.push("Native inserter search and click");
   if (
     (await toggle.getAttribute("aria-expanded")) === "true" ||
@@ -151,7 +193,7 @@ async function configureClock(page, caption, row) {
     const settings = page.getByRole("button", { name: "Settings", exact: true });
     if ((await settings.count()) === 1) await settings.click();
   }
-  await container.click();
+  if ((await container.getAttribute("aria-expanded")) !== "true") await container.click();
   await page.getByRole("textbox", { name: "Caption", exact: true }).fill(caption);
   const width = page.getByRole("spinbutton", { name: "Width", exact: true });
   if ((await width.count()) === 1) {
@@ -271,16 +313,56 @@ async function siteEditor(page, row) {
   assert.deepEqual(reopened.attributes, row.expected);
   row.frames = await waitForClock(page, caption);
   row.actions.push("Reopened same native template and verified saved attributes and preview");
-  await page.waitForLoadState("networkidle");
   row.pageErrorsBeforeFrontend = [...row.pageErrors];
   await page.screenshot({ path: path.join(out, `${row.site}-site-editor.png`), fullPage: true });
-  await page.goto(row.origin + "/");
-  row.frontend = await waitForClock(page, caption);
+  // Keep the editor open while checking its saved template in another native tab.
+  // Core editor background polling is not a frontend readiness condition.
+  const frontend = await page.context().newPage();
+  frontend.on("pageerror", (error) => row.pageErrors.push(error.message));
+  await frontend.goto(row.origin + "/");
+  row.frontend = await waitForClock(frontend, caption);
+  await frontend.screenshot({
+    path: path.join(out, `${row.site}-site-editor-frontend.png`),
+    fullPage: true,
+  });
   row.actions.push("Verified the saved template clock on the public frontend");
 }
 
+async function removeNativeClock(page) {
+  const id = await page.evaluate(
+    (name) =>
+      wp.data
+        .select("core/block-editor")
+        .getBlocks()
+        .find((block) => block.name === name).clientId,
+    blockName
+  );
+  let selected;
+  for (const frame of page.frames()) {
+    const block = frame.locator(`[data-block="${id}"]`);
+    if ((await block.count()) === 1) {
+      selected = block;
+      break;
+    }
+  }
+  assert(selected, "The selected native clock block must exist in its editor realm");
+  await selected.focus();
+  await selected.press("Backspace");
+  await page.waitForFunction(
+    (name) =>
+      !wp.data
+        .select("core/block-editor")
+        .getBlocks()
+        .some((block) => block.name === name),
+    blockName
+  );
+}
+
 async function postEditor(page, row) {
-  await page.goto(row.origin + "/wp-admin/post-new.php");
+  const legacy = args["legacy-editor"] ? "&candidate_legacy_editor=1" : "";
+  await page.goto(
+    row.origin + "/wp-admin/post-new.php" + (legacy ? "?candidate_legacy_editor=1" : "")
+  );
   await page.waitForFunction(
     (name) =>
       !!window.wp?.blocks?.getBlockType(name) &&
@@ -288,10 +370,106 @@ async function postEditor(page, row) {
     blockName
   );
   await dismissGuides(page);
-  const caption = `Post ${args.label} ${args.engine} ${row.role} "quotes" & Київ 🕒`;
+  const caption =
+    `Post ${args.label} ${args.engine} ${row.role} "quotes" & Київ 🕒` +
+    (args["terminal-control"] ? " terminal " + String.fromCharCode(92) : "");
+  row.terminalBackslashControl = args["terminal-control"];
   await insertClock(page, row);
   row.expected = await configureClock(page, caption, row);
   row.framesBeforeSave = await waitForClock(page, caption);
+  row.editorRealm = row.framesBeforeSave
+    .filter((frame) => frame.clocks?.length)
+    .map((frame) => frame.url);
+  row.blockApiVersion = await page.evaluate(
+    (name) => wp.blocks.getBlockType(name).apiVersion,
+    blockName
+  );
+  row.metaboxPresent = await page
+    .getByText("Read-only local acceptance fixture.", { exact: true })
+    .count();
+  if (args["legacy-editor"])
+    assert.equal(row.metaboxPresent, 1, "Guarded native metabox must be present");
+  if (args["legacy-editor"] && row.site === "minimum")
+    assert(
+      row.framesBeforeSave
+        .filter((frame) => frame.clocks?.length)
+        .every((frame) => frame.url.includes("post-new.php")),
+      "The metabox configuration must use the parent editor document"
+    );
+  if (args.lifecycle) {
+    if (!args["unsaved-lifecycle"]) {
+      await page.getByRole("button", { name: /^Save draft$/i }).click();
+      await page.waitForFunction(
+        () =>
+          !wp.data.select("core/editor").isSavingPost() &&
+          wp.data.select("core/editor").didPostSaveRequestSucceed()
+      );
+      row.postId = await page.evaluate(() => wp.data.select("core/editor").getCurrentPostId());
+      await page.waitForTimeout(700);
+      await page.goto(row.origin + `/wp-admin/post.php?post=${row.postId}&action=edit` + legacy);
+      await waitForClock(page, caption);
+      row.actions.push("Native Save draft and reopen before the persisted-block lifecycle");
+    }
+    await removeNativeClock(page);
+    await page.waitForFunction(
+      () => !wp.data.select("core/editor").getEditedPostContent().includes("<timenow-zone-sdcw")
+    );
+    row.undoStates = [];
+    for (let step = 0; step < 3; step++) {
+      const state = await page.evaluate(
+        (name) => ({
+          blocks: wp.data
+            .select("core/block-editor")
+            .getBlocks()
+            .map((block) => ({
+              name: block.name,
+              attributes: block.attributes,
+              valid: block.isValid,
+            })),
+          hasUndo: wp.data.select("core").hasUndo(),
+          restored: wp.data
+            .select("core/block-editor")
+            .getBlocks()
+            .some((block) => block.name === name),
+        }),
+        blockName
+      );
+      row.undoStates.push({ step, state });
+      if (state.restored) break;
+      assert(
+        step < 2 && state.hasUndo,
+        "Native Undo must restore the clock within the observed Core history levels"
+      );
+      await page.getByRole("button", { name: "Undo", exact: true }).click();
+      await page.waitForFunction(
+        (before) =>
+          JSON.stringify(
+            wp.data
+              .select("core/block-editor")
+              .getBlocks()
+              .map((block) => block.name)
+          ) !== before,
+        JSON.stringify(state.blocks.map((block) => block.name))
+      );
+    }
+    assert(row.undoStates.at(-1).state.restored);
+    row.undoClicks = row.undoStates.length - 1;
+    assert.deepEqual(
+      row.undoStates.at(-1).state.blocks.find((block) => block.name === blockName).attributes,
+      row.expected
+    );
+    await waitForClock(page, caption);
+    row.actions.push("Native Backspace and Undo; restored live clock preview");
+    await removeNativeClock(page);
+    await insertClock(page, row);
+    row.expected = await configureClock(page, caption, row);
+    await waitForClock(page, caption);
+    row.actions.push("Native reinsertion after removal");
+  }
+  await insertClock(page, row);
+  row.secondExpected = await configureClock(page, caption + " second", row);
+  await waitForClock(page, caption, 2);
+  row.actions.push("Second native clock insertion in the same document");
   for (let save = 0; save < 2; save++) {
     let title;
     for (const frame of page.frames()) {
@@ -311,7 +489,8 @@ async function postEditor(page, row) {
     );
     row.postId = await page.evaluate(() => wp.data.select("core/editor").getCurrentPostId());
     row.actions.push(`Native post title and Save draft ${save + 1}`);
-    await page.goto(row.origin + `/wp-admin/post.php?post=${row.postId}&action=edit`);
+    await page.waitForTimeout(700);
+    await page.goto(row.origin + `/wp-admin/post.php?post=${row.postId}&action=edit` + legacy);
     await page.waitForFunction(
       (name) =>
         wp.data
@@ -321,15 +500,21 @@ async function postEditor(page, row) {
       blockName
     );
     row.reopened = await blockState(page);
-    assert(row.reopened[0]?.valid);
-    assert.deepEqual(row.reopened[0].attributes, row.expected);
-    row.frames = await waitForClock(page, caption);
+    assert.equal(row.reopened.length, 2);
+    assert(row.reopened.every((block) => block.valid));
+    assert.deepEqual(
+      row.reopened.map((block) => block.attributes),
+      [row.expected, row.secondExpected]
+    );
+    row.frames = await waitForClock(page, caption, 2);
   }
 }
 
 try {
   for (const [site, configuration] of Object.entries(run.sites)) {
+    if (args.site && args.site !== site) continue;
     for (const role of args.mode === "post-editor" ? ["admin", "author"] : ["admin"]) {
+      if (args.role && args.role !== role) continue;
       const row = {
         site,
         role,
@@ -338,9 +523,11 @@ try {
         pass: false,
         actions: [],
         pageErrors: [],
+        pageErrorDetails: [],
         responses: [],
       };
       row.installed = await installedIdentity(site);
+      if (stageManifest) assert.deepEqual(row.installed.files, stageManifest.files);
       const context = await browser.newContext({
         viewport: { width: 1440, height: 1100 },
         timezoneId: "Asia/Tokyo",
@@ -348,34 +535,57 @@ try {
       await context.route("**/*", (route) =>
         new URL(route.request().url()).origin === row.origin ? route.continue() : route.abort()
       );
-      const page = await context.newPage();
-      page.on("pageerror", (error) => row.pageErrors.push(error.message));
+      let page = await context.newPage();
       const responses = [];
-      page.on("response", (response) => {
-        if (response.url().includes("/simple-digital-clock/"))
-          responses.push(
-            (async () => {
-              const body = await response.body().catch(() => null);
-              row.responses.push({
-                url: response.url(),
-                status: response.status(),
-                sha256: body && createHash("sha256").update(body).digest("hex"),
-                frame: response.request().frame().url(),
-              });
-            })()
-          );
-      });
+      function observePage(page) {
+        page.on("pageerror", (error) => {
+          row.pageErrors.push(error.message);
+          row.pageErrorDetails.push({ message: error.message, stack: error.stack });
+        });
+        page.on("response", (response) => {
+          if (response.url().includes("/simple-digital-clock/"))
+            responses.push(
+              (async () => {
+                const body = await response.body().catch(() => null);
+                row.responses.push({
+                  url: response.url(),
+                  status: response.status(),
+                  sha256: body && createHash("sha256").update(body).digest("hex"),
+                  frame: response.request().frame().url(),
+                });
+              })()
+            );
+        });
+      }
+      observePage(page);
       try {
         await page.goto(row.origin + "/wp-login.php");
         await page.locator("#user_login").fill("audit_" + role);
         await page.locator("#user_pass").fill(credentials[role]);
         await page.locator("#wp-submit").click();
         await page.waitForURL((url) => url.pathname.startsWith("/wp-admin/"));
+        const dashboard = page;
+        row.dashboard = await renderedFrames(dashboard);
+        if (row.installed.version !== "1.1.2")
+          assert(
+            row.dashboard.every(
+              (frame) =>
+                !frame.defined &&
+                !frame.clocks?.length &&
+                !frame.scripts?.some((script) =>
+                  /assets\/public\/js|clock-bootstrap/.test(script.src)
+                )
+            ),
+            "Ordinary dashboard must not load clock runtime or bootstrap"
+          );
+        page = await context.newPage();
+        observePage(page);
         await {
           "legacy-preview": legacyPreview,
           "site-editor": siteEditor,
           "post-editor": postEditor,
         }[args.mode](page, row);
+        row.dashboardAfter = await renderedFrames(dashboard);
         assert.deepEqual(row.pageErrors, [], "Uncaught native editor errors");
         assert.deepEqual(
           await installedIdentity(site),
@@ -404,7 +614,9 @@ try {
               engine: args.engine,
               browser: browser.version(),
               mode: args.mode,
-              candidateInputSha256: run.archive_sha256,
+              candidateInputSha256: candidate.archive_sha256,
+              initialCandidateInputSha256: run.archive_sha256,
+              stage: args.stage ?? null,
               rows,
             },
             null,

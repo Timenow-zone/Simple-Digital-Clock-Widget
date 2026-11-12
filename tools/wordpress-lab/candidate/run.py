@@ -309,6 +309,48 @@ class Lab:
             raise RuntimeError('Owned containers remain running')
         print('Stopped owned services; retained containers, volumes, database and evidence. Output: ' + str(self.directory))
 
+    def stage(self, label, archive, manifest_path, expected_sha):
+        """Freeze and install an explicit subsequent candidate without replacing run inputs."""
+        if not re.fullmatch(r'[a-z0-9][a-z0-9-]{1,60}', label):
+            raise ValueError('A safe, fresh stage label is required')
+        manifest = verify_candidate(archive, manifest_path, expected_sha)
+        directory = self.directory / 'stages' / label
+        if directory.exists():
+            raise ValueError('Refusing to overwrite a candidate stage')
+        self.assert_owned()
+        directory.mkdir(parents=True)
+        for source, name in ((archive, 'candidate.zip'), (manifest_path, 'manifest.json'),
+                             (SOURCE / 'update.php', 'update.php'), (SOURCE / 'guard.php', 'guard.php')):
+            shutil.copyfile(source, directory / name)
+            (directory / name).chmod(0o444)
+        receipt = {'run_dir': str(self.directory), 'label': label,
+                   'initial_archive_sha256': self.receipt['archive_sha256'],
+                   'archive_sha256': expected_sha, 'version': manifest['version'],
+                   'manifest_sha256': digest(directory / 'manifest.json'),
+                   'updater_sha256': digest(directory / 'update.php')}
+        write_json(directory / 'stage.json', receipt)
+        (directory / 'stage.json').chmod(0o444)
+        rows = []
+        for index, site in enumerate(SITES, 1):
+            before = self.snapshot(site, site + '-' + label + '-before')
+            self.wp(site, site + '-' + label + '-core-upgrader', 'eval-file',
+                    '/audit/stages/' + label + '/update.php', label)
+            after = self.snapshot(site, site + '-' + label + '-after')
+            changes = sorted(n for n in set(before['options']) | set(after['options'])
+                             if before['options'].get(n) != after['options'].get(n))
+            tables = [n for n in before['tables'] if before['tables'][n]['sha256'] != after['tables'][n]['sha256']]
+            stable = [n for n in changes if not n.startswith(('_transient_', '_site_transient_'))]
+            row = {'site': site, 'candidate_sha256': expected_sha, 'from': before['plugin'],
+                   'to': after['plugin'], 'changed_tables': tables, 'changed_options': changes,
+                   'changed_stable_options': stable, 'exact_files': after['files'] == manifest['files'],
+                   'active': after['active'], 'database_restored': False}
+            row['pass'] = not tables and not stable and row['exact_files'] and row['active']
+            rows.append(row)
+            print(f'[{index}/2] ({index * 50}%) {site}: explicit stage {label} pass={row["pass"]}', flush=True)
+        write_json(self.directory / 'evidence' / (label + '-RESULT.json'), rows)
+        if not all(row['pass'] for row in rows):
+            raise ValueError('Candidate stage invariants failed')
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -320,6 +362,11 @@ def main():
     prep.add_argument('--project', required=True)
     prep.add_argument('--minimum-port', type=int, required=True)
     prep.add_argument('--current-port', type=int, required=True)
+    stage = sub.add_parser('stage')
+    for name in ('run-dir', 'zip', 'manifest'):
+        stage.add_argument('--' + name, required=True, type=Path)
+    stage.add_argument('--sha256', required=True)
+    stage.add_argument('--label', required=True)
     for action in ('start', 'snapshot', 'update', 'rollback', 'public115', 'stop'):
         command = sub.add_parser(action)
         command.add_argument('--run-dir', required=True, type=Path)
@@ -332,6 +379,8 @@ def main():
     lab = Lab(args.run_dir)
     if args.action == 'start':
         lab.start()
+    elif args.action == 'stage':
+        lab.stage(args.label, args.zip, args.manifest, args.sha256)
     elif args.action == 'stop':
         lab.stop(args.label)
     elif args.action == 'snapshot':

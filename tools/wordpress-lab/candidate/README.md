@@ -37,7 +37,9 @@ label so failed evidence remains intact.
 
 Run native browser fixtures separately using URLs from `run.json` and credentials
 from `lab/credentials.json`. Keep each browser output in a fresh evidence
-directory. Test changed package bytes only after creating a new candidate/run.
+directory. Test changed package bytes only after creating a new candidate/run
+or an explicit frozen subsequent stage. Never replace `inputs/candidate.zip`,
+`inputs/manifest.json` or `run.json` in an existing run.
 Plugin Check commands must precede WP-CLI global flags, as `Lab.wp` enforces.
 Ordinary Author roles receive no extra capabilities during installation.
 
@@ -45,8 +47,44 @@ Ordinary Author roles receive no extra capabilities during installation.
 insertion/settings/save/reopen for Admin/Author, and Site Editor
 insertion/settings/save/confirmation/reopen. Select `--mode legacy-preview`,
 `post-editor`, or `site-editor`; use `--engine chromium`, `firefox`, or `webkit`.
+Post Editor inserts two clocks and completes two visible saves and reopens.
+Optional `--lifecycle` adds native removal, observed Core Undo levels and reinsertion.
+`--legacy-editor` uses a real guarded metabox: minimum Core supports a parent
+realm, while the pinned current Core keeps its iframe. Neither flag changes
+the clock block API version. Dashboard and editor remain in separate monitored
+tabs to retain Core Dashboard Events requests during navigation.
+`--site` and `--role` select an explicitly recorded targeted retry. The Site
+Editor checks the saved home template in a separate frontend tab while keeping
+the editor open; Core background polling is not a load-idle requirement.
 Every pass captures installed file hashes, actual asset response hashes, each
 clock document, errors, screenshots and the exact browser harness source.
+
+`corpus-editor.mjs --mode seed` requires installed public 1.1.2 and creates a
+corpus using its actual block serializer and native REST endpoints. Subsequent
+`read` and `save` modes compare old settings and foreign blocks; save performs
+two visible native saves. `--ui-dir evidence/FOLDER` adds successful new-post
+controls from a native browser report. `--group slashes` isolates known old
+writer negative controls; `--exclude-group slashes` selects the healthy rollback
+controls without erasing the negative report. An exclusion must be disclosed.
+
+The complete placement fixture uses `integration-mu.php`, `seed-integration.php`,
+`frontend.mjs`, `widgets-ui.mjs` and `theme.php`. Copy the integration MU file
+only into the owned site's `mu-plugins` directory. Seed integration once after
+the public corpus, then switch `theme.php classic|block` outside invariant
+brackets. It preserves the canonical three block widgets plus Text/HTML widgets.
+The smaller preview fixtures below are for focused development runs. Do not use
+their `reuse` action to replace the complete canonical widget placement.
+
+`frontend.mjs --theme classic|block` checks native placements, attributes,
+visible output, asset request counts and hashes. Non-HTML cases parse their
+actual JSON/XML bodies and scan both raw and decoded markup for leakage. Their
+fixture calls the plugin footer callback only; invoking a theme's complete
+`wp_footer` in a synthetic JSON response would make that response invalid for
+reasons unrelated to the plugin. `--only-mime` selects those cases explicitly. `--live-tick` separately checks
+the normal post on both sites with the real clock, requiring visible time text
+to change; it does not install the Date override used for layout parity.
+`widgets-ui.mjs` changes and restores a canonical widget caption, waits for the
+visible Update and native REST persistence, and then reloads it.
 
 Install `fixtures-mu.php` only into the owned lab's `mu-plugins` directory, then
 run `seed-preview.php` with WP-CLI to prepare legacy fixtures. A later `reuse`
@@ -69,6 +107,38 @@ configured loopback origin to the matching lab service so cookies, REST URLs and
 iframes remain native. Mount the repository read-only and the new run directory
 writable at their original absolute paths; never mount the sealed RC1 run
 writable. Record the actual container image/browser versions with its receipt.
+Use `--entry corpus-editor`, `frontend`, or `widgets-ui` to run those methods;
+the default entry point is `browser.mjs`. Serialize writers that share posts or
+templates. Read-only browser engines may run concurrently inside one snapshot
+bracket. Core transient changes must be listed, not silently dropped from an
+all-options invariant.
+
+## Subsequent frozen candidate stage
+
+When a reviewed candidate changes during a long acceptance run, a stage retains
+the prior inputs and results and freezes a new ZIP, manifest and updater under
+`stages/LABEL`. The real Core updater then installs that exact artifact on both
+sites. Full before/after snapshots must retain all eight content tables, stable
+options and active state. This also supports explicit same-version RC updates.
+Use a fresh label even for a failed attempt. Existing results remain attributed
+to their original artifact; inheritance requires a documented file delta.
+
+```sh
+set -euo pipefail
+python3 tools/wordpress-lab/candidate/run.py stage \
+  --run-dir .local/candidate-116-rc2-20261112-a --label rc3-exact \
+  --zip .local/packages/simple-digital-clock-1.1.6-rc3.zip \
+  --manifest docs/releases/1.1.6/manifest-rc3.json \
+  --sha256 REPLACE_WITH_THE_REVIEWED_64_CHARACTER_SHA256
+node tools/wordpress-lab/candidate/browser.mjs \
+  --run-dir .local/candidate-116-rc2-20261112-a --stage rc3-exact \
+  --label rc3-native-post --engine chromium --mode post-editor
+```
+
+The browser's `--stage` validates the frozen inputs and installed full file map,
+and records both the initial and current artifact SHA. The default `update`
+operation continues to mean the original frozen candidate, so use it only when
+that is the intended target.
 
 ```sh
 set -euo pipefail
@@ -84,15 +154,15 @@ are retained. There is no prune, remove-volume, publication or deployment action
 
 The sealed local RC1 run contains corrected methods, not reusable results:
 
-| Method | Matrix coverage to rerun against exact candidate |
-| --- | --- |
-| `lab/native-insert.mjs`, `lab/native-editor.mjs` | Post insertion/settings/save/reopen, public-version corpus, roles and engines |
-| `lab/native-front.mjs`, `lab/fixture.php`, `lab/seed-integration.php` | Native placements, frontend oracle, response MIME and data checks |
-| `lab/canonical-widgets.php`, `lab/widgets-ui.mjs` | Canonical one-block widgets and actual completed native Update |
-| `loader-audit-widgets/legacy-preview.mjs` | Text/Custom HTML isolated preview documents, both sites and three engines |
-| `loader-audit/browser-matrix.mjs`, `loader-audit/native-read.mjs` | CSP, runtime ownership, original hidden-integration counterexamples |
-| `package-audit/cache-lab` | Real optimizer/cache HIT, stale negative control and explicit purge |
-| `repo-checks/multisite` | Two-site network activation, roles and files-only transitions |
+| Method                                                                | Matrix coverage to rerun against exact candidate                              |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `lab/native-insert.mjs`, `lab/native-editor.mjs`                      | Post insertion/settings/save/reopen, public-version corpus, roles and engines |
+| `lab/native-front.mjs`, `lab/fixture.php`, `lab/seed-integration.php` | Native placements, frontend oracle, response MIME and data checks             |
+| `lab/canonical-widgets.php`, `lab/widgets-ui.mjs`                     | Canonical one-block widgets and actual completed native Update                |
+| `loader-audit-widgets/legacy-preview.mjs`                             | Text/Custom HTML isolated preview documents, both sites and three engines     |
+| `loader-audit/browser-matrix.mjs`, `loader-audit/native-read.mjs`     | CSP, runtime ownership, original hidden-integration counterexamples           |
+| `package-audit/cache-lab`                                             | Real optimizer/cache HIT, stale negative control and explicit purge           |
+| `repo-checks/multisite`                                               | Two-site network activation, roles and files-only transitions                 |
 
 Copy and parameterize reviewed methods into a fresh run before execution. They
 contain historical hardcoded ports/paths/hashes and must not be launched blindly.
