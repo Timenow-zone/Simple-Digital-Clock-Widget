@@ -1,6 +1,8 @@
 # WordPress 1.1.6 RC4 candidate
 
-Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; CORRECTION AND COMPATIBILITY PASS; RELEASE INCOMPLETE**.
+Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; NO-GO FOR FIREFOX ALIGNMENT; RELEASE INCOMPLETE**.
+The [later multi-instance review](../0.8.3/MULTI-INSTANCE-REVIEW.md) exposes a
+pre-existing alignment defect that blocks the full compatibility contract.
 This candidate bundles the shared [widget 0.8.3 correction](../0.8.3/README.md).
 Neither candidate preparation nor historical passing results authorize release.
 
@@ -42,7 +44,7 @@ their contracts. The [approved eager-override exception](OVERRIDE-POLICY.md)
 is unchanged. Fresh executions and any evidence inherited for identical files
 must be identified separately.
 
-The [final scoped report](FINAL-ACCEPTANCE-RC4.md) and
+The earlier [scoped report](FINAL-ACCEPTANCE-RC4.md) and
 [JSON evidence index](acceptance-rc4.json) record all six mandatory browser cells,
 24 standalone cases, 570 unique native rows and separate independent reviews.
 Counts, historical scope, preserved failed attempts and pending release gates

@@ -127,5 +127,7 @@ jobs:
         run: node --test tests/wordpress-loader.integration.test.mjs
       - name: Check generated product demo examples and controls
         run: node --test tests/product-site.integration.test.mjs
+      - name: Check differently configured clock instances in Google Chrome, Firefox and WebKit
+        run: npm run test:instances
       - name: Verify that browser tests leave tracked files unchanged
         run: git diff --exit-code

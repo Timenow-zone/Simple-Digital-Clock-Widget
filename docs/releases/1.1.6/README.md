@@ -1,12 +1,13 @@
 # WordPress 1.1.6 release preparation
 
-Status: **RC4 CORRECTION AND COMPATIBILITY PASS; RELEASE INCOMPLETE**.
+Status: **RC4 NO-GO: FIREFOX ALIGNMENT; RELEASE INCOMPLETE**.
 Selected [RC4](RC4.md) contains [widget 0.8.3](../0.8.3/README.md), which corrects
 the initial-host exception isolation regression found in RC3. The
 [scoped acceptance report](FINAL-ACCEPTANCE-RC4.md) and [JSON index](acceptance-rc4.json)
-record fresh exact-artifact evidence for all six HTML/WordPress browser cells,
-native editors, cache, override and network checks, with historical limits.
-Production CDN delivery remains pending.
+retain the earlier exact-artifact checks and historical limits. A later
+[single/multiple-instance review](../0.8.3/MULTI-INSTANCE-REVIEW.md) finds Firefox
+right/center alignment failure in the unchanged runtime. It supersedes the
+current compatibility decision; CDN delivery remains pending.
 
 ## Selected artifact
 

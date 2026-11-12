@@ -7,15 +7,16 @@ Widget and WordPress plugin versions are independent:
 
 | Component | Version | Delivery status |
 | --- | --- | --- |
-| Widget runtime | **0.8.3** | Compatibility gate passed; CDN delivery pending; production remains 0.8.1 |
-| WordPress source | **1.1.6** | RC4 correction verified; unpublished |
+| Widget runtime | **0.8.3** | Blocked by Firefox alignment finding; production remains 0.8.1 |
+| WordPress source | **1.1.6** | RC4 NO-GO; unpublished |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
 The [0.8.3 candidate](docs/releases/0.8.3/README.md) isolates initial clock errors
 and completes renderer readiness independently of individual settings. The
 [0.8.2 standalone review](docs/releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
 and rejected RC3 remain preserved. The [RC4 acceptance record](docs/releases/1.1.6/FINAL-ACCEPTANCE-RC4.md)
-confirms all six HTML/WordPress browser cells and states the exact fresh scope.
+retains its earlier scoped results. The later [multi-instance review](docs/releases/0.8.3/MULTI-INSTANCE-REVIEW.md)
+finds a pre-existing Firefox right/center alignment defect and blocks full acceptance.
 All nine retained older versioned minified assets remain unchanged.
 
 The metadata below describes the JavaScript widget artifact.
@@ -60,7 +61,7 @@ Load the immutable, versioned production asset:
 <script src="https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js"></script>
 ```
 
-The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.3.min.js`; compatibility verification passed but delivery is pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.3.min.js`.
+The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.3.min.js`; the candidate is blocked by the Firefox alignment finding and delivery is pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.3.min.js`.
 
 For self-hosting the current production release, copy `dist/0.8.1.min.js` to your site and use its URL instead.
 The unminified `dist/SimpleDigitalClockWidget.js` entry is also retained.
@@ -312,8 +313,9 @@ remediation candidate with widget **0.8.3** under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
 The [release record](docs/releases/1.1.6/README.md) tracks exact candidates and
-independent acceptance; selected RC4 corrects `STANDALONE-P2-01` and passes the
-[mandatory compatibility gate](docs/releases/1.1.6/FINAL-ACCEPTANCE-RC4.md).
+independent acceptance; selected RC4 corrects `STANDALONE-P2-01`, but the
+[later multi-instance review](docs/releases/0.8.3/MULTI-INSTANCE-REVIEW.md) makes RC4
+**NO-GO** for Firefox right/center alignment. Earlier scoped results remain preserved.
 RC3 remains **NO-GO**; its reports remain historical evidence.
 
 Native render signals and explicit requests use normal Core enqueue. An external

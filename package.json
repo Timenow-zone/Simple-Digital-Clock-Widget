@@ -53,6 +53,7 @@
     "test:iframes": "node --test tests/iframe-resize.integration.test.mjs",
     "test:fonts": "node --test tests/font-loading.integration.test.mjs",
     "test:standalone": "node --test tests/standalone-compatibility.integration.test.mjs",
+    "test:instances": "node --test tests/multi-instance.integration.test.mjs",
     "coverage": "c8 -r text -r html --exclude 'tests/**' --exclude '.tmp-tests/tests/**' npm run test:node",
     "release:sync": "node scripts/sync-release-metadata.mjs --sync",
     "release:check": "node scripts/sync-release-metadata.mjs --check && node scripts/build-product-site.mjs --check",

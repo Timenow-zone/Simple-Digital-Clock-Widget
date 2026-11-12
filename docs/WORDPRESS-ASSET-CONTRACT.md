@@ -1,8 +1,9 @@
 # WordPress asset delivery contract
 
 This describes selected WordPress 1.1.6 RC4 with shared widget 0.8.3.
-Current status is **COMPATIBILITY GATE PASS; PRODUCTION DELIVERY PENDING**.
-See the [scoped acceptance record](releases/1.1.6/FINAL-ACCEPTANCE-RC4.md). RC4 corrects
+Current status is **NO-GO: FIREFOX ALIGNMENT; PRODUCTION DELIVERY PENDING**.
+The [multi-instance review](releases/0.8.3/MULTI-INSTANCE-REVIEW.md) supersedes the
+earlier [scoped acceptance record](releases/1.1.6/FINAL-ACCEPTANCE-RC4.md). RC4 corrects
 `STANDALONE-P2-01` in shared-runtime initialization. The rejected 0.8.2/RC3
 artifacts and their [standalone review](releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
 remain historical evidence. Final acceptance and production delivery are separate.
@@ -27,7 +28,11 @@ Acceptance requires the exact built main JavaScript artifact to pass every cell:
 Standalone HTML must work without WordPress, its bootstrap, or candidate-specific
 changes to an existing supported embed. Verify markup present before script
 execution and markup inserted after it, one and multiple clocks, supported
-attributes/JavaScript properties, and removal/reinsertion. Check visible clock
+attributes/JavaScript properties, and removal/reinsertion. Single and simultaneous
+clocks must retain different time zones, locales, time formats and visual settings.
+Changing or removing one instance must preserve the other instances' settings and
+operation; a defined element or different caption alone does not prove isolation.
+Check visible clock
 content, expected settings and actual ticking; successful download or element
 registration alone is insufficient. A rendering error in one clock must remain
 observable without preventing independent healthy clocks from rendering and ticking.

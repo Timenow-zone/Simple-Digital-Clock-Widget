@@ -1,6 +1,9 @@
 # Widget 0.8.3 compatibility correction
 
-Status: **COMPATIBILITY AND CORRECTION PASS; NOT PUBLISHED**.
+Status: **NO-GO: FIREFOX RIGHT/CENTER ALIGNMENT; NOT PUBLISHED**.
+The later [single/multiple-instance review](MULTI-INSTANCE-REVIEW.md) demonstrates
+a pre-existing CSS omission. It blocks full cross-browser acceptance while
+preserving the earlier successful initial-error-isolation evidence.
 This candidate fixes `STANDALONE-P2-01`, the shared lifecycle regression recorded
 in the [rejected 0.8.2 review](../0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md).
 It also supplies the exact runtime bundled in [WordPress 1.1.6 RC4](../1.1.6/RC4.md).
@@ -41,8 +44,10 @@ mock-loader result.
 
 The [RC4 acceptance report](../1.1.6/FINAL-ACCEPTANCE-RC4.md) records 24/24
 standalone cases and 42/42 native runtime rows across actual Chrome, Firefox and
-WebKit, plus broader native and independent checks. All six mandatory cells pass;
-historical corpus limits and preserved failed attempts are explicit.
+WebKit, plus broader native and independent checks, within the original scope.
+The later multi-instance proof adds actual different settings and exposes the
+Firefox alignment failure. The earlier snapshot is not current release approval;
+historical corpus limits and preserved failed attempts remain explicit.
 
 Independent temporary builds reproduce both JavaScript artifacts exactly.
 The versioned runtime, `latest`, bundled WordPress runtime and generated site

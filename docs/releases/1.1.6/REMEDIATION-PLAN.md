@@ -1,13 +1,16 @@
 # WordPress runtime delivery remediation plan
 
-Date: 2026-11-12. **Current status: RC4 correction and six-cell compatibility gate PASS; release incomplete.**
+Date: 2026-11-12. **Current status: RC4 NO-GO for Firefox alignment; release incomplete.**
 Baseline source: `558460c80fe317e6d0327c79c8a4478e7430e8cf`.
 The [standalone review](../0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md) confirmed a
 shared-runtime failure outside WordPress. [RC4](RC4.md) bundles widget 0.8.3 with
 per-host error isolation and corrected renderer readiness. Earlier scoped results
 for frozen [RC3](RC3.md) remain in its [snapshot](FINAL-ACCEPTANCE-RC3.md); they do
 not replace fresh acceptance of changed artifacts. The [RC4 report](FINAL-ACCEPTANCE-RC4.md)
-records fresh checks and their limits. Final-HEAD CI and separately
+records earlier scoped checks. The later [multi-instance review](../0.8.3/MULTI-INSTANCE-REVIEW.md)
+adds different simultaneous settings and proves a pre-existing Firefox alignment
+defect. A new versioned correction and renewed compatibility proof are required.
+Final-HEAD CI and separately
 authorized production CDN delivery remain required; WordPress publication is deferred.
 RC1 and RC2 remain **NO-GO**;
 their manifests, archives and evidence are retained. On 2026-11-12, the owner
