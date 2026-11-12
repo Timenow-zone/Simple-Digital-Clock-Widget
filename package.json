@@ -1,7 +1,7 @@
 {
   "name": "simple-digital-clock-widget",
   "private": true,
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Simple Digital Clock Widget – a lightweight HTML/JS digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.",
   "author": {
     "name": "dejurin",
@@ -38,7 +38,7 @@
   "scripts": {
     "postinstall": "patch-package --error-on-fail",
     "prebuild": "node scripts/check-new-widget-version.mjs",
-    "build": "parcel build src/SimpleDigitalClockWidget.tsx --no-optimize && terser dist/SimpleDigitalClockWidget.js -c -m -o dist/latest.min.js && cp dist/latest.min.js dist/$npm_package_version.min.js",
+    "build": "parcel build src/SimpleDigitalClockWidget.tsx --no-optimize --no-cache && terser dist/SimpleDigitalClockWidget.js -c -m -o dist/latest.min.js && cp dist/latest.min.js dist/$npm_package_version.min.js",
     "build:prod": "parcel build src/SimpleDigitalClockWidget.tsx",
     "start": "parcel src/index.html --open",
     "fmt": "prettier --write src tests scripts product-site",

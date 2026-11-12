@@ -9,6 +9,7 @@ import { chromium, firefox, webkit } from "playwright";
 // These local HTML fixtures exercise the browser loader, not native WordPress.
 const loader = await readFile(new URL("../wordpress/simple-digital-clock/assets/public/js/simple-digital-clock-loader.js", import.meta.url), "utf8");
 const runtime = await readFile(new URL("../wordpress/simple-digital-clock/assets/public/js/simple-digital-clock.min.js", import.meta.url));
+const legacyRuntime = await readFile(new URL("../dist/0.8.1.min.js", import.meta.url));
 const integrity = `sha384-${createHash("sha384").update(runtime).digest("base64")}`;
 const clock = '<timenow-zone-sdcw time-zone="UTC" locale="en-GB" second="true" period="false" width="180"></timenow-zone-sdcw>';
 const nonce = "sdcw-fixture-nonce";
@@ -19,7 +20,7 @@ function bootstrap({ markup = "", src = "/runtime.js", existing = "", extra = ""
     <script id="simple-digital-clock-js" async nonce="${scriptNonce}" data-core-filter="retained" crossorigin="anonymous"
       referrerpolicy="no-referrer" integrity="${integrity}" src="${src}"></script>
     <script nonce="${nonce}">window.clockOrder.push(customElements.get('timenow-zone-sdcw') ? 'after-defined' : 'after-missing');</script>`;
-  const inline = `<script nonce="${nonce}" id="simple-digital-clock-loader">${loader}</script>`;
+  const inline = `<script nonce="${nonce}" id="simple-digital-clock-loader-js" src="/loader.js"></script>`;
   const payload = JSON.stringify({ markup: tags }).replace(/[<>&]/g, character => `\\u${character.charCodeAt(0).toString(16).padStart(4, "0")}`);
   return `<!doctype html><html lang="en"><meta charset="utf-8"><title>WordPress loader fixture</title><body>
     ${existing}${markup}<script type="application/json" id="simple-digital-clock-runtime">${payload}</script>${inline}${duplicate ? inline : ""}${trailing}${extra}</body></html>`;
@@ -29,10 +30,13 @@ async function observePage(browser, origin, html, options = {}) {
   const page = await browser.newPage();
   page.setDefaultTimeout(5000);
   const requests = [];
+  const bootstrapRequests = [];
   const errors = [];
   const consoleErrors = [];
   page.on("request", request => {
-    if (new URL(request.url()).pathname.endsWith(".js")) requests.push(request.url());
+    const pathname = new URL(request.url()).pathname;
+    if (pathname === "/loader.js") bootstrapRequests.push(request.url());
+    else if (pathname.endsWith(".js")) requests.push(request.url());
   });
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") consoleErrors.push(message.text()); });
@@ -54,11 +58,11 @@ async function observePage(browser, origin, html, options = {}) {
   await page.route(`${origin}/fixture`, route => route.fulfill({
     status: 200,
     contentType: "text/html",
-    headers: options.csp ? { "Content-Security-Policy": `default-src 'self'; script-src 'nonce-${nonce}'; style-src 'unsafe-inline'; font-src 'none'` } : {},
+    headers: options.csp ? { "Content-Security-Policy": (options.csp === "external" ? "default-src 'self'; script-src 'self'; style-src 'unsafe-inline'; font-src 'none'" : `default-src 'self'; script-src 'nonce-${nonce}'; style-src 'unsafe-inline'; font-src 'none'`) } : {},
     body: html,
   }));
   await page.goto(`${origin}/fixture`, { waitUntil: "domcontentloaded" });
-  return { page, requests, errors, consoleErrors };
+  return { page, requests, bootstrapRequests, errors, consoleErrors };
 }
 
 async function waitForClocks(page, count) {
@@ -85,7 +89,7 @@ async function assertFailure(context, expression) {
 }
 
 for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit })) {
-  test(`${engine}: conditional WordPress loader uses the immutable runtime`, { timeout: 60000 }, async t => {
+  test(`${engine}: conditional WordPress loader loads the exact runtime only on use`, { timeout: 60000 }, async t => {
     const server = createServer((request, response) => {
       const pathname = new URL(request.url, "http://localhost").pathname;
       if (pathname === "/missing.js") {
@@ -94,12 +98,19 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
         return;
       }
       if (pathname === "/hanging.js") return;
+      const bodies = {
+        "/loader.js": loader, "/runtime.js": runtime, "/delayed.js": runtime, "/legacy.js": legacyRuntime,
+        "/empty.js": "/* Deliberately missing initialization. */",
+        "/dependency.js": "window.dependencyLoads = (window.dependencyLoads || 0) + 1;",
+      };
+      if (!Object.hasOwn(bodies, pathname)) {
+        response.writeHead(404); response.end("Unknown fixture route"); return;
+      }
       const deliver = () => {
         response.writeHead(200, { "Content-Type": "text/javascript", "Cache-Control": "no-store" });
-        response.end(pathname === "/empty.js" ? "/* Deliberately missing registration. */" :
-          pathname === "/dependency.js" ? "window.dependencyLoads = (window.dependencyLoads || 0) + 1;" : runtime);
+        response.end(bodies[pathname]);
       };
-      if (pathname === "/delayed.js") setTimeout(deliver, 150);
+      if (pathname === "/delayed.js" || pathname === "/legacy.js") setTimeout(deliver, 150);
       else deliver();
     });
     server.listen(0, "127.0.0.1");
@@ -121,6 +132,43 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
         } finally { await context.page.close(); }
       });
 
+      await t.test("external-only CSP permits raw and dynamic clocks without inline initialization", async () => {
+        for (const markup of [clock, ""]) {
+          const captured = '<script id="simple-digital-clock-js" src="/runtime.js"></script>';
+          const context = await observePage(browser, origin, bootstrap({ markup, captured }), { csp: "external" });
+          try {
+            if (!markup) await context.page.evaluate(clock => document.body.insertAdjacentHTML("beforeend", clock), clock);
+            await assertReady(context);
+            assert.equal(context.requests.length, 1);
+            assert.equal(context.bootstrapRequests.length, 1);
+            assert.deepEqual(await context.page.evaluate(() => window.clockCspViolations), []);
+          } finally { await context.page.close(); }
+        }
+      });
+
+      await t.test("the original first-after-whenDefined integration needs no enqueue workaround", async () => {
+        const existing = `<script>customElements.whenDefined('timenow-zone-sdcw').then(()=>{window.auditWhenDefined=true;document.body.insertAdjacentHTML('beforeend',${JSON.stringify(clock)});});</script>`;
+        const context = await observePage(browser, origin, bootstrap({ existing }));
+        try {
+          await assertReady(context);
+          assert.equal(await context.page.evaluate(() => window.auditWhenDefined), true);
+          assert.equal(context.requests.length, 1);
+        } finally { await context.page.close(); }
+      });
+
+      for (const mode of ["open", "closed"]) {
+        await t.test(`the first clock in an existing ${mode} shadow root renders without document discovery`, async () => {
+          const existing = `<script>const host=document.createElement('div');host.id='shadow-host';const root=host.attachShadow({mode:'${mode}'});window.auditShadow=root;root.innerHTML=${JSON.stringify(clock)};document.body.append(host);</script>`;
+          const context = await observePage(browser, origin, bootstrap({ existing }));
+          try {
+            await context.page.waitForFunction(() => window.auditShadow.querySelector('timenow-zone-sdcw')?.shadowRoot?.querySelector('a')?.textContent.match(/\d{2}:\d{2}:\d{2}/));
+            assert.equal(context.requests.length, 1);
+            assert.deepEqual(context.errors, []);
+            assert.deepEqual(await context.page.evaluate(() => window.clockLoadErrors), []);
+          } finally { await context.page.close(); }
+        });
+      }
+
       await t.test("empty, inert, foreign and removed clocks make no runtime request or polling timer", async () => {
         const inert = `<template>${clock}</template><pre>&lt;timenow-zone-sdcw&gt;&lt;/timenow-zone-sdcw&gt;</pre>
           <!-- ${clock} --><script type="application/json">${JSON.stringify(clock)}</script><textarea>${clock}</textarea>`;
@@ -140,6 +188,8 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
           }, clock);
           await context.page.waitForTimeout(120);
           assert.equal(context.requests.length, 0);
+          assert.equal(context.bootstrapRequests.length, 1);
+          assert.equal(await context.page.evaluate(() => customElements.get("timenow-zone-sdcw").runtimeReady), false);
           assert.deepEqual(await context.page.evaluate(() => ({ state: document.getElementById("simple-digital-clock-runtime").dataset.sdcwLoader,
             timers: window.clockLoadTimers, intervals: window.clockIntervals, order: window.clockOrder ?? null })),
           { state: "waiting", timers: 0, intervals: 0, order: null });
@@ -197,6 +247,32 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
             assert.equal(await context.page.evaluate(() => window.clockOrder ?? null), null);
           } finally { await context.page.close(); }
         });
+      }
+
+      for (const identity of ["Core handle", "normalized URL"]) {
+        await t.test(`a pending immutable legacy runtime retains ownership by ${identity}`, async () => {
+          const existing = `<script async id="${identity === "Core handle" ? "simple-digital-clock-js" : "legacy-owner"}" src="/legacy.js"></script>
+            <script>customElements.whenDefined('timenow-zone-sdcw').then(()=>document.body.insertAdjacentHTML('beforeend',${JSON.stringify(clock)}));</script>`;
+          const context = await observePage(browser, origin, bootstrap({ existing,
+            src: identity === "Core handle" ? "/runtime.js" : "/legacy.js" }));
+          try {
+            await assertReady(context);
+            assert.equal(context.requests.length, 1);
+            assert.equal(await context.page.evaluate(() => window.clockOrder ?? null), null);
+          } finally { await context.page.close(); }
+        });
+      }
+
+      for (const src of ["/delayed.js", "/legacy.js"]) {
+      await t.test(`a native ${src} runtime tag after the bootstrap keeps its ownership`, async () => {
+        const trailing = `<script async id="simple-digital-clock-js" src="${src}"></script>`;
+        const context = await observePage(browser, origin, bootstrap({ markup: clock, trailing }));
+        try {
+          await assertReady(context);
+          assert.equal(context.requests.length, 1);
+          assert.equal(await context.page.evaluate(() => window.clockOrder ?? null), null);
+        } finally { await context.page.close(); }
+      });
       }
 
       await t.test("an existing dependency is not mistaken for the clock runtime", async () => {
@@ -281,7 +357,7 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
         const captured = '<script id="simple-digital-clock-js" src="/empty.js"></script>';
         const context = await observePage(browser, origin, bootstrap({ markup: clock, captured }));
         try {
-          await assertFailure(context, /did not register/);
+          await assertFailure(context, /did not initialize/);
           assert.equal(context.requests.length, 1);
         } finally { await context.page.close(); }
       });
@@ -308,7 +384,7 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
         try {
           await assertFailure(context, /Unable to load/);
           assert.ok((await context.page.evaluate(() => window.clockCspViolations)).length > 0);
-          assert.equal(await context.page.evaluate(() => !!customElements.get("timenow-zone-sdcw")), false);
+          assert.equal(await context.page.evaluate(() => !!customElements.get("timenow-zone-sdcw")?.runtimeReady), false);
           assert.deepEqual(await context.page.evaluate(() => window.clockOrder), ["before"]);
         } finally { await context.page.close(); }
       });

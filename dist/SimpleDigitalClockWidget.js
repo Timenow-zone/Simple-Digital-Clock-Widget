@@ -12,7 +12,7 @@ function $parcel$interopDefault(a) {
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.8.1
+ * Version: 0.8.2
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */ var $a7a8e2c5ae553f9f$export$41c562ebe57d11e2, $a7a8e2c5ae553f9f$var$t, $a7a8e2c5ae553f9f$export$a8257692ac88316c, $a7a8e2c5ae553f9f$var$i, $a7a8e2c5ae553f9f$var$u, $a7a8e2c5ae553f9f$var$f, $a7a8e2c5ae553f9f$var$e, $a7a8e2c5ae553f9f$var$o, $a7a8e2c5ae553f9f$var$l, $a7a8e2c5ae553f9f$var$c, $a7a8e2c5ae553f9f$var$a, $a7a8e2c5ae553f9f$var$s, $a7a8e2c5ae553f9f$var$h = Symbol.for("pv"), $a7a8e2c5ae553f9f$var$p = {}, $a7a8e2c5ae553f9f$var$v = [], $a7a8e2c5ae553f9f$var$y = /^m(i|n|o|s|text|space)$/, $a7a8e2c5ae553f9f$var$w = Array.isArray, $a7a8e2c5ae553f9f$var$d = $a7a8e2c5ae553f9f$var$v.slice, $a7a8e2c5ae553f9f$var$_ = Object.assign;
@@ -343,107 +343,228 @@ $a7a8e2c5ae553f9f$export$41c562ebe57d11e2 = {
 }, $a7a8e2c5ae553f9f$var$o = Symbol(), $a7a8e2c5ae553f9f$var$l = /(PointerCapture)$|Capture$/i, $a7a8e2c5ae553f9f$var$c = 0, $a7a8e2c5ae553f9f$var$a = {}, $a7a8e2c5ae553f9f$var$s = 0;
 
 
-
-function $6f0b21dd6dcd5f7b$var$i() {
-    return $6f0b21dd6dcd5f7b$var$i = Object.assign ? Object.assign.bind() : function(t) {
-        for(var e = 1; e < arguments.length; e++){
-            var n = arguments[e];
-            for(var o in n)Object.prototype.hasOwnProperty.call(n, o) && (t[o] = n[o]);
-        }
-        return t;
-    }, $6f0b21dd6dcd5f7b$var$i.apply(this, arguments);
-}
-function $6f0b21dd6dcd5f7b$var$s(t, e) {
-    if (null == t) return {};
-    var n, o, r = {}, i = Object.keys(t);
-    for(o = 0; o < i.length; o++)e.indexOf(n = i[o]) >= 0 || (r[n] = t[n]);
-    return r;
-}
-var $6f0b21dd6dcd5f7b$var$a = [
-    "context",
-    "children"
-], $6f0b21dd6dcd5f7b$var$l = [
-    "useFragment"
+const $02a31b7ecbf712b5$export$186fb6090bd1ec45 = "timenow-zone-sdcw";
+const $02a31b7ecbf712b5$export$5e0bb0aecd913db8 = [
+    "background-color",
+    "time-zone-name",
+    "font-family",
+    "background",
+    "time-zone",
+    "rounded",
+    "second",
+    "hundredths",
+    "caption",
+    "prefers",
+    "locale",
+    "shadow",
+    "border",
+    "period",
+    "date",
+    "width",
+    "align"
 ];
-function $6f0b21dd6dcd5f7b$export$2e2bcd8739ae039(t, e, n, o) {
-    function r() {
-        var e, n = Reflect.construct(HTMLElement, [], r);
-        return n._vdomComponent = t, o && o.shadow ? (n._root = n.attachShadow({
-            mode: o.mode || "open",
-            serializable: null != (e = o.serializable) && e
-        }), o.adoptedStyleSheets && (n._root.adoptedStyleSheets = o.adoptedStyleSheets)) : n._root = n, n;
+function $02a31b7ecbf712b5$export$bf482fdedaa267a1(load) {
+    const existing = customElements.get($02a31b7ecbf712b5$export$186fb6090bd1ec45);
+    if (existing) {
+        if (existing.sdcwBridgeVersion !== 1) throw new Error("Simple Digital Clock: the element has another registered owner.");
+        if (load) existing.requestRuntime(load);
+        return existing;
     }
-    return (r.prototype = Object.create(HTMLElement.prototype)).constructor = r, r.prototype.connectedCallback = function() {
-        $6f0b21dd6dcd5f7b$var$d.call(this, o);
-    }, r.prototype.attributeChangedCallback = $6f0b21dd6dcd5f7b$var$h, r.prototype.disconnectedCallback = $6f0b21dd6dcd5f7b$var$f, n = n || t.observedAttributes || Object.keys(t.propTypes || {}), r.observedAttributes = n, t.formAssociated && (r.formAssociated = !0), n.forEach(function(t) {
-        Object.defineProperty(r.prototype, t, {
-            get: function() {
-                return this._vdom ? this._vdom.props[t] : this._props[t];
-            },
-            set: function(e) {
-                this._vdom ? this.attributeChangedCallback(t, null, e) : (this._props || (this._props = {}), this._props[t] = e);
-                var n = typeof e;
-                null != e && "string" !== n && "boolean" !== n && "number" !== n || this.setAttribute(t, e);
+    let runtime;
+    let installed = false;
+    let request = load;
+    let requested = false;
+    let resolveReady;
+    const ready = new Promise((resolve)=>{
+        resolveReady = resolve;
+    });
+    const pending = new Set();
+    function requestForConnectedClock() {
+        // A synchronous insert/remove is not a remaining use of the clock.
+        queueMicrotask(()=>{
+            for (const element of pending)if (!element.isConnected) pending.delete(element);
+            if (!runtime && !requested && pending.size && request) {
+                requested = true;
+                request();
             }
         });
-    }), customElements.define(e || t.tagName || t.displayName || t.name, r), r;
-}
-function $6f0b21dd6dcd5f7b$var$u(t) {
-    this.getChildContext = function() {
-        return t.context;
-    };
-    var e = t.children, n = $6f0b21dd6dcd5f7b$var$s(t, $6f0b21dd6dcd5f7b$var$a);
-    return (0, $a7a8e2c5ae553f9f$export$e530037191fcd5d7)(e, n);
-}
-function $6f0b21dd6dcd5f7b$var$d(o) {
-    var r = new CustomEvent("_preact", {
-        detail: {},
-        bubbles: !0,
-        cancelable: !0
-    });
-    this.dispatchEvent(r), this._vdom = (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($6f0b21dd6dcd5f7b$var$u, $6f0b21dd6dcd5f7b$var$i({}, this._props, {
-        context: r.detail.context
-    }), $6f0b21dd6dcd5f7b$var$v(this, this._vdomComponent, o)), (this.hasAttribute("hydrate") ? (0, $a7a8e2c5ae553f9f$export$fa8d919ba61d84db) : (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99))(this._vdom, this._root);
-}
-function $6f0b21dd6dcd5f7b$var$p(t) {
-    return t.replace(/-(\w)/g, function(t, e) {
-        return e ? e.toUpperCase() : "";
-    });
-}
-function $6f0b21dd6dcd5f7b$var$h(t, e, r) {
-    if (this._vdom) {
-        var i = {};
-        i[t] = r = null == r ? void 0 : r, i[$6f0b21dd6dcd5f7b$var$p(t)] = r, this._vdom = (0, $a7a8e2c5ae553f9f$export$e530037191fcd5d7)(this._vdom, i), (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99)(this._vdom, this._root);
     }
-}
-function $6f0b21dd6dcd5f7b$var$f() {
-    (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99)(this._vdom = null, this._root);
-}
-function $6f0b21dd6dcd5f7b$var$m(e, n) {
-    var o = this, a = e.useFragment, c = $6f0b21dd6dcd5f7b$var$s(e, $6f0b21dd6dcd5f7b$var$l);
-    return (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)(a ? (0, $a7a8e2c5ae553f9f$export$ffb0004e005737fa) : "slot", $6f0b21dd6dcd5f7b$var$i({}, c, {
-        ref: function(t) {
-            t ? (o.ref = t, o._listener || (o._listener = function(t) {
-                t.stopPropagation(), t.detail.context = n;
-            }, t.addEventListener("_preact", o._listener))) : o.ref.removeEventListener("_preact", o._listener);
+    class ClockHost extends HTMLElement {
+        static{
+            this.sdcwBridgeVersion = 1;
         }
-    }));
-}
-function $6f0b21dd6dcd5f7b$var$v(e, n, o) {
-    if (3 === e.nodeType) return e.data;
-    if (1 !== e.nodeType) return null;
-    var r = [], i = {}, s = 0, a = e.attributes, l = e.childNodes;
-    for(s = a.length; s--;)"slot" !== a[s].name && (i[a[s].name] = a[s].value, i[$6f0b21dd6dcd5f7b$var$p(a[s].name)] = a[s].value);
-    for(s = l.length; s--;){
-        var c = $6f0b21dd6dcd5f7b$var$v(l[s], null, o), u = l[s].slot;
-        u ? i[u] = (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($6f0b21dd6dcd5f7b$var$m, {
-            name: u
-        }, c) : r[s] = c;
+        static{
+            this.observedAttributes = $02a31b7ecbf712b5$export$5e0bb0aecd913db8;
+        }
+        static{
+            this.whenRuntimeReady = ready;
+        }
+        static get runtimeReady() {
+            return installed;
+        }
+        constructor(){
+            super();
+            this._root = this.attachShadow({
+                mode: "open"
+            });
+        }
+        static requestRuntime(callback) {
+            if (!request) request = callback;
+            requestForConnectedClock();
+        }
+        static installRuntime(implementation) {
+            if (runtime) throw new Error("Simple Digital Clock: the runtime is already installed.");
+            runtime = implementation;
+            try {
+                for (const element of pending)if (element.isConnected) runtime.connect(element);
+                installed = true;
+                resolveReady();
+            } finally{
+                pending.clear();
+            }
+        }
+        connectedCallback() {
+            if (runtime) runtime.connect(this);
+            else {
+                pending.add(this);
+                requestForConnectedClock();
+            }
+        }
+        disconnectedCallback() {
+            pending.delete(this);
+            if (runtime) runtime.disconnect(this);
+        }
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (runtime) runtime.attributeChanged(this, name, oldValue, newValue);
+        }
     }
-    var d = !(!o || !o.shadow), h = n ? (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($6f0b21dd6dcd5f7b$var$m, {
-        useFragment: !d
-    }, r) : r;
-    return !d && n && (e.innerHTML = ""), (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)(n || e.nodeName.toLowerCase(), i, h);
+    // Preserve the public property/attribute reflection of preact-custom-element.
+    for (const name of $02a31b7ecbf712b5$export$5e0bb0aecd913db8)Object.defineProperty(ClockHost.prototype, name, {
+        get () {
+            return this._vdom ? this._vdom.props[name] : this._props?.[name];
+        },
+        set (value) {
+            if (this._vdom) this.attributeChangedCallback(name, null, value);
+            else (this._props ??= {})[name] = value;
+            if (value == null || [
+                "string",
+                "boolean",
+                "number"
+            ].includes(typeof value)) this.setAttribute(name, String(value));
+        }
+    });
+    customElements.define($02a31b7ecbf712b5$export$186fb6090bd1ec45, ClockHost);
+    return ClockHost;
+}
+
+
+/*
+ * Lifecycle and DOM conversion adapted from preact-custom-element 4.6.0.
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Bradley Spaulding
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+function $bc2aa61eef49c8f4$var$ContextProvider(props) {
+    const { context: context, children: children, ...rest } = props;
+    this.getChildContext = ()=>context;
+    return (0, $a7a8e2c5ae553f9f$export$e530037191fcd5d7)(children, rest);
+}
+function $bc2aa61eef49c8f4$var$camelCase(value) {
+    return value.replace(/-(\w)/g, (_, letter)=>letter.toUpperCase());
+}
+function $bc2aa61eef49c8f4$var$Slot(props, context) {
+    const ref = (element)=>{
+        if (!element) {
+            if (this.element && this.listener) this.element.removeEventListener("_preact", this.listener);
+        } else {
+            this.element = element;
+            if (!this.listener) this.listener = (event)=>{
+                event.stopPropagation();
+                event.detail.context = context;
+            };
+            element.addEventListener("_preact", this.listener);
+        }
+    };
+    const { useFragment: useFragment, ...rest } = props;
+    return useFragment ? (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)((0, $a7a8e2c5ae553f9f$export$ffb0004e005737fa), null, props.children) : (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)("slot", {
+        ...rest,
+        ref: ref
+    });
+}
+function $bc2aa61eef49c8f4$var$toVdom(element, component) {
+    if (element.nodeType === Node.TEXT_NODE) return element.data;
+    if (element.nodeType !== Node.ELEMENT_NODE) return null;
+    const host = element;
+    const children = [];
+    const props = {};
+    for(let i = host.attributes.length - 1; i >= 0; i--){
+        const attribute = host.attributes[i];
+        if (attribute.name !== "slot") {
+            props[attribute.name] = attribute.value;
+            props[$bc2aa61eef49c8f4$var$camelCase(attribute.name)] = attribute.value;
+        }
+    }
+    for(let i = host.childNodes.length - 1; i >= 0; i--){
+        const child = host.childNodes[i];
+        const vnode = $bc2aa61eef49c8f4$var$toVdom(child);
+        const name = child.nodeType === Node.ELEMENT_NODE ? child.getAttribute("slot") : null;
+        if (name) props[name] = (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($bc2aa61eef49c8f4$var$Slot, {
+            name: name
+        }, vnode);
+        else children[i] = vnode;
+    }
+    const wrapped = component ? (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($bc2aa61eef49c8f4$var$Slot, {
+        useFragment: false
+    }, children) : children;
+    return (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)(component || host.nodeName.toLowerCase(), props, wrapped);
+}
+function $bc2aa61eef49c8f4$export$a7300c7551cdef67(component) {
+    const Component = component;
+    return {
+        connect (element) {
+            element._vdomComponent = Component;
+            const event = new CustomEvent("_preact", {
+                detail: {},
+                bubbles: true,
+                cancelable: true
+            });
+            element.dispatchEvent(event);
+            element._vdom = (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($bc2aa61eef49c8f4$var$ContextProvider, {
+                ...element._props,
+                context: event.detail.context
+            }, $bc2aa61eef49c8f4$var$toVdom(element, Component));
+            (element.hasAttribute("hydrate") ? (0, $a7a8e2c5ae553f9f$export$fa8d919ba61d84db) : (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99))(element._vdom, element._root);
+        },
+        disconnect (element) {
+            (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99)(element._vdom = null, element._root);
+        },
+        attributeChanged (element, name, _oldValue, newValue) {
+            if (!element._vdom) return;
+            const value = newValue == null ? undefined : newValue;
+            element._vdom = (0, $a7a8e2c5ae553f9f$export$e530037191fcd5d7)(element._vdom, {
+                [name]: value,
+                [$bc2aa61eef49c8f4$var$camelCase(name)]: value
+            });
+            (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99)(element._vdom, element._root);
+        }
+    };
 }
 
 
@@ -716,7 +837,7 @@ $b2927e49b2707936$exports = {
 var $02a8a47a7fc1ea47$export$2e2bcd8739ae039 = $02a8a47a7fc1ea47$var$isDark;
 
 
-const $aa43cbaf8926a599$var$v = "0.8.1";
+const $aa43cbaf8926a599$var$v = "0.8.2";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f9f$export$16fa2f45be04daa8) {
     constructor(props){
@@ -1002,25 +1123,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
     }
     static{
         // Observe attributes in kebab-case (HTML side)
-        this.observedAttributes = [
-            "background-color",
-            "time-zone-name",
-            "font-family",
-            "background",
-            "time-zone",
-            "rounded",
-            "second",
-            "hundredths",
-            "caption",
-            "prefers",
-            "locale",
-            "shadow",
-            "border",
-            "period",
-            "date",
-            "width",
-            "align"
-        ];
+        this.observedAttributes = (0, $02a31b7ecbf712b5$export$5e0bb0aecd913db8);
     }
     /** Normalize boolean-like props coming from attributes. */ normalizeBool(value) {
         // undefined/null => not provided
@@ -1179,9 +1282,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
     }
 }
 var $aa43cbaf8926a599$export$2e2bcd8739ae039 = $aa43cbaf8926a599$var$SimpleDigitalClockWidget;
-(0, $6f0b21dd6dcd5f7b$export$2e2bcd8739ae039)($aa43cbaf8926a599$var$SimpleDigitalClockWidget, undefined, undefined, {
-    shadow: true
-});
+(0, $02a31b7ecbf712b5$export$bf482fdedaa267a1)().installRuntime((0, $bc2aa61eef49c8f4$export$a7300c7551cdef67)($aa43cbaf8926a599$var$SimpleDigitalClockWidget));
 
 })();
 //# sourceMappingURL=SimpleDigitalClockWidget.js.map

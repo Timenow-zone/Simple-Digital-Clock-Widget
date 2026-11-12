@@ -9,7 +9,18 @@ $GLOBALS['test_actions'] = array();
 $GLOBALS['test_filters'] = array();
 function add_action($hook, $callback, $priority = 10) { $GLOBALS['test_actions'][$hook][$priority][$callback] = $callback; }
 function add_filter($hook, $callback, $priority = 10) { $GLOBALS['test_filters'][$hook][$priority][$callback] = $callback; }
-function do_action($hook, $value) { $GLOBALS['test_diagnostics'][] = array($hook, $value); }
+function do_action($hook, $value = null) {
+    if ($hook === 'sdcw_asset_diagnostic') { $GLOBALS['test_diagnostics'][] = array($hook, $value); }
+    $GLOBALS['test_action_stack'][] = $hook;
+    $priorities = isset($GLOBALS['test_actions'][$hook]) ? $GLOBALS['test_actions'][$hook] : array();
+    ksort($priorities);
+    try {
+        foreach ($priorities as $callbacks) {
+            foreach ($callbacks as $callback) { call_user_func($callback); }
+        }
+    } finally { array_pop($GLOBALS['test_action_stack']); }
+}
+function doing_action($hook) { return in_array($hook, $GLOBALS['test_action_stack'], true); }
 function is_admin() { return !empty($GLOBALS['test_admin']); }
 function is_feed() { return !empty($GLOBALS['test_feed']); }
 function is_robots() { return !empty($GLOBALS['test_robots']); }
@@ -19,6 +30,32 @@ function doing_filter($hook) { return $hook === 'get_the_excerpt' && !empty($GLO
 function did_action($hook) { return $hook === 'wp_print_footer_scripts' && !empty($GLOBALS['test_footer']); }
 function get_current_screen() { return isset($GLOBALS['test_screen']) ? $GLOBALS['test_screen'] : null; }
 function test_escape($value) { return htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); }
+
+// Optional real Core tokenization strengthens these routing checks without booting WordPress.
+$core_root = isset($argv[3]) && $argv[3] !== '' ? realpath($argv[3]) : false;
+if (isset($argv[3]) && $argv[3] !== '' && !$core_root) { throw new RuntimeException('Invalid Core parser root'); }
+if ($core_root) {
+    foreach (array('class-wp-html-attribute-token.php', 'class-wp-html-span.php', 'class-wp-html-text-replacement.php', 'class-wp-html-tag-processor.php') as $file) {
+        require $core_root . '/wp-includes/html-api/' . $file;
+    }
+} else {
+    // Token sequences are explicit routing inputs, not an HTML parser implementation.
+    // Native Core acceptance separately verifies which tokens real HTML produces.
+    class WP_HTML_Tag_Processor {
+        private $tokens;
+        private $position = -1;
+        public function __construct($html) {
+            if (!isset($GLOBALS['test_html_tokens'][$html])) { throw new RuntimeException('Missing explicit Core token fixture'); }
+            $this->tokens = $GLOBALS['test_html_tokens'][$html];
+        }
+        public function next_tag($query = null) {
+            ++$this->position;
+            return isset($this->tokens[$this->position]);
+        }
+        public function get_tag() { return $this->tokens[$this->position][0]; }
+        public function is_tag_closer() { return $this->tokens[$this->position][1]; }
+    }
+}
 
 class SDCW_Test_Scripts {
     public $registered = array();
@@ -47,6 +84,7 @@ class SDCW_Test_Scripts {
     }
 
     public function do_items($handles, $group) {
+        $GLOBALS['test_render_registries'][] = spl_object_hash($this);
         if ($group !== 1) { throw new RuntimeException('Wrong footer group'); }
         if ($this->do_concat) { throw new RuntimeException('Private capture must not invoke the global concatenation printer'); }
         foreach ($handles as $handle) { $this->resolve($handle); }
@@ -127,6 +165,8 @@ function wp_print_styles($handles) {
 function test_reset() {
     $GLOBALS['test_script_registry'] = new SDCW_Test_Scripts();
     $GLOBALS['test_normal_prints'] = 0;
+    $GLOBALS['test_render_registries'] = array();
+    $GLOBALS['test_action_stack'] = array();
     foreach (array('styles', 'style_queue', 'style_done', 'diagnostics') as $name) { $GLOBALS['test_' . $name] = array(); }
     foreach (array('admin', 'feed', 'robots', 'trackback', 'json', 'excerpt', 'footer') as $name) { $GLOBALS['test_' . $name] = false; }
     if (isset($GLOBALS['test_base_actions'])) { $GLOBALS['test_actions'] = $GLOBALS['test_base_actions']; }
@@ -160,11 +200,38 @@ $style = 'id="simple-digital-clock-block-style-inline-css"';
 $checks = array();
 $group = 'registration';
 $check = function ($condition, $label) use (&$checks, &$group) { $checks[] = array('group' => $group, 'passed' => (bool) $condition, 'name' => $label); };
+$preview_case = isset($argv[2]) ? $argv[2] : '';
+if ($preview_case !== '') {
+    if (!in_array($preview_case, array('ordinary-json', 'iframe-only', 'rest-only', 'rest-iframe', 'ordinary-html'), true)) {
+        throw new RuntimeException('Unknown preview fixture');
+    }
+    $group = 'preview';
+    if (in_array($preview_case, array('rest-only', 'rest-iframe'), true)) { define('REST_REQUEST', true); }
+    if (in_array($preview_case, array('iframe-only', 'rest-iframe'), true)) { define('IFRAME_REQUEST', true); }
+    $GLOBALS['test_json'] = $preview_case !== 'ordinary-html';
+    $response = test_capture(function () { do_action('wp_enqueue_scripts'); });
+    $expected = $preview_case === 'rest-iframe';
+    $check(wp_script_is('simple-digital-clock', 'enqueued') === $expected, $preview_case . ': only the verified REST iframe lifecycle requests preview runtime');
+    $check($response === '', $preview_case . ': enqueue never writes outside Core preview buffers');
+    if ($expected) {
+        do_action('wp_enqueue_scripts');
+        $check(wp_scripts()->queue === array('simple-digital-clock'), 'Repeated legacy-preview hooks retain one runtime owner');
+        $check(test_capture() === '', 'REST preview does not receive the ordinary frontend fallback');
+    }
+    $failed = count(array_filter($checks, function ($row) { return !$row['passed']; }));
+    echo json_encode(array('checks' => $checks, 'failed' => $failed, 'scope' => 'Preview context routing double')), "\n";
+    exit($failed ? 1 : 0);
+}
+
 $check(ob_get_level() === $initial_buffer_level, 'Loading assets adds no page output buffer');
 $check(empty($GLOBALS['test_actions']['template_redirect']), 'No response observer is installed on template_redirect');
-$check(empty($GLOBALS['test_actions']['wp_enqueue_scripts']), 'Frontend runtime is not globally enqueued');
+do_action('wp_enqueue_scripts');
+$check(!wp_script_is('simple-digital-clock', 'enqueued'), 'No-use frontend enqueue hooks leave the main runtime unqueued');
 $check(empty($GLOBALS['test_actions']['admin_enqueue_scripts']), 'Ordinary admin has no global enqueue');
-$check(array_keys($GLOBALS['test_filters']) === array('render_block_simple-digital-clock-block/widget-block'), 'Only the owned block render hook requests layout');
+$check(isset($GLOBALS['test_filters']['render_block_simple-digital-clock-block/widget-block']), 'Owned blocks retain their explicit runtime-use hook');
+foreach (array('the_content', 'widget_text_content', 'widget_custom_html_content') as $hook) {
+    $check(isset($GLOBALS['test_filters'][$hook]), 'Already-rendered HTML receives a bounded compatibility hook: ' . $hook);
+}
 $check(isset($GLOBALS['test_actions']['init'][9]['SDCW_register_assets']), 'Stable handles register early');
 $check(isset($GLOBALS['test_actions']['wp_footer'][PHP_INT_MAX]['SDCW_print_frontend_loader']), 'Compatibility loader runs after normal footer scripts');
 $check(empty(wp_scripts()->queue) && empty($GLOBALS['test_style_queue']), 'Loading assets queues no runtime or layout');
@@ -172,7 +239,7 @@ $check(!wp_add_inline_script('simple-digital-clock', 'window.early=1;'), 'Double
 test_init(); SDCW_register_assets();
 $check(wp_script_is('simple-digital-clock', 'registered') && empty(wp_scripts()->queue), 'Early repeated registration leaves the runtime unqueued');
 $registered = wp_scripts()->registered['simple-digital-clock'];
-$check($registered->ver === '0.8.1' && $registered->options === array('strategy' => 'async', 'in_footer' => true), 'Published runtime version and Core loading strategy remain unchanged');
+$check($registered->ver === '0.8.2' && $registered->options === array('strategy' => 'async', 'in_footer' => true), 'Selected runtime revision and Core loading strategy are explicit');
 $check($GLOBALS['test_styles']['simple-digital-clock-block-style']['src'] === false && count($GLOBALS['test_styles']['simple-digital-clock-block-style']['inline']) === 1, 'Registration retains one source-free layout rule');
 $registered->src = 'https://fixture.invalid/custom-runtime.js'; SDCW_register_assets();
 $check(wp_scripts()->registered['simple-digital-clock']->src === $registered->src, 'Existing runtime registration is preserved');
@@ -223,32 +290,69 @@ $check(substr_count($parts['runtime'], 'nonce="fixture-nonce"') === 4 && strpos(
 $check($parts['encoded'] !== '' && strpos($parts['encoded'], '<') === false && strpos($parts['encoded'], '\\u003C') !== false, 'Runtime configuration hex-encodes HTML delimiters instead of exposing literal preloadable markup');
 $check(strpos($parts['encoded'], '&') === false && strpos($parts['encoded'], '\\u0022') !== false && strpos($parts['encoded'], '\\u0027') !== false, 'Runtime configuration safely encodes ampersands and quotes while preserving decoded data');
 $check(strpos($parts['outside'], 'attachedBefore') === false && strpos($parts['outside'], 'ClockSettings') === false && strpos($parts['outside'], 'attachedAfter') === false, 'Attached runtime data is not executed as part of the bootstrap');
-$check(strpos($parts['outside'], 'nonce="fixture-inline-nonce"') !== false, 'Bootstrap uses the Core inline-tag attribute path');
+$check(strpos($parts['outside'], 'id="simple-digital-clock-loader-js"') !== false && strpos($parts['outside'], 'data-core-filter="kept"') !== false, 'External bootstrap uses the normal Core script-tag filter path');
+$check(!preg_match('~<script\b(?![^>]*\bsrc=)[^>]*>\s*\S~i', $parts['outside']), 'Bootstrap has no executable inline initialization');
 
 $group = 'loader';
-foreach (array('empty', 'raw', 'owned', 'discarded', 'explicit-helper') as $case) {
+foreach (array('empty', 'raw-unfiltered') as $case) {
     test_reset(); test_init();
-    $content = $case === 'raw' ? $clock : '<p>No clock.</p>';
-    if ($case === 'owned' || $case === 'discarded') {
-        $owned = SDCW_enqueue_rendered_clock_assets($clock);
-        $check($owned === $clock, $case . ': owned rendering preserves markup');
-        if ($case === 'owned') { $content = $owned; }
-    }
-    if ($case === 'explicit-helper') { SDCW_enqueue_scripts(); }
+    $content = $case === 'raw-unfiltered' ? $clock : '<p>No clock.</p>';
     $level = ob_get_level();
     $response = test_capture(function () use ($content) { echo $content; SDCW_print_frontend_loader(); });
     $check(substr($response, 0, strlen($content)) === $content, $case . ': previously emitted page bytes remain unchanged');
     $parts = test_loader_parts(substr($response, strlen($content)));
-    $check(substr_count($parts['runtime'], $script) === 1 && substr_count($parts['outside'], 'id="simple-digital-clock-loader"') === 1, $case . ': one encoded runtime configuration and one inline compatibility loader');
-    $check($parts['encoded'] !== '' && strpos($parts['encoded'], '<') === false && strpos($response, '<template id="simple-digital-clock-runtime">') === false, $case . ': serialized runtime exposes no literal script markup to speculative preload');
-    $check(!preg_match('~<script\b[^>]*\bsrc\s*=~i', $parts['outside']) && empty(wp_scripts()->queue) && empty(wp_scripts()->done), $case . ': PHP emits no active external runtime or consumes its handle');
+    $check(substr_count($parts['runtime'], $script) === 1 && substr_count($parts['outside'], 'id="simple-digital-clock-loader-js"') === 1, $case . ': one inert runtime configuration and one external bootstrap');
+    $check($parts['encoded'] !== '' && strpos($parts['encoded'], '<') === false, $case . ': serialized runtime exposes no literal preloadable script markup');
+    $check(strpos($parts['outside'], $script) === false && !wp_script_is('simple-digital-clock', 'enqueued') && !wp_script_is('simple-digital-clock', 'done'), $case . ': fallback preparation does not enqueue or consume the main runtime');
+    $check(wp_script_is('simple-digital-clock-loader', 'done') && strpos($parts['outside'], 'simple-digital-clock-loader.js') !== false, $case . ': Core owns the external bootstrap handle');
+    $check(strpos($response, 'simple-digital-clock-runtime') < strpos($response, 'id="simple-digital-clock-loader-js"'), $case . ': inert configuration precedes the executable bootstrap');
     $check(ob_get_level() === $level && test_capture() === '', $case . ': repeated footer emits nothing and preserves buffer level');
-    $check(empty($GLOBALS['test_diagnostics']), $case . ': normal preparation emits no diagnostic');
-    $check(empty($GLOBALS['test_style_queue']) === in_array($case, array('empty', 'raw'), true), $case . ': layout stays scoped to owned or explicitly requested output');
+    $check(empty($GLOBALS['test_diagnostics']) && empty($GLOBALS['test_style_queue']), $case . ': fallback adds no diagnostics or owned-block layout');
+}
+
+$group = 'native';
+foreach (array('owned', 'discarded-after-use', 'explicit-helper') as $case) {
+    test_reset(); test_init();
+    if ($case === 'explicit-helper') { SDCW_enqueue_scripts(); }
+    else { $check(SDCW_enqueue_rendered_clock_assets($clock) === $clock, $case . ': owned render preserves every content byte'); }
+    $check(wp_script_is('simple-digital-clock', 'enqueued'), $case . ': actual render or explicit request queues the runtime before DOM detection');
+    $response = test_capture();
+    $check(substr_count($response, $script) === 1 && strpos($response, 'simple-digital-clock-runtime') === false && strpos($response, 'simple-digital-clock-loader') === false, $case . ': native ownership prints runtime without fallback configuration');
+    $check($GLOBALS['test_render_registries'] === array(spl_object_hash(wp_scripts())), $case . ': native ownership does not invoke private markup capture');
+    $check(count($GLOBALS['test_style_queue']) === 1 && test_capture() === '', $case . ': layout remains scoped and repeated footer cannot duplicate runtime');
 }
 test_reset(); test_init(); $GLOBALS['test_footer'] = true;
 $layout = test_capture(function () { SDCW_enqueue_scripts(); SDCW_enqueue_scripts(); });
-$check(substr_count($layout, $style) === 1 && empty(wp_scripts()->queue), 'Late frontend helper prints layout once without bypassing browser detection');
+$check(substr_count($layout, $style) === 1 && wp_script_is('simple-digital-clock', 'enqueued'), 'Late explicit helper requests runtime and prints layout once');
+$late = test_capture();
+$check(substr_count($layout . $late, $script) === 1 && test_capture() === '', 'Late explicit runtime request prints once through Core');
+
+$group = 'html-routing';
+$raw_cases = array(
+    array('live clock', $clock, array(array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true)), true),
+    array('nested live clock', '<div>' . $clock . '</div>', array(array('DIV', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('DIV', true)), true),
+    array('escaped example', '&lt;timenow-zone-sdcw&gt;', array(), false),
+    array('comment example', '<!-- ' . $clock . ' -->', array(), false),
+    array('script text', '<script>' . json_encode($clock) . '</script>', array(array('SCRIPT', false), array('SCRIPT', true)), false),
+    array('textarea text', '<textarea>' . $clock . '</textarea>', array(array('TEXTAREA', false), array('TEXTAREA', true)), false),
+    array('noscript text', '<noscript>' . $clock . '</noscript>', array(array('NOSCRIPT', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('NOSCRIPT', true)), false),
+    array('live after noscript', '<noscript>' . $clock . '</noscript>' . $clock, array(array('NOSCRIPT', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('NOSCRIPT', true), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true)), true),
+    array('substring tag', '<timenow-zone-sdcw-example></timenow-zone-sdcw-example>', array(array('TIMENOW-ZONE-SDCW-EXAMPLE', false), array('TIMENOW-ZONE-SDCW-EXAMPLE', true)), false),
+    array('inert template', '<template>' . $clock . '</template>', array(array('TEMPLATE', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('TEMPLATE', true)), false),
+    array('nested inert template', '<template><template>' . $clock . '</template>' . $clock . '</template>', array(array('TEMPLATE', false), array('TEMPLATE', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('TEMPLATE', true), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('TEMPLATE', true)), false),
+    array('live after template', '<template>' . $clock . '</template>' . $clock, array(array('TEMPLATE', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('TEMPLATE', true), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true)), true),
+    array('foreign SVG', '<svg>' . $clock . '</svg>', array(array('SVG', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('SVG', true)), false),
+    array('foreign MathML', '<math>' . $clock . '</math>', array(array('MATH', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('MATH', true)), false),
+    array('XMP text', '<xmp>' . $clock . '</xmp>', array(array('XMP', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true), array('XMP', true)), false),
+    array('PLAINTEXT remainder', '<plaintext>' . $clock, array(array('PLAINTEXT', false), array('TIMENOW-ZONE-SDCW', false), array('TIMENOW-ZONE-SDCW', true)), false),
+);
+foreach ($raw_cases as $case) {
+    test_reset(); test_init();
+    $GLOBALS['test_html_tokens'][$case[1]] = $case[2];
+    $actual = SDCW_enqueue_clock_markup($case[1]);
+    $check($actual === $case[1], $case[0] . ': rendered markup retains its exact bytes');
+    $check(wp_script_is('simple-digital-clock', 'enqueued') === $case[3], $case[0] . ': supplied Core tokens yield the expected native use signal');
+}
 
 $group = 'explicit';
 foreach (array('queued', 'done', 'dependency') as $case) {
@@ -277,6 +381,7 @@ $group = 'scope';
 foreach (array('admin', 'feed', 'robots', 'trackback', 'json', 'excerpt') as $flag) {
     test_reset(); $GLOBALS['test_' . $flag] = true;
     $check(SDCW_enqueue_rendered_clock_assets($clock) === $clock && empty(wp_scripts()->queue) && empty($GLOBALS['test_style_queue']), 'Excluded owned render preserves bytes and requests no resources: ' . $flag);
+    $check(SDCW_enqueue_clock_markup($clock) === $clock && empty(wp_scripts()->queue), 'Excluded raw-content hook preserves bytes without requesting runtime: ' . $flag);
     if ($flag !== 'excerpt') {
         $level = ob_get_level();
         $check(test_capture() === '' && ob_get_level() === $level && empty(wp_scripts()->registered), 'Excluded frontend request emits no bootstrap or registration: ' . $flag);
@@ -297,7 +402,12 @@ $GLOBALS['test_screen'] = new class { public function is_block_editor() { return
 SDCW_enqueue_editor_clock_assets(); SDCW_enqueue_editor_clock_assets();
 $check(wp_scripts()->queue === array('simple-digital-clock') && count($GLOBALS['test_style_queue']) === 1, 'Empty editor preview enqueues the normal runtime and layout exactly once');
 $check(test_capture() === '', 'Editor preview never receives the frontend compatibility loader');
+$parent_registry = wp_scripts();
+$GLOBALS['test_script_registry'] = new SDCW_Test_Scripts();
+SDCW_enqueue_editor_clock_assets();
+$check(wp_scripts() !== $parent_registry && wp_script_is('simple-digital-clock', 'enqueued'), 'Separate Core iframe registry receives its own runtime despite the parent enqueue');
+$check($parent_registry->queue === array('simple-digital-clock'), 'Iframe collection leaves the parent registry unchanged');
 $check(ob_get_level() === $initial_buffer_level, 'All checks preserve the original caller output-buffer level');
 $failed = count(array_filter($checks, function ($row) { return !$row['passed']; }));
-echo json_encode(array('checks' => $checks, 'failed' => $failed, 'scope' => 'Offline Core queue doubles and private capture lifecycle; actual Core filters, HTTP MIME and browser network execution require separate acceptance')), "\n";
+echo json_encode(array('checks' => $checks, 'failed' => $failed, 'scope' => $core_root ? 'Real Core HTML tokens with queue and private-capture doubles; full WordPress lifecycle and browser execution remain separate' : 'Offline Core queue, token-routing and private-capture doubles; real HTML tokenization, Core filters, HTTP MIME and browser execution require native acceptance')), "\n";
 exit($failed ? 1 : 0);
