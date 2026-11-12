@@ -178,7 +178,7 @@ were stopped; databases, archives and rollback copies were retained.
 
 [PR #19](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19)
 remains draft and stacked on PR #18. **Repository checks** and **Browser tests**
-must both succeed on its final HEAD. The final post-push receipt is retained at
+must both succeed on its final HEAD. The final post-push receipt will be recorded at
 `.local/remediation-116-rc4/final-head-ci.json`; use the
 [live PR checks](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks)
 for any later HEAD. This record does not bypass branch protection.
