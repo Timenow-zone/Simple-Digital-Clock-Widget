@@ -101,7 +101,8 @@ function observe(configs) {
     check(Math.abs(boxRect.width - Number(a.width)) <= 2, "visible width differs");
     check(style.backgroundColor === color, "background differs");
     check(box.style.borderRadius === `${a.rounded}rem`, "radius differs");
-    check(align === a.align, `alignment differs: requested ${a.align}, rendered ${rawAlign} (${innerStyle.direction})`);
+    const expectedAlign = a.align || "center";
+    check(align === expectedAlign, `alignment differs: requested ${expectedAlign}, rendered ${rawAlign} (${innerStyle.direction})`);
     check(parseFloat(style.borderTopWidth) === (Object.hasOwn(a, "border") ? 1 : 0), "border presence differs");
     check(box.classList.contains(a.shadow), "shadow class differs");
     check(style.boxShadow !== "none", "shadow is not rendered");
@@ -193,6 +194,37 @@ for (const engine of browsers) {
             record.negativeControl = { detected: true, issues: negative.issues };
             await page.locator(`#${victim.id}`).evaluate((host, width) => host.setAttribute("width", width), victim.attributes.width);
             await verify(page, expected, record, "negative-control-restored");
+            const priorBody = await page.evaluate(() => ({ direction: document.body.getAttribute("dir"), textAlign: document.body.style.textAlign }));
+            const priorFirst = expected[0];
+            const withAlignment = value => {
+              const attributes = { ...priorFirst.attributes };
+              if (value === null) delete attributes.align;
+              else attributes.align = value;
+              return [{ ...priorFirst, attributes }, ...expected.slice(1)];
+            };
+            await page.evaluate(() => { document.body.dir = "ltr"; document.body.style.textAlign = "right"; document.getElementById("utc").removeAttribute("align"); });
+            expected = withAlignment(null);
+            await verify(page, expected, record, "removed-align-default-center-over-parent-right");
+            await page.locator("#utc").evaluate(host => { host.align = ""; });
+            expected = withAlignment("");
+            await verify(page, expected, record, "empty-align-property-default-center");
+            await page.evaluate(() => { document.body.dir = "rtl"; document.getElementById("utc").align = "left"; });
+            expected = withAlignment("left");
+            await verify(page, expected, record, "rtl-physical-left-property-and-independent-neighbors");
+            await page.locator("#utc").evaluate(host => { host.align = "right"; });
+            expected = withAlignment("right");
+            await verify(page, expected, record, "rtl-physical-right-property-and-independent-neighbors");
+            await page.locator("#utc").evaluate(host => host.removeAttribute("align"));
+            expected = withAlignment(null);
+            await verify(page, expected, record, "rtl-removed-align-default-center");
+            await page.evaluate(prior => {
+              if (prior.direction === null) document.body.removeAttribute("dir");
+              else document.body.setAttribute("dir", prior.direction);
+              document.body.style.textAlign = prior.textAlign;
+            }, priorBody);
+            await replaceAttributes(page, priorFirst);
+            expected = [priorFirst, ...expected.slice(1)];
+            await ticks(page, expected, record, "alignment-controls-restored-real-ticks");
             if (out) await page.screenshot({ path: path.join(out, `${engine}-${target.name}.png`), fullPage: true });
             await Promise.all(tasks);
             record.loadErrors = await page.evaluate(() => window.__multiLoadErrors);
