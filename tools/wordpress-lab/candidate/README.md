@@ -98,6 +98,15 @@ HTML/non-HTML corpus and the selected names remain in `CASE-INVENTORY.json` and
 the result metadata; omitted cases are not reported as executed.
 `widgets-ui.mjs` changes and restores a canonical widget caption, waits for the
 visible Update and native REST persistence, and then reloads it.
+Its optional `--site minimum` or `--site current` selects a targeted retry;
+unknown, empty, duplicate or absent selections fail before browser launch, and
+the result records available and selected sites. Request settling requires
+500 ms without relevant request activity within a 30-second bound. It excludes
+and logs only same-origin `OPTIONS /index.php` requests whose `rest_route` is
+`/wp/v2/settings`: an observed Core schema request can remain pending despite
+completed native saves. This does not claim to fix the underlying pending
+request. Native save, REST persistence, reopened previews, asset hashes and
+uncaught-error assertions remain required.
 
 Install `fixtures-mu.php` only into the owned lab's `mu-plugins` directory, then
 run `seed-preview.php` with WP-CLI to prepare legacy fixtures. A later `reuse`

@@ -7,8 +7,8 @@ Widget and WordPress plugin versions are independent:
 
 | Component | Version | Delivery status |
 | --- | --- | --- |
-| Widget runtime | **0.8.4** | Alignment correction; acceptance pending; production remains 0.8.1 |
-| WordPress source | **1.1.6** | RC5 acceptance pending; unpublished |
+| Widget runtime | **0.8.4** | Alignment correction accepted in the recorded scope; CDN delivery pending |
+| WordPress source | **1.1.6** | RC5 scoped acceptance PASS; unpublished |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
 The [0.8.4 candidate](docs/releases/0.8.4/README.md) emits explicit alignment CSS,
@@ -59,7 +59,7 @@ Load the immutable, versioned production asset:
 <script src="https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js"></script>
 ```
 
-The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.4.min.js`; exact-candidate acceptance and delivery are pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.4.min.js`.
+The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.4.min.js`; scoped exact-candidate acceptance passes; production delivery is pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.4.min.js`.
 
 For self-hosting the current production release, copy `dist/0.8.1.min.js` to your site and use its URL instead.
 The unminified `dist/SimpleDigitalClockWidget.js` entry is also retained.
@@ -312,7 +312,7 @@ remediation candidate with widget **0.8.4** under
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
 The [release record](docs/releases/1.1.6/README.md) tracks exact candidates and
 independent acceptance; selected RC5 corrects `MULTI-ALIGN-P2-01` with explicit
-alignment CSS and is undergoing fresh acceptance. Frozen RC4 remains **NO-GO**
+alignment CSS and passes [scoped acceptance](docs/releases/1.1.6/FINAL-ACCEPTANCE-RC5.md). Frozen RC4 remains **NO-GO**
 for alignment; RC3 remains **NO-GO** for initial error isolation.
 
 Native render signals and explicit requests use normal Core enqueue. An external

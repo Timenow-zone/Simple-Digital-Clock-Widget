@@ -5,7 +5,7 @@ This repository contains two independently versioned components:
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
 | JavaScript widget | `../src/` | `../package.json` (`0.8.4`, candidate; production remains 0.8.1) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, RC5 acceptance pending; unpublished) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, RC5 scoped acceptance PASS; unpublished) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
@@ -60,7 +60,7 @@ is used. Saved blocks and raw HTML retain their settings and schema. See the
 [asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md).
 
 Selected [RC5](../docs/releases/1.1.6/RC5.md) bundles widget 0.8.4 with explicit
-alignment CSS and is undergoing fresh exact-artifact acceptance. Frozen RC4
+alignment CSS and passes [scoped exact-artifact acceptance](../docs/releases/1.1.6/FINAL-ACCEPTANCE-RC5.md). Frozen RC4
 remains **NO-GO** for the recorded alignment defect; RC3 remains **NO-GO** for
 initial-host error isolation. The [two-phase defect record](../docs/defects/MULTI-ALIGN-P2-01.md)
 keeps the original failure evidence and current acceptance criteria separate.

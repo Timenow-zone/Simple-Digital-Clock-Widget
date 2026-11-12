@@ -1,6 +1,6 @@
 # WordPress 1.1.6 RC5 candidate
 
-Date: 2026-11-12. Status: **FROZEN; EXACT-ARTIFACT ACCEPTANCE IN PROGRESS**.
+Date: 2026-11-12. Status: **FROZEN; SCOPED EXACT-ARTIFACT ACCEPTANCE PASS; UNPUBLISHED**.
 This candidate bundles [widget 0.8.4](../0.8.4/README.md), the minimal
 [MULTI-ALIGN-P2-01 correction](../../defects/MULTI-ALIGN-P2-01.md).
 
@@ -23,6 +23,8 @@ runtime-version references) and readme. Fourteen files, including bootstrap,
 editor, KSES, translations and notices, are identical. There is no migration,
 serializer, loader lifecycle or saved-setting schema change.
 
+[Final scoped acceptance](FINAL-ACCEPTANCE-RC5.md) and its
+[machine-readable index](acceptance-rc5.json) record the new proof.
 Acceptance requires the exact main in HTML and native WordPress in actual Chrome,
 Firefox and WebKit, including single/multiple different configurations,
 default/empty/removed alignment, JS property changes and physical alignment under

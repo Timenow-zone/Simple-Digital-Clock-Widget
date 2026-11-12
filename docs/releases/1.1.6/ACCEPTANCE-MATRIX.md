@@ -2,7 +2,8 @@
 
 Acceptance specification, 2026-11-12. This table defines required gates;
 it does not itself mark their execution as passed. Selected [RC5](RC5.md) bundles
-0.8.4 and requires fresh exact-artifact acceptance of the alignment correction.
+0.8.4; its [scoped acceptance](FINAL-ACCEPTANCE-RC5.md) distinguishes fresh
+execution from historical evidence and does not claim all gates rerun.
 The [defect record](../../defects/MULTI-ALIGN-P2-01.md) defines single/multiple,
 default/property and LTR/RTL criteria. Frozen RC4 and RC3 remain NO-GO for their
 recorded findings; their earlier scoped evidence remains unchanged.

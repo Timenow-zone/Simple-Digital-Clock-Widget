@@ -1,8 +1,13 @@
 # MULTI-ALIGN-P2-01: missing cross-browser clock alignment CSS
 
-Date: 2026-11-12. Severity: P2. Status: **PHASE 1 COMPLETE; PHASE 2 AUTHORIZED**.
+Date: 2026-11-12. Severity: P2. Status: **CORRECTED IN 0.8.4 / RC5; SCOPED BROWSER ACCEPTANCE PASS**.
 The owner explicitly requested recording the defect and correcting it in two
-phases. This record separates the confirmed failure from future acceptance.
+phases. This record preserves the confirmed failure and subsequent correction.
+The [RC5 acceptance report](../releases/1.1.6/FINAL-ACCEPTANCE-RC5.md) records
+30/30 exact-main HTML/WordPress workflows, the 24 standalone compatibility cases,
+222 fresh native rows and ten file transitions. The 24 native multi-instance
+workflows are included in 222. Final-HEAD required checks use the post-push
+receipt referenced there; publication remains separate.
 
 ## Phase 1: record the defect and freeze the red baseline
 

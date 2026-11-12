@@ -1,6 +1,6 @@
 # WordPress 1.1.6 release preparation
 
-Status: **RC5 FROZEN; ALIGNMENT CORRECTION ACCEPTANCE IN PROGRESS**.
+Status: **RC5 FROZEN; SCOPED ALIGNMENT ACCEPTANCE PASS; DELIVERY PENDING**.
 Selected [RC5](RC5.md) contains [widget 0.8.4](../0.8.4/README.md). The
 [two-phase defect record](../../defects/MULTI-ALIGN-P2-01.md) preserves the red
 baseline and requires new exact-artifact HTML/WordPress verification.
@@ -21,7 +21,8 @@ baseline and requires new exact-artifact HTML/WordPress verification.
 The executable commit contains 16 exact package files; the finalized readme source
 link follows that commit. All 17 files match the containing commit. The frozen
 manifest retains its initial pre-acceptance `NOT_RUN` status; final acceptance
-belongs in a separate report.
+is recorded in the separate [RC5 report](FINAL-ACCEPTANCE-RC5.md) and
+[evidence index](acceptance-rc5.json).
 
 ## Change and acceptance scope
 

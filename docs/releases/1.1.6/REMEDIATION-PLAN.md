@@ -1,6 +1,6 @@
 # WordPress runtime delivery remediation plan
 
-Date: 2026-11-12. **Current status: RC5 alignment correction built; exact acceptance in progress.**
+Date: 2026-11-12. **Current status: RC5 scoped alignment acceptance PASS; delivery pending.**
 Baseline source: `558460c80fe317e6d0327c79c8a4478e7430e8cf`.
 The [standalone review](../0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md) confirmed a
 shared-runtime failure outside WordPress. [RC4](RC4.md) bundles widget 0.8.3 with
@@ -11,7 +11,8 @@ records earlier scoped checks. The later [multi-instance review](../0.8.3/MULTI-
 adds different simultaneous settings and proves a pre-existing Firefox alignment
 defect. Selected [RC5](RC5.md) now contains widget 0.8.4 with explicit alignment
 classes. The [two-phase defect record](../../defects/MULTI-ALIGN-P2-01.md) preserves
-the red baseline and defines fresh acceptance; no prior failure is relabeled.
+the red baseline; [RC5 scoped acceptance](FINAL-ACCEPTANCE-RC5.md) records the
+fresh results and limits. No prior failure is relabeled.
 Final-HEAD CI and separately
 authorized production CDN delivery remain required; WordPress publication is deferred.
 RC1 and RC2 remain **NO-GO**;

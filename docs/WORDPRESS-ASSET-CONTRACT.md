@@ -1,9 +1,10 @@
 # WordPress asset delivery contract
 
 This describes selected WordPress 1.1.6 RC5 with shared widget 0.8.4.
-Current status is **ALIGNMENT CORRECTION BUILT; ACCEPTANCE IN PROGRESS**.
+Current status is **ALIGNMENT CORRECTION PASSES SCOPED ACCEPTANCE; DELIVERY PENDING**.
 The [two-phase defect record](defects/MULTI-ALIGN-P2-01.md) preserves the rejected
-0.8.3/RC4 alignment proof and requires fresh acceptance of the new artifact.
+0.8.3/RC4 alignment proof; [RC5 acceptance](releases/1.1.6/FINAL-ACCEPTANCE-RC5.md)
+records the new exact-artifact results.
 Initial-host error isolation from 0.8.3 is retained. This is an implementation
 contract, not an acceptance or publication record. All ten older numbered
 artifacts and frozen prior candidates remain unchanged.
@@ -29,6 +30,9 @@ attributes/JavaScript properties, and removal/reinsertion. Single and simultaneo
 clocks must retain different time zones, locales, time formats and visual settings.
 Changing or removing one instance must preserve the other instances' settings and
 operation; a defined element or different caption alone does not prove isolation.
+Verify physical left/center/right alignment and default center when `align` is
+absent, empty or removed, including JavaScript property changes. Exercise inherited
+parent alignment and both LTR/RTL with each clock's actual computed direction.
 Check visible clock
 content, expected settings and actual ticking; successful download or element
 registration alone is insufficient. A rendering error in one clock must remain

@@ -1,6 +1,6 @@
 # Widget 0.8.4 alignment correction
 
-Status: **BUILT; EXACT-ARTIFACT ACCEPTANCE IN PROGRESS; NOT PUBLISHED**.
+Status: **SCOPED EXACT-ARTIFACT ACCEPTANCE PASS; NOT PUBLISHED**.
 This corrects [MULTI-ALIGN-P2-01](../../defects/MULTI-ALIGN-P2-01.md) through explicit
 static alignment classes in the existing inner container. Tailwind now emits
 left/center/right rules, including center for absent, empty or removed alignment.
@@ -22,8 +22,13 @@ Firefox and WebKit. The same-page fixture additionally checks default/removal,
 JavaScript properties and computed LTR/RTL direction. Passing source tests alone
 cannot close the mandatory built-artifact gate.
 
+[RC5 acceptance](../1.1.6/FINAL-ACCEPTANCE-RC5.md) records 30/30 HTML/WordPress
+single/multiple workflows, 24 standalone compatibility cases and 222 native rows
+(the 24 native multi-instance rows are included in 222), plus ten transitions.
+Final-HEAD hosted checks remain required as recorded there.
+
 Ten older numbered bundles and frozen RC4 inputs/evidence remain unchanged.
 Rejected 0.8.3/RC4 records retain their original alignment failures. Production
-still uses the previously verified 0.8.1 deployment. No merge, CDN delivery or
+last served 0.8.1 in the separately recorded production verification. No merge, CDN delivery or
 WordPress.org publication is part of these two phases. Final PR checks and the
 remaining public delivery proof remain required release gates.

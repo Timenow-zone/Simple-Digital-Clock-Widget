@@ -6,18 +6,29 @@ import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { chromium, firefox, webkit } from "playwright";
 import { parseArgs } from "node:util";
-const { values: args } = parseArgs({
+const { values: args, tokens } = parseArgs({
+  tokens: true,
   options: {
     "run-dir": { type: "string" },
     label: { type: "string" },
     engine: { type: "string", default: "chromium" },
+    site: { type: "string" },
   },
 });
 const root = path.resolve(args["run-dir"]);
 assert(/^[a-z0-9][a-z0-9-]+$/.test(args.label));
 assert(["chrome", "chromium", "firefox", "webkit"].includes(args.engine), "Unknown browser");
+assert(args.site === undefined || ["minimum", "current"].includes(args.site), "Unknown site");
+assert(
+  tokens.filter((token) => token.kind === "option" && token.name === "site").length <= 1,
+  "Duplicate site selection"
+);
 const run = JSON.parse(await fs.readFile(path.join(root, "run.json"), "utf8"));
 assert.equal(run.run_dir, root);
+const selectedSites = Object.entries(run.sites).filter(
+  ([site]) => !args.site || site === args.site
+);
+assert(selectedSites.length > 0, "No selected site exists in run.sites");
 const manifest = JSON.parse(await fs.readFile(path.join(root, "inputs/manifest.json"), "utf8"));
 assert.equal(manifest.archive_sha256, run.archive_sha256);
 const out = path.join(root, "evidence", args.label + "-" + args.engine);
@@ -31,9 +42,7 @@ await fs.copyFile(fileURLToPath(import.meta.url), path.join(out, "harness-widget
 const rows = [];
 const name = "simple-digital-clock-block/widget-block";
 try {
-  for (const [site, url] of Object.entries(
-    Object.fromEntries(Object.entries(run.sites).map(([site, value]) => [site, value.url]))
-  )) {
+  for (const [site, { url }] of selectedSites) {
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 1100 } });
     await ctx.route("**/*", (r) =>
       new URL(r.request().url()).origin === url ? r.continue() : r.abort()
@@ -47,9 +56,52 @@ try {
       responses: [],
       previews: [],
       actions: [],
+      settling: [],
     };
     const responseTasks = [];
+    const pending = new Set();
+    let lastRelevantActivity = Date.now();
+    const isCoreSettingsSchema = (request) => {
+      const requestUrl = new URL(request.url());
+      return (
+        request.method() === "OPTIONS" &&
+        requestUrl.origin === url &&
+        requestUrl.pathname === "/index.php" &&
+        requestUrl.searchParams.get("rest_route") === "/wp/v2/settings"
+      );
+    };
+    const settle = async () => {
+      const started = Date.now();
+      while (Date.now() - started < 30000) {
+        const active = [...pending].filter((request) => !isCoreSettingsSchema(request));
+        if (active.length === 0 && Date.now() - Math.max(started, lastRelevantActivity) >= 500) {
+          row.settling.push({
+            elapsedMs: Date.now() - started,
+            pendingCoreSchema: [...pending].map((request) => ({
+              method: request.method(),
+              url: request.url(),
+            })),
+          });
+          return;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+      throw new Error(
+        "Native requests did not settle: " +
+          JSON.stringify([...pending].map((request) => request.url()))
+      );
+    };
     const observe = (page) => {
+      page.on("request", (request) => {
+        pending.add(request);
+        if (!isCoreSettingsSchema(request)) lastRelevantActivity = Date.now();
+      });
+      const finished = (request) => {
+        pending.delete(request);
+        if (!isCoreSettingsSchema(request)) lastRelevantActivity = Date.now();
+      };
+      page.on("requestfinished", finished);
+      page.on("requestfailed", finished);
       page.on("pageerror", (e) => {
         row.errors.push(e.message);
         row.errorDetails.push({ message: e.message, stack: e.stack });
@@ -172,8 +224,8 @@ try {
           { caption, name, id: first.attrs.__internalWidgetId },
           { timeout: 15000 }
         );
-        // Let native legacy-widget render requests finish before navigating away.
-        await p.waitForLoadState("networkidle");
+        // Wait for native renders; Core's read-only settings OPTIONS can remain pending.
+        await settle();
         await p.reload();
         await p.waitForFunction((name) => {
           const flat = (x) =>
@@ -209,7 +261,7 @@ try {
         );
         row.actions.push("Reopened native Widgets editor and live caption preview");
       }
-      await p.waitForLoadState("networkidle");
+      await settle();
       await p.reload();
       await p.waitForFunction((name) => {
         const flat = (x) =>
@@ -222,7 +274,7 @@ try {
         row.before.clocks.map((c) => c.attrs)
       );
       assert.deepEqual(row.after.invalid, []);
-      await p.waitForLoadState("networkidle");
+      await settle();
       await Promise.all(responseTasks);
       assert.deepEqual(row.errors, []);
       assert(
@@ -256,6 +308,8 @@ try {
           platform: process.platform,
           architecture: process.arch,
           browser: browser.version(),
+          selectedSite: args.site ?? null,
+          availableSites: Object.keys(run.sites),
           rows,
         },
         null,
