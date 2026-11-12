@@ -26,6 +26,24 @@ function sdcw_candidate_asset_id_position($html, $id) {
     $pattern = '~\bid\s*=\s*["\']' . preg_quote($id, '~') . '["\']~i';
     return preg_match($pattern, $html, $matches, PREG_OFFSET_CAPTURE) ? $matches[0][1] : null;
 }
+function sdcw_candidate_asset_payload($html) {
+    if (!preg_match('~<script\b[^>]*\bid=["\']simple-digital-clock-runtime["\'][^>]*>(.*?)</script>~si', $html, $match)) { return null; }
+    return json_decode($match[1], true);
+}
+function sdcw_candidate_asset_legacy_source($source, $handle) {
+    if ($handle === 'simple-digital-clock') {
+        ++$GLOBALS['sdcw_asset_source_calls'];
+        return home_url('/sdcw-opaque/0.8.1.min.js');
+    }
+    return $source;
+}
+function sdcw_candidate_asset_legacy_tag($tag, $handle) {
+    if ($handle === 'simple-digital-clock') {
+        ++$GLOBALS['sdcw_asset_tag_calls'];
+        return preg_replace('~\bsrc=["\'][^"\']*["\']~', 'src="' . esc_url(home_url('/sdcw-opaque/0.8.1.min.js')) . '"', $tag);
+    }
+    return $tag;
+}
 function sdcw_candidate_asset_active_runtime_tags($html) {
     preg_match_all('~<script\b[^>]*\bsrc=["\'][^"\']*simple-digital-clock\.min\.js[^"\']*["\'][^>]*>~i', $html, $matches);
     return count($matches[0]);
@@ -46,7 +64,31 @@ if ($mode === 'frontend') {
     sdcw_candidate_asset_check('Fallback keeps JSON inert and before the bootstrap', strpos($fallback, 'type="application/json"') !== false && sdcw_candidate_asset_id_position($fallback, 'simple-digital-clock-runtime') !== null && sdcw_candidate_asset_id_position($fallback, 'simple-digital-clock-loader-js') !== null && sdcw_candidate_asset_id_position($fallback, 'simple-digital-clock-runtime') < sdcw_candidate_asset_id_position($fallback, 'simple-digital-clock-loader-js'));
     sdcw_candidate_asset_check('Core bootstrap handle is done and main handle remains unconsumed', wp_script_is('simple-digital-clock-loader', 'done') && !wp_script_is('simple-digital-clock', 'done'));
     sdcw_candidate_asset_check('Repeated fallback prints no additional bytes', sdcw_candidate_asset_capture('SDCW_print_frontend_loader') === '');
+    $payload = sdcw_candidate_asset_payload($fallback);
+    sdcw_candidate_asset_check('Default captured runtime explicitly permits deferred shell loading', is_array($payload) && isset($payload['lazy']) && $payload['lazy'] === true);
     $artifacts['fallback'] = $fallback;
+
+    foreach (array('registered-source', 'registered-version', 'source-filter', 'tag-filter') as $policy) {
+        sdcw_candidate_asset_reset();
+        $GLOBALS['sdcw_asset_source_calls'] = 0;
+        $GLOBALS['sdcw_asset_tag_calls'] = 0;
+        if ($policy === 'registered-source') { wp_scripts()->registered['simple-digital-clock']->src = home_url('/sdcw-opaque/0.8.1.min.js'); }
+        elseif ($policy === 'registered-version') { wp_scripts()->registered['simple-digital-clock']->ver = '0.8.1'; }
+        elseif ($policy === 'source-filter') { add_filter('script_loader_src', 'sdcw_candidate_asset_legacy_source', 10, 2); }
+        else { add_filter('script_loader_tag', 'sdcw_candidate_asset_legacy_tag', 10, 2); }
+        try {
+            $html = sdcw_candidate_asset_capture('SDCW_print_frontend_loader');
+            $payload = sdcw_candidate_asset_payload($html);
+            sdcw_candidate_asset_check($policy . ': actual Core output marks opaque runtime as non-deferred', is_array($payload) && array_key_exists('lazy', $payload) && $payload['lazy'] === false);
+            sdcw_candidate_asset_check($policy . ': captured override source/version is retained', is_array($payload) && strpos($payload['markup'], '0.8.1') !== false);
+            sdcw_candidate_asset_check($policy . ': repeated footer prints nothing', sdcw_candidate_asset_capture('SDCW_print_frontend_loader') === '');
+            sdcw_candidate_asset_check($policy . ': classification executes the selected Core filter once', $GLOBALS['sdcw_asset_source_calls'] === ($policy === 'source-filter' ? 1 : 0) && $GLOBALS['sdcw_asset_tag_calls'] === ($policy === 'tag-filter' ? 1 : 0));
+            $artifacts['policy_' . $policy] = $html;
+        } finally {
+            remove_filter('script_loader_src', 'sdcw_candidate_asset_legacy_source', 10);
+            remove_filter('script_loader_tag', 'sdcw_candidate_asset_legacy_tag', 10);
+        }
+    }
 
     foreach (array('owned', 'helper', 'dependency') as $native) {
         sdcw_candidate_asset_reset();

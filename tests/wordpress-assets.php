@@ -9,6 +9,27 @@ $GLOBALS['test_actions'] = array();
 $GLOBALS['test_filters'] = array();
 function add_action($hook, $callback, $priority = 10) { $GLOBALS['test_actions'][$hook][$priority][$callback] = $callback; }
 function add_filter($hook, $callback, $priority = 10) { $GLOBALS['test_filters'][$hook][$priority][$callback] = $callback; }
+function remove_filter($hook, $callback, $priority = 10) { unset($GLOBALS['test_filters'][$hook][$priority][$callback]); }
+function apply_filters($hook, $value) {
+    $arguments = array_slice(func_get_args(), 2);
+    $priorities = isset($GLOBALS['test_filters'][$hook]) ? $GLOBALS['test_filters'][$hook] : array();
+    ksort($priorities);
+    foreach ($priorities as $callbacks) {
+        foreach ($callbacks as $callback) { $value = call_user_func_array($callback, array_merge(array($value), $arguments)); }
+    }
+    return $value;
+}
+function test_filter_legacy_source($source, $handle) {
+    if ($handle === 'simple-digital-clock') { ++$GLOBALS['test_runtime_source_filter_calls']; return 'https://fixture.invalid/legacy/0.8.1.min.js'; }
+    return $source;
+}
+function test_filter_legacy_tag($tag, $handle) {
+    if ($handle === 'simple-digital-clock') {
+        ++$GLOBALS['test_runtime_tag_filter_calls'];
+        return preg_replace('~\bsrc="[^"]*"~', 'src="https://fixture.invalid/legacy/0.8.1.min.js"', $tag);
+    }
+    return $tag;
+}
 function do_action($hook, $value = null) {
     if ($hook === 'sdcw_asset_diagnostic') { $GLOBALS['test_diagnostics'][] = array($hook, $value); }
     $GLOBALS['test_action_stack'][] = $hook;
@@ -35,6 +56,11 @@ function test_escape($value) { return htmlspecialchars($value, ENT_QUOTES, 'UTF-
 $core_root = isset($argv[3]) && $argv[3] !== '' ? realpath($argv[3]) : false;
 if (isset($argv[3]) && $argv[3] !== '' && !$core_root) { throw new RuntimeException('Invalid Core parser root'); }
 if ($core_root) {
+    if (is_file($core_root . '/wp-includes/html-api/class-wp-html-decoder.php')) {
+        require $core_root . '/wp-includes/class-wp-token-map.php';
+        require $core_root . '/wp-includes/html-api/html5-named-character-references.php';
+        require $core_root . '/wp-includes/html-api/class-wp-html-decoder.php';
+    }
     foreach (array('class-wp-html-attribute-token.php', 'class-wp-html-span.php', 'class-wp-html-text-replacement.php', 'class-wp-html-tag-processor.php') as $file) {
         require $core_root . '/wp-includes/html-api/' . $file;
     }
@@ -45,14 +71,30 @@ if ($core_root) {
         private $tokens;
         private $position = -1;
         public function __construct($html) {
-            if (!isset($GLOBALS['test_html_tokens'][$html])) { throw new RuntimeException('Missing explicit Core token fixture'); }
-            $this->tokens = $GLOBALS['test_html_tokens'][$html];
+            if (isset($GLOBALS['test_html_tokens'][$html])) {
+                $this->tokens = $GLOBALS['test_html_tokens'][$html];
+                return;
+            }
+            // Decode only the controlled script tags produced by this fixture's Core double.
+            // Real tag parsing, raw text and attribute decoding also run against Core libraries.
+            $this->tokens = array();
+            preg_match_all('~<script\b([^>]*)>.*?</script>~si', $html, $scripts, PREG_SET_ORDER);
+            foreach ($scripts as $script) {
+                $attributes = array();
+                preg_match_all('~\b(id|src)="([^"]*)"~', $script[1], $matches, PREG_SET_ORDER);
+                foreach ($matches as $match) { $attributes[$match[1]] = html_entity_decode($match[2], ENT_QUOTES, 'UTF-8'); }
+                $this->tokens[] = array('SCRIPT', false, $attributes);
+            }
+            if (!$this->tokens) { throw new RuntimeException('Missing explicit Core token fixture'); }
         }
         public function next_tag($query = null) {
             ++$this->position;
             return isset($this->tokens[$this->position]);
         }
         public function get_tag() { return $this->tokens[$this->position][0]; }
+        public function get_attribute($name) {
+            return isset($this->tokens[$this->position][2][$name]) ? $this->tokens[$this->position][2][$name] : null;
+        }
         public function is_tag_closer() { return $this->tokens[$this->position][1]; }
     }
 }
@@ -100,8 +142,9 @@ class SDCW_Test_Scripts {
             foreach (isset($dependency->extra['before']) ? $dependency->extra['before'] : array() as $data) {
                 wp_print_inline_script_tag($data, array('nonce' => 'fixture-nonce'));
             }
-            $source = $dependency->src . '?ver=' . rawurlencode($dependency->ver);
-            echo '<script async nonce="fixture-nonce" data-core-filter="kept" id="', test_escape($handle), '-js" src="', test_escape($source), '"></script>';
+            $source = apply_filters('script_loader_src', $dependency->src . '?ver=' . rawurlencode($dependency->ver), $handle);
+            $tag = '<script async nonce="fixture-nonce" data-core-filter="kept" id="' . test_escape($handle) . '-js" src="' . test_escape($source) . '"></script>';
+            echo apply_filters('script_loader_tag', $tag, $handle, $source);
             foreach (isset($dependency->extra['after']) ? $dependency->extra['after'] : array() as $data) {
                 wp_print_inline_script_tag($data, array('nonce' => 'fixture-nonce'));
             }
@@ -166,10 +209,13 @@ function test_reset() {
     $GLOBALS['test_script_registry'] = new SDCW_Test_Scripts();
     $GLOBALS['test_normal_prints'] = 0;
     $GLOBALS['test_render_registries'] = array();
+    $GLOBALS['test_runtime_source_filter_calls'] = 0;
+    $GLOBALS['test_runtime_tag_filter_calls'] = 0;
     $GLOBALS['test_action_stack'] = array();
     foreach (array('styles', 'style_queue', 'style_done', 'diagnostics') as $name) { $GLOBALS['test_' . $name] = array(); }
     foreach (array('admin', 'feed', 'robots', 'trackback', 'json', 'excerpt', 'footer') as $name) { $GLOBALS['test_' . $name] = false; }
     if (isset($GLOBALS['test_base_actions'])) { $GLOBALS['test_actions'] = $GLOBALS['test_base_actions']; }
+    if (isset($GLOBALS['test_base_filters'])) { $GLOBALS['test_filters'] = $GLOBALS['test_base_filters']; }
     foreach (array('SDCW_frontend_loader_printed', 'test_screen') as $name) { unset($GLOBALS[$name]); }
 }
 function test_capture($callback = 'SDCW_print_frontend_loader') {
@@ -181,6 +227,7 @@ function test_loader_parts($markup) {
     $matched = preg_match('~<script\b(?=[^>]*\bid="simple-digital-clock-runtime")(?=[^>]*\btype="application/json")[^>]*>(.*?)</script>~s', $markup, $matches);
     $config = $matched ? json_decode($matches[1], true) : null;
     return array(
+        'lazy' => is_array($config) && array_key_exists('lazy', $config) ? $config['lazy'] : null,
         'runtime' => is_array($config) && isset($config['markup']) ? $config['markup'] : '',
         'encoded' => $matched ? $matches[1] : '',
         'outside' => $matched ? str_replace($matches[0], '', $markup) : $markup,
@@ -194,6 +241,7 @@ test_reset();
 $initial_buffer_level = ob_get_level();
 require SDCW_PATH . 'includes/simple-digital-clock-assets.php';
 $GLOBALS['test_base_actions'] = $GLOBALS['test_actions'];
+$GLOBALS['test_base_filters'] = $GLOBALS['test_filters'];
 $clock = '<timenow-zone-sdcw class="wp-block-simple-digital-clock-block-widget-block" second></timenow-zone-sdcw>';
 $script = 'id="simple-digital-clock-js"';
 $style = 'id="simple-digital-clock-block-style-inline-css"';
@@ -285,6 +333,7 @@ $runtime_position = strpos($parts['runtime'], $script);
 $before_position = strpos($parts['runtime'], 'window.attachedBefore=1;');
 $localized_position = strpos($parts['runtime'], 'var ClockSettings=' . json_encode($locale_data) . ';');
 $after_position = strpos($parts['runtime'], 'window.attachedAfter=1;');
+$check($parts['lazy'] === true, 'Bundled default runtime explicitly supports deferred shell loading');
 $check($attached && $runtime_position !== false && $before_position !== false && $localized_position !== false && $after_position !== false && $before_position < $runtime_position && $localized_position < $runtime_position && $after_position > $runtime_position, 'Core before, localized and after data retain their order inside inert markup');
 $check(substr_count($parts['runtime'], 'nonce="fixture-nonce"') === 4 && strpos($parts['runtime'], 'data-core-filter="kept"') !== false, 'Core-filtered runtime attributes and all inline nonces survive capture');
 $check($parts['encoded'] !== '' && strpos($parts['encoded'], '<') === false && strpos($parts['encoded'], '\\u003C') !== false, 'Runtime configuration hex-encodes HTML delimiters instead of exposing literal preloadable markup');
@@ -292,6 +341,21 @@ $check(strpos($parts['encoded'], '&') === false && strpos($parts['encoded'], '\\
 $check(strpos($parts['outside'], 'attachedBefore') === false && strpos($parts['outside'], 'ClockSettings') === false && strpos($parts['outside'], 'attachedAfter') === false, 'Attached runtime data is not executed as part of the bootstrap');
 $check(strpos($parts['outside'], 'id="simple-digital-clock-loader-js"') !== false && strpos($parts['outside'], 'data-core-filter="kept"') !== false, 'External bootstrap uses the normal Core script-tag filter path');
 $check(!preg_match('~<script\b(?![^>]*\bsrc=)[^>]*>\s*\S~i', $parts['outside']), 'Bootstrap has no executable inline initialization');
+
+$group = 'runtime-policy';
+foreach (array('registered-source', 'registered-version', 'source-filter', 'tag-filter') as $policy) {
+    test_reset(); test_init();
+    if ($policy === 'registered-source') { wp_scripts()->registered['simple-digital-clock']->src = 'https://fixture.invalid/legacy/0.8.1.min.js'; }
+    elseif ($policy === 'registered-version') { wp_scripts()->registered['simple-digital-clock']->ver = '0.8.1'; }
+    elseif ($policy === 'source-filter') { add_filter('script_loader_src', 'test_filter_legacy_source'); }
+    else { add_filter('script_loader_tag', 'test_filter_legacy_tag'); }
+    $parts = test_loader_parts(test_capture());
+    $check($parts['lazy'] === false, $policy . ': opaque runtime ownership forbids reserving a new shell');
+    $check(strpos($parts['runtime'], '0.8.1') !== false, $policy . ': captured custom runtime URL/version is preserved');
+    $check(strpos($parts['outside'], 'legacy/0.8.1') === false && !wp_script_is('simple-digital-clock', 'done'), $policy . ': opaque ownership stays inside the single captured activation payload');
+    $check(test_capture() === '', $policy . ': repeated footer emits no duplicate payload');
+    $check($GLOBALS['test_runtime_source_filter_calls'] === ($policy === 'source-filter' ? 1 : 0) && $GLOBALS['test_runtime_tag_filter_calls'] === ($policy === 'tag-filter' ? 1 : 0), $policy . ': compatibility classification does not execute Core filters twice');
+}
 
 $group = 'loader';
 foreach (array('empty', 'raw-unfiltered') as $case) {
@@ -301,6 +365,7 @@ foreach (array('empty', 'raw-unfiltered') as $case) {
     $response = test_capture(function () use ($content) { echo $content; SDCW_print_frontend_loader(); });
     $check(substr($response, 0, strlen($content)) === $content, $case . ': previously emitted page bytes remain unchanged');
     $parts = test_loader_parts(substr($response, strlen($content)));
+    $check($parts['lazy'] === true, $case . ': default runtime retains deferred loading policy');
     $check(substr_count($parts['runtime'], $script) === 1 && substr_count($parts['outside'], 'id="simple-digital-clock-loader-js"') === 1, $case . ': one inert runtime configuration and one external bootstrap');
     $check($parts['encoded'] !== '' && strpos($parts['encoded'], '<') === false, $case . ': serialized runtime exposes no literal preloadable script markup');
     $check(strpos($parts['outside'], $script) === false && !wp_script_is('simple-digital-clock', 'enqueued') && !wp_script_is('simple-digital-clock', 'done'), $case . ': fallback preparation does not enqueue or consume the main runtime');

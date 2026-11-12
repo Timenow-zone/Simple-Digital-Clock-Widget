@@ -16,6 +16,7 @@ const groups = {
   scope: "WordPress preserves excluded render bytes and skips non-frontend request contexts",
   capture: "Private Core capture isolates live queues and dependencies, including failure cleanup",
   "core-data": "Core-generated nonce, inline data and localization survive inert JSON serialization",
+  "runtime-policy": "Only the exact bundled runtime permits deferred shell registration; overrides retain ownership",
   loader: "Fallback pages receive inert configuration and one Core-owned external bootstrap",
   native: "Owned rendering and the public helper request runtime without private capture",
   "html-routing": "Rendered HTML token routing preserves bytes and excludes inert or foreign elements",

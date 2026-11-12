@@ -128,6 +128,18 @@ function SDCW_get_runtime_markup() {
     }
 }
 
+/** Only the bundled runtime is known to implement the deferred renderer ABI. */
+function SDCW_runtime_supports_deferred_loading($markup) {
+    $processor = new WP_HTML_Tag_Processor($markup);
+    $expected = SDCW_URL . 'assets/public/js/simple-digital-clock.min.js?ver=0.8.2';
+    while ($processor->next_tag('SCRIPT')) {
+        if ('simple-digital-clock-js' === $processor->get_attribute('id')) {
+            return $expected === $processor->get_attribute('src');
+        }
+    }
+    return false;
+}
+
 /** Emit inert JSON and one small loader; never buffer the page response. */
 function SDCW_print_frontend_loader() {
     if (!SDCW_is_frontend_html() || wp_script_is('simple-digital-clock-loader', 'done')) {
@@ -144,7 +156,10 @@ function SDCW_print_frontend_loader() {
         return;
     }
     $markup = SDCW_get_runtime_markup();
-    $payload = wp_json_encode(array('markup' => $markup), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+    $payload = wp_json_encode(array(
+        'markup' => $markup,
+        'lazy' => SDCW_runtime_supports_deferred_loading($markup),
+    ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
     if ('' === trim($markup) || false === $payload) {
         do_action('sdcw_asset_diagnostic', 'loader_unavailable');
         return;

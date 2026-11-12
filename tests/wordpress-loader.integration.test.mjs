@@ -15,13 +15,13 @@ const clock = '<timenow-zone-sdcw time-zone="UTC" locale="en-GB" second="true" p
 const nonce = "sdcw-fixture-nonce";
 
 function bootstrap({ markup = "", src = "/runtime.js", existing = "", extra = "", duplicate = false,
-    trailing = "", captured, scriptNonce = nonce } = {}) {
+    trailing = "", captured, scriptNonce = nonce, lazy = true } = {}) {
   const tags = captured ?? `<script nonce="${nonce}">window.clockOrder = ['before']; window.clockData = { retained: true };</script>
     <script id="simple-digital-clock-js" async nonce="${scriptNonce}" data-core-filter="retained" crossorigin="anonymous"
       referrerpolicy="no-referrer" integrity="${integrity}" src="${src}"></script>
     <script nonce="${nonce}">window.clockOrder.push(customElements.get('timenow-zone-sdcw') ? 'after-defined' : 'after-missing');</script>`;
   const inline = `<script nonce="${nonce}" id="simple-digital-clock-loader-js" src="/loader.js"></script>`;
-  const payload = JSON.stringify({ markup: tags }).replace(/[<>&]/g, character => `\\u${character.charCodeAt(0).toString(16).padStart(4, "0")}`);
+  const payload = JSON.stringify({ markup: tags, lazy }).replace(/[<>&]/g, character => `\\u${character.charCodeAt(0).toString(16).padStart(4, "0")}`);
   return `<!doctype html><html lang="en"><meta charset="utf-8"><title>WordPress loader fixture</title><body>
     ${existing}${markup}<script type="application/json" id="simple-digital-clock-runtime">${payload}</script>${inline}${duplicate ? inline : ""}${trailing}${extra}</body></html>`;
 }
@@ -259,6 +259,21 @@ for (const [engine, browserType] of Object.entries({ chromium, firefox, webkit }
             await assertReady(context);
             assert.equal(context.requests.length, 1);
             assert.equal(await context.page.evaluate(() => window.clockOrder ?? null), null);
+          } finally { await context.page.close(); }
+        });
+      }
+
+      for (const mode of ["static", "when-defined", "empty"]) {
+        await t.test(`an opaque configured legacy runtime retains its eager ${mode} behavior`, async () => {
+          const existing = mode === "when-defined" ? `<script>customElements.whenDefined('timenow-zone-sdcw').then(()=>document.body.insertAdjacentHTML('beforeend',${JSON.stringify(clock)}));</script>` : "";
+          const context = await observePage(browser, origin, bootstrap({ lazy: false, existing,
+            markup: mode === "static" ? clock : "", captured: '<script id="simple-digital-clock-js" src="/legacy.js"></script>' }));
+          try {
+            if (mode !== "empty") await assertReady(context);
+            else await context.page.waitForFunction(() => document.getElementById("simple-digital-clock-runtime").dataset.sdcwLoader === "ready");
+            assert.equal(context.requests.length, 1);
+            assert.equal(await context.page.evaluate(() => customElements.get("timenow-zone-sdcw").sdcwBridgeVersion), undefined);
+            assert.deepEqual(context.errors, []);
           } finally { await context.page.close(); }
         });
       }

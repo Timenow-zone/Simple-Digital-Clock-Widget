@@ -13,6 +13,7 @@ import { registerClockElement } from "./clock-element";
     var cleanups = [];
     var preparedScripts;
     var configurationError;
+    var lazy = true;
     config.dataset.sdcwLoader = 'waiting';
 
     function finish(error) {
@@ -65,6 +66,10 @@ import { registerClockElement } from "./clock-element";
         if (!payload || typeof payload.markup !== 'string') {
             throw new Error('The runtime configuration has no script markup.');
         }
+        if (payload.lazy !== undefined && typeof payload.lazy !== 'boolean') {
+            throw new Error('The runtime loading policy must be a boolean.');
+        }
+        lazy = payload.lazy !== false;
         // A detached template never exposes captured sources to preload scanners.
         var template = document.createElement('template');
         template.innerHTML = payload.markup;
@@ -193,6 +198,11 @@ import { registerClockElement } from "./clock-element";
         }
         // Preserve a pending legacy owner before reserving its custom-element name.
         if (existingRuntime(preparedScripts || [])) {
+            start();
+            return;
+        }
+        // An opaque Core override may be an immutable pre-bridge runtime.
+        if (!lazy && !configurationError) {
             start();
             return;
         }
