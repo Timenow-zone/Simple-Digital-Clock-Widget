@@ -11,6 +11,48 @@ their reviewed baseline bytes.
 The owner approved the [opaque override policy](releases/1.1.6/OVERRIDE-POLICY.md)
 on 2026-11-12; its exception is separate from default conditional loading.
 
+## Mandatory main-script compatibility gate
+
+This permanent requirement applies to every widget release candidate and every
+change to the main widget script, including changes motivated by WordPress.
+The widget remains a standalone HTML component as well as a WordPress integration.
+Acceptance requires the exact built main JavaScript artifact to pass every cell:
+
+| Environment | Google Chrome | Firefox | WebKit |
+| --- | --- | --- | --- |
+| Ordinary HTML with an external `<script src="...">` and clock markup | Required PASS | Required PASS | Required PASS |
+| WordPress with the same main runtime artifact | Required PASS | Required PASS | Required PASS |
+
+Standalone HTML must work without WordPress, its bootstrap, or candidate-specific
+changes to an existing supported embed. Verify markup present before script
+execution and markup inserted after it, one and multiple clocks, supported
+attributes/JavaScript properties, and removal/reinsertion. Check visible clock
+content, expected settings and actual ticking; successful download or element
+registration alone is insufficient. A rendering error in one clock must remain
+observable without preventing independent healthy clocks from rendering and ticking.
+
+An installed WordPress candidate must pass its native frontend, raw HTML and
+dynamic insertion paths, plus the supported editor and preview lifecycles defined below and in the
+release acceptance matrix. The bundled main runtime must match the tested
+standalone artifact byte-for-byte. Approved runtime URL overrides require their
+own compatibility checks and do not replace verification of the default artifact.
+
+Record the source commit, artifact SHA-256, actual browser/channel versions,
+operating system, environment, scenarios and results. Run Google Chrome explicitly;
+Chromium-only automation is additional engine coverage and must not be labeled a Chrome run.
+Label WebKit execution accurately rather than claiming native Safari coverage.
+Source-only, mocked or unit tests do not replace real-browser execution of the
+exact built artifact in both environments.
+
+A failure or missing required result blocks candidate acceptance, production
+CDN promotion and WordPress publication. Passing WordPress tests cannot
+compensate for a standalone failure, nor can one browser compensate for another.
+After a main-script change, rerun this gate on the new exact artifact and retain
+previous results as historical evidence. Existing supported embed behavior must
+remain compatible; unchanged API names or preserved old files alone are not proof.
+This requirement records an obligation, not a claim that the current candidate
+passes it. The current standalone NO-GO remains open.
+
 ## WordPress ownership
 
 PHP registers stable handles early. A nonempty owned block render requests the

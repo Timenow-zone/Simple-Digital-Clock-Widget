@@ -1,12 +1,19 @@
 # WordPress delivery remediation acceptance matrix
 
 Acceptance specification, 2026-11-12. This table defines required gates;
-it does not itself mark their execution as passed. Selected [RC3](RC3.md) is in
-affected acceptance. Phase 2 expanded the shared runtime to 0.8.2 with a
-lightweight registration shell; see the design decision in the plan. See the
+it does not itself mark their execution as passed. Selected [RC3](RC3.md) is
+NO-GO due to the shared standalone regression. Phase 2 expanded the shared runtime
+to 0.8.2 with a lightweight registration shell; see the design decision in the plan. See the
 [remediation plan](REMEDIATION-PLAN.md) for architecture, authorization and scope.
 
 ## Environments and measurement
+
+The [mandatory main-script compatibility gate](../../WORDPRESS-ASSET-CONTRACT.md#mandatory-main-script-compatibility-gate)
+also applies: the exact main artifact must pass ordinary HTML and installed
+WordPress execution in Google Chrome, Firefox and WebKit. All six combinations
+are required. Chromium results below remain correctly labeled historical or
+additional engine coverage; they do not satisfy the explicit Google Chrome gate.
+Frozen acceptance snapshots retain their original results and counts.
 
 Required primary installations: WordPress 6.3.14/PHP 7.0.33 and WordPress
 7.1.4/PHP 8.3.35, with a block theme and a classic theme. Pin archives/images and
