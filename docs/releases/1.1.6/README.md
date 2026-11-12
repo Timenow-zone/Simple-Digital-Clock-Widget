@@ -1,85 +1,79 @@
 # WordPress 1.1.6 release preparation
 
-Status: **RC4 NO-GO: FIREFOX ALIGNMENT; RELEASE INCOMPLETE**.
-Selected [RC4](RC4.md) contains [widget 0.8.3](../0.8.3/README.md), which corrects
-the initial-host exception isolation regression found in RC3. The
-[scoped acceptance report](FINAL-ACCEPTANCE-RC4.md) and [JSON index](acceptance-rc4.json)
-retain the earlier exact-artifact checks and historical limits. A later
-[single/multiple-instance review](../0.8.3/MULTI-INSTANCE-REVIEW.md) finds Firefox
-right/center alignment failure in the unchanged runtime. It supersedes the
-current compatibility decision; CDN delivery remains pending.
+Status: **RC5 FROZEN; ALIGNMENT CORRECTION ACCEPTANCE IN PROGRESS**.
+Selected [RC5](RC5.md) contains [widget 0.8.4](../0.8.4/README.md). The
+[two-phase defect record](../../defects/MULTI-ALIGN-P2-01.md) preserves the red
+baseline and requires new exact-artifact HTML/WordPress verification.
 
 ## Selected artifact
 
 | Item | Identity |
 | --- | --- |
-| Candidate | RC4, internal plugin version 1.1.6 |
-| ZIP | `.local/packages/simple-digital-clock-1.1.6-rc4.zip` |
-| SHA-256 | `20ba3c0ebdaa5ff9f99639d59a004f471767a7f20e5e13518b1864403b68c1ea` |
-| Layout | 72,469 bytes; 17 regular files |
-| Manifest | [Frozen RC4](manifest-rc4.json); [current pointer](manifest.json) |
-| Executable source | `85b0943789e174dea84ea0993eb5777e98138213` |
-| Shared widget | 0.8.3; 36,245 bytes; SHA-256 `c877005699bdb81df6a9280f3367981947db8575a1f00c6e234edb8f1e400b6b` |
+| Candidate | RC5, internal plugin version 1.1.6 |
+| ZIP | `.local/packages/simple-digital-clock-1.1.6-rc5.zip` |
+| SHA-256 | `800bac5294632cf8a581719cdbdffb5ef20b2a20e9a71195f554f45e72c2d3dd` |
+| Layout | 72,568 bytes; 17 regular files |
+| Manifest | [Frozen RC5](manifest-rc5.json); [current pointer](manifest.json) |
+| Executable source | `b1af416e8373bc0bec0163ee36a03507f3ddcaaa` |
+| Full package containing commit | `7cf895dff9588e64e4329380dc090a83f0af5157` |
+| Shared widget | 0.8.4; 36,430 bytes; SHA-256 `974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b` |
 
-The executable commit contains 16 of the 17 package files. The readme's exact
-source reference was finalized afterward. All 17 files were verified against
-containing commit `1a1e7f824913388587841c4c7e002f31800a8cee`; the archive and full
-manifest identify the exact candidate.
-The frozen manifest retains its original pre-acceptance status.
+The executable commit contains 16 exact package files; the finalized readme source
+link follows that commit. All 17 files match the containing commit. The frozen
+manifest retains its initial pre-acceptance `NOT_RUN` status; final acceptance
+belongs in a separate report.
 
-## Scope and acceptance
+## Change and acceptance scope
 
-The shared host isolates each initial mount error, preserves its browser
-diagnostic and continues connecting other clocks. Renderer readiness completes
-independently of whether every user configuration renders. Main runtime and
-bootstrap are rebuilt together, and both PHP version references select 0.8.3.
-Exactly four files differ from RC3; the remaining 13 files are identical.
+The shared component now uses explicit left/center/right class names so Tailwind
+emits their actual CSS. Missing, empty and removed alignment select center.
+Physical left/right remains correct under RTL. Initial-host error isolation and
+readiness from 0.8.3 are unchanged. The bootstrap remains byte-identical.
 
-Native render signals and explicit requests retain ordinary Core enqueue.
-Default empty pages retain zero main-runtime requests. The external bootstrap
-supports raw/client-inserted clocks, first-clock `whenDefined()` and shadow roots.
-Opaque runtime URL overrides retain the owner-approved eager compatibility
-[exception](OVERRIDE-POLICY.md), including loading on empty pages. Core ownership,
-CSP/nonce/SRI errors and editor/preview document boundaries remain unchanged.
+Exactly three files differ from RC4: main runtime, assets PHP (both runtime
+version references) and readme. The remaining 14 files, including editor, KSES,
+translations, notices and bootstrap, are identical. There is no database migration
+or serializer/schema change.
 
 The [asset contract](../../WORDPRESS-ASSET-CONTRACT.md),
-[implementation plan](REMEDIATION-PLAN.md) and
-[acceptance matrix](ACCEPTANCE-MATRIX.md) define requirements. In addition to the
-historical 42-gate matrix, every candidate must pass the exact main artifact in
-ordinary HTML and installed WordPress with Google Chrome, Firefox and WebKit.
-Actual rendering and ticking, per-host fault isolation, source identity and
-response hashes are required. Chromium-only runs do not satisfy Chrome cells.
+[acceptance matrix](ACCEPTANCE-MATRIX.md) and defect record require the exact main
+in ordinary HTML and installed WordPress with actual Google Chrome, Firefox and
+WebKit. Single/multiple different configurations, property changes, default and
+removed alignment, real ticking, instance isolation and computed LTR/RTL are
+explicit checks. Native frontend/editor/preview and relevant loading/package
+regressions supplement the mandatory six environment/browser cells.
 
-## Historical evidence
+Native Core enqueue and the default empty-page zero-runtime contract remain.
+Opaque overrides retain their [approved eager exception](OVERRIDE-POLICY.md).
+Fresh RC5 execution and historical unchanged-code evidence must be separated;
+previous passes cannot substitute for the changed main artifact.
 
-- [RC3](RC3.md) remains frozen and **NO-GO** for `STANDALONE-P2-01`. Its
-  [acceptance snapshot](FINAL-ACCEPTANCE-RC3.md), [42-gate index](acceptance-rc3.json),
-  [manifest](manifest-rc3.json), archive and raw evidence remain unchanged.
-- [RC2](RC2.md) remains frozen and **NO-GO** for its configured old-runtime
-  conflict; RC3's approved policy resolved that separate finding.
-- [RC1](RC1.md) remains **NO-GO** for its native preview, CSP and hidden-integration
-  failures. Its 2,566 sealed evidence files and frozen archive remain preserved.
-- [Browser-r3 acceptance](FINAL-ACCEPTANCE-2026-11-12.md) records earlier scoped
-  results. No historical PASS is relabeled as a fresh RC4 execution.
+## Preserved historical candidates
+
+- [RC4](RC4.md) and [0.8.3](../0.8.3/README.md) remain frozen and NO-GO for
+  [MULTI-ALIGN-P2-01](../0.8.3/MULTI-INSTANCE-REVIEW.md). Their earlier scoped
+  [snapshot](FINAL-ACCEPTANCE-RC4.md) and [index](acceptance-rc4.json) are unchanged.
+- [RC3](RC3.md) remains NO-GO for initial-host error isolation; its snapshot,
+  manifest, archive and raw evidence are retained.
+- [RC2](RC2.md) retains its old-runtime conflict; [RC1](RC1.md) retains its native
+  preview/CSP/hidden-integration failures. No old receipt is rewritten as PASS.
 
 ## Release boundary and rollback
 
 [Draft PR #19](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19)
-remains stacked on [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18).
-Required **Repository checks** and **Browser tests** must pass on final HEAD.
-No merge or branch-protection bypass is authorized by this preparation.
+remains stacked on PR #18. Required Repository checks and Browser tests must pass
+on final HEAD. No merge or branch-protection bypass is authorized here.
 
-Production CDN delivery remains pending and requires separate authorization,
-exact public SHA/cache/reference/smoke proof and retained rollback. The old
-0.8.2 Cloudflare promotion proposal is withdrawn. WordPress.org publication also
-requires a separate explicit owner instruction. This is not
-`READY_FOR_WP_PUBLICATION` or evidence of production 0.8.3 delivery.
+Production CDN delivery remains pending: it needs separate authorization and
+public HTTP/SHA/version/cache/reference/clock proof with prior deployment retained.
+The withdrawn 0.8.2 preview must not be promoted. WordPress.org publication also
+requires an explicit owner instruction. This is not `READY_FOR_WP_PUBLICATION` or
+a completed shared release.
 
 The accepted local 1.1.5 rollback archive is
 `.local/packages/simple-digital-clock-1.1.5-final.zip`, SHA-256
 `2b6b2ed361115aec5dbddad058bf38411534c53705ccc5315b1fd6e756386aa2`.
-The public 1.1.5 ZIP has a different container hash and identical installed files.
-Rollback changes plugin files without restoring the database. After any future
-installation or rollback, purge relevant caches and verify exact runtime and
-bootstrap responses on both clock and empty pages. Raw candidate archives and
-acceptance receipts are under ignored `.local/` paths and must be retained.
+The official public ZIP has a different container hash and identical installed
+files. Rollback changes plugin files without restoring the database. Verify exact
+runtime/bootstrap responses and relevant cache purges after a future install or
+rollback. Raw candidate archives and evidence remain under ignored `.local/` paths.

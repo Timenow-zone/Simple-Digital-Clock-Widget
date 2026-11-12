@@ -1,11 +1,11 @@
 # WordPress delivery remediation acceptance matrix
 
 Acceptance specification, 2026-11-12. This table defines required gates;
-it does not itself mark their execution as passed. Selected [RC4](RC4.md) bundles
-the 0.8.3 correction. [Recorded RC4 results](FINAL-ACCEPTANCE-RC4.md) distinguish
-fresh execution, historical scope and pending production delivery. The later
-[multi-instance finding](../0.8.3/MULTI-INSTANCE-REVIEW.md) makes RC4 NO-GO for
-Firefox alignment. Rejected RC3 remains NO-GO.
+it does not itself mark their execution as passed. Selected [RC5](RC5.md) bundles
+0.8.4 and requires fresh exact-artifact acceptance of the alignment correction.
+The [defect record](../../defects/MULTI-ALIGN-P2-01.md) defines single/multiple,
+default/property and LTR/RTL criteria. Frozen RC4 and RC3 remain NO-GO for their
+recorded findings; their earlier scoped evidence remains unchanged.
 Phase 2 originally expanded the shared runtime
 to 0.8.2 with a lightweight registration shell; see the design decision in the plan. See the
 [remediation plan](REMEDIATION-PLAN.md) for architecture, authorization and scope.
@@ -21,7 +21,7 @@ Frozen acceptance snapshots retain their original results and counts.
 
 Required primary installations: WordPress 6.3.14/PHP 7.0.33 and WordPress
 7.1.4/PHP 8.3.35, with a block theme and a classic theme. Pin archives/images and
-record actual running versions. Use actual Chromium, Firefox and WebKit for the
+record actual running versions. Use actual Google Chrome, Firefox and WebKit for the
 primary frontend/editor/preview matrix. Linux Firefox is acceptable when the
 host browser cannot launch; label the environment honestly. WebKit is not native
 Safari. Do not introduce a separate Gutenberg plugin unless testing it explicitly.
@@ -46,7 +46,7 @@ acceptance timer.
 | ID | Scenario | PASS criterion | Required execution |
 | --- | --- | --- | --- |
 | ID-01 | Source, ZIP, manifest, installed files | Exact candidate SHA/CRC/full allowlist; no extra files/symlinks; source and installed maps agree | Both primary sites, every transition |
-| ID-02 | Shared artifact preservation and delivery | Published 0.8.1 and older versioned artifacts plus rejected 0.8.2 unchanged; new 0.8.3 build, CDN bytes, version references and rollback verified | Before/after implementation, production delivery and final review |
+| ID-02 | Shared artifact preservation and delivery | Published 0.8.1 and older versioned artifacts plus rejected 0.8.2/0.8.3 unchanged; new 0.8.4 build, CDN bytes, version references and rollback verified | Before/after implementation, production delivery and final review |
 | LOAD-01 | Public page without clock use, default bundled runtime | Zero main-runtime requests and executable runtime tags; no renderer initialization; lightweight shell definition and external bootstrap cost documented; owner-approved opaque overrides are counted separately under CORE-01 | Both themes/sites, three engines |
 | LOAD-02 | Escaped/comment/script-text/template examples | No false activation; zero runtime | Both sites, three engines |
 | LOAD-03 | Owned block, one/many/nested | Runtime once; all clocks render/tick with correct attributes | Both themes/sites, three engines |

@@ -4,8 +4,8 @@ This repository contains two independently versioned components:
 
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
-| JavaScript widget | `../src/` | `../package.json` (`0.8.3`, candidate; production remains 0.8.1) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, RC4 NO-GO; unpublished) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| JavaScript widget | `../src/` | `../package.json` (`0.8.4`, candidate; production remains 0.8.1) | MIT, as declared in the widget package |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, RC5 acceptance pending; unpublished) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
@@ -59,13 +59,11 @@ No polling, browser API replacement or full-response buffer
 is used. Saved blocks and raw HTML retain their settings and schema. See the
 [asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md).
 
-RC3 remains **NO-GO** after the
-[standalone review](../docs/releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
-confirmed `STANDALONE-P2-01` in the shared runtime. Selected
-[RC4](../docs/releases/1.1.6/RC4.md) corrects that behavior with widget 0.8.3 and
-retains its [scoped correction evidence](../docs/releases/1.1.6/FINAL-ACCEPTANCE-RC4.md).
-The later [single/multiple-instance proof](../docs/releases/0.8.3/MULTI-INSTANCE-REVIEW.md)
-finds Firefox right/center alignment failure: RC4 is now **NO-GO** for full acceptance.
+Selected [RC5](../docs/releases/1.1.6/RC5.md) bundles widget 0.8.4 with explicit
+alignment CSS and is undergoing fresh exact-artifact acceptance. Frozen RC4
+remains **NO-GO** for the recorded alignment defect; RC3 remains **NO-GO** for
+initial-host error isolation. The [two-phase defect record](../docs/defects/MULTI-ALIGN-P2-01.md)
+keeps the original failure evidence and current acceptance criteria separate.
 RC1/RC2 records, all frozen manifests and ZIPs remain preserved. Both required
 checks must still pass on the latest [draft PR #19 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks).
 Production CDN delivery and WordPress.org publication remain pending.

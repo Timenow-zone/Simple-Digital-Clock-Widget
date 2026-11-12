@@ -7,17 +7,15 @@ Widget and WordPress plugin versions are independent:
 
 | Component | Version | Delivery status |
 | --- | --- | --- |
-| Widget runtime | **0.8.3** | Blocked by Firefox alignment finding; production remains 0.8.1 |
-| WordPress source | **1.1.6** | RC4 NO-GO; unpublished |
+| Widget runtime | **0.8.4** | Alignment correction; acceptance pending; production remains 0.8.1 |
+| WordPress source | **1.1.6** | RC5 acceptance pending; unpublished |
 | WordPress.org stable | **1.1.5** | Public ZIP/catalog verified at 2026-11-11 21:19 UTC; sampled update checks still advertised 1.1.4 at 21:20 UTC |
 
-The [0.8.3 candidate](docs/releases/0.8.3/README.md) isolates initial clock errors
-and completes renderer readiness independently of individual settings. The
-[0.8.2 standalone review](docs/releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
-and rejected RC3 remain preserved. The [RC4 acceptance record](docs/releases/1.1.6/FINAL-ACCEPTANCE-RC4.md)
-retains its earlier scoped results. The later [multi-instance review](docs/releases/0.8.3/MULTI-INSTANCE-REVIEW.md)
-finds a pre-existing Firefox right/center alignment defect and blocks full acceptance.
-All nine retained older versioned minified assets remain unchanged.
+The [0.8.4 candidate](docs/releases/0.8.4/README.md) emits explicit alignment CSS,
+including default center, while retaining the initial-host error-isolation fix.
+The [two-phase defect record](docs/defects/MULTI-ALIGN-P2-01.md) preserves the red
+0.8.3 evidence and defines exact-artifact acceptance. Rejected RC3/RC4 and all ten
+older versioned minified artifacts remain unchanged.
 
 The metadata below describes the JavaScript widget artifact.
 
@@ -61,7 +59,7 @@ Load the immutable, versioned production asset:
 <script src="https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.1.min.js"></script>
 ```
 
-The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.3.min.js`; the candidate is blocked by the Firefox alignment finding and delivery is pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.3.min.js`.
+The candidate asset URL is `https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-0.8.4.min.js`; exact-candidate acceptance and delivery are pending, so the production example above retains 0.8.1. For local candidate testing, use `dist/0.8.4.min.js`.
 
 For self-hosting the current production release, copy `dist/0.8.1.min.js` to your site and use its URL instead.
 The unminified `dist/SimpleDigitalClockWidget.js` entry is also retained.
@@ -309,14 +307,13 @@ Run `node scripts/check-build.mjs` to build and minify in a temporary directory 
 ## WordPress
 
 The **Simple Digital Clock** WordPress source is **1.1.6**, an unpublished
-remediation candidate with widget **0.8.3** under
+remediation candidate with widget **0.8.4** under
 [`wordpress/simple-digital-clock/`](wordpress/simple-digital-clock/).
 It requires **WordPress 6.3+ / PHP 7.0+**; `Tested up to` remains **7.1**.
 The [release record](docs/releases/1.1.6/README.md) tracks exact candidates and
-independent acceptance; selected RC4 corrects `STANDALONE-P2-01`, but the
-[later multi-instance review](docs/releases/0.8.3/MULTI-INSTANCE-REVIEW.md) makes RC4
-**NO-GO** for Firefox right/center alignment. Earlier scoped results remain preserved.
-RC3 remains **NO-GO**; its reports remain historical evidence.
+independent acceptance; selected RC5 corrects `MULTI-ALIGN-P2-01` with explicit
+alignment CSS and is undergoing fresh acceptance. Frozen RC4 remains **NO-GO**
+for alignment; RC3 remains **NO-GO** for initial error isolation.
 
 Native render signals and explicit requests use normal Core enqueue. An external
 bootstrap defines a lightweight shell for raw/dynamic clocks, including first
