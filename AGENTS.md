@@ -11,6 +11,7 @@
 
 # Shared widget build and CDN delivery contract
 
+- The exact main widget JavaScript artifact must pass ordinary standalone HTML embedding and WordPress integration in Google Chrome, Firefox and WebKit before every candidate can be accepted or released. All six environment/browser combinations are mandatory; a failed or missing result blocks acceptance and release. WordPress-specific changes must preserve supported standalone integrations. Follow the [mandatory compatibility gate](docs/WORDPRESS-ASSET-CONTRACT.md#mandatory-main-script-compatibility-gate); record actual browser versions and artifact SHA-256, and do not report Chromium-only execution as Google Chrome verification.
 - Changes to the shared widget runtime, styles, or bundled dependencies require a production build and delivery of that exact artifact to the production CDN. A WordPress-only package update does not complete a shared widget release.
 - Build with `npm run build`, run `npm run release:check`, `npm run release:verify`, and the relevant regression tests, then generate the Cloudflare assets with `npm run site:build`. The CDN asset must match `dist/<version>.min.js` byte-for-byte.
 - Use a new widget version when changing already published bytes. Preserve published versioned files and URLs; do not overwrite immutable assets. Widget and WordPress plugin versions remain independent.

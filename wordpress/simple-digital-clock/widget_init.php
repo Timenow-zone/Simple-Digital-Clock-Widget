@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @version 1.1.5
+ * @version 1.1.6
  */
 
 /*
 Plugin Name: Simple Digital Clock 🕒
 Plugin URI: https://utctime.info/
 Description: It is 🪄 a magical and easy-to-use digital clock with a beautiful UI, supporting multiple languages, locales, dates, captions, and time zones.
-Version: 1.1.5
+Version: 1.1.6
 Requires at least: 6.3
 Requires PHP: 7.0
 Author: UTCTime.info
@@ -147,6 +147,7 @@ function SDCW_block_register_block() {
             'clearColors' => __('Clear All Colors', 'simple-digital-clock'),
             'clearGradient' => __('Clear Gradient', 'simple-digital-clock'),
             'timeZoneHelp' => __('Select the time zone for the clock display.', 'simple-digital-clock'),
+            'timeZoneNoMatch' => __('No matching time zone. Select a zone from the list.', 'simple-digital-clock'),
         ],
     ]);
 

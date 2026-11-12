@@ -63,10 +63,14 @@ test("WordPress source matches its release manifest and immutable widget bundle"
   assert.ok(readme.includes(`https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-${pkg.version}.min.js`), "README installation must use the current versioned CDN asset");
 });
 
-test("WordPress header, stable tag, POT, source reference and script cache version agree", async () => {
+test("WordPress header, readme release sections, POT, source reference and script cache version agree", async () => {
   const readme = await readFile(path.join(plugin, "readme.txt"), "utf8");
   const pot = await readFile(path.join(plugin, "languages/simple-digital-clock.pot"), "utf8");
   assert.equal(readme.match(/^Stable tag:\s*(\S+)/m)?.[1], version);
+  for (const section of ["Changelog", "Upgrade Notice"]) {
+    const firstRelease = readme.match(new RegExp(`^== ${section} ==\\r?\\n\\s*^= (\\d+\\.\\d+\\.\\d+) =\\r?$`, "m"))?.[1];
+    assert.equal(firstRelease, version, `${section} must start with the current plugin version`);
+  }
   assert.ok(pot.includes(`Project-Id-Version: Simple Digital Clock 🕒 ${version}\\n`));
   const assets = await readFile(path.join(plugin, 'includes/simple-digital-clock-assets.php'), 'utf8');
   const enqueue = assets.match(/function SDCW_register_assets\(\)\s*\{([\s\S]*?)\n\}/)?.[1];

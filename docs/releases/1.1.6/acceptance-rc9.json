@@ -1,0 +1,278 @@
+{
+  "date": "2026-11-12",
+  "scope": "Two Gutenberg inspector corrections; unchanged shared main runtime and loader",
+  "verdict": "SCOPED_FIX_ACCEPTANCE_PASS_WITH_DOCUMENTED_BOUNDARIES",
+  "subject": {
+    "version": "1.1.6",
+    "revision": "rc9",
+    "archive": ".local/packages/simple-digital-clock-1.1.6-rc9.zip",
+    "archiveSHA256": "f2f2f1856093c34ec7bd56b02c920de26c56c1ad78de700e4a20244a40b45909",
+    "archiveBytes": 73184,
+    "fileCount": 17,
+    "manifest": "docs/releases/1.1.6/manifest-rc9.json",
+    "manifestSHA256": "e0009d6aaffdcd071d8c2c1567212c564e692b2e920c6f0885e3121fd700f0ca",
+    "sourceBaseCommit": "7f79a03df112e4cb84f2ed4f7de21896337e6bc0",
+    "sourceDirty": true,
+    "mainSHA256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "loaderSHA256": "7187b9ee36e188ea87d76fcd56e82300ad8f3685bd34fc2136aa35dae26cb124",
+    "blockSHA256": "7bd15d4f6c58388a0f361cbf44e4e1ea580e22b511a8b5046bdc51cd176da230"
+  },
+  "verdicts": {
+    "fixes": "PASS",
+    "oldContentUpgradeData": "PASS_BOUNDED_NATIVE_CORPUS",
+    "rollbackData": "PASS_BOUNDED_NATIVE_CORPUS",
+    "fullRollbackEditor": "NOT_PASS_INHERITED_CORE63_GRADIENT_PANEL_CRASH",
+    "mainCompatibility": "PASS_6_OF_6_COMBINATIONS",
+    "recordedNativeRegression": "PASS_174_WITH_ONE_FRESH_TAB_VARIANT",
+    "originalSameTabSiteEditorNavigation": "NOT_PASS_CURRENT_CORE_WEBKIT_HEADER",
+    "publication": "NOT_AUTHORIZED_NOT_PERFORMED"
+  },
+  "environments": {
+    "minimum": {
+      "url": "http://127.0.0.1:65321",
+      "core": "6.3.14",
+      "php": "7.0.33",
+      "port": 65321
+    },
+    "current": {
+      "url": "http://127.0.0.1:65322",
+      "core": "7.1.4",
+      "php": "8.3.35",
+      "port": 65322
+    }
+  },
+  "nativeBrowserVersions": {
+    "chrome": "157.0.8103.51",
+    "firefox": "153.0",
+    "webkit": "26.5"
+  },
+  "localChecks": {
+    "focusedContracts": 53,
+    "inspectorContractsIncluded": 9,
+    "packageChecks": 4,
+    "repositoryCommands": 16,
+    "runtimeSourceDependencyFilesUnchanged": 33
+  },
+  "browserRepository": {
+    "leafPasses": 259,
+    "runnerPassesIncludingParents": 262,
+    "failed": 0,
+    "skipped": 0,
+    "suiteLeafPasses": {
+      "wtr": 144,
+      "iframe": 3,
+      "fonts": 10,
+      "serialization": 3,
+      "loader": 96,
+      "productSite": 3
+    },
+    "chromiumIsNotChrome": true
+  },
+  "nativeRegression": {
+    "acceptedUniqueWorkflows": 174,
+    "rawAttempts": 176,
+    "retainedOriginalFailures": 2,
+    "additionalDiagnosticAttemptsExcluded": 3,
+    "exactMainGateWorkflowsIncluded": 96,
+    "mandatoryEnvironmentBrowserCombinations": 6,
+    "primaryWorkflows": 18,
+    "authorPagePermissionDenials": 6,
+    "faultWorkflows": 12,
+    "controlledFaults": 36,
+    "idleSecondsPerFaultWorkflow": 70,
+    "classicSurfaces": 30,
+    "siteEditorPersistence": 12,
+    "freshTabVariants": 1,
+    "originalSameTabCoverage": "173/174",
+    "navigationBoundary": {
+      "originalSameTabCoverage": "173/174 after the native Welcome-guide readiness retry; current Core WebKit Header strict pageerror guard failed after successful native Save/readback/reopen",
+      "acceptedAlternate": "Current Core WebKit Header persistence verified by opening a fresh native editor tab while keeping the original editor alive; all assertions remain enabled",
+      "candidateDiagnostic": ".local/candidate-gutenberg-rc9-regression-20261112/evidence/candidate-site-header-webkit-navigation-diagnostic-webkit/RESULT.json",
+      "noWidgetInitialHarnessFailure": ".local/candidate-gutenberg-rc9-regression-20261112/evidence/core-no-widget-same-tab-webkit/RESULT.json",
+      "noWidgetControl": ".local/candidate-gutenberg-rc9-regression-20261112/evidence/core-no-widget-inserter-same-tab-webkit/RESULT.json",
+      "classification": "Core-stack/navigation-associated fetch rejection before observable matching HTTP; no requestfailed event. Candidate endpoint template-parts; no-widget endpoint block-directory/search. The no-widget template retained the active plugin; this is not a plugin-disabled Core control. Complete root cause not proven."
+    }
+  },
+  "independentAcceptance": {
+    "fixCells": 12,
+    "acceptedUniquePhaseDocumentWorkflows": 300,
+    "rawAttempts": 310,
+    "retainedFailures": 10,
+    "breakdown": {
+      "RC9": 132,
+      "olderRollbackReaders": 144,
+      "baselineCreationNegativeControls": 24
+    },
+    "nativeCorpusCounts": {
+      "public112": 12,
+      "rc5": 12,
+      "rc9": 12
+    },
+    "compatibilityPhases": [
+      {
+        "phase": "upgrade-read",
+        "accepted": 24,
+        "expected": 24
+      },
+      {
+        "phase": "upgrade-save",
+        "accepted": 24,
+        "expected": 24
+      },
+      {
+        "phase": "rollback-rc5-read",
+        "accepted": 36,
+        "expected": 36
+      },
+      {
+        "phase": "rollback-rc5-save",
+        "accepted": 36,
+        "expected": 36
+      },
+      {
+        "phase": "rollback-public112-read",
+        "accepted": 36,
+        "expected": 36
+      },
+      {
+        "phase": "rollback-public112-save",
+        "accepted": 36,
+        "expected": 36
+      },
+      {
+        "phase": "reupdate-rc9-read",
+        "accepted": 36,
+        "expected": 36
+      },
+      {
+        "phase": "reupdate-rc9-save",
+        "accepted": 36,
+        "expected": 36
+      }
+    ],
+    "successfulNativePostResponses": 336,
+    "verifiedScriptResponses": 2436,
+    "physicalOSIME": "NOT_TESTED_SYNTHETIC_EVENT_GUARDS_ONLY"
+  },
+  "candidateHistory": [
+    {
+      "revision": "rc6",
+      "status": "SUPERSEDED_SOURCE_REVIEW"
+    },
+    {
+      "revision": "rc7",
+      "status": "REJECTED",
+      "reason": "Empty-string GradientPicker crash"
+    },
+    {
+      "revision": "rc8",
+      "status": "REJECTED",
+      "reason": "Native Escape followed by Enter committed stale UTC relative to RC5"
+    }
+  ],
+  "limits": [
+    "Full older editor rollback usability fails for the cleared-gradient panel under observed Core 6.3.14/Chrome; stored data and frontend pass separately.",
+    "Immediate same-tab WebKit/current-Core Site Editor navigation retains a Core-stack fetch error after successful persistence; fresh-tab reopen passes. A no-widget control reproduced the class of error with the plugin active; full root cause remains unproven.",
+    "Scope is the recorded Core/browser versions and native corpus; no universal historical-document, third-party extension, multisite or physical OS IME claim."
+  ],
+  "publication": {
+    "commitCreated": false,
+    "pushPerformed": false,
+    "mergePerformed": false,
+    "wordpressOrgPublished": false,
+    "cdnDeployed": false,
+    "upstream084CDNDeliveryVerification": "PENDING",
+    "requiredRemoteChecks": "PENDING_FOR_FUTURE_AUTHORIZED_PR"
+  },
+  "cleanup": {
+    "ownedTestProjectsStopped": true,
+    "databasesAndEvidenceRetained": true,
+    "originalSideBySideNotModified": true
+  },
+  "evidence": [
+    {
+      "path": ".local/gutenberg-fix-20261112/root-rc9/LOCAL-CHECKS.json",
+      "sha256": "555c1661cee1d8403216f0596be9ccbff2058c27fd5fdba8c59e055407b17e09"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/root-rc9/focused-contracts.log",
+      "sha256": "0f928d5267ae570da98d44c937d31bfacc777bbe498a18bb676a3bcf6eee0cae"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/root-rc9/package-contracts.log",
+      "sha256": "640b0c45e5d21952f8a62e01d23d88457ffabb13520a962e65178eaf4de22358"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/root-rc9/IDENTITY-AND-IMMUTABILITY.json",
+      "sha256": "265c048994d88ae38dcb12bc1c7e844413760e3631bbd9012ed2e1ad4acef66a"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/root-rc9/REGRESSION-RAW-RECOUNT.json",
+      "sha256": "3b24fa9d8991d349f32dba5b3fb1898089a4fc5157e3ba99e7a7a47c18df7729"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/root-rc9/FINAL-INTEGRITY.json",
+      "sha256": "cbb93954899f01d333de51d281ac5a093dade5ac476eab3a3608b807f5cfb89b"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/independent/REPORT.md",
+      "sha256": "e46fab58772f7592bfd9ced67862490bea27549e68ad793b9617a05e9edbb97f"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/independent/SUMMARY.json",
+      "sha256": "7ee0d33c95be471682e2087a4d13e1c4a0a226b92e0389e57378f42a49117d6b"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/independent/FINAL-REVIEW.json",
+      "sha256": "4ba3bf10912be768006564cbbe521936221156be5efc9561def2fa761799b463"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/independent/EVIDENCE.json",
+      "sha256": "94e6c769e77ce3d27c59d6d3a8b75c11d44ac5e11978532d76c0c849808415c6"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/regression-rc9/REPORT.md",
+      "sha256": "bb43c9a89e9b2fd518098768911fa0f9b48c44da7346da1a4d705e46c5f54905"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/regression-rc9/SUMMARY.json",
+      "sha256": "c0d8e9bbb02956104ca6b24d67264536b0d4733860b9a77269ad5b526d5c4af7"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/regression-rc9/INVENTORY.json",
+      "sha256": "627af23945429d8fcd0b0ec91ee76c1dd2b802bf38cb69f633782865292393e4"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-rc9/REPORT.md",
+      "sha256": "b2af053fdd5be70d877ba15dd8c979abfe38ed09a74ada22cf59dff73a172810"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-rc9/RESULT.json",
+      "sha256": "0d4131a7731adb02dda7ed6741a60696c1857a14fb617a2ef806c89900629419"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-rc9/EXECUTIONS.json",
+      "sha256": "dc4da4247d3fcf84ee67b30dc424e75c710bd4cd34361b1cdc40e5f59af7f6d3"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-rc9/EVIDENCE-SHA256.json",
+      "sha256": "9e4d6dcb69688b2db40857364dcd25f98ece0609b923b2cb4bcd3cc983659a8e"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-review/FINAL-EVIDENCE-AUDIT.md",
+      "sha256": "a457c789a77c815c8cbbae0c2de6ca5ae9eab0c7972ec6437023a2e71b3b69f5"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-review/FINAL-EVIDENCE-AUDIT.json",
+      "sha256": "6c8efcf3922343165cba043c7104006075fc4783a822a1154c4f489dc27fc385"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-review/KEYBOARD-GUARD.md",
+      "sha256": "1ca25bdccb7f8d97bde5ecf58df4e69ec6d0f0d487f0669794121f6e26362a99"
+    },
+    {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-review/REPORT.md",
+      "sha256": "9c422e982616dd42758cff6ad25524e62b6de9b3bc34f5fae477ba5a1ab39a0d"
+    }
+  ]
+}

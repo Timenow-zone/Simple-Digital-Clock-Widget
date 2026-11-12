@@ -65,7 +65,10 @@ jobs:
           git ls-files -z -- 'wordpress/simple-digital-clock/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
       - name: Verify WordPress package identity and release versions
-        run: node --test tests/wordpress-package.test.mjs tests/wordpress-assets.test.mjs
+        run: |
+          node --test tests/wordpress-package.test.mjs tests/wordpress-assets.test.mjs
+          node --check src/wordpress-loader.js
+          node scripts/build-wordpress-loader.mjs --check
       - name: Verify WordPress translation coverage and output contexts
         run: |
           php -l tests/wordpress-i18n.php
@@ -73,6 +76,8 @@ jobs:
       - name: Check disposable WordPress lab safety boundaries
         run: |
           python3 tests/wordpress-lab.test.py
+          python3 tests/wordpress-candidate-lab.test.py
+          python3 -m py_compile scripts/build-wordpress-candidate.py tools/wordpress-lab/candidate/run.py
           python3 -m py_compile tools/wordpress-lab/repro/run.py
           php -l tools/wordpress-lab/repro/site.php
           php -l tools/wordpress-lab/repro/install.php
@@ -89,8 +94,8 @@ jobs:
           node scripts/build-wordpress-preview.mjs --check
           node --check wordpress/preview/demo.js
           git ls-files -z -- 'wordpress/preview/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
-      - name: Check WordPress 6.3 serialization compatibility
-        run: node --test tests/wordpress-serialization.test.mjs
+      - name: Check WordPress serialization and inspector contracts
+        run: node --test tests/wordpress-serialization.test.mjs tests/wordpress-inspector.test.mjs
       - name: Check WordPress REST metadata ordering and boundaries
         run: |
           php -l tests/wordpress-rest-metadata.php
@@ -112,11 +117,17 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Install the locked Playwright browsers and system dependencies
-        run: npx --no-install playwright install --with-deps chromium firefox webkit
+        run: npx --no-install playwright install --with-deps chrome chromium firefox webkit
       - run: npm run test:browsers
+      - name: Check the exact standalone runtime in Google Chrome, Firefox and WebKit
+        run: npm run test:standalone
       - name: Check native WordPress caption serialization and legacy readers
         run: node --test tests/wordpress-serialization.integration.test.mjs
+      - name: Check conditional WordPress runtime loading
+        run: node --test tests/wordpress-loader.integration.test.mjs
       - name: Check generated product demo examples and controls
         run: node --test tests/product-site.integration.test.mjs
+      - name: Check differently configured clock instances in Google Chrome, Firefox and WebKit
+        run: npm run test:instances
       - name: Verify that browser tests leave tracked files unchanged
         run: git diff --exit-code

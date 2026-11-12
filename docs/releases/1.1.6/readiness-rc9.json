@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-12",
+  "verdict": "LOCAL_EVIDENCE_BLOCKERS_CLOSED_WITH_INHERITED_LIMITATIONS_FULL_RELEASE_NOT_READY",
+  "subject": {
+    "version": "1.1.6",
+    "revision": "rc9",
+    "archive": ".local/packages/simple-digital-clock-1.1.6-rc9.zip",
+    "archiveSHA256": "f2f2f1856093c34ec7bd56b02c920de26c56c1ad78de700e4a20244a40b45909",
+    "archiveBytes": 73184,
+    "fileCount": 17,
+    "manifest": "docs/releases/1.1.6/manifest-rc9.json",
+    "manifestSHA256": "e0009d6aaffdcd071d8c2c1567212c564e692b2e920c6f0885e3121fd700f0ca",
+    "sourceBaseCommit": "7f79a03df112e4cb84f2ed4f7de21896337e6bc0",
+    "sourceDirty": true,
+    "mainSHA256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "loaderSHA256": "7187b9ee36e188ea87d76fcd56e82300ad8f3685bd34fc2136aa35dae26cb124",
+    "blockSHA256": "7bd15d4f6c58388a0f361cbf44e4e1ea580e22b511a8b5046bdc51cd176da230"
+  },
+  "supersedesOnly": "Latest classification/readiness, not historical raw outcomes, frozen acceptance counts or manifests.",
+  "inheritedIssues": [
+    {
+      "id": "WEBKIT-TEMPLATE-PARTS-01",
+      "status": "INHERITED_OPEN_NOT_RC9_REGRESSION",
+      "ownerRequestedClassification": true,
+      "fixed": false,
+      "newRC9RegressionBlocker": false,
+      "strictSameTabNoPageerror": "NOT_PASS",
+      "environment": {
+        "wordpress": "7.1.4",
+        "webkit": "26.5"
+      },
+      "sameSixClockHeader": {
+        "public112": "4/4 target diagnostics",
+        "rc9": "2/4 target diagnostics",
+        "freshTabEachVersion": "0/1 target diagnostics",
+        "persistence": "10/10",
+        "identicalAttributesAndStoredContent": true
+      },
+      "pluginDisabledCoreOnlyControl": "3/3 exact signature on 60-additional-Paragraph Header; same fixture with RC9 3/3. Different fixture from six-clock comparison.",
+      "rootCauseOwner": "WordPress versus WebKit/Playwright not fully isolated; plugin execution not necessary.",
+      "historicalLimit": "Public 1.1.2 tested on current Core/WebKit, not a historical browser/Core combination."
+    },
+    {
+      "id": "OLDER-EDITOR-CLEARED-GRADIENT",
+      "status": "INHERITED_OPEN_ROLLBACK_EDITOR_LIMITATION",
+      "newRC9RegressionBlocker": false,
+      "dataPreservation": "PASS_BOUNDED_CORPUS",
+      "fullOldEditorUsability": "NOT_PASS",
+      "scope": "Observed cleared-gradient Background Color panel after rollback to RC5/public112 on Core6.3.14/Chrome; corrected in RC9."
+    }
+  ],
+  "confirmed": {
+    "gutenbergFixCells": 12,
+    "mainEnvironmentBrowserCombinations": 6,
+    "mainGateWorkflows": 96,
+    "nativeRegressionWorkflows": 174,
+    "freshTabAlternateIncluded": 1,
+    "originalSameTabCoverage": "173/174",
+    "browserSuiteLeafExecutions": 259,
+    "focusedContracts": 53,
+    "packageChecks": 4,
+    "repositoryCommands": 16,
+    "nativeUpgradeDataAndReupdate": "PASS_BOUNDED_CORPUS",
+    "nativeRollbackData": "PASS_BOUNDED_CORPUS",
+    "runtimeAndLoader": "UNCHANGED_FROM_ACCEPTED_RC9_SUBJECT",
+    "localEvidenceClosure": {
+      "pluginCheckStatic": 29,
+      "pluginCheckRuntime": 5,
+      "pluginCheckFindings": 0,
+      "multisiteWorkflowPhases": 10,
+      "multisiteRC9WorkflowsIncluded": 6,
+      "multisiteAnonymousChecks": 3,
+      "cacheNormalAssertions": 75,
+      "cacheIsolationAssertions": 57,
+      "cacheTickScenarios": 3,
+      "cacheGenerationControls": 4,
+      "cacheBlockedRuntimeAssertions": 7,
+      "primaryPublic115Updates": 2,
+      "actualCoreAssertions": 138,
+      "phpAssetAssertionsPerVersion": 167,
+      "phpLintsPerVersion": 6,
+      "freshPOT": true
+    },
+    "allRequiredGatesAccountedFor": 42,
+    "localEvidenceGaps": []
+  },
+  "openReleaseGates": [
+    {
+      "id": "CI-01",
+      "status": "FINAL_RC9_PR_HEAD_REQUIRED_CHECKS_NOT_ESTABLISHED",
+      "action": "Repository checks and Browser tests must pass on final PR HEAD, including final documentation. No branch protection bypass."
+    },
+    {
+      "id": "ID-02",
+      "status": "PRODUCTION_084_DELIVERY_NOT_VERIFIED",
+      "action": "After authorization, verify exact production CDN body SHA, version/reference/cache metadata and real clock; retain rollback deployment."
+    }
+  ],
+  "publication": {
+    "authorized": false,
+    "performed": false,
+    "wordpressOrg": "DEFERRED_BY_OWNER",
+    "mergeOrCDNDeploymentPerformedThisTurn": false
+  },
+  "evidence": [
+    {
+      "path": "docs/releases/1.1.6/acceptance-rc9.json",
+      "sha256": "4c0343923e44258ead6fce0675cb0969086e994e7b6c1b70a092a2bd95c03f19"
+    },
+    {
+      "path": "docs/releases/1.1.6/FINAL-ACCEPTANCE-RC9.md",
+      "sha256": "5d215a8e831b4463f968654a571d56e6e5dcb40082bba51cbc2085398e0e0b73"
+    },
+    {
+      "path": "docs/releases/1.1.6/ACCEPTANCE-MATRIX.md",
+      "sha256": "206813c088ebf8d99947587cebe3c6e0a8700c8010ef8889be91a6198098b11f"
+    },
+    {
+      "path": ".local/webkit-112-rc9-20261112/REPORT.md",
+      "sha256": "2a8f351c098f94dea487ee4688a84865798ffb11d434f55106936314e7eda204"
+    },
+    {
+      "path": ".local/webkit-112-rc9-20261112/SUMMARY.json",
+      "sha256": "6703bde133eef2ddfb16ffe8a41e0b435168c2817a41ae00c077df5e30118b65"
+    },
+    {
+      "path": ".local/webkit-112-rc9-20261112/SIGNATURE-COMPARISON.json",
+      "sha256": "7094ccdec112272a9e7eae3c657d30a94403df3beeeee15a594d161140f9c9b9"
+    },
+    {
+      "path": ".local/webkit-112-rc9-20261112/INVENTORY.json",
+      "sha256": "9893774991f2f6367cf4a3122ebfd89488ad40fe595adf06af4b5994478a4bd1"
+    },
+    {
+      "path": ".local/webkit-template-parts-ab-20261112/REPORT.md",
+      "sha256": "e65f287561513c52ac263b800f6571d2a50eccc46efe4c6425565828e808127c"
+    },
+    {
+      "path": ".local/webkit-template-parts-ab-20261112/SUMMARY.json",
+      "sha256": "ebd2ea346a632c2d452e6ce9219621120e0a7b925fef1e3e7e509d39d863505e"
+    },
+    {
+      "path": ".local/webkit-template-parts-ab-20261112/SIGNATURE-COMPARISON.json",
+      "sha256": "a3dad694104081f6e2eecc1125062f2c19001a1ab90081215883025e6c61c7d0"
+    },
+    {
+      "path": ".local/webkit-template-parts-ab-20261112/INVENTORY.json",
+      "sha256": "1f7ae4fa50f1c3d621deda6000e139e6e730ea68815000db079861888a159631"
+    },
+    {
+      "path": "docs/releases/1.1.6/RC9-LOCAL-GATES.md",
+      "sha256": "0cdc422268d72b41df98bb48566a40807073257d08013804afaa8d18c35269e2"
+    },
+    {
+      "path": "docs/releases/1.1.6/local-gates-rc9.json",
+      "sha256": "557da09fe44051eb9a6771f386446b7c80703e581ed486c7e1ec4d13d8cde79a"
+    }
+  ]
+}
