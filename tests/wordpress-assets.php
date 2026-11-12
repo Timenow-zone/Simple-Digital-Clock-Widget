@@ -287,7 +287,7 @@ $check(!wp_add_inline_script('simple-digital-clock', 'window.early=1;'), 'Double
 test_init(); SDCW_register_assets();
 $check(wp_script_is('simple-digital-clock', 'registered') && empty(wp_scripts()->queue), 'Early repeated registration leaves the runtime unqueued');
 $registered = wp_scripts()->registered['simple-digital-clock'];
-$check($registered->ver === '0.8.3' && $registered->options === array('strategy' => 'async', 'in_footer' => true), 'Selected runtime revision and Core loading strategy are explicit');
+$check($registered->ver === '0.8.4' && $registered->options === array('strategy' => 'async', 'in_footer' => true), 'Selected runtime revision and Core loading strategy are explicit');
 $check($GLOBALS['test_styles']['simple-digital-clock-block-style']['src'] === false && count($GLOBALS['test_styles']['simple-digital-clock-block-style']['inline']) === 1, 'Registration retains one source-free layout rule');
 $registered->src = 'https://fixture.invalid/custom-runtime.js'; SDCW_register_assets();
 $check(wp_scripts()->registered['simple-digital-clock']->src === $registered->src, 'Existing runtime registration is preserved');

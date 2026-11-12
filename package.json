@@ -1,7 +1,7 @@
 {
   "name": "simple-digital-clock-widget",
   "private": true,
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Simple Digital Clock Widget – a lightweight HTML/JS digital clock widget with flexible settings, embedded seamlessly for your website. Build ⚡ instantly-interactive web widget without effort.",
   "author": {
     "name": "dejurin",

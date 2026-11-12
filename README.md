@@ -22,9 +22,9 @@ All nine retained older versioned minified assets remain unchanged.
 The metadata below describes the JavaScript widget artifact.
 
 <!-- SDCW_RELEASE_METADATA_START -->
-* **Current version:** `0.8.3`
-* **Tiny:** 12.2 KiB gzipped (`dist/0.8.3.min.js`; 36,245 bytes minified, 12,516 bytes gzip)
-* **Artifact SHA-256:** `c877005699bdb81df6a9280f3367981947db8575a1f00c6e234edb8f1e400b6b`
+* **Current version:** `0.8.4`
+* **Tiny:** 12.3 KiB gzipped (`dist/0.8.4.min.js`; 36,430 bytes minified, 12,567 bytes gzip)
+* **Artifact SHA-256:** `974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b`
 * **Gzip measurement:** level 9; Node `v26.8.2`; zlib `1.2.12`. Other encoders may produce different sizes.
 <!-- SDCW_RELEASE_METADATA_END -->
 * **Embeddable:** 1 custom element tag

@@ -14,6 +14,7 @@ const { values: args } = parseArgs({
     theme: { type: "string", default: "block" },
     "only-mime": { type: "boolean", default: false },
     "live-tick": { type: "boolean", default: false },
+    cases: { type: "string" },
   },
 });
 const root = path.resolve(args["run-dir"]);
@@ -22,6 +23,55 @@ const phase = args.label,
 assert(/^[a-z0-9][a-z0-9-]+$/.test(phase));
 assert(["block", "classic"].includes(args.theme));
 assert(["chrome", "chromium", "firefox", "webkit"].includes(engine), "Unknown browser");
+const placementCounts = {
+  widgets: 5,
+  raw: 2,
+  pattern: 4,
+  "template-part": 1,
+  "native-pattern": 3,
+  "native-template-part": args.theme === "classic" ? 0 : 1,
+  late: 1,
+  explicit: 1,
+  "late-explicit": 2,
+  dependencies: 1,
+  "capture-dependencies": 1,
+  empty: 0,
+  escaped: 0,
+};
+const mimeCases = [
+  ["rest", "/?rest_route=/wp/v2/posts"],
+  ["feed", "/?feed=rss2"],
+  ["robots", "/?robots=1"],
+  ["trackback", "/wp-trackback.php"],
+  ["json", "/?audit_case=json"],
+  ["xml", "/?audit_case=xml"],
+];
+const allowedCases = new Set([
+  "admin-normal",
+  "admin-entities",
+  "admin-slashes",
+  "admin-nested",
+  "admin-pages",
+  "author-normal",
+  "author-entities",
+  "author-slashes",
+  "author-nested",
+  "custom-html-page",
+  ...Object.keys(placementCounts),
+  ...mimeCases.map(([name]) => name),
+]);
+const selectedCases = args.cases === undefined ? null : args.cases.split(",");
+if (selectedCases) {
+  assert(
+    !args["only-mime"] && !args["live-tick"],
+    "--cases cannot be combined with --only-mime or --live-tick"
+  );
+  assert.equal(new Set(selectedCases).size, selectedCases.length, "Duplicate --cases entries");
+  assert(
+    selectedCases.every((name) => allowedCases.has(name)),
+    "Unknown or empty --cases entry"
+  );
+}
 const run = JSON.parse(await fs.readFile(path.join(root, "run.json"), "utf8"));
 assert.equal(run.run_dir, root);
 const output = path.join(root, "evidence", `${phase}-frontend-${engine}`);
@@ -32,6 +82,7 @@ const browser = await { chrome: chromium, chromium, firefox, webkit }[engine].la
   channel: launchChannel,
 });
 const rows = [];
+const caseInventory = [];
 const started = Date.now();
 await fs.copyFile(fileURLToPath(import.meta.url), path.join(output, "harness-frontend.mjs"));
 try {
@@ -54,27 +105,41 @@ try {
           count: c.baseline.clocks.length,
         })),
       { name: "custom-html-page", url: url + "/?page_id=" + seed.custom_html_page, count: 2 },
-      ...Object.entries({
-        widgets: 5,
-        raw: 2,
-        pattern: 4,
-        "template-part": 1,
-        "native-pattern": 3,
-        "native-template-part": args.theme === "classic" ? 0 : 1,
-        late: 1,
-        explicit: 1,
-        "late-explicit": 2,
-        dependencies: 1,
-        "capture-dependencies": 1,
-        empty: 0,
-        escaped: 0,
-      }).map(([name, count]) => ({ name, url: url + "/?audit_case=" + name, count })),
+      ...Object.entries(placementCounts).map(([name, count]) => ({
+        name,
+        url: url + "/?audit_case=" + name,
+        count,
+      })),
     ];
-    for (const c of args["only-mime"]
+    const html = args["only-mime"]
       ? []
       : args["live-tick"]
         ? cases.filter((item) => item.name === "admin-normal")
-        : cases) {
+        : selectedCases
+          ? cases.filter((item) => selectedCases.includes(item.name))
+          : cases;
+    const nonhtml = args["live-tick"]
+      ? []
+      : selectedCases
+        ? mimeCases.filter(([name]) => selectedCases.includes(name))
+        : mimeCases;
+    caseInventory.push({
+      site,
+      html: cases,
+      nonhtml: mimeCases.map(([name, suffix]) => ({ name, url: url + suffix })),
+      selected: [...html.map((item) => item.name), ...nonhtml.map(([name]) => name)],
+    });
+    await fs.writeFile(
+      path.join(output, "CASE-INVENTORY.json"),
+      JSON.stringify({ requestedCases: selectedCases, sites: caseInventory }, null, 2) + "\n"
+    );
+    if (selectedCases)
+      assert.equal(
+        html.length + nonhtml.length,
+        selectedCases.length,
+        "Every selected case must exist exactly once in each site's corpus"
+      );
+    for (const c of html) {
       const row = { site, case: c.name, pass: false };
       const ctx = await browser.newContext({
         viewport: { width: 1440, height: 1000 },
@@ -221,6 +286,8 @@ try {
             platform: process.platform,
             architecture: process.arch,
             browserVersion: browser.version(),
+            requestedCases: selectedCases,
+            caseInventory,
             rows,
           },
           null,
@@ -231,16 +298,6 @@ try {
         `[${rows.length}] ${site}/${c.name} ${row.pass ? "PASS" : "FAIL"} requests=${row.requests.length} elapsed=${((Date.now() - started) / 1000).toFixed(1)}s`
       );
     }
-    const nonhtml = args["live-tick"]
-      ? []
-      : [
-          ["rest", "/?rest_route=/wp/v2/posts"],
-          ["feed", "/?feed=rss2"],
-          ["robots", "/?robots=1"],
-          ["trackback", "/wp-trackback.php"],
-          ["json", "/?audit_case=json"],
-          ["xml", "/?audit_case=xml"],
-        ];
     const ctx = await browser.newContext();
     const parser = await ctx.newPage();
     for (const [name, suffix] of nonhtml) {
@@ -299,6 +356,8 @@ await fs.writeFile(
       platform: process.platform,
       architecture: process.arch,
       browserVersion: browser.version(),
+      requestedCases: selectedCases,
+      caseInventory,
       rows,
     },
     null,

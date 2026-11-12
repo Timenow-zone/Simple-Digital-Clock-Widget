@@ -91,6 +91,11 @@ fixture calls the plugin footer callback only; invoking a theme's complete
 reasons unrelated to the plugin. `--only-mime` selects those cases explicitly. `--live-tick` separately checks
 the normal post on both sites with the real clock, requiring visible time text
 to change; it does not install the Date override used for layout parity.
+Use `--cases admin-normal,custom-html-page,widgets,native-pattern,native-template-part,late,capture-dependencies,empty`
+for an explicitly scoped placement pass. Unknown, empty and duplicate names are
+rejected, as are combinations with `--only-mime` or `--live-tick`. The unfiltered
+HTML/non-HTML corpus and the selected names remain in `CASE-INVENTORY.json` and
+the result metadata; omitted cases are not reported as executed.
 `widgets-ui.mjs` changes and restores a canonical widget caption, waits for the
 visible Update and native REST persistence, and then reloads it.
 

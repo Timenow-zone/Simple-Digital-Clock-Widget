@@ -7,7 +7,7 @@
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.8.3
+ * Version: 0.8.4
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */
@@ -22,7 +22,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.8.3";
+const v = "0.8.4";
 
 const googleFontsMonospace: string[] = (data?.allowFonts ?? []) as string[];
 
@@ -610,7 +610,11 @@ class SimpleDigitalClockWidget extends Component<
             }),
           }}
         >
-          <div className={clsx(`text-${align || "center"}`)}>
+          <div className={clsx({
+            "text-left": align === "left",
+            "text-right": align === "right",
+            "text-center": !align || align === "center",
+          })}>
             {this.state.timeString ? (
               <Fragment>
                 {showCaption && <div style={{ fontSize: `${this.state.fontSizeTitle}px` }}>{caption}</div>}
