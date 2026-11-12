@@ -1,6 +1,6 @@
 # WordPress 1.1.6 RC4 candidate
 
-Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; ACCEPTANCE IN PROGRESS**.
+Date: 2026-11-12, Europe/Kyiv. Status: **FROZEN; CORRECTION AND COMPATIBILITY PASS; RELEASE INCOMPLETE**.
 This candidate bundles the shared [widget 0.8.3 correction](../0.8.3/README.md).
 Neither candidate preparation nor historical passing results authorize release.
 
@@ -15,8 +15,8 @@ Neither candidate preparation nor historical passing results authorize release.
   `c877005699bdb81df6a9280f3367981947db8575a1f00c6e234edb8f1e400b6b`.
 
 The executable commit matches 16 package files. The readme was finalized after
-that commit to record its exact source link; a later containing commit must be
-verified against all 17 files. The frozen manifest records this provenance and
+that commit to record its exact source link. Containing commit
+`1a1e7f824913388587841c4c7e002f31800a8cee` was verified against all 17 files. The frozen manifest records this provenance and
 its initial `NOT_RUN` acceptance snapshot honestly; final results belong in a
 separate acceptance report.
 
@@ -42,8 +42,10 @@ their contracts. The [approved eager-override exception](OVERRIDE-POLICY.md)
 is unchanged. Fresh executions and any evidence inherited for identical files
 must be identified separately.
 
-Independent package identity/reproducibility and source review are recorded under
-`.local/remediation-116-rc4/review/`. Standalone and fresh native installation
-results are separate workstreams; their evidence is not implied by a package PASS.
+The [final scoped report](FINAL-ACCEPTANCE-RC4.md) and
+[JSON evidence index](acceptance-rc4.json) record all six mandatory browser cells,
+24 standalone cases, 570 unique native rows and separate independent reviews.
+Counts, historical scope, preserved failed attempts and pending release gates
+are explicit; a package PASS alone is not browser acceptance.
 No merge, production deployment, owner-site installation or WordPress.org
 publication has occurred. The withdrawn 0.8.2 CDN proposal remains withdrawn.

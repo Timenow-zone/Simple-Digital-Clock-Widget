@@ -1,10 +1,12 @@
 # WordPress 1.1.6 release preparation
 
-Status: **RC4 FROZEN; EXACT-ARTIFACT ACCEPTANCE IN PROGRESS**.
+Status: **RC4 CORRECTION AND COMPATIBILITY PASS; RELEASE INCOMPLETE**.
 Selected [RC4](RC4.md) contains [widget 0.8.3](../0.8.3/README.md), which corrects
-the initial-host exception isolation regression found in RC3. Current acceptance
-must satisfy the permanent HTML/WordPress browser contract. Historical passing
-checks do not establish acceptance of the changed runtime or bootstrap.
+the initial-host exception isolation regression found in RC3. The
+[scoped acceptance report](FINAL-ACCEPTANCE-RC4.md) and [JSON index](acceptance-rc4.json)
+record fresh exact-artifact evidence for all six HTML/WordPress browser cells,
+native editors, cache, override and network checks, with historical limits.
+Production CDN delivery remains pending.
 
 ## Selected artifact
 
@@ -19,8 +21,9 @@ checks do not establish acceptance of the changed runtime or bootstrap.
 | Shared widget | 0.8.3; 36,245 bytes; SHA-256 `c877005699bdb81df6a9280f3367981947db8575a1f00c6e234edb8f1e400b6b` |
 
 The executable commit contains 16 of the 17 package files. The readme's exact
-source reference was finalized afterward. Final review must bind every file to
-the containing commit; the archive and full manifest identify the exact candidate.
+source reference was finalized afterward. All 17 files were verified against
+containing commit `1a1e7f824913388587841c4c7e002f31800a8cee`; the archive and full
+manifest identify the exact candidate.
 The frozen manifest retains its original pre-acceptance status.
 
 ## Scope and acceptance

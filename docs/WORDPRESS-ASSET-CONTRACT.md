@@ -1,7 +1,8 @@
 # WordPress asset delivery contract
 
 This describes selected WordPress 1.1.6 RC4 with shared widget 0.8.3.
-Current status is **EXACT-ARTIFACT ACCEPTANCE IN PROGRESS**. RC4 corrects
+Current status is **COMPATIBILITY GATE PASS; PRODUCTION DELIVERY PENDING**.
+See the [scoped acceptance record](releases/1.1.6/FINAL-ACCEPTANCE-RC4.md). RC4 corrects
 `STANDALONE-P2-01` in shared-runtime initialization. The rejected 0.8.2/RC3
 artifacts and their [standalone review](releases/0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md)
 remain historical evidence. Final acceptance and production delivery are separate.

@@ -2,7 +2,8 @@
 
 Acceptance specification, 2026-11-12. This table defines required gates;
 it does not itself mark their execution as passed. Selected [RC4](RC4.md) bundles
-the 0.8.3 correction and requires fresh acceptance. Rejected RC3 remains NO-GO.
+the 0.8.3 correction. [Recorded RC4 results](FINAL-ACCEPTANCE-RC4.md) distinguish
+fresh execution, historical scope and pending production delivery. Rejected RC3 remains NO-GO.
 Phase 2 originally expanded the shared runtime
 to 0.8.2 with a lightweight registration shell; see the design decision in the plan. See the
 [remediation plan](REMEDIATION-PLAN.md) for architecture, authorization and scope.

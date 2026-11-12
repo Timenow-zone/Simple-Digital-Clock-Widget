@@ -1,6 +1,6 @@
 # Widget 0.8.3 compatibility correction
 
-Status: **BUILT; EXACT-ARTIFACT ACCEPTANCE IN PROGRESS; NOT PUBLISHED**.
+Status: **COMPATIBILITY AND CORRECTION PASS; NOT PUBLISHED**.
 This candidate fixes `STANDALONE-P2-01`, the shared lifecycle regression recorded
 in the [rejected 0.8.2 review](../0.8.2/STANDALONE-COMPATIBILITY-REVIEW.md).
 It also supplies the exact runtime bundled in [WordPress 1.1.6 RC4](../1.1.6/RC4.md).
@@ -38,6 +38,11 @@ requires the same artifact in ordinary HTML and installed WordPress with Google
 Chrome, Firefox and WebKit. Unit/source tests supplement that matrix. No missing
 browser or native WordPress execution may be replaced by a Chromium-only or
 mock-loader result.
+
+The [RC4 acceptance report](../1.1.6/FINAL-ACCEPTANCE-RC4.md) records 24/24
+standalone cases and 42/42 native runtime rows across actual Chrome, Firefox and
+WebKit, plus broader native and independent checks. All six mandatory cells pass;
+historical corpus limits and preserved failed attempts are explicit.
 
 Independent temporary builds reproduce both JavaScript artifacts exactly.
 The versioned runtime, `latest`, bundled WordPress runtime and generated site
