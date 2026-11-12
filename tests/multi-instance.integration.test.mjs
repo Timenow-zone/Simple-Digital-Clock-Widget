@@ -116,14 +116,17 @@ function observe(configs) {
   return { observedAt: now, issues, clocks, count: document.querySelectorAll("timenow-zone-sdcw").length, ready: customElements.get("timenow-zone-sdcw")?.runtimeReady };
 }
 
-async function verify(page, configs, record, phase) {
+async function verify(page, configs, record, phase, expectedDirection) {
   await page.waitForFunction(({ source, configs }) => (0, eval)(`(${source})`)(configs).issues.length === 0, { source: observe.toString(), configs }, { timeout: 7000 });
   const snapshot = await page.evaluate(observe, configs);
   assert.deepEqual(snapshot.issues, [], `${phase}: ${JSON.stringify(snapshot)}`);
   assert.equal(snapshot.count, configs.length);
   assert.equal(snapshot.ready, true);
-  for (const clock of snapshot.clocks) assert.equal(clock.version, version);
-  record.phases.push({ phase, ...snapshot });
+  for (const clock of snapshot.clocks) {
+    assert.equal(clock.version, version);
+    if (expectedDirection) assert.equal(clock.direction, expectedDirection, `${phase}: actual text direction`);
+  }
+  record.phases.push({ phase, expectedDirection: expectedDirection ?? null, ...snapshot });
   return snapshot;
 }
 
@@ -204,19 +207,19 @@ for (const engine of browsers) {
             };
             await page.evaluate(() => { document.body.dir = "ltr"; document.body.style.textAlign = "right"; document.getElementById("utc").removeAttribute("align"); });
             expected = withAlignment(null);
-            await verify(page, expected, record, "removed-align-default-center-over-parent-right");
+            await verify(page, expected, record, "removed-align-default-center-over-parent-right", "ltr");
             await page.locator("#utc").evaluate(host => { host.align = ""; });
             expected = withAlignment("");
-            await verify(page, expected, record, "empty-align-property-default-center");
+            await verify(page, expected, record, "empty-align-property-default-center", "ltr");
             await page.evaluate(() => { document.body.dir = "rtl"; document.getElementById("utc").align = "left"; });
             expected = withAlignment("left");
-            await verify(page, expected, record, "rtl-physical-left-property-and-independent-neighbors");
+            await verify(page, expected, record, "rtl-physical-left-property-and-independent-neighbors", "rtl");
             await page.locator("#utc").evaluate(host => { host.align = "right"; });
             expected = withAlignment("right");
-            await verify(page, expected, record, "rtl-physical-right-property-and-independent-neighbors");
+            await verify(page, expected, record, "rtl-physical-right-property-and-independent-neighbors", "rtl");
             await page.locator("#utc").evaluate(host => host.removeAttribute("align"));
             expected = withAlignment(null);
-            await verify(page, expected, record, "rtl-removed-align-default-center");
+            await verify(page, expected, record, "rtl-removed-align-default-center", "rtl");
             await page.evaluate(prior => {
               if (prior.direction === null) document.body.removeAttribute("dir");
               else document.body.setAttribute("dir", prior.direction);

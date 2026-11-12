@@ -44,6 +44,10 @@ attribute-removal case and incorrectly inherit parent `right` instead of the
 promised default `center`. Firefox retains the earlier explicit right/center
 failures. `phase1/PHASE1.json` and the separate Chrome/Linux receipts record the
 observed values; all 33 before-edit baseline objects still match their hashes.
+Independent review then tightened the future LTR/RTL phases to assert the actual
+computed direction of every clock. These later phases were not reached by the
+red baseline and are not claimed tested there; the extra guard does not relax its
+earlier failing alignment checks.
 
 ## Phase 2: minimal correction and independent acceptance
 
