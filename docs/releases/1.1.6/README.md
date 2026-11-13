@@ -1,6 +1,23 @@
 # WordPress 1.1.6 release preparation
 
-## Current RC9 readiness
+## Current RC12 preparation
+
+Current local candidate: **RC12 FROZEN; LOCAL HTML-PRESERVATION FIX VERIFIED;
+FULL RELEASE NOT READY; NOT PUBLISHED**.
+The [final local report](FINAL-ACCEPTANCE-RC12.md), [acceptance receipt](acceptance-rc12.json)
+and [candidate record](RC12.md) identify the WordPress-only fix for
+[Classic Editor HTML loss](../../defects/CLASSIC-HTML-P1-01.md). The main runtime,
+loader and Gutenberg code remain byte-identical to RC9. RC9 and its evidence
+remain preserved; its hosted checks do not accept the new candidate.
+[RC10](RC10.md) is preserved as a rejected intermediate candidate after the
+independent reviewer found incomplete attribute preservation. [RC11](RC11.md)
+was superseded to resolve a Plugin Check enqueue-version warning.
+
+The [production PR update record](FINAL-PR-RC12.md) binds these unchanged package
+bytes to PR #20 and its final HEAD checks. The local acceptance report retains
+its historical pre-commit state; hosted results are recorded separately.
+
+## Preserved RC9 readiness snapshot
 
 Current local candidate: **RC9; LOCAL EVIDENCE BLOCKERS CLOSED WITH INHERITED
 LIMITATIONS; FULL RELEASE NOT READY; NOT PUBLISHED**.

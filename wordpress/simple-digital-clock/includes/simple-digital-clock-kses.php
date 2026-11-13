@@ -63,6 +63,75 @@ function SDCW_allow_clock_post_html($tags, $context) {
 add_filter('wp_kses_allowed_html', 'SDCW_allow_clock_post_html', 10, 2);
 
 /**
+ * Use the same asset version for TinyMCE loading and WordPress script enqueueing.
+ */
+function SDCW_classic_clock_script_version() {
+    return filemtime(SDCW_PATH . 'assets/admin/js/simple-digital-clock-tinymce.js');
+}
+
+/**
+ * Preserve clock elements through Classic Editor's separate HTML schema.
+ * Server-side KSES remains the authority for attribute values and permissions.
+ */
+function SDCW_classic_clock_editor_settings($settings) {
+    $plugins = isset($settings['external_plugins']) ? $settings['external_plugins'] : array();
+    if (is_string($plugins)) {
+        $plugins = json_decode($plugins, true);
+    }
+    if (!is_array($plugins)) {
+        do_action('sdcw_editor_diagnostic', 'invalid_external_plugins');
+        return $settings;
+    }
+
+    foreach (array('custom_elements', 'extended_valid_elements') as $key) {
+        $existing = isset($settings[$key]) ? $settings[$key] : '';
+        if (!is_string($existing)) {
+            do_action('sdcw_editor_diagnostic', 'invalid_element_rules');
+            return $settings;
+        }
+    }
+
+    $updated = $settings;
+    $existing = isset($settings['custom_elements']) ? $settings['custom_elements'] : '';
+    $rule = '~timenow-zone-sdcw';
+    if (!in_array($rule, array_map('trim', explode(',', $existing)), true)) {
+        $updated['custom_elements'] = '' === trim($existing) ? $rule : rtrim($existing, " ,\t\n\r\0\x0B") . ',' . $rule;
+    }
+    $tags = SDCW_allow_clock_post_html(array(), 'post');
+    // Unfiltered HTML also supports runtime attributes outside the post KSES policy.
+    $attributes = array_unique(array_merge(array_keys($tags['timenow-zone-sdcw']), array('prefers', 'time-zone-name')));
+    $updated['sdcw_clock_attributes'] = implode('|', $attributes);
+
+    $script = 'assets/admin/js/simple-digital-clock-tinymce.js';
+    $plugins['simple_digital_clock'] = SDCW_URL . $script . '?ver=' . SDCW_classic_clock_script_version();
+    $updated['external_plugins'] = wp_json_encode($plugins);
+    return $updated;
+}
+add_filter('tiny_mce_before_init', 'SDCW_classic_clock_editor_settings');
+add_filter('teeny_mce_before_init', 'SDCW_classic_clock_editor_settings');
+
+/**
+ * Configure editors initialized later by Core, including the Text widget.
+ * These editors bypass the PHP TinyMCE initialization filters.
+ */
+function SDCW_classic_clock_default_editor() {
+    if (!user_can_richedit()) {
+        return;
+    }
+    $settings = SDCW_classic_clock_editor_settings(array());
+    $plugins = json_decode($settings['external_plugins'], true);
+    $handle = 'simple-digital-clock-tinymce';
+    wp_enqueue_script($handle, $plugins['simple_digital_clock'], array('jquery', 'wp-tinymce'), SDCW_classic_clock_script_version(), true);
+    wp_localize_script($handle, 'SDCWClassicEditorSettings', array(
+        'custom_elements' => $settings['custom_elements'],
+        'sdcw_clock_attributes' => $settings['sdcw_clock_attributes'],
+        'plugin_url' => $plugins['simple_digital_clock'],
+    ));
+    wp_print_scripts($handle);
+}
+add_action('print_default_editor_scripts', 'SDCW_classic_clock_default_editor');
+
+/**
  * Serialize only clock metadata without older Core's backslash ambiguity.
  * This is the current Core escaping order; foreign blocks keep their native path.
  */

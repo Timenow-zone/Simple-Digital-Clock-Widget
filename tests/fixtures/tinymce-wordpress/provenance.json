@@ -1,0 +1,32 @@
+{
+  "tinymce": "4.9.11",
+  "purpose": "Pinned WordPress-bundled TinyMCE parser/editor regression fixture; test-only and excluded from plugin packages.",
+  "sources": [
+    {
+      "wordpress": "6.3.14",
+      "archive_url": "https://wordpress.org/wordpress-6.3.14.zip",
+      "archive_sha256": "69b565ab064b6cb4187f51018d6e12726eaf76f637a722d703aa8a50e97588f6",
+      "tinymce_sha256": "4a74739272c2951dc668dc3da0de287df3061623db5d04cfeead3214b3cfc206"
+    },
+    {
+      "wordpress": "7.1.4",
+      "archive_url": "https://wordpress.org/wordpress-7.1.4.zip",
+      "archive_sha256": "a147146c159362778ecbbbfb07bb20ddf4e85b130f971c824e656a8f938c5f87",
+      "tinymce_sha256": "4a74739272c2951dc668dc3da0de287df3061623db5d04cfeead3214b3cfc206"
+    }
+  ],
+  "files": [
+    {
+      "file": "tinymce.min.js",
+      "source_path": "wp-includes/js/tinymce/tinymce.min.js",
+      "bytes": 365570,
+      "sha256": "4a74739272c2951dc668dc3da0de287df3061623db5d04cfeead3214b3cfc206"
+    },
+    {
+      "file": "LICENSE.txt",
+      "source_path": "wp-includes/js/tinymce/license.txt",
+      "bytes": 26441,
+      "sha256": "47a9dcd2574891a5a465112fd9dfcebcc7e61844edec27fa936a64642008fe66"
+    }
+  ]
+}
