@@ -1,0 +1,31 @@
+{
+  "status": "INDEPENDENT_GO",
+  "scope": "Exact local streaming-r8 ZIP only; unpublished; no push/merge/CDN/WordPress.org authorization",
+  "revision": "streaming-r8",
+  "archive_sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+  "archive_bytes": 69772,
+  "installable_files": 17,
+  "manifest_sha256": "5e250260b65e2980a1704698e2f537af06da5ef8fe536c498400cfe8b2921deb",
+  "independent_report": "INDEPENDENT-STREAMING-R8.md",
+  "independent_report_sha256": "e5ba682b5ee699a153caa3d23ac0186d3461a7cfec069aca9e2eba1fc9691266",
+  "independent_evidence": "independent-streaming-r8-evidence.json",
+  "independent_evidence_sha256": "1c71fc6b8d494346fbcf8a8c3800bbc16f1049a191907ce32cc7798fb7ae578e",
+  "gate_counts": {
+    "PASS": 18,
+    "NOT RUN": 1
+  },
+  "functional_resource_cases": 344,
+  "performance_report": "PERFORMANCE-STREAMING-R8.md",
+  "post_acceptance_harness_repair": {
+    "status": "PASS",
+    "stored_source_checks": 6,
+    "browser_checks": 12,
+    "receipt": "post-acceptance-streaming-r8-harness.json"
+  },
+  "owner_preview": {
+    "status": "exact r8 installed",
+    "receipt": "post-acceptance-streaming-r8-preview.json",
+    "backup": ".local/streaming-r8-20261102/preview-r6-backup"
+  },
+  "published": false
+}

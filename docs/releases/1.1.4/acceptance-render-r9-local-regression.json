@@ -1,0 +1,23 @@
+{
+  "status": "LOCAL_REGRESSION_PASS",
+  "revision": "render-r9",
+  "archive_sha256": "5f334f9496c0c064ab4e182fdda7fa3d4493da7c99baada899cd3392d6d124e7",
+  "archive_bytes": 66815,
+  "installable_files": 16,
+  "manifest_sha256": "f9fdc614092ef566b2965a68a693a87b928c939595334a2873d0bab83b1446c6",
+  "independent_acceptance": "NOT RUN for render-r9; historical r8 verdict does not transfer",
+  "published": false,
+  "report": "REGRESSION-RENDER-R9.md",
+  "evidence": "render-r9-evidence.json",
+  "evidence_sha256": "39f675c459dc9cf48025ff503d8a4f39ca1c8c791cfed891230d63cdb3cb0277",
+  "frontend_browser_cases": 240,
+  "final_admin_editor_pairs": 4,
+  "native_file_transitions": 6,
+  "native_post_transition_saves": 108,
+  "strict_raw_json_blocks": 756,
+  "legacy_reader_browser_groups": 3,
+  "plugin_check_static": 29,
+  "plugin_check_runtime": 5,
+  "plugin_check_findings": 0,
+  "report_sha256": "cdb0d4281f79c90d7470c3eb62c464cacb9044caa2dbac278c051fa9a632b9ee"
+}

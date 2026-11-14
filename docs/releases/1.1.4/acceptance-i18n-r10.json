@@ -1,0 +1,51 @@
+{
+  "status": "INDEPENDENT_GO",
+  "revision": "i18n-r10",
+  "scope": "Bounded fresh local acceptance for i18n-r10; not a replay or transfer of all historical r9 G01-G13 gates.",
+  "archive_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+  "archive_bytes": 66859,
+  "installable_files": 16,
+  "manifest_sha256": "61396bfd46e30e605b99439239aeec41a051b99170456450d46f708e22ff4860",
+  "independent_acceptance": "GO: eight scoped gates PASS; 2026-11-10",
+  "report": "INDEPENDENT-ACCEPTANCE-I18N-R10-2026-11-10.md",
+  "report_sha256": "bab589a8e7ed7846bb17ff0117f69eab9c16f25281babf4c4f173276faf77671",
+  "evidence": "independent-i18n-r10-20261110.json",
+  "evidence_sha256": "8cbf0d8471ff6b176020354918fd9d77238478850f62a23f4b31be67bad924b0",
+  "scoped_gates_passed": 8,
+  "scoped_gates_failed": 0,
+  "actionable_findings": [],
+  "counts": {
+    "targeted_native_i18n_pairs": 4,
+    "frontend_resource_cases": 180,
+    "clean_installs": 2,
+    "original_file_transitions": 6,
+    "editable_reserve_transitions": 6,
+    "post_transition_saves": 108,
+    "strict_raw_JSON_blocks": 756,
+    "reopened_normalized_blocks": 252,
+    "admin_editor_pairs": 4,
+    "plugin_check_static": 29,
+    "plugin_check_runtime": 5,
+    "plugin_check_findings": 0,
+    "CI_tests": 235,
+    "extra_exact_ZIP_tests": 14,
+    "native_evidence_hashes_verified": 291
+  },
+  "prior_accepted_revision": "render-r9",
+  "prior_acceptance": "acceptance-render-r9.json",
+  "npm_audit": {
+    "exit_code": 0,
+    "vulnerabilities": {
+      "info": 0,
+      "low": 5,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 5
+    },
+    "all_findings_dev_only": true
+  },
+  "hosted_required_checks": "NOT RUN for uncommitted r10 changes; prior r9 CI does not transfer",
+  "published": false,
+  "publication": "Deferred by user instruction"
+}

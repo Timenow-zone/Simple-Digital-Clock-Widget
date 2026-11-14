@@ -1,0 +1,16 @@
+{
+  "status": "NATIVE_REST_RESPONSE_FAILED",
+  "revision": "rest-r11",
+  "archive_sha256": "1adaafe3a856a15883e369eb3b679e8c8fbad9a88c267f079c6ebc2c49a4e5da",
+  "archive_bytes": 67231,
+  "installable_files": 16,
+  "manifest_sha256": "cda64620d3b70f0653199ad67aa4300061d849ccb90d967a88234d9344e77140",
+  "previous_revision": "i18n-r10",
+  "previous_status": "acceptance-compatibility-r10.json",
+  "scope": "Early REST repair protects all11stored JSON blocks on6.8.12, but the Core REST response serializer corrupts10of11 again. Exactcandidate rejected; no failure waiver.",
+  "published": false,
+  "publication": "Deferred by user; local work only",
+  "release_readiness": "NO_GO",
+  "failure_evidence": ".local/rest-r11-20261111/native/r11-native-failure.json",
+  "failure_evidence_sha256": "51dd2e4702e75e3ae38e3e11bb9ccc04d016667fb5a61989a9754197a264737d"
+}

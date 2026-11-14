@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-06",
+  "verdict": "LOCAL_FINAL_VERIFICATION_PASS_WITH_OPEN_RELEASE_GATES",
+  "archive": {
+    "path": ".local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip",
+    "sha256": "5f334f9496c0c064ab4e182fdda7fa3d4493da7c99baada899cd3392d6d124e7",
+    "bytes": 66815,
+    "files": 16
+  },
+  "manifest_sha256": "f9fdc614092ef566b2965a68a693a87b928c939595334a2873d0bab83b1446c6",
+  "base_head": "1a60f9fe1bed3afa56f45bdac5c485a1ec4e7b06",
+  "code_and_archive_changed_during_audit": false,
+  "current_documentation_sha256": {
+    "README.md": "2ff7c25e475c87c6757c992446ac224e02e4c4f890498438d7f5ecb4dc33bf85",
+    "tools/wordpress-lab/repro/README.md": "23f46eff43aaf7f2db693c1080d24bbad7476dcc8ad590db034827a197a95ee2",
+    "docs/WORDPRESS-ASSET-CONTRACT.md": "d161a3d8b1459866592e3a5ec768eeea2650961fe629cf88fcf93787ec311511",
+    "docs/maintenance/release-readiness-2026-10-31.md": "8aeba2d52e03b2f8831d21f64bdb02f0e64c37134a5ef27acefc58a50e9c045e",
+    "docs/releases/1.1.4/README.md": "de2bc54e1e0d95e245d45c5d44951f9b97e5e8b95bb1ba1ff05a01cda5035059"
+  },
+  "report": "FINAL-LOCAL-AUDIT-2026-11-06.md",
+  "report_sha256": "da20a500415df12af5b19b05737eb32aa61f0c5d68b2dcbd040c1d3f6eb220bb",
+  "results": {
+    "local_ci_steps": 21,
+    "local_ci_tests": 229,
+    "independent_extracted_zip_tests": 8,
+    "independent_core_lifecycle_cases": 13,
+    "native_file_transitions": 6,
+    "native_editor_saves": 108,
+    "strict_json_blocks": 756,
+    "frontend_cases": 244,
+    "admin_editor_pairs": 4,
+    "plugin_check_static": 29,
+    "plugin_check_runtime": 5,
+    "plugin_check_findings": 0,
+    "public_cdn_clocks_rendered_and_ticking": 11,
+    "documentation_findings_resolved": 4
+  },
+  "dependencies": {
+    "fresh_lockfile_audit": true,
+    "low_dev_records": 5,
+    "moderate_high_critical": 0,
+    "fresh_npm_ci": false
+  },
+  "owner_preview": {
+    "port": 55900,
+    "exact_archive_revision": "streaming-r8",
+    "modified": false
+  },
+  "open_gates": [
+    "Complete reviewed source and supporting files are not committed",
+    "Required hosted PR checks on final head have not run",
+    "Full independent native ZIP acceptance remains separate from the completed source/lifecycle review",
+    "WordPress publication is deferred until explicitly authorized"
+  ],
+  "performance": "No new render-r9 TTFB/PHP-memory benchmark; no old timings transferred",
+  "remote_mutations": false,
+  "temporary_wordpress_project_stopped": true,
+  "evidence_sha256": {
+    ".local/final-audit-20261106/code-review/REVIEW.md": "79374bdf678dd93165e9bfbf9e6617d42e29e47dee7736506a4dc5d5e31ea443",
+    ".local/final-audit-20261106/code-review/review-evidence.json": "1abdd4eb0d529555bdbda4c90d95b9219bdf08cd1b4b9a5259168a8e1688082d",
+    ".local/final-audit-20261106/code-review/core-assets-results.json": "04c66000edb485958b8109debe6b4ee540c82a75237e9342f1c9d2a3b241f645",
+    ".local/final-audit-20261106/ci/REPORT.md": "9cdfe7f32e9825ea171edab3934b78f16d9bbf4e8a916edd548e4632792363d6",
+    ".local/final-audit-20261106/ci/result.json": "430663b31c389ab22b9ef80217ab4a271e47a849a3dde8f3b19c9d8970adf572",
+    ".local/final-audit-20261106/ci/source-inventory.json": "1558100f6e6dbe65a25c16f616a75dadfb06aadd8be931bfda8393fb0ea1ae10",
+    ".local/final-audit-20261106/ci/PUBLIC-CDN-SMOKE.md": "722373d4e5744b3df241b0dbea2bbcb557575ea13faac2365e82d5686a3660a0",
+    ".local/final-audit-20261106/ci/public-cdn-smoke.json": "3581411699cdfa84260e19ed616c363a6062e8fc7f37740d7ab58060a3f09088",
+    ".local/final-audit-20261106/release-review/REPORT.md": "bf9263fd60301511bdbb2073f44902fdb21305a116fa071b3c420cb3c304190c",
+    ".local/final-audit-20261106/release-review/findings.json": "f9d6e0efcef6b2afdc7d6285ebbfe6cccc41c60a691171a9306d4f12098843e9",
+    ".local/final-audit-20261106/release-review/public-http.json": "7326bec54a7f1fc81f9c3b2ba04c89db76d5aa854eb656adef78a4b35de435bf",
+    ".local/final-audit-20261106/release-review/corrections-readback.json": "38edf155938f9eaa849a6e1bb92eb78bc8af0655f81669a6d5b970255598a912",
+    ".local/final-audit-20261106/root/initial-source.json": "746b4729550477f86bb4f031a3bd805d1bf32dc7d6022a6139fa46a3b84c052d",
+    ".local/final-audit-20261106/root/documentation-corrections.json": "eaf8f4a48d2e7b8a0ab87672f11b33c0a1707194778b6fa2dc8c047b3afbc90e",
+    ".local/final-audit-20261106/root/final-report-link.json": "4a19e5fd7034a2f1958d73c190a5fa25b15a9fbe9e8ba4762dd703492cdcf1f4",
+    ".local/final-audit-20261106/root/strict-json.json": "63737274111459410a05bac0134031bd61dbfa04e3e0577a7de47b2d0098acaa",
+    ".local/final-audit-20261106/root/owner-preview-readonly.json": "e19914ee05a16689d888173445a67433c2ecfe6c8da872e26b6a10a76998bfd8",
+    ".local/wordpress-repro/final-r9-20261106-b/rollback-summary.json": "f9de87a3aeb3fc13020447c0260fa8f2e8780d7a1cada5f9ffd24acc66d27329",
+    ".local/wordpress-repro/final-r9-20261106-b/render-assets/summary.json": "3c5aa9e29eb1e92121ebc26cb13e870a5367c10ebcbda53f8a44392f5d282e7f",
+    ".local/wordpress-repro/final-r9-20261106-b/render-assets/asset-browser-results.json": "fa5fe61b617f6c5e22d5ebda616797c92c5cb8e2bb7297ee879f7c7bb8546982",
+    ".local/wordpress-repro/final-r9-20261106-b/render-assets/asset-admin-results.json": "180386ed741fbec31042c98fce7fa08c1c3d5bedc0d9b1e227ecd997ad028e84",
+    ".local/wordpress-repro/final-r9-20261106-b/render-assets/plugin-check.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    ".local/wordpress-repro/final-r9-20261106-b/render-classic/summary.json": "e2cce61b996f3c6686a262029b4c4b10923b15a76e8f8b05cfa83c5674551d3b",
+    ".local/wordpress-repro/final-r9-20261106-b/render-classic/asset-browser-results.json": "fa25c9fc4cd01c925f79b783eb8f7e8c3cc8e420430be556a641f27bd175a9b8",
+    ".local/wordpress-repro/final-r9-20261106-b/runner-identity.json": "d8897f619c0a058eaf3fbcd482de45414544aa9748bda1de276c5d677ef673d3"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "status": "LOCAL_REGRESSION_PASS",
+  "candidate": {
+    "base_commit": "1a60f9fe1bed3afa56f45bdac5c485a1ec4e7b06",
+    "candidate_sha256": "5f334f9496c0c064ab4e182fdda7fa3d4493da7c99baada899cd3392d6d124e7",
+    "manifest_sha256": "f9fdc614092ef566b2965a68a693a87b928c939595334a2873d0bab83b1446c6",
+    "changed_vs_r8": [
+      "includes/simple-digital-clock-assets.php",
+      "readme.txt"
+    ],
+    "removed_vs_r8": [
+      "includes/simple-digital-clock-output.php"
+    ],
+    "unchanged_vs_r8": [
+      "LICENSE",
+      "THIRD-PARTY-NOTICES.txt",
+      "assets/admin/img/icon.png",
+      "assets/admin/img/icon.svg",
+      "assets/admin/img/stars.png",
+      "assets/admin/js/simple-digital-clock-notify.js",
+      "assets/public/js/simple-digital-clock.min.js",
+      "block.js",
+      "includes/simple-digital-clock-admin-notices.php",
+      "includes/simple-digital-clock-admin-settings.php",
+      "includes/simple-digital-clock-kses.php",
+      "index.php",
+      "languages/simple-digital-clock.pot",
+      "widget_init.php"
+    ],
+    "preserved_inputs": {
+      ".local/packages/simple-digital-clock-1.1.4-streaming-r8-candidate.zip": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+      ".local/rollback-1121-20261103/package-r2/simple-digital-clock-1.1.2.1-rollback-r2.zip": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b",
+      "tests/fixtures/wordpress-rollback/public-1.1.2.zip": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+      "tests/fixtures/wordpress-rollback/accepted-1.1.4-r8.zip": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+      "dist/0.8.1.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25"
+    }
+  },
+  "environments": {
+    "minimum": {
+      "wordpress": "6.3.14",
+      "php": "7.0.33"
+    },
+    "current": {
+      "wordpress": "7.1.4",
+      "php": "8.3.35"
+    }
+  },
+  "counts": {
+    "frontend_browser_cases": 240,
+    "final_admin_editor_pairs": 4,
+    "native_file_transitions": 6,
+    "native_post_transition_saves": 108,
+    "strict_raw_json_blocks": 756,
+    "legacy_reader_browser_groups": 3,
+    "plugin_check_static": 29,
+    "plugin_check_runtime": 5,
+    "plugin_check_findings": 0
+  },
+  "source_sha256": {
+    "README.md": "c76e9ee4b4f69b2f9e03e498b332aa0fe0d2167af118696df8be20dea376dc9f",
+    "docs/WORDPRESS-ASSET-CONTRACT.md": "552951afdd64a508bbfa053c6bf54cfc3e7cd643130f8a0687fc0c9c85a8f146",
+    "tests/wordpress-assets.php": "55c93d841008ff2c8850575662985c14e19add8064dfbe193a9dd55873657abb",
+    "tests/wordpress-assets.test.mjs": "e4165ef0502d2a74416071bc9ca3345ce98d0169e79e35066f814283fd7dd92a",
+    "tests/wordpress-rollback.test.py": "0007bf84c497ca9cfa64fb956f571736a89460be5b9f2a3d6347f832272c0441",
+    "tools/wordpress-lab/asset-admin.mjs": "524340ee723b4a62f9d5167f9b44ca1bd3e2b94e083108245a11f948c4387349",
+    "tools/wordpress-lab/asset-contract-fixtures.php": "db62539be83bbeb5318a3d196002e676cbd75130ae645978c0dd47df8c3d3652",
+    "tools/wordpress-lab/asset-contract.mjs": "9592098cef288e3e51037ffe6d2e635755e445a1b0df72bd5cf2e6849a3d4b40",
+    "tools/wordpress-lab/asset-contract.php": "ac840cd121f5a48ee7975cbc1ab4463b8202e51bda95817bf61d4a0a3df56791",
+    "tools/wordpress-lab/repro/README.md": "c91e6498490b4e71d13f95a3819c4ea428053765119072f293e1aabae5f1df7b",
+    "wordpress/README.md": "b6f046440be4acea7daa84285c48570792f63b84e5b7ab09e42447b8721dd0a0",
+    "wordpress/simple-digital-clock/includes/simple-digital-clock-assets.php": "4942043532c082e6663103313d63f64d514c0ee62eadfce1ffeec3770146aa09",
+    "wordpress/simple-digital-clock/readme.txt": "774c3f25cf2d2db755de5bae0acd9795c49f11644a62f11e5e1563433e04cf2d"
+  },
+  "evidence_sha256": {
+    ".local/render-r9-20261103/identity.json": "f89ebc3db6b9d3e29930212807dd63ca94ee7ae17ed22df1c964590fd2206333",
+    ".local/render-r9-20261103/native-strict-json.json": "5b2bff2034e28640d7400459e8523728beb27afe4c8d8722f98e6902ed8e14b4",
+    ".local/render-r9-20261103/legacy-browser.log": "4946efc4939ecdd8782a6f970c8a28c78a2fce1183f40935c72c9ad3cb98a0c1",
+    ".local/wordpress-repro/render-r9-20261103-a/rollback-summary.json": "f9de87a3aeb3fc13020447c0260fa8f2e8780d7a1cada5f9ffd24acc66d27329",
+    ".local/wordpress-repro/render-r9-20261103-a/render-assets-b/summary.json": "f0f8a6d635f24bbe4cf7e978bf65e3306fc64cb99fe75fddae7749d5b868bf18",
+    ".local/wordpress-repro/render-r9-20261103-a/render-classic/summary.json": "e2cce61b996f3c6686a262029b4c4b10923b15a76e8f8b05cfa83c5674551d3b",
+    ".local/wordpress-repro/render-r9-20261103-a/render-admin-close-b/summary.json": "5944326aefdd61a1e148f4b816d5b24cfd2c7afa002925e6250a2a74a90047fe",
+    ".local/wordpress-repro/render-r9-20261103-a/render-assets-b/asset-browser-results.json": "c3186aac5e08b7978559156007033f248d3f2bb2c575f083cae2386b65f0fba4",
+    ".local/wordpress-repro/render-r9-20261103-a/render-classic/asset-browser-results.json": "fa25c9fc4cd01c925f79b783eb8f7e8c3cc8e420430be556a641f27bd175a9b8",
+    ".local/wordpress-repro/render-r9-20261103-a/render-admin-close-b/asset-admin-results.json": "180386ed741fbec31042c98fce7fa08c1c3d5bedc0d9b1e227ecd997ad028e84",
+    ".local/wordpress-repro/render-r9-20261103-a/render-assets-b/plugin-check.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    ".local/wordpress-repro/render-r9-20261103-a/minimum-render-final.json": "f9138591b2c1faaafddcb90b6c4e93b4cb24eadb46f24420668be81d9e15c2a0",
+    ".local/wordpress-repro/render-r9-20261103-a/current-render-final.json": "8a071a736e978e83f7b7ae3bccb8d7c9992e32fbd31222c4fd2604ae9313adbb"
+  },
+  "retained_failed_attempts": [
+    {
+      "path": ".local/wordpress-repro/render-r9-20261103-a/render-assets/summary.json",
+      "reason": "Test compared Core paragraph output to raw input. Core 7.1 adds a class independently; corrected hook-on/hook-off comparison passes."
+    },
+    {
+      "path": ".local/wordpress-repro/render-r9-20261103-a/render-admin-close/summary.json",
+      "reason": "Test incorrectly expected block display on the editor inner host. Existing editor structure uses a block wrapper. Historical r8 measurements and unchanged block.js confirm it; wrapper and saved-selector probes pass."
+    },
+    {
+      "phase": "Linux browser setup",
+      "reason": "Read-only work mount lacked a nested node_modules mountpoint; created empty mountpoint and reran successfully."
+    }
+  ],
+  "independent_acceptance": "NOT RUN for render-r9",
+  "benchmark": "NOT RUN for render-r9; old r8 timings do not transfer",
+  "remote_checks": "NOT RUN; local-only task",
+  "publication_performed": false,
+  "owner_preview_mutated": false
+}

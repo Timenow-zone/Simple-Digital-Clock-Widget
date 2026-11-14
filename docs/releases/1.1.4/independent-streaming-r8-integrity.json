@@ -1,0 +1,145 @@
+{
+  "closed_at_utc": "2026-11-02T18:22:56.109596+00:00",
+  "frozen_source_files_verified": 367,
+  "absent_source_paths_preserved": [
+    "wordpress/simple-digital-clock/assets/public/css/simple-digital-clock.css"
+  ],
+  "changed_frozen_files": [],
+  "source_file_set_exact": true,
+  "frozen_receipt_sha256": "7a91448cd51ef51affa511112e0d56d51033e4571869d3f99628e522c404b2b0",
+  "zip_sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+  "original_zip_sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+  "zip_bytes": 69772,
+  "manifest_sha256": "5e250260b65e2980a1704698e2f537af06da5ef8fe536c498400cfe8b2921deb",
+  "four_installed_sets": {
+    "independent-r8-20261102-a/minimum": {
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "widget_init.php": "e0cd9a0c0f679d4e43a3592013684ef96ef26d0ca87370744026151329aabea8",
+      "block.js": "b1e5873797ee23618b9250556e08c903928aa811f84880c0541d0a0d3fd80f98",
+      "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+      "readme.txt": "1fc0c1323faf7ebd337e1c63eab04fada35880b2bc7a2da4d056db9bbbe1a97f",
+      "includes/simple-digital-clock-admin-notices.php": "4b9d8f50e6174727c6ecc289ee5ec6bfdfebaf728be26e13ccbbe06d1e75f46f",
+      "includes/simple-digital-clock-assets.php": "9a3ae7b055532c1d6263d24ec22dcc55247579570115fbb3adc486ffddd98cb6",
+      "includes/simple-digital-clock-output.php": "3e9982ace5606d38c919f965f0561a9b4b5f31792995ae1ed94d67ecee60294b",
+      "includes/simple-digital-clock-kses.php": "6a13f47972f6e7276b546c3843bc508380ac7df5d98b582a655a3ef8d1a35194",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "languages/simple-digital-clock.pot": "f9e2a00824e6d861174ec84e287d2e1b22735503402b933924bbfa461e4234e6",
+      "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    },
+    "independent-r8-20261102-a/current": {
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "widget_init.php": "e0cd9a0c0f679d4e43a3592013684ef96ef26d0ca87370744026151329aabea8",
+      "block.js": "b1e5873797ee23618b9250556e08c903928aa811f84880c0541d0a0d3fd80f98",
+      "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+      "readme.txt": "1fc0c1323faf7ebd337e1c63eab04fada35880b2bc7a2da4d056db9bbbe1a97f",
+      "includes/simple-digital-clock-admin-notices.php": "4b9d8f50e6174727c6ecc289ee5ec6bfdfebaf728be26e13ccbbe06d1e75f46f",
+      "includes/simple-digital-clock-assets.php": "9a3ae7b055532c1d6263d24ec22dcc55247579570115fbb3adc486ffddd98cb6",
+      "includes/simple-digital-clock-output.php": "3e9982ace5606d38c919f965f0561a9b4b5f31792995ae1ed94d67ecee60294b",
+      "includes/simple-digital-clock-kses.php": "6a13f47972f6e7276b546c3843bc508380ac7df5d98b582a655a3ef8d1a35194",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "languages/simple-digital-clock.pot": "f9e2a00824e6d861174ec84e287d2e1b22735503402b933924bbfa461e4234e6",
+      "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    },
+    "independent-r8-clean-20261102-b/minimum": {
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "widget_init.php": "e0cd9a0c0f679d4e43a3592013684ef96ef26d0ca87370744026151329aabea8",
+      "block.js": "b1e5873797ee23618b9250556e08c903928aa811f84880c0541d0a0d3fd80f98",
+      "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+      "readme.txt": "1fc0c1323faf7ebd337e1c63eab04fada35880b2bc7a2da4d056db9bbbe1a97f",
+      "includes/simple-digital-clock-admin-notices.php": "4b9d8f50e6174727c6ecc289ee5ec6bfdfebaf728be26e13ccbbe06d1e75f46f",
+      "includes/simple-digital-clock-assets.php": "9a3ae7b055532c1d6263d24ec22dcc55247579570115fbb3adc486ffddd98cb6",
+      "includes/simple-digital-clock-output.php": "3e9982ace5606d38c919f965f0561a9b4b5f31792995ae1ed94d67ecee60294b",
+      "includes/simple-digital-clock-kses.php": "6a13f47972f6e7276b546c3843bc508380ac7df5d98b582a655a3ef8d1a35194",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "languages/simple-digital-clock.pot": "f9e2a00824e6d861174ec84e287d2e1b22735503402b933924bbfa461e4234e6",
+      "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    },
+    "independent-r8-clean-20261102-b/current": {
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "widget_init.php": "e0cd9a0c0f679d4e43a3592013684ef96ef26d0ca87370744026151329aabea8",
+      "block.js": "b1e5873797ee23618b9250556e08c903928aa811f84880c0541d0a0d3fd80f98",
+      "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+      "readme.txt": "1fc0c1323faf7ebd337e1c63eab04fada35880b2bc7a2da4d056db9bbbe1a97f",
+      "includes/simple-digital-clock-admin-notices.php": "4b9d8f50e6174727c6ecc289ee5ec6bfdfebaf728be26e13ccbbe06d1e75f46f",
+      "includes/simple-digital-clock-assets.php": "9a3ae7b055532c1d6263d24ec22dcc55247579570115fbb3adc486ffddd98cb6",
+      "includes/simple-digital-clock-output.php": "3e9982ace5606d38c919f965f0561a9b4b5f31792995ae1ed94d67ecee60294b",
+      "includes/simple-digital-clock-kses.php": "6a13f47972f6e7276b546c3843bc508380ac7df5d98b582a655a3ef8d1a35194",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "languages/simple-digital-clock.pot": "f9e2a00824e6d861174ec84e287d2e1b22735503402b933924bbfa461e4234e6",
+      "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    }
+  },
+  "owned_ports": {
+    "independent-r8-20261102-a/minimum": {
+      "port": 50258,
+      "closed": true,
+      "connect_errno": 61,
+      "verified_outside_network_sandbox": true
+    },
+    "independent-r8-20261102-a/current": {
+      "port": 50261,
+      "closed": true,
+      "connect_errno": 61,
+      "verified_outside_network_sandbox": true
+    },
+    "independent-r8-clean-20261102-b/minimum": {
+      "port": 51642,
+      "closed": true,
+      "connect_errno": 61,
+      "verified_outside_network_sandbox": true
+    },
+    "independent-r8-clean-20261102-b/current": {
+      "port": 51646,
+      "closed": true,
+      "connect_errno": 61,
+      "verified_outside_network_sandbox": true
+    }
+  },
+  "owned_projects": {
+    "independent-r8-20261102-a": {
+      "running_containers": 0,
+      "receipt": ".local/wordpress-repro/independent-r8-20261102-a/logs/081-verify-stopped.json"
+    },
+    "independent-r8-clean-20261102-b": {
+      "running_containers": 0,
+      "receipt": ".local/wordpress-repro/independent-r8-clean-20261102-b/logs/020-verify-stopped.json"
+    }
+  },
+  "normal_preview": {
+    "project": "sdcw-repro-debt-20261101-h",
+    "current": "running",
+    "db": "running",
+    "access": "read-only Docker status only"
+  },
+  "author_and_performance_projects_modified": false,
+  "databases_and_raw_failures_retained": true,
+  "preserved_archives": {
+    "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/packages/simple-digital-clock-1.1.4-final-output-r6-candidate.zip": "f11d33c03be25bdd90ae14198c9b4d7bc9039ddbb89253d39e9b1e5843987989",
+    "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/packages/simple-digital-clock-1.1.4-streaming-r7-candidate.zip": "e42b8ef1580c10a2b8164cb0f2b3dea50d8e29048c000719f51182e53d569e0a"
+  },
+  "port_readback_positive_control": {
+    "scope": "Read-only TCP connect only; no HTTP request or owner DB operation",
+    "preview_port": 55900,
+    "connect_errno": 0
+  }
+}

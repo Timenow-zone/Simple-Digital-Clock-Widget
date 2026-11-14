@@ -12,7 +12,7 @@ function $parcel$interopDefault(a) {
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.8.1
+ * Version: 0.8.4
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */ var $a7a8e2c5ae553f9f$export$41c562ebe57d11e2, $a7a8e2c5ae553f9f$var$t, $a7a8e2c5ae553f9f$export$a8257692ac88316c, $a7a8e2c5ae553f9f$var$i, $a7a8e2c5ae553f9f$var$u, $a7a8e2c5ae553f9f$var$f, $a7a8e2c5ae553f9f$var$e, $a7a8e2c5ae553f9f$var$o, $a7a8e2c5ae553f9f$var$l, $a7a8e2c5ae553f9f$var$c, $a7a8e2c5ae553f9f$var$a, $a7a8e2c5ae553f9f$var$s, $a7a8e2c5ae553f9f$var$h = Symbol.for("pv"), $a7a8e2c5ae553f9f$var$p = {}, $a7a8e2c5ae553f9f$var$v = [], $a7a8e2c5ae553f9f$var$y = /^m(i|n|o|s|text|space)$/, $a7a8e2c5ae553f9f$var$w = Array.isArray, $a7a8e2c5ae553f9f$var$d = $a7a8e2c5ae553f9f$var$v.slice, $a7a8e2c5ae553f9f$var$_ = Object.assign;
@@ -343,107 +343,237 @@ $a7a8e2c5ae553f9f$export$41c562ebe57d11e2 = {
 }, $a7a8e2c5ae553f9f$var$o = Symbol(), $a7a8e2c5ae553f9f$var$l = /(PointerCapture)$|Capture$/i, $a7a8e2c5ae553f9f$var$c = 0, $a7a8e2c5ae553f9f$var$a = {}, $a7a8e2c5ae553f9f$var$s = 0;
 
 
-
-function $6f0b21dd6dcd5f7b$var$i() {
-    return $6f0b21dd6dcd5f7b$var$i = Object.assign ? Object.assign.bind() : function(t) {
-        for(var e = 1; e < arguments.length; e++){
-            var n = arguments[e];
-            for(var o in n)Object.prototype.hasOwnProperty.call(n, o) && (t[o] = n[o]);
-        }
-        return t;
-    }, $6f0b21dd6dcd5f7b$var$i.apply(this, arguments);
-}
-function $6f0b21dd6dcd5f7b$var$s(t, e) {
-    if (null == t) return {};
-    var n, o, r = {}, i = Object.keys(t);
-    for(o = 0; o < i.length; o++)e.indexOf(n = i[o]) >= 0 || (r[n] = t[n]);
-    return r;
-}
-var $6f0b21dd6dcd5f7b$var$a = [
-    "context",
-    "children"
-], $6f0b21dd6dcd5f7b$var$l = [
-    "useFragment"
+const $02a31b7ecbf712b5$export$186fb6090bd1ec45 = "timenow-zone-sdcw";
+const $02a31b7ecbf712b5$export$5e0bb0aecd913db8 = [
+    "background-color",
+    "time-zone-name",
+    "font-family",
+    "background",
+    "time-zone",
+    "rounded",
+    "second",
+    "hundredths",
+    "caption",
+    "prefers",
+    "locale",
+    "shadow",
+    "border",
+    "period",
+    "date",
+    "width",
+    "align"
 ];
-function $6f0b21dd6dcd5f7b$export$2e2bcd8739ae039(t, e, n, o) {
-    function r() {
-        var e, n = Reflect.construct(HTMLElement, [], r);
-        return n._vdomComponent = t, o && o.shadow ? (n._root = n.attachShadow({
-            mode: o.mode || "open",
-            serializable: null != (e = o.serializable) && e
-        }), o.adoptedStyleSheets && (n._root.adoptedStyleSheets = o.adoptedStyleSheets)) : n._root = n, n;
+function $02a31b7ecbf712b5$export$bf482fdedaa267a1(load) {
+    const existing = customElements.get($02a31b7ecbf712b5$export$186fb6090bd1ec45);
+    if (existing) {
+        if (existing.sdcwBridgeVersion !== 1) throw new Error("Simple Digital Clock: the element has another registered owner.");
+        if (load) existing.requestRuntime(load);
+        return existing;
     }
-    return (r.prototype = Object.create(HTMLElement.prototype)).constructor = r, r.prototype.connectedCallback = function() {
-        $6f0b21dd6dcd5f7b$var$d.call(this, o);
-    }, r.prototype.attributeChangedCallback = $6f0b21dd6dcd5f7b$var$h, r.prototype.disconnectedCallback = $6f0b21dd6dcd5f7b$var$f, n = n || t.observedAttributes || Object.keys(t.propTypes || {}), r.observedAttributes = n, t.formAssociated && (r.formAssociated = !0), n.forEach(function(t) {
-        Object.defineProperty(r.prototype, t, {
-            get: function() {
-                return this._vdom ? this._vdom.props[t] : this._props[t];
-            },
-            set: function(e) {
-                this._vdom ? this.attributeChangedCallback(t, null, e) : (this._props || (this._props = {}), this._props[t] = e);
-                var n = typeof e;
-                null != e && "string" !== n && "boolean" !== n && "number" !== n || this.setAttribute(t, e);
+    let runtime;
+    let installed = false;
+    let request = load;
+    let requested = false;
+    let resolveReady;
+    const ready = new Promise((resolve)=>{
+        resolveReady = resolve;
+    });
+    const pending = new Set();
+    function requestForConnectedClock() {
+        // A synchronous insert/remove is not a remaining use of the clock.
+        queueMicrotask(()=>{
+            for (const element of pending)if (!element.isConnected) pending.delete(element);
+            if (!runtime && !requested && pending.size && request) {
+                requested = true;
+                request();
             }
         });
-    }), customElements.define(e || t.tagName || t.displayName || t.name, r), r;
-}
-function $6f0b21dd6dcd5f7b$var$u(t) {
-    this.getChildContext = function() {
-        return t.context;
-    };
-    var e = t.children, n = $6f0b21dd6dcd5f7b$var$s(t, $6f0b21dd6dcd5f7b$var$a);
-    return (0, $a7a8e2c5ae553f9f$export$e530037191fcd5d7)(e, n);
-}
-function $6f0b21dd6dcd5f7b$var$d(o) {
-    var r = new CustomEvent("_preact", {
-        detail: {},
-        bubbles: !0,
-        cancelable: !0
-    });
-    this.dispatchEvent(r), this._vdom = (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($6f0b21dd6dcd5f7b$var$u, $6f0b21dd6dcd5f7b$var$i({}, this._props, {
-        context: r.detail.context
-    }), $6f0b21dd6dcd5f7b$var$v(this, this._vdomComponent, o)), (this.hasAttribute("hydrate") ? (0, $a7a8e2c5ae553f9f$export$fa8d919ba61d84db) : (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99))(this._vdom, this._root);
-}
-function $6f0b21dd6dcd5f7b$var$p(t) {
-    return t.replace(/-(\w)/g, function(t, e) {
-        return e ? e.toUpperCase() : "";
-    });
-}
-function $6f0b21dd6dcd5f7b$var$h(t, e, r) {
-    if (this._vdom) {
-        var i = {};
-        i[t] = r = null == r ? void 0 : r, i[$6f0b21dd6dcd5f7b$var$p(t)] = r, this._vdom = (0, $a7a8e2c5ae553f9f$export$e530037191fcd5d7)(this._vdom, i), (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99)(this._vdom, this._root);
     }
-}
-function $6f0b21dd6dcd5f7b$var$f() {
-    (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99)(this._vdom = null, this._root);
-}
-function $6f0b21dd6dcd5f7b$var$m(e, n) {
-    var o = this, a = e.useFragment, c = $6f0b21dd6dcd5f7b$var$s(e, $6f0b21dd6dcd5f7b$var$l);
-    return (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)(a ? (0, $a7a8e2c5ae553f9f$export$ffb0004e005737fa) : "slot", $6f0b21dd6dcd5f7b$var$i({}, c, {
-        ref: function(t) {
-            t ? (o.ref = t, o._listener || (o._listener = function(t) {
-                t.stopPropagation(), t.detail.context = n;
-            }, t.addEventListener("_preact", o._listener))) : o.ref.removeEventListener("_preact", o._listener);
+    class ClockHost extends HTMLElement {
+        static{
+            this.sdcwBridgeVersion = 1;
         }
-    }));
-}
-function $6f0b21dd6dcd5f7b$var$v(e, n, o) {
-    if (3 === e.nodeType) return e.data;
-    if (1 !== e.nodeType) return null;
-    var r = [], i = {}, s = 0, a = e.attributes, l = e.childNodes;
-    for(s = a.length; s--;)"slot" !== a[s].name && (i[a[s].name] = a[s].value, i[$6f0b21dd6dcd5f7b$var$p(a[s].name)] = a[s].value);
-    for(s = l.length; s--;){
-        var c = $6f0b21dd6dcd5f7b$var$v(l[s], null, o), u = l[s].slot;
-        u ? i[u] = (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($6f0b21dd6dcd5f7b$var$m, {
-            name: u
-        }, c) : r[s] = c;
+        static{
+            this.observedAttributes = $02a31b7ecbf712b5$export$5e0bb0aecd913db8;
+        }
+        static{
+            this.whenRuntimeReady = ready;
+        }
+        static get runtimeReady() {
+            return installed;
+        }
+        constructor(){
+            super();
+            this._root = this.attachShadow({
+                mode: "open"
+            });
+        }
+        static requestRuntime(callback) {
+            if (!request) request = callback;
+            requestForConnectedClock();
+        }
+        static installRuntime(implementation) {
+            if (runtime) throw new Error("Simple Digital Clock: the runtime is already installed.");
+            if (!implementation || typeof implementation.connect !== "function" || typeof implementation.disconnect !== "function" || typeof implementation.attributeChanged !== "function") throw new TypeError("Simple Digital Clock: invalid runtime adapter.");
+            runtime = implementation;
+            for (const element of pending){
+                pending.delete(element);
+                if (!element.isConnected) continue;
+                try {
+                    runtime.connect(element);
+                } catch (error) {
+                    // Match native custom-element reactions: report each error without blocking siblings.
+                    queueMicrotask(()=>{
+                        throw error;
+                    });
+                }
+            }
+            // Readiness describes the renderer, not the validity of every clock's settings.
+            installed = true;
+            resolveReady();
+        }
+        connectedCallback() {
+            if (runtime) runtime.connect(this);
+            else {
+                pending.add(this);
+                requestForConnectedClock();
+            }
+        }
+        disconnectedCallback() {
+            pending.delete(this);
+            if (runtime) runtime.disconnect(this);
+        }
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (runtime) runtime.attributeChanged(this, name, oldValue, newValue);
+        }
     }
-    var d = !(!o || !o.shadow), h = n ? (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($6f0b21dd6dcd5f7b$var$m, {
-        useFragment: !d
-    }, r) : r;
-    return !d && n && (e.innerHTML = ""), (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)(n || e.nodeName.toLowerCase(), i, h);
+    // Preserve the public property/attribute reflection of preact-custom-element.
+    for (const name of $02a31b7ecbf712b5$export$5e0bb0aecd913db8)Object.defineProperty(ClockHost.prototype, name, {
+        get () {
+            return this._vdom ? this._vdom.props[name] : this._props?.[name];
+        },
+        set (value) {
+            if (this._vdom) this.attributeChangedCallback(name, null, value);
+            else (this._props ??= {})[name] = value;
+            if (value == null || [
+                "string",
+                "boolean",
+                "number"
+            ].includes(typeof value)) this.setAttribute(name, String(value));
+        }
+    });
+    customElements.define($02a31b7ecbf712b5$export$186fb6090bd1ec45, ClockHost);
+    return ClockHost;
+}
+
+
+/*
+ * Lifecycle and DOM conversion adapted from preact-custom-element 4.6.0.
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Bradley Spaulding
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */ 
+function $bc2aa61eef49c8f4$var$ContextProvider(props) {
+    const { context: context, children: children, ...rest } = props;
+    this.getChildContext = ()=>context;
+    return (0, $a7a8e2c5ae553f9f$export$e530037191fcd5d7)(children, rest);
+}
+function $bc2aa61eef49c8f4$var$camelCase(value) {
+    return value.replace(/-(\w)/g, (_, letter)=>letter.toUpperCase());
+}
+function $bc2aa61eef49c8f4$var$Slot(props, context) {
+    const ref = (element)=>{
+        if (!element) {
+            if (this.element && this.listener) this.element.removeEventListener("_preact", this.listener);
+        } else {
+            this.element = element;
+            if (!this.listener) this.listener = (event)=>{
+                event.stopPropagation();
+                event.detail.context = context;
+            };
+            element.addEventListener("_preact", this.listener);
+        }
+    };
+    const { useFragment: useFragment, ...rest } = props;
+    return useFragment ? (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)((0, $a7a8e2c5ae553f9f$export$ffb0004e005737fa), null, props.children) : (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)("slot", {
+        ...rest,
+        ref: ref
+    });
+}
+function $bc2aa61eef49c8f4$var$toVdom(element, component) {
+    if (element.nodeType === Node.TEXT_NODE) return element.data;
+    if (element.nodeType !== Node.ELEMENT_NODE) return null;
+    const host = element;
+    const children = [];
+    const props = {};
+    for(let i = host.attributes.length - 1; i >= 0; i--){
+        const attribute = host.attributes[i];
+        if (attribute.name !== "slot") {
+            props[attribute.name] = attribute.value;
+            props[$bc2aa61eef49c8f4$var$camelCase(attribute.name)] = attribute.value;
+        }
+    }
+    for(let i = host.childNodes.length - 1; i >= 0; i--){
+        const child = host.childNodes[i];
+        const vnode = $bc2aa61eef49c8f4$var$toVdom(child);
+        const name = child.nodeType === Node.ELEMENT_NODE ? child.getAttribute("slot") : null;
+        if (name) props[name] = (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($bc2aa61eef49c8f4$var$Slot, {
+            name: name
+        }, vnode);
+        else children[i] = vnode;
+    }
+    const wrapped = component ? (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($bc2aa61eef49c8f4$var$Slot, {
+        useFragment: false
+    }, children) : children;
+    return (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)(component || host.nodeName.toLowerCase(), props, wrapped);
+}
+function $bc2aa61eef49c8f4$export$a7300c7551cdef67(component) {
+    const Component = component;
+    return {
+        connect (element) {
+            element._vdomComponent = Component;
+            const event = new CustomEvent("_preact", {
+                detail: {},
+                bubbles: true,
+                cancelable: true
+            });
+            element.dispatchEvent(event);
+            element._vdom = (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)($bc2aa61eef49c8f4$var$ContextProvider, {
+                ...element._props,
+                context: event.detail.context
+            }, $bc2aa61eef49c8f4$var$toVdom(element, Component));
+            (element.hasAttribute("hydrate") ? (0, $a7a8e2c5ae553f9f$export$fa8d919ba61d84db) : (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99))(element._vdom, element._root);
+        },
+        disconnect (element) {
+            (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99)(element._vdom = null, element._root);
+        },
+        attributeChanged (element, name, _oldValue, newValue) {
+            if (!element._vdom) return;
+            const value = newValue == null ? undefined : newValue;
+            element._vdom = (0, $a7a8e2c5ae553f9f$export$e530037191fcd5d7)(element._vdom, {
+                [name]: value,
+                [$bc2aa61eef49c8f4$var$camelCase(name)]: value
+            });
+            (0, $a7a8e2c5ae553f9f$export$b3890eb0ae9dca99)(element._vdom, element._root);
+        }
+    };
 }
 
 
@@ -466,7 +596,7 @@ var $c199437f4e4422ea$export$2e2bcd8739ae039 = $c199437f4e4422ea$export$4f5d2d50
 
 
 var $311a3960f67ea2d3$exports = {};
-$311a3960f67ea2d3$exports = "*, :before, :after, ::backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-gradient-from-position:  ;\n  --tw-gradient-via-position:  ;\n  --tw-gradient-to-position:  ;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: #3b82f680;\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n  --tw-contain-size:  ;\n  --tw-contain-layout:  ;\n  --tw-contain-paint:  ;\n  --tw-contain-style:  ;\n}\n\n*, :before, :after {\n  box-sizing: border-box;\n  border: 0 solid #e5e7eb;\n}\n\n:before, :after {\n  --tw-content: \"\";\n}\n\nhtml, :host {\n  -webkit-text-size-adjust: 100%;\n  tab-size: 4;\n  font-feature-settings: normal;\n  font-variation-settings: normal;\n  -webkit-tap-highlight-color: transparent;\n  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;\n  line-height: 1.5;\n}\n\nbody {\n  line-height: inherit;\n  margin: 0;\n}\n\nhr {\n  height: 0;\n  color: inherit;\n  border-top-width: 1px;\n}\n\nabbr:where([title]) {\n  text-decoration: underline dotted;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\n\na {\n  color: inherit;\n  -webkit-text-decoration: inherit;\n  text-decoration: inherit;\n}\n\nb, strong {\n  font-weight: bolder;\n}\n\ncode, kbd, samp, pre {\n  font-feature-settings: normal;\n  font-variation-settings: normal;\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;\n  font-size: 1em;\n}\n\nsmall {\n  font-size: 80%;\n}\n\nsub, sup {\n  vertical-align: baseline;\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n}\n\nsub {\n  bottom: -.25em;\n}\n\nsup {\n  top: -.5em;\n}\n\ntable {\n  text-indent: 0;\n  border-color: inherit;\n  border-collapse: collapse;\n}\n\nbutton, input, optgroup, select, textarea {\n  font-feature-settings: inherit;\n  font-variation-settings: inherit;\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  line-height: inherit;\n  letter-spacing: inherit;\n  color: inherit;\n  margin: 0;\n  padding: 0;\n}\n\nbutton, select {\n  text-transform: none;\n}\n\nbutton, input:where([type=\"button\"]), input:where([type=\"reset\"]), input:where([type=\"submit\"]) {\n  -webkit-appearance: button;\n  background-color: #0000;\n  background-image: none;\n}\n\n:-moz-focusring {\n  outline: auto;\n}\n\n:-moz-ui-invalid {\n  box-shadow: none;\n}\n\nprogress {\n  vertical-align: baseline;\n}\n\n::-webkit-inner-spin-button {\n  height: auto;\n}\n\n::-webkit-outer-spin-button {\n  height: auto;\n}\n\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  outline-offset: -2px;\n}\n\n::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  font: inherit;\n}\n\nsummary {\n  display: list-item;\n}\n\nblockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {\n  margin: 0;\n}\n\nfieldset {\n  margin: 0;\n  padding: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\nol, ul, menu {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\ndialog {\n  padding: 0;\n}\n\ntextarea {\n  resize: vertical;\n}\n\ninput::placeholder, textarea::placeholder {\n  opacity: 1;\n  color: #9ca3af;\n}\n\nbutton, [role=\"button\"] {\n  cursor: pointer;\n}\n\n:disabled {\n  cursor: default;\n}\n\nimg, svg, video, canvas, audio, iframe, embed, object {\n  vertical-align: middle;\n  display: block;\n}\n\nimg, video {\n  max-width: 100%;\n  height: auto;\n}\n\n[hidden]:where(:not([hidden=\"until-found\"])) {\n  display: none;\n}\n\n.static {\n  position: static;\n}\n\n.relative {\n  position: relative;\n}\n\n.block {\n  display: block;\n}\n\n.resize {\n  resize: both;\n}\n\n.rounded {\n  border-radius: .25rem;\n}\n\n.border {\n  border-width: 1px;\n}\n\n.shadow {\n  --tw-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;\n  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-2xl {\n  --tw-shadow: 0 25px 50px -12px #00000040;\n  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-lg {\n  --tw-shadow: 0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;\n  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-md {\n  --tw-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;\n  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-sm {\n  --tw-shadow: 0 1px 2px 0 #0000000d;\n  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-xl {\n  --tw-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;\n  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.transition {\n  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter, backdrop-filter;\n  transition-duration: .15s;\n  transition-timing-function: cubic-bezier(.4, 0, .2, 1);\n}\n\n.widget {\n  text-transform: uppercase;\n  justify-content: center;\n  align-items: center;\n  padding-top: .5rem;\n  padding-bottom: .5rem;\n  display: flex;\n}\n\n.font-family {\n  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Noto Sans, Liberation Sans, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;\n}\n";
+$311a3960f67ea2d3$exports = "*, :before, :after, ::backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-gradient-from-position:  ;\n  --tw-gradient-via-position:  ;\n  --tw-gradient-to-position:  ;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: #3b82f680;\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n  --tw-contain-size:  ;\n  --tw-contain-layout:  ;\n  --tw-contain-paint:  ;\n  --tw-contain-style:  ;\n}\n\n*, :before, :after {\n  box-sizing: border-box;\n  border: 0 solid #e5e7eb;\n}\n\n:before, :after {\n  --tw-content: \"\";\n}\n\nhtml, :host {\n  -webkit-text-size-adjust: 100%;\n  tab-size: 4;\n  font-feature-settings: normal;\n  font-variation-settings: normal;\n  -webkit-tap-highlight-color: transparent;\n  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;\n  line-height: 1.5;\n}\n\nbody {\n  line-height: inherit;\n  margin: 0;\n}\n\nhr {\n  height: 0;\n  color: inherit;\n  border-top-width: 1px;\n}\n\nabbr:where([title]) {\n  text-decoration: underline dotted;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\n\na {\n  color: inherit;\n  -webkit-text-decoration: inherit;\n  text-decoration: inherit;\n}\n\nb, strong {\n  font-weight: bolder;\n}\n\ncode, kbd, samp, pre {\n  font-feature-settings: normal;\n  font-variation-settings: normal;\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;\n  font-size: 1em;\n}\n\nsmall {\n  font-size: 80%;\n}\n\nsub, sup {\n  vertical-align: baseline;\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n}\n\nsub {\n  bottom: -.25em;\n}\n\nsup {\n  top: -.5em;\n}\n\ntable {\n  text-indent: 0;\n  border-color: inherit;\n  border-collapse: collapse;\n}\n\nbutton, input, optgroup, select, textarea {\n  font-feature-settings: inherit;\n  font-variation-settings: inherit;\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  line-height: inherit;\n  letter-spacing: inherit;\n  color: inherit;\n  margin: 0;\n  padding: 0;\n}\n\nbutton, select {\n  text-transform: none;\n}\n\nbutton, input:where([type=\"button\"]), input:where([type=\"reset\"]), input:where([type=\"submit\"]) {\n  -webkit-appearance: button;\n  background-color: #0000;\n  background-image: none;\n}\n\n:-moz-focusring {\n  outline: auto;\n}\n\n:-moz-ui-invalid {\n  box-shadow: none;\n}\n\nprogress {\n  vertical-align: baseline;\n}\n\n::-webkit-inner-spin-button {\n  height: auto;\n}\n\n::-webkit-outer-spin-button {\n  height: auto;\n}\n\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  outline-offset: -2px;\n}\n\n::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  font: inherit;\n}\n\nsummary {\n  display: list-item;\n}\n\nblockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {\n  margin: 0;\n}\n\nfieldset {\n  margin: 0;\n  padding: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\nol, ul, menu {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\ndialog {\n  padding: 0;\n}\n\ntextarea {\n  resize: vertical;\n}\n\ninput::placeholder, textarea::placeholder {\n  opacity: 1;\n  color: #9ca3af;\n}\n\nbutton, [role=\"button\"] {\n  cursor: pointer;\n}\n\n:disabled {\n  cursor: default;\n}\n\nimg, svg, video, canvas, audio, iframe, embed, object {\n  vertical-align: middle;\n  display: block;\n}\n\nimg, video {\n  max-width: 100%;\n  height: auto;\n}\n\n[hidden]:where(:not([hidden=\"until-found\"])) {\n  display: none;\n}\n\n.static {\n  position: static;\n}\n\n.relative {\n  position: relative;\n}\n\n.block {\n  display: block;\n}\n\n.resize {\n  resize: both;\n}\n\n.rounded {\n  border-radius: .25rem;\n}\n\n.border {\n  border-width: 1px;\n}\n\n.text-left {\n  text-align: left;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.text-right {\n  text-align: right;\n}\n\n.shadow {\n  --tw-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;\n  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-2xl {\n  --tw-shadow: 0 25px 50px -12px #00000040;\n  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-lg {\n  --tw-shadow: 0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;\n  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-md {\n  --tw-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;\n  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-sm {\n  --tw-shadow: 0 1px 2px 0 #0000000d;\n  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.shadow-xl {\n  --tw-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;\n  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n\n.transition {\n  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter, backdrop-filter;\n  transition-duration: .15s;\n  transition-timing-function: cubic-bezier(.4, 0, .2, 1);\n}\n\n.widget {\n  text-transform: uppercase;\n  justify-content: center;\n  align-items: center;\n  padding-top: .5rem;\n  padding-bottom: .5rem;\n  display: flex;\n}\n\n.font-family {\n  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Noto Sans, Liberation Sans, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;\n}\n";
 
 
 function $270bff5585dd7bb3$var$contrastColor(inputColor) {
@@ -716,7 +846,7 @@ $b2927e49b2707936$exports = {
 var $02a8a47a7fc1ea47$export$2e2bcd8739ae039 = $02a8a47a7fc1ea47$var$isDark;
 
 
-const $aa43cbaf8926a599$var$v = "0.8.1";
+const $aa43cbaf8926a599$var$v = "0.8.4";
 const $aa43cbaf8926a599$var$googleFontsMonospace = (0, (/*@__PURE__*/$parcel$interopDefault($b2927e49b2707936$exports)))?.allowFonts ?? [];
 class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f9f$export$16fa2f45be04daa8) {
     constructor(props){
@@ -1002,25 +1132,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
     }
     static{
         // Observe attributes in kebab-case (HTML side)
-        this.observedAttributes = [
-            "background-color",
-            "time-zone-name",
-            "font-family",
-            "background",
-            "time-zone",
-            "rounded",
-            "second",
-            "hundredths",
-            "caption",
-            "prefers",
-            "locale",
-            "shadow",
-            "border",
-            "period",
-            "date",
-            "width",
-            "align"
-        ];
+        this.observedAttributes = (0, $02a31b7ecbf712b5$export$5e0bb0aecd913db8);
     }
     /** Normalize boolean-like props coming from attributes. */ normalizeBool(value) {
         // undefined/null => not provided
@@ -1133,7 +1245,11 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
                 }
             }
         }, /*#__PURE__*/ (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)("div", {
-            className: (0, $c199437f4e4422ea$export$2e2bcd8739ae039)(`text-${align || "center"}`)
+            className: (0, $c199437f4e4422ea$export$2e2bcd8739ae039)({
+                "text-left": align === "left",
+                "text-right": align === "right",
+                "text-center": !align || align === "center"
+            })
         }, this.state.timeString ? /*#__PURE__*/ (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)((0, $a7a8e2c5ae553f9f$export$ffb0004e005737fa), null, showCaption && /*#__PURE__*/ (0, $a7a8e2c5ae553f9f$export$c8a8987d4410bf2d)("div", {
             style: {
                 fontSize: `${this.state.fontSizeTitle}px`
@@ -1179,9 +1295,7 @@ class $aa43cbaf8926a599$var$SimpleDigitalClockWidget extends (0, $a7a8e2c5ae553f
     }
 }
 var $aa43cbaf8926a599$export$2e2bcd8739ae039 = $aa43cbaf8926a599$var$SimpleDigitalClockWidget;
-(0, $6f0b21dd6dcd5f7b$export$2e2bcd8739ae039)($aa43cbaf8926a599$var$SimpleDigitalClockWidget, undefined, undefined, {
-    shadow: true
-});
+(0, $02a31b7ecbf712b5$export$bf482fdedaa267a1)().installRuntime((0, $bc2aa61eef49c8f4$export$a7300c7551cdef67)($aa43cbaf8926a599$var$SimpleDigitalClockWidget));
 
 })();
 //# sourceMappingURL=SimpleDigitalClockWidget.js.map

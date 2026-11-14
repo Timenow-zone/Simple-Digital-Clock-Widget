@@ -1,0 +1,26 @@
+{
+  "version": "1.1.4",
+  "widget": "0.8.1",
+  "widget_source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
+  "archive_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+  "files": {
+    "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+    "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+    "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+    "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+    "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "block.js": "9332bfa2cdd569eaf169a11c66cbe069d882aa10c69d9922839a58526e52f58a",
+    "includes/simple-digital-clock-admin-notices.php": "bf2b40fab319e8b5f4595361ec833454f1bb4a212673d83775219fe7014d9f1c",
+    "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+    "includes/simple-digital-clock-assets.php": "4942043532c082e6663103313d63f64d514c0ee62eadfce1ffeec3770146aa09",
+    "includes/simple-digital-clock-kses.php": "6a13f47972f6e7276b546c3843bc508380ac7df5d98b582a655a3ef8d1a35194",
+    "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+    "languages/simple-digital-clock.pot": "398eb54a2ac6fa3127801b9cb2b49492240810e19aee77e3e070f86445ffabb5",
+    "readme.txt": "3fef029e7b902bc212f890582f66c2f6ab4b39105a4096080dce4f9e8fd99de2",
+    "widget_init.php": "4654eb0cb5b3dad62566e7fc0c9f34fbc2c79e74301ee852006194969fa15037"
+  },
+  "published": false,
+  "revision": "i18n-r10"
+}

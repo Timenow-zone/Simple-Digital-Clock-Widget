@@ -1,0 +1,55 @@
+{
+  "version": "1.1.4",
+  "revision": "rest-r14",
+  "status": "READY_UNPUBLISHED",
+  "recorded_at_utc": "2026-11-11T13:10:04.094348+00:00",
+  "source_commit": "d5b69e9df3ab038eb782fbb7f8f4d18565dd3b20",
+  "previous_commit": "361b11c8270fa14c524562a9f9b885a0af36b1a0",
+  "archive": ".local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip",
+  "archive_sha256": "57cb0689860a0c4faa6cfbe522b021c3652d36a37120366368b82bd44c52f780",
+  "archive_bytes": 67703,
+  "installable_files": 16,
+  "manifest": "manifest-rest-r14.json",
+  "manifest_sha256": "1f249b1e005461f6270859df9bfa8652ad0b217d5da7656b50fb7b0aa78715dc",
+  "local_acceptance": "acceptance-rest-r14.json",
+  "committed_source_matches_accepted_zip": true,
+  "reviewed_source_paths": 40,
+  "independent_postcommit_identity": "PASS",
+  "source_hosted_checks": {
+    "head_sha": "d5b69e9df3ab038eb782fbb7f8f4d18565dd3b20",
+    "run_id": 43026063278,
+    "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43026063278",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 130541071537,
+        "name": "Browser tests",
+        "conclusion": "success",
+        "fresh_npm_ci": "success",
+        "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43026063278/job/130541071537"
+      },
+      {
+        "id": 130541072808,
+        "name": "Repository checks",
+        "conclusion": "success",
+        "fresh_npm_ci": "success",
+        "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43026063278/job/130541072808"
+      }
+    ]
+  },
+  "later_head_policy": "Every later PR HEAD must preserve accepted package bytes and pass Repository checks and Browser tests independently.",
+  "report": "FINALIZATION-2026-11-11.md",
+  "report_sha256": "250730eab22dcb9860d07071d266c91a282d49b9af80a8cb3717127460a3d204",
+  "pull_request": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18",
+  "merged": false,
+  "published": false,
+  "release_tag_created": false,
+  "github_release_created": false,
+  "deployment_performed": false,
+  "owner_site_installed": false,
+  "publication_policy": "Only after a later explicit user instruction; merging remains separately deferred.",
+  "tested_up_to": "7.1",
+  "widget_version": "0.8.1",
+  "widget_changed": false,
+  "public_update_delivery": "NOT VERIFIED; requires authorized publication first."
+}

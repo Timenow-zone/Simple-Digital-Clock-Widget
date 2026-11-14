@@ -1,0 +1,19 @@
+{
+  "status": "ACCEPTED_LOCAL",
+  "release_readiness": "GO_LOCAL_CANDIDATE",
+  "revision": "rest-r14",
+  "archive_sha256": "57cb0689860a0c4faa6cfbe522b021c3652d36a37120366368b82bd44c52f780",
+  "archive_bytes": 67703,
+  "installable_files": 16,
+  "manifest_sha256": "1f249b1e005461f6270859df9bfa8652ad0b217d5da7656b50fb7b0aa78715dc",
+  "previous_revision": "rest-r13",
+  "previous_status": "acceptance-rest-r13.json",
+  "acceptance_evidence": "independent-rest-r14-20261111.json",
+  "acceptance_evidence_sha256": "9efaab0642438ae0b9ac605fa188676e5a1c9c5739ca355b83451d31fad3c77a",
+  "report": "INDEPENDENT-ACCEPTANCE-REST-R14-2026-11-11.md",
+  "report_sha256": "5c67aa2085f6fccdefc65724437a29ba5ababf60d7f8a310063a0b843be9da2a",
+  "scope": "Fresh exact-package local acceptance of r14 on the listed default-Core-parser matrix; not publication or a replay of every historical r9 gate.",
+  "published": false,
+  "publication": "Deferred by user; local work only",
+  "hosted_required_checks": "NOT RUN for uncommitted r14; existing hosted checks cover r9"
+}

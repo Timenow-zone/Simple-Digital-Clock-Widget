@@ -1,0 +1,296 @@
+{
+  "schema": 1,
+  "date": "2026-11-12",
+  "decision": "PASS_FOR_CORRECTION_AND_SIX_MANDATORY_COMPATIBILITY_CELLS",
+  "release_status": "INCOMPLETE_PRODUCTION_CDN_DELIVERY_AND_PUBLICATION_PENDING",
+  "scope": "Fresh exact-artifact verification below; no new blanket 42/42 release-gate declaration and no historical rows counted as fresh. Final PR HEAD CI is a separate required check.",
+  "candidate": {
+    "version": "1.1.6",
+    "revision": "rc4",
+    "widget": "0.8.3",
+    "archive_path": ".local/packages/simple-digital-clock-1.1.6-rc4.zip",
+    "archive_sha256": "20ba3c0ebdaa5ff9f99639d59a004f471767a7f20e5e13518b1864403b68c1ea",
+    "archive_bytes": 72469,
+    "file_count": 17,
+    "files": {
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "THIRD-PARTY-NOTICES.txt": "5968c6cbf3f1e78adb38512ecd436108cd287a9789bc98ffde54be5de9f6cdad",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/public/js/simple-digital-clock-loader.js": "7187b9ee36e188ea87d76fcd56e82300ad8f3685bd34fc2136aa35dae26cb124",
+      "assets/public/js/simple-digital-clock.min.js": "c877005699bdb81df6a9280f3367981947db8575a1f00c6e234edb8f1e400b6b",
+      "block.js": "9332bfa2cdd569eaf169a11c66cbe069d882aa10c69d9922839a58526e52f58a",
+      "includes/simple-digital-clock-admin-notices.php": "bf2b40fab319e8b5f4595361ec833454f1bb4a212673d83775219fe7014d9f1c",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "includes/simple-digital-clock-assets.php": "ceafa27b02fdda0f3addcd7f6594122f46db452cf8056325364cc01547e9df64",
+      "includes/simple-digital-clock-kses.php": "b801764bd6eb5f4a5e4513006b15272efd19271deeb029a2753adc6e7f1e35d6",
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "languages/simple-digital-clock.pot": "b22bf6c116250203369bde5cb69ed3ba26e6385473e035e9700ba7cd64614bfa",
+      "readme.txt": "69eaaae99323f2835a318e362d8905349db5889e7e9a92d74753039882ba099e",
+      "widget_init.php": "856a9e697aa5de4980af67d92ba2e5932450a9c04be8daed67a04df7a3108ed7"
+    }
+  },
+  "provenance": {
+    "executable_source_commit": "85b0943789e174dea84ea0993eb5777e98138213",
+    "executable_commit_exact_package_files": 16,
+    "package_containing_commit": "1a1e7f824913388587841c4c7e002f31800a8cee",
+    "containing_commit_exact_package_files": 17,
+    "readme_finalized_after_executable_commit": true,
+    "original_manifest_acceptance_retained": "NOT_RUN",
+    "rc3_changed_files": [
+      "assets/public/js/simple-digital-clock-loader.js",
+      "assets/public/js/simple-digital-clock.min.js",
+      "includes/simple-digital-clock-assets.php",
+      "readme.txt"
+    ],
+    "rc3_identical_files": 13,
+    "preserved_baseline_objects": 13
+  },
+  "mandatory_main_script_matrix": {
+    "runtime_sha256": "c877005699bdb81df6a9280f3367981947db8575a1f00c6e234edb8f1e400b6b",
+    "standalone_cases_per_browser": 8,
+    "native_runtime_cases_per_browser": 14,
+    "native_runtime_core_versions": [
+      "6.3.14",
+      "7.1.4"
+    ],
+    "browsers": [
+      {
+        "engine": "chrome",
+        "channel": "chrome",
+        "version": "157.0.8103.51",
+        "platform": "darwin",
+        "architecture": "arm64"
+      },
+      {
+        "engine": "firefox",
+        "channel": null,
+        "version": "153.0",
+        "platform": "linux",
+        "architecture": "arm64"
+      },
+      {
+        "engine": "webkit",
+        "channel": null,
+        "version": "26.5",
+        "platform": "darwin",
+        "architecture": "arm64"
+      }
+    ],
+    "standalone_platforms": {
+      "chrome": "macOS arm64, explicit channel chrome",
+      "firefox": "Linux arm64",
+      "webkit": "Linux arm64, not native Safari"
+    },
+    "all_six_cells": "PASS",
+    "standalone_candidate_passed": 24,
+    "native_runtime_passed": 42,
+    "native_runtime_rows_included_in_primary_total": true,
+    "baseline_081": {
+      "passed": 24,
+      "failed": 0
+    },
+    "rejected_082": {
+      "passed": 6,
+      "expected_failures": 18
+    },
+    "canonical_standalone_runner_sha256": "a30eeccd790646da60f83ad239162ca44a32fdbe23618bf32aa7849ab7a20865"
+  },
+  "native": {
+    "fresh_unique_rows": 570,
+    "groups": {
+      "runtime": 42,
+      "core_compatibility": 126,
+      "frontend": 348,
+      "live_ticks": 12,
+      "post_lifecycle": 24,
+      "site_editor": 6,
+      "legacy_preview": 6,
+      "widgets_ui": 6
+    },
+    "legacy_preview_documents": 12,
+    "additional_warm_repetitions": 390,
+    "transition_rows": 10,
+    "transition_content_tables_per_site": 8,
+    "services_stopped": true,
+    "old_writer_primary_ui_corpus_rerun": false
+  },
+  "supplemental": {
+    "approved_081_override_rows": 42,
+    "override_is_new_main_coverage": false,
+    "cache": {
+      "default_assertions": 75,
+      "invalid_neighbor_assertions": 57,
+      "live_ticks": 3,
+      "generation_controls": 4,
+      "blocked_runtime_assertions": 7,
+      "captured_aggregate_or_direct_responses_verified": 21,
+      "browsers": [
+        "chrome",
+        "firefox",
+        "webkit"
+      ],
+      "whole_aggregate_sha_is_main_sha": false
+    },
+    "multisite": {
+      "native_workflows": 10,
+      "anonymous_checks": 3,
+      "content_table_hashes_per_transition": 16,
+      "stored_content_checks": 14,
+      "frontend_comparisons": 8,
+      "browsers": [
+        "chrome"
+      ],
+      "php": "8.5.12"
+    },
+    "package": {
+      "exact_files": 17,
+      "php_versions": [
+        "7.0.33",
+        "8.3.35"
+      ],
+      "php_files_per_version": 6,
+      "asset_assertions_per_version": 167,
+      "javascript_files": 4,
+      "pot_messages": 63,
+      "dictionary_keys": 48,
+      "gettext_calls": 64,
+      "plugin_check_version": "2.1.0",
+      "plugin_check_static_checks": 29,
+      "plugin_check_runtime_checks": 5,
+      "plugin_check_findings": 0
+    }
+  },
+  "preserved_failure_boundaries": {
+    "cold_readonly_raw_equality": "FAIL: Core creates navigation rows and theme/style caches; separate warm brackets pass all tables/options/files.",
+    "widgets_raw_option_equality": "FAIL: Core reorders _multiwidget; every instance value/content byte is identical after native restoration.",
+    "intentional_native_writer_effects": "New posts/templates/revisions and one wp_theme counter increment are recorded, not called whole-DB equality.",
+    "harness_attempts": "Guide control mismatch, WebKit reload abort, tick output cwd, inspector deduplication and local dependency/PHP setup failures retained separately."
+  },
+  "widgets_runner_identity": {
+    "chrome_firefox": "d4c1f1a6c33b37cc8833debc67177cbae7e7b43e9031a76a185f66d394465885",
+    "webkit_final": "9049cd2cde2f6eca91b6aa09c8a192bc24f6174812d1be8e9789c39021e4d66a",
+    "delta": "Error stacks and page network-idle waits before navigation/final observation; no weaker native actions or assertions."
+  },
+  "historical_scope": {
+    "reference": "docs/releases/1.1.6/FINAL-ACCEPTANCE-RC3.md",
+    "limited_to": "Unchanged block serializer/schema, KSES, dictionaries and persistence code; historical corpus and old-writer saves are not fresh RC4 execution.",
+    "new_runtime_or_bootstrap_coverage": false,
+    "fresh_rows_added": 0,
+    "blanket_42_gate_go": false
+  },
+  "required_ci": {
+    "checks": [
+      "Repository checks",
+      "Browser tests"
+    ],
+    "require_exact_final_pr_head": true,
+    "pr_checks_url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks",
+    "earlier_pass_head": "6dd5df4f82d6b7b374ccf3e5da1a28748447d536",
+    "earlier_pass_run": 43197756107,
+    "earlier_pass_certifies_later_head": false,
+    "final_receipt": ".local/remediation-116-rc4/final-head-ci.json"
+  },
+  "production_observation": {
+    "observed_utc": "2026-11-12T10:17:50.083633+00:00",
+    "version_document": {
+      "version": "0.8.1",
+      "widget": {
+        "path": "/assets/simple-digital-clock-widget-0.8.1.min.js",
+        "bytes": 36009,
+        "gzipBytes": 12491,
+        "gzipMeasurement": {
+          "level": 9,
+          "node": "v24.22.2",
+          "zlib": "1.3.2.1-motley-285e94b"
+        },
+        "sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25"
+      }
+    },
+    "artifact_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "mutation": false
+  },
+  "publication": {
+    "merged": false,
+    "production_083_delivered": false,
+    "wordpress_116_published": false,
+    "withdrawn_082_preview_may_be_promoted": false,
+    "ready_for_wp_publication": false
+  },
+  "evidence": [
+    {
+      "scope": "standalone",
+      "report": ".local/remediation-116-rc4/standalone/REPORT.md",
+      "report_sha256": "73175d0cce43213918cd6dfb4be763e87c8510d51c8b2054b5ccc29cc94dda1e",
+      "inventory": ".local/remediation-116-rc4/standalone/EVIDENCE.json",
+      "inventory_sha256": "65ba9a67d9e28b69c32dd939b72c986bc8d7c49381f9311ddc349bacbca11371",
+      "verified_files": 208,
+      "verification": "All inventoried file hashes match; sizes checked where recorded. This is not a filesystem read-only claim."
+    },
+    {
+      "scope": "native",
+      "report": ".local/candidate-116-rc4-20261112-a/evidence/PRIMARY-RC4-REPORT.md",
+      "report_sha256": "ff0e93ff40f3eaf591cd7e6d373a86af8d7dac6656f2868193b6361d6bb5c26e",
+      "inventory": ".local/candidate-116-rc4-20261112-a/SHA256SUMS.json",
+      "inventory_sha256": "9e6227efa05b63dcf4c16c3ab9adef8480a4d3eeef2bc80799198eb8957fca14",
+      "verified_files": 1711,
+      "verification": "All inventoried file hashes match; sizes checked where recorded. This is not a filesystem read-only claim."
+    },
+    {
+      "scope": "package",
+      "report": ".local/remediation-116-rc4/review/package-1/REPORT.md",
+      "report_sha256": "93ee00611de8fe8d6e1c3f3c41418332c922d19d6d2dc8d6adb1a50b3445550b",
+      "inventory": ".local/remediation-116-rc4/review/package-1/EVIDENCE.json",
+      "inventory_sha256": "9c243727d94a5908ebeb4f0af1f72c498c19ed9cac26434b67cb31c455db77f8",
+      "verified_files": 71,
+      "verification": "All inventoried file hashes match; sizes checked where recorded. This is not a filesystem read-only claim."
+    },
+    {
+      "scope": "override",
+      "report": ".local/remediation-116-rc4/override-review/REPORT.md",
+      "report_sha256": "81dd9e52f80ba5f566236119b1929fabeec8871be03f020e2dd4da73265c3dd5",
+      "inventory": ".local/remediation-116-rc4/override-review/EVIDENCE.json",
+      "inventory_sha256": "308e4bd620ac2a30ab1bbf9ea2aa11a772202e9583f9b5611a27459264a1c8f7",
+      "verified_files": 55,
+      "verification": "All inventoried file hashes match; sizes checked where recorded. This is not a filesystem read-only claim."
+    },
+    {
+      "scope": "cache",
+      "report": ".local/independent-116-rc4-cache-network-20261112/cache/REPORT.md",
+      "report_sha256": "93b9ffcdc715a1f330d59d83f58b753ed85f68c15d472caed5bf01649aaec71e",
+      "inventory": ".local/independent-116-rc4-cache-network-20261112/cache/EVIDENCE.json",
+      "inventory_sha256": "641ac9ebe49f37f0dc608aa7a030d2fe8a4fda2e0f6bdf4f3706590d13eac920",
+      "verified_files": 297,
+      "verification": "All inventoried file hashes match; sizes checked where recorded. This is not a filesystem read-only claim."
+    },
+    {
+      "scope": "multisite",
+      "report": ".local/independent-116-rc4-cache-network-20261112/multisite/REPORT.md",
+      "report_sha256": "22eb0138255f307076ee0ef28f26a4d0d323ff7047d797ba7d64d98cf5ad8c8a",
+      "inventory": ".local/independent-116-rc4-cache-network-20261112/multisite/EVIDENCE.json",
+      "inventory_sha256": "eb46670f5f31cb763be051aa21af183d174c22481a97f607dbea311f7b3312f7",
+      "verified_files": 101,
+      "verification": "All inventoried file hashes match; sizes checked where recorded. This is not a filesystem read-only claim."
+    },
+    {
+      "scope": "source_review",
+      "report": ".local/remediation-116-rc4/final-review/REPORT.md",
+      "report_sha256": "f60217059ffa70ae9dbeaded3096407cdf3b1c3fdfdf3ad5df07701e75fe55b3",
+      "inventory": ".local/remediation-116-rc4/final-review/EVIDENCE.json",
+      "inventory_sha256": "909e4b39e97f2198d1666e43dce57d35e2f0da950f9edca29f3df8a107f78777",
+      "verified_files": 18,
+      "verification": "All inventoried file hashes match; sizes checked where recorded. This is not a filesystem read-only claim."
+    },
+    {
+      "scope": "widgets_review",
+      "report": ".local/remediation-116-rc4/final-review/ui04-followup/REPORT.md",
+      "report_sha256": "dd5941e0307a700b4c2de4892eff4c4c8e2d7d1125ed7026843ae274c1bccacd",
+      "inventory": ".local/remediation-116-rc4/final-review/ui04-followup/EVIDENCE.json",
+      "inventory_sha256": "8825e5ba8b5f05969ca350d513e8b1cf1ee676cb2b130ea423fbeb9cddd66446",
+      "verified_files": 4,
+      "verification": "All inventoried file hashes match; sizes checked where recorded. This is not a filesystem read-only claim."
+    }
+  ]
+}

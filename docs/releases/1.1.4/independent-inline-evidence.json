@@ -1,0 +1,554 @@
+{
+  "verdict": "NO-GO",
+  "scope": "Independent non-publishing exact-ZIP acceptance, terminated after mandatory actual-output resource blocker",
+  "identity": {
+    "passed": true,
+    "source_commit": "f75c98776b6b1860e916123915bed8084c879153",
+    "source_uncommitted": true,
+    "frozen_source_files_verified": 333,
+    "zip_sha256": "3b434a982d24192173e2f93239121292b4013aaf51e8044fd227787c67addef2",
+    "zip_bytes": 66810,
+    "zip_files": 16,
+    "safe_unique_paths": true,
+    "manifest_disk_zip_exact": true
+  },
+  "manifest_sha256": "ce94bf3bc9b41f2ce2ca97ed802c65fe367ae59175da6cdd1e9863981472b3b7",
+  "gate_counts": {
+    "PASS": 8,
+    "FAIL": 1,
+    "NOT RUN": 7
+  },
+  "gates": [
+    {
+      "id": "G01",
+      "status": "PASS",
+      "label": "Exact archive, source, allowlist and installed identities",
+      "evidence": [
+        "independent-identity.json",
+        "final-integrity.json"
+      ],
+      "detail": "16 safe unique regular files, exact frozen manifest/disk/ZIP and both final installed file sets; all 333 frozen source files unchanged."
+    },
+    {
+      "id": "G02",
+      "status": "PASS",
+      "label": "WordPress metadata, minimums, notices and bounded PHPCS exception",
+      "evidence": [
+        "metadata-and-scope-review.json",
+        "local-regression.log"
+      ],
+      "detail": "Metadata matches 1.1.4 / WP6.3 / PHP7.0. Dependency full-notice guard passes. Exact one-line argument-free 12-frame debug_backtrace exception reviewed; no global suppression."
+    },
+    {
+      "id": "G03",
+      "status": "PASS",
+      "label": "Actual supported runtime identities",
+      "evidence": [
+        ".local/wordpress-repro/independent-inline-20261101-a/minimum-predecessor.json",
+        ".local/wordpress-repro/independent-inline-20261101-a/current-predecessor.json"
+      ],
+      "detail": "Actual WP6.3.14/PHP7.0.33 and WP7.1.4/PHP8.3.35 verified, not inferred from image tags."
+    },
+    {
+      "id": "G04",
+      "status": "PASS",
+      "label": "Published 1.1.2 upgrade / physical rollback / reupdate",
+      "evidence": [
+        ".local/wordpress-repro/independent-inline-20261101-a/summary.json"
+      ],
+      "detail": "All six native Core/file transitions preserve complete post rows and eight critical options. No DB restore/reset; installed bytes exact. This is not a claim that every transient/DB row is immutable."
+    },
+    {
+      "id": "G05",
+      "status": "PASS",
+      "label": "Official pinned Plugin Check static and runtime",
+      "evidence": [
+        ".local/wordpress-repro/independent-inline-20261101-a/current-plugin-check.json",
+        ".local/wordpress-repro/independent-inline-20261101-a/summary.json"
+      ],
+      "detail": "PCP2.1.0 exact pinned official archive; 29 static plus 5 actual runtime checks selected on PHP8.3.35. Zero findings: 0 errors, 0 warnings. Not executed on unsupported PHP7.0."
+    },
+    {
+      "id": "G06",
+      "status": "PASS",
+      "label": "Focused authored regression guards independently executed",
+      "evidence": [
+        "local-regression.log"
+      ],
+      "detail": "12/12 Node test contracts pass. These guards do not cover transformed/discarded inner-block output."
+    },
+    {
+      "id": "G07",
+      "status": "PASS",
+      "label": "Native clock bootstrap smoke",
+      "evidence": [
+        ".local/wordpress-repro/independent-inline-20261101-a/browser-smoke.json"
+      ],
+      "detail": "4/4 real Chromium/WebKit \u00d7 minimum/current ticking smoke cases; limited smoke, not the full asset matrix."
+    },
+    {
+      "id": "G08",
+      "status": "FAIL",
+      "label": "Actual final-output zero-assets frontend contract",
+      "evidence": [
+        "independent-negative-browser.json",
+        "minimum-eager-render-trace.json",
+        "current-eager-render-trace.json"
+      ],
+      "detail": "8 FAIL: parent suppresses or escapes clock child, across both engines and both runtimes; final DOM 0 clocks but runtime requests/tags=1 and inline layout=1. 8 paired empty/keep controls PASS."
+    },
+    {
+      "id": "G09",
+      "status": "NOT RUN",
+      "label": "Fresh candidate installation separate from predecessor upgrade",
+      "evidence": [],
+      "detail": "Stopped after reproducible mandatory G08 blocker under exact-release acceptance procedure. No prior candidate results transferred."
+    },
+    {
+      "id": "G10",
+      "status": "NOT RUN",
+      "label": "Full 20-fixture native frontend resource matrix",
+      "evidence": [],
+      "detail": "Stopped after reproducible mandatory G08 blocker under exact-release acceptance procedure. No prior candidate results transferred."
+    },
+    {
+      "id": "G11",
+      "status": "NOT RUN",
+      "label": "Admin notice/editor first insertion/save/reopen/iframe matrix",
+      "evidence": [],
+      "detail": "Stopped after reproducible mandatory G08 blocker under exact-release acceptance procedure. No prior candidate results transferred."
+    },
+    {
+      "id": "G12",
+      "status": "NOT RUN",
+      "label": "Classic plus block theme late CSS matrix",
+      "evidence": [],
+      "detail": "Stopped after reproducible mandatory G08 blocker under exact-release acceptance procedure. No prior candidate results transferred."
+    },
+    {
+      "id": "G13",
+      "status": "NOT RUN",
+      "label": "Actual Linux Firefox frontend",
+      "evidence": [],
+      "detail": "Stopped after reproducible mandatory G08 blocker under exact-release acceptance procedure. No prior candidate results transferred."
+    },
+    {
+      "id": "G14",
+      "status": "NOT RUN",
+      "label": "Native roles/KSES/security/recovery/unknown-metadata probes",
+      "evidence": [],
+      "detail": "Stopped after reproducible mandatory G08 blocker under exact-release acceptance procedure. No prior candidate results transferred."
+    },
+    {
+      "id": "G15",
+      "status": "NOT RUN",
+      "label": "New required GitHub Repository checks and Browser tests",
+      "evidence": [],
+      "detail": "Local uncommitted source; no new CI run. No push or PR/merge performed."
+    },
+    {
+      "id": "G16",
+      "status": "PASS",
+      "label": "Freeze, owned teardown and owner preview preservation",
+      "evidence": [
+        "final-integrity.json",
+        "normal-preview-status.json",
+        ".local/wordpress-repro/independent-inline-20261101-a/logs/047-verify-stopped.json"
+      ],
+      "detail": "All 333 frozen files and exact ZIP/manifest unchanged. Only reviewer project stopped, both ports closed, DBs/evidence retained. Owner preview current+db remain running; preview was read only."
+    }
+  ],
+  "waivers": [],
+  "probe_counts": {
+    "total": 16,
+    "PASS": 8,
+    "FAIL": 8
+  },
+  "failures": [
+    {
+      "engine": "chromium",
+      "site": "minimum",
+      "fixture": "suppress",
+      "url": "http://127.0.0.1:51690/?page_id=9",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51690/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": false
+    },
+    {
+      "engine": "chromium",
+      "site": "minimum",
+      "fixture": "escape",
+      "url": "http://127.0.0.1:51690/?page_id=10",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51690/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": false
+    },
+    {
+      "engine": "chromium",
+      "site": "current",
+      "fixture": "suppress",
+      "url": "http://127.0.0.1:51692/?page_id=9",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51692/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": false
+    },
+    {
+      "engine": "chromium",
+      "site": "current",
+      "fixture": "escape",
+      "url": "http://127.0.0.1:51692/?page_id=10",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51692/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": false
+    },
+    {
+      "engine": "webkit",
+      "site": "minimum",
+      "fixture": "suppress",
+      "url": "http://127.0.0.1:51690/?page_id=9",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51690/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": false
+    },
+    {
+      "engine": "webkit",
+      "site": "minimum",
+      "fixture": "escape",
+      "url": "http://127.0.0.1:51690/?page_id=10",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51690/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": false
+    },
+    {
+      "engine": "webkit",
+      "site": "current",
+      "fixture": "suppress",
+      "url": "http://127.0.0.1:51692/?page_id=9",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51692/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": false
+    },
+    {
+      "engine": "webkit",
+      "site": "current",
+      "fixture": "escape",
+      "url": "http://127.0.0.1:51692/?page_id=10",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51692/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": false
+    }
+  ],
+  "controls": [
+    {
+      "engine": "chromium",
+      "site": "minimum",
+      "fixture": "empty",
+      "url": "http://127.0.0.1:51690/?page_id=7",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 0,
+      "runtime_tags": 0,
+      "external_css": 0,
+      "inline_layout": 0,
+      "requests": [],
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "site": "minimum",
+      "fixture": "keep",
+      "url": "http://127.0.0.1:51690/?page_id=8",
+      "http_status": 200,
+      "expected_clocks": 1,
+      "actual_clocks": 1,
+      "expected_assets": 1,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51690/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "site": "current",
+      "fixture": "empty",
+      "url": "http://127.0.0.1:51692/?page_id=7",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 0,
+      "runtime_tags": 0,
+      "external_css": 0,
+      "inline_layout": 0,
+      "requests": [],
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "site": "current",
+      "fixture": "keep",
+      "url": "http://127.0.0.1:51692/?page_id=8",
+      "http_status": 200,
+      "expected_clocks": 1,
+      "actual_clocks": 1,
+      "expected_assets": 1,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51692/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "minimum",
+      "fixture": "empty",
+      "url": "http://127.0.0.1:51690/?page_id=7",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 0,
+      "runtime_tags": 0,
+      "external_css": 0,
+      "inline_layout": 0,
+      "requests": [],
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "minimum",
+      "fixture": "keep",
+      "url": "http://127.0.0.1:51690/?page_id=8",
+      "http_status": 200,
+      "expected_clocks": 1,
+      "actual_clocks": 1,
+      "expected_assets": 1,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51690/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "current",
+      "fixture": "empty",
+      "url": "http://127.0.0.1:51692/?page_id=7",
+      "http_status": 200,
+      "expected_clocks": 0,
+      "actual_clocks": 0,
+      "expected_assets": 0,
+      "runtime_requests": 0,
+      "runtime_tags": 0,
+      "external_css": 0,
+      "inline_layout": 0,
+      "requests": [],
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "current",
+      "fixture": "keep",
+      "url": "http://127.0.0.1:51692/?page_id=8",
+      "http_status": 200,
+      "expected_clocks": 1,
+      "actual_clocks": 1,
+      "expected_assets": 1,
+      "runtime_requests": 1,
+      "runtime_tags": 1,
+      "external_css": 0,
+      "inline_layout": 1,
+      "requests": [
+        "http://127.0.0.1:51692/wp-content/plugins/simple-digital-clock/assets/public/js/simple-digital-clock.min.js?ver=0.8.1"
+      ],
+      "page_errors": [],
+      "passed": true
+    }
+  ],
+  "root_cause": {
+    "candidate_file": "wordpress/simple-digital-clock/includes/simple-digital-clock-assets.php",
+    "lines": [
+      50,
+      54
+    ],
+    "mechanism": "Core renders inner blocks before the dynamic parent callback; enqueue records intermediate child HTML before the parent discards or escapes it. Final output has no clock; queued resources remain."
+  },
+  "scope_limits": [
+    "No acceptance transferred from r2/r3 or author reports.",
+    "Candidate fresh install, full resource/admin/theme/Firefox/native security matrices not executed after blocker.",
+    "PHP7.0 does not support PCP2.1.0 and is not credited for PCP.",
+    "Old public 1.1.2 writer on Core6.3 remains an irreversible data-loss boundary; file rollback cannot reconstruct erased captions/lock metadata; no old-writer passing claim.",
+    "Unchanged r3 KSES/block/widget bytes are source identity evidence only; no fresh native security certification.",
+    "HTTPS/TLS, multisite, Safari/VoiceOver, successful external Google transport, owner installations and public delivery outside scope."
+  ],
+  "publication_performed": false,
+  "source_or_candidate_fixes": false,
+  "new_ci_run": false,
+  "preserved_failed_attempt": "negative-browser-sandbox-failed.log records Chromium sandbox Mach IPC denial; rerun with local browser permission completed successfully.",
+  "teardown": {
+    "checked_at_utc": "2026-11-01T19:56:35.798270+00:00",
+    "frozen_source_files_verified": 333,
+    "changed_frozen_files": [],
+    "zip_sha256": "3b434a982d24192173e2f93239121292b4013aaf51e8044fd227787c67addef2",
+    "original_zip_sha256": "3b434a982d24192173e2f93239121292b4013aaf51e8044fd227787c67addef2",
+    "manifest_sha256": "ce94bf3bc9b41f2ce2ca97ed802c65fe367ae59175da6cdd1e9863981472b3b7",
+    "installed_files": {
+      "minimum": {
+        "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+        "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+        "widget_init.php": "e0cd9a0c0f679d4e43a3592013684ef96ef26d0ca87370744026151329aabea8",
+        "block.js": "b1e5873797ee23618b9250556e08c903928aa811f84880c0541d0a0d3fd80f98",
+        "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+        "readme.txt": "9d0b57f849d07e286853dc2a33158f9e27f18fd2b14a9bd76da55f2215cba243",
+        "includes/simple-digital-clock-admin-notices.php": "4b9d8f50e6174727c6ecc289ee5ec6bfdfebaf728be26e13ccbbe06d1e75f46f",
+        "includes/simple-digital-clock-assets.php": "046d5cc6a016d952d6a9f20079cc1f5e2373eeb7539f570c7255ee901ce47682",
+        "includes/simple-digital-clock-kses.php": "6a13f47972f6e7276b546c3843bc508380ac7df5d98b582a655a3ef8d1a35194",
+        "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+        "languages/simple-digital-clock.pot": "f9e2a00824e6d861174ec84e287d2e1b22735503402b933924bbfa461e4234e6",
+        "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+        "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+        "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+        "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+        "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+      },
+      "current": {
+        "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+        "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+        "widget_init.php": "e0cd9a0c0f679d4e43a3592013684ef96ef26d0ca87370744026151329aabea8",
+        "block.js": "b1e5873797ee23618b9250556e08c903928aa811f84880c0541d0a0d3fd80f98",
+        "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+        "readme.txt": "9d0b57f849d07e286853dc2a33158f9e27f18fd2b14a9bd76da55f2215cba243",
+        "includes/simple-digital-clock-admin-notices.php": "4b9d8f50e6174727c6ecc289ee5ec6bfdfebaf728be26e13ccbbe06d1e75f46f",
+        "includes/simple-digital-clock-assets.php": "046d5cc6a016d952d6a9f20079cc1f5e2373eeb7539f570c7255ee901ce47682",
+        "includes/simple-digital-clock-kses.php": "6a13f47972f6e7276b546c3843bc508380ac7df5d98b582a655a3ef8d1a35194",
+        "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+        "languages/simple-digital-clock.pot": "f9e2a00824e6d861174ec84e287d2e1b22735503402b933924bbfa461e4234e6",
+        "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+        "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+        "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+        "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+        "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+      }
+    },
+    "reviewer_project": "sdcw-repro-independent-inline-20261101-a",
+    "running_owned_containers": 0,
+    "verify_stopped_log": ".local/wordpress-repro/independent-inline-20261101-a/logs/047-verify-stopped.json",
+    "owned_ports": {
+      "minimum": {
+        "port": 51690,
+        "closed": true
+      },
+      "current": {
+        "port": 51692,
+        "closed": true
+      }
+    },
+    "normal_preview": {
+      "project": "sdcw-repro-debt-20261101-h",
+      "current": "running",
+      "db": "running",
+      "access": "readonly status only"
+    },
+    "databases_and_raw_evidence_retained": true
+  },
+  "raw_harness_directory": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/wordpress-repro/independent-inline-20261101-a"
+}

@@ -1,0 +1,10 @@
+# Accepted package bytes must survive checkout without line-ending conversion.
+wordpress/simple-digital-clock/** -text
+wordpress/simple-digital-clock/readme.txt whitespace=cr-at-eol
+# Preserve captured evidence and the hash-bound rollback recipe as recorded.
+docs/releases/** -text
+docs/releases/**/*.csv whitespace=cr-at-eol
+tools/wordpress-lab/rollback/** -text
+# Patch context deliberately contains leading spaces, tabs and blank lines.
+patches/*.patch -text -whitespace
+tests/fixtures/wordpress-rollback/*.zip binary

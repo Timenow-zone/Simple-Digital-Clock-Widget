@@ -1,0 +1,95 @@
+{
+  "review_result": "NO-GO at preliminary code review: IND-STREAM-01 confirmed",
+  "formal_full_acceptance": "NOT RUN",
+  "performance_benchmark_by_reviewer": "NOT RUN",
+  "identity": {
+    "scope": "Read-only preliminary code review only; docs/tooling not frozen; no acceptance verdict",
+    "captured_at_utc": "2026-11-02T17:20:30.874197+00:00",
+    "source_base_commit": "f75c98776b6b1860e916123915bed8084c879153",
+    "zip": "/Users/yy/dev2/Simple-Digital-Clock-Widget/.local/packages/simple-digital-clock-1.1.4-streaming-r7-candidate.zip",
+    "zip_bytes": 69574,
+    "zip_files": 17,
+    "zip_sha256": "e42b8ef1580c10a2b8164cb0f2b3dea50d8e29048c000719f51182e53d569e0a",
+    "manifest_sha256": "250b49bdae179090ddfc4515b6ad36eb107bbfdbe005152415806d6f58346a3f",
+    "installable_files": {
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "widget_init.php": "e0cd9a0c0f679d4e43a3592013684ef96ef26d0ca87370744026151329aabea8",
+      "block.js": "b1e5873797ee23618b9250556e08c903928aa811f84880c0541d0a0d3fd80f98",
+      "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+      "readme.txt": "1fc0c1323faf7ebd337e1c63eab04fada35880b2bc7a2da4d056db9bbbe1a97f",
+      "includes/simple-digital-clock-admin-notices.php": "4b9d8f50e6174727c6ecc289ee5ec6bfdfebaf728be26e13ccbbe06d1e75f46f",
+      "includes/simple-digital-clock-assets.php": "9d25ff4000e4876a7fb97b9a23ab0774f9a16b1ec21c5fa2bbbde58f2d7b1a34",
+      "includes/simple-digital-clock-output.php": "8652cb30d316a7cfe930242a7053d2856f170037eb70e4c31dbbb5a82bd6859b",
+      "includes/simple-digital-clock-kses.php": "6a13f47972f6e7276b546c3843bc508380ac7df5d98b582a655a3ef8d1a35194",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "languages/simple-digital-clock.pot": "f9e2a00824e6d861174ec84e287d2e1b22735503402b933924bbfa461e4234e6",
+      "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39"
+    },
+    "contract_sha256_at_review": "ccc8f3dee92c5292a1613ab572cc302a5907bb5fd66a5a213e331acb4ac86ef5"
+  },
+  "closed_at_utc": "2026-11-02T17:24:53.687809+00:00",
+  "installable_freeze_verified": 17,
+  "changed_installable_files": [],
+  "zip_unchanged": true,
+  "manifest_unchanged": true,
+  "primary_finding": {
+    "id": "IND-STREAM-01",
+    "status": "CONFIRMED",
+    "file": "wordpress/simple-digital-clock/includes/simple-digital-clock-output.php",
+    "lines": [
+      38,
+      45,
+      46,
+      47
+    ],
+    "mechanism": "SCRIPT raw-text mode is gated by !$select. A valid SCRIPT inside SELECT is parsed as ordinary data; literal </select> in its JavaScript string clears select state and fake clock markup sets found. Ready-asset insertion offset is inside the JavaScript string.",
+    "scanner_chunk_sizes": [
+      1,
+      2,
+      3,
+      7,
+      4096
+    ],
+    "actual_inert_dom_clocks": 0,
+    "actual_control_dom_clocks": 1,
+    "browser_page_errors": 0,
+    "ready_insertion_offset": 125,
+    "evidence": [
+      "select-script-probe.php",
+      "select-script-probe.json",
+      "select-script-dom.mjs",
+      "select-script-dom.json"
+    ]
+  },
+  "secondary_observations": [
+    {
+      "id": "REV-NONHTML",
+      "status": "SOURCE-LEVEL REPRODUCTION; native HTTP NOT RUN",
+      "evidence": "nonhtml-capture-probe.json",
+      "detail": "Capture unconditionally echoes empty HTML comment; non-HTML observer branch passes bytes through, so a non-HTML endpoint that reaches capture can have JSON/text mutated. Narrow Core-output stubs produce invalid JSON body {\"ok\":true}<!-- -->. Real endpoint lifecycle not claimed."
+    },
+    {
+      "id": "REV-END-BOUNDARY",
+      "status": "SOURCE-LEVEL API REPRODUCTION; native theme NOT RUN",
+      "evidence": "end-boundary-probe.json",
+      "detail": "After seen clock and ready capture inside inert template, closing template at exact end of chunk returns null; empty final feed also null, while same closer with a following byte returns11. Safe end-of-chunk/empty-final boundary omitted. No broad claim about normal footer placement."
+    }
+  ],
+  "reviewer_activity": {
+    "docker_started": false,
+    "services_started": false,
+    "source_edits": false,
+    "full_browser_matrix": false,
+    "tiny_browser_start_utc": "2026-11-02T17:22:57.969Z",
+    "tiny_browser_finish_utc": "2026-11-02T17:22:58.427Z",
+    "browser_closed": true,
+    "normal_preview_touched": false,
+    "author_projects_touched": false
+  },
+  "next_gate": "New corrected artifact and fresh identity before performance/full acceptance; r7 evidence/ZIP retained"
+}

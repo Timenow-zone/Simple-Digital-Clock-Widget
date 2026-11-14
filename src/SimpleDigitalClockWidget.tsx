@@ -7,13 +7,14 @@
  * Related: https://todaysdatenow.com/
  * WP plugin: https://wordpress.org/plugins/simple-digital-clock/
  *
- * Version: 0.8.1
+ * Version: 0.8.4
  * License: MIT
  * Author: dejurin (https://github.com/Timenow-zone)
  */
 
 import { Component, Fragment, h } from "preact";
-import register from "preact-custom-element";
+import { CLOCK_ATTRIBUTES, registerClockElement } from "./clock-element";
+import { createClockRuntime } from "./clock-element-runtime";
 import clsx from "clsx";
 import cssText from "bundle-text:./styles.css";
 import contrastColor from "./contrastColor";
@@ -21,7 +22,7 @@ import darkenColor from "./darkenColor";
 import data from "./data.yaml";
 import isDark from "./isDark";
 
-const v = "0.8.1";
+const v = "0.8.4";
 
 const googleFontsMonospace: string[] = (data?.allowFonts ?? []) as string[];
 
@@ -110,25 +111,7 @@ class SimpleDigitalClockWidget extends Component<
   static tagName = "timenow-zone-sdcw";
 
   // Observe attributes in kebab-case (HTML side)
-  static observedAttributes = [
-    "background-color",
-    "time-zone-name",
-    "font-family",
-    "background",
-    "time-zone",
-    "rounded",
-    "second",
-    "hundredths",
-    "caption",
-    "prefers",
-    "locale",
-    "shadow",
-    "border",
-    "period",
-    "date",
-    "width",
-    "align",
-  ];
+  static observedAttributes = CLOCK_ATTRIBUTES;
 
   /** Normalize boolean-like props coming from attributes. */
   private normalizeBool(value: unknown): boolean | undefined {
@@ -627,7 +610,11 @@ class SimpleDigitalClockWidget extends Component<
             }),
           }}
         >
-          <div className={clsx(`text-${align || "center"}`)}>
+          <div className={clsx({
+            "text-left": align === "left",
+            "text-right": align === "right",
+            "text-center": !align || align === "center",
+          })}>
             {this.state.timeString ? (
               <Fragment>
                 {showCaption && <div style={{ fontSize: `${this.state.fontSizeTitle}px` }}>{caption}</div>}
@@ -691,4 +678,4 @@ class SimpleDigitalClockWidget extends Component<
 
 export default SimpleDigitalClockWidget;
 
-register(SimpleDigitalClockWidget, undefined, undefined, { shadow: true });
+registerClockElement().installRuntime(createClockRuntime(SimpleDigitalClockWidget));

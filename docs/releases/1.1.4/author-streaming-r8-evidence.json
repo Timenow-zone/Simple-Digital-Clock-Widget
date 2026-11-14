@@ -1,0 +1,153 @@
+{
+  "revision": "streaming-r8",
+  "archive_sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+  "archive_bytes": 69772,
+  "file_count": 17,
+  "native_summary": {
+    "passed": true,
+    "run_id": "sdcw-repro-streaming-r8-20261102-a",
+    "sites": [
+      {
+        "site": "minimum",
+        "phase": "update",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "minimum",
+        "phase": "rollback",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "minimum",
+        "phase": "reupdate",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "current",
+        "phase": "update",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "current",
+        "phase": "rollback",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "current",
+        "phase": "reupdate",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      }
+    ],
+    "publication_performed": false,
+    "plugin_check": {
+      "minimum": {
+        "executed": false,
+        "reason": "Plugin Check 2.1.0 requires PHP >=7.4; plugin compatibility is tested separately on real PHP 7.0.33"
+      },
+      "current": {
+        "executed": true,
+        "errors": 0,
+        "findings": 0,
+        "selection": {
+          "static": [
+            "i18n_usage",
+            "php_error_reporting",
+            "code_obfuscation",
+            "plugin_content",
+            "file_type",
+            "plugin_header_fields",
+            "late_escaping",
+            "safe_redirect",
+            "plugin_updater",
+            "plugin_uninstall",
+            "plugin_review_phpcs",
+            "direct_db_queries",
+            "performant_wp_query_params",
+            "enqueued_scripts_in_footer",
+            "enqueued_resources",
+            "plugin_readme",
+            "localhost",
+            "no_unfiltered_uploads",
+            "trademarks",
+            "offloading_files",
+            "write_file",
+            "setting_sanitization",
+            "prefixing",
+            "direct_db",
+            "minified_files",
+            "direct_file_access",
+            "external_admin_menu_links",
+            "wp_functions_compatibility",
+            "ai_provider"
+          ],
+          "runtime": [
+            "enqueued_scripts_size",
+            "enqueued_styles_size",
+            "enqueued_styles_scope",
+            "enqueued_scripts_scope",
+            "non_blocking_scripts"
+          ]
+        }
+      }
+    },
+    "browser_smoke": [
+      {
+        "engine": "chromium",
+        "site": "minimum",
+        "ticking": true,
+        "candidate_asset_reference": true,
+        "page_errors": []
+      },
+      {
+        "engine": "chromium",
+        "site": "current",
+        "ticking": true,
+        "candidate_asset_reference": true,
+        "page_errors": []
+      },
+      {
+        "engine": "webkit",
+        "site": "minimum",
+        "ticking": true,
+        "candidate_asset_reference": true,
+        "page_errors": []
+      },
+      {
+        "engine": "webkit",
+        "site": "current",
+        "ticking": true,
+        "candidate_asset_reference": true,
+        "page_errors": []
+      }
+    ],
+    "stopped": true
+  },
+  "focused_tests_log_sha256": "773de27970285a3f203214e833d4f7ed5636419fb38d8104f2ab76f626fdf273",
+  "full_author_frontend_matrix": "NOT RUN; full r8 matrix delegated to independent acceptance",
+  "independent_acceptance": "PENDING",
+  "published": false
+}

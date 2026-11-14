@@ -1,0 +1,54 @@
+{
+  "status": "COMPATIBILITY_BLOCKED",
+  "release_readiness": "NO_GO",
+  "revision": "i18n-r10",
+  "scope": "Expanded compatibility of immutable i18n-r10. Earlier scoped i18n acceptance is preserved; the new stable-Core failure blocks release.",
+  "archive_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+  "archive_bytes": 66859,
+  "installable_files": 16,
+  "manifest_sha256": "61396bfd46e30e605b99439239aeec41a051b99170456450d46f708e22ff4860",
+  "original_scoped_acceptance": {
+    "status": "INDEPENDENT_GO",
+    "snapshot": "acceptance-i18n-r10.json",
+    "sha256": "68df4d171f03789f3635f8f68a45e13e8e122932ef2dfd1278f810f9d9a1b904",
+    "gates_passed": 8,
+    "historical_report": "INDEPENDENT-ACCEPTANCE-I18N-R10-2026-11-10.md"
+  },
+  "report": "COMPATIBILITY-2026-11-10.md",
+  "report_sha256": "d8d41fef52791024c3fb1a760ab486d0b7dc98918b72f1642649af8b2faa5e9c",
+  "evidence": "compatibility-20261110.json",
+  "evidence_sha256": "cc931be28a0127f9bcf1e0d37cdc3dd29f80a0c10cc663e1cc7037a6a6cc2913",
+  "actionable_findings": [
+    {
+      "id": "WP68-REST-METADATA-LOSS",
+      "priority": "P1",
+      "wordpress": "6.8.12",
+      "php": "8.3.35",
+      "role_observed": "administrator",
+      "affected_caption_cases": 10,
+      "caption_cases_total": 11,
+      "symptom": "Native save drops every serialized clock attribute except the subsequently recovered timeZone. HTML fallback conceals loss of lock and other JSON metadata.",
+      "cause": "Core REST pre-insert Block Hooks process malformed legacy caption JSON before the existing plugin repair.",
+      "independently_reproduced_byte_exact": true,
+      "diagnostic_database_unchanged": true,
+      "fix_applied": false,
+      "required_next_step": "Narrow early metadata repair before Core REST Block Hooks, retain existing late repair and security boundaries, build a new immutable candidate and repeat regression/acceptance including Core 6.8.12 all three roles.",
+      "proof": {
+        "path": ".local/compatibility-20261110/review/wp68-rest-pipeline-conclusion.json",
+        "sha256": "c91ddf70220b8d0a6938546b483183330f0b3cd68506f151304145239b34af70",
+        "bytes": 799
+      },
+      "raw_capture": {
+        "path": ".local/wordpress-repro/compat-stable-20261110-c/candidate-failure-native-capture.json",
+        "sha256": "4b72bd359b38cef8772d296f36933873a3fc396a8b8cae2e8f77137de01d56b6",
+        "bytes": 35281
+      }
+    }
+  ],
+  "prior_accepted_revision": "render-r9",
+  "prior_acceptance": "acceptance-render-r9.json",
+  "tested_up_to": "7.1",
+  "hosted_required_checks": "NOT RUN for uncommitted r10; prior r9 checks do not certify a corrected candidate",
+  "published": false,
+  "publication": "Deferred by user instruction; blocker also requires correction and new artifact acceptance"
+}

@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "created_utc": "2026-11-13T12:14:21.242348+00:00",
+  "verdict": "LOCAL_HTML_PRESERVATION_FIX_VERIFIED_WITH_DOCUMENTED_PLUGIN_INDEPENDENT_LIMITATIONS",
+  "full_release_ready": false,
+  "candidate": {
+    "revision": "rc12",
+    "plugin_version": "1.1.6",
+    "widget_version": "0.8.4",
+    "zip": ".local/packages/simple-digital-clock-1.1.6-rc12.zip",
+    "manifest": "docs/releases/1.1.6/manifest-rc12.json",
+    "zip_sha256": "0652cf00405e23c278d75d8aa66dd37c24e1888c9b2dae216f60e56befb5d118",
+    "manifest_sha256": "3b704942ae9ee7bb4e4a777cb520f56df08981276498eff95fbb8ab7dfb3bd10",
+    "bytes": 75480,
+    "files": 18,
+    "runtime_sha256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "plugin_js_sha256": "3312d83a48a46bfbf6d37981a3fb06518c5ee09987579c7066e8e1025722fb90",
+    "php_sha256": "0f5a4ab4e70fc31ad2289e548602d080bdeaa20a442f85ae0daf8cbc1eac995f"
+  },
+  "changes": {
+    "package_paths": [
+      "assets/admin/js/simple-digital-clock-tinymce.js",
+      "includes/simple-digital-clock-kses.php",
+      "readme.txt"
+    ],
+    "rc9_files_byte_identical": 15,
+    "runtime_source_and_dist_files_unchanged": 25,
+    "frozen_historical_inputs_unchanged": 53,
+    "server_kses_policy_unchanged": true,
+    "database_migration": false
+  },
+  "checks": {
+    "mandatory_main_script_environment_browser_cells": {
+      "passed": 6,
+      "required": 6
+    },
+    "general_accepted_workflows": 132,
+    "classic_native": {
+      "functional": 84,
+      "strict_no_page_errors": 78,
+      "cases": 84,
+      "native_saves": 162
+    },
+    "ten_plugin_frontend": {
+      "functional": 60,
+      "strict_no_page_errors": 58,
+      "cases": 60,
+      "cache_hits": 18,
+      "redirects": 6
+    },
+    "raw_semantic_review": {
+      "cases": 78,
+      "buffers": 390
+    },
+    "plugin_check": {
+      "static": 29,
+      "runtime": 5,
+      "findings": 0
+    },
+    "existing_root_tests": 57,
+    "new_classic_php_contracts": 5,
+    "focused_tinymce_browser_contracts": 3,
+    "focused_positive_combinations": 54,
+    "focused_primary_observations": 87
+  },
+  "browsers": {
+    "Google Chrome": "157.0.8103.51",
+    "Firefox": "153.0",
+    "WebKit": "26.5"
+  },
+  "browser_platforms": {
+    "general_and_focused_tinymce": "Chrome and WebKit on macOS; Firefox on Linux arm64",
+    "native_classic_and_stack": "Chrome on macOS; Firefox and WebKit in owned Linux container"
+  },
+  "known_limits": [
+    "Firefox Classic modal keyboard/IME input fails with plugin disabled on both Core versions; native Bold-edit save/reopen passes, not a text-entry pass.",
+    "Preferences, exact oembed-cache/Load failed and partial-initialization getSelection failures reproduced with plugin fully disabled; zero-page-error and equal-frequency claims are not made.",
+    "Old open Classic tabs keep the old schema until reloaded; already deleted HTML needs a revision or backup. Files-only RC9 rollback restores its old Visual defect.",
+    "Synthetic pinned environments and bounded workflows do not establish universal site/plugin compatibility; previous RC9 multisite/cache/Site Editor matrices are not relabelled as fresh RC12 runs."
+  ],
+  "evidence": {
+    "classic": {
+      "directory": ".local/rc12-classic-independent-20261113",
+      "inventory": "SHA256SUMS.json",
+      "inventory_sha256": "ede48ccb54363bbcbe1b95dee0ccc397bb43c24f0599da4963b5d6da47d5549d",
+      "verified_file_entries": 1687,
+      "report": "REPORT.md",
+      "summary": "SUMMARY.json"
+    },
+    "regression": {
+      "directory": ".local/rc12-regression-20261113",
+      "inventory": "INVENTORY.json",
+      "inventory_sha256": "c3da54a6a59b7624ec00b70b5fd34b4c6bb19cd4ee234d26624afe1e5d0a53b5",
+      "verified_file_entries": 447,
+      "report": "REPORT.md",
+      "summary": "SUMMARY.json"
+    },
+    "permanent_tests": {
+      "directory": ".local/rc12-classic-tests-20261113",
+      "inventory": "MANIFEST.json",
+      "inventory_sha256": "6978cd6a44434e904dd7a917a2fcf2ba45f7c4729e7cd3148624b3d03a4fdd03",
+      "verified_file_entries": 27,
+      "report": "REPORT.md",
+      "summary": "SUMMARY.json"
+    }
+  },
+  "remaining_release_gates": [
+    "Create an explicitly reviewed RC12-containing commit and run required Repository checks and Browser tests on that exact HEAD.",
+    "Shared 0.8.4 production CDN delivery remains a separate authorized release operation.",
+    "Merge, Cloudflare changes and WordPress.org publication require separate authorization."
+  ],
+  "actions": {
+    "commit": false,
+    "push": false,
+    "merge": false,
+    "cloudflare_upload": false,
+    "cloudflare_deploy": false,
+    "wordpress_org_publication": false,
+    "owned_test_services_stopped": true
+  }
+}

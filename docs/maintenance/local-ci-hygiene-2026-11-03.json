@@ -1,0 +1,230 @@
+{
+  "status": "PASS_LOCAL_CI_EQUIVALENT",
+  "date": "2026-11-03",
+  "publication_performed": false,
+  "remote_ci_run": false,
+  "baseline_head": "f75c98776b6b1860e916123915bed8084c879153",
+  "accepted_snapshot_commit": "740948544d7c5b8ed1e1c12e66a0049963d76447",
+  "workflow_sha256": "9b4990ff76284e88b555d36eb30dbae016555d9b207f6550a5110daea7b4a86b",
+  "rollback_test_sha256": "b2f1a0a2f757446945df3288c31cf4f7ac06da5cc10965934c2f0d75c4fdf298",
+  "linux_environment": {
+    "image": "mcr.microsoft.com/playwright@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e",
+    "platform": "linux/arm64",
+    "node": "24.18.1",
+    "npm": "11.16.0",
+    "python": "3.12.3",
+    "php": "8.3.6",
+    "network_during_tests": "none",
+    "source_files": 403,
+    "source_snapshot_manifest_sha256": "ffc24b17d6d8c8b06fdeedafa265cddeb0e9fcc679305b9353ec9d50498a8222"
+  },
+  "linux_steps": [
+    {
+      "step": 1,
+      "name": "Record tool versions and apply reviewed patches offline",
+      "exit_code": 0,
+      "elapsed_seconds": 0.47
+    },
+    {
+      "step": 2,
+      "name": "Create isolated source inventory for git-based checks",
+      "exit_code": 0,
+      "elapsed_seconds": 0.92
+    },
+    {
+      "step": 3,
+      "name": "repository: Check public prose language",
+      "exit_code": 0,
+      "elapsed_seconds": 0.17
+    },
+    {
+      "step": 4,
+      "name": "repository: Type check",
+      "exit_code": 0,
+      "elapsed_seconds": 2.47
+    },
+    {
+      "step": 5,
+      "name": "repository: npm run lint",
+      "exit_code": 0,
+      "elapsed_seconds": 2.52
+    },
+    {
+      "step": 6,
+      "name": "repository: Verify patched development-tooling behavior",
+      "exit_code": 0,
+      "elapsed_seconds": 0.48
+    },
+    {
+      "step": 7,
+      "name": "repository: npm run test:node",
+      "exit_code": 0,
+      "elapsed_seconds": 0.69
+    },
+    {
+      "step": 8,
+      "name": "repository: Check release metadata validation",
+      "exit_code": 0,
+      "elapsed_seconds": 0.82
+    },
+    {
+      "step": 9,
+      "name": "repository: Verify release metadata and versioned widget artifact consistency",
+      "exit_code": 0,
+      "elapsed_seconds": 0.22
+    },
+    {
+      "step": 10,
+      "name": "repository: Smoke test the production build in a temporary directory",
+      "exit_code": 0,
+      "elapsed_seconds": 1.6
+    },
+    {
+      "step": 11,
+      "name": "repository: Check WordPress PHP and JavaScript syntax",
+      "exit_code": 0,
+      "elapsed_seconds": 0.17
+    },
+    {
+      "step": 12,
+      "name": "repository: Verify WordPress package identity and release versions",
+      "exit_code": 0,
+      "elapsed_seconds": 0.12
+    },
+    {
+      "step": 13,
+      "name": "repository: Check disposable WordPress lab safety boundaries",
+      "exit_code": 0,
+      "elapsed_seconds": 0.17
+    },
+    {
+      "step": 14,
+      "name": "repository: Verify the immutable editable rollback build and safety guards",
+      "exit_code": 0,
+      "elapsed_seconds": 0.22
+    },
+    {
+      "step": 15,
+      "name": "repository: Verify the published preview matches its sources",
+      "exit_code": 0,
+      "elapsed_seconds": 0.07
+    },
+    {
+      "step": 16,
+      "name": "repository: Check WordPress 6.3 serialization compatibility",
+      "exit_code": 0,
+      "elapsed_seconds": 0.12
+    },
+    {
+      "step": 17,
+      "name": "repository: Verify that checks leave tracked files unchanged",
+      "exit_code": 0,
+      "elapsed_seconds": 0.0
+    },
+    {
+      "step": 18,
+      "name": "browsers: npm run test:browsers",
+      "exit_code": 0,
+      "elapsed_seconds": 30.08
+    },
+    {
+      "step": 19,
+      "name": "browsers: Check native WordPress caption serialization and legacy readers",
+      "exit_code": 0,
+      "elapsed_seconds": 1.78
+    },
+    {
+      "step": 20,
+      "name": "browsers: Check generated product demo examples and controls",
+      "exit_code": 0,
+      "elapsed_seconds": 9.15
+    },
+    {
+      "step": 21,
+      "name": "browsers: Verify that browser tests leave tracked files unchanged",
+      "exit_code": 0,
+      "elapsed_seconds": 0.0
+    }
+  ],
+  "check_counts": {
+    "python_lab_safety": 9,
+    "python_rollback": 15,
+    "node_repository": 75,
+    "browser_unit_per_engine": 37,
+    "browser_engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "browser_integration": 19,
+    "total": 229
+  },
+  "fresh_npm_audit": {
+    "info": 0,
+    "low": 5,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 5
+  },
+  "archives_unchanged": {
+    ".local/packages/simple-digital-clock-1.1.4-streaming-r8-candidate.zip": {
+      "sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+      "bytes": 69772
+    },
+    ".local/rollback-1121-20261103/package-r2/simple-digital-clock-1.1.2.1-rollback-r2.zip": {
+      "sha256": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b",
+      "bytes": 68245
+    },
+    ".local/wordpress-repro/final-output-r6-20261101-a/downloads/predecessor.zip": {
+      "sha256": "d07b5941279b0513d660ed9002eda360f9340bc95d5f21d43c2da712545acd55",
+      "bytes": 61476
+    }
+  },
+  "accepted_builder_sha256": "64620ecb2deb286fd6eafb8926d3a3c81f79b7fa01370af7c3c2bf9d9143f9c5",
+  "preserved_baseline_files": 395,
+  "changed_existing_paths_this_task": [
+    ".github/workflows/ci.yml",
+    "README.md",
+    "tools/wordpress-lab/README.md"
+  ],
+  "hygiene": {
+    "private_runtime_paths_staged": 0,
+    "staged_json_files_parsed": 43,
+    "syntax_files_checked": 92,
+    "prose_cyrillic_findings": 0,
+    "whitespace_findings": 0
+  },
+  "raw_evidence_directory": ".local/ci-hygiene-20261103",
+  "log_sha256": {
+    "linux-evidence/01.log": "82c45ef91e50929aa2230f21b4e2853ff91d30bf89ff58dc52ea1f843c8c0632",
+    "linux-evidence/02.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "linux-evidence/03.log": "a1496ce62f69ee24a43ee34cf090b23bf7df334e337b3421967a313b9e8d8467",
+    "linux-evidence/04.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "linux-evidence/05.log": "0e7828db76c57302ea58a57d0bee9e010e36bbf23f09cee57e682f0b115d503c",
+    "linux-evidence/06.log": "fd4700dafd604b02c0f878b6550fb1753734e73873edf32c2fb4312ba9529f5a",
+    "linux-evidence/07.log": "ac9655cc4fff2d8f21eb56e3d31422605854b93aa2833d935bae729f76f9e740",
+    "linux-evidence/08.log": "af7ff1d656b83aa4440c56ab74b6578540eb912b42469b671b5fea50430dc16d",
+    "linux-evidence/09.log": "6faf201aede46329fb66615f31368730e1e6227ed9bdd91f0f3d6d611c1eb0c1",
+    "linux-evidence/10.log": "6df0d25faf76eb6759e236ff84be2de3c8ca22d907057c2219fbc27b7793cfae",
+    "linux-evidence/11.log": "2c80105ca217cd84f51b6885f5cd848fad5a61ce64f261c15d456532184dc60b",
+    "linux-evidence/12.log": "6ce063ceea666945ac9414e3a91f4e78ce3c9bcc4ba5025220b68070c5c314f7",
+    "linux-evidence/13.log": "5243cb0f06a2f9c1637703bfec955c88696d9e8459e0e8d8d407375a1b3b96c4",
+    "linux-evidence/14.log": "5508e6fca00dd72aedcf4c96655900bba3792924ab55235a83fc5c0eed183c31",
+    "linux-evidence/15.log": "eb55a69d57c312a29d0446356c3fefa0c131a59ad31c50aa14fd522e139e867c",
+    "linux-evidence/16.log": "598f2574f709f41f99455c053df14dae370c51c0db147a6fcc2ae5a5f3a325c7",
+    "linux-evidence/17.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "linux-evidence/18.log": "7dc4aac791e370c2d22adc643939621a430bbdae32f86338ee3cdb3e8b274ff5",
+    "linux-evidence/19.log": "b54683119dc67978c1ea811a0424c61e3eac4fd4d756065b4ef8218614e7e553",
+    "linux-evidence/20.log": "a4f9c68e84247a1ccfd50f4e878f6e8d2aeb7fb472bc24edd440bccdfe3fe823",
+    "linux-evidence/21.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "limitations": [
+    "Local Linux arm64 execution, not GitHub-hosted amd64 or a required-check status.",
+    "npm ci ran with scripts disabled online; reviewed postinstall patches ran offline before tests.",
+    "Fresh registry audit ran separately on the host; moderate threshold passed with five low records.",
+    "The Docker disk was full; the failed image build was retained and no Docker cleanup was performed. Signed PHP packages were downloaded and extracted into a new host directory for read-only containers.",
+    "The public snapshot used an isolated synthetic Git commit for git-based checks; all 403 source files matched the working tree at verification.",
+    "No new native WordPress installation, editor acceptance, performance run or publication was performed."
+  ]
+}

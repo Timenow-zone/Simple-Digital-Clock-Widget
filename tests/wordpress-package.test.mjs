@@ -63,14 +63,20 @@ test("WordPress source matches its release manifest and immutable widget bundle"
   assert.ok(readme.includes(`https://simple-digital-clock-widget.yuri.ws/assets/simple-digital-clock-widget-${pkg.version}.min.js`), "README installation must use the current versioned CDN asset");
 });
 
-test("WordPress header, stable tag, POT, source reference and script cache version agree", async () => {
+test("WordPress header, readme release sections, POT, source reference and script cache version agree", async () => {
   const readme = await readFile(path.join(plugin, "readme.txt"), "utf8");
   const pot = await readFile(path.join(plugin, "languages/simple-digital-clock.pot"), "utf8");
   assert.equal(readme.match(/^Stable tag:\s*(\S+)/m)?.[1], version);
+  for (const section of ["Changelog", "Upgrade Notice"]) {
+    const firstRelease = readme.match(new RegExp(`^== ${section} ==\\r?\\n\\s*^= (\\d+\\.\\d+\\.\\d+) =\\r?$`, "m"))?.[1];
+    assert.equal(firstRelease, version, `${section} must start with the current plugin version`);
+  }
   assert.ok(pot.includes(`Project-Id-Version: Simple Digital Clock 🕒 ${version}\\n`));
-  const enqueue = header.match(/function SDCW_enqueue_scripts\(\)\s*\{([\s\S]*?)\n\}/)?.[1];
+  const assets = await readFile(path.join(plugin, 'includes/simple-digital-clock-assets.php'), 'utf8');
+  const enqueue = assets.match(/function SDCW_register_assets\(\)\s*\{([\s\S]*?)\n\}/)?.[1];
   assert.ok(enqueue, "The widget script registration must be identifiable");
-  assert.equal(enqueue.match(/wp_register_script\(\s*'simple-digital-clock'\s*,[\s\S]*?\[\]\s*,\s*'([^']+)'/)?.[1], manifest.widget);
+  assert.equal(enqueue.match(/wp_register_script\(\s*'simple-digital-clock'\s*,[\s\S]*?array\(\)\s*,\s*'([^']+)'/)?.[1], manifest.widget);
+  assert.equal(assets.match(/wp_register_style\('simple-digital-clock-block-style', false, array\(\), '([^']+)'\)/)?.[1], version, 'Inline-only style handle retains the explicit plugin version');
   assert.ok(readme.includes(`Bundled upstream version: ${manifest.widget}`));
   assert.match(manifest.widget_source_commit, /^[a-f0-9]{40}$/);
   assert.ok(readme.includes(`/tree/${manifest.widget_source_commit}`), "Source documentation must identify the accepted commit");
@@ -86,4 +92,16 @@ test("WordPress and PHP minimum versions are declared in the plugin header and m
     assert.match(readmeMinimum, /^\d+\.\d+(?:\.\d+)?$/, `${field} must be a nonempty numeric version in the readme`);
     assert.equal(headerMinimum, readmeMinimum, `${field} must agree between the main PHP header and readme`);
   }
+});
+
+test("The current WordPress upgrade notice fits the directory limit", async () => {
+  const readme = await readFile(path.join(plugin, "readme.txt"), "utf8");
+  const section = readme.split("== Upgrade Notice ==")[1];
+  assert.ok(section, "The upgrade notice section must exist");
+  const release = section.trim().split(/\r?\n(?== )/, 1)[0];
+  const [heading, ...lines] = release.split(/\r?\n/);
+  assert.equal(heading, `= ${version} =`);
+  const notice = lines.join("\n").trim();
+  assert.ok(notice.length > 0, "The current upgrade notice must not be empty");
+  assert.ok([...notice].length <= 300, `Upgrade notice exceeds 300 characters: ${[...notice].length}`);
 });

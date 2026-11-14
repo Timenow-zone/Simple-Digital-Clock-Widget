@@ -1,0 +1,177 @@
+{
+  "scope": "Post-independent-close test harness correction only; installable bytes unchanged",
+  "changes": [
+    "wp_slash at wp_insert_post content boundary",
+    "JSON_UNESCAPED_SLASHES retains literal SELECT closer",
+    "Exact stored-byte guard for three script fixtures"
+  ],
+  "source": "tools/wordpress-lab/asset-contract.php",
+  "source_sha256": "86271140c4bd0a7f7723ee638e3ae8e994444de8cabedc04e26d5e557cc3c81b",
+  "browser_cases": [
+    {
+      "engine": "chromium",
+      "site": "minimum",
+      "fixture": "script-example",
+      "clocks": 0,
+      "scripts": 0,
+      "styles": 0,
+      "inline_styles": 0,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "site": "minimum",
+      "fixture": "select-script-example",
+      "clocks": 0,
+      "scripts": 0,
+      "styles": 0,
+      "inline_styles": 0,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "site": "minimum",
+      "fixture": "after-select-script",
+      "clocks": 1,
+      "scripts": 1,
+      "styles": 0,
+      "inline_styles": 1,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "site": "current",
+      "fixture": "script-example",
+      "clocks": 0,
+      "scripts": 0,
+      "styles": 0,
+      "inline_styles": 0,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "site": "current",
+      "fixture": "select-script-example",
+      "clocks": 0,
+      "scripts": 0,
+      "styles": 0,
+      "inline_styles": 0,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "site": "current",
+      "fixture": "after-select-script",
+      "clocks": 1,
+      "scripts": 1,
+      "styles": 0,
+      "inline_styles": 1,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "minimum",
+      "fixture": "script-example",
+      "clocks": 0,
+      "scripts": 0,
+      "styles": 0,
+      "inline_styles": 0,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "minimum",
+      "fixture": "select-script-example",
+      "clocks": 0,
+      "scripts": 0,
+      "styles": 0,
+      "inline_styles": 0,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "minimum",
+      "fixture": "after-select-script",
+      "clocks": 1,
+      "scripts": 1,
+      "styles": 0,
+      "inline_styles": 1,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "current",
+      "fixture": "script-example",
+      "clocks": 0,
+      "scripts": 0,
+      "styles": 0,
+      "inline_styles": 0,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "current",
+      "fixture": "select-script-example",
+      "clocks": 0,
+      "scripts": 0,
+      "styles": 0,
+      "inline_styles": 0,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "site": "current",
+      "fixture": "after-select-script",
+      "clocks": 1,
+      "scripts": 1,
+      "styles": 0,
+      "inline_styles": 1,
+      "passed": true
+    }
+  ],
+  "stored_input_checks": {
+    "minimum": [
+      {
+        "fixture": "script-example",
+        "sha256": "b30153a45c3a99e3b403c9ac391056fae6d0c7bf6d116d95d846ec72bdbeda61",
+        "exact": true
+      },
+      {
+        "fixture": "select-script-example",
+        "sha256": "4a8ce65d77f5e848138b8abf58b151899603794e2a2747b9062a13b236969433",
+        "exact": true
+      },
+      {
+        "fixture": "after-select-script",
+        "sha256": "d56daf59bdc899b2258f404a4d442d9bd3f4171af2a95422c5207030f61c72a7",
+        "exact": true
+      }
+    ],
+    "current": [
+      {
+        "fixture": "script-example",
+        "sha256": "b30153a45c3a99e3b403c9ac391056fae6d0c7bf6d116d95d846ec72bdbeda61",
+        "exact": true
+      },
+      {
+        "fixture": "select-script-example",
+        "sha256": "4a8ce65d77f5e848138b8abf58b151899603794e2a2747b9062a13b236969433",
+        "exact": true
+      },
+      {
+        "fixture": "after-select-script",
+        "sha256": "d56daf59bdc899b2258f404a4d442d9bd3f4171af2a95422c5207030f61c72a7",
+        "exact": true
+      }
+    ]
+  },
+  "fresh_lab": "streaming-r8-fixture-20261102-b",
+  "fresh_lab_stopped": true,
+  "preserved_attempt": {
+    "lab": "streaming-r8-20261102-a",
+    "result": "Overbroad guard failed on legacy block one",
+    "cause": "Expected canonical addition of empty timeZone metadata; not a plugin regression",
+    "evidence": ".local/streaming-r8-20261102/fixture-repair-first-failure.json"
+  },
+  "archive_sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37"
+}

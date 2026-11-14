@@ -1,0 +1,16 @@
+{
+  "status": "INDEPENDENT_NO_GO",
+  "revision": "final-output-r5",
+  "version": "1.1.4",
+  "zip": ".local/packages/simple-digital-clock-1.1.4-final-output-r5-candidate.zip",
+  "zip_sha256": "861912199c6e5c09e267202ee3dc2b5958a122833cd50a9bcf89cf375b036c0f",
+  "zip_bytes": 67469,
+  "files": 16,
+  "previous_no_go": "acceptance-inline-r4b.json",
+  "source_uncommitted": true,
+  "published": false,
+  "pushed": false,
+  "new_github_ci": false,
+  "blocker": "IND-FINAL-01",
+  "report": "INDEPENDENT-FINAL-OUTPUT-R5.md"
+}

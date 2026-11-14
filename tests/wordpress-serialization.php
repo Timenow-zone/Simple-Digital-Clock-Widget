@@ -1,7 +1,14 @@
 <?php
 // Controlled metadata contracts; actual Core/KSES behavior is tested in WordPress.
 define('ABSPATH', __DIR__);
-function add_filter() {}
+function add_filter($name, $callback) { $GLOBALS['sdcw_test_filters'][$name][] = $callback; }
+function add_action($name, $callback) { $GLOBALS['sdcw_test_actions'][$name][] = $callback; }
+function do_action(...$args) { $GLOBALS['sdcw_test_diagnostics'][] = $args; }
+function user_can_richedit() { return $GLOBALS['sdcw_test_can_richedit']; }
+function wp_enqueue_script(...$args) { $GLOBALS['sdcw_test_script_calls']['enqueue'][] = $args; }
+function wp_localize_script(...$args) { $GLOBALS['sdcw_test_script_calls']['localize'][] = $args; }
+function wp_print_scripts(...$args) { $GLOBALS['sdcw_test_script_calls']['print'][] = $args; }
+class WP_Block_Parser {}
 function wp_json_encode($value, $flags = 0) { return json_encode($value, $flags); }
 function wp_kses_normalize_entities($value) {
     return preg_match('/^&(?:amp|lt|gt|quot|copy);$/', $value) ? $value : '&amp;' . substr($value, 1);
@@ -43,7 +50,35 @@ class WP_HTML_Tag_Processor {
         return $html;
     }
 }
+define('SDCW_PATH', $argv[1] . '/');
+define('SDCW_URL', 'https://example.invalid/wp-content/plugins/simple-digital-clock/');
 require $argv[1] . '/includes/simple-digital-clock-kses.php';
+if (isset($argv[2]) && 'classic-editor-bootstrap' === $argv[2]) {
+    $result = array();
+    foreach (json_decode(stream_get_contents(STDIN), true) as $allowed) {
+        $GLOBALS['sdcw_test_can_richedit'] = $allowed;
+        $GLOBALS['sdcw_test_script_calls'] = array('enqueue' => array(), 'localize' => array(), 'print' => array());
+        if (empty($GLOBALS['sdcw_test_actions']['print_default_editor_scripts'])) { throw new RuntimeException('Missing dynamic editor hook'); }
+        foreach ($GLOBALS['sdcw_test_actions']['print_default_editor_scripts'] as $callback) { call_user_func($callback); }
+        $result[] = array('allowed' => $allowed, 'calls' => $GLOBALS['sdcw_test_script_calls']);
+    }
+    echo json_encode(array('bootstrap' => $result, 'post_attributes' => SDCW_allow_clock_post_html(array(), 'post')['timenow-zone-sdcw'], 'other_context' => SDCW_allow_clock_post_html(array('foreign' => array('id' => true)), 'data'))) . "\n";
+    exit(0);
+}
+if (isset($argv[2]) && 'classic-editor' === $argv[2]) {
+    $result = array();
+    foreach (json_decode(stream_get_contents(STDIN), true) as $settings) {
+        $GLOBALS['sdcw_test_diagnostics'] = array();
+        if (empty($GLOBALS['sdcw_test_filters']['tiny_mce_before_init']) || empty($GLOBALS['sdcw_test_filters']['teeny_mce_before_init'])) { throw new RuntimeException('Missing Classic editor filter'); }
+        $updated = $settings;
+        foreach ($GLOBALS['sdcw_test_filters']['tiny_mce_before_init'] as $callback) { $updated = call_user_func($callback, $updated); }
+        $repeated = $updated;
+        foreach ($GLOBALS['sdcw_test_filters']['teeny_mce_before_init'] as $callback) { $repeated = call_user_func($callback, $repeated); }
+        $result[] = array('settings' => $updated, 'repeated' => $repeated, 'diagnostics' => $GLOBALS['sdcw_test_diagnostics']);
+    }
+    echo json_encode($result) . "\n";
+    exit(0);
+}
 if (isset($argv[2]) && 'repair' === $argv[2]) {
     $rows = json_decode(stream_get_contents(STDIN), true);
     $result = array();

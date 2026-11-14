@@ -1,0 +1,104 @@
+{
+  "scope": "Independent arithmetic/provenance audit of root-controlled benchmark; reviewer did not execute this timed matrix",
+  "raw_sha256": "113cdf799c28f5615146ac23943284ecd49cba0fd2db64d57949dfa5e2aec729",
+  "rows": 5520,
+  "phase_counts": {
+    "warmup": 540,
+    "measured": 4860,
+    "streaming-probe": 120
+  },
+  "all_http_200_error_null_unique_client_server_pairs": true,
+  "all_post_flush_buffer_counts_zero": true,
+  "measured_matched_groups": 1620,
+  "groups_with_unequal_query_counts": 431,
+  "measured_queries": {
+    "minimum/twentytwentyone/legacy": [
+      18
+    ],
+    "minimum/twentytwentyone/buffered": [
+      18
+    ],
+    "minimum/twentytwentyone/candidate": [
+      18
+    ],
+    "minimum/twentytwentythree/legacy": [
+      20
+    ],
+    "minimum/twentytwentythree/buffered": [
+      20
+    ],
+    "minimum/twentytwentythree/candidate": [
+      20
+    ],
+    "current/twentytwentyone/legacy": [
+      21,
+      25
+    ],
+    "current/twentytwentyone/buffered": [
+      21,
+      25
+    ],
+    "current/twentytwentyone/candidate": [
+      21,
+      25
+    ],
+    "current/twentytwentythree/legacy": [
+      21,
+      25
+    ],
+    "current/twentytwentythree/buffered": [
+      21,
+      25
+    ],
+    "current/twentytwentythree/candidate": [
+      21,
+      25
+    ]
+  },
+  "selected_comparisons": [
+    {
+      "site": "current",
+      "theme": "twentytwentyone",
+      "body_kib": 2048,
+      "clocks": 1,
+      "median_ttfb_ms": {
+        "legacy": 69.487,
+        "buffered": 124.92999999999999,
+        "candidate": 71.325
+      },
+      "matched_21_query_pairs": 31,
+      "matched_21_query_median_candidate_minus_buffered_ms": -53.354
+    },
+    {
+      "site": "current",
+      "theme": "twentytwentythree",
+      "body_kib": 2048,
+      "clocks": 1,
+      "median_ttfb_ms": {
+        "legacy": 106.265,
+        "buffered": 164.845,
+        "candidate": 106.935
+      },
+      "matched_21_query_pairs": 29,
+      "matched_21_query_median_candidate_minus_buffered_ms": -57.79400000000001
+    },
+    {
+      "site": "minimum",
+      "theme": "twentytwentyone",
+      "body_kib": 2048,
+      "clocks": 1,
+      "median_ttfb_ms": {
+        "legacy": 15.709000000000001,
+        "buffered": 156.859,
+        "candidate": 16.202
+      },
+      "matched_21_query_pairs": 0,
+      "matched_21_query_median_candidate_minus_buffered_ms": null
+    }
+  ],
+  "limits": [
+    "Query counts are not equal across all variants/rounds; current21/25 variation cause untraced.",
+    "Whole-request peak memory is not materially reduced; retained streaming state is a different metric.",
+    "Small differences are affected by shared-host/query variation; no production/CWV claim."
+  ]
+}

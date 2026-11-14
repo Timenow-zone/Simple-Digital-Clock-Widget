@@ -1,0 +1,138 @@
+{
+  "passed": true,
+  "revision": 2,
+  "archive_sha256": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b",
+  "source_head": "f75c98776b6b1860e916123915bed8084c879153",
+  "author_run": ".local/wordpress-repro/rollback-author-r2-20261103-c",
+  "transitions": [
+    {
+      "site": "minimum",
+      "phase": "update",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "installed_files_exact": true,
+      "version_exact": true,
+      "active": true
+    },
+    {
+      "site": "current",
+      "phase": "update",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "installed_files_exact": true,
+      "version_exact": true,
+      "active": true
+    },
+    {
+      "site": "minimum",
+      "phase": "rollback",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "installed_files_exact": true,
+      "version_exact": true,
+      "active": true
+    },
+    {
+      "site": "current",
+      "phase": "rollback",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "installed_files_exact": true,
+      "version_exact": true,
+      "active": true
+    },
+    {
+      "site": "minimum",
+      "phase": "reupdate",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "installed_files_exact": true,
+      "version_exact": true,
+      "active": true
+    },
+    {
+      "site": "current",
+      "phase": "reupdate",
+      "posts_unchanged": true,
+      "options_unchanged": true,
+      "installed_files_exact": true,
+      "version_exact": true,
+      "active": true
+    }
+  ],
+  "completed_role_environment_phases": {
+    "legacy": 6,
+    "update": 6,
+    "rollback": 6,
+    "reupdate": 6
+  },
+  "positive_post_records": 12,
+  "positive_clock_records": 84,
+  "post_transition_resaves": 108,
+  "fresh_fixed_corpus_inserts": 6,
+  "predecessor_negative_control": [
+    {
+      "site": "minimum",
+      "role": "admin",
+      "failed": 10,
+      "total": 11
+    },
+    {
+      "site": "minimum",
+      "role": "editor",
+      "failed": 10,
+      "total": 11
+    },
+    {
+      "site": "minimum",
+      "role": "author",
+      "failed": 10,
+      "total": 11
+    },
+    {
+      "site": "current",
+      "role": "admin",
+      "failed": 0,
+      "total": 11
+    },
+    {
+      "site": "current",
+      "role": "editor",
+      "failed": 0,
+      "total": 11
+    },
+    {
+      "site": "current",
+      "role": "author",
+      "failed": 0,
+      "total": 11
+    }
+  ],
+  "r2_rerun_fresh_no_transfer_from_r1": true,
+  "retained_attempts": [
+    "rollback-author-20261103-a: shadow boolean fixture type mismatch, before transitions",
+    "rollback-author-20261103-b: r1 functional PASS, artifact rejected for POT metadata"
+  ],
+  "deterministic_rebuild": true,
+  "metadata_regression_receipt": "metadata-r2-correction.json",
+  "owned_ports": [
+    {
+      "site": "minimum",
+      "url": "http://127.0.0.1:51854",
+      "closed": true
+    },
+    {
+      "site": "current",
+      "url": "http://127.0.0.1:51856",
+      "closed": true
+    }
+  ],
+  "harness_files": {
+    "tools/wordpress-lab/rollback/build.py": "64620ecb2deb286fd6eafb8926d3a3c81f79b7fa01370af7c3c2bf9d9143f9c5",
+    "tools/wordpress-lab/rollback/update.php": "5197a4ba13451bd5c58571ef2aa46cdae310f38bc312804727cb1e82203d2293",
+    "tools/wordpress-lab/rollback/run.py": "eecd9d14b0a50e11b102daa231fa12b2efa1f77ffcb8891375546cc12a42f0f9",
+    "tools/wordpress-lab/rollback/browser.mjs": "6356bce79786954ccd30f7abf4ee4b812e7ef2e92fc56c9a843e31deded3a5ed",
+    "tools/wordpress-lab/rollback/README.md": "03336638f302bdb30b2cc6d76f4fec7a37317728e03e64dc884cb3acc99e7350"
+  },
+  "public_delivery": false
+}

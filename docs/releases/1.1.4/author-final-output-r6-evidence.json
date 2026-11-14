@@ -1,0 +1,349 @@
+{
+  "revision": "final-output-r6",
+  "archive_sha256": "f11d33c03be25bdd90ae14198c9b4d7bc9039ddbb89253d39e9b1e5843987989",
+  "author_only": true,
+  "frontend_cases": 160,
+  "frontend_passed": 160,
+  "native_checks": {
+    "minimum": {
+      "checks": [
+        {
+          "passed": true,
+          "label": "Registration alone adds no frontend runtime"
+        },
+        {
+          "passed": true,
+          "label": "Registration alone adds no frontend stylesheet"
+        },
+        {
+          "passed": true,
+          "label": "Inline integration style has no external URL"
+        },
+        {
+          "passed": true,
+          "label": "Integration rule is registered once"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "A live clock is detected"
+        },
+        {
+          "passed": true,
+          "label": "A live clock after a template is detected"
+        },
+        {
+          "passed": true,
+          "label": "No intermediate render enqueue hook remains"
+        },
+        {
+          "passed": true,
+          "label": "Unsupported JSON value fails closed"
+        },
+        {
+          "passed": true,
+          "label": "Diagnostic event contains one fixed code and no user content"
+        }
+      ],
+      "failed": 0
+    },
+    "current": {
+      "checks": [
+        {
+          "passed": true,
+          "label": "Registration alone adds no frontend runtime"
+        },
+        {
+          "passed": true,
+          "label": "Registration alone adds no frontend stylesheet"
+        },
+        {
+          "passed": true,
+          "label": "Inline integration style has no external URL"
+        },
+        {
+          "passed": true,
+          "label": "Integration rule is registered once"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "Inert or example HTML has no live clock"
+        },
+        {
+          "passed": true,
+          "label": "Detection does not enqueue resources"
+        },
+        {
+          "passed": true,
+          "label": "A live clock is detected"
+        },
+        {
+          "passed": true,
+          "label": "A live clock after a template is detected"
+        },
+        {
+          "passed": true,
+          "label": "No intermediate render enqueue hook remains"
+        },
+        {
+          "passed": true,
+          "label": "Unsupported JSON value fails closed"
+        },
+        {
+          "passed": true,
+          "label": "Diagnostic event contains one fixed code and no user content"
+        }
+      ],
+      "failed": 0
+    }
+  },
+  "transitions": {
+    "passed": true,
+    "run_id": "sdcw-repro-final-output-r6-20261101-a",
+    "sites": [
+      {
+        "site": "minimum",
+        "phase": "update",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "minimum",
+        "phase": "rollback",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "minimum",
+        "phase": "reupdate",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "current",
+        "phase": "update",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "current",
+        "phase": "rollback",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      },
+      {
+        "site": "current",
+        "phase": "reupdate",
+        "posts_unchanged": true,
+        "options_unchanged": true,
+        "all_installed_files_match": true,
+        "version_matches": true,
+        "active": true
+      }
+    ],
+    "publication_performed": false,
+    "plugin_check": {
+      "minimum": {
+        "executed": false,
+        "reason": "Plugin Check 2.1.0 requires PHP >=7.4; plugin compatibility is tested separately on real PHP 7.0.33"
+      },
+      "current": {
+        "executed": true,
+        "errors": 0,
+        "findings": 0,
+        "selection": {
+          "static": [
+            "i18n_usage",
+            "php_error_reporting",
+            "code_obfuscation",
+            "plugin_content",
+            "file_type",
+            "plugin_header_fields",
+            "late_escaping",
+            "safe_redirect",
+            "plugin_updater",
+            "plugin_uninstall",
+            "plugin_review_phpcs",
+            "direct_db_queries",
+            "performant_wp_query_params",
+            "enqueued_scripts_in_footer",
+            "enqueued_resources",
+            "plugin_readme",
+            "localhost",
+            "no_unfiltered_uploads",
+            "trademarks",
+            "offloading_files",
+            "write_file",
+            "setting_sanitization",
+            "prefixing",
+            "direct_db",
+            "minified_files",
+            "direct_file_access",
+            "external_admin_menu_links",
+            "wp_functions_compatibility",
+            "ai_provider"
+          ],
+          "runtime": [
+            "enqueued_scripts_size",
+            "enqueued_styles_size",
+            "enqueued_styles_scope",
+            "enqueued_scripts_scope",
+            "non_blocking_scripts"
+          ]
+        }
+      }
+    },
+    "browser_smoke": [
+      {
+        "engine": "chromium",
+        "site": "minimum",
+        "ticking": true,
+        "candidate_asset_reference": true,
+        "page_errors": []
+      },
+      {
+        "engine": "chromium",
+        "site": "current",
+        "ticking": true,
+        "candidate_asset_reference": true,
+        "page_errors": []
+      },
+      {
+        "engine": "webkit",
+        "site": "minimum",
+        "ticking": true,
+        "candidate_asset_reference": true,
+        "page_errors": []
+      },
+      {
+        "engine": "webkit",
+        "site": "current",
+        "ticking": true,
+        "candidate_asset_reference": true,
+        "page_errors": []
+      }
+    ],
+    "stopped": true
+  },
+  "plugin_check_findings": [],
+  "focused_tests_passed": 12,
+  "lab_safety_tests_passed": 9
+}

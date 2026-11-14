@@ -1,0 +1,143 @@
+{
+  "status": "FINAL_CANDIDATE_CHECKS_PASS_WITH_DOCUMENTED_LIMITS",
+  "date": "2026-11-12",
+  "timezone": "Europe/Kyiv",
+  "published": false,
+  "publication_authorized": false,
+  "candidate": {
+    "status": "PASS",
+    "source_commit": "289f32ed6ebd9b0ecf4165ca1b1ea5679b8ae3eb",
+    "candidate_sha256": "9c853236e957119a8aac4588d8565308f10fa0d430799ac4e3d1917ca6789137",
+    "archive_bytes": 71358,
+    "payload_files": 17,
+    "zip_source_manifest_commit_match": true,
+    "preserved_historical_files": 125,
+    "historical_changes": [],
+    "rollback_sha256": "2b6b2ed361115aec5dbddad058bf38411534c53705ccc5315b1fd6e756386aa2",
+    "runtime_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25"
+  },
+  "source_hosted_checks": {
+    "source_commit": "289f32ed6ebd9b0ecf4165ca1b1ea5679b8ae3eb",
+    "run_id": 43108850632,
+    "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43108850632",
+    "jobs": [
+      {
+        "name": "Browser tests",
+        "id": 130819211152,
+        "conclusion": "success"
+      },
+      {
+        "name": "Repository checks",
+        "id": 130819211741,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "pr": {
+    "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19",
+    "draft": true,
+    "base": "codex/local-release-ci-hygiene",
+    "require_latest_head_checks": true
+  },
+  "local_repository": {
+    "checks": 43,
+    "node_tests": 107,
+    "python_tests": 24,
+    "environment_retries_passed": 2,
+    "advisories": {
+      "info": 0,
+      "low": 5,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 5
+    },
+    "production_build_matches_immutable_runtime": true
+  },
+  "local_browsers": {
+    "leaf_cases": 190,
+    "failed": 0,
+    "skipped": 0,
+    "engines": [
+      "Chromium",
+      "Firefox",
+      "WebKit"
+    ],
+    "fresh_npm_ci": false,
+    "hosted_fresh_install_passed": true
+  },
+  "native_frontend": {
+    "passed": 40,
+    "failed": 0,
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "ticks_verified": 32
+  },
+  "native_core": {
+    "passed": 22,
+    "failed": 0
+  },
+  "native_editor": {
+    "passed": 4,
+    "failed": 0,
+    "browser": "Chromium",
+    "role": "administrator",
+    "old_post_id": 89,
+    "old_clocks_each_site": 7,
+    "old_raw_content_unchanged": true,
+    "new_draft_save_reopen": true
+  },
+  "plugin_check": {
+    "current": {
+      "wordpress": "7.1.4",
+      "php": "8.3.35",
+      "checker": "2.1.0",
+      "static_checks": 29,
+      "runtime_checks": 5,
+      "findings": [],
+      "pass": true
+    },
+    "minimum": {
+      "executed": false,
+      "reason": "Plugin Check 2.1.0 requires PHP >= 7.4; minimum site is PHP 7.0.33"
+    },
+    "data_unchanged": true
+  },
+  "pot": {
+    "passed": true,
+    "wp_cli_version": "2.12.0",
+    "wp_cli_sha256": "ce34ddd838f7351d6759068d09793f26755463b4a4610a5a5c0a97b68220d85c",
+    "canonical_sha256": "a99a4499cf7c07c6f50fcb81009cc98837ef27f8b353ea216cc9c6211121781b",
+    "fresh_extraction_sha256": "c032fa5f89e9e4fe627d69455b6c2378993c08e11d6d3cc782300287a181b648",
+    "only_creation_date_differs": true,
+    "nonempty_messages": 63,
+    "network_enabled": false,
+    "candidate_pot_written": false,
+    "source_readonly": true
+  },
+  "owned_native_containers_stopped": true,
+  "independent_review_actionable_findings": 0,
+  "retained_upgrade_evidence": ".local/candidate-116-native-20261111/evidence/final-r3-upgrade/RESULT.json",
+  "evidence": {
+    ".local/final-116-20261112/identity-final.json": "811ac1b779dd8095aa7b21bf3e3252c04162ad1deaebc75ef9b2e4d30d47631d",
+    ".local/final-116-20261112/repository/FINAL.json": "6f4d0e994698a8f794345c66d27abdab6bb449160091d613589735900af52688",
+    ".local/final-116-20261112/repository/commands.json": "ef383bfe7a32c16d16a844c28d5b22770eb7f5722b16a794f50ca832042e7d1e",
+    ".local/final-116-20261112/browser/RESULT.json": "163d3bf91f47433ad67aed064bea64f81ea585c3a01504de10f81b0c44677a0c",
+    ".local/final-116-20261112/native/RESULT.json": "3062ec3dc3caec80667472b10c9ee7c0bfbfbfa8aa77b3b33ae278e7abb620cd",
+    ".local/final-116-20261112/native/REPORT.md": "04a8b6043cdf0479c1fcf713a92348c0351be282b95c85302330b04d59961584",
+    ".local/final-116-20261112/native/pot/RESULT.json": "32858c3c5b5f06f687a2de2e3d64c21b114f8aeed61ad0fadbfa2169993d062c",
+    ".local/final-116-20261112/review/independent-code-review.json": "e05ad8b3423cdf18b12f7b8d6ae764f4c5743916e17306f01c27a15dfc407bd9",
+    ".local/final-116-20261112/hosted-source-jobs.json": "e79ccf44ee34622dbf98d4fbb18a9489f2b49bcee4cba02a38a83d351fabbd75"
+  },
+  "limits": [
+    "Latest PR HEAD still requires its own successful hosted checks after any added commit.",
+    "First clocks gated on whenDefined or inside shadow roots need explicit runtime loading.",
+    "Arbitrary optimizer/consent/CSP configurations, native Safari, multisite and production load are not certified.",
+    "New native editor coverage is administrator/Chromium through the native save pipeline, not a full role/locale/UI-click matrix.",
+    "Checker requires PHP >=7.4 and was explicitly not executed on minimum PHP7.0.33.",
+    "Editor tests intentionally created draft/revision metadata in disposable clones; no whole-database identity claim."
+  ],
+  "publication_actions": []
+}

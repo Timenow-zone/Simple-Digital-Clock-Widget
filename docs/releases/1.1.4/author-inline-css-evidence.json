@@ -1,0 +1,81 @@
+{
+  "version": "1.1.4",
+  "revision": "inline-css-r4",
+  "archive_sha256": "3b434a982d24192173e2f93239121292b4013aaf51e8044fd227787c67addef2",
+  "archive_file": "simple-digital-clock-1.1.4-inline-css-r4b-candidate.zip",
+  "archive_bytes": 66810,
+  "installable_files": 16,
+  "status": "AUTHOR_LOCAL_PASS_PENDING_INDEPENDENT_REACCEPTANCE",
+  "publication_performed": false,
+  "push_performed": false,
+  "new_github_ci_executed": false,
+  "independent_go_transferred": false,
+  "source_uncommitted": true,
+  "previous_local_candidate_sha256": "217807d2c79018c2d1861884e1f8e5e151c86cbf4154b0889d09db0f4eb84772",
+  "previous_evidence": "acceptance-evidence-before-inline-css.json",
+  "widget_and_kses_unchanged_from_r3": true,
+  "exact_zip_transitions": 6,
+  "database_restores": 0,
+  "references": [
+    "WordPress 6.3.14 / PHP 7.0.33",
+    "WordPress 7.1.4 / PHP 8.3.35"
+  ],
+  "plugin_check": {
+    "version": "2.1.0",
+    "static": 29,
+    "runtime": 5,
+    "errors": 0,
+    "warnings": 0
+  },
+  "frontend": {
+    "fixture_cases_per_site": 20,
+    "block_theme_cases": 120,
+    "classic_theme_cases": 20,
+    "engines": [
+      "chromium",
+      "webkit",
+      "firefox-linux"
+    ],
+    "external_plugin_css_requests": 0,
+    "inline_rule_blocks_per_used_document": 1,
+    "runtime_requests_per_used_document": 1,
+    "unused_document_assets": 0,
+    "computed_host_display": "block"
+  },
+  "admin_editor_cases": 4,
+  "local_focused_tests": 41,
+  "inline_registration_unit_assertions": 22,
+  "preview": {
+    "zip_sha256": "3b434a982d24192173e2f93239121292b4013aaf51e8044fd227787c67addef2",
+    "installed_files": 16,
+    "posts_unchanged": true,
+    "selected_options_unchanged": true,
+    "active": true,
+    "plugin_check_errors": 0,
+    "plugin_check_warnings": 0,
+    "css_file_removed": true,
+    "pages": [
+      {
+        "page": "empty",
+        "external_css_links": 0,
+        "inline_blocks": 0
+      },
+      {
+        "page": "clock",
+        "external_css_links": 0,
+        "inline_blocks": 1
+      }
+    ],
+    "admin_url": "http://127.0.0.1:55900/wp-admin/tools.php?page=plugin-check&plugin=simple-digital-clock%2Fwidget_init.php",
+    "backup": ".local/inline-css-20261101/preview-backup-final"
+  },
+  "local_evidence": ".local/inline-css-20261101/",
+  "exact_zip_run": ".local/wordpress-repro/inline-r4b-20261101/",
+  "retained_attempts": "Initial r4 archive and its MissingVersion warning plus preview rollback are retained; final r4b supplies the explicit plugin version and passes all checks.",
+  "scope_limits": [
+    "Independent exact-candidate acceptance and new required GitHub CI remain pending",
+    "Existing old-writer/Core 6.3 and erased-data limits unchanged",
+    "KSES bytes unchanged; no new independent KSES verdict is inferred",
+    "TLS/multisite/native Safari/VoiceOver/real Google transport/owner-site/cache matrix not newly certified"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "final_installed_identities": [
+    {
+      "lab": "independent-rb1121r2-20261103-a",
+      "site": "minimum",
+      "file_count": 17,
+      "exact_zip": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+      "all_equal": true
+    },
+    {
+      "lab": "independent-rb1121r2-20261103-a",
+      "site": "current",
+      "file_count": 17,
+      "exact_zip": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+      "all_equal": true
+    },
+    {
+      "lab": "independent-rb1121r2-fresh-20261103-b",
+      "site": "minimum",
+      "file_count": 17,
+      "exact_zip": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b",
+      "all_equal": true
+    },
+    {
+      "lab": "independent-rb1121r2-fresh-20261103-b",
+      "site": "current",
+      "file_count": 17,
+      "exact_zip": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b",
+      "all_equal": true
+    }
+  ],
+  "files": [
+    {
+      "path": ".local/independent-rollback-1121-r2-20261103/INDEPENDENT-ACCEPTANCE.md",
+      "bytes": 11688,
+      "sha256": "f2f3c87a8d6dc86bb9985a8d8bc2fead70a753819ad45d7fb07454b2f4a2e7d1"
+    },
+    {
+      "path": ".local/independent-rollback-1121-r2-20261103/evidence.json",
+      "bytes": 15569,
+      "sha256": "05468efeae09717fb06781849ab0eb8d8127e101219a2c073a9c7f612ade1393"
+    },
+    {
+      "path": ".local/independent-rollback-1121-r2-20261103/manifest.json",
+      "bytes": 5224,
+      "sha256": "a84448dd57fd2e4151499178f745a9ddc9b946f67447efb52da43e7cda539290"
+    },
+    {
+      "path": ".local/independent-rollback-1121-r2-20261103/frozen-inputs.json",
+      "bytes": 1021,
+      "sha256": "828ece1982cfdf84b03351f62073bc91c8a5f3a33c862ee0e27bb30433a98850"
+    },
+    {
+      "path": ".local/independent-rollback-1121-r2-20261103/identity-closure.json",
+      "bytes": 3397,
+      "sha256": "07e7ffb7d6b7fa06e7a171869f9e9e7181e1b6661a6847ef549deb6dac70df8a"
+    },
+    {
+      "path": ".local/independent-rollback-1121-r2-20261103/operational-closure.json",
+      "bytes": 1231,
+      "sha256": "0eda5c59b928bb70345bcb753bc8fc240b342b1a19ee74e660f8b97030e4b8bf"
+    },
+    {
+      "path": ".local/independent-rollback-1121-r2-20261103/simple-digital-clock-1.1.2.1-rollback-r2.zip",
+      "bytes": 68245,
+      "sha256": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b"
+    },
+    {
+      "path": ".local/rollback-1121-20261103/package-r2/simple-digital-clock-1.1.2.1-rollback-r2.zip",
+      "bytes": 68245,
+      "sha256": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b"
+    },
+    {
+      "path": ".local/packages/simple-digital-clock-1.1.4-streaming-r8-candidate.zip",
+      "bytes": 69772,
+      "sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37"
+    }
+  ]
+}

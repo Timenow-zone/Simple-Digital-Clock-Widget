@@ -1,0 +1,33 @@
+{
+  "version": "1.1.4",
+  "revision": "inline-css-r4",
+  "archive_sha256": "3b434a982d24192173e2f93239121292b4013aaf51e8044fd227787c67addef2",
+  "archive_file": "simple-digital-clock-1.1.4-inline-css-r4b-candidate.zip",
+  "archive_bytes": 66810,
+  "installable_files": 16,
+  "status": "INDEPENDENT_NO_GO",
+  "independent_verdict": "NO-GO",
+  "blocking_finding": "IND-INLINE-01",
+  "blocking_contract": "Final output with no clock still receives runtime and inline CSS when a dynamic parent suppresses or escapes a child clock.",
+  "independent_report": "INDEPENDENT-INLINE-CSS.md",
+  "independent_evidence": "independent-inline-evidence.json",
+  "author_evidence": "author-inline-css-evidence.json",
+  "gate_counts": {
+    "PASS": 8,
+    "FAIL": 1,
+    "NOT RUN": 7
+  },
+  "probe_counts": {
+    "total": 16,
+    "PASS": 8,
+    "FAIL": 8
+  },
+  "publication_performed": false,
+  "push_performed": false,
+  "source_or_candidate_fixes": false,
+  "new_github_ci_executed": false,
+  "zip_and_manifest_unchanged_during_review": true,
+  "frozen_source_files_unchanged_during_review": 333,
+  "local_raw_evidence": ".local/independent-inline-20261101/",
+  "next_candidate_required": true
+}

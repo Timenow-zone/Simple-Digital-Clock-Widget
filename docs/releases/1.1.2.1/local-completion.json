@@ -1,0 +1,28 @@
+{
+  "status": "COMPLETE_LOCAL",
+  "source_head_unchanged": "f75c98776b6b1860e916123915bed8084c879153",
+  "rollback_version": "1.1.2.1",
+  "revision": 2,
+  "rollback_sha256": "75ab417c6a641a2ec94a624be54e1760db8b14007ac8919f2814cad62f54c75b",
+  "rollback_bytes": 68245,
+  "rollback_files": 17,
+  "accepted_r8_sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+  "accepted_r8_manifest_unchanged": true,
+  "current_source_and_owner_preview_each_exact_r8_files": 17,
+  "independent_mandatory_gates": 11,
+  "independent_report_sha256": "f2f3c87a8d6dc86bb9985a8d8bc2fead70a753819ad45d7fb07454b2f4a2e7d1",
+  "independent_evidence_sha256": "05468efeae09717fb06781849ab0eb8d8127e101219a2c073a9c7f612ade1393",
+  "author_r2_rerun_passed": true,
+  "r1_rejected_and_preserved": true,
+  "source_manifest_recipe_and_copied_evidence_exact": true,
+  "new_documentation_english_and_links_resolve": true,
+  "publication_performed": false,
+  "scope": "Exact artifacts, recipe, curated evidence and main package; not a full dirty-worktree freeze",
+  "workflow_files": {
+    "tools/wordpress-lab/rollback/build.py": "64620ecb2deb286fd6eafb8926d3a3c81f79b7fa01370af7c3c2bf9d9143f9c5",
+    "tools/wordpress-lab/rollback/update.php": "5197a4ba13451bd5c58571ef2aa46cdae310f38bc312804727cb1e82203d2293",
+    "tools/wordpress-lab/rollback/run.py": "eecd9d14b0a50e11b102daa231fa12b2efa1f77ffcb8891375546cc12a42f0f9",
+    "tools/wordpress-lab/rollback/browser.mjs": "6356bce79786954ccd30f7abf4ee4b812e7ef2e92fc56c9a843e31deded3a5ed",
+    "tools/wordpress-lab/rollback/README.md": "03336638f302bdb30b2cc6d76f4fec7a37317728e03e64dc884cb3acc99e7350"
+  }
+}

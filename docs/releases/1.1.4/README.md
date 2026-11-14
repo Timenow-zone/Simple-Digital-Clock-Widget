@@ -1,84 +1,127 @@
-# WordPress 1.1.4 candidate: safe legacy caption serialization
+# WordPress 1.1.4: published rest-r14 package
 
-Status: **independent GO for compatibility revision 2; focused author verification passed with explicit predecessor failures; WordPress.org publication deferred**. Plugin version remains **1.1.4**, minimum requirements remain **WordPress 6.3 / PHP 7.0**, and the shared widget remains **0.8.1**.
+Status: **published in SVN r3796553; public files verified; update offer pending**.
+See the [publication snapshot](PUBLICATION-2026-11-11.md). Check the
+[current machine-readable status](acceptance-evidence.json) before using this
+package. The [finalization record](FINALIZATION-2026-11-11.md) binds the exact
+accepted artifact to its source commit and required hosted CI. Previous
+candidate verdicts do not certify these changed bytes.
 
-The [31 October readiness record](../../maintenance/release-readiness-2026-10-31.md) tracks subsequent repository/tooling/preview/site integration and current release gates. Those changes preserve this exact package and do not extend the historical independent acceptance scope.
+- ZIP: `.local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip`.
+- SHA-256: `57cb0689860a0c4faa6cfbe522b021c3652d36a37120366368b82bd44c52f780`.
+- 67,703 bytes / 16 installable files; [current manifest](manifest.json) and
+  [revision manifest](manifest-rest-r14.json).
+- Source commit: `d5b69e9df3ab038eb782fbb7f8f4d18565dd3b20`.
+- Previous commit: `361b11c8270fa14c524562a9f9b885a0af36b1a0`.
+- WordPress 6.3 / PHP 7.0 minima; shared widget 0.8.1 remains byte-identical.
 
-## Exact candidate
+## Corrections
 
-- ZIP: `.local/packages/simple-digital-clock-1.1.4-compatibility-r2-candidate.zip`; **65,374 bytes**, **16 installable files**.
-- ZIP SHA-256: `d112348051f6930a6269d027502b3cdd92cd2bd9677ee93cef0d279e7922663f`.
-- [Manifest](manifest.json), [package preflight](preflight-evidence.json), and [acceptance status](acceptance-evidence.json).
-- Widget: **0.8.1**, **36,009 bytes**, SHA-256 `779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25`.
-- Widget source commit: `b44f944b60babf45bf266e73ba12f7eba53cfef2`. Its bytes still match `dist/0.8.1.min.js`; no shared runtime, dependency or CDN change is part of this WordPress correction.
+The release retains the r10 i18n changes: three missing editor messages,
+the corrected `shadowHelp` key and description, translatable settings titles and
+rating notices, and 48 plain-gettext editor dictionary values. JSON transport and
+text components provide output-context safety; PHP HTML keeps escaped gettext.
+The pinned WP-CLI-generated POT contains 63 unique nonempty messages. Actual
+WordPress.org language-pack completeness remains separate.
 
-Only `block.js` and `includes/simple-digital-clock-kses.php` change relative to rejected compatibility revision 1. The other fourteen files remain identical, including the dependency notices, plugin readme/changelog, header requirements, GPL license, POT and widget. Relative to the earlier requirements candidate, three files change and `THIRD-PARTY-NOTICES.txt` is added. The full manifest is authoritative.
+The [r10 compatibility investigation](COMPATIBILITY-2026-11-10.md) exposed metadata
+loss before Core REST Block Hooks processing. r11 protected stored content but
+failed when Core reserialized raw responses. r12 corrected responses, then failed
+the extra old-editor-payload check on modern Core, which parses that input before
+the dynamic pre-insert hook. r13 protected that input, but first REST reads of
+recoverable malformed content already stored by public 1.1.2 still lost metadata.
+All failed ZIPs and evidence are retained.
 
-## Independent findings and final correction
+r14 normalizes recognized legacy clock JSON before the default Core block parser
+consumes it, using the supported
+[`block_parser_class` filter](https://developer.wordpress.org/reference/hooks/block_parser_class/). Native parsing, KSES
+and Block Hooks still run normally. Custom parser selections and non-string
+inputs keep their existing handling. This avoids cached-post mutation, heuristic
+matching of duplicate clocks, or late restoration of intentionally removed fields.
+The existing bounded clock mapper also runs at the older Core pre-insert hook,
+the modern `rest_block_hooks_post_types` input boundary, and the raw-response hook.
+The existing late save repair remains. The modern wrapper touches only prepared
+`stdClass` input, returns the type list unchanged, and leaves cached `WP_Post`
+response objects intact. No missing raw field is added. Native permissions, KSES,
+foreign blocks, HTML and unrelated fields retain their original handling.
 
-The requirements candidate `fedc54bc…ed00` received [independent NO-GO](independent-before-acceptance-fixes.json) for missing dependency notices and terminal-backslash captions invalidating nondefault settings on actual WP 6.3.14 / PHP 7.0.33. The exact public 1.1.2 reproduces that Core 6.3 defect.
+Only `includes/simple-digital-clock-kses.php` and the readme changelog differ from
+r10. The block schema, editor bundle, i18n/POT, asset routing and widget bytes are
+unchanged. There is no database migration or recovery of already-discarded data.
+The [frontend asset contract](../../WORDPRESS-ASSET-CONTRACT.md) still requires
+explicit `SDCW_enqueue_scripts()` for raw HTML and cached integrations.
 
-Compatibility revision 1 (`9e02646f…8c1`, commit `4bc261e`) supplied the notices and used HTML-sourced captions. It passed clean backslash UI cases and two file updates, but native author tests and [independent reacceptance](independent-before-entity-regression-fix.json) found a new regression: a title-only save changed literal entity captions, for example `&copy;` to its decoded character. Core's static HTML serializer deliberately retains entity-shaped strings. Once the original JSON caption was omitted, DOM parsing could not preserve that original literal value. Both failures were retained; rollback/reupdate were not credited as executed for that rejected archive.
+## Local verification
 
-### Preserve the original block format
+Fresh acceptance passes the selected maintenance releases from WordPress 6.3.14
+through 7.1.4, minimum PHP 7.0.33, and 7.2 Beta 5 on PHP 8.3.35/8.5.12. The twelve
+matrix installations cover 432 native saves, 3,024 strict JSON checks, 480 frontend
+cases and 36 update/file-rollback/reupdate transitions. Direct public 1.1.1 adds
+six file transitions and twelve old blocks reopened under all three roles.
 
-Revision 2 retains the original **JSON-backed Caption schema and static save HTML**, including the public 1.1.2 reader's representation. It does not add a new caption field, change the saved schema, add a deprecated save format or run a database migration. Valid historical JSON remains authoritative. The reader can recover known clock settings from existing HTML when their JSON metadata is absent; attributes missing from both representations cannot be reconstructed.
+Actual HTTP authorization/field controls, legacy input, KSES, i18n and Plugin
+Check pass. Five-environment readback restores all 55 old stored blocks/locks;
+the installed-package control also preserves duplicate clocks and native Block
+Hooks decisions. Local workflow verification passes 254 tests plus 33 exact-ZIP
+guards. The independent reviewer reports no actionable findings or implicit
+waivers. All owned test projects are stopped.
 
-### Recognize only the Core 6.3 closing-quote defect
+See the [independent acceptance report](INDEPENDENT-ACCEPTANCE-REST-R14-2026-11-11.md)
+and [machine-readable evidence](independent-rest-r14-20261111.json) for exact
+coverage, retained failures, dependency-cache use and limits.
 
-Before native KSES parses clock comments, the server recognizes only malformed metadata matching Core 6.3's terminal-caption backslash bug. A repair requires a decoded object, one top-level string caption ending in a backslash, proof that the replaced token is precisely that caption's closing quote, an exact legacy caption-token preimage and consistent native HTML. Caption may precede Core's appended `className`; unknown values retain their semantics without requiring PHP and JavaScript to spell small floating-point numbers identically. Real U+2028/U+2029 and literal backslash-u text are distinguished.
+Read-only package and focused regression checks from the repository root:
 
-At most 32 possible boundaries are examined. Duplicate/nested captions, inconsistent HTML, foreign or ambiguous malformed input remain unchanged with fixed diagnostics where appropriate. There is no generic JSON repair. Real nested block comments remain excluded; HTML-like caption text emitted by the native static serializer is not mistaken for a child block.
+```sh
+set -euo pipefail
+python3 tools/wordpress-lab/verify-package.py \
+  --zip .local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip
+node --test tests/wordpress-i18n.test.mjs tests/wordpress-rest-metadata.test.mjs \
+  tests/wordpress-package.test.mjs
+```
 
-Clock metadata rewrites use safe backslash and comment-delimiter encoding. Around legacy Core's JSON KSES pass, the known plain-text caption is restored only if its HTML is unchanged. Actual HTML, other metadata, capabilities and nonces retain native policies. All three post-save fields are covered for Administrator, Editor and Author; block-widget paths still respect earlier stricter callbacks. Encoding failure retains original content without logging user data.
+`Tested up to: 7.1` remains unchanged. The
+[official schedule](https://make.wordpress.org/core/7-2/) lists 7.2 Beta 5 and a
+planned 17 November RC1. The
+[Plugin Developer FAQ](https://developer.wordpress.org/plugins/wordpress-org/plugin-developer-faq/#what-version-of-wordpress-should-the-tested-up-to-value-be)
+allows `7.2` only after an actual RC exists and has been tested successfully.
+Beta acceptance does not certify final 7.2. A readme-only change need not bump the
+plugin version, but it changes this frozen ZIP and requires a new artifact identity.
 
-An old public 1.1.2 writer on Core 6.3 can still reproduce its own defect after a file rollback. That does not certify an old writer as fixed. Acceptance must check old-reader validity and a complete reupdate without restoring the database. Already-invalid old content is tracked separately; this revision does not promise recovery of every literal value already lost from metadata.
+## Preserved candidates and rollback
 
-### Dependency notices and documentation
-
-`THIRD-PARTY-NOTICES.txt` retains the full exact upstream MIT notices for Preact **11.1.0**, preact-custom-element **4.6.0** and clsx **2.1.1**. The wrapper GPL and immutable widget are unchanged. A permanent package guard checks locked/installed versions, MIT metadata and full license bodies, with manifest inclusion enforced separately.
-
-Root README, WordPress README and the plugin changelog consistently identify plugin **1.1.4**, widget **0.8.1**, the compatibility correction and dependency notices. Historical versions and acceptance snapshots remain separated from current claims.
-
-## Verification and acceptance
-
-- `node --test tests/wordpress-serialization.test.mjs`: **7/7 PASS**, including **23 native malformed-serialization rows**, **8 negative guard rows** and **48 PHP encoding assertions**. A provenance guard verifies pinned native fixtures. The preceding R1 source fails two behavioral contracts and the Chromium literal-caption regression; original failures remain in the raw evidence.
-- `node --test tests/wordpress-serialization.integration.test.mjs`: locally **Chromium/WebKit PASS**, **11 captions × 2 cycles × both current and public-predecessor readers**, with actual DOM decoding and equivalent native static markup. macOS Firefox launch timed out and is **not credited**. The required Linux Browser tests subsequently passed all three native integration contracts, and independent real WordPress acceptance separately exercised all three engines.
-- Native fixture code is unchanged, pinned Core 6.3.14 React/element/escape-html plus exact public 1.1.2 reader excerpts. Their provenance and licenses live under `tests/fixtures/wordpress-6.3.14/`; none is shipped in the plugin ZIP. Registration/query/PHP doubles are narrowly documented and do not replace actual Gutenberg, persistence, KSES or Core updating.
-- The sixteen-file preflight passes CRC, safe unique paths, exact source/manifest hashes and unchanged widget/GPL checks. Fourteen previous artifact snapshots remain unchanged.
-
-The [independent report](INDEPENDENT-ACCEPTANCE.md) and [exact result](independent-evidence.json) return **GO** for this ZIP at runtime source commit `369f6bde90591e40ac8f59544297a2bae3e6a91f`. Every mandatory section was executed independently on fresh WP 6.3.14 / PHP 7.0.33 and WP 7.1.4 / PHP 8.3.35 environments. Findings and original failures remain explicit; this is not an all-green claim for predecessor behavior.
-
-- **276 exact and valid candidate Caption observations**, plus **378 old-reader observations**, cover three roles, literal entities, slashes, Unicode, className and lock metadata.
-- **538 actual restricted KSES/security assertions per environment**, plus ten native recovery-guard cases per environment, pass. Capabilities, nonces, direct access, all three post fields, widgets, stricter callbacks and unrelated sanitization were checked.
-- Two Core upgrades, two physical file rollbacks and two Core reupdates preserve complete post rows and critical options at all six file transitions, with exact installed files and no database restore/reset. Role saves on posts/pages and active/inactive widgets pass in Chromium, WebKit and real Linux Firefox.
-- Patterns, HTML/shortcode consumers, Auto/Reset, ticking, iframe/resize/hidden-reveal, delayed Fira Code after Google failure and Amharic geometry pass. Old 0.8.0 RED controls remain separate. **312 native Intl comparisons** pass.
-- Official **Plugin Check 2.1.0: 29 static + 5 individually run runtime checks, 0 errors / 10 reviewed nonblocking warnings**. Eight fixed diagnostics, one bounded argument-free backtrace and existing global script loading are individually assessed in the preserved result. Earlier warning totals were not reused.
-- The independent isolated build reproduces exact widget 0.8.1; read-only public checks match its immutable CDN bytes. Public WordPress 1.1.4 remains absent. No publication is inferred from those reads.
-
-The separate [focused author report](AUTHOR-VERIFICATION.md) and [curated result](author-evidence.json) cover Chromium only: **120/120 fresh candidate saves**, **60 observed native malformed Core/REST inputs repaired to exact stored JSON**, a 240-clock corpus over four phases with 20 visible preservation saves, **60/60 public-1.1.2 reader checks**, and six Advanced saves/old reads/reupdated saves each. Its six file transitions also preserve all rows/options. Author WebKit/Firefox were not executed or credited for this artifact; independent three-engine evidence supplies that coverage.
-
-The [runtime-source CI run 41118373200](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/41118373200) passed Repository checks and Browser tests, including all three new native DOM contracts; Workers Builds passed. Required checks must also pass on the final documentation/test-only PR head. The latest result is visible on [PR #13](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/13) and retained in local final CI evidence before handoff.
-
-### Minimum-PHP unit comparison correction
-
-The reviewer retained an authored unit-harness false failure on PHP 7: a constructed numeric-key `stdClass` and an equivalent JSON-decoded object have different internal key representations. Their JSON is identical. The test now compares JSON encodings, retaining object/array and number/string distinctions; [diagnostic evidence](php70-unit-evidence.json) preserves the original nine failures and negative controls. The corrected tracked test passes **48/48 assertions on actual PHP 7.0.33 and PHP 8.3.35** in read-only, network-none CLI containers. This one-line test change and the final evidence documentation change no installable file, manifest or accepted ZIP byte. The reviewer's original 6/7 PHP 7 test snapshot remains unmodified in its report.
-
-### Explicit boundaries
-
-The public 1.1.2 writer still corrupts some terminal-backslash metadata on Core 6.3. Both independent and author cycles retain its failures, lost literal captions and Advanced metadata. One already-damaged Author numeric-entity block remains invalid after reupdate. The author cycle does not run a new writer on that inherited invalid markup; its other **59/59 final writes** pass. The independent strict failed collector remains retained. No automatic reconstruction of erased values or blanket successful old-writer claim is made.
-
-Unknown metadata follows native Core filtering: a numeric-key-only object can become an array for restricted Author identically under native KSES and both plugin versions. Mixed structures and actual recovery cases retain their tested semantics; there is no universal type-preservation promise after Core policy.
-
-HTTPS/TLS, multisite, native Safari/VoiceOver, successful real Google stylesheet transport, installed owner sites and public delivery/updating of unpublished WordPress 1.1.4 remain outside this acceptance. All eight independent and five author services are stopped, their ports are closed, and databases/raw evidence are retained. Prior rejected archives, failed attempts and their separate databases are preserved. A GO or green CI does not authorize merging or publication.
-
-## Preserved artifacts and publication boundaries
-
-| Artifact | SHA-256 | Historical result |
+| Revision | Archive SHA-256 | Preserved status |
 | --- | --- | --- |
-| Requirements candidate | `fedc54bc0600db1236270733724b108a41919f398008b6ee902eeee4ac17ed00` | Independent NO-GO; [manifest](manifest-before-acceptance-fixes.json), [original author report](REQUIREMENTS-CANDIDATE.md) |
-| Compatibility revision 1 | `9e02646f4cbfea322bb5dd5376d39df7afc787c6e34f659db80441c92598b8c1` | Native/independent NO-GO; [manifest](manifest-before-entity-regression-fix.json), [original preparation](COMPATIBILITY-CANDIDATE-R1.md) |
+| render-r9 | `5f334f9496c0c064ab4e182fdda7fa3d4493da7c99baada899cd3392d6d124e7` | [Original accepted scope](acceptance-render-r9.json) |
+| i18n-r10 | `46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403` | [Original i18n GO](acceptance-i18n-r10.json); [expanded compatibility NO-GO](acceptance-compatibility-r10.json) |
+| rest-r11 | `1adaafe3a856a15883e369eb3b679e8c8fbad9a88c267f079c6ebc2c49a4e5da` | [Raw-response failure](acceptance-rest-r11.json) |
+| rest-r12 | `df8b7a67c8b9cf262c305df426a374bdd43ea8d2e141748207abe7639835478e` | [Cross-version input failure](acceptance-rest-r12.json) |
+| rest-r13 | `622f99a3c1cec9262bf8f5024df406f1000a49ba294c3871102810b3c9eb0b00` | [Stored legacy read failure](acceptance-rest-r13.json) |
 
-Both archives retain their original names under `.local/packages/`. Their author/preflight/independent records are preserved separately. Earlier widget-0.8.1 (`5963f947…6088`), widget-0.8.0 and 1.1.3 archives also remain unchanged; their earlier matrices certify only their original bytes. Widget 0.8.1's [CDN publication record](../0.8.1/PUBLICATION.md) is not WordPress 1.1.4 publication evidence.
+All ZIPs remain in `.local/packages/` with revision-specific manifests and raw
+evidence. The accepted r9 is 66,815 bytes; its
+[independent report](INDEPENDENT-ACCEPTANCE-RENDER-R9-2026-11-06.md) is unchanged.
+Previous packages remain available for file rollback within their recorded scope.
+They are not remedies for the newly identified REST defects. File rollback does
+not prove safe editing with an old writer or reconstruct metadata already lost;
+use a pre-loss backup or revision for that data. The older r8 and separately
+versioned [1.1.2.1 reserve](../1.1.2.1/README.md) also remain unchanged.
 
-No merge, WordPress.org/SVN publication, release tag, npm publication or owner-site update is authorized by this preparation. Rollback restores pinned plugin files while keeping database data. Preserve every archive and manifest, verify the final SHA before any later release, and do not run an old publication script against this candidate.
+## Release boundary
+
+[PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) now
+contains committed r14. Required Repository checks and Browser tests passed on
+the exact source commit, including fresh dependency installation; see the
+[finalization record](FINALIZATION-2026-11-11.md). Every later PR HEAD must pass
+both checks independently before any future merge. This preparation
+does not establish public update delivery, new performance measurements, arbitrary
+optimizer/multisite support, native Safari/VoiceOver, or complete language packs.
+Stored-legacy recovery is verified with the default Core parser; independently
+selected custom parser implementations are respected, not certified.
+GitHub branch/PR updates and CI are authorized and completed for the source
+revision. Merge, Git release tags, GitHub Release, deployment and owner-site installation
+remain deferred. WordPress.org publication was explicitly authorized and completed
+in SVN r3796553. Both public ZIPs match all 16 accepted files; the update API still
+returned 1.1.2 at 15:06 UTC on 11 November. The [publication snapshot](PUBLICATION-2026-11-11.md)
+keeps these outcomes separate. Existing widget 0.8.1 CDN delivery remains
+independent and unchanged.

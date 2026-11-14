@@ -1,0 +1,16 @@
+{
+  "status": "CROSS_VERSION_REST_INPUT_FAILED",
+  "revision": "rest-r12",
+  "archive_sha256": "df8b7a67c8b9cf262c305df426a374bdd43ea8d2e141748207abe7639835478e",
+  "archive_bytes": 67424,
+  "installable_files": 16,
+  "manifest_sha256": "4c864d4657a398eeb8cef9863b6923309810144217fb3d8df01cd08fbf79a532",
+  "previous_revision": "rest-r11",
+  "previous_status": "acceptance-rest-r11.json",
+  "scope": "Ordinary native serializer, HTTP, stable and Beta acceptance passed; Core 7.1 loses legacy serializer metadata before the dynamic REST pre-insert filter. Exact candidate rejected; no failure waiver.",
+  "published": false,
+  "publication": "Deferred by user; local work only",
+  "release_readiness": "NO_GO",
+  "failure_evidence": ".local/rest-r12-20261111/review/unknown-metadata-disposition.json",
+  "failure_evidence_sha256": "bc6d3518c13cf20c2a9268be8082f367cb3a4b58f55faca90fb9aa8b530454cf"
+}
