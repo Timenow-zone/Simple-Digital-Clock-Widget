@@ -45,24 +45,31 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
             wp_send_json_success();
         }
 
-        function simple_digital_clock_admin_notice() {
+        public static function should_show_notice() {
+            $screen = get_current_screen();
+            if (!$screen || 'settings_page_simple-digital-clock' !== $screen->id) {
+                return false;
+            }
             $user_id = get_current_user_id();
             $hide_notice = get_user_meta($user_id, 'simple_digital_clock_hide_notice', true);
-            
-            if ($hide_notice && (time() - $hide_notice < WEEK_IN_SECONDS)) {
+            return !$hide_notice || time() - $hide_notice >= WEEK_IN_SECONDS;
+        }
+
+        function simple_digital_clock_admin_notice() {
+            if (!self::should_show_notice()) {
                 return;
-            } 
+            }
 
             echo '<div class="notice notice-info is-dismissible" id="simple-digital-clock-notice">
             <div style="display:flex;padding:10px 0;">
                 <div style="margin-right:15px;">
-                    <img alt="',esc_attr('Simple Digital Clock 🕒', 'simple-digital-clock'),'" src="', esc_url(SDCW_URL.'assets/admin/img/icon.svg'),'" style="width:96px">
+                    <img alt="',esc_attr__('Simple Digital Clock 🕒', 'simple-digital-clock'),'" src="', esc_url(SDCW_URL.'assets/admin/img/icon.svg'),'" style="width:96px">
                 </div>
                 <div>
-                    <h2 style="margin:0;">🥰 ',esc_html('Please rate our free', 'simple-digital-clock'),' &laquo; ',esc_html('Simple Digital Clock 🕒', 'simple-digital-clock'),'&raquo;</h2>
+                    <h2 style="margin:0;">🥰 ',esc_html__('Please rate our free', 'simple-digital-clock'),' &laquo; ',esc_html__('Simple Digital Clock 🕒', 'simple-digital-clock'),'&raquo;</h2>
                     <hr>
-                    <p style="padding:0;margin:0;">',esc_html('Your valuable feedback will help us improve.', 'simple-digital-clock'),'<br>',esc_html('It will only take a few minutes', 'simple-digital-clock'),': <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank">',esc_html('Rate it now', 'simple-digital-clock'),'</a> 👍</p>
-                    <p style="padding:0;margin:0;"><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="',esc_url(SDCW_URL.'assets/admin/img/stars.png'),'" alt="',esc_attr('Rating', 'simple-digital-clock'),'"></a></p>
+                    <p style="padding:0;margin:0;">',esc_html__('Your valuable feedback will help us improve.', 'simple-digital-clock'),'<br>',esc_html__('It will only take a few minutes', 'simple-digital-clock'),': <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank">',esc_html__('Rate it now', 'simple-digital-clock'),'</a> 👍</p>
+                    <p style="padding:0;margin:0;"><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="',esc_url(SDCW_URL.'assets/admin/img/stars.png'),'" alt="',esc_attr__('Rating', 'simple-digital-clock'),'"></a></p>
                 </div>
             </div>
         </div>';

@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "observed_utc": "2026-11-12T12:26:50.593840+00:00",
+  "status": "PASS_SCOPED_TECHNICAL_ACCEPTANCE_FINAL_HEAD_CI_REQUIRED",
+  "defect": "MULTI-ALIGN-P2-01",
+  "widget": "0.8.4",
+  "wordpress": "1.1.6",
+  "candidate": "RC5",
+  "main": {
+    "path": "dist/0.8.4.min.js",
+    "sha256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b"
+  },
+  "archive": {
+    "path": ".local/packages/simple-digital-clock-1.1.6-rc5.zip",
+    "sha256": "800bac5294632cf8a581719cdbdffb5ef20b2a20e9a71195f554f45e72c2d3dd"
+  },
+  "executable_source_commit": "b1af416e8373bc0bec0163ee36a03507f3ddcaaa",
+  "full_package_commit": "7cf895dff9588e64e4329380dc090a83f0af5157",
+  "phase1": {
+    "passed": 0,
+    "failed": 6,
+    "missing": 0,
+    "result": {
+      "path": ".local/alignment-084-20261112/phase1/PHASE1.json",
+      "sha256": "199e8362e2a067456fe775e67e1ca3a518a06af053ab8b6d12e23aaff405d80c"
+    },
+    "before_edit_baseline": {
+      "path": ".local/alignment-084-20261112/phase1/BASELINE.json",
+      "sha256": "70ab900946a577a11b2826f7f4d9214e3ad10af36cb624a482d36a5c546e9996"
+    }
+  },
+  "alignment": {
+    "passed_workflows": 30,
+    "ordinary_html": 6,
+    "installed_wordpress": 24,
+    "explicit_direction_phases": 150,
+    "per_clock_direction_checks": 525,
+    "browsers": [
+      "Google Chrome 157.0.8103.51",
+      "Firefox 153.0",
+      "WebKit 26.5"
+    ],
+    "native_rows_included_in_primary": true,
+    "fixture": {
+      "path": "tests/fixtures/multi-instance.json",
+      "sha256": "2a75fbf7b0b5cf16a881f73f1ca7708be278028781b37e510b3c54d654ceab35"
+    },
+    "runner": {
+      "path": "tests/multi-instance.integration.test.mjs",
+      "sha256": "3f73b0802f7e2dd364732df7cc326cfdb160c3799de259f9d8fa60a7a87eefad"
+    }
+  },
+  "standalone_compatibility_cases": 24,
+  "native": {
+    "fresh_unique_passed": 222,
+    "initial_failed_attempts_retained": 1,
+    "transitions_passed": 10,
+    "inherited_rows": 0,
+    "groups": {
+      "multi_instance": 24,
+      "runtime": 42,
+      "focused_csp": 18,
+      "frontend": 96,
+      "post_lifecycle": 24,
+      "site_editor": 6,
+      "legacy_preview": 6,
+      "widgets_ui": 6
+    },
+    "report": {
+      "path": ".local/candidate-116-rc5-20261112-a/evidence/PRIMARY-RC5-REPORT.md",
+      "sha256": "3e7adc1748a922fcf643ea7a958c169e3d3da18e57ad07d13f42bc90cec0b3d9"
+    },
+    "result": {
+      "path": ".local/candidate-116-rc5-20261112-a/evidence/PRIMARY-RC5-RESULT.json",
+      "sha256": "e4ed9200d13bc5176bcfe9e7f0e2059932136e3e66853558d2aa943cd992c010"
+    },
+    "final_receipt": {
+      "path": ".local/remediation-116-rc5/native-setup/FINAL-EVIDENCE.json",
+      "sha256": "a72c5adcab9bf9a7d6320d853eae4a6cfd7fbb94f33ade7c16e4338323cdaf9a"
+    },
+    "services_stopped": true
+  },
+  "reports": {
+    "standalone": {
+      "path": ".local/alignment-084-20261112/standalone/REPORT.md",
+      "sha256": "6e4ec931b35bb07c99cdfb859c46ef3b3ed902f16e1aa9ec7d52bd8b806ab7fe"
+    },
+    "package": {
+      "path": ".local/alignment-084-20261112/package-review/candidate-1/REPORT.md",
+      "sha256": "11bb5463e76a70c46334c17ee5e400bdb484c9e9bfbd71d107d7a9feb09b13ed"
+    },
+    "source_review": {
+      "path": ".local/alignment-084-20261112/phase2-review/REPORT.md",
+      "sha256": "5deec8e276ff676b1d86a663ddb8e2b32acfe8064a45f0adb3678ad62434c779"
+    },
+    "green_review": {
+      "path": ".local/alignment-084-20261112/green-review/REPORT.md",
+      "sha256": "da06749e7035fa514867877d05ee461c2894f7ec0f0986b5e782888fdcf49605"
+    },
+    "widgets_harness_review": {
+      "path": ".local/alignment-084-20261112/widgets-harness-review/REPORT.md",
+      "sha256": "c5bcc1870b694b52c0f8a9fa7a4fc7f1e9ab4218b055517893f3165800a62996"
+    },
+    "integrity": {
+      "path": ".local/alignment-084-20261112/final-integrity/RECEIPT.json",
+      "sha256": "6699b1623e1ac35bc6db42f4596a921dc6219d8a5501354b0cdeeb7747e07012"
+    }
+  },
+  "inventories": {
+    "standalone": {
+      "path": ".local/alignment-084-20261112/standalone/EVIDENCE.json",
+      "sha256": "d2b9cf5c35a643a180bc73a8ccf8ae9978083f41ba81661941f5217764f76f5c",
+      "files": 49
+    },
+    "package": {
+      "path": ".local/alignment-084-20261112/package-review/EVIDENCE.json",
+      "sha256": "926674acb8ee78b1c743541c97fe7a370550d379b0009a46bd2bdf1ad81f4b08",
+      "files": 91
+    },
+    "source_review": {
+      "path": ".local/alignment-084-20261112/phase2-review/EVIDENCE.json",
+      "sha256": "d8c8e8574aedc80bc396701b9eed6106e06989a2350565e724c0a3536cd212dd",
+      "files": 14
+    },
+    "green_review": {
+      "path": ".local/alignment-084-20261112/green-review/EVIDENCE.json",
+      "sha256": "7586d2d075887ee5a22824b2748390cc97de6854a4a09d5c35d00cdd4029fc7e",
+      "files": 30
+    },
+    "widgets_harness_review": {
+      "path": ".local/alignment-084-20261112/widgets-harness-review/EVIDENCE.json",
+      "sha256": "0bddcad447d50dff920a3c7e04661824fa0ced587f505759cfd2aa36777e1e78",
+      "files": 9
+    },
+    "native": {
+      "path": ".local/candidate-116-rc5-20261112-a/SHA256SUMS.json",
+      "sha256": "1e03bf288371d28d76b6fc0a078f3e68c859a584a6c73b7fd792c375e580eed4",
+      "files": 814
+    }
+  },
+  "scope_limits": [
+    "Frontend 96 is fixed-time parity for 8/29 available cases; real ticking is separately proven.",
+    "CSP18 covers three positive modes; expected Core/theme diagnostics retained.",
+    "Initial Widgets current-Chrome wait timeout retained; exact Core OPTIONS exclusion is harness-only; underlying pending-request cause unknown.",
+    "Historical deep-loading/non-HTML/cache/optimizer/multisite/old-writer evidence is not fresh execution of 0.8.4.",
+    "Minute-only clock is not claimed to cross a minute boundary; WebKit is not native Safari."
+  ],
+  "final_head_ci": {
+    "required_checks": [
+      "Repository checks",
+      "Browser tests"
+    ],
+    "receipt": ".local/alignment-084-20261112/final-head-ci.json",
+    "live_checks": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks",
+    "progress_head_only": {
+      "path": ".local/alignment-084-20261112/progress-head-ci.json",
+      "sha256": "4efa1fd7d7fa0843538a9cbee999c7031110c691d3fe9c1334e7f38d14190e41"
+    }
+  },
+  "published": false,
+  "merged": false,
+  "cdn_delivery": "PENDING_SEPARATE_AUTHORIZATION_AND_PUBLIC_VERIFICATION",
+  "wordpress_publication": "PENDING_EXPLICIT_OWNER_INSTRUCTION"
+}

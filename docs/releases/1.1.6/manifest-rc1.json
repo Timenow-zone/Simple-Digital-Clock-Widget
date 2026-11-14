@@ -1,0 +1,66 @@
+{
+  "version": "1.1.6",
+  "revision": "rc1",
+  "widget": "0.8.1",
+  "widget_source_commit": "b44f944b60babf45bf266e73ba12f7eba53cfef2",
+  "archive": "simple-digital-clock-1.1.6-rc1.zip",
+  "archive_path": ".local/packages/simple-digital-clock-1.1.6-rc1.zip",
+  "archive_sha256": "1b29a26dc28431a40c475c9db6e7cee6056ef9731f298c6f672da7d200af1ecf",
+  "archive_bytes": 71397,
+  "file_count": 17,
+  "files": {
+    "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+    "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+    "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+    "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+    "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    "assets/public/js/simple-digital-clock-loader.js": "04bfe2a2bba96c887fe124c1dfe6a92a91f93ecb80c81d0cca2e50679e9ccc3b",
+    "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+    "block.js": "9332bfa2cdd569eaf169a11c66cbe069d882aa10c69d9922839a58526e52f58a",
+    "includes/simple-digital-clock-admin-notices.php": "bf2b40fab319e8b5f4595361ec833454f1bb4a212673d83775219fe7014d9f1c",
+    "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+    "includes/simple-digital-clock-assets.php": "aa1a8de672c6a925701233433c227327cb32d4affbebf63cdba4dd39d3742b09",
+    "includes/simple-digital-clock-kses.php": "b801764bd6eb5f4a5e4513006b15272efd19271deeb029a2753adc6e7f1e35d6",
+    "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+    "languages/simple-digital-clock.pot": "b22bf6c116250203369bde5cb69ed3ba26e6385473e035e9700ba7cd64614bfa",
+    "readme.txt": "106b80356a7acb7a5c29c2ebc71edf4f1f1ffe81946070dbfadd30a11a2a9fe3",
+    "widget_init.php": "856a9e697aa5de4980af67d92ba2e5932450a9c04be8daed67a04df7a3108ed7"
+  },
+  "source_base_commit": "e4c753aaef2cc92c52ba517579c17bf358a0b2c2",
+  "source_state": "RC1 metadata changes from source_base_commit; containing Git revision and per-file hashes identify the complete source",
+  "accepted_code_commit": "289f32ed6ebd9b0ecf4165ca1b1ea5679b8ae3eb",
+  "published": false,
+  "shared_runtime_changed": false,
+  "executable_code_changed_from_r3": false,
+  "database_migration": false,
+  "base_candidate": {
+    "revision": "browser-r3",
+    "manifest": "docs/releases/1.1.6/manifest-browser-r3.json",
+    "archive_path": ".local/packages/simple-digital-clock-1.1.6-browser-r3-candidate.zip",
+    "archive_sha256": "9c853236e957119a8aac4588d8565308f10fa0d430799ac4e3d1917ca6789137"
+  },
+  "changed_files_from_base": [
+    "languages/simple-digital-clock.pot",
+    "readme.txt"
+  ],
+  "unchanged_files_from_base": 15,
+  "rollback_archive": ".local/packages/simple-digital-clock-1.1.5-final.zip",
+  "rollback_archive_sha256": "2b6b2ed361115aec5dbddad058bf38411534c53705ccc5315b1fd6e756386aa2",
+  "acceptance": "SCOPED_RC_PACKAGE_ACCEPTANCE_PASS",
+  "hosted_checks": "REQUIRED_ON_CURRENT_RC1_PR_HEAD",
+  "inherited_code_acceptance": "docs/releases/1.1.6/acceptance-final.json",
+  "known_integration_limits": [
+    "First clock created only after customElements.whenDefined requires explicit runtime enqueue",
+    "First clocks inside shadow roots require explicit runtime enqueue",
+    "Arbitrary consent/optimizer transforms are not certified"
+  ],
+  "candidate_pull_request": {
+    "url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19",
+    "draft": true,
+    "base": "codex/local-release-ci-hygiene",
+    "require_latest_head_checks": true
+  },
+  "acceptance_date": "2026-11-12",
+  "rc_acceptance": "docs/releases/1.1.6/acceptance-rc1.json"
+}

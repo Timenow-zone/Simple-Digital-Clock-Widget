@@ -1,0 +1,16 @@
+{
+  "status": "STORED_LEGACY_REST_RESPONSE_FAILED",
+  "revision": "rest-r13",
+  "archive_sha256": "622f99a3c1cec9262bf8f5024df406f1000a49ba294c3871102810b3c9eb0b00",
+  "archive_bytes": 67542,
+  "installable_files": 16,
+  "manifest_sha256": "45a7b64b59e9e1c3bbefce44f16d6acc3f4b8545139b8d3b8b4ecb7503490a96",
+  "previous_revision": "rest-r12",
+  "previous_status": "acceptance-rest-r12.json",
+  "scope": "The native stable/Beta/input matrix passed, but first REST reads of actual recoverable malformed content stored by public1.1.2 on old Core lose locks/settings. Exact candidate rejected; no failure waiver.",
+  "published": false,
+  "publication": "Deferred by user; local work only",
+  "release_readiness": "NO_GO",
+  "failure_evidence": ".local/rest-r13-20261111/review/stored-legacy-disposition.json",
+  "failure_evidence_sha256": "aad925e11fc75598ddd0f45bf1d59129fc7b5364a936bccf65f602b7482f1598"
+}

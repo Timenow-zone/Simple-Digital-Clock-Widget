@@ -48,7 +48,7 @@ jobs:
           npx --no-install tsc --noEmit -p tsconfig.wtr.json
       - run: npm run lint
       - name: Verify patched development-tooling behavior
-        run: node --test tests/dev-tooling.test.mjs
+        run: node --test tests/dev-tooling.test.mjs tests/deepmerge-security.test.mjs
       - run: npm run test:node
       - name: Check release metadata validation
         run: node --test tests/release-metadata.test.mjs
@@ -65,14 +65,43 @@ jobs:
           git ls-files -z -- 'wordpress/simple-digital-clock/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
           git ls-files -z -- 'wordpress/simple-digital-clock/*.js' | xargs -0 --no-run-if-empty -n 1 node --check
       - name: Verify WordPress package identity and release versions
-        run: node --test tests/wordpress-package.test.mjs
+        run: |
+          node --test tests/wordpress-package.test.mjs tests/wordpress-assets.test.mjs
+          node --check src/wordpress-loader.js
+          node scripts/build-wordpress-loader.mjs --check
+      - name: Verify WordPress translation coverage and output contexts
+        run: |
+          php -l tests/wordpress-i18n.php
+          node --test tests/wordpress-i18n.test.mjs
+      - name: Check disposable WordPress lab safety boundaries
+        run: |
+          python3 tests/wordpress-lab.test.py
+          python3 tests/wordpress-candidate-lab.test.py
+          python3 -m py_compile scripts/build-wordpress-candidate.py tools/wordpress-lab/candidate/run.py
+          python3 -m py_compile tools/wordpress-lab/repro/run.py
+          php -l tools/wordpress-lab/repro/site.php
+          php -l tools/wordpress-lab/repro/install.php
+          php -l tools/wordpress-lab/repro/checker.php
+          node --check tools/wordpress-lab/repro/smoke.mjs
+      - name: Verify the immutable editable rollback build and safety guards
+        run: |
+          python3 tests/wordpress-rollback.test.py
+          python3 -m py_compile tools/wordpress-lab/rollback/build.py tools/wordpress-lab/rollback/run.py
+          php -l tools/wordpress-lab/rollback/update.php
+          node --check tools/wordpress-lab/rollback/browser.mjs
       - name: Verify the published preview matches its sources
         run: |
           node scripts/build-wordpress-preview.mjs --check
           node --check wordpress/preview/demo.js
           git ls-files -z -- 'wordpress/preview/*.php' | xargs -0 --no-run-if-empty -n 1 php -l
-      - name: Check WordPress 6.3 serialization compatibility
-        run: node --test tests/wordpress-serialization.test.mjs
+      - name: Check WordPress serialization and inspector contracts
+        run: node --test tests/wordpress-serialization.test.mjs tests/wordpress-inspector.test.mjs
+      - name: Check Classic Editor settings, hooks and attribute boundaries
+        run: node --test tests/wordpress-classic-editor.test.mjs tests/wordpress-save-guard.test.mjs
+      - name: Check WordPress REST metadata ordering and boundaries
+        run: |
+          php -l tests/wordpress-rest-metadata.php
+          node --test tests/wordpress-rest-metadata.test.mjs
       - name: Verify that checks leave tracked files unchanged
         run: git diff --exit-code
 
@@ -90,11 +119,19 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Install the locked Playwright browsers and system dependencies
-        run: npx --no-install playwright install --with-deps chromium firefox webkit
+        run: npx --no-install playwright install --with-deps chrome chromium firefox webkit
       - run: npm run test:browsers
+      - name: Check the exact standalone runtime in Google Chrome, Firefox and WebKit
+        run: npm run test:standalone
       - name: Check native WordPress caption serialization and legacy readers
         run: node --test tests/wordpress-serialization.integration.test.mjs
+      - name: Check WordPress-bundled TinyMCE clock preservation in Google Chrome, Firefox and WebKit
+        run: node --test tests/wordpress-classic-editor.integration.test.mjs
+      - name: Check conditional WordPress runtime loading
+        run: node --test tests/wordpress-loader.integration.test.mjs
       - name: Check generated product demo examples and controls
         run: node --test tests/product-site.integration.test.mjs
+      - name: Check differently configured clock instances in Google Chrome, Firefox and WebKit
+        run: npm run test:instances
       - name: Verify that browser tests leave tracked files unchanged
         run: git diff --exit-code

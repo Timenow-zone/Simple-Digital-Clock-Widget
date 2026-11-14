@@ -5,7 +5,7 @@ Donate link: https://utctime.info/
 Tested up to: 7.1
 Requires at least: 6.3
 Requires PHP: 7.0
-Stable tag: 1.1.4
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Blocks: simple-digital-clock-block/widget-block
@@ -73,8 +73,19 @@ Yes. Enable **24-Hour** to force a 24-hour display. When disabled, the clock fol
 Yes. Each block is independent—set its own locale and time zone.
 
 = Is it fast? =
-Yes. The bundled clock widget is about 12.2 KiB gzip and is served locally without a runtime JavaScript CDN dependency.
+The main clock runtime is served locally and is requested only after a WordPress render/use signal or a connected clock element. With the default bundled runtime, clock-free pages receive a small cacheable external bootstrap and inert JSON configuration, but do not download Preact or the clock renderer. Multiple clocks share one runtime. Layout remains scoped to Simple Digital Clock blocks and explicit integrations; raw HTML keeps its existing layout. The plugin does not buffer or parse the complete page response, poll the DOM, or patch browser APIs.
 
+= What about clocks created later by custom JavaScript? =
+The external bootstrap defines a lightweight custom-element shell. Existing customElements.whenDefined() integrations can create their first clock, including inside open or closed shadow roots; connecting the clock requests its renderer. Calling SDCW_enqueue_scripts() or enqueuing the simple-digital-clock handle explicitly requests the normal runtime through WordPress. Gutenberg and native legacy-widget preview documents load their own runtime. If an integration replaces the runtime URL or version, the plugin loads that opaque override eagerly without reserving the element name, preserving older runtimes. This includes CDN mirrors and URL query rewrites: such pages can request the overridden runtime before a clock exists. Nonce and SRI attributes alone do not disable conditional loading.
+
+= What if I left Classic Editor open while updating? =
+An older open editor can remove clock HTML before saving. The plugin stops a native post save or autosave that would remove previously saved clocks from an older form. Your saved post stays intact. Copy your unsaved text from the recovery screen, reopen the editor, and apply your changes again. Fresh editors allow intentional clock deletion. This cannot recover clocks already deleted or clocks that were never saved.
+
+= What happens to clock examples inside HTML comments? =
+For users whose content WordPress filters, clock examples inside comments are escaped before saving. This also protects supported malformed comments and comment examples inside attributes, raw text, and CDATA-shaped declarations. Empty browser comments are normalized to keep neighboring clocks intact. Source spelling can change. WordPress still applies its HTML permissions and sanitization; arbitrary malformed HTML and third-party block metadata keep their native behavior.
+
+= What if my site caches complete HTML pages? =
+Regenerate full-page caches after updating so visitors receive the corrected HTML. Cached pages served without WordPress running are not rewritten by the plugin.
 == Screenshots ==
 
 1. screenshot-1.png – Front-end examples: multiple Simple Digital Clock blocks on one page, each with different locales, time zones, colors, and formats (AM/PM or 24-hour).
@@ -90,19 +101,46 @@ The plugin bundles its production JavaScript locally for performance. Human-read
 The production JavaScript bundled with this plugin is built from the public Simple Digital Clock Widget source.
 
 * Source repository: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
-* Bundled upstream version: 0.8.1
-* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/b44f944b60babf45bf266e73ba12f7eba53cfef2
+* Bundled upstream version: 0.8.4
+* Exact source for this bundled release: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/tree/b1af416e8373bc0bec0163ee36a03507f3ddcaaa
 
 Third-party copyright and MIT license notices for the bundled dependencies are included in THIRD-PARTY-NOTICES.txt. The WordPress wrapper remains GPLv2 or later.
 
 To reproduce the production bundle:
 
 * `npm ci`
-* `npm run build`
+* `node scripts/check-build.mjs` (verify the retained immutable runtime)
+* `node scripts/build-wordpress-loader.mjs --check` (verify the external bootstrap)
 
 == Changelog ==
 
+= 1.1.6 =
+* Keep commented clock examples inactive for filtered users, including supported malformed comments, attribute and raw-text examples, CDATA-shaped declarations, and repeated saves.
+* Preserve neighboring clocks when browser-empty comments pass through native WordPress block and HTML filtering.
+* Protect previously saved clocks from destructive saves and autosaves in Classic Editor tabs opened before updating; provide a recovery screen for submitted text.
+* Preserve clock HTML and supported settings through Classic Editor Visual/Text switches and saves, including clocks inside otherwise empty containers.
+* Fix the built-in gradient Clear action and preserve explicitly cleared backgrounds for older block readers.
+* Keep the selected time zone when Enter follows an unmatched search or a closed suggestion list; display a translatable no-match message for unmatched searches.
+* Request the runtime through native WordPress render signals and a cacheable external bootstrap; clock-free public pages do not download the main runtime.
+* Bundle widget 0.8.4 with a lightweight registration shell for first-clock whenDefined and shadow-root integrations.
+* Isolate errors in individual clocks so other clocks initialize and keep ticking in ordinary HTML and WordPress.
+* Apply left, center and right alignment consistently, including default alignment and multiple independently configured clocks.
+* Restore explicit helper loading and native Text/Custom HTML preview iframe assets; support external-only CSP without inline bootstrap code.
+* Preserve saved blocks, raw HTML, settings and the editor schema without a database migration.
+* Preserve Core-generated script attributes and attached data; report failed or unsupported script activation without automatic retry loops.
+* Preserve explicitly overridden legacy runtime sources through eager compatibility loading; default bundled pages retain conditional loading.
+
+= 1.1.5 =
+* Restore automatic clock rendering in existing raw HTML, Custom HTML/Text widgets, templates and shortcode integrations after updating from 1.1.2 or 1.1.4.
+* Load the runtime only for actual server-rendered clocks, including raw HTML and cached fragments, while preserving raw HTML layout.
+* Retain the Gutenberg, legacy metadata and localization fixes from 1.1.4 without changing stored content.
+
 = 1.1.4 =
+* Preserve clock JSON metadata when reading legacy blocks and across REST saves and responses, including captions ending in a backslash and block locks.
+* Make missing editor controls, settings titles and rating notices translatable; preserve literal translated text without double HTML escaping.
+* Load assets when the owned clock block renders, without scanning or buffering page HTML; multiple clocks share one script and one inline layout rule without an external CSS request.
+* Keep editor preview assets scoped to block editors and rating-notice assets scoped to the plugin settings screen.
+* Expose metadata failure diagnostics through a fixed-code action without unconditional PHP logging.
 * Preserve captions ending in a backslash and nondefault clock settings when saving on WordPress 6.3.
 * Include third-party copyright and license notices for bundled dependencies.
 * Update the bundled widget to 0.8.1 with Preact 11.1.0.
@@ -176,3 +214,11 @@ To reproduce the production bundle:
 == 🍩 Donations ==
 🕒 Sync Time: [UTC](https://utctime.info/)
 🗓️ Today's Date: [TodaysDateNow](https://todaysdatenow.com/)
+
+== Upgrade Notice ==
+
+= 1.1.6 =
+Preserves clock HTML and blocks destructive saves from old Classic Editor tabs. Copy unsaved text and reopen those tabs. Keeps supported clock examples inactive and neighboring clocks intact. Improves loading and Gutenberg controls. No database migration; regenerate page caches.
+
+= 1.1.5 =
+Restores clocks in existing HTML, widget and template integrations. No content migration is required.

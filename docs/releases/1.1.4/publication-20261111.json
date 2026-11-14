@@ -1,0 +1,379 @@
+{
+  "status": "PUBLISHED_FILES_VERIFIED_UPDATE_DISTRIBUTION_PENDING",
+  "version": "1.1.4",
+  "revision": "rest-r14",
+  "published": true,
+  "source_commit": "d5b69e9df3ab038eb782fbb7f8f4d18565dd3b20",
+  "pre_publication_head": "6307dac4f8b0689f0910710f698c67c6ab5bceea",
+  "svn": {
+    "revision": 3796553,
+    "author": "falselight",
+    "committed_at_utc": "2026-11-11T15:04:55.839830Z",
+    "changed_paths": 21,
+    "targets": [
+      "trunk",
+      "tags/1.1.4"
+    ],
+    "exported_files_per_tree": 16,
+    "exports_match_accepted_manifest": true,
+    "previous_tags_and_directory_assets_unchanged": true
+  },
+  "accepted_artifact": {
+    "archive": ".local/packages/simple-digital-clock-1.1.4-rest-r14-candidate.zip",
+    "sha256": "57cb0689860a0c4faa6cfbe522b021c3652d36a37120366368b82bd44c52f780",
+    "bytes": 67703,
+    "files": 16,
+    "manifest": "manifest-rest-r14.json",
+    "manifest_sha256": "1f249b1e005461f6270859df9bfa8652ad0b217d5da7656b50fb7b0aa78715dc"
+  },
+  "public_delivery": {
+    "status": "PASS",
+    "observed_at_utc": "2026-11-11T15:09:08.938789+00:00",
+    "catalog_url": "https://wordpress.org/plugins/simple-digital-clock/",
+    "api_version": "1.1.4",
+    "versioned_zip_url": "https://downloads.wordpress.org/plugin/simple-digital-clock.1.1.4.zip",
+    "latest_stable_zip_url": "https://downloads.wordpress.org/plugin/simple-digital-clock.latest-stable.zip",
+    "both_http_status": 200,
+    "both_archive_sha256": "e847ac9fd5ac142d418f3b879c4f232152e48ab670c5ada81746eb5d516040ab",
+    "both_archive_bytes": 68831,
+    "exact_files_per_archive": 16,
+    "files_sha256": {
+      "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "THIRD-PARTY-NOTICES.txt": "db68c74eae5b4d6fae44eae0454f6a0a2188ab9c7af58b9fb71b0e0d6038ab69",
+      "assets/admin/img/icon.png": "80ab62d841cd9f5d50bf47eb3e32cad7862d9874a256d87a012cc3b285c7a4e2",
+      "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
+      "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
+      "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+      "assets/public/js/simple-digital-clock.min.js": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+      "block.js": "9332bfa2cdd569eaf169a11c66cbe069d882aa10c69d9922839a58526e52f58a",
+      "includes/simple-digital-clock-admin-notices.php": "bf2b40fab319e8b5f4595361ec833454f1bb4a212673d83775219fe7014d9f1c",
+      "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
+      "includes/simple-digital-clock-assets.php": "4942043532c082e6663103313d63f64d514c0ee62eadfce1ffeec3770146aa09",
+      "includes/simple-digital-clock-kses.php": "b801764bd6eb5f4a5e4513006b15272efd19271deeb029a2753adc6e7f1e35d6",
+      "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
+      "languages/simple-digital-clock.pot": "398eb54a2ac6fa3127801b9cb2b49492240810e19aee77e3e070f86445ffabb5",
+      "readme.txt": "011fdcbbc86df222a7b480a1536b579c7bccf192d8019bd9102ba2bcde06546c",
+      "widget_init.php": "4654eb0cb5b3dad62566e7fc0c9f34fbc2c79e74301ee852006194969fa15037"
+    },
+    "archive_container_repacked": true,
+    "stable_tag": "1.1.4",
+    "requires_wordpress": "6.3",
+    "requires_php": "7.0",
+    "readme_tested": "7.1",
+    "api_tested_display": "7.1.4",
+    "full_verification_finished_at_utc": "2026-11-11T15:14:17.734717+00:00",
+    "full_verification_status": "PASS"
+  },
+  "update_api": {
+    "status": "UPDATE_DISTRIBUTION_PENDING",
+    "observed_at_utc": "2026-11-11T15:06:24.618965+00:00",
+    "requests": 30,
+    "http_200": 30,
+    "wordpress_versions": [
+      "6.3.14",
+      "6.4.14",
+      "6.5.14",
+      "6.6.11",
+      "6.7.11",
+      "6.8.12",
+      "6.9.11",
+      "7.0.8",
+      "7.1.4",
+      "7.2-beta5"
+    ],
+    "target_offer_passes": 0,
+    "target_offer_total": 20,
+    "current_metadata_passes": 0,
+    "current_metadata_total": 10,
+    "no_downgrade_passes": 10,
+    "no_downgrade_total": 10,
+    "observed_version": "1.1.2",
+    "cases": [
+      {
+        "wordpress": "6.8.12",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.8.12",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.8.12",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.9.11",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.9.11",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.9.11",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.3.14",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.3.14",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.3.14",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.1.4",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.1.4",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.1.4",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.4.14",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.4.14",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.4.14",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.5.14",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.5.14",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.5.14",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.6.11",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.6.11",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.6.11",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.7.11",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.7.11",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "6.7.11",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.0.8",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.0.8",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.0.8",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.2-beta5",
+        "installed_version": "1.1.1",
+        "http_status": 200,
+        "offered_version": "1.1.2",
+        "no_update_version": null,
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.2-beta5",
+        "installed_version": "1.1.2",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      },
+      {
+        "wordpress": "7.2-beta5",
+        "installed_version": "1.1.4",
+        "http_status": 200,
+        "offered_version": null,
+        "no_update_version": "1.1.2",
+        "status": "DISTRIBUTION_PENDING"
+      }
+    ],
+    "cooldown_reference_after_utc": "2026-11-11T21:04:55.839830+00:00",
+    "cooldown_reference_after_kyiv": "2026-11-11T23:04:55.839830+02:00",
+    "guaranteed_deadline": false,
+    "cooldown_policy_url": "https://make.wordpress.org/plugins/2026/09/09/automated-security-review-for-plugin-releases/",
+    "php_scope": "Core sends no PHP field. One response per exact WordPress/installed-version pair is reused for the two Beta PHP profiles; returned requires_php is checked locally. This is API and declared-requirement coverage, not PHP runtime or installed-site acceptance.",
+    "transport_errors": [],
+    "security_block_confirmed": false,
+    "installed_site_acceptance_performed": false
+  },
+  "scope": {
+    "merge_performed": false,
+    "github_release_created": false,
+    "git_release_tag_created": false,
+    "production_cdn_deployed": false,
+    "owner_site_updated": false,
+    "accepted_archives_rebuilt": false
+  },
+  "raw_evidence_sha256": {
+    ".local/publication-r14-20261111/preflight-identity.json": "45dda367ca2c5a12ee1792698d484e8b4af40aaeafcf60a11e3771529c41f616",
+    ".local/publication-r14-20261111/svn-prepared.json": "57dcf9745ee63cf5e8606e3f7b2fa202d5e56f41cb98fc83aa06b814cf5cf7b8",
+    ".local/publication-r14-20261111/user-commit-info.xml": "2382b6382b197bb9ad72267cfd2ce3ec712a23b169ee4e21e26cca30c970d73d",
+    ".local/publication-r14-20261111/previous-trunk-manifest.json": "3948b5e4cb4622348fce2e4b1a1fa83f45f3a9b64bdb33e81533497d060698a7",
+    ".local/publication-r14-20261111/review/PUBLIC-GATE.json": "17b1b34d805098c39c4c4ef9d990b68813f64f1f816d40fe6a237ae6ab94d9e4",
+    ".local/publication-r14-20261111/review/network-v2/public-independent-readback.json": "d6fb9012454abcc3b5f6d5698067f8f4e9267f143c723d995ba97567ae0fa7f8",
+    ".local/publication-r14-20261111/review/evidence-hashes.json": "4eaf6a97e11e0aa0bb34a5570b3db3f85c94c121c9581f3417c2294f85d04271",
+    ".local/publication-r14-20261111/update-audit/run-20261111T150611876480Z/RESULT.json": "9b0fc3ac3ce849367ac3cb5b07ce7d7a03f74d56b93482bb524e983b4820ba69",
+    ".local/publication-r14-20261111/update-audit/run-20261111T150611876480Z/evidence-hashes.json": "0943d6129b393073a0191402dd3770c5506acc5dd787ad8e4583eee6616db2c0",
+    ".local/publication-r14-20261111/update-audit/audit.py": "8014280fd32ed169a42765fecc62b42fd8c285a9ecc445785c63b8142286b9ee",
+    ".local/publication-r14-20261111/file-audit/attempt-20261111T150915Z-cd37f606/receipt.json": "c38ab3ecdf98250dab592cc5c6975c6162b9d73ba6096627151d1163361baee2",
+    ".local/publication-r14-20261111/file-audit/attempt-20261111T151409Z-8aac4429/receipt.json": "9fa16f3ca567493626fd285946185bcdf59aab5202c51812948e30ead76b8d6a",
+    ".local/publication-r14-20261111/file-audit/attempt-20261111T151409Z-8aac4429/evidence-hashes.json": "fd70cff593f6d4fa11a5343bd096d0e2249f74c7e0436e6e9c16d3cead023baa"
+  },
+  "preserved_history_sha256": {
+    "docs/releases/1.1.4/manifest-rest-r14.json": "1f249b1e005461f6270859df9bfa8652ad0b217d5da7656b50fb7b0aa78715dc",
+    "docs/releases/1.1.4/acceptance-rest-r14.json": "4abe17bb04b3e3c485a1bf1c0ca66c8a60bc0346026aee188e7d1cac79104114",
+    "docs/releases/1.1.4/INDEPENDENT-ACCEPTANCE-REST-R14-2026-11-11.md": "5c67aa2085f6fccdefc65724437a29ba5ababf60d7f8a310063a0b843be9da2a",
+    "docs/releases/1.1.4/independent-rest-r14-20261111.json": "9efaab0642438ae0b9ac605fa188676e5a1c9c5739ca355b83451d31fad3c77a",
+    "docs/releases/1.1.4/FINALIZATION-2026-11-11.md": "250730eab22dcb9860d07071d266c91a282d49b9af80a8cb3717127460a3d204",
+    "docs/releases/1.1.4/finalization-20261111.json": "f023fbbbdb5bf91ceee783057905fc775b61e729a20002a5a21e1294d1f71bcf",
+    ".local/packages/simple-digital-clock-1.1.4-render-r9-candidate.zip": "5f334f9496c0c064ab4e182fdda7fa3d4493da7c99baada899cd3392d6d124e7"
+  },
+  "verifier_notes": [
+    "Initial independent GET sandbox DNS failure retained; successful network readback is recorded separately.",
+    "First full file-audit receipt passed SVN and both ZIPs but marked API tested=7.1.4 versus source7.1 as FAIL; independent public GET gate confirms metadata and exact payload.",
+    "Corrected only the local verifier to accept numeric patch expansion within the declared tested minor branch; a fresh separate full read-only verification passed all four gates. Installable bytes remained unchanged."
+  ]
+}

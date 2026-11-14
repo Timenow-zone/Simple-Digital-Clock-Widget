@@ -1,0 +1,421 @@
+{
+  "schema": 1,
+  "candidate": {
+    "version": "1.1.6",
+    "revision": "RC18",
+    "zip": ".local/packages/simple-digital-clock-1.1.6-rc18.zip",
+    "sha256": "b59adf31cf9b9f8e7826e2540c81a3621d673c44f2eae65145b96a6b2b353429",
+    "bytes": 82060,
+    "regular_files": 20,
+    "manifest": "docs/releases/1.1.6/manifest-rc18.json",
+    "manifest_sha256": "7c09c3efc71bff139d85fd80d4e79575be070c38ab018e1b450e7d098c8e486d",
+    "runtime_version": "0.8.4",
+    "runtime_sha256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "source_base_head": "94db2495c9547b993e835a2150ce647abbe9e065",
+    "source_has_preexisting_uncommitted_changes": true
+  },
+  "verdict": {
+    "bounded_functional": "PASS",
+    "strict_diagnostics": "NOT_CLEAN",
+    "strict_local_acceptance": "NO_GO",
+    "release": "NO_GO",
+    "original_targeted_admin_records_classified": 12,
+    "additional_unattributed_widget_exception": true,
+    "new_functional_regression_demonstrated": false,
+    "universal_no_regression_claim": false
+  },
+  "local_blockers": [
+    {
+      "id": "RC18-LOCAL-WIDGET-ENCODE",
+      "signature": "WebKit Core6.3.14 widget-types/text/encode access-control exception",
+      "state": "NOT_ATTRIBUTED",
+      "functional_result": "PASS",
+      "probable_teardown_is_inference": true,
+      "matching_disabled_reproduction": false,
+      "owner_waiver": false,
+      "evidence": ".local/rc18-local-surfaces-20261114/DIAGNOSTIC-DISPOSITION.json"
+    }
+  ],
+  "gate_count": 42,
+  "gates": {
+    "ID-01": {
+      "status": "PASS",
+      "scope": "Exact archive/source/installed maps; all transitions bound.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/FINAL-INSTALLED-AFTER-HIDDEN-THEME.json",
+        "docs/releases/1.1.6/manifest-rc18.json"
+      ]
+    },
+    "ID-02": {
+      "status": "LOCAL_PASS_DELIVERY_PENDING",
+      "scope": "Immutable artifacts unchanged. Production delivery is outside authorization.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/FINAL-PRESERVATION.json",
+        "docs/releases/1.1.6/acceptance-rc18.json"
+      ]
+    },
+    "LOAD-01": {
+      "status": "PASS",
+      "scope": "Fresh both-theme two-Core three-browser frontend matrix; empty/inert zero requests, one/nested-three clocks exact bytes and ticking.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/THEME-FINAL-SUMMARY.json"
+      ]
+    },
+    "LOAD-02": {
+      "status": "PASS",
+      "scope": "Fresh both-theme two-Core three-browser frontend matrix; empty/inert zero requests, one/nested-three clocks exact bytes and ticking.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/THEME-FINAL-SUMMARY.json"
+      ]
+    },
+    "LOAD-03": {
+      "status": "PASS",
+      "scope": "Fresh both-theme two-Core three-browser frontend matrix; empty/inert zero requests, one/nested-three clocks exact bytes and ticking.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/THEME-FINAL-SUMMARY.json"
+      ]
+    },
+    "LOAD-04": {
+      "status": "PASS_WITH_RETAINED_FIXTURE_FAILURES",
+      "scope": "84 canonical native placements:72 original passes plus12 targeted passes after correcting theme-qualified fixture. Frozen runner unchanged; fixed-Date assertions are not extra live-tick evidence. Eight readonly brackets unchanged.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/PLACEMENT-SUMMARY.json",
+        ".local/rc18-local-surfaces-20261114/REPORT.md"
+      ]
+    },
+    "LOAD-05": {
+      "status": "PASS",
+      "scope": "Raw HTML and native core/html plus twelve legacy iframe pairs, native Text/Custom HTML and teeny.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json",
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json",
+        "docs/releases/1.1.6/acceptance-rc18.json"
+      ]
+    },
+    "LOAD-06": {
+      "status": "PASS_SCOPED",
+      "scope": "Fresh dynamic/CSP cases and preserved exact-RC18 loader integration ownership and cleanup assertions.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json",
+        "docs/releases/1.1.6/acceptance-rc18.json"
+      ]
+    },
+    "LOAD-07": {
+      "status": "PASS",
+      "scope": "Native empty/suppressed output controls; deliberately disabled native fallback fails its rendering sensitivity oracle.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json",
+        ".local/rc18-local-closure-20261114/NATIVE-CORE-PROBES.json"
+      ]
+    },
+    "LOAD-08": {
+      "status": "PASS_SCOPED",
+      "scope": "Fresh dynamic/CSP cases and preserved exact-RC18 loader integration ownership and cleanup assertions.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json",
+        "docs/releases/1.1.6/acceptance-rc18.json"
+      ]
+    },
+    "LOAD-09": {
+      "status": "PASS",
+      "scope": "Native empty/suppressed output controls; deliberately disabled native fallback fails its rendering sensitivity oracle.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json",
+        ".local/rc18-local-closure-20261114/NATIVE-CORE-PROBES.json"
+      ]
+    },
+    "CORE-01": {
+      "status": "PASS",
+      "scope": "Actual native registry and opaque override behavior; owner-approved eager override retained.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/NATIVE-CORE-PROBES.json",
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json"
+      ]
+    },
+    "CORE-02": {
+      "status": "PASS",
+      "scope": "Actual native registry and opaque override behavior; owner-approved eager override retained.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/NATIVE-CORE-PROBES.json",
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json"
+      ]
+    },
+    "MIME-01": {
+      "status": "PASS",
+      "scope": "Native PHP probes plus twelve final actual HTTP scenarios; admin loading checked separately.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/HTTP-FINAL-SUMMARY.json",
+        ".local/rc18-local-closure-20261114/NATIVE-CORE-PROBES.json",
+        ".local/rc18-local-diagnostics-20261114/FRESH-GATES.json"
+      ]
+    },
+    "CSP-01": {
+      "status": "PASS_WITH_EXPECTED_DIAGNOSTICS",
+      "scope": "Fresh browser policy cases plus same-oracle RC1 sensitivity; 298 expected/attributed console messages retained.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json",
+        ".local/rc18-local-root-review-20261114/CONSOLE-DISPOSITION.json"
+      ]
+    },
+    "CSP-02": {
+      "status": "PASS_WITH_EXPECTED_DIAGNOSTICS",
+      "scope": "Fresh browser policy cases plus same-oracle RC1 sensitivity; 298 expected/attributed console messages retained.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json",
+        ".local/rc18-local-root-review-20261114/CONSOLE-DISPOSITION.json"
+      ]
+    },
+    "ERR-01": {
+      "status": "PASS_SCOPED",
+      "scope": "Actual fifteen-second timeout and blocked/nonce/SRI controls; exact-RC18 integration failure suites preserved.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json",
+        "docs/releases/1.1.6/acceptance-rc18.json"
+      ]
+    },
+    "UI-01": {
+      "status": "PASS",
+      "scope": "Fresh native workflows with explicit counts and actual browser identities.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json",
+        ".local/rc18-local-surfaces-20261114/REPORT.md"
+      ]
+    },
+    "UI-02": {
+      "status": "PASS",
+      "scope": "Fresh native workflows with explicit counts and actual browser identities.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json",
+        ".local/rc18-local-surfaces-20261114/REPORT.md"
+      ]
+    },
+    "UI-03": {
+      "status": "PASS",
+      "scope": "Fresh native workflows with explicit counts and actual browser identities.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json",
+        ".local/rc18-local-surfaces-20261114/REPORT.md"
+      ]
+    },
+    "UI-04": {
+      "status": "FUNCTIONAL_PASS_STRICT_BLOCKED",
+      "scope": "Six functional passes; original WebKit text/encode exception NOT_ATTRIBUTED. No diagnostic waiver.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/DIAGNOSTIC-DISPOSITION.json",
+        ".local/rc18-local-surfaces-20261114/REPORT.md"
+      ]
+    },
+    "UI-05": {
+      "status": "PASS",
+      "scope": "Fresh native workflows with explicit counts and actual browser identities.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json",
+        ".local/rc18-local-surfaces-20261114/REPORT.md"
+      ]
+    },
+    "UI-06": {
+      "status": "PASS_WITH_DIAGNOSTIC_DISPOSITIONS",
+      "scope": "Native lifecycle, supported iframe/metabox modes, dashboard/role boundaries and teeny. Not zero diagnostics.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json",
+        ".local/rc18-local-diagnostics-20261114/ORIGINAL-DISPOSITION.json",
+        "docs/releases/1.1.6/acceptance-rc18.json"
+      ]
+    },
+    "UI-07": {
+      "status": "PASS",
+      "scope": "Actual Core editor/iframe collectors and native rendered iframe proofs.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/NATIVE-CORE-PROBES.json",
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json"
+      ]
+    },
+    "COMP-01": {
+      "status": "PASS",
+      "scope": "Original signal-free fixture identical except loopback ports; eighteen whenDefined/open/closed-shadow cases pass without added enqueue signal.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/REMAINING-GATES-REVIEW.json",
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json"
+      ]
+    },
+    "COMP-02": {
+      "status": "PASS",
+      "scope": "Original signal-free fixture identical except loopback ports; eighteen whenDefined/open/closed-shadow cases pass without added enqueue signal.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/REMAINING-GATES-REVIEW.json",
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json"
+      ]
+    },
+    "DATA-01": {
+      "status": "PASS_WITH_ESTABLISHED_NORMALIZATION",
+      "scope": "Healthy corpus and Unicode/RTL/foreign metadata preserved; old writer single-backslash and native normalization explicitly retained.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json",
+        ".local/rc18-local-multisite-20261114/SUMMARY.json",
+        "docs/releases/1.1.6/acceptance-rc18.json"
+      ]
+    },
+    "DATA-02": {
+      "status": "PASS",
+      "scope": "Public112 HTTP upgrade/files-only rollback/reupdate and native double-save/reopen old/new healthy corpus; no database restore.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json"
+      ]
+    },
+    "DATA-03": {
+      "status": "PASS_REVERIFIED_EXACT_EVIDENCE",
+      "scope": "Actual public115 archive, full predecessor/RC18 maps, HTTP Core updater, eight tables and stable options per site independently reverified.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/REMAINING-GATES-REVIEW.json"
+      ]
+    },
+    "DATA-04": {
+      "status": "PASS_WITH_COLD_THEME_BOUNDARY",
+      "scope": "Bracketed native HTTP and warmed theme reads preserve tables/stable options/files. First-ever theme initialization retained as a separate non-identical cold bracket.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/HTTP-FINAL-SUMMARY.json",
+        ".local/rc18-local-closure-20261114/THEME-WARM-READONLY.json",
+        ".local/rc18-local-closure-20261114/THEME-COLD-DISPOSITION.json"
+      ]
+    },
+    "DATA-05": {
+      "status": "PASS",
+      "scope": "Public112 HTTP upgrade/files-only rollback/reupdate and native double-save/reopen old/new healthy corpus; no database restore.",
+      "evidence": [
+        ".local/rc18-local-surfaces-20261114/SUMMARY.json"
+      ]
+    },
+    "NET-01": {
+      "status": "PASS_WITH_EXPLICIT_DISPOSITIONS",
+      "scope": "Fresh two-site currentCore/PHP85 lifecycle, permissions, cross-blog guards and frontend; actual Chrome, not a three-browser network claim.",
+      "evidence": [
+        ".local/rc18-local-multisite-20261114/SUMMARY.json",
+        ".local/rc18-local-multisite-addendum-20261114/METADATA-ERRATUM.json"
+      ]
+    },
+    "CACHE-01": {
+      "status": "PASS_EXACT_PRIOR_AND_ADDITIONAL",
+      "scope": "Prior exact-RC18 real Autoptimize/WPSuperCache 48rows and stale/purge controls preserved; new native HTTP-cache HIT proof separate.",
+      "evidence": [
+        ".local/rc18-compatibility-20261114/SUMMARY.json",
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json"
+      ]
+    },
+    "CACHE-02": {
+      "status": "PASS_EXACT_PRIOR_AND_ADDITIONAL",
+      "scope": "Prior exact-RC18 real Autoptimize/WPSuperCache 48rows and stale/purge controls preserved; new native HTTP-cache HIT proof separate.",
+      "evidence": [
+        ".local/rc18-compatibility-20261114/SUMMARY.json",
+        ".local/rc18-local-closure-20261114/ROOT-SCOPE-SUMMARY.json"
+      ]
+    },
+    "PKG-01": {
+      "status": "PASS_PRESERVED_EXACT_CANDIDATE",
+      "scope": "Unchanged exact-RC18 prior syntax/security/i18n/repository/browser suites and PluginCheck29static+5runtime zeroerrors/warnings. Not freshly repeated in this additive run.",
+      "evidence": [
+        "docs/releases/1.1.6/acceptance-rc18.json",
+        ".local/rc18-local-closure-20261114/FINAL-PRESERVATION.json"
+      ]
+    },
+    "PKG-02": {
+      "status": "PASS_PRESERVED_EXACT_CANDIDATE",
+      "scope": "Unchanged exact-RC18 prior syntax/security/i18n/repository/browser suites and PluginCheck29static+5runtime zeroerrors/warnings. Not freshly repeated in this additive run.",
+      "evidence": [
+        "docs/releases/1.1.6/acceptance-rc18.json",
+        ".local/rc18-local-closure-20261114/FINAL-PRESERVATION.json"
+      ]
+    },
+    "I18N-01": {
+      "status": "PASS_PRESERVED_EXACT_CANDIDATE",
+      "scope": "Unchanged exact-RC18 prior syntax/security/i18n/repository/browser suites and PluginCheck29static+5runtime zeroerrors/warnings. Not freshly repeated in this additive run.",
+      "evidence": [
+        "docs/releases/1.1.6/acceptance-rc18.json",
+        ".local/rc18-local-closure-20261114/FINAL-PRESERVATION.json"
+      ]
+    },
+    "REG-01": {
+      "status": "PASS_PRESERVED_EXACT_CANDIDATE",
+      "scope": "Unchanged exact-RC18 prior syntax/security/i18n/repository/browser suites and PluginCheck29static+5runtime zeroerrors/warnings. Not freshly repeated in this additive run.",
+      "evidence": [
+        "docs/releases/1.1.6/acceptance-rc18.json",
+        ".local/rc18-local-closure-20261114/FINAL-PRESERVATION.json"
+      ]
+    },
+    "DOC-01": {
+      "status": "PASS_LOCAL_FINAL_INDEPENDENT_REVIEW",
+      "scope": "New local report/receipt independently reviewed; English prose and diff checks pass. Future PR metadata remains pending with exact-HEAD CI.",
+      "evidence": [
+        "docs/releases/1.1.6/LOCAL-ACCEPTANCE-RC18.md",
+        ".local/rc18-local-final-review-20261114/REPORT.md"
+      ]
+    },
+    "CI-01": {
+      "status": "NOT_RUN_EXACT_FINAL_HEAD",
+      "scope": "Hosted Repository checks and Browser tests require the future exact committed PR HEAD; current base HEAD excludes uncommitted RC18. No remote mutation authorized.",
+      "evidence": [
+        "docs/releases/1.1.6/LOCAL-ACCEPTANCE-RC18.md"
+      ]
+    },
+    "SAFE-01": {
+      "status": "PASS_EVIDENCE_AND_TEARDOWN",
+      "scope": "580 protected files and4427historical entries unchanged;2506newpeer entries rehashed; owned services stopped and data retained. Final external root seal binds this receipt without a self-hash cycle.",
+      "evidence": [
+        ".local/rc18-local-closure-20261114/FINAL-PRESERVATION.json",
+        ".local/rc18-local-closure-20261114/OWNED-SERVICES-FINAL.json",
+        ".local/rc18-local-closure-20261114/PEER-INVENTORY-AUDIT.json"
+      ]
+    },
+    "REL-01": {
+      "status": "DEFERRED_NOT_AUTHORIZED",
+      "scope": "No merge, upload, deploy or WordPress publication; non-production builds not enabled.",
+      "evidence": [
+        "docs/releases/1.1.6/LOCAL-ACCEPTANCE-RC18.md"
+      ]
+    }
+  },
+  "mandatory_main_script_gate": {
+    "status": "PASS_PRESERVED_EXACT_RC18",
+    "evidence": ".local/rc18-compatibility-20261114/REPORT.md",
+    "combinations": 6,
+    "browsers": {
+      "Google Chrome": "157.0.8103.51 macOS arm64",
+      "Firefox": "153.0 Linux arm64",
+      "WebKit": "26.5 macOS arm64"
+    },
+    "standalone_and_wordpress": true
+  },
+  "prohibited_actions_performed": [],
+  "product_code_changed": false,
+  "runtime_changed": false,
+  "historical_acceptance_rewritten": false,
+  "independent_review": {
+    "root_scope": ".local/rc18-local-root-review-20261114/REPORT.md",
+    "hidden": ".local/rc18-local-hidden-review-20261114/REPORT.md",
+    "final": ".local/rc18-local-final-review-20261114/REPORT.md",
+    "final_status": "PASS_EVIDENCE_AUDIT_NO_GO_RETAINED",
+    "final_assertions": 1003,
+    "independence_limit": "Final reviewer executed NET01 as primary owner. Root separately audited the network evidence; reviewer independently audited other authors scopes."
+  },
+  "artifact_hash_check": {
+    ".local/packages/simple-digital-clock-1.1.6-rc18.zip": "b59adf31cf9b9f8e7826e2540c81a3621d673c44f2eae65145b96a6b2b353429",
+    "docs/releases/1.1.6/manifest-rc18.json": "7c09c3efc71bff139d85fd80d4e79575be070c38ab018e1b450e7d098c8e486d",
+    "docs/releases/1.1.6/FINAL-ACCEPTANCE-RC18.md": "f46d931e068d378dc4a6fa430f10f2bcbc64ed594b0dacd2cfc38c73616d3266",
+    "docs/releases/1.1.6/acceptance-rc18.json": "dffeaedb3d3d72ed2c2cfcdc3f4ad404d89bdde4a94d871d2024ec96b12bc266"
+  },
+  "evidence_inventory": {
+    "path": ".local/rc18-local-closure-20261114/INVENTORY.json",
+    "seal": ".local/rc18-local-closure-20261114/SEALED.json",
+    "binding": "Final external seal binds this receipt and report; no self-hash cycle."
+  },
+  "peer_inventory_audit": {
+    "path": ".local/rc18-local-closure-20261114/PEER-INVENTORY-AUDIT.json",
+    "verified_entries": 2506,
+    "mismatches": 0
+  },
+  "preservation": {
+    "protected_files": 580,
+    "previous_evidence_files": 4427,
+    "mismatches": 0,
+    "evidence": ".local/rc18-local-closure-20261114/FINAL-PRESERVATION.json"
+  }
+}

@@ -1,5 +1,5 @@
 /**
- * @version 1.1.4
+ * @version 1.1.6
  */
 
 (function (blocks, editor, element, components, hooks) {
@@ -2069,6 +2069,65 @@
     );
   }
 
+  function TimeZoneControl(props) {
+    const [unmatched, setUnmatched] = element.useState(false);
+
+    return el(
+      "div",
+      {
+        // Leaving the search restores Core's committed label, including Auto.
+        onBlurCapture: () => setUnmatched(false),
+        onKeyDownCapture: (event) => {
+          if (event.nativeEvent.isComposing || event.keyCode === 229) return;
+          if (event.target.getAttribute("role") !== "combobox") {
+            // Older Core lets Reset's Enter select a stale suggestion.
+            if (event.key === "Enter") event.stopPropagation();
+            return;
+          }
+          if (event.key === "Escape") setUnmatched(false);
+          if (
+            event.key === "Enter" &&
+            event.target.getAttribute("aria-expanded") !== "true"
+          ) {
+            // Core can restore a hidden stale suggestion after Escape.
+            event.preventDefault();
+            event.stopPropagation();
+            return;
+          }
+          if (
+            event.key === "Enter" &&
+            event.target.getAttribute("aria-expanded") === "true"
+          ) {
+            // Core can retain a stale suggestion after the match list empties.
+            // Its active-descendant index still reflects the current matches.
+            const activeId = event.target.getAttribute("aria-activedescendant");
+            const activeOption = activeId && event.target.ownerDocument.getElementById(activeId);
+            if (
+              !activeOption ||
+              activeOption.getAttribute("role") !== "option" ||
+              !event.currentTarget.contains(activeOption)
+            ) {
+              event.preventDefault();
+              event.stopPropagation();
+              setUnmatched(Boolean(event.target.value));
+            }
+          }
+        },
+      },
+      el(ClockComboboxControl, {
+        ...props,
+        help: unmatched
+          ? i18n["timeZoneNoMatch"] || "No matching time zone. Select a zone from the list."
+          : props.help,
+        onFilterValueChange: () => setUnmatched(false),
+        onChange: (value) => {
+          setUnmatched(false);
+          props.onChange(value);
+        },
+      })
+    );
+  }
+
   function LocaleControl({ value, onChange }) {
     const [filter, setFilter] = element.useState("");
     const query = normalizeLocale(filter);
@@ -2386,7 +2445,8 @@
         props.setAttributes({ align: newValue });
       }
 
-      function onChangeBackground(newValue) {
+      function onChangeBackground(newValue = "") {
+        // An explicit empty JSON value also survives older block readers.
         props.setAttributes({ background: newValue });
       }
 
@@ -2471,7 +2531,7 @@
                 ...nextUI,
                 label: i18n["shadow"] || "Shadow",
                 help:
-                  i18n["shdowHelp"] || "Select the shadow of the container.",
+                  i18n["shadowHelp"] || "Select the shadow of the container.",
                 onChange: onChangeShadow,
                 value: props.attributes.shadow,
                 children: [
@@ -2550,8 +2610,13 @@
                 label: i18n["gradient"] || "Gradient",
                 clearable: true,
                 gradients,
-                value: props.attributes.background,
+                // Older Core parses an empty string as a missing gradient AST.
+                value: props.attributes.background || undefined,
                 onChange: (value) => {
+                  if (value === undefined || value === "") {
+                    onChangeBackground();
+                    return;
+                  }
                   var gradientColors = parseGradientsToHex(value);
                   if (gradientColors && gradientColors.length > 0) {
                     onChangeBackgroundColor({ hex: gradientColors[0] });
@@ -2566,7 +2631,7 @@
             PanelBody,
             { title: i18n["options"] || "Options", initialOpen: true },
             [
-              el(ClockComboboxControl, {
+              el(TimeZoneControl, {
                 ...nextUI,
                 label: i18n["timeZone"] || "Time Zone",
                 help:

@@ -1,0 +1,443 @@
+{
+  "subject": "WordPress 1.1.6 RC3 technical acceptance and release preparation",
+  "status": "TECHNICAL_ACCEPTANCE_PASS; FINAL_HEAD_CI_REQUIRED; PRODUCTION_CDN_PENDING",
+  "archive_sha256": "eb85f4f0d526b32288a1180a14241150eb3a3ebd250c6fe95b6e19bf9b3785c4",
+  "archive_bytes": 72320,
+  "package_files": 17,
+  "executable_source": "2c9f8aacabe2b5b3b69bb224dcff32e63c3a851b",
+  "containing_commit": "eb23578965312679df4450522c7381236676c708",
+  "policy": "OWNER_APPROVED_EAGER_COMPATIBILITY_FOR_OPAQUE_RUNTIME_OVERRIDES",
+  "gate_count": 42,
+  "sources": {
+    "package": ".local/independent-116-rc3-package/reports/REPORT.md",
+    "primary": ".local/candidate-116-rc2-20261112-a/evidence/PRIMARY-FINAL-REPORT.md",
+    "compatibility": ".local/author-116-rc3-compatibility-20261112/REPORT.md",
+    "lifecycle": ".local/candidate-116-rc2-ui06/evidence/UI06-REPORT.md",
+    "cache": ".local/independent-116-rc3-cache-network-20261112/cache/REPORT.md",
+    "network": ".local/independent-116-rc3-cache-network-20261112/multisite/REPORT.md",
+    "review": ".local/independent-116-rc3-code-review/REPORT.md",
+    "review_followup": ".local/independent-116-rc3-followup/REPORT.md",
+    "preview": ".local/remediation-116-rc2/cdn-preview-resolved/RESULT.json",
+    "preservation": ".local/remediation-116-rc2/final-artifact-preservation.json"
+  },
+  "gates": [
+    {
+      "id": "ID-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "package",
+        "primary"
+      ],
+      "scope": "Fresh RC3 exact ZIP, containing commit, installed file maps and immutable stage."
+    },
+    {
+      "id": "ID-02",
+      "status": "PENDING_PRODUCTION_CDN",
+      "evidence": [
+        "preservation",
+        "preview"
+      ],
+      "scope": "Local build and all nine preview asset hashes pass; production CDN delivery pending."
+    },
+    {
+      "id": "LOAD-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "LOAD-02",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "LOAD-03",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "LOAD-04",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "LOAD-05",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "LOAD-06",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "LOAD-07",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "LOAD-08",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "LOAD-09",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility",
+        "cache"
+      ],
+      "scope": "Fresh RC3 default/native delivery; Linux loader regressions and sensitivity controls."
+    },
+    {
+      "id": "CORE-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "package",
+        "compatibility",
+        "review",
+        "cache"
+      ],
+      "scope": "Fresh 58 assertions on each actual Core version; approved opaque override proof and normal Core ownership."
+    },
+    {
+      "id": "CORE-02",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "package",
+        "compatibility",
+        "review",
+        "cache"
+      ],
+      "scope": "Fresh 58 assertions on each actual Core version; approved opaque override proof and normal Core ownership."
+    },
+    {
+      "id": "MIME-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary"
+      ],
+      "scope": "Parsed JSON/XML and raw/decoded leak scans; synthetic fixture corrections retained."
+    },
+    {
+      "id": "CSP-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "compatibility",
+        "package",
+        "review"
+      ],
+      "scope": "Exact RC3 positive/negative policy/network cases; unchanged real 15-second deadline, Linux 96 runner tests."
+    },
+    {
+      "id": "CSP-02",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "compatibility",
+        "package",
+        "review"
+      ],
+      "scope": "Exact RC3 positive/negative policy/network cases; unchanged real 15-second deadline, Linux 96 runner tests."
+    },
+    {
+      "id": "ERR-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "compatibility",
+        "package",
+        "review"
+      ],
+      "scope": "Exact RC3 positive/negative policy/network cases; unchanged real 15-second deadline, Linux 96 runner tests."
+    },
+    {
+      "id": "UI-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "review_followup"
+      ],
+      "scope": "Fresh RC3 Post lifecycle 12, Site Editor 6, metabox 4; exact per-realm runtime responses."
+    },
+    {
+      "id": "UI-02",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "package"
+      ],
+      "scope": "Inherited exact RC2 corpus 54 and Widgets 6; editor/schema/runtime/KSES hashes unchanged in14-file delta scope."
+    },
+    {
+      "id": "UI-03",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "review_followup"
+      ],
+      "scope": "Fresh RC3 Post lifecycle 12, Site Editor 6, metabox 4; exact per-realm runtime responses."
+    },
+    {
+      "id": "UI-04",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "package"
+      ],
+      "scope": "Inherited exact RC2 corpus 54 and Widgets 6; editor/schema/runtime/KSES hashes unchanged in14-file delta scope."
+    },
+    {
+      "id": "UI-05",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary"
+      ],
+      "scope": "Fresh exact RC3 native legacy previews: 12 documents, two widget types, both Core versions and three engines."
+    },
+    {
+      "id": "UI-06",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "lifecycle",
+        "primary",
+        "review_followup"
+      ],
+      "scope": "Independent 24 baseline + 24 RC2 cases; freshRC3 durable lifecycle12+metabox 4 and exact runner supplemental review."
+    },
+    {
+      "id": "UI-07",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "review_followup"
+      ],
+      "scope": "Fresh RC3 Post lifecycle 12, Site Editor 6, metabox 4; exact per-realm runtime responses."
+    },
+    {
+      "id": "COMP-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "compatibility",
+        "review",
+        "cache"
+      ],
+      "scope": "Original fixture bodies unchanged ; 48 baseline host HTML pairs equal; approved override exception explicit."
+    },
+    {
+      "id": "COMP-02",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "compatibility",
+        "review",
+        "cache"
+      ],
+      "scope": "Original fixture bodies unchanged ; 48 baseline host HTML pairs equal; approved override exception explicit."
+    },
+    {
+      "id": "DATA-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "network",
+        "package"
+      ],
+      "scope": "Inherited RC2 primary data/save/rollback/upgrades for unchanged persistence code; freshRC3 two-site stage and full multisite transitions."
+    },
+    {
+      "id": "DATA-02",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "network",
+        "package"
+      ],
+      "scope": "Fresh exact RC3 public 1.1.2 and public 1.1.5 Core updates plus physical rollback: both primary sites retain eight content tables, stable options, active state and exact file maps; full multisite transitions also pass."
+    },
+    {
+      "id": "DATA-03",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "network",
+        "package"
+      ],
+      "scope": "Fresh exact RC3 public 1.1.2 and public 1.1.5 Core updates plus physical rollback: both primary sites retain eight content tables, stable options, active state and exact file maps; full multisite transitions also pass."
+    },
+    {
+      "id": "DATA-04",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "compatibility"
+      ],
+      "scope": "Fresh exact RC3 frontend brackets preserve eight tables, all options and exact files per site after explicit Core cache warmup; initial warmup differences are retained and classified. Separate 126-case compatibility brackets preserve all options without exceptions."
+    },
+    {
+      "id": "DATA-05",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "primary",
+        "network",
+        "package"
+      ],
+      "scope": "Inherited RC2 primary data/save/rollback/upgrades for unchanged persistence code; freshRC3 two-site stage and full multisite transitions."
+    },
+    {
+      "id": "NET-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "network"
+      ],
+      "scope": "Fresh RC3 two-site network, 10 native workflows, 16 table hashes per transition, 14 content + 8 frontend comparisons."
+    },
+    {
+      "id": "CACHE-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "cache"
+      ],
+      "scope": "Fresh RC3: 69 default + 84 override + 21 repeated default assertions; stale-old/purge controls, blocked runtime 7, cache 4, ticking 3."
+    },
+    {
+      "id": "CACHE-02",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "cache"
+      ],
+      "scope": "Fresh RC3: 69 default + 84 override + 21 repeated default assertions; stale-old/purge controls, blocked runtime 7, cache 4, ticking 3."
+    },
+    {
+      "id": "PKG-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "package"
+      ],
+      "scope": "Exact RC3 PHP 7.0/8.3 and JS, fresh 63-message POT,29 static + 5 runtime Plugin Check checks with zero findings."
+    },
+    {
+      "id": "PKG-02",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "package"
+      ],
+      "scope": "Exact RC3 PHP 7.0/8.3 and JS, fresh 63-message POT,29 static + 5 runtime Plugin Check checks with zero findings."
+    },
+    {
+      "id": "I18N-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "package"
+      ],
+      "scope": "Exact RC3 PHP 7.0/8.3 and JS, fresh 63-message POT,29 static + 5 runtime Plugin Check checks with zero findings."
+    },
+    {
+      "id": "REG-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "package",
+        "preview"
+      ],
+      "scope": "Fresh builds/parity and required source CI; WTR 129, other browser 19, loader 96; immutable assets preserved."
+    },
+    {
+      "id": "DOC-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "review",
+        "review_followup",
+        "package"
+      ],
+      "scope": "Current contracts/manifests/source/readme/POT/notices/preview reviewed ; 42 unique gate IDs include I18N-01."
+    },
+    {
+      "id": "CI-01",
+      "status": "PENDING_FINAL_HEAD_CHECKS",
+      "evidence": [
+        "preview"
+      ],
+      "scope": "Both required checks passed containing source eb235789 in run 43182749149; final documentation/harness HEAD still required."
+    },
+    {
+      "id": "SAFE-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "preservation",
+        "package",
+        "cache",
+        "network",
+        "lifecycle"
+      ],
+      "scope": "All owned labs stopped; database, containers, volumes and evidence retained; scoped inventories verified and original RC1/RC2 evidence unchanged."
+    },
+    {
+      "id": "REL-01",
+      "status": "PASS_SCOPED",
+      "evidence": [
+        "preview",
+        "review_followup"
+      ],
+      "scope": "Prepared exact preview and preserved rollback; production CDN needs explicit authorization; WP publication separately deferred."
+    }
+  ],
+  "source_ci": {
+    "head": "eb23578965312679df4450522c7381236676c708",
+    "run_id": 43182749149,
+    "Repository checks": "success",
+    "Browser tests": "success"
+  },
+  "final_head_ci": "Must be verified after this acceptance snapshot is committed; PR Checks and final local receipt are authoritative.",
+  "cdn_delivery": "PENDING_AUTHORIZATION_AND_PUBLIC_VERIFICATION",
+  "wordpress_publication": false,
+  "ready_for_wp_publication": false,
+  "execution_scope": "Fresh RC3 and inherited exact RC2 evidence distinguished per gate; no combined browser total.",
+  "pre_final_ci_gate_counts": {
+    "PASS_SCOPED": 40,
+    "PENDING_FINAL_HEAD_CHECKS": 1,
+    "PENDING_PRODUCTION_CDN": 1
+  },
+  "primary_inventory": {
+    "path": ".local/candidate-116-rc2-20261112-a/SHA256SUMS.json",
+    "files": 1783,
+    "sha256": "a62544d92ad66b4a0da5241c66aeeca8421a5f2175768a12e8e8ed74b23eebbd"
+  },
+  "final_head_ci_receipt": ".local/remediation-116-rc2/final-head-ci.json"
+}

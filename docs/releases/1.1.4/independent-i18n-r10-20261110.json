@@ -1,0 +1,431 @@
+{
+  "verdict": "GO",
+  "scope": "Bounded fresh local acceptance for i18n-r10; not a replay or transfer of all historical r9 G01-G13 gates.",
+  "recorded_at": "2026-11-10T20:25:45.093330+00:00",
+  "revision": "i18n-r10",
+  "archive_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+  "archive_bytes": 66859,
+  "installable_files": 16,
+  "manifest_sha256": "61396bfd46e30e605b99439239aeec41a051b99170456450d46f708e22ff4860",
+  "accepted_r9_sha256": "5f334f9496c0c064ab4e182fdda7fa3d4493da7c99baada899cd3392d6d124e7",
+  "actionable_findings": [],
+  "gates": {
+    "exact_package_source_manifest": "PASS",
+    "r9_and_runtime_preservation": "PASS",
+    "source_and_POT_review": "PASS",
+    "unit_red_green_controls": "PASS",
+    "native_translated_DOM": "PASS",
+    "native_save_update_rollback_resource_regressions": "PASS",
+    "local_CI_and_exact_ZIP": "PASS",
+    "evidence_integrity_and_lab_closure": "PASS"
+  },
+  "counts": {
+    "targeted_native_i18n_pairs": 4,
+    "frontend_resource_cases": 180,
+    "clean_installs": 2,
+    "original_file_transitions": 6,
+    "editable_reserve_transitions": 6,
+    "post_transition_saves": 108,
+    "strict_raw_JSON_blocks": 756,
+    "reopened_normalized_blocks": 252,
+    "admin_editor_pairs": 4,
+    "plugin_check_static": 29,
+    "plugin_check_runtime": 5,
+    "plugin_check_findings": 0,
+    "CI_tests": 235,
+    "extra_exact_ZIP_tests": 14,
+    "native_evidence_hashes_verified": 291
+  },
+  "reviewer_disclosure": "Gatekeeper authored the unit i18n guard and independently read the separate package/native reviewers' raw receipts. Native browser and package/CI executions were performed by separate reviewers.",
+  "hosted_required_checks": "NOT RUN for uncommitted r10 changes",
+  "published": false,
+  "report": "INDEPENDENT-ACCEPTANCE-I18N-R10-2026-11-10.md",
+  "report_sha256": "bab589a8e7ed7846bb17ff0117f69eab9c16f25281babf4c4f173276faf77671",
+  "readback_sha256": {
+    "preliminary-readback.json": "0a5bdf1cb9da093a773b94fc7dc67fb9de73b284c1a6fd9fb7abec9e5eee1ce8",
+    "ci-readback.json": "3e68f167eeec82dcd1ccc0913b31ca3be391daabe0ed37eb535ce3b515ddf8b3",
+    "native-readback.json": "5b3a1d1f6eb6afcb0808344344ab2e2befdf30b83157ab404bcb2e61f3d1d71a",
+    "docker-closure.json": "7a06adbf04a169cf14afcebbf8fc8560eba3f815a422c3ee5311ff4b56dee51c"
+  },
+  "external_evidence_sha256": {
+    ".local/i18n-r10-20261110/package-ci/result.json": "0558cc27bacc38b10f4122aeb7ebfe305fd8ea80fade658a9bce44aacfa77401",
+    ".local/i18n-r10-20261110/package-ci/REPORT.md": "d83fb14cdc408997ce7f0d0de3895fc44bede40f50d3639bafa6d01d28176267",
+    ".local/i18n-r10-20261110/native/RESULT.json": "5d70345411ad8f829ee612da5e3d265c2f32720ce71ef256c6e6e7b7351793f8",
+    ".local/i18n-r10-20261110/native/evidence-hashes.json": "e0279011ba3f9f32f2c55455db0597da20d41c89925795c757ef901873624e59"
+  },
+  "source": {
+    "base_commit": "361b11c8270fa14c524562a9f9b885a0af36b1a0",
+    "committed": false,
+    "package_revision": "i18n-r10",
+    "archive_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+    "installable_diff_paths": [
+      "wordpress/simple-digital-clock/block.js",
+      "wordpress/simple-digital-clock/includes/simple-digital-clock-admin-notices.php",
+      "wordpress/simple-digital-clock/languages/simple-digital-clock.pot",
+      "wordpress/simple-digital-clock/readme.txt",
+      "wordpress/simple-digital-clock/widget_init.php"
+    ],
+    "installable_patch_sha256": "c64e9ac8520e2f91b862ac2b9d2d59ff9bfa3ff4ab6f5e3c4fb24b022ce6e721",
+    "manifest_sha256": "61396bfd46e30e605b99439239aeec41a051b99170456450d46f708e22ff4860",
+    "tests_sha256": {
+      "tests/wordpress-i18n.test.mjs": "997c6ae5ad212a6d39ceacfd32c06bb613a6a6b18cd4c7100bcf3c4e8840bbdb",
+      "tests/wordpress-i18n.php": "1a54615a9bf1093cd371512af3a4ce38159af02bd1b4fb7160d3f4304ac45aef",
+      ".github/workflows/ci.yml": "1d6ef136dcc0ba1fdf8cd704ea82ec38418c338b60fab0eaa337f8676b3f6fca"
+    }
+  },
+  "pot_generation": {
+    "generator": "WP-CLI 2.12.0",
+    "phar_sha256": "ce34ddd838f7351d6759068d09793f26755463b4a4610a5a5c0a97b68220d85c",
+    "php_image": "wordpress:7.1.3-php8.3-apache@sha256:81a34254acaa6ff3b9a67268c2745e9a041c4094cbe5ccd35b75ed3bbdc033b5",
+    "network": "none",
+    "source_mount": "read-only",
+    "command": "php /tool/wp-cli.phar --allow-root i18n make-pot /plugin /output/simple-digital-clock.pot --domain=simple-digital-clock --slug=simple-digital-clock",
+    "pot_sha256": "398eb54a2ac6fa3127801b9cb2b49492240810e19aee77e3e070f86445ffabb5",
+    "old_unique_msgids": 54,
+    "new_unique_msgids": 63,
+    "added": [
+      "Auto Timezone",
+      "Auto language",
+      "Invalid BCP-47 locale tag.",
+      "It will only take a few minutes",
+      "Please rate our free",
+      "Rate it now",
+      "Rating",
+      "Select the shadow of the container.",
+      "Settings Admin",
+      "Your valuable feedback will help us improve."
+    ],
+    "removed": [
+      "Select the Shadow of the text within the container."
+    ],
+    "creation_header": "\"POT-Creation-Date: 2026-11-10T20:12:25+00:00\\n\""
+  },
+  "local_ci": {
+    "status": "PASS",
+    "scope": "Independent package identity, source review, and local Repository checks/Browser tests only",
+    "archive_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+    "archive_bytes": 66859,
+    "installable_files": 16,
+    "manifest_sha256": "61396bfd46e30e605b99439239aeec41a051b99170456450d46f708e22ff4860",
+    "source_inventory_sha256": "347bd7527da1f96ad9a05e328c612105b9aac28939d7287f5983a264b8c17dd0",
+    "frozen_source_files": 420,
+    "workflow_verification_steps": {
+      "repository: Check public prose language": 0,
+      "repository: Type check": 0,
+      "repository: npm run lint": 0,
+      "repository: Verify patched development-tooling behavior": 0,
+      "repository: npm run test:node": 0,
+      "repository: Check release metadata validation": 0,
+      "repository: Verify release metadata and versioned widget artifact consistency": 0,
+      "repository: Smoke test the production build in a temporary directory": 0,
+      "repository: Check WordPress PHP and JavaScript syntax": 0,
+      "repository: Verify WordPress package identity and release versions": 0,
+      "repository: Verify WordPress translation coverage and output contexts": 0,
+      "repository: Check disposable WordPress lab safety boundaries": 0,
+      "repository: Verify the immutable editable rollback build and safety guards": 0,
+      "repository: Verify the published preview matches its sources": 0,
+      "repository: Check WordPress 6.3 serialization compatibility": 0,
+      "repository: Verify that checks leave tracked files unchanged": 0,
+      "browsers: npm run test:browsers": 0,
+      "browsers: Check native WordPress caption serialization and legacy readers": 0,
+      "browsers: Check generated product demo examples and controls": 0,
+      "browsers: Verify that browser tests leave tracked files unchanged": 0
+    },
+    "test_counts": {
+      "node": 81,
+      "python": 24,
+      "browser_unit": 111,
+      "browser_integration": 19,
+      "total_ci": 235,
+      "extra_extracted_zip": 14
+    },
+    "i18n_negative_control": {
+      "archive": "accepted render-r9",
+      "tests": 6,
+      "expected_fail": 4,
+      "pass": 2,
+      "log": "logs/r9-i18n-negative-control.log"
+    },
+    "npm_ci": {
+      "fresh": true,
+      "exit_code": 0,
+      "installed_locked_versions": 734,
+      "mismatches": 0,
+      "all_absent_optional": true
+    },
+    "npm_audit": {
+      "exit_code": 0,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 5,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 5
+      },
+      "all_findings_dev_only": true
+    },
+    "production_build": {
+      "exact_runtime_match": true,
+      "sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25",
+      "log": "logs/10.log"
+    },
+    "php_package_checks": {
+      "php70": {
+        "syntax": 6,
+        "asset_assertions": 43,
+        "serialization_assertions": 48,
+        "failed": 0,
+        "i18n_dictionary_values": 48
+      },
+      "php83": {
+        "syntax": 6,
+        "asset_assertions": 43,
+        "serialization_assertions": 48,
+        "failed": 0,
+        "i18n_dictionary_values": 48
+      }
+    },
+    "first_attempt_failure": {
+      "log": "logs/13.log",
+      "cause": "Dedicated historical PHP -n wrapper disabled tokenizer",
+      "correction": "Load retained tokenizer.so in dedicated wrapper; no source/test edits",
+      "retry_results": "logs/retry/linux-results.json"
+    },
+    "native_wordpress_acceptance": "Separate reviewer; not claimed by this report",
+    "hosted_required_checks": "NOT RUN; no push",
+    "report": "REPORT.md",
+    "report_sha256": "d83fb14cdc408997ce7f0d0de3895fc44bede40f50d3639bafa6d01d28176267",
+    "closure": "closure.json",
+    "finished_at_utc": "2026-11-10T20:20:29.571456+00:00"
+  },
+  "native_acceptance": {
+    "status": "PASS",
+    "verified_at_utc": "2026-11-10T20:22:12.375626+00:00",
+    "candidate_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+    "accepted_r9_unchanged": true,
+    "references": [
+      {
+        "wordpress": "6.3.14",
+        "php": "7.0.33"
+      },
+      {
+        "wordpress": "7.1.4",
+        "php": "8.3.35"
+      }
+    ],
+    "clean_installs": 2,
+    "original_rollback_transitions": 6,
+    "editable_reserve_transitions": 6,
+    "native_post_transition_saves": 108,
+    "strict_raw_json_blocks": 756,
+    "frontend_resource_browser_cases": 180,
+    "admin_editor_pairs": 4,
+    "targeted_i18n_pairs": 4,
+    "clean_frontend_smoke_pairs": 4,
+    "updated_frontend_smoke_pairs": 4,
+    "plugin_check": {
+      "static": 29,
+      "runtime": 5,
+      "findings": 0,
+      "minimum_php_executed": false,
+      "minimum_php_reason": "Plugin Check 2.1.0 requires PHP >=7.4"
+    },
+    "i18n_scope": [
+      "Real gettext filter with 13 distinctive Unicode translations",
+      "Six exact nested dictionary values including markup/quotes/ampersand/script sentinel",
+      "Literal visible invalid-locale help, shadow help and Caption label",
+      "Both translated reset button actions",
+      "Literal settings title, menu, notice text and alt attributes",
+      "No translated elements created or scripts executed",
+      "Empty-editor first insert, byte-identical save and valid reopen"
+    ],
+    "i18n_final_result": ".local/wordpress-repro/i18n-r10-20261110-baseline-b/review-i18n/i18n-browser-results-1794341993253.json",
+    "prior_attempts": [
+      {
+        "kind": "bootstrap",
+        "result": "No unused original subnet; no containers created; preserved evidence; fresh ID and nonoverlapping subnet selected"
+      },
+      {
+        "kind": "i18n_harness",
+        "result": "Core welcome modal intercepted focus; disable Core welcome preference"
+      },
+      {
+        "kind": "i18n_harness",
+        "result": "Core emoji replacement changed textContent; retain emoji semantics using img.emoji alt"
+      },
+      {
+        "kind": "i18n_harness",
+        "result": "Core starter-page pattern modal obscured controls; use fresh empty post editor"
+      }
+    ],
+    "installed_copies": [
+      {
+        "run": "i18n-r10-20261110-baseline-b",
+        "site": "minimum",
+        "files_exact": true,
+        "temporary_i18n_fixture_absent": true
+      },
+      {
+        "run": "i18n-r10-20261110-baseline-b",
+        "site": "current",
+        "files_exact": true,
+        "temporary_i18n_fixture_absent": true
+      },
+      {
+        "run": "i18n-r10-20261110-writer",
+        "site": "minimum",
+        "files_exact": true,
+        "temporary_i18n_fixture_absent": true
+      },
+      {
+        "run": "i18n-r10-20261110-writer",
+        "site": "current",
+        "files_exact": true,
+        "temporary_i18n_fixture_absent": true
+      },
+      {
+        "run": "i18n-r10-20261110-clean",
+        "site": "minimum",
+        "files_exact": true,
+        "temporary_i18n_fixture_absent": true
+      },
+      {
+        "run": "i18n-r10-20261110-clean",
+        "site": "current",
+        "files_exact": true,
+        "temporary_i18n_fixture_absent": true
+      }
+    ],
+    "candidate_backups": [
+      {
+        "path": ".local/wordpress-repro/i18n-r10-20261110-baseline-b/backups/minimum-candidate",
+        "candidate_files_exact": true
+      },
+      {
+        "path": ".local/wordpress-repro/i18n-r10-20261110-baseline-b/backups/current-candidate",
+        "candidate_files_exact": true
+      },
+      {
+        "path": ".local/wordpress-repro/i18n-r10-20261110-writer/backups/minimum-accepted-r8",
+        "candidate_files_exact": true
+      },
+      {
+        "path": ".local/wordpress-repro/i18n-r10-20261110-writer/backups/current-accepted-r8",
+        "candidate_files_exact": true
+      }
+    ],
+    "owned_projects": [
+      {
+        "project": "sdcw-repro-i18n-r10-20261110-baseline-b",
+        "running": false
+      },
+      {
+        "project": "sdcw-repro-i18n-r10-20261110-writer",
+        "running": false
+      },
+      {
+        "project": "sdcw-repro-i18n-r10-20261110-clean",
+        "running": false
+      }
+    ],
+    "publication_performed": false,
+    "owner_sites_used": false,
+    "historical_labs_modified": false,
+    "scope_limits": [
+      "Bounded fresh acceptance for changed i18n candidate; not a replay of all 13 historical r9 gates",
+      "Native UI uses Chromium and WebKit; Linux Firefox belongs to separate source CI",
+      "No native Safari/VoiceOver/multisite/optimizer or public-update acceptance",
+      "No new performance benchmark or real WordPress.org language-pack completeness claim"
+    ]
+  },
+  "package_reproduction": {
+    "status": "PASS",
+    "candidate_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+    "reproduced_sha256": "46cf4faed3ab3784dd582c91ef3a49103b5840f00924eeb0b6830195f3458403",
+    "exact_archive_bytes": true,
+    "format": {
+      "entry_timestamp": "2026-11-10T00:00:00",
+      "create_system": 3,
+      "entry_mode": "100644",
+      "compression": "ZIP_DEFLATED",
+      "compression_level": 9,
+      "ordering": "sorted relative path",
+      "directory_entries": false
+    },
+    "source_file_count": 16
+  },
+  "receipts": [
+    {
+      "path": ".local/i18n-r10-20261110/candidate.json",
+      "sha256": "f68684a3a36e8f3ca852cf4dacd14dcdee26c9ae4aaceee482d601099f227afd"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/pot-generation.json",
+      "sha256": "9488db9b745f5d78fe1f2ff3331ae306b12ed8bb9fc8415f41220844589446cb"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/package-reproduction.json",
+      "sha256": "73829edceb89da9f2e5eae8e8e4845d262624d5d8a39b54ee6aac954a2a9541e"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/source-provenance.json",
+      "sha256": "bce8ed1958514fd5b38b57a7004cd040619e349841b26a87d0a4a7e43f3e57c6"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/preservation-readback.json",
+      "sha256": "7a11f9ff7c1c3b39fb6fe378cec321a41299b41cbe6f54d4e425e9def8294b73"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/i18n-regression/report.json",
+      "sha256": "e7506adcd2adb325088a7f5656ede32f7c3100222f1bc190f9d54fef3addd84c"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/package-ci/result.json",
+      "sha256": "0558cc27bacc38b10f4122aeb7ebfe305fd8ea80fade658a9bce44aacfa77401"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/package-ci/REPORT.md",
+      "sha256": "d83fb14cdc408997ce7f0d0de3895fc44bede40f50d3639bafa6d01d28176267"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/package-ci/closure.json",
+      "sha256": "8785dabbad144280fb5f7a781d79b878e151454c60fb4d36890e8f773a560335"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/package-ci/evidence-hashes.json",
+      "sha256": "f0bc44fca062ce33476dd5384980f126b51b865d2d742725c0aaae658b0ecb02"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/native/RESULT.json",
+      "sha256": "5d70345411ad8f829ee612da5e3d265c2f32720ce71ef256c6e6e7b7351793f8"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/native/evidence-hashes.json",
+      "sha256": "e0279011ba3f9f32f2c55455db0597da20d41c89925795c757ef901873624e59"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/gatekeeper/verdict.json",
+      "sha256": "a7c9b40efadd02d485c047e68f09063612034fbffc7f1b270e8072c1421dfe50"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/gatekeeper/preliminary-readback.json",
+      "sha256": "0a5bdf1cb9da093a773b94fc7dc67fb9de73b284c1a6fd9fb7abec9e5eee1ce8"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/gatekeeper/ci-readback.json",
+      "sha256": "3e68f167eeec82dcd1ccc0913b31ca3be391daabe0ed37eb535ce3b515ddf8b3"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/gatekeeper/native-readback.json",
+      "sha256": "5b3a1d1f6eb6afcb0808344344ab2e2befdf30b83157ab404bcb2e61f3d1d71a"
+    },
+    {
+      "path": ".local/i18n-r10-20261110/gatekeeper/docker-closure.json",
+      "sha256": "7a06adbf04a169cf14afcebbf8fc8560eba3f815a422c3ee5311ff4b56dee51c"
+    }
+  ],
+  "merge_performed": false,
+  "deployment_performed": false,
+  "publication_performed": false
+}

@@ -1,0 +1,551 @@
+{
+  "date": "2026-11-12",
+  "verdict": "LOCAL_EVIDENCE_BLOCKERS_CLOSED_WITH_INHERITED_LIMITATIONS; FULL_RELEASE_NOT_READY",
+  "subject": {
+    "version": "1.1.6",
+    "revision": "rc9",
+    "archive": ".local/packages/simple-digital-clock-1.1.6-rc9.zip",
+    "archiveSHA256": "f2f2f1856093c34ec7bd56b02c920de26c56c1ad78de700e4a20244a40b45909",
+    "archiveBytes": 73184,
+    "fileCount": 17,
+    "manifest": "docs/releases/1.1.6/manifest-rc9.json",
+    "manifestSHA256": "e0009d6aaffdcd071d8c2c1567212c564e692b2e920c6f0885e3121fd700f0ca",
+    "sourceBaseCommit": "7f79a03df112e4cb84f2ed4f7de21896337e6bc0",
+    "sourceDirty": true,
+    "mainSHA256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "loaderSHA256": "7187b9ee36e188ea87d76fcd56e82300ad8f3685bd34fc2136aa35dae26cb124",
+    "blockSHA256": "7bd15d4f6c58388a0f361cbf44e4e1ea580e22b511a8b5046bdc51cd176da230"
+  },
+  "allRequiredGatesAccountedFor": 42,
+  "unmappedGates": [],
+  "localEvidenceGaps": [],
+  "statusCounts": {
+    "PASS_RC9": 21,
+    "PENDING_EXTERNAL": 2,
+    "PASS_WITH_SCOPED_HISTORY": 16,
+    "PASS_WITH_INHERITED_LIMITATION": 2,
+    "HELD_BY_OWNER": 1
+  },
+  "freshThisTurn": {
+    "pluginCheckStatic": 29,
+    "pluginCheckRuntime": 5,
+    "pluginCheckFindings": 0,
+    "multisiteWorkflowPhases": 10,
+    "multisiteRC9WorkflowsIncluded": 6,
+    "multisiteAnonymousChecks": 3,
+    "cacheNormalAssertions": 75,
+    "cacheIsolationAssertions": 57,
+    "cacheTickScenarios": 3,
+    "cacheGenerationControls": 4,
+    "cacheBlockedRuntimeAssertions": 7,
+    "primaryPublic115Updates": 2,
+    "actualCoreAssertions": 138,
+    "phpAssetAssertionsPerVersion": 167,
+    "phpLintsPerVersion": 6,
+    "freshPOT": true
+  },
+  "notAllFresh": "Historical rows are scope-limited and add zero new executions; no claim of42/42 freshly passed gates.",
+  "remainingExternalGates": [
+    "CI-01",
+    "ID-02"
+  ],
+  "inheritedLimitations": [
+    "WEBKIT-TEMPLATE-PARTS-01",
+    "OLDER-EDITOR-CLEARED-GRADIENT"
+  ],
+  "gates": [
+    {
+      "id": "ID-01",
+      "status": "PASS_RC9",
+      "scope": "Exact ZIP/manifest/17 source files; fresh final identity on both primary sites and cache/network. Files remain exact through recorded transitions.",
+      "evidence": [
+        "rc9",
+        "data115",
+        "cache",
+        "network",
+        "teardown"
+      ]
+    },
+    {
+      "id": "ID-02",
+      "status": "PENDING_EXTERNAL",
+      "scope": "Local build and immutable bytes verified; public production 0.8.4 delivery and rollback deployment receipt still pending authorization.",
+      "evidence": [
+        "build",
+        "local",
+        "history"
+      ]
+    },
+    {
+      "id": "LOAD-01",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC9 empty-page/native boundaries and fresh three-browser cache empty-page proof; complete two-theme no-use matrix retained from RC4 for unchanged routing/loader.",
+      "evidence": [
+        "native",
+        "cache",
+        "core",
+        "rc4-native",
+        "scope"
+      ]
+    },
+    {
+      "id": "LOAD-02",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC4 escaped/script/template frontend rows in both themes/sites and all three browsers; unchanged detector/loader, re-executed RC9 PHP/loader contracts. No fresh full native escaped-content matrix claimed.",
+      "evidence": [
+        "rc4-native",
+        "scope",
+        "package",
+        "browser"
+      ]
+    },
+    {
+      "id": "LOAD-03",
+      "status": "PASS_RC9",
+      "scope": "Recorded RC9 owned/raw, single/multiple settings, nesting and actual ticks; new network/cache observations.",
+      "evidence": [
+        "native",
+        "rc9",
+        "network",
+        "cache"
+      ]
+    },
+    {
+      "id": "LOAD-04",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC9 Site Editor and classic/sidebar native coverage; RC4 pattern/reusable/native-template resolution supplements placements through unchanged routing and serializer. Header navigation limitation belongs to UI-03.",
+      "evidence": [
+        "native",
+        "rc4-native",
+        "scope"
+      ]
+    },
+    {
+      "id": "LOAD-05",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC9 unchanged legacy Text/Custom HTML native preview and preserved widget fixtures; RC4 raw/core-html frontend matrix supplements unchanged persistence/routing.",
+      "evidence": [
+        "native",
+        "rc4-native",
+        "scope"
+      ]
+    },
+    {
+      "id": "LOAD-06",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC9 exact-main dynamic insertion/reconnection; RC4 immediate-removal/inert and original hidden-root controls plus RC9 loader suite cover unchanged shell activation.",
+      "evidence": [
+        "native",
+        "browser",
+        "rc4-native",
+        "scope"
+      ]
+    },
+    {
+      "id": "LOAD-07",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "Fresh RC9 actual-Core empty-owned/render probes and pinned PHP checks; RC4 discarded-owned/forced-global sensitivity cases retain prior-use queue behavior.",
+      "evidence": [
+        "core",
+        "package",
+        "rc4-native",
+        "scope"
+      ]
+    },
+    {
+      "id": "LOAD-08",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "Fresh RC9 loader suite and Core registry/queue probes; RC4 actual-Core owner/order cases carried for unchanged loader and version-only routing change.",
+      "evidence": [
+        "browser",
+        "core",
+        "rc4-native",
+        "scope"
+      ]
+    },
+    {
+      "id": "LOAD-09",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC4 fallback-disabled owned/helper and deliberately disabled-native controls, both Core versions/three browsers; unchanged PHP native enqueue path re-executed in RC9 probes.",
+      "evidence": [
+        "rc4-native",
+        "core",
+        "scope"
+      ]
+    },
+    {
+      "id": "CORE-01",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "Fresh RC9 Core helper/late/dependency probes. RC4 native frontend order and 42 immutable-0.8.1 override rows retained: eager runtime even on empty pages is owner-approved. Those rows do not execute 0.8.4.",
+      "evidence": [
+        "core",
+        "rc4-native",
+        "override",
+        "scope"
+      ]
+    },
+    {
+      "id": "CORE-02",
+      "status": "PASS_RC9",
+      "scope": "Fresh actual-Core 58 frontend assertions/site include registry clone/queue/buffer/order/filter isolation; editor/preview modes add 11/site.",
+      "evidence": [
+        "core"
+      ]
+    },
+    {
+      "id": "MIME-01",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC4 parsed REST/feed/robots/trackback/JSON/XML and escaped JSON leak scan, both sites/three browsers. No-runtime path is byte-identical after version substitution; fresh RC9 PHP ordinary-json/REST/iframe guards.",
+      "evidence": [
+        "rc4-native",
+        "scope",
+        "package"
+      ]
+    },
+    {
+      "id": "CSP-01",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC4 actual-Core external-only static/raw/explicit cases and RC9 loader suite; preserved PHP/loader plus exact 0.8.4 rendering proof. RC4 responses are historical, never relabeled as RC9.",
+      "evidence": [
+        "rc4-native",
+        "browser",
+        "scope",
+        "rc9"
+      ]
+    },
+    {
+      "id": "CSP-02",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC4 native permitted/invalid nonce and valid/invalid SRI controls; unchanged attribute-preserving loader and capture logic. Fresh RC9 loader and Core-filter assertions supplement.",
+      "evidence": [
+        "rc4-native",
+        "browser",
+        "core",
+        "scope"
+      ]
+    },
+    {
+      "id": "ERR-01",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC9 repository error cases and native invalid-clock controls; fresh cache blocked-runtime real timeout. RC4 full actual-Core timeout/404 and negative policy sequence remains scoped historical proof.",
+      "evidence": [
+        "browser",
+        "native",
+        "cache",
+        "rc4-native",
+        "scope"
+      ]
+    },
+    {
+      "id": "UI-01",
+      "status": "PASS_RC9",
+      "scope": "Independent 12/12 inspector cells and native Post Editor save/reopen/lifecycle, both roles/Core versions/three browsers.",
+      "evidence": [
+        "independent",
+        "native"
+      ]
+    },
+    {
+      "id": "UI-02",
+      "status": "PASS_RC9",
+      "scope": "Public-1.1.2 native corpus read before save, repeated saves/reopens and RC9 reupdate; bounded corpus only.",
+      "evidence": [
+        "independent"
+      ]
+    },
+    {
+      "id": "UI-03",
+      "status": "PASS_WITH_INHERITED_LIMITATION",
+      "scope": "Native save/readback/frontend pass; original current-Core WebKit Header same-tab strict no-pageerror does not pass. Fresh-tab alternative explicit. Exact diagnostic also occurs in 1.1.2; inherited and open.",
+      "evidence": [
+        "native",
+        "webkit"
+      ]
+    },
+    {
+      "id": "UI-04",
+      "status": "PASS_RC9",
+      "scope": "RC9 canonical block Widgets native Update/reload/restoration on both classic-theme sites and three browsers.",
+      "evidence": [
+        "native"
+      ]
+    },
+    {
+      "id": "UI-05",
+      "status": "PASS_RC9",
+      "scope": "RC9 Text and Custom HTML previews: 12 actual isolated preview documents across sites/browsers; exact per-realm main.",
+      "evidence": [
+        "native"
+      ]
+    },
+    {
+      "id": "UI-06",
+      "status": "PASS_RC9",
+      "scope": "RC9 delete/undo/reinsert, multiple clocks and actual supported iframe/metabox modes; ordinary dashboard boundaries. No native Safari/OS IME claim.",
+      "evidence": [
+        "native",
+        "independent"
+      ]
+    },
+    {
+      "id": "UI-07",
+      "status": "PASS_RC9",
+      "scope": "RC9 captured editor/preview per-realm assets and fresh actual-Core repeated content-hook/iframe registry checks.",
+      "evidence": [
+        "native",
+        "core"
+      ]
+    },
+    {
+      "id": "COMP-01",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC4 original explicit signal + whenDefined/open/closed-root fixtures, both sites/three browsers; unchanged host lifecycle and loader. RC9 exact main confirms installation/rendering and error isolation.",
+      "evidence": [
+        "rc4-native",
+        "scope",
+        "rc9",
+        "browser"
+      ]
+    },
+    {
+      "id": "COMP-02",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "Original signal-free whenDefined/open/closed-root fixture bodies remain unchanged and passed RC4; same shell lifecycle in RC9. Immutable runtime override exception separately approved and proven.",
+      "evidence": [
+        "rc4-native",
+        "override",
+        "scope"
+      ]
+    },
+    {
+      "id": "DATA-01",
+      "status": "PASS_WITH_SCOPED_HISTORY",
+      "scope": "RC9 native corpus/Unicode/escaping and current exact-ZIP i18n checks. Extended RC4 foreign metadata/entities/relationships corpus carries only unchanged schema/save/KSES; old terminal-backslash writer limits retained.",
+      "evidence": [
+        "independent",
+        "rc4-native",
+        "scope",
+        "package"
+      ]
+    },
+    {
+      "id": "DATA-02",
+      "status": "PASS_RC9",
+      "scope": "RC9 recorded public112 rollback/reupdate transitions preserve eight content tables/site, stable options, active state and exact files; no DB restore.",
+      "evidence": [
+        "independent"
+      ]
+    },
+    {
+      "id": "DATA-03",
+      "status": "PASS_RC9",
+      "scope": "Fresh official public115 -> exact RC9 through Core Plugin_Upgrader on both primary sites; eight tables/stable options preserved; three old clocks render/tick before and after.",
+      "evidence": [
+        "data115"
+      ]
+    },
+    {
+      "id": "DATA-04",
+      "status": "PASS_RC9",
+      "scope": "Fresh RC9 bracketed frontend reads on both sites leave eight tables, all options and all 17 files unchanged. Warm/transition effects are separate.",
+      "evidence": [
+        "data115"
+      ]
+    },
+    {
+      "id": "DATA-05",
+      "status": "PASS_WITH_INHERITED_LIMITATION",
+      "scope": "Bounded old/new healthy native saves after public112 rollback and readback after RC9 reupdate pass. Full old-editor usability remains NOT PASS for inherited cleared-gradient panel; old terminal-backslash negative cases remain separate.",
+      "evidence": [
+        "independent",
+        "rc4-native",
+        "scope"
+      ]
+    },
+    {
+      "id": "NET-01",
+      "status": "PASS_RC9",
+      "scope": "Fresh two-site network, Core7.1.4/PHP8.5.12, superadmin and non-super site admin without unfiltered_html; actual upgrade/files-only rollback/reupdate, saves/reopens, 16 tables per transition. Chrome minimum exceeded by actual Google Chrome.",
+      "evidence": [
+        "network"
+      ]
+    },
+    {
+      "id": "CACHE-01",
+      "status": "PASS_RC9",
+      "scope": "Fresh Autoptimize3.1.17 + WP Super Cache3.1.4 real HIT, aggregation, independent order, exact main bytes, zero-runtime empty page after purge; Chrome/Firefox/WebKit.",
+      "evidence": [
+        "cache"
+      ]
+    },
+    {
+      "id": "CACHE-02",
+      "status": "PASS_RC9",
+      "scope": "Fresh old-cache bodies/SHA remain old after update; excluded from candidate execution. Purge produces exact RC9. Separate option-generation old HIT -> purge -> new HIT proves sensitivity.",
+      "evidence": [
+        "cache"
+      ]
+    },
+    {
+      "id": "PKG-01",
+      "status": "PASS_RC9",
+      "scope": "Fresh six package PHP lints and 167 asset assertions on each pinned PHP7.0/8.3; four JS syntax checks; recorded current harness/repository checks.",
+      "evidence": [
+        "package",
+        "local"
+      ]
+    },
+    {
+      "id": "PKG-02",
+      "status": "PASS_RC9",
+      "scope": "Fresh Plugin Check2.1.0, actual29 static +5 runtime checks, exact installed17-file RC9, zero findings on Core7.1.4/PHP8.3.35. Checker unsupported on PHP7.0; product runs/lints there separately.",
+      "evidence": [
+        "plugin-check"
+      ]
+    },
+    {
+      "id": "I18N-01",
+      "status": "PASS_RC9",
+      "scope": "Fresh exact-ZIP POT extraction equals packaged POT except creation date;49 dictionary keys/65 gettext calls; six context/escaping assertions per PHP version.",
+      "evidence": [
+        "package",
+        "independent"
+      ]
+    },
+    {
+      "id": "REG-01",
+      "status": "PASS_RC9",
+      "scope": "Recorded exact-RC9 259 browser leaves,53 focused contracts,4 package checks,16 commands including isolated production reproduction. Code unchanged this turn; no redundant full rebuild.",
+      "evidence": [
+        "rc9",
+        "local",
+        "browser",
+        "history"
+      ]
+    },
+    {
+      "id": "DOC-01",
+      "status": "PASS_RC9",
+      "scope": "Local header/readme/POT/notices/manifest/source links already checked; new full42-row accounting and readiness synced. Final remote PR metadata/checks remain CI-01, not asserted current.",
+      "evidence": [
+        "rc9",
+        "package",
+        "scope"
+      ]
+    },
+    {
+      "id": "CI-01",
+      "status": "PENDING_EXTERNAL",
+      "scope": "Repository checks and Browser tests must pass on exact final authorized PR HEAD including these docs; prior HEAD cannot certify it.",
+      "evidence": [
+        "rc9"
+      ]
+    },
+    {
+      "id": "SAFE-01",
+      "status": "PASS_RC9",
+      "scope": "New cache/network projects, isolated existing primary lab continuation, immutable archives and old evidence retained; only owned projects stopped, databases/rollback copies retained.",
+      "evidence": [
+        "history",
+        "teardown"
+      ]
+    },
+    {
+      "id": "REL-01",
+      "status": "HELD_BY_OWNER",
+      "scope": "No commit/push/merge/CDN/WordPress.org publication. Exact candidate/rollback retained; release stays incomplete until external gates and explicit authorization.",
+      "evidence": [
+        "teardown",
+        "rc9"
+      ]
+    }
+  ],
+  "evidence": {
+    "rc9": {
+      "path": "docs/releases/1.1.6/acceptance-rc9.json",
+      "sha256": "4c0343923e44258ead6fce0675cb0969086e994e7b6c1b70a092a2bd95c03f19"
+    },
+    "native": {
+      "path": ".local/gutenberg-fix-20261112/regression-rc9/SUMMARY.json",
+      "sha256": "c0d8e9bbb02956104ca6b24d67264536b0d4733860b9a77269ad5b526d5c4af7"
+    },
+    "independent": {
+      "path": ".local/gutenberg-fix-20261112/independent/FINAL-REVIEW.json",
+      "sha256": "4ba3bf10912be768006564cbbe521936221156be5efc9561def2fa761799b463"
+    },
+    "local": {
+      "path": ".local/gutenberg-fix-20261112/root-rc9/LOCAL-CHECKS.json",
+      "sha256": "555c1661cee1d8403216f0596be9ccbff2058c27fd5fdba8c59e055407b17e09"
+    },
+    "browser": {
+      "path": ".local/gutenberg-fix-20261112/browser-contracts-rc9/RESULT.json",
+      "sha256": "0d4131a7731adb02dda7ed6741a60696c1857a14fb617a2ef806c89900629419"
+    },
+    "rc4-native": {
+      "path": ".local/candidate-116-rc4-20261112-a/evidence/PRIMARY-RC4-RESULT.json",
+      "sha256": "2481cfd5b5c83fc6625b499281d1fca2f97992448fb768f177c1caa2643d185e"
+    },
+    "override": {
+      "path": ".local/remediation-116-rc4/override-review/RESULT.json",
+      "sha256": "76cc12adacd4b673f16a8a833c187480ea92bfeac865ded813becdf99a74259b"
+    },
+    "scope": {
+      "path": ".local/rc9-local-gates-20261112/CARRY-FORWARD-SCOPE.json",
+      "sha256": "57e681cbf14ae025c9c8a5873a1a78f7b15d3734f51d8037965ed419e94349f0"
+    },
+    "history": {
+      "path": ".local/rc9-local-gates-20261112/HISTORICAL-INTEGRITY.json",
+      "sha256": "306a230e511a98e028da2f31960c803e2b807a3c2856256fe9dcce0d756cdc82"
+    },
+    "plugin-check": {
+      "path": ".local/rc9-local-gates-20261112/PLUGIN-CHECK.json",
+      "sha256": "888db34d68d6b6f3b94b5149423dcc569747fe0ee485076008289a3bb6139c4f"
+    },
+    "package": {
+      "path": ".local/rc9-local-gates-20261112/package/RESULT.json",
+      "sha256": "0d4d133ce20b46fb45f5c62c70d0182bbc0e68a8b5f3f71895fafc053b5ff5ca"
+    },
+    "core": {
+      "path": ".local/rc9-local-gates-20261112/CORE-PROBES.json",
+      "sha256": "1aba7611d4ca0fcf33b689c17199272d8a938f0fed6d54cf333ca23db169fb1b"
+    },
+    "data115": {
+      "path": ".local/rc9-local-gates-20261112/DATA03-04.json",
+      "sha256": "501606860f5d8227ded61e91cf8850e801690ccfe363f6a034dc38e09c8715ff"
+    },
+    "cache": {
+      "path": ".local/rc9-local-gates-20261112/cache/RESULT.json",
+      "sha256": "381f8610bd6b70afcc5c84fc59e3995210af86321d1bac44109c397ce15caf3b"
+    },
+    "network": {
+      "path": ".local/rc9-local-gates-20261112/multisite/RESULT.json",
+      "sha256": "afbc664ceeb8f82c18b8f9576531c27f2e888ad306e9e6f85acc468fa6c82f10"
+    },
+    "teardown": {
+      "path": ".local/rc9-local-gates-20261112/TEARDOWN.json",
+      "sha256": "282de626d47583bb67c0567afdf366579d7d1d8f1a8a40838e238ea9ac59b442"
+    },
+    "webkit": {
+      "path": ".local/webkit-112-rc9-20261112/SUMMARY.json",
+      "sha256": "6703bde133eef2ddfb16ffe8a41e0b435168c2817a41ae00c077df5e30118b65"
+    },
+    "build": {
+      "path": ".local/alignment-084-20261112/package-review/candidate-1/reports/build-provenance.json",
+      "sha256": "c3b99a5b913aec766d72c0470666336cf7f79497e230170484fa6ac72cdaae4a"
+    },
+    "inventory": {
+      "path": ".local/rc9-local-gates-20261112/INVENTORY.json",
+      "sha256": "1b384b322a81fdf3a956d476f88dfc116f60e27ca06cd1edc5b1a5640e305d37"
+    },
+    "final-validation": {
+      "path": ".local/rc9-local-gates-20261112/FINAL-VALIDATION.json",
+      "sha256": "e90e81b8761b8e5dcbaaf1902649b60948144961f3f2417ad082fd500c6dc6eb"
+    }
+  },
+  "publication": {
+    "authorized": false,
+    "performed": false,
+    "productCodeOrRuntimeChanged": false,
+    "packageRepacked": false
+  }
+}

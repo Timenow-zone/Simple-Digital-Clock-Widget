@@ -1,0 +1,10 @@
+{
+  "configs": [
+    { "id": "utc", "attributes": { "caption": "UTC <b>literal</b>", "time-zone": "UTC", "locale": "en-GB", "period": "false", "second": "true", "date": "", "width": "240", "background-color": "#e0f2fe", "rounded": "0", "align": "left", "border": "", "shadow": "shadow-sm" } },
+    { "id": "new-york", "attributes": { "caption": "New York", "time-zone": "America/New_York", "locale": "en-US", "period": "true", "second": "true", "width": "320", "background-color": "#111827", "rounded": "0.75", "align": "right", "shadow": "shadow-lg" } },
+    { "id": "tokyo", "attributes": { "caption": "Tokyo", "time-zone": "Asia/Tokyo", "locale": "ja-JP", "period": "false", "second": "false", "hundredths": "true", "date": "", "width": "280", "background-color": "#fef3c7", "rounded": "1.25", "align": "center", "shadow": "shadow-md" } },
+    { "id": "kolkata", "attributes": { "caption": "Kolkata", "time-zone": "Asia/Kolkata", "locale": "hi-IN", "period": "false", "second": "false", "width": "360", "background-color": "#dcfce7", "rounded": "0.25", "align": "left", "border": "", "shadow": "shadow" } }
+  ],
+  "mutated": { "id": "utc", "attributes": { "caption": "Changed only UTC", "time-zone": "Pacific/Honolulu", "locale": "de-DE", "period": "true", "second": "false", "hundredths": "true", "width": "410", "background-color": "#ede9fe", "rounded": "1.5", "align": "right", "shadow": "shadow-xl" } },
+  "dynamic": { "id": "chatham", "attributes": { "caption": "Chatham +12:45/+13:45", "time-zone": "Pacific/Chatham", "locale": "en-NZ", "period": "false", "second": "true", "date": "", "width": "300", "background-color": "#fce7f3", "rounded": "0.5", "align": "center", "border": "", "shadow": "shadow-sm" } }
+}

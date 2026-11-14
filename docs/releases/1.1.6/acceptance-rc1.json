@@ -1,0 +1,96 @@
+{
+  "version": "1.1.6",
+  "revision": "rc1",
+  "status": "SCOPED_RC_PACKAGE_ACCEPTANCE_PASS",
+  "date": "2026-11-12",
+  "timezone": "Europe/Kyiv",
+  "archive": ".local/packages/simple-digital-clock-1.1.6-rc1.zip",
+  "archive_sha256": "1b29a26dc28431a40c475c9db6e7cee6056ef9731f298c6f672da7d200af1ecf",
+  "archive_bytes": 71397,
+  "files": 17,
+  "published": false,
+  "changed_files_from_r3": [
+    "languages/simple-digital-clock.pot",
+    "readme.txt"
+  ],
+  "unchanged_files_from_r3": 15,
+  "executable_code_changed": false,
+  "local_check_commands_passed": 7,
+  "focused_tests": {
+    "passed": 44,
+    "failed": 0,
+    "skipped": 0
+  },
+  "release_metadata_guard": {
+    "red_detected_missing_upgrade_notice": true,
+    "green_after_fix": true
+  },
+  "pot": {
+    "messages": 63,
+    "fresh_generator": "WP-CLI 2.12.0",
+    "only_creation_timestamp_changed": true,
+    "promoted_sha256": "b22bf6c116250203369bde5cb69ed3ba26e6385473e035e9700ba7cd64614bfa"
+  },
+  "installed_checks": {
+    "wordpress": "7.1.4",
+    "php": "8.3.35",
+    "exact_archive_files_match": true,
+    "plugin_check": {
+      "version": "2.1.0",
+      "wordpress": "7.1.4",
+      "php": "8.3.35",
+      "static": 29,
+      "runtime": 5,
+      "findings": [],
+      "exit": 0
+    },
+    "smoke": {
+      "browser": "chromium",
+      "cases": [
+        {
+          "scenario": "empty",
+          "core": "7.1.4",
+          "php": "8.3.35",
+          "runtime_requests": 0,
+          "errors": [],
+          "pass": true
+        },
+        {
+          "scenario": "raw",
+          "core": "7.1.4",
+          "php": "8.3.35",
+          "before": "10:29:04 PM",
+          "after": "10:29:05 PM",
+          "runtime_requests": 1,
+          "errors": [],
+          "pass": true
+        }
+      ]
+    },
+    "posts_postmeta_unchanged": true,
+    "stable_options_unchanged": true,
+    "all_owned_containers_stopped": true
+  },
+  "inherited_code_acceptance": "docs/releases/1.1.6/acceptance-final.json",
+  "inherited_manifest": "docs/releases/1.1.6/manifest-browser-r3.json",
+  "hosted_checks": {
+    "policy": "Both Repository checks and Browser tests must pass for the current RC1 PR HEAD; prior r3 runs do not certify the new commit.",
+    "checks_url": "https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks"
+  },
+  "evidence_sha256": {
+    ".local/rc1-116-20261112/baseline.json": "8ae7c1a9bc9e99e791e6ef8c9a7af73081dbc3c51966216e2814a6165f82c40a",
+    ".local/rc1-116-20261112/build.json": "cc5b35c4cd93e5d450323da371ebd44ef9cd74cea1a38321cf73e4cf64b41d51",
+    ".local/rc1-116-20261112/build.py": "79fc307547ad723a4f979a0c169418555cc2c4d00182a7a46dd983f4044e7543",
+    ".local/rc1-116-20261112/checks/commands.json": "b0f34aa5a478b7b6d091c22e74bf40e9c64a654410dde28af488f5acb4e2d584",
+    ".local/rc1-116-20261112/checks/metadata-red.stdout.log": "6be5eab573a2e15f9f6fca7f2af641ab26ba770d36635bdca162fecede6f00bf",
+    ".local/rc1-116-20261112/checks/focused.stdout.log": "e39c1b2fea6b14b2588e69d85dd574af2257a72c8efdb03bc63f085975e7abbc",
+    ".local/rc1-116-20261112/pot-verification/RESULT.json": "9bc4f0ebe6d0bd2f30c69e98961aa4337d5d0ef93036414506ca466a6db39bed",
+    ".local/rc1-116-20261112/installed-checks/RESULT.json": "c17b084e91c26b86ba3d19e74f379e01182c96809a658f99c8d31bb6d461df72",
+    ".local/rc1-116-20261112/installed-checks/REPORT.md": "d69cfbabbb7a413b591861b01b35e8c424453b039a0754a1b8b52ff596c2c0b9"
+  },
+  "boundaries": [
+    "RC1 is a new ZIP; prior exact-r3 installation receipts remain separately identified.",
+    "Full native/editor upgrade matrix is inherited only for byte-identical executable code, not claimed as freshly repeated for RC1.",
+    "No merge, release, tag, CDN or owner-site installation is authorized or performed."
+  ]
+}

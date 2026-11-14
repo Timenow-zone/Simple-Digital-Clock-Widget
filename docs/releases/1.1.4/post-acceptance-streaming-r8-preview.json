@@ -1,0 +1,70 @@
+{
+  "scope": "Root owner-preview integration after independent freeze closed; local only",
+  "installed": {
+    "zip_sha256": "cb60a5d20e6b87d2897f00aebf25568f292a53e8f5c613b3c5fc09f75d06bc37",
+    "installed_files": 17,
+    "posts_unchanged": true,
+    "selected_options_unchanged": true,
+    "active": true,
+    "plugin_check_errors": 0,
+    "plugin_check_warnings": 0,
+    "css_file_removed": true,
+    "independent_verdict": "GO",
+    "backup": ".local/streaming-r8-20261102/preview-r6-backup",
+    "admin_url": "http://127.0.0.1:55900/wp-admin/tools.php?page=plugin-check&plugin=simple-digital-clock%2Fwidget_init.php"
+  },
+  "browser": {
+    "results": [
+      {
+        "engine": "chromium",
+        "label": "empty",
+        "clocks": 0,
+        "script_requests": 0,
+        "inline": 0,
+        "external_css": 0,
+        "ticking": null,
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "label": "clock",
+        "clocks": 1,
+        "script_requests": 1,
+        "inline": 1,
+        "external_css": 0,
+        "ticking": true,
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "label": "empty",
+        "clocks": 0,
+        "script_requests": 0,
+        "inline": 0,
+        "external_css": 0,
+        "ticking": null,
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "label": "clock",
+        "clocks": 1,
+        "script_requests": 1,
+        "inline": 1,
+        "external_css": 0,
+        "ticking": true,
+        "passed": true
+      }
+    ],
+    "served_runtime_sha256": "779ff0d3be3a26ca7df8e121513d32a09fc021f985bc0fb9d53bab5e62a8ee25"
+  },
+  "evidence": {
+    ".local/streaming-r8-20261102/preview-before.json": "f12b816a12b1e1cd038ddc16f7948bf8b7a6cdb413818858e1e0f0fdd2903058",
+    ".local/streaming-r8-20261102/preview-after.json": "37cfd3e7e2d7b6338701c24c53a7879ff5ed2691205e3bb8f7f5fbbfdbfe764f",
+    ".local/streaming-r8-20261102/preview-after-checks.json": "37cfd3e7e2d7b6338701c24c53a7879ff5ed2691205e3bb8f7f5fbbfdbfe764f",
+    ".local/streaming-r8-20261102/preview-plugin-check-raw.json": "abe55b9dd953a065b918abfb442b3160cd094e3a9add33e8da44f5995a0d6361",
+    ".local/streaming-r8-20261102/preview-plugin-check-observer.txt": "ec4f5b8ac0612889f1f1d07d58d0c3d385439241b10753330d6d5b0bc30b4c07",
+    ".local/streaming-r8-20261102/preview-browser.json": "b5a685bafd1483b905d21c3ce0c6aaa6aceb109b4aef2fdfb0c557f8d2d7b66b"
+  },
+  "publication_performed": false
+}
