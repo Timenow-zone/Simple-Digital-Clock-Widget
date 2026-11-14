@@ -97,7 +97,7 @@ jobs:
       - name: Check WordPress serialization and inspector contracts
         run: node --test tests/wordpress-serialization.test.mjs tests/wordpress-inspector.test.mjs
       - name: Check Classic Editor settings, hooks and attribute boundaries
-        run: node --test tests/wordpress-classic-editor.test.mjs
+        run: node --test tests/wordpress-classic-editor.test.mjs tests/wordpress-save-guard.test.mjs
       - name: Check WordPress REST metadata ordering and boundaries
         run: |
           php -l tests/wordpress-rest-metadata.php

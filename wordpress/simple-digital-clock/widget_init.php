@@ -30,6 +30,7 @@ define('SDCW_NAME', 'Simple Digital Clock 🕒');
 define('SDCW_PLUGIN_SLUG', 'simple-digital-clock');
 
 require_once SDCW_PATH . 'includes/simple-digital-clock-kses.php';
+require_once SDCW_PATH . 'includes/simple-digital-clock-save-guard.php';
 require_once SDCW_PATH . 'includes/simple-digital-clock-assets.php';
 
 class SDCW_digital_clock_widget

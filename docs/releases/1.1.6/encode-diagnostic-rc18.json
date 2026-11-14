@@ -1,0 +1,123 @@
+{
+  "schema": "sdcw.rc18.encode-diagnostic.v1",
+  "created": "2026-11-14T09:11:59.544075+00:00",
+  "candidate": {
+    "candidate_sha256": "b59adf31cf9b9f8e7826e2540c81a3621d673c44f2eae65145b96a6b2b353429",
+    "manifest_sha256": "7c09c3efc71bff139d85fd80d4e79575be070c38ab018e1b450e7d098c8e486d",
+    "runtime_sha256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "archive_bytes": 82060,
+    "exact_source_archive_manifest_files": 20
+  },
+  "disposition": "MATCHING_ERROR_CLASS_ATTRIBUTED_PLUGIN_INDEPENDENT_CORE_WEBKIT_NAVIGATION",
+  "remaining_encode_attribution_blocker": "CLOSED_BY_MATCHING_DISABLED_REPRODUCTION",
+  "rc18_regression": "NOT_A_NEW_RC18_REGRESSION_MATCHES_DISABLED_AND_RC16",
+  "strict_zero_diagnostics": "NOT_CLEAN_INHERITED_DIAGNOSTICS_RETAINED",
+  "production_release": "NOT_AUTHORIZED_NOT_PERFORMED",
+  "historical_report_rewritten": false,
+  "product_code_changed": false,
+  "runtime_changed": false,
+  "root_experiments": {
+    "rows": 38,
+    "flows_completed": 38,
+    "race_rows": 30,
+    "race_exact_message": 28,
+    "race_original_message_and_full_stack": 16,
+    "settled_rows": 8,
+    "settled_exact_errors": 0,
+    "window_error_or_unhandled_rejection_events": 0
+  },
+  "root_evidence": {
+    "ANALYSIS.json": {
+      "path": ".local/rc18-encode-investigation-20261114/ANALYSIS.json",
+      "sha256": "61fd660a1d64abea2196b990b6d5f1baf1c12d71e253393af621fae3856b6bca"
+    },
+    "SERVER-CORRELATION.json": {
+      "path": ".local/rc18-encode-investigation-20261114/SERVER-CORRELATION.json",
+      "sha256": "0769220e80e1745ffc25de885aaab11b69d0d6a05c3856460424f4d0d1693d30"
+    },
+    "BROWSER-IDENTITY.json": {
+      "path": ".local/rc18-encode-investigation-20261114/BROWSER-IDENTITY.json",
+      "sha256": "2bb7cd6fb4227c09a09ff5e5ab4bb6f2a340b91e9e426f88dba58fd278729b6b"
+    },
+    "LOCAL-SOURCE-CHAIN.json": {
+      "path": ".local/rc18-encode-investigation-20261114/LOCAL-SOURCE-CHAIN.json",
+      "sha256": "9fb431a7bb8489ab3d96be5c451cee9036b5302e224a58bdb24e6aca0c34bcd0"
+    },
+    "DISABLED-IDENTITY.json": {
+      "path": ".local/rc18-encode-investigation-20261114/DISABLED-IDENTITY.json",
+      "sha256": "8b59bd7de11b663c73065e7a2606062a167a7f3b16f114def3fb42934041d384"
+    },
+    "DISABLED-INVARIANTS.json": {
+      "path": ".local/rc18-encode-investigation-20261114/DISABLED-INVARIANTS.json",
+      "sha256": "a0803354af30306ae87aaffe10f665db9fbd7a37e9d91859332fd8e54abd27d7"
+    },
+    "INDEPENDENT-RESTORED.json": {
+      "path": ".local/rc18-encode-investigation-20261114/INDEPENDENT-RESTORED.json",
+      "sha256": "b5dc891704783264028d2c0ec32a08c414bf6ce22fe874fa40bdf9c4981c3515"
+    },
+    "PRESERVATION.json": {
+      "path": ".local/rc18-encode-investigation-20261114/PRESERVATION.json",
+      "sha256": "4cd6275c2f700511d48793e55c6b731e8298481258a9ae8217f364b149dee22d"
+    },
+    "FINAL-LOCAL-STATE.json": {
+      "path": ".local/rc18-encode-investigation-20261114/FINAL-LOCAL-STATE.json",
+      "sha256": "deb1c641047a1ac9ed6b04a9f044796dff75426a67927f9e0f5135895e44c395"
+    }
+  },
+  "independent_reproduction": {
+    "script": {
+      "path": ".local/rc18-encode-independent-20261114/reproduce.mjs",
+      "sha256": "d38a5b0a5fd5d738cf46b22eb7ef6d07fa7d865025ef0efeee8c166dc8a8a283"
+    },
+    "disabled": {
+      "path": ".local/rc18-encode-independent-20261114/independent-disabled/RESULT.json",
+      "sha256": "e6acfe555701c2d0194e4eaf818d941e2bae90d69b725522ff87af8c17ddf4bc"
+    },
+    "rc18": {
+      "path": ".local/rc18-encode-independent-20261114/independent-rc18/RESULT.json",
+      "sha256": "1327fc13855fcddabb0fe180f4efba175a8c44a4efe5f1d72f1910a8d7520dd9"
+    },
+    "flows_completed": 10,
+    "intended_exact_message_and_stack_matches": 8,
+    "settled_clean_controls": 2,
+    "report_path": ".local/rc18-encode-independent-20261114/REPORT.md",
+    "inventory_path": ".local/rc18-encode-independent-20261114/INVENTORY.json",
+    "seal_path": ".local/rc18-encode-independent-20261114/SEAL.json"
+  },
+  "native_rc18_save": {
+    "evidence": {
+      "path": ".local/candidate-rc18-local-surfaces-20261114/evidence/e18-final-native-widgets-webkit/results.json",
+      "sha256": "2b9e7b630b72042042f5fd7291e70cf0eb549c58f1db94997c241ff222da939a"
+    },
+    "functional_completed": true,
+    "pageerrors": 0,
+    "warning_error_console_messages": 0,
+    "matched_package_responses": 28,
+    "original_three_clock_attributes_preserved": true,
+    "added_clock_ticks": true,
+    "external_gravatar_requests_blocked_by_harness": 8,
+    "strict_diagnostics_clean": false
+  },
+  "local_restoration": {
+    "owned_services_stopped": true,
+    "containers_databases_backups_retained": true,
+    "temporary_widget_options_restored": true,
+    "original_theme_restored": "twentytwentythree",
+    "server_observer_removed": true,
+    "final_sites_exact_and_active": true
+  },
+  "preservation": {
+    "protected_files": 582,
+    "previous_inventory_entries": 1996,
+    "mismatches": []
+  },
+  "remaining_boundaries": [
+    "Individual original event timing is unavailable; attribution is to the byte-matching message and full stack class.",
+    "The precise native C++ branch is inferred from pinned source and runtime evidence, not debugger-traced.",
+    "Existing 42-gate functional matrix is preserved, not rerun or expanded by these diagnostic experiments.",
+    "Exact committed PR HEAD hosted Repository checks and Browser tests remain required.",
+    "CDN production verification and WordPress.org publication remain separate and unauthorized."
+  ],
+  "evidence_inventory_path": ".local/rc18-encode-investigation-20261114/INVENTORY.json",
+  "evidence_seal_path": ".local/rc18-encode-investigation-20261114/SEAL.json"
+}

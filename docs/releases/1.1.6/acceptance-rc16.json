@@ -1,0 +1,448 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-11-13T21:54:16.247380+00:00",
+  "candidate": {
+    "version": "1.1.6",
+    "revision": "RC16",
+    "zip": ".local/packages/simple-digital-clock-1.1.6-rc16.zip",
+    "sha256": "18a1b2c67f181a0a3c719646241499eb237ce63962f5ad6f08a32fc165639601",
+    "bytes": 80962,
+    "files": 20,
+    "manifest": "docs/releases/1.1.6/manifest-rc16.json",
+    "manifest_sha256": "843684c1657e1034da4df96185a11dfdf6dce3546ed6a3023b4691140d875fb2",
+    "source_base_commit": "94db2495c9547b993e835a2150ce647abbe9e065",
+    "source_dirty": true,
+    "runtime_version": "0.8.4",
+    "runtime_sha256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "runtime_unchanged_from_rc15": true,
+    "database_migration": false,
+    "changed_package_paths_from_rc15": [
+      "includes/simple-digital-clock-kses.php",
+      "readme.txt"
+    ]
+  },
+  "verdicts": {
+    "specific_ordinary_comment_correction": "PASS",
+    "complete_acceptance": "NO_GO",
+    "new_functional_regression_established_in_bounded_matrix": false,
+    "inherited_malformed_html_cdata_waived": false,
+    "release_authorized": false
+  },
+  "editors": {
+    "groups": {
+      "classic": {
+        "workflows": 96,
+        "functional_pass": 96,
+        "functional_fail": 0,
+        "captured_pageerror_rows": 0,
+        "result_paths": [
+          ".local/rc16-editors-20261113/candidate-classic-chrome/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-classic-firefox-current/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-classic-firefox-minimum/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-classic-webkit-current/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-classic-webkit-minimum/RESULT.json"
+        ]
+      },
+      "gutenberg": {
+        "workflows": 12,
+        "functional_pass": 12,
+        "functional_fail": 0,
+        "captured_pageerror_rows": 0,
+        "result_paths": [
+          ".local/rc16-editors-20261113/candidate-gutenberg-chrome-current-r3/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-gutenberg-chrome/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-gutenberg-firefox-current-r3/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-gutenberg-firefox-minimum-r3/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-gutenberg-webkit-current-r3/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-gutenberg-webkit-minimum-r3/RESULT.json"
+        ]
+      },
+      "stale_native_update": {
+        "workflows": 24,
+        "functional_pass": 24,
+        "functional_fail": 0,
+        "captured_pageerror_rows": 2,
+        "result_paths": [
+          ".local/rc16-editors-20261113/candidate-stale-chrome-current/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-stale-chrome-minimum/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-stale-firefox-current/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-stale-firefox-minimum/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-stale-webkit-current/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-stale-webkit-minimum/RESULT.json"
+        ]
+      },
+      "old_text_comment_save": {
+        "workflows": 4,
+        "functional_pass": 4,
+        "functional_fail": 0,
+        "captured_pageerror_rows": 0,
+        "result_paths": [
+          ".local/rc16-editors-20261113/candidate-old-comment-chrome/RESULT.json"
+        ]
+      },
+      "fresh_native_autosave": {
+        "workflows": 12,
+        "functional_pass": 12,
+        "functional_fail": 0,
+        "captured_pageerror_rows": 2,
+        "result_paths": [
+          ".local/rc16-editors-20261113/candidate-autosave-chrome-current/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-autosave-chrome-minimum/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-autosave-firefox-current/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-autosave-firefox-minimum/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-autosave-webkit-current/RESULT.json",
+          ".local/rc16-editors-20261113/candidate-autosave-webkit-minimum/RESULT.json"
+        ]
+      }
+    },
+    "functional_pass": 148,
+    "total_workflows": 148,
+    "strict_captured_pageerror_pass": 144,
+    "strict_captured_pageerror_fail": 4,
+    "diagnostics": [
+      "Two current-Core Chrome ViewTransition errors on required HTTP409 recovery pages.",
+      "Two current-Core WebKit dashboard admin-ajax/getEvents errors after login; later actual autosave succeeds."
+    ],
+    "attribution": "No fresh paired plugin-disabled attribution for these four rows.",
+    "instrumentation_boundary": "Not collected. Classic/Gutenberg/old-comment pageerror capture is editor-scoped; stale/autosave capture includes additional context pages. No universal console-clean claim.",
+    "autosave_trigger": "Core wp.autosave.server.triggerSave and actual Heartbeat transport; not naturally scheduled waiting",
+    "autosave_dom_scope": "Exact stored revision replay in actual same-origin frontend; not native preview navigation",
+    "actual_http_core_upgrades": 30,
+    "transition_receipts": 58,
+    "classic_oracles": {
+      "rc15_compatibility": 36,
+      "valid_clock_comment_inert": 36,
+      "malformed_rc15_compatibility": 24
+    },
+    "malformed_inherited_activation_rows": [
+      {
+        "site": "minimum",
+        "role": "author",
+        "kind": "unclosed_clock_comment",
+        "engine": "chrome",
+        "result_path": ".local/rc16-editors-20261113/candidate-classic-chrome/RESULT.json"
+      },
+      {
+        "site": "current",
+        "role": "author",
+        "kind": "unclosed_clock_comment",
+        "engine": "chrome",
+        "result_path": ".local/rc16-editors-20261113/candidate-classic-chrome/RESULT.json"
+      },
+      {
+        "site": "current",
+        "role": "author",
+        "kind": "unclosed_clock_comment",
+        "engine": "firefox",
+        "result_path": ".local/rc16-editors-20261113/candidate-classic-firefox-current/RESULT.json"
+      },
+      {
+        "site": "minimum",
+        "role": "author",
+        "kind": "unclosed_clock_comment",
+        "engine": "firefox",
+        "result_path": ".local/rc16-editors-20261113/candidate-classic-firefox-minimum/RESULT.json"
+      },
+      {
+        "site": "current",
+        "role": "author",
+        "kind": "unclosed_clock_comment",
+        "engine": "webkit",
+        "result_path": ".local/rc16-editors-20261113/candidate-classic-webkit-current/RESULT.json"
+      },
+      {
+        "site": "minimum",
+        "role": "author",
+        "kind": "unclosed_clock_comment",
+        "engine": "webkit",
+        "result_path": ".local/rc16-editors-20261113/candidate-classic-webkit-minimum/RESULT.json"
+      }
+    ],
+    "autosave_metadata_boundary": "Parent post and metadata other than Core's advisory _edit_lock remain unchanged. That lock changes in all 12 autosave cases; the sealed peer prose is qualified by the aggregate review."
+  },
+  "compatibility": {
+    "mandatory_main_script_combinations": 6,
+    "mandatory_passed": 6,
+    "engines": {
+      "chrome": "157.0.8103.51",
+      "firefox": "153.0",
+      "webkit": "26.5"
+    },
+    "environments": {
+      "minimum": {
+        "core": "6.3.14",
+        "php": "7.0.33"
+      },
+      "current": {
+        "core": "7.1.4",
+        "php": "8.3.35",
+        "synthetic_third_party_plugins": 10
+      }
+    },
+    "standalone_rows": 24,
+    "standalone_passed": 24,
+    "single_multiple_html_rows": 6,
+    "single_multiple_html_passed": 6,
+    "installed_wordpress_placements": 24,
+    "installed_wordpress_passed": 24,
+    "boundary": "Actual Google Chrome channel, Firefox and WebKit; no native Safari or universal production environment claim."
+  },
+  "upgrade_cache": {
+    "principal_transitions": 6,
+    "content_files_active_passed": 6,
+    "stable_options_strict_passed": 5,
+    "qualification": "One current reupdate deletes Elementor generated CSS cache metadata; unrelated-plugin upgrader hook reproduces same deletion; not content loss",
+    "native_comment_saves": {
+      "count": 6,
+      "candidate_inert_pass": 4,
+      "expected_inherited_rc15_negative": 2
+    },
+    "separate_115_stale_guard_409": 2,
+    "cache_runs": {
+      "r4": {
+        "rows": 48,
+        "strict_pass": 47,
+        "functional_pass": 48,
+        "old_open_pass": 12,
+        "byte_exact_cache_snapshot_matches": 45,
+        "timing_only_cache_warm_race": 3,
+        "browser_http_cache": "Default browser behavior; native cache HIT not proven"
+      },
+      "r5": {
+        "rows": 48,
+        "strict_pass": 47,
+        "functional_pass": 48,
+        "old_open_pass": 12,
+        "byte_exact_cache_snapshot_matches": 46,
+        "timing_only_cache_warm_race": 2,
+        "browser_http_cache": "Chrome main measurement page cache disabled through CDP; server cache and old tabs remain active; native browser cache HIT not claimed"
+      }
+    },
+    "boundary": "R4/R5 revisit the same48-scenario matrix; not96unique scenarios. Server caching is separate from native browser HTTP-cache HIT."
+  },
+  "independent": {
+    "real_core_paired_captures": 112,
+    "browser_bounded_comparisons": 168,
+    "target_rows": 66,
+    "context_rows": 12,
+    "compatibility_rows": 84,
+    "explicit_residual_rows": 6,
+    "comparison_passed": 168,
+    "comparison_boundary": "Equivalence/residual comparisons intentionally preserve observed inertness failures; 168comparisons is not168inertness passes.",
+    "plugin_check_static": 29,
+    "plugin_check_runtime": 5,
+    "plugin_check_findings": 0
+  },
+  "root_validation": {
+    "candidate_sha256": "18a1b2c67f181a0a3c719646241499eb237ce63962f5ad6f08a32fc165639601",
+    "source_base_commit": "94db2495c9547b993e835a2150ce647abbe9e065",
+    "root_scope": "Local root checks only; not a full acceptance verdict. Native editor, upgrade/cache and independent reports are separate.",
+    "exact_core": {
+      "environments": 2,
+      "comment_assertions_each": 132,
+      "guard_assertions_each": 52,
+      "php_lints_each": 7,
+      "failed": 0,
+      "guard_boundary": "Unit authorization doubles; not native HTTP proof",
+      "residual_inertness_failure": "malformed HTML-context CDATA; actual_hosts=1 on both Core versions"
+    },
+    "standalone": {
+      "expectedCases": 24,
+      "completedCases": 24,
+      "passedCases": 24,
+      "failedCases": 0,
+      "pass": true
+    },
+    "multi_html": {
+      "expectedRows": 6,
+      "passed": 6,
+      "failed": 0,
+      "missing": 0
+    },
+    "focused_contracts": {
+      "tests": 64,
+      "failed": 0
+    },
+    "repository_commands": {
+      "passed": 20,
+      "failed": 0
+    },
+    "syntax_supplement": {
+      "passed": 24,
+      "failed": 0
+    },
+    "browser_workflow_jobs": {
+      "passed": 5,
+      "failed": 0,
+      "wtr": {
+        "per_engine": 48,
+        "engines": [
+          "chromium",
+          "firefox",
+          "webkit"
+        ]
+      },
+      "iframe": 3,
+      "fonts": 10,
+      "serialization_engines": 3,
+      "tinymce_engines": 3,
+      "tinymce_input_rows": 87,
+      "loader_leaf_rows": 96,
+      "product_site_engines": 3,
+      "boundary": "Some workflow suites use Chromium, not Google Chrome; actual Chrome verified independently in mandatory exact-main gate. Existing dependencies, no fresh npm ci or hosted exact-HEAD CI."
+    },
+    "preserved_files": 9364,
+    "preservation_mismatches": 0,
+    "root_compose_stopped": true,
+    "root_browser_stopped": true,
+    "evidence": [
+      {
+        "path": ".local/rc16-fix-20261113/EXACT-CORE-RESULT.json",
+        "sha256": "fb3de196b58da5347b6430ff8e82842e5f3a98f5073976ab071046c11e2ebc4d"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/POT-CHECK.json",
+        "sha256": "fc22cb64ea4c0663ca4a29e5a6ebaa48660f57c70d2073422b7fda54889206cb"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/PRESERVATION.json",
+        "sha256": "03c0da47340d13703f06e5aaedbe535f15e3caba944cd85ca63f9c811b34ac4f"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/standalone/RESULT.json",
+        "sha256": "59483766031f59acc2c40606d64074cc1697d87a706b76295683556a9162a0c7"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/multi-html/RESULT.json",
+        "sha256": "cb921077ed3410627efd6d03ae04e9074695b8cbf71b350b953088b1b379dcb2"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/repository/RESULT.json",
+        "sha256": "30dfbdda1a6fe87b82b2d22b50744d21ad80b3b901786cdb506687708e28dcc0"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/syntax-supplement/RESULT.json",
+        "sha256": "db0b632471e7e5a6f3a077abc9456d0c311087ff928d3b5c3f2e6cfd695fd677"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/browser-regressions/RESULT.json",
+        "sha256": "19497b29557a3859606a45db584b89ed46cb010c78c1f9617a8fa52cc3c2e981"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/exact-contracts.log",
+        "sha256": "ea6d42dbd53bc4c36def8c917e24efcf760ac46323b4857d5b9ae4f22588f156"
+      },
+      {
+        "path": ".local/rc16-fix-20261113/ROOT-BROWSER-STOP.json",
+        "sha256": "f189064bae99d239208a4d7a720491cc4a7b4ecf77cecb5db0abc44f45db43fb"
+      }
+    ],
+    "counts_not_additive": true
+  },
+  "evidence": [
+    {
+      "path": ".local/rc16-fix-20261113/ROOT-SUMMARY.json",
+      "sha256": "7bf201c718e24bca5541d90bbb08ded2843b384661f88bead0f3b4ec200fff14"
+    },
+    {
+      "path": ".local/rc16-fix-20261113/GATES.json",
+      "sha256": "be93b189a9cb343135d2b92c0e9557f65974553a91b2b500a00d021a46b3c540"
+    },
+    {
+      "path": ".local/rc16-fix-20261113/PRESERVATION.json",
+      "sha256": "03c0da47340d13703f06e5aaedbe535f15e3caba944cd85ca63f9c811b34ac4f"
+    },
+    {
+      "path": ".local/rc16-fix-20261113/PEER-INVENTORIES.json",
+      "sha256": "278427ac8f7d0b0084c6b522ac997bd620e2c7f10492b6cf89a9d25906fe3f5f"
+    },
+    {
+      "path": ".local/rc16-fix-20261113/OWNED-SERVICES-FINAL.json",
+      "sha256": "c9a7c2c79ccc3c5381488c675b753e3e2b7d84e249dd33eb959f98a3a40dd5d4"
+    },
+    {
+      "path": ".local/rc16-editors-20261113/REPORT-FINAL.md",
+      "sha256": "07762712b9c9555c64d17069081700f9274475899cdef46db8c00df8891be2d9"
+    },
+    {
+      "path": ".local/rc16-editors-20261113/SUMMARY-FINAL.json",
+      "sha256": "3088320e4c9aa7db954ea3f8d0536bde061769db940432313dad2957e8ebe56c"
+    },
+    {
+      "path": ".local/rc16-editors-20261113/INVENTORY-FINAL.json",
+      "sha256": "64afac30b2976fd5ea6b52b15256b5546c4f84db6e9fca12d7e008e4f8a2459a"
+    },
+    {
+      "path": ".local/rc16-editors-20261113/SEALED-FINAL.json",
+      "sha256": "debd0d52beaf477c046b138c2403eb28be99a2e9aad3d37cc059bc528323de58"
+    },
+    {
+      "path": ".local/rc16-upgrade-cache-20261113/REPORT.md",
+      "sha256": "ea0c1f060c28635dde41be57de3d6bcf61555092be580a5512d550a25e6b7268"
+    },
+    {
+      "path": ".local/rc16-upgrade-cache-20261113/SUMMARY.json",
+      "sha256": "1881dd44ad2b4509584f111617dfd0b48e6027b70a04f85bedb73a6c26c51506"
+    },
+    {
+      "path": ".local/rc16-upgrade-cache-20261113/SEAL.json",
+      "sha256": "54ffeaaada6d42b91d2e861d120baf7ffa1f467677938eae9c69a50b5c3f3bf5"
+    },
+    {
+      "path": ".local/rc16-independent-resume-20261113/REPORT.md",
+      "sha256": "e38f1a46bf08a8ad471b96d5680c3c54d367db38e10260d250da2e96e5f58df4"
+    },
+    {
+      "path": ".local/rc16-independent-resume-20261113/SUMMARY.json",
+      "sha256": "084f2747b219eac088c8d59444f2dc8c5a803e32219d3bd991e9f55735c9e21f"
+    },
+    {
+      "path": ".local/rc16-independent-resume-20261113/SEAL.json",
+      "sha256": "1b76f60a036667855a20849130afe9cb8ff07d25538c2699006b20782c5c9638"
+    },
+    {
+      "path": ".local/rc16-aggregate-review-20261113/ROOT-AUDIT.json",
+      "sha256": "482798abf216abac6f979353cd3477ed571de3fcfbce630fe83f5260fa61bd6d"
+    },
+    {
+      "path": ".local/rc16-aggregate-review-20261113/CACHE-AUDIT.json",
+      "sha256": "69deb6335afbf17e46b81cbd7d97cb8ba98a7e2c2ac3d9f43c1637084a31faf2"
+    },
+    {
+      "path": "docs/releases/1.1.6/FINAL-ACCEPTANCE-RC16.md",
+      "sha256": "82e1cf80054636e691d5f7d75c85a2cf128da82c91b044331494e62fe55cc563"
+    }
+  ],
+  "full_matrix": ".local/rc16-fix-20261113/GATES.json",
+  "independent_aggregate_review": ".local/rc16-aggregate-review-20261113/AGGREGATE-REVIEW.json",
+  "final_inventory": ".local/rc16-fix-20261113/INVENTORY.json",
+  "final_seal": ".local/rc16-fix-20261113/SEALED.json",
+  "pending": [
+    "Unwaived inherited malformed HTML-context CDATA inert-to-active conversion; nine other equivalence controls are not inertness passes.",
+    "Complete fresh RC16 multisite, native Site Editor/block Widgets/teeny/Preview and public1.1.2 corpus/rollback matrix.",
+    "All native Gutenberg inspector controls, Delete/Undo/reinsert and newlyRC16-created content saved under1.1.2.",
+    "Native Firefox HTTP-cache HIT, actual hidden-tab resume, natural autosave timing and namedRC1 preview/CSP sensitivity controls.",
+    "Required Repository checks and Browser tests on eventual exact committed RC16 HEAD; no current hosted acceptance.",
+    "Production CDN and WordPress.org publication remain separately deferred and unauthorized."
+  ],
+  "preservation": {
+    "baseline_files_unchanged": 9364,
+    "baseline_mismatches": 0,
+    "peer_inventory_references_verified": 2450,
+    "peer_unique_files_verified": 2446,
+    "peer_mismatches": 0,
+    "owned_compose_projects_stopped": 4,
+    "owned_browser_containers_stopped": 4,
+    "databases_retained": true
+  },
+  "external_mutations": {
+    "commit": false,
+    "push": false,
+    "merge": false,
+    "cloudflare_upload": false,
+    "cloudflare_deploy": false,
+    "cloudflare_settings_change": false,
+    "wordpress_org_publication": false
+  },
+  "count_boundary": "Families revisit documents and include negative controls, assertions and repeated saves. Do not sum them into unique user scenarios."
+}

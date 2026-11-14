@@ -1,6 +1,78 @@
 # WordPress 1.1.6 release preparation
 
-## Current RC12 preparation
+## Current RC18 preparation
+
+Current candidate: **RC18 FROZEN; BOUNDED LOCAL FUNCTIONAL GATES PASS;
+ADMIN DIAGNOSTICS ATTRIBUTED; HOSTED PR CHECKS PENDING; NOT PUBLISHED**.
+The [additional local acceptance](LOCAL-ACCEPTANCE-RC18.md) covers the missing
+matrix cells, including multisite and cache. The subsequent
+[encode investigation](ENCODE-DIAGNOSTIC-RC18.md) closes its last unattributed
+diagnostic through a matching plugin-disabled reproduction and independent review.
+Inherited diagnostics remain visible; a literal zero-diagnostics result is not
+claimed. Earlier NO-GO reports remain unchanged historical snapshots.
+
+The [RC18 production PR gate](FINAL-PR-RC18.md) binds the unchanged twenty-file
+package to PR #20 and requires both hosted checks on its exact final HEAD.
+The frozen [manifest](manifest-rc18.json), ZIP and runtime are not rebuilt or
+repacked. The mutable selection manifest describes the RC12-to-RC18 increment;
+the full production PR still carries the previously accepted shared 0.8.4 work.
+Merge, Cloudflare upload/deployment and WordPress.org publication remain on hold.
+
+## Preserved initial RC18 preparation snapshot
+
+Current local candidate: **RC18 FROZEN; SCOPED FUNCTIONAL CORRECTION VERIFIED;
+FULL ACCEPTANCE NO-GO; NOT PUBLISHED**. The
+[acceptance report](FINAL-ACCEPTANCE-RC18.md), [receipt](acceptance-rc18.json) and
+[candidate record](RC18.md) bind the exact archive. The ten inherited contexts
+pass 60 mixed red-to-green comparisons; 20 pure examples stay inert. The native
+matrix passes 278 functional workflows and the mandatory browser gate passes all
+six combinations. Unclassified admin diagnostics and unexecuted full-release
+gates remain explicit, so this is not a complete release GO.
+
+RC18 shortens only RC17's readme Upgrade Notice (341 to 279 characters), resolving
+its Plugin Check warning. All nineteen other files are identical to RC17. Only
+KSES PHP and readme differ from RC16; runtime and editor integrations are unchanged.
+RC17 and every predecessor remain preserved. Fresh exact-archive acceptance does
+not authorize merge, deployment or publication.
+
+## Preserved RC17 preparation snapshot
+
+Candidate: **RC17 FROZEN; NO-GO: PLUGIN CHECK UPGRADE NOTICE LIMIT;
+NOT PUBLISHED**. The [candidate record](RC17.md) and
+[correction contract](../../defects/CLASSIC-COMMENT-P2-01-RC17.md) identify the
+WordPress-only inherited comment-context fix. Only KSES PHP and readme differ
+from RC16; runtime and editor integrations remain byte-identical. Completed local suites and partial native-editor results are retained for the
+exact rejected archive. Its native editor run is partial. RC16 and all earlier archives,
+manifests and evidence remain preserved.
+
+## Preserved RC16 preparation snapshot
+
+Current local candidate: **RC16 FROZEN; ORDINARY COMMENT CORRECTION VERIFIED;
+FULL ACCEPTANCE NO-GO; NOT PUBLISHED**.
+The [acceptance report](FINAL-ACCEPTANCE-RC16.md) separates the verified correction
+from inherited malformed-input behavior and incomplete release gates.
+The [candidate record](RC16.md) identifies the exact
+WordPress-only correction for [ordinary commented clock examples](../../defects/CLASSIC-COMMENT-P2-01-RC16.md).
+Only KSES PHP and readme differ from RC15; the runtime and editor integrations
+remain byte-identical. RC15's archive, frozen manifest and acceptance remain
+preserved. Complete release acceptance, hosted checks and delivery are separate
+gates; no prior result becomes a fresh RC16 pass automatically.
+
+## Preserved RC15 preparation snapshot
+
+Current local candidate: **RC15 FROZEN; STALE CLASSIC SAVE CORRECTION VERIFIED;
+FULL ACCEPTANCE NO-GO; NOT PUBLISHED**.
+The [local acceptance report](FINAL-ACCEPTANCE-RC15.md) separates the verified
+correction from the inherited Author/comment defect and incomplete release gates.
+The [candidate record](RC15.md) identifies the exact WordPress-only guard for
+[older Classic document save loss](../../defects/CLASSIC-STALE-SAVE-P1-02.md).
+Expanded acceptance of exact RC12 exposed destructive native saves from tabs
+opened before updating. RC12 and all historical evidence remain frozen.
+[RC13](RC13.md) is retained as an intermediate Plugin Check rejection.
+[RC14](RC14.md) is retained after its malformed-input boundary was hardened in RC15.
+The main runtime, loader, existing TinyMCE helper and Gutenberg code are unchanged.
+
+## Preserved RC12 preparation snapshot
 
 Current local candidate: **RC12 FROZEN; LOCAL HTML-PRESERVATION FIX VERIFIED;
 FULL RELEASE NOT READY; NOT PUBLISHED**.
@@ -41,7 +113,7 @@ Selected [RC5](RC5.md) contains [widget 0.8.4](../0.8.4/README.md). The
 [two-phase defect record](../../defects/MULTI-ALIGN-P2-01.md) preserves the red
 baseline and requires new exact-artifact HTML/WordPress verification.
 
-## Selected artifact
+## Historical RC5 selected artifact
 
 | Item | Identity |
 | --- | --- |

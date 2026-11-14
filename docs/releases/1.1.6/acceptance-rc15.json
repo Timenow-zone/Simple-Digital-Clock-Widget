@@ -1,0 +1,244 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-11-13T20:51:07.579921+00:00",
+  "candidate": {
+    "version": "1.1.6",
+    "revision": "RC15",
+    "zip": ".local/packages/simple-digital-clock-1.1.6-rc15.zip",
+    "sha256": "5722c9c14564bd826d853f5f3fb13809f5691742f183ddee788b325471525374",
+    "bytes": 79165,
+    "files": 20,
+    "manifest": "docs/releases/1.1.6/manifest-rc15.json",
+    "manifest_sha256": "46dec0b92de6e00329f9c533d858f3930e0cb4ecde46b37124e61a8b4f682e94",
+    "source_base_commit": "94db2495c9547b993e835a2150ce647abbe9e065",
+    "source_dirty": true,
+    "runtime_version": "0.8.4",
+    "runtime_sha256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "runtime_unchanged_from_rc12": true,
+    "database_migration": false
+  },
+  "verdicts": {
+    "specific_stale_classic_save_correction": "PASS",
+    "complete_acceptance": "NO_GO",
+    "release_authorized": false,
+    "new_regression_in_scoped_fix_established": false,
+    "inherited_comment_defect_waived": false
+  },
+  "editor_families": {
+    "old_document_http_upgrade": {
+      "rows": 126,
+      "functional_pass": 126,
+      "strict_pass": 115
+    },
+    "fresh_safety": {
+      "rows": 168,
+      "functional_pass": 162,
+      "strict_pass": 161
+    },
+    "old_document_clockless_save": {
+      "rows": 20,
+      "functional_pass": 18,
+      "strict_pass": 18
+    },
+    "native_preview_effective": {
+      "rows": 12,
+      "functional_pass": 12,
+      "strict_pass": 12
+    },
+    "natural_timers_effective": {
+      "rows": 4,
+      "functional_pass": 4,
+      "strict_pass": 4
+    },
+    "dynamic_text_widget_and_teeny": {
+      "rows": 12,
+      "functional_pass": 12,
+      "strict_pass": 12
+    },
+    "native_delete_undo_reinsert": {
+      "rows": 6,
+      "functional_pass": 6,
+      "strict_pass": 6
+    },
+    "core_preferences_on_off_control": {
+      "rows": 6,
+      "functional_pass": 6,
+      "strict_pass": 5
+    },
+    "comment_baseline_capture": {
+      "rows": 8,
+      "functional_pass": 8,
+      "strict_pass": 8
+    }
+  },
+  "independent_counts": {
+    "native_stale_protected": 12,
+    "fresh_classic_visual_save_controls": 12,
+    "native_stale_strict_error_free": 10,
+    "http_security_and_recovery": 42,
+    "gutenberg_post_roles": 18,
+    "site_editor": 6,
+    "block_widgets": 6,
+    "candidate_legacy_iframe_documents": 12,
+    "predecessor_legacy_iframe_documents": 12,
+    "legacy_distinct_predecessor_candidate_pairs": 12,
+    "classic_block_native_rest_save_reopen": 6,
+    "classic_block_frontend_tick": 6,
+    "rc15_header_same_tab": 3,
+    "rc12_header_inherited_error_control": 1,
+    "rc15_header_fresh_tab": 1,
+    "plugin_check_static": 29,
+    "plugin_check_runtime": 5,
+    "plugin_check_findings": 0
+  },
+  "root_groups": {
+    "wordpress_frontend_and_mime": {
+      "rows": 348,
+      "passed": 348,
+      "failed": 0
+    },
+    "normal_post_real_ticks": {
+      "rows": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    "installed_runtime": {
+      "rows": 42,
+      "passed": 42,
+      "failed": 0
+    },
+    "native_core_browser": {
+      "rows": 126,
+      "passed": 126,
+      "failed": 0
+    },
+    "multi_html": {
+      "rows": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    "multi_wordpress": {
+      "rows": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    "standalone": {
+      "rows": 24,
+      "passed": 24,
+      "failed": 0
+    },
+    "tinymce": {
+      "engine_runs": 3,
+      "engine_passed": 3,
+      "input_rows": 87,
+      "boundary": "29 input rows per engine; repeated cycles and modes are not counted as independent native UI workflows."
+    }
+  },
+  "corpus": {
+    "native_workflows": 162,
+    "functional_pass": 162,
+    "strict_pass": 162,
+    "native_saves": 324,
+    "database_records": 22,
+    "database_byte_exact": 20,
+    "qualified_legacy_comment_normalization": 2
+  },
+  "multisite": {
+    "candidate_sha256": "5722c9c14564bd826d853f5f3fb13809f5691742f183ddee788b325471525374",
+    "core": "7.1.4",
+    "php": "8.5.12",
+    "lifecycle_rows": 18,
+    "lifecycle_functional_pass": 18,
+    "lifecycle_strict_pass": 18,
+    "cross_blog_rows": 6,
+    "cross_blog_functional_pass": 6,
+    "cross_blog_strict_pass": 4,
+    "same_id_same_user_same_session": true,
+    "foreign_marker_blocked_409": true,
+    "own_marker_allowed_200": true,
+    "all_receiving_post_rows_unchanged_on_negative": true,
+    "database_restored": false,
+    "owned_project_stopped": true,
+    "database_retained": true,
+    "failed_attempts_retained": [
+      "evidence/cycle-upgrade/RESULT.json",
+      "evidence/cross-blog-chrome/RESULT.json",
+      "evidence/cross-blog-firefox/RESULT.json",
+      "evidence/cross-blog-webkit/RESULT.json"
+    ]
+  },
+  "evidence": [
+    {
+      "path": ".local/rc15-fix-20261113/REPORT.md",
+      "sha256": "48dd8d1d2f510b315681b664c6e97b9be0282b90f3b84b852c71c76f89ce3306"
+    },
+    {
+      "path": ".local/rc15-fix-20261113/GATES.json",
+      "sha256": "57ead106e46b4aafc44c5e30012d0f7cd89f04a3d88e95ddb99179fb71fd618f"
+    },
+    {
+      "path": ".local/rc15-fix-20261113/ROOT-BROWSER-SUMMARY.json",
+      "sha256": "6747ac82f6fa9b9d8685768b3a851294977ada11e463c62441da0c2e341891bf"
+    },
+    {
+      "path": ".local/rc15-fix-20261113/CORPUS-SUMMARY.json",
+      "sha256": "c6f7ac785e17ef2613ec969212cbb62e3fc521813e20b5ee5e2f8789b3339683"
+    },
+    {
+      "path": ".local/rc15-independent-20261113/SUMMARY.json",
+      "sha256": "80c364ebd3841b934874818330dc31b80240e9f9ee7974ae9057b363cda3d891"
+    },
+    {
+      "path": ".local/rc15-editors-20261113/SUMMARY.json",
+      "sha256": "0571b369dd1e7fd55ffc0ee788b027e81204cbbcde725c80b43134ce5500b7b3"
+    },
+    {
+      "path": ".local/rc15-upgrade-cache-20261113/SUMMARY.json",
+      "sha256": "7af7ad34a87fa4aa35d2f579d746265ad9e52d29dc0c9d8ab0fbab592660caf2"
+    },
+    {
+      "path": ".local/rc15-http-auto-20261113/SUMMARY.json",
+      "sha256": "071304d017361776fe29acbb407d585a44aa38d287eff1bcd0a2f9cf929af015"
+    },
+    {
+      "path": ".local/rc15-source-review-20261113/SOURCE-REVIEW-RC15.json",
+      "sha256": "361976c50a7a1858c6001759e562d1cf8f2dc2b52e12d03c0dcf6d1c41f1fa36"
+    },
+    {
+      "path": ".local/rc15-source-review-20261113/COMMENT-FINDING-REVIEW.json",
+      "sha256": "b07e683fcd202003edb9250cc69258236af86ea106b9fa7a6cdcfcfeebd795f5"
+    }
+  ],
+  "full_matrix": ".local/rc15-fix-20261113/GATES.json",
+  "open_inherited_defect": "docs/defects/CLASSIC-COMMENT-P2-01.md",
+  "independent_final_review": ".local/rc15-source-review-20261113/AGGREGATE-REVIEW-FINAL.json",
+  "final_inventory": ".local/rc15-fix-20261113/INVENTORY.json",
+  "final_seal": ".local/rc15-fix-20261113/SEALED.json",
+  "pending": [
+    "Inherited Author/comment conversion requires a separate correction or explicit disposition.",
+    "Native Firefox HTTP-cache HIT and real document-hidden/resume are not proven.",
+    "All inspector controls, native Gutenberg Delete/Undo/reinsert and new RC15-created content saved under 1.1.2 are not fully executed.",
+    "Fresh named RC1 sensitivity controls and full declared local CI suite are incomplete.",
+    "Required hosted Repository checks and Browser tests on exact committed RC15 HEAD and PR metadata synchronization are pending.",
+    "Authorized production CDN delivery and WordPress.org release remain deferred."
+  ],
+  "preservation": {
+    "rc12_zip_sha256": "0652cf00405e23c278d75d8aa66dd37c24e1888c9b2dae216f60e56befb5d118",
+    "preexisting_frozen_inputs_unchanged": 85,
+    "peer_inventory_files_verified": 10007,
+    "peer_inventory_mismatches": 0,
+    "owned_compose_projects_stopped": 5,
+    "owned_browser_containers_stopped": 4,
+    "databases_retained": true
+  },
+  "external_mutations": {
+    "commit": false,
+    "push": false,
+    "merge": false,
+    "cloudflare_upload": false,
+    "cloudflare_deploy": false,
+    "cloudflare_settings_change": false,
+    "wordpress_org_publication": false
+  },
+  "count_boundary": "Families revisit pages and separate negative controls, parent runner tests, body scans, actual Save actions and frontend checks. Do not sum them as unique user scenarios."
+}

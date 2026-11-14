@@ -1,0 +1,715 @@
+{
+  "schema": 1,
+  "created_utc": "2026-11-13T23:12:21.943908+00:00",
+  "candidate": {
+    "version": "1.1.6",
+    "revision": "RC18",
+    "archive": ".local/packages/simple-digital-clock-1.1.6-rc18.zip",
+    "archive_sha256": "b59adf31cf9b9f8e7826e2540c81a3621d673c44f2eae65145b96a6b2b353429",
+    "archive_bytes": 82060,
+    "file_count": 20,
+    "manifest": "docs/releases/1.1.6/manifest-rc18.json",
+    "manifest_sha256": "7c09c3efc71bff139d85fd80d4e79575be070c38ab018e1b450e7d098c8e486d",
+    "source_base_commit": "94db2495c9547b993e835a2150ce647abbe9e065",
+    "source_uncommitted": true,
+    "runtime_sha256": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
+    "runtime_unchanged": true,
+    "changed_package_files_from_rc16": [
+      "includes/simple-digital-clock-kses.php",
+      "readme.txt"
+    ],
+    "changed_package_files_from_rc17": [
+      "readme.txt"
+    ],
+    "database_migration": false
+  },
+  "verdicts": {
+    "scoped_inherited_comment_correction": "PASS",
+    "new_functional_regression_found_in_executed_matrix": false,
+    "strict_native_diagnostics": "NOT_CLEAN",
+    "complete_release": "NO_GO",
+    "release_authorized": false
+  },
+  "red_green": {
+    "ten_vectors_two_core_three_engines_mixed": 60,
+    "pure_author_chrome": 20,
+    "passed": 80,
+    "baseline_html_unintended_nodes_per_twenty": 19,
+    "baseline_mathml_foreign_nodes_per_twenty": 1,
+    "boundary": "Mixed native RC18 results compare against exact RC16 captured baselines; MathML is not an upgraded HTML widget. Empty-comment correction additionally verified in actual Core filtered-save tests.",
+    "baseline_mixed_observations": 20,
+    "baseline_browser": "Google Chrome",
+    "baseline_reuse_boundary": "Twenty exact RC16 Chrome mixed-case observations serve as predecessor references for sixty RC18 candidate rows across three browsers; no claim of sixty predecessor runs."
+  },
+  "native_editors": {
+    "families": {
+      "classic": {
+        "expected": 144,
+        "observed": 144,
+        "functional_pass": 144,
+        "raw_diagnostic_free_rows": 93,
+        "rows_with_page_errors": 3,
+        "unfiltered_footer_equivalence_only": 18,
+        "front_tick_pass": 126,
+        "zero_runtime_pass": 0,
+        "captured_runtime_responses": 134
+      },
+      "pure": {
+        "expected": 20,
+        "observed": 20,
+        "functional_pass": 20,
+        "raw_diagnostic_free_rows": 0,
+        "rows_with_page_errors": 0,
+        "unfiltered_footer_equivalence_only": 0,
+        "front_tick_pass": 0,
+        "zero_runtime_pass": 20,
+        "captured_runtime_responses": 0
+      },
+      "gutenberg": {
+        "expected": 40,
+        "observed": 40,
+        "functional_pass": 40,
+        "raw_diagnostic_free_rows": 12,
+        "rows_with_page_errors": 0,
+        "unfiltered_footer_equivalence_only": 0,
+        "front_tick_pass": 40,
+        "zero_runtime_pass": 0,
+        "captured_runtime_responses": 0
+      },
+      "autosave": {
+        "expected": 40,
+        "observed": 40,
+        "functional_pass": 40,
+        "raw_diagnostic_free_rows": 11,
+        "rows_with_page_errors": 4,
+        "unfiltered_footer_equivalence_only": 0,
+        "front_tick_pass": 40,
+        "zero_runtime_pass": 0,
+        "captured_runtime_responses": 0
+      },
+      "own-block": {
+        "expected": 6,
+        "observed": 6,
+        "functional_pass": 6,
+        "raw_diagnostic_free_rows": 4,
+        "rows_with_page_errors": 0,
+        "unfiltered_footer_equivalence_only": 0,
+        "front_tick_pass": 6,
+        "zero_runtime_pass": 0,
+        "captured_runtime_responses": 0
+      },
+      "stale": {
+        "expected": 24,
+        "observed": 24,
+        "functional_pass": 24,
+        "raw_diagnostic_free_rows": 22,
+        "rows_with_page_errors": 2,
+        "unfiltered_footer_equivalence_only": 0,
+        "front_tick_pass": 24,
+        "zero_runtime_pass": 0,
+        "captured_runtime_responses": 0
+      },
+      "old-comment": {
+        "expected": 4,
+        "observed": 4,
+        "functional_pass": 4,
+        "raw_diagnostic_free_rows": 4,
+        "rows_with_page_errors": 0,
+        "unfiltered_footer_equivalence_only": 0,
+        "front_tick_pass": 0,
+        "zero_runtime_pass": 0,
+        "captured_runtime_responses": 0
+      }
+    },
+    "unique_workflows": 278,
+    "functional_pass": 278,
+    "row_pageerror_free": 269,
+    "raw_diagnostic_free_rows": 146,
+    "rows_with_pageerrors": 9,
+    "additional_context_pageerrors": 4,
+    "diagnostics": [
+      {
+        "family": "context",
+        "type": "console.error",
+        "message": "Failed to load resource: net::ERR_FAILED",
+        "count": 18
+      },
+      {
+        "family": "context",
+        "type": "pageerror",
+        "message": "/127.0.0.1:20102/wp-admin/admin-ajax.php due to access control checks.",
+        "count": 2
+      },
+      {
+        "family": "context",
+        "type": "pageerror",
+        "message": "[object Object]",
+        "count": 1
+      },
+      {
+        "family": "context",
+        "type": "pageerror",
+        "message": "/127.0.0.1:20101/wp-admin/admin-ajax.php due to access control checks.",
+        "count": 1
+      },
+      {
+        "family": "classic",
+        "type": "console.error",
+        "message": "Failed to load resource: net::ERR_FAILED",
+        "count": 333
+      },
+      {
+        "family": "classic",
+        "type": "pageerror",
+        "message": "[object Object]",
+        "count": 3
+      },
+      {
+        "family": "pure",
+        "type": "console.error",
+        "message": "Failed to load resource: net::ERR_FAILED",
+        "count": 140
+      },
+      {
+        "family": "gutenberg",
+        "type": "unspecified",
+        "message": "Failed to load resource: net::ERR_FAILED",
+        "count": 135
+      },
+      {
+        "family": "gutenberg",
+        "type": "unspecified",
+        "message": "Error while parsing the 'sandbox' attribute: 'allow-presentation' is an invalid sandbox flag.",
+        "count": 12
+      },
+      {
+        "family": "autosave",
+        "type": "unspecified",
+        "message": "Failed to load resource: net::ERR_FAILED",
+        "count": 198
+      },
+      {
+        "family": "autosave",
+        "type": "unspecified",
+        "message": "[JavaScript Error: \"NS_BINDING_ABORTED: \" {file: \"chrome://juggler/content/content/WorkerMain.js\" line: 6}]",
+        "count": 1
+      },
+      {
+        "family": "autosave",
+        "type": "unspecified",
+        "message": "/127.0.0.1:20102/wp-admin/admin-ajax.php due to access control checks.",
+        "count": 4
+      },
+      {
+        "family": "own-block",
+        "type": "unspecified",
+        "message": "Failed to load resource: net::ERR_FAILED",
+        "count": 11
+      },
+      {
+        "family": "stale",
+        "type": "unspecified",
+        "message": "Transition was aborted because of invalid state. ViewTransition opt-in disabled",
+        "count": 2
+      }
+    ],
+    "autosave": {
+      "parent_records_unchanged": 40,
+      "other_metadata_unchanged": 40,
+      "edit_lock_changes": 37,
+      "metadata_entirely_unchanged": 3,
+      "trigger": "Explicit native Core triggerSave; not natural timer timing",
+      "dom": "Same-origin frontend replay of stored revision; not native WordPress preview navigation"
+    },
+    "matrix_boundary": "Classic144 is full two-Core/two-role/three-browser twelve-fixture matrix; pure20 Chrome/Author; Gutenberg/autosave include all ten in Chrome/Author plus role/browser boundary subsets. Eighteen Admin Classic footer rows are RC16 equivalence, not rendering passes.",
+    "retry_boundary": "Two autosave replay-label failures retained, two targeted reruns complete the same canonical rows; no count inflation."
+  },
+  "diagnostic_controls": {
+    "preferences": {
+      "fixed_flows": 27,
+      "functional_pass": 27,
+      "original_rejection_reproduced": 0,
+      "attribution": "UNRESOLVED; non-reproduction does not prove absence"
+    },
+    "initial_dashboard_ajax": {
+      "occurrences_per_mode": 3,
+      "modes": [
+        "RC18",
+        "RC16",
+        "plugin disabled"
+      ],
+      "inference": "Plugin is unnecessary for this separate initial-navigation diagnostic; not extrapolated to historical autosave/close errors"
+    },
+    "chrome_guard": {
+      "rc16": 3,
+      "rc18": 3,
+      "same_viewtransition_diagnostic": 6,
+      "functional_pass": 6,
+      "classification": "INHERITED_NOT_RC18_REGRESSION",
+      "boundary": "Controlled exact-file replacement and explicit OPcache invalidation; primary native HTTP updates are separate"
+    },
+    "other_unclassified": [
+      "Historical preferences rejection",
+      "Historical autosave/context-close admin-ajax occurrences",
+      "Firefox NS_BINDING_ABORTED"
+    ]
+  },
+  "compatibility": {
+    "browser_versions": {
+      "chrome": {
+        "name": "Google Chrome",
+        "version": "157.0.8103.51",
+        "platform": "darwin-arm64"
+      },
+      "firefox": {
+        "name": "firefox",
+        "version": "153.0",
+        "platform": "linux-arm64"
+      },
+      "webkit": {
+        "name": "webkit",
+        "version": "26.5",
+        "platform": "darwin-arm64"
+      }
+    },
+    "mandatory_main_script_combinations_passed": 6,
+    "standalone": 24,
+    "single_multiple_html": 6,
+    "wordpress_rows": 24,
+    "server_cache_rows": 48,
+    "server_cache_html_byte_exact": 48,
+    "old_open_rows": 12,
+    "all_browser_rows_strict_pass": true,
+    "primary_http_lifecycle_content_files_active_pass": 6,
+    "stable_options_strict_pass": 4,
+    "stable_options_total": 6,
+    "option_exception": "Elementor generated CSS metadata deletion reproduced by unrelated-plugin upgrader-hook control; no content or clock setting loss",
+    "browser_native_http_cache_hit": "NOT_ASSERTED",
+    "timestamp_validation_disabled_opcache": "NOT_TESTED"
+  },
+  "security": {
+    "actual_core_assertions": 122,
+    "passed": 122,
+    "plugin_check_static": 29,
+    "plugin_check_runtime": 5,
+    "plugin_check_errors": 0,
+    "plugin_check_warnings": 0,
+    "prototype_author_also_executed_security": true,
+    "independent_source_review": ".local/rc17-compatibility-20261114/PROTOTYPE-REVIEW.md"
+  },
+  "root_validation": {
+    "candidate_sha256": "b59adf31cf9b9f8e7826e2540c81a3621d673c44f2eae65145b96a6b2b353429",
+    "manifest_sha256": "7c09c3efc71bff139d85fd80d4e79575be070c38ab018e1b450e7d098c8e486d",
+    "repository_jobs": {
+      "passed": 21,
+      "failed": 0,
+      "wordpress_contracts": 65,
+      "node_unit": 22
+    },
+    "browser_jobs": {
+      "passed": 5,
+      "failed": 0,
+      "wtr_per_engine": 48,
+      "wtr_engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "iframe_tests": 3,
+      "font_tests": 10,
+      "serialization_tests": 3,
+      "classic_schema_tests": 3,
+      "loader_tests": 99,
+      "product_site_tests": 3,
+      "boundary": "Local workflow; actual Google Chrome mandatory standalone/WordPress acceptance belongs to independent compatibility results. Existing installed dependencies, not a new npm ci; no hosted exact-HEAD result.",
+      "loader_leaf_tests": 96,
+      "loader_browser_parent_tests": 3
+    },
+    "core": [
+      {
+        "site": "minimum",
+        "core": "6.3.14",
+        "php": "7.0.33",
+        "comment_assertions": 96,
+        "comment_failed": 0,
+        "guard_assertions": 52,
+        "guard_failed": 0,
+        "php_lints": 7,
+        "benchmarks": [
+          {
+            "name": "comments",
+            "count": 1024,
+            "bytes": 67584,
+            "seconds": 0.002418041229248
+          },
+          {
+            "name": "comments",
+            "count": 4096,
+            "bytes": 270336,
+            "seconds": 0.0095419883728027
+          },
+          {
+            "name": "rawtext",
+            "count": 1024,
+            "bytes": 84992,
+            "seconds": 0.0095469951629639
+          },
+          {
+            "name": "rawtext",
+            "count": 4096,
+            "bytes": 339968,
+            "seconds": 0.037521123886108
+          },
+          {
+            "name": "quoted",
+            "count": 1024,
+            "bytes": 84992,
+            "seconds": 0.0066618919372559
+          },
+          {
+            "name": "quoted",
+            "count": 4096,
+            "bytes": 339968,
+            "seconds": 0.026052951812744
+          },
+          {
+            "name": "xmp",
+            "count": 1024,
+            "bytes": 78848,
+            "seconds": 0.0058588981628418
+          },
+          {
+            "name": "xmp",
+            "count": 4096,
+            "bytes": 315392,
+            "seconds": 0.023045063018799
+          },
+          {
+            "name": "noscript",
+            "count": 1024,
+            "bytes": 89088,
+            "seconds": 0.0075027942657471
+          },
+          {
+            "name": "noscript",
+            "count": 4096,
+            "bytes": 356352,
+            "seconds": 0.029767036437988
+          },
+          {
+            "name": "cdata",
+            "count": 1024,
+            "bytes": 83968,
+            "seconds": 0.004392147064209
+          },
+          {
+            "name": "cdata",
+            "count": 4096,
+            "bytes": 335872,
+            "seconds": 0.017995119094849
+          },
+          {
+            "name": "cdata-fake-script",
+            "count": 1024,
+            "bytes": 102400,
+            "seconds": 0.012995004653931
+          },
+          {
+            "name": "cdata-fake-script",
+            "count": 4096,
+            "bytes": 409600,
+            "seconds": 0.051241159439087
+          },
+          {
+            "name": "cdata-fake-quote",
+            "count": 1024,
+            "bytes": 106496,
+            "seconds": 0.015676975250244
+          },
+          {
+            "name": "cdata-fake-quote",
+            "count": 4096,
+            "bytes": 425984,
+            "seconds": 0.0626540184021
+          }
+        ],
+        "installed_files_exact_before_after": true
+      },
+      {
+        "site": "current",
+        "core": "7.1.4",
+        "php": "8.3.35",
+        "comment_assertions": 96,
+        "comment_failed": 0,
+        "guard_assertions": 52,
+        "guard_failed": 0,
+        "php_lints": 7,
+        "benchmarks": [
+          {
+            "name": "comments",
+            "count": 1024,
+            "bytes": 67584,
+            "seconds": 0.0016820430755615234
+          },
+          {
+            "name": "comments",
+            "count": 4096,
+            "bytes": 270336,
+            "seconds": 0.006989002227783203
+          },
+          {
+            "name": "rawtext",
+            "count": 1024,
+            "bytes": 84992,
+            "seconds": 0.004489898681640625
+          },
+          {
+            "name": "rawtext",
+            "count": 4096,
+            "bytes": 339968,
+            "seconds": 0.017589092254638672
+          },
+          {
+            "name": "quoted",
+            "count": 1024,
+            "bytes": 84992,
+            "seconds": 0.005170106887817383
+          },
+          {
+            "name": "quoted",
+            "count": 4096,
+            "bytes": 339968,
+            "seconds": 0.020414113998413086
+          },
+          {
+            "name": "xmp",
+            "count": 1024,
+            "bytes": 78848,
+            "seconds": 0.003000974655151367
+          },
+          {
+            "name": "xmp",
+            "count": 4096,
+            "bytes": 315392,
+            "seconds": 0.011981010437011719
+          },
+          {
+            "name": "noscript",
+            "count": 1024,
+            "bytes": 89088,
+            "seconds": 0.004132986068725586
+          },
+          {
+            "name": "noscript",
+            "count": 4096,
+            "bytes": 356352,
+            "seconds": 0.017800092697143555
+          },
+          {
+            "name": "cdata",
+            "count": 1024,
+            "bytes": 83968,
+            "seconds": 0.003452777862548828
+          },
+          {
+            "name": "cdata",
+            "count": 4096,
+            "bytes": 335872,
+            "seconds": 0.015220880508422852
+          },
+          {
+            "name": "cdata-fake-script",
+            "count": 1024,
+            "bytes": 102400,
+            "seconds": 0.009229898452758789
+          },
+          {
+            "name": "cdata-fake-script",
+            "count": 4096,
+            "bytes": 409600,
+            "seconds": 0.031185150146484375
+          },
+          {
+            "name": "cdata-fake-quote",
+            "count": 1024,
+            "bytes": 106496,
+            "seconds": 0.010597944259643555
+          },
+          {
+            "name": "cdata-fake-quote",
+            "count": 4096,
+            "bytes": 425984,
+            "seconds": 0.042973995208740234
+          }
+        ],
+        "installed_files_exact_before_after": true
+      }
+    ],
+    "syntax": {
+      "passed": 24,
+      "failed": 0
+    },
+    "metadata": {
+      "header_version": "1.1.6",
+      "stable_tag": "1.1.6",
+      "upgrade_notice_characters": 279,
+      "pot_unchanged_from_rc16": true,
+      "generated_pot_check": ".local/rc17-fix-20261114/POT-CHECK.json",
+      "pot_boundary": "Fresh generation on byte-identical PHP/JS source before RC17 freeze; RC18 changes only readme from RC17."
+    },
+    "source_base_commit": "94db2495c9547b993e835a2150ce647abbe9e065",
+    "source_uncommitted": true,
+    "runtime_unchanged": true,
+    "mandatory_main_script_gate": "SEPARATE_INDEPENDENT_SCOPE",
+    "publication_performed": false,
+    "guard_boundary": "52 focused harness assertions per environment use explicit authorization/nonce doubles and native Core lexer classes; native HTTP old-tab scenarios are independent editor evidence."
+  },
+  "remaining_full_release_gates": [
+    "Resolve or explicitly disposition unclassified native admin diagnostics; no waiver is inferred.",
+    "Complete fresh full multisite, broad public1.1.2 content/rollback, Site Editor/block Widgets/teeny and all inspector controls.",
+    "Natural autosave timing, native browser HTTP-cache HIT, hidden/resume and previously named preview/CSP sensitivity gates are not established by this bounded matrix.",
+    "Required hosted Repository checks and Browser tests on eventual exact committed HEAD.",
+    "Separately authorized CDN delivery and WordPress.org publication."
+  ],
+  "preservation": {
+    "prior_files_verified": 10607,
+    "prior_file_mismatches": 0,
+    "peer_files_verified": 4113,
+    "peer_file_mismatches": 0,
+    "owned_projects_stopped": 4,
+    "owned_browser_containers_stopped": 3,
+    "databases_retained": true,
+    "automatic_content_repair": false
+  },
+  "evidence": [
+    {
+      "path": "docs/releases/1.1.6/FINAL-ACCEPTANCE-RC18.md",
+      "sha256": "f46d931e068d378dc4a6fa430f10f2bcbc64ed594b0dacd2cfc38c73616d3266"
+    },
+    {
+      "path": ".local/rc18-fix-20261114/FREEZE.json",
+      "sha256": "39f80f7ae4b20c066565d9c5f9f87fc4ea249fdaca5b4aea4b2f624244e74705"
+    },
+    {
+      "path": ".local/rc18-fix-20261114/ROOT-SUMMARY.json",
+      "sha256": "6fd40ed8a1833dcc3fd4637e5c39fb42c92a0d86254f42dd8280160526bc41f4"
+    },
+    {
+      "path": ".local/rc18-fix-20261114/PRESERVATION-PREFLIGHT.json",
+      "sha256": "42ca67780339f0fd16d083c2a469da05d1a2f28f7d99902a362e7575564e1d57"
+    },
+    {
+      "path": ".local/rc18-fix-20261114/PEER-INVENTORIES.json",
+      "sha256": "d4c1ed5a04cd28fec5a95825d8b8a0036952cae4080c0c9c626c36ac6c6fa3f6"
+    },
+    {
+      "path": ".local/rc18-fix-20261114/OWNED-SERVICES-FINAL.json",
+      "sha256": "fc86a4f77c659bbcc8a7dc24ec4c983c5c5c5b6c972c940603e5641bd2efe670"
+    },
+    {
+      "path": ".local/rc17-fix-20261114/POT-CHECK.json",
+      "sha256": "fc22cb64ea4c0663ca4a29e5a6ebaa48660f57c70d2073422b7fda54889206cb"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/REPORT.md",
+      "sha256": "64f4e0dc8b073f4f9e873710d19631fd99eb3d592b7ac4f7a848d6e6375b093a"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/CANDIDATE-SUMMARY.json",
+      "sha256": "ef8ca54690cfbd6766577eec697afa4ab3e3eadc5cc668c6deb519d030bf0ab8"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/RED-GREEN-PROOF.json",
+      "sha256": "7ef1d008b7b7adfcd3bf6461b4b2b51628b65f94321f6ffe20c52dd4d6fb5f95"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/AUTOSAVE-INVARIANTS.json",
+      "sha256": "e48596f76ceb5825879143c8097184076ad39f9184743166090073901c08d0b8"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/PREFERENCES-PAIR-SUMMARY.json",
+      "sha256": "3a9482c13bf75d2f36d2c6a20eff9b0e5fb255d430e4533d1925e04a61c6b367"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/GUARD-PAIR-SUMMARY.json",
+      "sha256": "28bbadcf48e58689a0e01659aa52695fa58bf9ca55953104f2f228c42d433ec5"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/FINAL-IDENTITY.json",
+      "sha256": "833d4806e8bdbc74f2ae1e7a802cb341a2ad9af019748717bc1fcbdc6dbb2965"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/OWNED-STOP.json",
+      "sha256": "af87d9ad8a99182a44c0275369ee81c28f8de11da363f950d3d277278587550b"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/INVENTORY.json",
+      "sha256": "c29a3f6b10631c7072bff0f0fc33242e78437c183d1479a00c521e496a29eb22"
+    },
+    {
+      "path": ".local/rc18-editors-20261114/SEAL.json",
+      "sha256": "d9029097cb1cd177afa3fa7d9bc2d3eb33e259f1a58030d45184964d2edb8ec3"
+    },
+    {
+      "path": ".local/rc18-compatibility-20261114/REPORT.md",
+      "sha256": "48e50373dd3cf581d82bc1136d6c931253bbfdea9e30d69b5a94f191bd5d21fd"
+    },
+    {
+      "path": ".local/rc18-compatibility-20261114/SUMMARY.json",
+      "sha256": "1259888614ad28c74c39ba5852d9ad52f0ec97a68014c75614cebe6f156bb06f"
+    },
+    {
+      "path": ".local/rc18-compatibility-20261114/DISPOSITION.json",
+      "sha256": "4a4345ad6056fe97a16bab343a51d634a621d4831b3029b451d4857b51fac0e7"
+    },
+    {
+      "path": ".local/rc18-compatibility-20261114/ELEMENTOR-METADATA-CONTROL.json",
+      "sha256": "b29c255d92d7af766c49ff9ee0e062b83295507ef2d6bb27013e0d625dfbebc2"
+    },
+    {
+      "path": ".local/rc18-compatibility-20261114/INVENTORY.json",
+      "sha256": "03a06ff457a8fcbf65c65c31064c6cae31e96c0d879eb900e69087491f8e7b04"
+    },
+    {
+      "path": ".local/rc18-compatibility-20261114/SEAL.json",
+      "sha256": "61319978bb43ad090fbb3d0c56a66b959c5991d8af05c150c479cf54632a2fbe"
+    },
+    {
+      "path": ".local/rc17-security-20261114/REPORT-RC18.md",
+      "sha256": "41cb69978133a986393ccea5fd7198d59551f32cf5cb8f6eb462d0e936f9c570"
+    },
+    {
+      "path": ".local/rc17-security-20261114/PLUGIN-CHECK-RC18.json",
+      "sha256": "18ae5de511172dd1082d1e65d5d40484704f6dcb62ce505503c185041b74e5e8"
+    },
+    {
+      "path": ".local/rc17-security-20261114/SECURITY-RC18-minimum.json",
+      "sha256": "201391b742c41d88adbd839dbc778481cc0f55e015c2b7f99d329247c2d290de"
+    },
+    {
+      "path": ".local/rc17-security-20261114/SECURITY-RC18-current.json",
+      "sha256": "466c29ac73e0588826c9e144cc87b50385123f5751e38fe201dca32f5a630b7d"
+    },
+    {
+      "path": ".local/rc17-security-20261114/FINAL-RC18-EVIDENCE-INDEX.json",
+      "sha256": "52c9ead03bed639fadbe90bfe3bbf83b2139d7e0e2d0e6172f42e816f8c5b4ef"
+    },
+    {
+      "path": ".local/rc17-compatibility-20261114/PROTOTYPE-REVIEW.md",
+      "sha256": "50fe484b014b0256b6d800713d32d8e6369f9641481c951f1020bcc04f8e674e"
+    }
+  ],
+  "independent_aggregate_review": ".local/rc18-aggregate-review-20261114/AGGREGATE-REVIEW.json",
+  "final_inventory": ".local/rc18-fix-20261114/INVENTORY.json",
+  "final_seal": ".local/rc18-fix-20261114/SEALED.json",
+  "external_mutations": {
+    "commit": false,
+    "push": false,
+    "merge": false,
+    "cloudflare_upload": false,
+    "cloudflare_deploy": false,
+    "cloudflare_settings_change": false,
+    "wordpress_org_publication": false
+  },
+  "count_boundary": "Distinct assertion, workflow, repeated-save and control families; do not sum as unique user scenarios."
+}

@@ -78,6 +78,12 @@ The main clock runtime is served locally and is requested only after a WordPress
 = What about clocks created later by custom JavaScript? =
 The external bootstrap defines a lightweight custom-element shell. Existing customElements.whenDefined() integrations can create their first clock, including inside open or closed shadow roots; connecting the clock requests its renderer. Calling SDCW_enqueue_scripts() or enqueuing the simple-digital-clock handle explicitly requests the normal runtime through WordPress. Gutenberg and native legacy-widget preview documents load their own runtime. If an integration replaces the runtime URL or version, the plugin loads that opaque override eagerly without reserving the element name, preserving older runtimes. This includes CDN mirrors and URL query rewrites: such pages can request the overridden runtime before a clock exists. Nonce and SRI attributes alone do not disable conditional loading.
 
+= What if I left Classic Editor open while updating? =
+An older open editor can remove clock HTML before saving. The plugin stops a native post save or autosave that would remove previously saved clocks from an older form. Your saved post stays intact. Copy your unsaved text from the recovery screen, reopen the editor, and apply your changes again. Fresh editors allow intentional clock deletion. This cannot recover clocks already deleted or clocks that were never saved.
+
+= What happens to clock examples inside HTML comments? =
+For users whose content WordPress filters, clock examples inside comments are escaped before saving. This also protects supported malformed comments and comment examples inside attributes, raw text, and CDATA-shaped declarations. Empty browser comments are normalized to keep neighboring clocks intact. Source spelling can change. WordPress still applies its HTML permissions and sanitization; arbitrary malformed HTML and third-party block metadata keep their native behavior.
+
 = What if my site caches complete HTML pages? =
 Regenerate full-page caches after updating so visitors receive the corrected HTML. Cached pages served without WordPress running are not rewritten by the plugin.
 == Screenshots ==
@@ -109,6 +115,9 @@ To reproduce the production bundle:
 == Changelog ==
 
 = 1.1.6 =
+* Keep commented clock examples inactive for filtered users, including supported malformed comments, attribute and raw-text examples, CDATA-shaped declarations, and repeated saves.
+* Preserve neighboring clocks when browser-empty comments pass through native WordPress block and HTML filtering.
+* Protect previously saved clocks from destructive saves and autosaves in Classic Editor tabs opened before updating; provide a recovery screen for submitted text.
 * Preserve clock HTML and supported settings through Classic Editor Visual/Text switches and saves, including clocks inside otherwise empty containers.
 * Fix the built-in gradient Clear action and preserve explicitly cleared backgrounds for older block readers.
 * Keep the selected time zone when Enter follows an unmatched search or a closed suggestion list; display a translatable no-match message for unmatched searches.
@@ -209,7 +218,7 @@ To reproduce the production bundle:
 == Upgrade Notice ==
 
 = 1.1.6 =
-Preserves clock HTML in Classic Editor, improves conditional loading, and fixes Gutenberg gradient clearing and time zone searches. No database migration is required. Regenerate full-page caches after updating.
+Preserves clock HTML and blocks destructive saves from old Classic Editor tabs. Copy unsaved text and reopen those tabs. Keeps supported clock examples inactive and neighboring clocks intact. Improves loading and Gutenberg controls. No database migration; regenerate page caches.
 
 = 1.1.5 =
 Restores clocks in existing HTML, widget and template integrations. No content migration is required.

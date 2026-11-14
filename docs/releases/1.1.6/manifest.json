@@ -1,16 +1,16 @@
 {
   "version": "1.1.6",
-  "revision": "rc12",
+  "revision": "rc18",
   "widget": "0.8.4",
   "widget_source_commit": "b1af416e8373bc0bec0163ee36a03507f3ddcaaa",
-  "source_base_commit": "3e9cec23c6c8cabbc1e8ea79320238488fd7c747",
+  "source_base_commit": "94db2495c9547b993e835a2150ce647abbe9e065",
   "source_dirty": true,
-  "source_state": "Exact per-file hashes identify the candidate; source_base_commit identifies its checkout base",
-  "archive": "simple-digital-clock-1.1.6-rc12.zip",
-  "archive_path": ".local/packages/simple-digital-clock-1.1.6-rc12.zip",
-  "archive_sha256": "0652cf00405e23c278d75d8aa66dd37c24e1888c9b2dae216f60e56befb5d118",
-  "archive_bytes": 75480,
-  "file_count": 18,
+  "source_state": "Build-time source metadata retained from the frozen RC18 manifest; the production PR receipt identifies the containing commit and exact final HEAD",
+  "archive": "simple-digital-clock-1.1.6-rc18.zip",
+  "archive_path": ".local/packages/simple-digital-clock-1.1.6-rc18.zip",
+  "archive_sha256": "b59adf31cf9b9f8e7826e2540c81a3621d673c44f2eae65145b96a6b2b353429",
+  "archive_bytes": 82060,
+  "file_count": 20,
   "files": {
     "LICENSE": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
     "THIRD-PARTY-NOTICES.txt": "5968c6cbf3f1e78adb38512ecd436108cd287a9789bc98ffde54be5de9f6cdad",
@@ -18,6 +18,7 @@
     "assets/admin/img/icon.svg": "6c3db976708ca6e219e3aebd3622121a00afef5c8424aa090d7668e12b41b3f1",
     "assets/admin/img/stars.png": "d7982885072e94dfa69abcd7b0d57688f7caa50cc3e600c92f004c6679fecc39",
     "assets/admin/js/simple-digital-clock-notify.js": "c27b4c4bbf5d2f8a1adef1fcc551ee9fa0b0433d33d21ae9152f011856c46baa",
+    "assets/admin/js/simple-digital-clock-save-guard.js": "4689303b4a405f50560b943acbaaaf27a1ff1c66959a161d8982d1d6660200cb",
     "assets/admin/js/simple-digital-clock-tinymce.js": "3312d83a48a46bfbf6d37981a3fb06518c5ee09987579c7066e8e1025722fb90",
     "assets/public/js/simple-digital-clock-loader.js": "7187b9ee36e188ea87d76fcd56e82300ad8f3685bd34fc2136aa35dae26cb124",
     "assets/public/js/simple-digital-clock.min.js": "974ee99ae21ed2b810edcad62fd6a5d137a4f0db48b6bc6c4841d3f648b0d98b",
@@ -25,22 +26,32 @@
     "includes/simple-digital-clock-admin-notices.php": "bf2b40fab319e8b5f4595361ec833454f1bb4a212673d83775219fe7014d9f1c",
     "includes/simple-digital-clock-admin-settings.php": "9d57a2abc07a23cf96112680eccb92517f12720eeb6615fc05984e63434069b1",
     "includes/simple-digital-clock-assets.php": "9881e887b4d83e73a5263506b824612bcaeefe5822d43bdca215671facd607ee",
-    "includes/simple-digital-clock-kses.php": "0f5a4ab4e70fc31ad2289e548602d080bdeaa20a442f85ae0daf8cbc1eac995f",
+    "includes/simple-digital-clock-kses.php": "a57f24fdcf15d0d941dc5f1ff0dae98035545a50d34347f92a0b489b9f41d6c2",
+    "includes/simple-digital-clock-save-guard.php": "5362c551e54fed9e6a1ca44baba8b22d7c79c381668e3ec36f98ccc4a1d69f2d",
     "index.php": "26b2a4e76abd653290e79e2867a1ff482e738718603f013977bf77336c07da69",
-    "languages/simple-digital-clock.pot": "626a4b6d304cfc2acb782f550fba29ed2a1d1e84f0835a1211280c61b7995a98",
-    "readme.txt": "99174291c82b3ded1589f172c984ee9b8cfd535b094c6ec5e9999c980eb40427",
-    "widget_init.php": "4b8e0020fbcf3bc129b2b6ec60e06538cd1fbb593f675137029b53feaa85e1fa"
+    "languages/simple-digital-clock.pot": "e4f1c7c2c575c3a1a134921c78c5bf09e86cc6c9ac8aed957ef0e5397aec08ff",
+    "readme.txt": "1a68ff5a34e4e514dabdbebb50ddb021c05cda304e807a4b6ebfb6596479cdae",
+    "widget_init.php": "fd35e4945362526241d7fc213bc10fc4995315f0907408aa234283608de9effc"
   },
   "published": false,
   "shared_runtime_changed": false,
   "database_migration": false,
-  "acceptance": "NOT_RUN",
+  "acceptance": "LOCAL_FUNCTIONAL_PASS_WITH_ATTRIBUTED_INHERITED_DIAGNOSTICS_HOSTED_CI_PENDING",
   "cdn_delivery": "PENDING",
-  "runtime_comparison_baseline": "f2f2f1856093c34ec7bd56b02c920de26c56c1ad78de700e4a20244a40b45909",
-  "changed_files_from_baseline": [
-    "assets/admin/js/simple-digital-clock-tinymce.js",
-    "includes/simple-digital-clock-kses.php",
-    "readme.txt"
+  "runtime_comparison_baseline_commit": "94db2495c9547b993e835a2150ce647abbe9e065",
+  "acceptance_reports": [
+    "FINAL-ACCEPTANCE-RC18.md",
+    "LOCAL-ACCEPTANCE-RC18.md",
+    "ENCODE-DIAGNOSTIC-RC18.md",
+    "FINAL-PR-RC18.md"
   ],
-  "change_scope": "WordPress Classic Editor HTML preservation only; native globals and runtime attributes compose with TinyMCE and dynamic Core editors. Explicit versioned WordPress script enqueue. Main runtime, loader, Gutenberg block and server asset delivery are byte-identical to RC9."
+  "changed_files_from_rc12": [
+    "assets/admin/js/simple-digital-clock-save-guard.js",
+    "includes/simple-digital-clock-kses.php",
+    "includes/simple-digital-clock-save-guard.php",
+    "languages/simple-digital-clock.pot",
+    "readme.txt",
+    "widget_init.php"
+  ],
+  "change_scope": "WordPress stale Classic save/autosave protection, inert supported comment examples, neighboring clock preservation, translations and release notice. Shared runtime, loader, Gutenberg and TinyMCE helper remain byte-identical to RC12; the complete production PR includes the earlier accepted shared 0.8.4 changes."
 }

@@ -416,6 +416,31 @@ function SDCW_allows_clock_html($allowed_html) {
  * WordPress 6.3's decoded attribute API does not recognize HTML5 &apos;.
  */
 class SDCW_Clock_HTML_Tag_Processor extends WP_HTML_Tag_Processor {
+    public function clock_comment_source_span() {
+        if (!$this->set_bookmark('sdcw-comment-boundary')) {
+            return null;
+        }
+        $span = $this->bookmarks['sdcw-comment-boundary'];
+        $this->release_bookmark('sdcw-comment-boundary');
+        // Core 6.3 uses an inclusive end; Core 6.5+ uses a byte length.
+        return array($span->start, isset($span->length) ? $span->start + $span->length : $span->end + 1);
+    }
+
+    public function seek_clock_comment_closer($start) {
+        // Only the already located raw-text closing tag may establish this bookmark.
+        $this->bookmarks['sdcw-comment-closer'] = new WP_HTML_Span($start, property_exists('WP_HTML_Span', 'length') ? 1 : $start);
+        $found = $this->seek('sdcw-comment-closer');
+        $this->release_bookmark('sdcw-comment-closer');
+        return $found;
+    }
+
+    public function resume_clock_comment_scan($start) {
+        $this->bookmarks['sdcw-comment-resume'] = new WP_HTML_Span($start, property_exists('WP_HTML_Span', 'length') ? 1 : $start);
+        $found = $this->seek('sdcw-comment-resume');
+        $this->release_bookmark('sdcw-comment-resume');
+        return $found;
+    }
+
     public function escape_caption_angle_brackets() {
         $this->rewrite_caption_source(function ($raw_attribute) {
             return strtr($raw_attribute, array('<' => '&lt;', '>' => '&gt;'));
@@ -452,6 +477,256 @@ class SDCW_Clock_HTML_Tag_Processor extends WP_HTML_Tag_Processor {
         $raw_attribute = substr($this->html, $update->start, $length);
         $update->text = $transform($raw_attribute);
     }
+}
+
+/**
+ * Normalize comment-like clock examples inside one bounded source region.
+ * Only DATA comments can be block metadata; text/attribute regions are opaque.
+ */
+function SDCW_escape_clock_comment_text($html, $preserve_blocks = false, $escape_greater = true) {
+    $offset = 0;
+    $copied = 0;
+    $parts = array();
+    $length = strlen($html);
+    while (false !== ($start = strpos($html, '<!--', $offset))) {
+        $body_start = $start + 4;
+        if ('>' === substr($html, $body_start, 1) || '->' === substr($html, $body_start, 2)) {
+            $offset = strpos($html, '>', $body_start) + 1;
+            continue;
+        }
+        $closed = preg_match('/--!?>/', $html, $closing, PREG_OFFSET_CAPTURE, $body_start);
+        $end = $closed ? $closing[0][1] : $length;
+        $offset = $closed ? $end + strlen($closing[0][0]) : $length;
+        $body = substr($html, $body_start, $end - $body_start);
+        if (($preserve_blocks && preg_match('/^\s*\/?wp:/', $body))
+            || !preg_match('/<timenow-zone-sdcw(?=[\t\n\f\r \/>]|$)/i', $body)) {
+            continue;
+        }
+        $parts[] = substr($html, $copied, $start - $copied);
+        // Attribute text must not become a real comment during native KSES reparsing.
+        $parts[] = $escape_greater ? '<!--' : '&lt;!--';
+        $parts[] = $escape_greater ? strtr($body, array('<' => '&lt;', '>' => '&gt;')) : preg_replace('/<(\/?timenow-zone-sdcw)(?=[\t\n\f\r \/>]|$)/i', '&lt;$1', $body);
+        if ($escape_greater && $closed && '--!>' === $closing[0][0]) {
+            // Both close a browser comment; KSES requires the canonical spelling.
+            $parts[] = '-->';
+            $copied = $offset;
+        } else {
+            $copied = $end;
+        }
+    }
+    if (!$parts) {
+        return $html;
+    }
+    $parts[] = substr($html, $copied);
+    return implode('', $parts);
+}
+
+/**
+ * Normalize comments and bounded declarations in a native DATA gap.
+ * CDATA-shaped gaps receive one bounded native pass, never recursive reparsing.
+ */
+function SDCW_escape_clock_comment_gap($html, $parse_cdata = true) {
+    $offset = 0;
+    $copied = 0;
+    $parts = array();
+    $length = strlen($html);
+    while (false !== ($start = strpos($html, '<', $offset))) {
+        $replacement = null;
+        if ('<!--' === substr($html, $start, 4)) {
+            $body_start = $start + 4;
+            if ('>' === substr($html, $body_start, 1) || '->' === substr($html, $body_start, 2)) {
+                $offset = strpos($html, '>', $body_start) + 1;
+                // Whitespace keeps empty DATA comments stable through Core block reparsing.
+                $parts[] = substr($html, $copied, $start - $copied);
+                $parts[] = '<!-- -->';
+                $copied = $offset;
+                continue;
+            }
+            $closed = preg_match('/--!?>/', $html, $closing, PREG_OFFSET_CAPTURE, $body_start);
+            $end = $closed ? $closing[0][1] + strlen($closing[0][0]) : $length;
+            $replacement = SDCW_escape_clock_comment_text(substr($html, $start, $end - $start), true);
+        } elseif ($parse_cdata && '<![CDATA[' === substr($html, $start, 9)) {
+            $closing = strpos($html, ']]>', $start + 9);
+            $body_end = false === $closing ? $length : $closing;
+            $end = false === $closing ? $length : $closing + 3;
+            $first_greater = strpos($html, '>', $start + 9);
+            if (false === $first_greater || $first_greater >= $body_end) {
+                $replacement = '<![CDATA[' . SDCW_escape_clock_comment_text(substr($html, $start + 9, $body_end - $start - 9), false, false);
+            } else {
+                $replacement = '<![CDATA[' . SDCW_escape_clock_comment_text(substr($html, $start + 9, $first_greater - $start - 9), false, false);
+                $replacement .= '>' . SDCW_escape_clock_comments(substr($html, $first_greater + 1, $body_end - $first_greater - 1), false);
+            }
+            if (false !== $closing) {
+                $replacement .= ']]>';
+            }
+        } elseif (preg_match('/\A<\/?[a-zA-Z]/', substr($html, $start, 3))) {
+            // A native final gap may contain an incomplete tag or unclosed raw text.
+            $end = $length;
+            $replacement = SDCW_escape_clock_comment_text(substr($html, $start));
+        } elseif (in_array(substr($html, $start, 2), array('<!', '<?', '</'), true)) {
+            $greater = strpos($html, '>', $start + 2);
+            $end = false === $greater ? $length : $greater + 1;
+            $body_end = false === $greater ? $length : $greater;
+            // Preserve the declaration's actual delimiter when normalizing its text.
+            $replacement = SDCW_escape_clock_comment_text(substr($html, $start, $body_end - $start));
+            if (false !== $greater) {
+                $replacement .= '>';
+            }
+        } else {
+            $offset = $start + 1;
+            continue;
+        }
+        $parts[] = substr($html, $copied, $start - $copied);
+        $parts[] = $replacement;
+        $offset = $end;
+        $copied = $end;
+    }
+    if (!$parts) {
+        return $html;
+    }
+    $parts[] = substr($html, $copied);
+    return implode('', $parts);
+}
+
+/**
+ * Locate the end of containers whose scripting rules differ between Core lexers.
+ * The caller normalizes bounded examples after native parsing locates attributes.
+ */
+function SDCW_clock_comment_raw_end($html, $start, $tag, &$processor, &$seeks) {
+    if (!preg_match('~</' . preg_quote($tag, '~') . '(?=[\t\n\f\r />])~i', $html, $match, PREG_OFFSET_CAPTURE, $start)) {
+        return strlen($html);
+    }
+    $closing_start = $match[0][1];
+    if ($seeks >= WP_HTML_Tag_Processor::MAX_SEEK_OPS) {
+        // Reuse the original string; do not copy a shrinking suffix for each container.
+        $processor = new SDCW_Clock_HTML_Tag_Processor($html);
+        $seeks = 0;
+    }
+    $seeks++;
+    if (!$processor->seek_clock_comment_closer($closing_start)) {
+        return strlen($html);
+    }
+    $span = $processor->clock_comment_source_span();
+    if (null === $span || $span[0] !== $closing_start || !$processor->is_tag_closer() || $tag !== $processor->get_tag()) {
+        do_action('sdcw_metadata_diagnostic', 'comment_rawtext_boundary_unavailable');
+        return strlen($html);
+    }
+    return $span[1];
+}
+
+/**
+ * Find the last CDATA-shaped span before the next actual DATA tag.
+ * Batching adjacent spans avoids repeatedly scanning a declaration-only tail.
+ */
+function SDCW_clock_comment_cdata_gap_end($html, $offset, $limit) {
+    $boundary = null;
+    $length = strlen($html);
+    while (false !== ($start = strpos($html, '<', $offset)) && $start < $limit) {
+        if ('<!--' === substr($html, $start, 4)) {
+            $body_start = $start + 4;
+            if ('>' === substr($html, $body_start, 1) || '->' === substr($html, $body_start, 2)) {
+                $offset = strpos($html, '>', $body_start) + 1;
+                continue;
+            }
+            if (!preg_match('/--!?>/', $html, $closing, PREG_OFFSET_CAPTURE, $body_start)) {
+                break;
+            }
+            $offset = $closing[0][1] + strlen($closing[0][0]);
+        } elseif ('<![CDATA[' === substr($html, $start, 9)) {
+            $closing = strpos($html, ']]>', $start + 9);
+            $offset = false === $closing ? $length : $closing + 3;
+            $boundary = $offset;
+        } elseif (preg_match('/\A<\/?[a-zA-Z]/', substr($html, $start, 3))) {
+            // A raw-text or incomplete actual tag owns the remaining native gap.
+            break;
+        } elseif (in_array(substr($html, $start, 2), array('<!', '<?', '</'), true)) {
+            $greater = strpos($html, '>', $start + 2);
+            if (false === $greater) {
+                break;
+            }
+            $offset = $greater + 1;
+        } else {
+            $offset = $start + 1;
+        }
+    }
+    return $boundary;
+}
+
+/**
+ * Keep comment-like clock examples inert across native lexical contexts.
+ * Opaque spans encode only example openers and clock-tag tokens, so actual
+ * tag boundaries remain native. No content is restored after sanitization.
+ */
+function SDCW_escape_clock_comments($html, $parse_cdata = true) {
+    if (false === strpos($html, '<!--') || false === stripos($html, '<timenow-zone-sdcw')) {
+        return $html;
+    }
+    $parser_html = $parse_cdata ? $html : str_replace('<![CDATA[', '<![cdatA[', $html);
+    $processor = new SDCW_Clock_HTML_Tag_Processor($parser_html);
+    $seeks = 0;
+    $copied = 0;
+    $parts = array();
+    $atomic = method_exists($processor, 'get_modifiable_text');
+    $raw_tags = array('SCRIPT', 'STYLE', 'TEXTAREA', 'TITLE', 'IFRAME', 'NOEMBED', 'NOFRAMES');
+    $pending = false;
+    while (true) {
+        // Locate CDATA before peeking: a fake raw-text tag inside it must not scan
+        // the remaining document on every declaration and cause quadratic work.
+        $cdata_end = $parse_cdata ? SDCW_clock_comment_cdata_gap_end($html, $copied, strlen($html)) : null;
+        if (null !== $cdata_end) {
+            $parts[] = SDCW_escape_clock_comment_gap(substr($html, $copied, $cdata_end - $copied));
+            $copied = $cdata_end;
+            if ($copied === strlen($html)) {
+                break;
+            }
+            // Resume at the boundary, never by reparsing or copying a shrinking tail.
+            $processor = new SDCW_Clock_HTML_Tag_Processor($parser_html);
+            $pending = $processor->resume_clock_comment_scan($copied) && null !== $processor->get_tag();
+            $seeks = 1;
+            continue;
+        }
+        $found = $pending || $processor->next_tag(array('tag_closers' => 'visit'));
+        $pending = false;
+        if (!$found) {
+            break;
+        }
+        $span = $processor->clock_comment_source_span();
+        if (null === $span) {
+            do_action('sdcw_metadata_diagnostic', 'comment_tag_span_unavailable');
+            return $html;
+        }
+        $start = $span[0];
+        $end = $span[1];
+        $tag = $processor->get_tag();
+        $is_opening = !$processor->is_tag_closer();
+        $parts[] = SDCW_escape_clock_comment_gap(substr($html, $copied, $start - $copied), $parse_cdata);
+        if ($is_opening && 'PLAINTEXT' === $tag) {
+            $parts[] = SDCW_escape_clock_comment_text(substr($html, $start), false, false);
+            return implode('', $parts);
+        }
+        if ($is_opening && ('NOSCRIPT' === $tag || (!$atomic && 'XMP' === $tag))) {
+            $end = SDCW_clock_comment_raw_end($parser_html, $end, $tag, $processor, $seeks);
+        } elseif (!$atomic && $is_opening && in_array($tag, $raw_tags, true)) {
+            // Older Core returns a raw-text closer separately; newer Core is atomic.
+            if (!$processor->next_tag(array('tag_closers' => 'visit')) || !$processor->is_tag_closer() || $tag !== $processor->get_tag()) {
+                do_action('sdcw_metadata_diagnostic', 'comment_rawtext_boundary_unavailable');
+                return $html;
+            }
+            $closing = $processor->clock_comment_source_span();
+            if (null === $closing) {
+                do_action('sdcw_metadata_diagnostic', 'comment_tag_span_unavailable');
+                return $html;
+            }
+            $end = $closing[1];
+        }
+        $parts[] = SDCW_escape_clock_comment_text(substr($html, $start, $end - $start), false, false);
+        $copied = $end;
+        if ($copied === strlen($html)) {
+            break;
+        }
+    }
+    $parts[] = SDCW_escape_clock_comment_gap(substr($html, $copied), $parse_cdata);
+    return implode('', $parts);
 }
 
 /**
@@ -656,6 +931,7 @@ function SDCW_prepare_clock_post_html($content, $allowed_html) {
     $frames =& SDCW_clock_kses_frames();
     $captions = array();
     if (SDCW_allows_clock_html($allowed_html)) {
+        $content = SDCW_escape_clock_comments($content);
         // Escape literal angle brackets before the HTML tokenizer sees them.
         if (false !== stripos($content, '<timenow-zone-sdcw')) {
             $processor = new SDCW_Clock_HTML_Tag_Processor($content);
