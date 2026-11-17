@@ -4,8 +4,8 @@ This repository contains two independently versioned components:
 
 | Component | Source | Version | License |
 | --- | --- | --- | --- |
-| JavaScript widget | `../src/` | `../package.json` (`0.8.4`, candidate; production remains 0.8.1) | MIT, as declared in the widget package |
-| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, RC5 scoped acceptance PASS; unpublished) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
+| JavaScript widget | `../src/` | `../package.json` (`0.8.4`, production CDN verified on 2026-11-14) | MIT, as declared in the widget package |
+| WordPress plugin | `simple-digital-clock/` | Plugin header and `readme.txt` (`1.1.6`, exact RC18 merged; WordPress.org publication pending) | GPLv2 or later; see `simple-digital-clock/LICENSE` |
 
 The existing widget build, demo, and release scripts retain their current paths.
 The WordPress directory is the installable plugin root, including its bundled widget.
@@ -39,7 +39,7 @@ tools are excluded from the installable plugin ZIP.
 
 The retained [1.1.3 candidate](../docs/releases/1.1.3/README.md) introduced invalid numeric caption preservation and automatic container sizing with widget 0.7.1. The published [1.1.4 release](../docs/releases/1.1.4/README.md) retains those fixes and bundles widget 0.8.1: Preact 11 with explicit CSS units, ordinary AM/PM fitting, delayed-font refitting and quantized font-width correction, plus local-theme-font recovery after a failed Google stylesheet and stable single-line time layout. The release also preserves terminal-backslash captions and nondefault settings on WordPress 6.3. The original JSON caption schema and static save markup remain unchanged; narrowly recognized malformed Core 6.3 caption tokens and clock-specific metadata handling are corrected without a database migration. Full MIT dependency notices ship in `THIRD-PARTY-NOTICES.txt`; the WordPress wrapper retains its GPL license. The package declares WordPress 6.3 and PHP 7.0 minimum requirements in both the main PHP header and readme.
 
-Earlier widget releases remain available at their versioned CDN URLs. The current production demo/CDN uses [widget 0.8.1](../docs/releases/0.8.1/PUBLICATION.md); this does not publish or update the WordPress plugin.
+Earlier widget releases remain available at their versioned CDN URLs. The current production demo/CDN uses [widget 0.8.4](../docs/releases/0.8.4/PUBLICATION-2026-11-14.md); this does not publish or update the WordPress plugin.
 
 Edit the WordPress wrapper here. Keep the bundled production JavaScript unchanged until an explicit widget update is tested.
 `npm run build` only builds the standalone widget; it does not replace files inside the plugin.
@@ -51,7 +51,7 @@ Do not run experiments against existing WordPress containers or user sites.
 
 The [1.1.6 remediation](../docs/releases/1.1.6/README.md) restores native Core
 enqueue, explicit helper semantics and legacy preview iframe assets. Its external
-bootstrap defines a lightweight custom-element shell; the default bundled 0.8.2
+bootstrap defines a lightweight custom-element shell; the default bundled 0.8.4
 renderer loads on actual use, including first clocks after `whenDefined()` and
 inside closed shadow roots. Opaque URL overrides load eagerly, including on empty
 pages, under the [approved compatibility policy](../docs/releases/1.1.6/OVERRIDE-POLICY.md).
@@ -59,14 +59,15 @@ No polling, browser API replacement or full-response buffer
 is used. Saved blocks and raw HTML retain their settings and schema. See the
 [asset contract](../docs/WORDPRESS-ASSET-CONTRACT.md).
 
-Selected [RC5](../docs/releases/1.1.6/RC5.md) bundles widget 0.8.4 with explicit
-alignment CSS and passes [scoped exact-artifact acceptance](../docs/releases/1.1.6/FINAL-ACCEPTANCE-RC5.md). Frozen RC4
-remains **NO-GO** for the recorded alignment defect; RC3 remains **NO-GO** for
-initial-host error isolation. The [two-phase defect record](../docs/defects/MULTI-ALIGN-P2-01.md)
-keeps the original failure evidence and current acceptance criteria separate.
-RC1/RC2 records, all frozen manifests and ZIPs remain preserved. Both required
-checks must still pass on the latest [draft PR #19 HEAD](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19/checks).
-Production CDN delivery and WordPress.org publication remain pending.
+Selected [RC18](../docs/releases/1.1.6/RC18.md) retains the exact widget 0.8.4
+and adds the accepted Classic stale-save and comment-preservation corrections.
+The [prepublication record](../docs/releases/1.1.6/PREPUBLICATION-2026-11-14.md)
+binds all twenty files to the frozen archive and records current Plugin Check,
+public-predecessor rollback and the inherited diagnostic boundaries.
+Earlier candidates, manifests, ZIPs and rejected results remain preserved.
+Both required checks passed on the [PR #20 main merge](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43624328841).
+Subsequent PRs require their own exact-HEAD checks. Production CDN delivery of
+0.8.4 is verified; WordPress.org publication of 1.1.6 remains pending.
 The approved eager-override policy remains valid; WordPress
 publication also requires a separate owner command. The
 [candidate lab](../tools/wordpress-lab/candidate/README.md) takes an explicit ZIP,
@@ -75,10 +76,13 @@ frozen manifest and SHA and never repurposes old pinned lab entry points.
 The last verified public release is **1.1.5**, published in **SVN r3797104**
 at 2026-11-11 21:17:24 UTC. Pinned trunk/tag exports and both official ZIPs
 match all 17 accepted files; plugin information reports 1.1.5. At 21:20 UTC,
-twelve anonymous update checks still described 1.1.4: installed 1.1.2 received
+twelve anonymous update checks on 2026-11-11 still described 1.1.4: installed 1.1.2 received
 a 1.1.4 offer, while installed 1.1.4/1.1.5 received no offer. Target 1.1.5 offers
 were 0/8. File publication is confirmed; update distribution remains pending
 in this dated sample. See the [publication record](../docs/releases/1.1.5/PUBLICATION-2026-11-11.md).
+The later [2026-11-14 check](../docs/releases/1.1.6/PREPUBLICATION-2026-11-14.md)
+confirms that sampled 1.1.2/1.1.4 installations are offered public 1.1.5;
+installed 1.1.5/1.1.6 are offered no update.
 
 `node --test tests/wordpress-package.test.mjs` checks the current plugin against its release manifest, its exact versioned widget, the header/readme/POT/script-cache/source-reference versions, matching nonempty WordPress/PHP minimum requirements, and complete MIT notices for the exact bundled dependency versions. Required Repository checks run this guard; it does not install a ZIP or replace upgrade acceptance.
 
@@ -104,11 +108,21 @@ printf 'Local package: %s\n' "$archive_path"
 
 The `-D` option omits directory entries required to be absent by the exact package verifier.
 Install the ZIP only in the isolated test site. A local ZIP is not a WordPress.org release.
-Packaging does not publish a WordPress.org release or change CDN delivery. The existing [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) now carries 1.1.5 and retains the previous commits. Release publication still requires separate authorization.
+Packaging does not publish a WordPress.org release or change CDN delivery. The historical [PR #18](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/18) retains the earlier integration; [PR #20](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/20) merged exact RC18 into main. WordPress.org publication still requires separate authorization.
 
 ## Rollback
 
-Fresh r2 acceptance covers physical rollback to public 1.1.4 and Core reupdate on
+The [RC18 prepublication check](../docs/releases/1.1.6/PREPUBLICATION-2026-11-14.md)
+executes RC18 → official public 1.1.5 → RC18 through Core on both primary
+WordPress/PHP environments: four file transitions retain activation, all eight
+content-table hashes per site and stable options. The old 1.1.5 writer retains
+known editing risks. Pause editorial saves, preserve unsaved text and backups,
+replace the complete plugin directory, purge relevant caches and reopen tabs
+when recovering an affected site. Changing Stable tag does not automatically
+downgrade already installed 1.1.6; a public corrective update needs a separately
+accepted higher version. No old tag or immutable runtime may be overwritten.
+
+Historical 1.1.5 r2 acceptance covers physical rollback to public 1.1.4 and Core reupdate on
 WordPress 6.3.14/PHP 7.0.33 and WordPress 7.1.4/PHP 8.3.35. It preserves the tested
 stored data during file transitions; it does not certify old-writer editing or
 restore metadata already discarded before the upgrade. Other Core/PHP pairs do

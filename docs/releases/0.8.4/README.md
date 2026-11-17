@@ -1,5 +1,17 @@
 # Widget 0.8.4 alignment correction
 
+## Current production delivery
+
+Status: **EXACT 0.8.4 DELIVERED AND VERIFIED ON 2026-11-14**.
+The [production record](PUBLICATION-2026-11-14.md) binds PR #20's main merge,
+successful required checks, Cloudflare deployment/version references, eleven
+preserved immutable assets and native HTML/WordPress browser verification.
+The selected WordPress package is now [1.1.6 RC18](../1.1.6/README.md);
+its WordPress.org publication remains pending. Runtime bytes are unchanged
+from the accepted 0.8.4 artifact described below.
+
+## Preserved RC5 alignment acceptance snapshot
+
 Status: **SCOPED EXACT-ARTIFACT ACCEPTANCE PASS; NOT PUBLISHED**.
 This corrects [MULTI-ALIGN-P2-01](../../defects/MULTI-ALIGN-P2-01.md) through explicit
 static alignment classes in the existing inner container. Tailwind now emits

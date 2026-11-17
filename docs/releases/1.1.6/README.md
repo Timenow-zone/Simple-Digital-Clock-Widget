@@ -1,6 +1,104 @@
 # WordPress 1.1.6 release preparation
 
-## Current RC9 readiness
+## Current RC18 preparation
+
+Current candidate: **EXACT RC18 MERGED; BOUNDED TECHNICAL CHECKS PASS;
+ADMIN DIAGNOSTICS ATTRIBUTED; SHARED 0.8.4 DELIVERED;
+WORDPRESS.ORG PUBLICATION PENDING**.
+The [additional local acceptance](LOCAL-ACCEPTANCE-RC18.md) covers the missing
+matrix cells, including multisite and cache. The subsequent
+[encode investigation](ENCODE-DIAGNOSTIC-RC18.md) closes its last unattributed
+diagnostic through a matching plugin-disabled reproduction and independent review.
+Inherited diagnostics remain visible; a literal zero-diagnostics result is not
+claimed. Earlier NO-GO reports remain unchanged historical snapshots.
+
+The [RC18 production PR gate](FINAL-PR-RC18.md) binds the unchanged twenty-file
+package to PR #20. It merged as `ffb95e60a1db82b6535894db90f19da8be978564`;
+both required checks pass on the [exact main run](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43624328841).
+The frozen [manifest](manifest-rc18.json), ZIP and runtime are not rebuilt or
+repacked. The mutable selection manifest describes the RC12-to-RC18 increment;
+the full production PR still carries the previously accepted shared 0.8.4 work.
+The [0.8.4 delivery record](../0.8.4/PUBLICATION-2026-11-14.md) confirms the
+production CDN and all six HTML/WordPress browser combinations.
+The [prepublication record](PREPUBLICATION-2026-11-14.md) records fresh
+Plugin Check 2.2.0 (31 static + 5 runtime checks), exact public 1.1.5 rollback
+and the remaining WordPress.org release steps. Documentation synchronization
+does not authorize another merge, Cloudflare change or WordPress.org publication.
+Publisher access and optional Release Confirmation require a separate current
+operational receipt; public reads do not prove them.
+
+## Preserved initial RC18 preparation snapshot
+
+Current local candidate: **RC18 FROZEN; SCOPED FUNCTIONAL CORRECTION VERIFIED;
+FULL ACCEPTANCE NO-GO; NOT PUBLISHED**. The
+[acceptance report](FINAL-ACCEPTANCE-RC18.md), [receipt](acceptance-rc18.json) and
+[candidate record](RC18.md) bind the exact archive. The ten inherited contexts
+pass 60 mixed red-to-green comparisons; 20 pure examples stay inert. The native
+matrix passes 278 functional workflows and the mandatory browser gate passes all
+six combinations. Unclassified admin diagnostics and unexecuted full-release
+gates remain explicit, so this is not a complete release GO.
+
+RC18 shortens only RC17's readme Upgrade Notice (341 to 279 characters), resolving
+its Plugin Check warning. All nineteen other files are identical to RC17. Only
+KSES PHP and readme differ from RC16; runtime and editor integrations are unchanged.
+RC17 and every predecessor remain preserved. Fresh exact-archive acceptance does
+not authorize merge, deployment or publication.
+
+## Preserved RC17 preparation snapshot
+
+Candidate: **RC17 FROZEN; NO-GO: PLUGIN CHECK UPGRADE NOTICE LIMIT;
+NOT PUBLISHED**. The [candidate record](RC17.md) and
+[correction contract](../../defects/CLASSIC-COMMENT-P2-01-RC17.md) identify the
+WordPress-only inherited comment-context fix. Only KSES PHP and readme differ
+from RC16; runtime and editor integrations remain byte-identical. Completed local suites and partial native-editor results are retained for the
+exact rejected archive. Its native editor run is partial. RC16 and all earlier archives,
+manifests and evidence remain preserved.
+
+## Preserved RC16 preparation snapshot
+
+Current local candidate: **RC16 FROZEN; ORDINARY COMMENT CORRECTION VERIFIED;
+FULL ACCEPTANCE NO-GO; NOT PUBLISHED**.
+The [acceptance report](FINAL-ACCEPTANCE-RC16.md) separates the verified correction
+from inherited malformed-input behavior and incomplete release gates.
+The [candidate record](RC16.md) identifies the exact
+WordPress-only correction for [ordinary commented clock examples](../../defects/CLASSIC-COMMENT-P2-01-RC16.md).
+Only KSES PHP and readme differ from RC15; the runtime and editor integrations
+remain byte-identical. RC15's archive, frozen manifest and acceptance remain
+preserved. Complete release acceptance, hosted checks and delivery are separate
+gates; no prior result becomes a fresh RC16 pass automatically.
+
+## Preserved RC15 preparation snapshot
+
+Current local candidate: **RC15 FROZEN; STALE CLASSIC SAVE CORRECTION VERIFIED;
+FULL ACCEPTANCE NO-GO; NOT PUBLISHED**.
+The [local acceptance report](FINAL-ACCEPTANCE-RC15.md) separates the verified
+correction from the inherited Author/comment defect and incomplete release gates.
+The [candidate record](RC15.md) identifies the exact WordPress-only guard for
+[older Classic document save loss](../../defects/CLASSIC-STALE-SAVE-P1-02.md).
+Expanded acceptance of exact RC12 exposed destructive native saves from tabs
+opened before updating. RC12 and all historical evidence remain frozen.
+[RC13](RC13.md) is retained as an intermediate Plugin Check rejection.
+[RC14](RC14.md) is retained after its malformed-input boundary was hardened in RC15.
+The main runtime, loader, existing TinyMCE helper and Gutenberg code are unchanged.
+
+## Preserved RC12 preparation snapshot
+
+Current local candidate: **RC12 FROZEN; LOCAL HTML-PRESERVATION FIX VERIFIED;
+FULL RELEASE NOT READY; NOT PUBLISHED**.
+The [final local report](FINAL-ACCEPTANCE-RC12.md), [acceptance receipt](acceptance-rc12.json)
+and [candidate record](RC12.md) identify the WordPress-only fix for
+[Classic Editor HTML loss](../../defects/CLASSIC-HTML-P1-01.md). The main runtime,
+loader and Gutenberg code remain byte-identical to RC9. RC9 and its evidence
+remain preserved; its hosted checks do not accept the new candidate.
+[RC10](RC10.md) is preserved as a rejected intermediate candidate after the
+independent reviewer found incomplete attribute preservation. [RC11](RC11.md)
+was superseded to resolve a Plugin Check enqueue-version warning.
+
+The [production PR update record](FINAL-PR-RC12.md) binds these unchanged package
+bytes to PR #20 and its final HEAD checks. The local acceptance report retains
+its historical pre-commit state; hosted results are recorded separately.
+
+## Preserved RC9 readiness snapshot
 
 Current local candidate: **RC9; LOCAL EVIDENCE BLOCKERS CLOSED WITH INHERITED
 LIMITATIONS; FULL RELEASE NOT READY; NOT PUBLISHED**.
@@ -24,7 +122,7 @@ Selected [RC5](RC5.md) contains [widget 0.8.4](../0.8.4/README.md). The
 [two-phase defect record](../../defects/MULTI-ALIGN-P2-01.md) preserves the red
 baseline and requires new exact-artifact HTML/WordPress verification.
 
-## Selected artifact
+## Historical RC5 selected artifact
 
 | Item | Identity |
 | --- | --- |
@@ -78,7 +176,10 @@ previous passes cannot substitute for the changed main artifact.
 - [RC2](RC2.md) retains its old-runtime conflict; [RC1](RC1.md) retains its native
   preview/CSP/hidden-integration failures. No old receipt is rewritten as PASS.
 
-## Release boundary and rollback
+## Historical RC5 release boundary and rollback
+
+The following is the preserved RC5 preparation boundary. Current RC18 and CDN
+status are recorded at the top of this page and in the prepublication record.
 
 [Draft PR #19](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19)
 remains stacked on PR #18. Required Repository checks and Browser tests must pass

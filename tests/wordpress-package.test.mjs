@@ -93,3 +93,15 @@ test("WordPress and PHP minimum versions are declared in the plugin header and m
     assert.equal(headerMinimum, readmeMinimum, `${field} must agree between the main PHP header and readme`);
   }
 });
+
+test("The current WordPress upgrade notice fits the directory limit", async () => {
+  const readme = await readFile(path.join(plugin, "readme.txt"), "utf8");
+  const section = readme.split("== Upgrade Notice ==")[1];
+  assert.ok(section, "The upgrade notice section must exist");
+  const release = section.trim().split(/\r?\n(?== )/, 1)[0];
+  const [heading, ...lines] = release.split(/\r?\n/);
+  assert.equal(heading, `= ${version} =`);
+  const notice = lines.join("\n").trim();
+  assert.ok(notice.length > 0, "The current upgrade notice must not be empty");
+  assert.ok([...notice].length <= 300, `Upgrade notice exceeds 300 characters: ${[...notice].length}`);
+});
