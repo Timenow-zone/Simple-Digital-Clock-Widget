@@ -298,9 +298,30 @@ Testing stack:
 * **Browsers**: `@web/test-runner` + Playwright (Chromium/Firefox/WebKit)
 * **Coverage**: `c8`
 
-The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main` and `dev`. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [historical tooling preparation record](docs/maintenance/release-readiness-2026-10-31.md) for the original correction, and the [WordPress 1.1.6 report](docs/releases/1.1.6/README.md) for candidate identity and acceptance boundaries. Both required checks passed on the [exact RC18 main merge](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43624328841); later PRs require their own exact-HEAD checks. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
+The [CI workflow](.github/workflows/ci.yml) runs on Ubuntu 24.04 with Node.js 24 for pull requests and pushes to `main`. Candidate changes are checked through their pull request. It checks all three TypeScript configurations, lint, Node tests, release metadata/artifacts, an isolated production build, WordPress PHP/JavaScript syntax, preview parity, and all three browsers, including production-bundle iframe and delayed-font regressions. Dependency audit fails on moderate, high, or critical advisories; unresolved low findings remain visible. See the [historical tooling preparation record](docs/maintenance/release-readiness-2026-10-31.md) for the original correction, and the [WordPress 1.1.6 report](docs/releases/1.1.6/README.md) for candidate identity and acceptance boundaries. Both required checks passed on the [exact RC18 main merge](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43624328841); later PRs require their own exact-HEAD checks. The [29 October maintenance report](docs/maintenance/2026-10-29-repository-hygiene.md) remains a historical snapshot.
 
 Run `node scripts/check-build.mjs` to build and minify in a temporary directory with the production CLI flags and require exact equality with the current versioned widget. It prints the output path and preserves tracked `dist/` files. PHP syntax checks use the runner's installed PHP version and do not replace WordPress compatibility or update/rollback acceptance.
+
+### Branch lifecycle
+
+`main` is the only permanent branch. Keep one release-candidate branch while a
+release is being accepted; the WordPress 1.1.6 candidate uses
+`codex/wordpress-1.1.6-rc18`. There is no permanent `dev` branch. Temporary review
+branches are removed after their work is incorporated through a checked PR.
+
+Keep the candidate until the publisher confirms successful publication and the
+installed-site checks pass. Integrate any remaining candidate changes through a
+PR with successful `Repository checks` and `Browser tests` on its exact HEAD,
+then delete the candidate locally and on GitHub. Only `main` should remain.
+Before deleting a branch, verify that its commits are retained and that no open
+PR or active worktree still depends on it. Preserve release tags, frozen packages,
+manifests and acceptance evidence.
+
+Git branch cleanup does not publish to WordPress.org. A merge into `main` can
+trigger the configured Cloudflare production build and requires the corresponding
+release authorization. Keep non-production Cloudflare builds disabled unless
+separately authorized. WordPress publication and release confirmation remain
+publisher actions.
 
 ---
 
