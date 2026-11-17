@@ -2,8 +2,9 @@
 
 ## Current RC18 preparation
 
-Current candidate: **RC18 FROZEN; BOUNDED LOCAL FUNCTIONAL GATES PASS;
-ADMIN DIAGNOSTICS ATTRIBUTED; HOSTED PR CHECKS PENDING; NOT PUBLISHED**.
+Current candidate: **EXACT RC18 MERGED; BOUNDED TECHNICAL CHECKS PASS;
+ADMIN DIAGNOSTICS ATTRIBUTED; SHARED 0.8.4 DELIVERED;
+WORDPRESS.ORG PUBLICATION PENDING**.
 The [additional local acceptance](LOCAL-ACCEPTANCE-RC18.md) covers the missing
 matrix cells, including multisite and cache. The subsequent
 [encode investigation](ENCODE-DIAGNOSTIC-RC18.md) closes its last unattributed
@@ -12,11 +13,19 @@ Inherited diagnostics remain visible; a literal zero-diagnostics result is not
 claimed. Earlier NO-GO reports remain unchanged historical snapshots.
 
 The [RC18 production PR gate](FINAL-PR-RC18.md) binds the unchanged twenty-file
-package to PR #20 and requires both hosted checks on its exact final HEAD.
+package to PR #20. It merged as `ffb95e60a1db82b6535894db90f19da8be978564`;
+both required checks pass on the [exact main run](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/actions/runs/43624328841).
 The frozen [manifest](manifest-rc18.json), ZIP and runtime are not rebuilt or
 repacked. The mutable selection manifest describes the RC12-to-RC18 increment;
 the full production PR still carries the previously accepted shared 0.8.4 work.
-Merge, Cloudflare upload/deployment and WordPress.org publication remain on hold.
+The [0.8.4 delivery record](../0.8.4/PUBLICATION-2026-11-14.md) confirms the
+production CDN and all six HTML/WordPress browser combinations.
+The [prepublication record](PREPUBLICATION-2026-11-14.md) records fresh
+Plugin Check 2.2.0 (31 static + 5 runtime checks), exact public 1.1.5 rollback
+and the remaining WordPress.org release steps. Documentation synchronization
+does not authorize another merge, Cloudflare change or WordPress.org publication.
+Publisher access and optional Release Confirmation require a separate current
+operational receipt; public reads do not prove them.
 
 ## Preserved initial RC18 preparation snapshot
 
@@ -167,7 +176,10 @@ previous passes cannot substitute for the changed main artifact.
 - [RC2](RC2.md) retains its old-runtime conflict; [RC1](RC1.md) retains its native
   preview/CSP/hidden-integration failures. No old receipt is rewritten as PASS.
 
-## Release boundary and rollback
+## Historical RC5 release boundary and rollback
+
+The following is the preserved RC5 preparation boundary. Current RC18 and CDN
+status are recorded at the top of this page and in the prepublication record.
 
 [Draft PR #19](https://github.com/Timenow-zone/Simple-Digital-Clock-Widget/pull/19)
 remains stacked on PR #18. Required Repository checks and Browser tests must pass
